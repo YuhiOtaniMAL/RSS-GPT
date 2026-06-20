@@ -52,11 +52,6 @@
 
 <a href="https://www.buymeacoffee.com/yinan" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
-- https://brett.trpstra.net/brettterpstra -> https://yinan-c.github.io/RSS-GPT/brett-terpstra.xml
-- https://meta.appinn.net/tag/chrome.rss, https://meta.appinn.net/tag/ios.rss, https://meta.appinn.net/tag/macos.rss -> https://yinan-c.github.io/RSS-GPT/appinn.xml
-- https://rknight.me/feed.xml -> https://yinan-c.github.io/RSS-GPT/robb-knight.xml
-- https://stephanango.com/feed.xml -> https://yinan-c.github.io/RSS-GPT/steph-ango.xml
-- https://lopespm.com/atom.xml -> https://yinan-c.github.io/RSS-GPT/byte-tank.xml
-- https://rsshub.app/paulgraham/articles -> https://yinan-c.github.io/RSS-GPT/paul-graham.xml
-- https://nesslabs.com/feed -> https://yinan-c.github.io/RSS-GPT/ness-labs.xml
-- https://manuelmoreale.com/feed/rss -> https://yinan-c.github.io/RSS-GPT/manuel-moreale.xml
+- https://github.com/vercel/next.js/releases.atom, https://github.com/nestjs/nest/releases.atom, https://github.com/prisma/prisma/releases.atom, https://github.com/facebook/react/releases.atom, https://github.com/hashicorp/terraform/releases.atom, https://github.com/aws/aws-cdk/releases.atom, https://aws.amazon.com/about-aws/whats-new/recent/feed/, https://hnrss.org/newest?points=150, https://lobste.rs/rss, https://www.producthunt.com/feed?category=artificial-intelligence, https://simonwillison.net/atom/everything/, https://huggingface.co/blog/feed.xml -> https://YuhiOtaniMAL.github.io/RSS-GPT/tech.xml
+- https://www.cicnews.com/feed, https://api.io.canada.ca/io-server/gc/news/en/v2?dept=departmentofcitizenshipandimmigration&type=newsreleases&sort=publishedDate&orderBy=desc&pick=25&format=atom, https://www.google.com/alerts/feeds/17146422405023153028/2044183529610699947 -> https://YuhiOtaniMAL.github.io/RSS-GPT/immigration.xml
+- https://www.google.co.jp/alerts/feeds/13978041598387954826/12912498221145568378, https://www.google.co.jp/alerts/feeds/13978041598387954826/17444517234348100381, https://www.google.co.jp/alerts/feeds/13978041598387954826/15167630761358206135, https://www.google.co.jp/alerts/feeds/13978041598387954826/16377391982950024117, https://www.google.co.jp/alerts/feeds/13978041598387954826/17318765439013393951, https://www.google.co.jp/alerts/feeds/13978041598387954826/18178695081020785052 -> https://YuhiOtaniMAL.github.io/RSS-GPT/j-address.xml
