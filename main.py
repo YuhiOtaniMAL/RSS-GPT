@@ -325,15 +325,15 @@ def output(sec, language):
     template = Template(open('template.xml').read())
     
     try:
-        rss = template.render(feed=feed, append_entries=append_entries, existing_entries=existing_entries)
+        rss = template.render(name=get_cfg(sec, 'name'), link=deployment_url + get_cfg(sec, 'name') + '.xml', append_entries=append_entries, existing_entries=existing_entries)
         with open(out_dir + '.xml', 'w') as f:
             f.write(rss)
         with open(log_file, 'a') as f:
             f.write(f'Finish: {datetime.datetime.now()}\n')
-    except:
+    except Exception as e:
         with open (log_file, 'a') as f:
-            f.write(f"error when rendering xml, skip {out_dir}\n")
-            print(f"error when rendering xml, skip {out_dir}\n")
+            f.write(f"error when rendering xml, skip {out_dir}: {e}\n")
+            print(f"error when rendering xml, skip {out_dir}: {e}\n")
 
 try:
     os.mkdir(BASE)
@@ -344,7 +344,9 @@ feeds = []
 links = []
 
 for x in secs[1:]:
-    output(x, language=language)
+    # Per-section language override (falls back to the global [cfg] language)
+    sec_language = get_cfg(x, 'language') or language
+    output(x, language=sec_language)
     feed = {"url": get_cfg(x, 'url').replace(',','<br>'), "name": get_cfg(x, 'name')}
     feeds.append(feed)  # for rendering index.html
     links.append("- "+ get_cfg(x, 'url').replace(',',', ') + " -> " + deployment_url + feed['name'] + ".xml\n")

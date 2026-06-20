@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-<title>{{ feed.feed.title.replace('&', '&amp;') }}</title>
-<link>{{ feed.feed.link.replace('&', '&amp;') }}</link>
+<title>{{ name.replace('&', '&amp;') }}</title>
+<link>{{ link.replace('&', '&amp;') }}</link>
 {% for entry in append_entries %}
 <item>
 <title>{{ entry.title.replace('&', '&amp;') }}</title>
