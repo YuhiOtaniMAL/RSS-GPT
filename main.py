@@ -325,7 +325,8 @@ def output(sec, language):
     template = Template(open('template.xml').read())
     
     try:
-        rss = template.render(name=get_cfg(sec, 'name'), link=deployment_url + get_cfg(sec, 'name') + '.xml', append_entries=append_entries, existing_entries=existing_entries)
+        build_date = datetime.datetime.now(datetime.timezone.utc).strftime('%a, %d %b %Y %H:%M:%S +0000')
+        rss = template.render(name=get_cfg(sec, 'name'), link=deployment_url + get_cfg(sec, 'name') + '.xml', build_date=build_date, append_entries=append_entries, existing_entries=existing_entries)
         with open(out_dir + '.xml', 'w') as f:
             f.write(rss)
         with open(log_file, 'a') as f:

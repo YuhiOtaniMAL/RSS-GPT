@@ -2,9 +2,9 @@ name: cron_job
 
 # Controls when the workflow will run
 on:
-  # cron job every 6 hours (00:00, 06:00, 12:00, 18:00 UTC)
+  # cron job once a day at 00:00 UTC
   schedule:
-    - cron: '0 */6 * * *'
+    - cron: '0 0 * * *'
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
