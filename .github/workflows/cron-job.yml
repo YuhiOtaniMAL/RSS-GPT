@@ -40,6 +40,7 @@ jobs:
       - name: ls_show
         run: |
           python main.py
+          python digest.py
           ls -al docs/
         env:
           OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
