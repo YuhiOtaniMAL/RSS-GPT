@@ -3,7 +3,286 @@
 <channel>
 <title>ai</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/ai.xml</link>
-<lastBuildDate>Sun, 21 Jun 2026 05:06:30 +0000</lastBuildDate>
+<lastBuildDate>Mon, 22 Jun 2026 05:15:35 +0000</lastBuildDate>
+
+<item>
+<title>sqlite-utils 4.0rc1 adds migrations and nested transactions</title>
+<link>https://simonwillison.net/2026/Jun/21/sqlite-utils-40rc1/</link>
+<guid>https://simonwillison.net/2026/Jun/21/sqlite-utils-40rc1/</guid>
+<content:encoded><![CDATA[
+<div> SQLite, migrations, Python library, CLI tool, database
+
+<br><br>Summary:  
+SQLite-utils is a combined Python library and CLI tool designed for working with SQLite databases, offering higher-level operations, automatic table creation, and more. The release candidate for sqlite-utils v4 includes two key new features: database migrations and db.atomic() transactions. Migrations allow for easy management of schema changes, exemplified in a migrations.py file, while the new atomic transactions enable nested transaction management with savepoints. The v4 release also introduces several backward-incompatible changes, including new syntax for upsert operations and dropped support for Python 3.8. Users can now specify SQL views and utilize improved type detection during data imports. The CLI has also been enhanced to allow multiple function paths and improved table handling, wrapping names in double-quotes for better compatibility. To try out this release candidate, you can install it via pip or the CLI version directly with uvx. The development team welcomes feedback, bug reports, and community discussion to ensure the stability of the upcoming stable release. <div>
+<p><a href="https://sqlite-utils.datasette.io/en/latest/">sqlite-utils</a> is my combined Python library and CLI tool for working with SQLite databases. It provides an extensive set of higher-level operations on top of Python's default <a href="https://docs.python.org/3/library/sqlite3.html">sqlite3 package</a>, including support for <a href="https://sqlite-utils.datasette.io/en/latest/cli.html#transforming-tables">complex table transformations</a>, automatic table creation <a href="https://sqlite-utils.datasette.io/en/latest/cli.html#inserting-json-data">from JSON data</a> and a whole lot more.</p>
+<p>I released <a href="https://sqlite-utils.datasette.io/en/latest/changelog.html#rc1-2026-06-21">sqlite-utils 4.0rc1</a>, the first release candidate for sqlite-utils v4. The major version bump indicates some (minor) backwards incompatible changes, so I'm interested in having people try this out before I commit to a stable release.</p>
+<h4 id="new-feature-migrations">New feature: migrations</h4>
+<p>There are two significant new features in this RC compared to the previous 4.0 alphas.</p>
+<p>The first is support for <strong>database migrations</strong>. This isn't a completely new implementation - it's a slightly modified port of the <a href="https://github.com/simonw/sqlite-migrate">sqlite-migrate</a> package I released a few years ago. I think that package has proved itself over time, so I'm now ready to bundle it with <code>sqlite-utils</code> directly.</p>
+<p>Here's what a set of migrations in a <code>migrations.py</code> file looks like:</p>
+<pre><span class="pl-k">from</span> <span class="pl-s1">sqlite_utils</span> <span class="pl-k">import</span> <span class="pl-v">Database</span>, <span class="pl-v">Migrations</span>
+
+<span class="pl-s1">migrations</span> <span class="pl-c1">=</span> <span class="pl-en">Migrations</span>(<span class="pl-s">"creatures"</span>)
+
+<span class="pl-en">@<span class="pl-en">migrations</span>()</span>
+<span class="pl-k">def</span> <span class="pl-en">create_table</span>(<span class="pl-s1">db</span>):
+    <span class="pl-s1">db</span>[<span class="pl-s">"creatures"</span>].<span class="pl-c1">create</span>(
+        {<span class="pl-s">"id"</span>: <span class="pl-s1">int</span>, <span class="pl-s">"name"</span>: <span class="pl-s1">str</span>, <span class="pl-s">"species"</span>: <span class="pl-s1">str</span>},
+        <span class="pl-s1">pk</span><span class="pl-c1">=</span><span class="pl-s">"id"</span>,
+    )
+
+<span class="pl-en">@<span class="pl-en">migrations</span>()</span>
+<span class="pl-k">def</span> <span class="pl-en">add_weight</span>(<span class="pl-s1">db</span>):
+    <span class="pl-s1">db</span>[<span class="pl-s">"creatures"</span>].<span class="pl-c1">add_column</span>(<span class="pl-s">"weight"</span>, <span class="pl-s1">float</span>)</pre>
+<p>This defines a set of two migrations, one creating the <code>creatures</code> table and another adding a column to it.</p>
+<p>You can then run those migrations either using Python:</p>
+<pre><span class="pl-s1">db</span> <span class="pl-c1">=</span> <span class="pl-en">Database</span>(<span class="pl-s">"creatures.db"</span>)
+<span class="pl-s1">migrations</span>.<span class="pl-c1">apply</span>(<span class="pl-s1">db</span>)</pre>
+<p>Or with the command-line <code>migrate</code> command:</p>
+<div class="highlight highlight-source-shell"><pre>sqlite-utils migrate creatures.db migrations.py</pre></div>
+<p>The system is deliberately small: it doesn't provide reverse migrations, so any mistakes you make should be fixed by deploying a fresh migration to undo them.</p>
+<p>Its predecessor has been used by <a href="https://llm.datasette.io/">LLM</a> and various other projects for several years, so I'm confident that the design is stable and works well.</p>
+<p>The new migrations feature <a href="https://sqlite-utils.datasette.io/en/latest/migrations.html">is documented here</a>.</p>
+<h4 id="new-feature-db-atomic-transactions">New feature: db.atomic() transactions</h4>
+<p>This feature is a lot less exercised than migrations, so it deserves more attention from testers.</p>
+<p>Previously, <code>sqlite-utils</code> mostly left transaction management up to its users, via a <code>with db.conn:</code> construct that reused the <code>sqlite3</code> mechanism directly.</p>
+<p>SQLite supports nested transactions in the form of savepoints, so I wanted an abstraction that could make those as easy to use as possible.</p>
+<p>I borrowed the terminology "atomic" from Django and Peewee. Here's what the new API looks like:</p>
+<pre><span class="pl-k">with</span> <span class="pl-s1">db</span>.<span class="pl-c1">atomic</span>():
+    <span class="pl-s1">db</span>.<span class="pl-c1">table</span>(<span class="pl-s">"dogs"</span>).<span class="pl-c1">insert</span>({<span class="pl-s">"id"</span>: <span class="pl-c1">1</span>, <span class="pl-s">"name"</span>: <span class="pl-s">"Cleo"</span>}, <span class="pl-s1">pk</span><span class="pl-c1">=</span><span class="pl-s">"id"</span>)
+    <span class="pl-k">try</span>:
+        <span class="pl-k">with</span> <span class="pl-s1">db</span>.<span class="pl-c1">atomic</span>():
+            <span class="pl-s1">db</span>.<span class="pl-c1">table</span>(<span class="pl-s">"dogs"</span>).<span class="pl-c1">insert</span>({<span class="pl-s">"id"</span>: <span class="pl-c1">2</span>, <span class="pl-s">"name"</span>: <span class="pl-s">"Pancakes"</span>})
+            <span class="pl-k">raise</span> <span class="pl-en">ValueError</span>(<span class="pl-s">"skip this one"</span>)
+    <span class="pl-k">except</span> <span class="pl-v">ValueError</span>:
+        <span class="pl-k">pass</span>
+    <span class="pl-s1">db</span>.<span class="pl-c1">table</span>(<span class="pl-s">"dogs"</span>).<span class="pl-c1">insert</span>({<span class="pl-s">"id"</span>: <span class="pl-c1">3</span>, <span class="pl-s">"name"</span>: <span class="pl-s">"Marnie"</span>})</pre>
+<p>More details <a href="https://sqlite-utils.datasette.io/en/latest/python-api.html#transactions-with-db-atomic">in the documentation</a>.</p>
+<h4 id="backwards-incompatible-changes">Backwards incompatible changes</h4>
+<p>The backwards incompatible changes in v4 were described in the alpha release notes. For <a href="https://sqlite-utils.datasette.io/en/latest/changelog.html#a0-2025-05-08">4.0a0</a>:</p>
+<blockquote>
+<ul>
+<li>Upsert operations now use SQLite's <code>INSERT ... ON CONFLICT SET</code> syntax on all SQLite versions later than 3.23.1. This is a very slight breaking change for apps that depend on the previous <code>INSERT OR IGNORE</code> followed by <code>UPDATE</code> behavior. (<a href="https://github.com/simonw/sqlite-utils/issues/652">#652</a>)</li>
+<li>Python library users can opt-in to the previous implementation by passing <code>use_old_upsert=True</code> to the <code>Database()</code> constructor, see <a href="https://sqlite-utils.datasette.io/en/latest/python-api.html#python-api-old-upsert">Alternative upserts using INSERT OR IGNORE</a>.</li>
+<li>Dropped support for Python 3.8, added support for Python 3.13. (<a href="https://github.com/simonw/sqlite-utils/issues/646">#646</a>)</li>
+<li>
+<code>sqlite-utils tui</code> is now provided by the <a href="https://github.com/simonw/sqlite-utils-tui">sqlite-utils-tui</a> plugin. (<a href="https://github.com/simonw/sqlite-utils/issues/648">#648</a>)</li>
+<li>Test suite now also runs against SQLite 3.23.1, the last version (from 2018-04-10) before the new <code>INSERT ... ON CONFLICT SET</code> syntax was added. (<a href="https://github.com/simonw/sqlite-utils/issues/654">#654</a>)</li>
+</ul>
+</blockquote>
+<p>And for <a href="https://sqlite-utils.datasette.io/en/latest/changelog.html#a1-2025-11-23">4.0a1</a>:</p>
+<blockquote>
+<ul>
+<li>
+<strong>Breaking change</strong>: The <code>db.table(table_name)</code> method now only works with tables. To access a SQL view use <code>db.view(view_name)</code> instead. (<a href="https://github.com/simonw/sqlite-utils/issues/657">#657</a>)</li>
+<li>The <code>table.insert_all()</code> and <code>table.upsert_all()</code> methods can now accept an iterator of lists or tuples as an alternative to dictionaries. The first item should be a list/tuple of column names. See <a href="https://sqlite-utils.datasette.io/en/latest/python-api.html#python-api-insert-lists">Inserting data from a list or tuple iterator</a> for details. (<a href="https://github.com/simonw/sqlite-utils/issues/672">#672</a>)</li>
+<li>
+<strong>Breaking change</strong>: The default floating point column type has been changed from <code>FLOAT</code> to <code>REAL</code>, which is the correct SQLite type for floating point values. This affects auto-detected columns when inserting data. (<a href="https://github.com/simonw/sqlite-utils/issues/645">#645</a>)</li>
+<li>Now uses <code>pyproject.toml</code> in place of <code>setup.py</code> for packaging. (<a href="https://github.com/simonw/sqlite-utils/issues/675">#675</a>)</li>
+<li>Tables in the Python API now do a much better job of remembering the primary key and other schema details from when they were first created. (<a href="https://github.com/simonw/sqlite-utils/issues/655">#655</a>)</li>
+<li>
+<strong>Breaking change</strong>: The <code>table.convert()</code> and <code>sqlite-utils convert</code> mechanisms no longer skip values that evaluate to <code>False</code>. Previously the <code>--skip-false</code> option was needed, this has been removed. (<a href="https://github.com/simonw/sqlite-utils/issues/542">#542</a>)</li>
+<li>
+<strong>Breaking change</strong>: Tables created by this library now wrap table and column names in <code>"double-quotes"</code> in the schema. Previously they would use <code>[square-braces]</code>. (<a href="https://github.com/simonw/sqlite-utils/issues/677">#677</a>)</li>
+<li>The <code>--functions</code> CLI argument now accepts a path to a Python file in addition to accepting a string full of Python code. It can also now be specified multiple times. (<a href="https://github.com/simonw/sqlite-utils/issues/659">#659</a>)</li>
+<li>
+<strong>Breaking change:</strong> Type detection is now the default behavior for the <code>insert</code> and <code>upsert</code> CLI commands when importing CSV or TSV data. Previously all columns were treated as <code>TEXT</code> unless the <code>--detect-types</code> flag was passed. Use the new <code>--no-detect-types</code> flag to restore the old behavior. The <code>SQLITE_UTILS_DETECT_TYPES</code> environment variable has been removed. (<a href="https://github.com/simonw/sqlite-utils/issues/679">#679</a>)</li>
+</ul>
+</blockquote>
+<h4 id="try-it-out">Try it out</h4>
+<p>You can install the new RC like this:</p>
+<div class="highlight highlight-source-shell"><pre>pip install sqlite-utils==4.0rc1</pre></div>
+<p>Or try the CLI version directly with <code>uvx</code> like this:</p>
+<div class="highlight highlight-source-shell"><pre>uvx --with sqlite-utils==4.0rc1 sqlite-utils --help</pre></div>
+<p>Come chat with us about it in the <a href="https://discord.gg/Ass7bCAMDw">sqlite-utils Discord channel</a>, or file any bugs in <a href="https://github.com/simonw/sqlite-utils/issues">GitHub Issues</a>.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/migrations">migrations</a>, <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a></p>
+]]></content:encoded>
+<pubDate>2026-06-21T23:35:47+00:00</pubDate>
+<pubDate>2026-06-21T23:35:47+00:00</pubDate>
+</item>
+<item>
+<title>sqlite-utils 4.0rc1</title>
+<link>https://simonwillison.net/2026/Jun/21/sqlite-utils/</link>
+<guid>https://simonwillison.net/2026/Jun/21/sqlite-utils/</guid>
+<content:encoded><![CDATA[
+<div> It seems like you haven't provided an article or content to summarize. Please provide the text or main points you'd like me to summarize, and I will be happy to help! <div>
+<p><strong>Release:</strong> <a href="https://github.com/simonw/sqlite-utils/releases/tag/4.0rc1">sqlite-utils 4.0rc1</a></p>
+        <p>See <a href="https://simonwillison.net/2026/Jun/21/sqlite-utils-40rc1/">sqlite-utils 4.0rc1 adds migrations and nested transactions</a>.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a></p>
+]]></content:encoded>
+<pubDate>2026-06-21T23:30:04+00:00</pubDate>
+<pubDate>2026-06-21T23:30:04+00:00</pubDate>
+</item>
+<item>
+<title>Temporary Cloudflare Accounts for AI agents</title>
+<link>https://simonwillison.net/2026/Jun/21/temporary-cloudflare-accounts/</link>
+<guid>https://simonwillison.net/2026/Jun/21/temporary-cloudflare-accounts/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Cloudflare, Workers, temporary deployment, HTTP redirects, project claim  
+
+<br><br>Summary:  
+Cloudflare has introduced a new feature that allows users to create a Cloudflare Workers project and deploy it without requiring a Cloudflare account. Using the command `npx wrangler deploy --temporary`, developers can quickly set up an application that will run for a limited time. This temporary deployment will last for 60 minutes, providing an ephemeral environment for testing and experimentation.  
+
+One of the practical applications of this feature is its utility in tools like Codex Desktop, which focuses on following HTTP redirects and returning the final destination. The temporary deployment feature worked effectively as demonstrated by the deployment process. Upon running the deployment, users receive a URL that links to a claim page for the new project. This claim page is essential for those who wish to extend the life of their project beyond the initial 60-minute limit. Overall, this initiative not only caters to AI agents but also serves as a valuable resource for general developers, enhancing their ability to test applications efficiently without the commitment of a long-term project setup. <div>
+<p><strong><a href="https://blog.cloudflare.com/temporary-accounts/">Temporary Cloudflare Accounts for AI agents</a></strong></p>
+The announcement says this is "for AI agents" but (as is pretty common these days) the AI hook isn't really necessary, this is an interesting feature for everyone else as well.</p>
+<p>Short version: you can now create a Cloudflare Workers project and run this, without even creating a Cloudflare account:</p>
+<pre><code>npx wrangler deploy --temporary
+</code></pre>
+<p>Cloudflare will deploy the application to a new, ephemeral project which will stay live for 60 minutes.</p>
+<p>I <a href="https://gist.github.com/simonw/264bd6b8a39fc34c91c9c867454c64b9">had GPT-5.5 xhigh</a> in Codex Desktop <a href="https://github.com/simonw/cloudflare-redirect-resolver">build this test application</a> providing a tool for following HTTP redirects and returning the final destination. The temporary deployment worked as advertised.</p>
+<p>Running the deployment spits out the URL to a page for claiming the new project, for if you want it to last for more than 60 minutes. Here's what that claim screen looks like:</p>
+<p><img alt="Screenshot of a Cloudflare account claim page. A red banner at top reads &quot;This claim link expires in 49:26&quot;. Below, a card titled &quot;Educated Celery&quot; with the text &quot;Claim this account to take ownership of cloudflare-redirect-resolver and all its resources.&quot; and a blue &quot;Claim Account&quot; button. A worker entry shows &quot;cloudflare-redirect-resolver&quot; with the URL &quot;cloudflare-redirect-resolver.educated-celery.workers.dev&quot;." src="https://static.simonwillison.net/static/2026/cloudflare-claim.jpg" />
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=48608394">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/cloudflare">cloudflare</a></p>
+]]></content:encoded>
+<pubDate>2026-06-21T22:01:04+00:00</pubDate>
+<pubDate>2026-06-21T22:01:04+00:00</pubDate>
+</item>
+<item>
+<title>[Exclusive] $250 off AI Engineer tix til Monday</title>
+<link>https://www.latent.space/p/exclusive-250-off-ai-engineer-tix</link>
+<guid>https://www.latent.space/p/exclusive-250-off-ai-engineer-tix</guid>
+<content:encoded><![CDATA[
+<div> **Keywords:** LS, subscriber, discounts, promised, action
+
+<br><br>Summary: As a valued LS paying subscriber, you're receiving this message to remind you of the discounts and benefits we've promised. However, approximately 30% of subscribers have yet to take advantage of these offers. We understand that sometimes things slip through the cracks, and we want to ensure you don't miss out on the perks available to you. To fully enjoy the benefits, we encourage subscribers who haven't yet acted to do so promptly. Staying connected with us not only enhances your experience but also allows you to make the most of your investment. If you have any questions or need assistance regarding the available discounts or how to redeem them, please reach out to our support team. We appreciate your support and look forward to seeing you take full advantage of your subscription. Don't forget, these exclusive offers are designed to enhance your experience, so be sure to check them out! Thank you for being part of the LS community; your satisfaction is important to us. <div>
+<p>Hey there! </p><p>You&#8217;re seeing this because you&#8217;re an LS paying subscriber and we promised discounts and stuff. We<a href="https://www.latent.space/p/ainews-not-much-happened-today-e7b"> announced this in AINews</a>, but roughly 30% of you still haven&#8217;t <a href="https://support.substack.com/hc/en-us/articles/8914938285204-How-do-I-subscribe-to-or-unsubscribe-from-a-section-on-Substack">opted in to AINews</a> so pardo&#8230;</p>
+      <p>
+          <a href="https://www.latent.space/p/exclusive-250-off-ai-engineer-tix">
+              Read more
+          </a>
+      </p>
+]]></content:encoded>
+<pubDate>Sun, 21 Jun 2026 15:01:23 GMT</pubDate>
+<pubDate>Sun, 21 Jun 2026 15:01:23 GMT</pubDate>
+</item>
+<item>
+<title>Cloudback MCP Server</title>
+<link>https://www.producthunt.com/products/cloudback</link>
+<guid>https://www.producthunt.com/products/cloudback</guid>
+<content:encoded><![CDATA[
+<div> Keywords: backups, Claude, Cursor, VS Code, management  
+
+<br><br>Summary:  
+Managing backups effectively across different platforms is crucial for ensuring data safety and accessibility. Claude, Cursor, and VS Code offer various features that can help streamline the backup process. Claude provides intelligent suggestions for backup routines, allowing users to automate their backup schedules based on usage patterns. Cursor, on the other hand, simplifies the backup of code projects and dependencies, making it easier for developers to keep their work secure. With its integrated environment, VS Code facilitates direct backup options, enabling users to save their work seamlessly. Organization is key; setting up a structured hierarchy for backup files can enhance retrieval and prevent loss. Regularly testing backups is equally important to ensure data integrity and successful restoration when necessary. Utilizing cloud storage options available in these platforms can further enhance backup security and accessibility. Overall, each tool offers unique capabilities for backup management, allowing users to customize their approaches according to their specific needs and workflows. By leveraging these features, users can ensure that their data remains safe and readily available, minimizing the risk of data loss in various scenarios. <div>
+<p>
+            Manage your backups from Claude, Cursor, and VS Code
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/cloudback?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1176945?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-06-20T13:46:39-07:00</pubDate>
+<pubDate>2026-06-21T21:59:07-07:00</pubDate>
+</item>
+<item>
+<title>Grok by SpaceXAI for Word</title>
+<link>https://www.producthunt.com/products/grok-by-spacexai-for-word</link>
+<guid>https://www.producthunt.com/products/grok-by-spacexai-for-word</guid>
+<content:encoded><![CDATA[
+<div> Sure! Please provide the article you'd like to summarize. <div>
+<p>
+            Draft, restructure & tighten wording from panel inside Word
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/grok-by-spacexai-for-word?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1175569?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-06-18T13:55:25-07:00</pubDate>
+<pubDate>2026-06-21T22:09:10-07:00</pubDate>
+</item>
+<item>
+<title>Plansera AI</title>
+<link>https://www.producthunt.com/products/plansera-ai</link>
+<guid>https://www.producthunt.com/products/plansera-ai</guid>
+<content:encoded><![CDATA[
+<div> **Keywords:** E-2 visa, business plans, investment, immigration, entrepreneurship  
+
+<br><br>Summary: The E-2 visa is a non-immigrant visa that allows foreign nationals to invest in and operate a business in the United States. To qualify, applicants must demonstrate a substantial investment in a bona fide enterprise and possess at least 50% ownership or control of the business. A well-drafted business plan is crucial for a successful E-2 visa application; it should outline the business's goals, market analysis, operational strategy, and financial projections. The plan must display the viability of the business and its potential to generate profit while creating jobs for U.S. workers. Additionally, the business must not be marginal, meaning it should have the capacity to support the applicant and their family. Collaborating with professionals who have experience in E-2 visa applications can enhance the quality of the business plan and improve the chances of approval. Overall, a meticulously crafted business plan serves as a critical tool in the E-2 visa process, demonstrating both the applicant's commitment and the business's potential for success in the competitive U.S. market. <div>
+<p>
+            E-2 visa business plans, drafted by an AI
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/plansera-ai?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1175760?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-06-18T22:33:37-07:00</pubDate>
+<pubDate>2026-06-21T22:04:35-07:00</pubDate>
+</item>
+<item>
+<title>Laguna by Poolside</title>
+<link>https://www.producthunt.com/products/poolside</link>
+<guid>https://www.producthunt.com/products/poolside</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Foundation models, agentic coding, long-horizon work, artificial intelligence, task performance
+
+<br><br>Summary: 
+Foundation models represent a significant advancement in artificial intelligence, enabling agentic coding that allows machines to autonomously perform complex tasks. These models have been trained on vast datasets, allowing them to understand and generate human-like text, code, and more. One of the primary applications of foundation models lies in long-horizon work, which involves tasks requiring planning and foresight over extended periods. By leveraging these capabilities, AI systems can efficiently break down complex projects into manageable parts, optimizing task performance across various domains. This advancement presents opportunities for improving productivity in areas such as software development, research, and creative industries. Furthermore, the integration of foundation models in coding simplifies the development process, as they can generate code snippets, debug errors, and suggest improvements. As a result, users can focus on high-level strategy while the AI handles much of the mundane coding work. However, the implementation of foundation models raises questions about ethical considerations and potential biases inherent in the AI systems. Addressing these concerns will be vital for ensuring that the benefits of agentic coding and long-horizon work can be realized responsibly. <div>
+<p>
+            Foundation models for agentic coding and long-horizon work
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/poolside?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1176776?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-06-20T08:00:44-07:00</pubDate>
+<pubDate>2026-06-21T21:58:30-07:00</pubDate>
+</item>
+<item>
+<title>Backgrind</title>
+<link>https://www.producthunt.com/products/backgrind</link>
+<guid>https://www.producthunt.com/products/backgrind</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AI agents, applications, games, automation, technology
+
+<br><br>Summary: The integration of AI agents into various applications, including games, represents a significant advancement in technology. These intelligent systems can automate tasks, enhance user experiences, and provide personalized interactions. By leveraging machine learning algorithms, AI agents analyze user behavior and preferences, adapting their responses and actions accordingly. This capability allows for more immersive and engaging gameplay, as players can enjoy tailored experiences that respond to their individual choices. Moreover, the use of AI in applications extends beyond gaming; it can streamline processes in business, education, and entertainment, leading to improved efficiency and productivity. As developers continue to refine these AI systems, the potential for innovation grows, allowing for even more sophisticated interactions across platforms. This convergence of AI with various software applications signals a new era of technological possibilities, where automation and intelligent design intersect to create enhanced environments for users. As we move forward, the ability to embed AI agents into any application will likely reshape how we interact with technology and each other, fostering a more connected and responsive digital landscape. <div>
+<p>
+            Run your AI agents over any app, even games.
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/backgrind?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1173525?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-06-16T09:36:06-07:00</pubDate>
+<pubDate>2026-06-21T21:58:26-07:00</pubDate>
+</item>
+<item>
+<title>Agent 37 Cloud</title>
+<link>https://www.producthunt.com/products/agent-37-38</link>
+<guid>https://www.producthunt.com/products/agent-37-38</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Hermes, OpenClaw, agent, customer, personalization
+
+<br><br>Summary: Providing every customer with their own Hermes or OpenClaw agent enhances personalization and service efficiency. The Hermes agent, known for its advanced capabilities in handling complex tasks, allows businesses to cater to specific customer needs. On the other hand, the OpenClaw agent focuses on offering a streamlined and user-friendly experience for more straightforward interactions. By having dedicated agents, customers benefit from tailored support, resulting in increased satisfaction and loyalty. This level of customization not only addresses unique customer preferences but also fosters a sense of exclusivity and importance. Additionally, these agents can learn from individual interactions, adapting their responses to improve over time. However, there are challenges associated with managing a large number of agents, such as maintaining quality control and ensuring consistent service. Overall, implementing Hermes or OpenClaw agents for each customer presents a compelling strategy for businesses seeking to enhance engagement and build stronger relationships with their clientele. By leveraging technology in this way, companies can meet the evolving demands of consumers in a competitive landscape. <div>
+<p>
+            Give every customer their own Hermes or OpenClaw agent
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/agent-37-38?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1176905?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-06-20T12:03:23-07:00</pubDate>
+<pubDate>2026-06-21T22:12:10-07:00</pubDate>
+</item>
 
 <item>
 <title>[AINews] not much happened today</title>
@@ -12,7 +291,7 @@
 <content:encoded><![CDATA[
 <div> Keywords: GLM 5.2, Latent Space, tickets, discount, sponsors
 
-<br><br>Summary: GLM 5.2 is currently trending and ticket sales for the event are expected to sell out by Monday. Regular tickets are in high demand, prompting Latent Space subscribers, who pay $80 annually, to take advantage of a limited-time discount of $250 on select ticket classes. This special offer is designed for those interested in the AI event but who have yet to purchase their tickets. In addition to the discount, attendees will receive $40,000 in sponsor credits from major companies such as Warp, Datadog, SourceGraph, Stripe, Fireworks, and more, enhancing the value of participation. The combination of the discounted ticket price, combined with the substantial sponsor credits, presents a compelling opportunity for the AIE-curious to engage with the latest advancements in AI at the event. Overall, the message emphasizes urgency for ticket purchases and highlights the benefits available exclusively to Latent Space subscribers. <div>
+<br /><br />Summary: GLM 5.2 is currently trending and ticket sales for the event are expected to sell out by Monday. Regular tickets are in high demand, prompting Latent Space subscribers, who pay $80 annually, to take advantage of a limited-time discount of $250 on select ticket classes. This special offer is designed for those interested in the AI event but who have yet to purchase their tickets. In addition to the discount, attendees will receive $40,000 in sponsor credits from major companies such as Warp, Datadog, SourceGraph, Stripe, Fireworks, and more, enhancing the value of participation. The combination of the discounted ticket price, combined with the substantial sponsor credits, presents a compelling opportunity for the AIE-curious to engage with the latest advancements in AI at the event. Overall, the message emphasizes urgency for ticket purchases and highlights the benefits available exclusively to Latent Space subscribers. <div>
 <p>GLM 5.2 is still trending very hard, but you <a href="https://www.latent.space/p/ainews-glm-gpt-glm-52-passes-vibe">knew that already</a>.</p><p>Regular Tickets for <a href="https://www.ai.engineer/worldsfair/2026">AIE WF 2026</a> will sell out by Monday.  If you&#8217;re a Latent Space subscriber ($80 a year), a limited-time only $250 discount for select ticket classes is included below for the AIE-curious who have not yet got tickets. </p><p><strong>Attendees also get $40k in sponsor credits</strong>, from Warp, Datadog, SourceGraph, Stripe, Fireworks, and more.</p><div class="captioned-image-container"><figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!XmzS!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F53ab5745-2cb8-4b37-b574-e6af9fa01f69_1854x1166.png" target="_blank"><div class="image2-inset"><source type="image/webp" /><img alt="" class="sizing-normal" height="916" src="https://substackcdn.com/image/fetch/$s_!XmzS!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F53ab5745-2cb8-4b37-b574-e6af9fa01f69_1854x1166.png" width="1456" /><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></a></figure></div><p></p><h2>Latent Space subscribers &#8212; $250 offer for AIEWF</h2>
       <p>
           <a href="https://www.latent.space/p/ainews-not-much-happened-today-e7b">
@@ -20,7 +299,6 @@
           </a>
       </p>
 ]]></content:encoded>
-<pubDate>Sat, 20 Jun 2026 08:06:05 GMT</pubDate>
 <pubDate>Sat, 20 Jun 2026 08:06:05 GMT</pubDate>
 </item>
 <item>
@@ -30,7 +308,7 @@
 <content:encoded><![CDATA[
 <div> Keywords: music, datasets, training, confirmed, streaming  
 
-<br><br>Summary: Alex Reisner from The Atlantic has uncovered significant datasets of music used for training artificial intelligence models. Among these, two notable datasets contain an impressive 12 million and 9 million tracks, respectively. Additionally, there are two smaller datasets, each comprising over 100,000 songs. These sets have been downloaded thousands of times, indicating a strong interest in using them for various purposes. While it is difficult to ascertain all the users of these datasets, notable entities in the research community have confirmed their usage in academic papers. Furthermore, some sources, like the dataset mentioned, are available for free streaming for personal use, although there may be restrictions on redistribution or commercial use. This highlights the intersection of music, technology, and research as significant resources become increasingly accessible for AI training and development. The potential implications of using such datasets for developing AI models in music and related fields may lead to innovative applications and understanding of music analysis in the digital age. <div>
+<br /><br />Summary: Alex Reisner from The Atlantic has uncovered significant datasets of music used for training artificial intelligence models. Among these, two notable datasets contain an impressive 12 million and 9 million tracks, respectively. Additionally, there are two smaller datasets, each comprising over 100,000 songs. These sets have been downloaded thousands of times, indicating a strong interest in using them for various purposes. While it is difficult to ascertain all the users of these datasets, notable entities in the research community have confirmed their usage in academic papers. Furthermore, some sources, like the dataset mentioned, are available for free streaming for personal use, although there may be restrictions on redistribution or commercial use. This highlights the intersection of music, technology, and research as significant resources become increasingly accessible for AI training and development. The potential implications of using such datasets for developing AI models in music and related fields may lead to innovative applications and understanding of music analysis in the digital age. <div>
 <figure>
 
 <img alt="A smiling computer surrounded by music notes." src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/01/STK467_AI_MUSIC_CVirginia_B.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
@@ -42,7 +320,6 @@
 <p><a href="https://www.theverge.com/ai-artificial-intelligence/953183/the-atlantic-searchable-database-music-ai-training-data">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
 <pubDate>2026-06-20T14:46:48-04:00</pubDate>
-<pubDate>2026-06-20T14:46:48-04:00</pubDate>
 </item>
 <item>
 <title>Wolfram Language 15</title>
@@ -51,7 +328,7 @@
 <content:encoded><![CDATA[
 <div> **Keywords:** Computational language, humans, AI agents, communication, collaboration  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 A computational language designed for both humans and AI agents seeks to enhance communication and collaboration between these two entities. It aims to bridge the gap by allowing for intuitive interactions, making it easier for non-experts to engage with complex AI systems. This language is structured to be easily understandable by humans while also being efficient for AI processing. A focus is placed on natural language processing to facilitate seamless exchanges, enabling users to express ideas and queries more freely. Furthermore, such a language encourages diverse applications across various industries, fostering innovation and improving productivity. By aligning the interests and capabilities of humans and AI agents, the development of this computational language represents a significant step towards building more inclusive and accessible AI technologies. The goal is to create an environment where both parties can learn from each other, ultimately leading to a more harmonious coexistence and collaborative future in which AI empowers human efforts rather than complicates them. Through thoughtful design, this language will enable a closer, more effective partnership between human creativity and AI’s computational strengths. <div>
 <p>
             Computational language built for humans and AI agents
@@ -62,7 +339,6 @@ A computational language designed for both humans and AI agents seeks to enhance
             <a href="https://www.producthunt.com/r/p/1173951?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-06-16T23:06:57-07:00</pubDate>
 <pubDate>2026-06-20T18:04:28-07:00</pubDate>
 </item>
 <item>
@@ -72,7 +348,7 @@ A computational language designed for both humans and AI agents seeks to enhance
 <content:encoded><![CDATA[
 <div> Keywords: AI-native, coding assistant, developers, IDE, productivity
 
-<br><br>Summary: The article discusses the emergence of AI-native coding assistants that are designed to enhance the productivity of developers across various integrated development environments (IDEs). These tools utilize advanced artificial intelligence algorithms to provide real-time coding suggestions, error detection, and code completion features, streamlining the development process. By understanding context, they assist in various programming languages, helping to reduce debugging time and improve code quality. Furthermore, these assistants can learn from individual coding styles, adapting to preferences and making them more effective over time. The integration of such tools into popular IDEs signifies a shift towards smarter software development practices, allowing developers to focus on creativity and problem-solving rather than repetitive tasks. Additionally, the article emphasizes the importance of user feedback in refining these AI tools, ensuring they meet the evolving needs of developers. Overall, the adoption of AI-native coding assistants is poised to revolutionize the programming landscape, fostering greater efficiency, collaboration, and innovation in software development. <div>
+<br /><br />Summary: The article discusses the emergence of AI-native coding assistants that are designed to enhance the productivity of developers across various integrated development environments (IDEs). These tools utilize advanced artificial intelligence algorithms to provide real-time coding suggestions, error detection, and code completion features, streamlining the development process. By understanding context, they assist in various programming languages, helping to reduce debugging time and improve code quality. Furthermore, these assistants can learn from individual coding styles, adapting to preferences and making them more effective over time. The integration of such tools into popular IDEs signifies a shift towards smarter software development practices, allowing developers to focus on creativity and problem-solving rather than repetitive tasks. Additionally, the article emphasizes the importance of user feedback in refining these AI tools, ensuring they meet the evolving needs of developers. Overall, the adoption of AI-native coding assistants is poised to revolutionize the programming landscape, fostering greater efficiency, collaboration, and innovation in software development. <div>
 <p>
             AI-native coding assistant that helps developers in any IDE
           </p>
@@ -82,7 +358,6 @@ A computational language designed for both humans and AI agents seeks to enhance
             <a href="https://www.producthunt.com/r/p/1169690?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-06-11T15:58:09-07:00</pubDate>
 <pubDate>2026-06-20T16:43:30-07:00</pubDate>
 </item>
 <item>
@@ -100,10 +375,8 @@ A computational language designed for both humans and AI agents seeks to enhance
             <a href="https://www.producthunt.com/r/p/1173897?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-06-16T21:24:48-07:00</pubDate>
 <pubDate>2026-06-20T16:06:03-07:00</pubDate>
 </item>
-
 <item>
 <title>Quartz</title>
 <link>https://www.producthunt.com/products/quartz-3</link>
