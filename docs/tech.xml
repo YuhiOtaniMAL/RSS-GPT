@@ -3,7 +3,662 @@
 <channel>
 <title>tech</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/tech.xml</link>
-<lastBuildDate>Mon, 22 Jun 2026 05:14:11 +0000</lastBuildDate>
+<lastBuildDate>Tue, 23 Jun 2026 04:10:54 +0000</lastBuildDate>
+
+<item>
+<title>AWS HealthOmics now supports Nextflow profiles</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/06/aws-healthomics-nextflow-profiles/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/06/aws-healthomics-nextflow-profiles/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS HealthOmics, Nextflow profiles, workflow, HIPAA-eligible, bioinformatics  
+
+<br><br>Summary:  
+AWS HealthOmics has introduced support for Nextflow profiles, allowing customers to activate predefined execution settings during runtime. This feature enables the definition of reusable settings, facilitating a smoother transition between different execution scenarios without altering the core workflow source code. It supports HIPAA compliance, making it beneficial for healthcare and life sciences sectors focused on accelerating scientific research and bioinformatics workflows. With Nextflow profiles, users can segregate platform-specific configurations, such as resource limits and execution options, from the main workflow logic. This separation simplifies the switch between development and production settings, minimizing errors linked to manual edits and enhancing workflow portability. This is particularly advantageous when scaling from development to production environments. Additionally, users of nf-core workflows can activate pre-existing built-in and institutional profiles that come with those pipelines. Nextflow profiles can be specified in workflow runs across all AWS HealthOmics regions, including US East (N. Virginia), US West (Oregon), select European locations, Israel (Tel Aviv), and Asia Pacific (Singapore, Seoul). For further details, refer to the Nextflow Profiles section in the HealthOmics documentation. <div>
+<p>AWS HealthOmics now supports Nextflow profiles, enabling customers to activate predefined execution settings at run time. Nextflow profiles allow customers to define reusable settings and select them at the point of execution, making it easy to switch between execution settings without modifying workflow source code. <a href="https://aws.amazon.com/healthomics/">AWS HealthOmics</a> is a HIPAA-eligible service that helps healthcare and life sciences customers accelerate scientific breakthroughs at scale with fully managed bioinformatics workflows.</p> 
+<p>With Nextflow profiles, you can cleanly separate platform-specific settings such as resource limits or execution options from core workflow logic. You can switch between development and production settings without creating separate workflow definitions. This reduces errors from manual edits, accelerates workflow portability, and saves time when scaling from development to production. If you use nf-core workflows, you can now activate the built-in and institutional profiles those pipelines already ship with.</p> 
+<p>You can now specify one or more Nextflow profiles in your workflow runs in all AWS HealthOmics Regions: US East (N. Virginia), US West (Oregon), Europe (Frankfurt, Ireland, London), Israel (Tel Aviv), and Asia Pacific (Singapore, Seoul). To learn more, visit the Nextflow Profiles section on HealthOmics <a href="https://docs.aws.amazon.com/omics/latest/dev/starting-a-run.html#start-run-api-engine-settings">Nextflow engine settings</a> documentation.</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 22:00:00 GMT</pubDate>
+<pubDate>Mon, 22 Jun 2026 22:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS introduces Lambda MicroVMs for isolated execution of user and AI-generated code</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/06/aws-lambda-microvms/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/06/aws-lambda-microvms/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS, Lambda MicroVMs, isolation, execution environment, serverless
+
+<br><br>Summary: AWS has introduced Lambda MicroVMs, a new serverless compute primitive that offers VM-level isolation, rapid launch speeds, and state preservation for executing user-generated or AI-generated code. This solution enables developers to build multi-tenant applications where each user or job has a separate, isolated execution environment. Traditional options forced developers to compromise between security, speed, and state retention; however, Lambda MicroVMs combine these features without trade-offs. Built on Firecracker virtualization, which supports over 15 trillion monthly Lambda Function invocations, these MicroVMs allow for near-instant launch and suspension of execution for up to 8 hours. Developers can create MicroVM images from their Dockerfiles and launch MicroVMs with dedicated HTTPS URLs that are compatible with protocols like HTTP/2, gRPC, and WebSockets. Lambda MicroVMs are currently available in regions including US East (N. Virginia), US East (Ohio), US West (Oregon), Asia Pacific (Tokyo), and Europe (Ireland). Usage is billed based on baseline compute resources while the MicroVM is running, with additional charges only for resource use exceeding the baseline. For more details, visit the AWS website. <div>
+<p>AWS introduces Lambda MicroVMs, a new serverless compute primitive that provides VM-level isolation, near-instant launch and resume speeds, and state preservation for executing user or AI-generated code. You can now give each user or job their own compute environment to securely run code without managing virtualization infrastructure or choosing between isolation, speed, and state retention.</p> 
+<p>Developers are increasingly building multi-tenant applications that execute code supplied by end users or AI for use cases such as interactive coding environments, data analytics platforms, coding assistants, and vulnerability scanning platforms. For these applications, developers need to allocate a separate, isolated execution environment per user or session to limit the impact of incorrect or malicious code on other concurrently running users or jobs. Previously, developers needed to choose between strong isolation, fast launch times, and state retention when building these applications. Starting today, Lambda MicroVMs provides you these capabilities without any trade-offs. You get VM-level isolation, near-instant launch speeds, and the ability to suspend and resume execution for up to 8 hours. Lambda MicroVMs is built on Firecracker virtualization, the technology powering more than 15 trillion monthly Lambda Function invocations.&nbsp;</p> 
+<p>To get started, create a MicroVM image from your Dockerfile, then launch MicroVMs from that image. Give each user or job their own MicroVM with a dedicated HTTPS URL that supports popular connectivity protocols such as HTTP/2, gRPC, and WebSockets.&nbsp;</p> 
+<p>Lambda MicroVMs is available today in the following AWS Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Asia Pacific (Tokyo), and Europe (Ireland). To learn more, visit the <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-microvms-guide.html" rel="noopener noreferrer" target="_blank">AWS Lambda MicroVMs developer guide</a>&nbsp;and the <a href="https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms" rel="noopener noreferrer" target="_blank">launch blog post</a>. Get started with MicroVMs through the AWS Lambda console, AWS CloudFormation, AWS Cloud Development Kit, or use the <a href="https://github.com/aws/agent-toolkit-for-aws/tree/main/skills/specialized-skills/serverless-skills/aws-lambda-microvms" rel="noopener noreferrer" target="_blank">Agent Toolkit for AWS</a>&nbsp;with your preferred Agentic development tools. You pay for baseline compute resources while your MicroVM is running, and only for the active duration of additional resources consumed when your workload exceeds the baseline. To learn more about pricing, see <a href="https://aws.amazon.com/lambda/pricing/" rel="noopener noreferrer" target="_blank">Lambda MicroVMs pricing</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 20:37:00 GMT</pubDate>
+<pubDate>Mon, 22 Jun 2026 20:37:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Network Firewall updates default drop action for improved connection reliability</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/06/aws-network-firewall-updates-default-drop-action</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/06/aws-network-firewall-updates-default-drop-action</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS Network Firewall, application drop, stateful action, policies, TCP packets  
+
+<br><br>Summary: AWS Network Firewall has updated its default stateful action for newly created firewall policies from "Application drop established (bidirectional)" to "Application drop established (server-directed only)." This change addresses significant issues by preventing the silent dropping of legitimate TCP packets like window updates, keep-alives, and resets, which previously led to intermittent connection failures that were challenging to diagnose. This safer default action enhances the reliability of network communications. Existing policies that require the previous setting for post-quantum cryptography (PQC) fragmented TLS handshakes can follow specific documentation guidelines to switch to the new default or can add the “to_server” flag to TCP drop rules to ensure legitimate flow control packets are not blocked. This update is universally applicable across all AWS Regions where AWS Network Firewall is available, making it easier for users to create new policies without needing to take further action. For those looking to implement these changes or learn more, detailed guidance is available in the AWS Network Firewall service documentation. <div>
+<p><a href="https://aws.amazon.com/network-firewall/">AWS Network Firewall</a> now uses "Application drop established (server-directed only)" as the default stateful action for all newly created firewall policies, replacing the previous default of "Application drop established (bidirectional)" (formerly named "Application layer drop established"). No action is required to benefit from this change when creating new policies.<br /> <br /> AWS Network Firewall is a managed service that lets you deploy network protections across your Amazon VPCs. Previously, the “Application drop established (bidirectional)” default could silently drop legitimate server-to-client TCP packets, such as window updates, keep-alives, and resets — causing intermittent connection failures that were difficult to diagnose. With the safer default now in place, new policies avoid this issue.<br /> <br /> If your existing environment requires “Application drop established (bidirectional)” to support post-quantum cryptography (PQC) fragmented TLS handshakes, refer to our documentation for guidance on on switching to "Application drop established (server-directed only)" or adding the “to_server” flag to your TCP drop rules so legitimate flow control packets are not blocked.<br /> <br /> This update is available in all AWS Regions where AWS Network Firewall is offered. To get started, see <a href="https://docs.aws.amazon.com/network-firewall/latest/developerguide/suricata-rule-evaluation-order.html">Managing evaluation order for Suricata compatible rules</a> in the AWS Network Firewall service documentation.</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 17:00:00 GMT</pubDate>
+<pubDate>Mon, 22 Jun 2026 17:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Batch now supports customer-ordered instance allocation strategies</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/06/batch-ordered-allocation-strategies/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/06/batch-ordered-allocation-strategies/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS Batch, BFPO, SCOP, instance types, compute environments
+
+<br><br>Summary: AWS Batch has introduced two new allocation strategies: Best Fit Progressive Ordered (BFPO) and Spot Capacity Optimized Prioritized (SCOP), enhancing user control over instance type prioritization within compute environments. These strategies allow users to manually define the order of instance types based on the performance characteristics specific to their workloads. To implement these features in AWS Batch, users need to specify the BEST_FIT_PROGRESSIVE_ORDERED strategy for on-demand compute environments and SPOT_CAPACITY_OPTIMIZED_PRIORITIZED for EC2 Spot compute environments. Additionally, an ordered list of instance types or families must be provided to utilize these strategies effectively. The new BFPO and SCOP allocation strategies are available through the AWS Batch API, specifically via the CreateComputeEnvironment or UpdateComputeEnvironment methods, as well as through the AWS Batch Management Console. These features are currently supported in all regions where AWS Batch is operational. For further details, users are encouraged to refer to the AWS documentation. <div>
+<p>AWS Batch now offers the Best Fit Progressive Ordered (BFPO) and Spot Capacity Optimized Prioritized (SCOP) allocation strategies, giving you more control over instance type prioritization in your compute environments. BFPO and SCOP enable you to manually define instance type ordering based on your workload-specific performance characteristics.<br /> <br /> To use these features in AWS Batch, specify BEST_FIT_PROGRESSIVE_ORDERED allocation strategy for your on-demand compute environments or SPOT_CAPACITY_OPTIMIZED_PRIORITIZED for your Amazon EC2 Spot compute environments and provide an ordered list of instance types or families. These features are available via the AWS Batch API (<i>CreateComputeEnvironment </i>or <i>UpdateComputeEnvironment</i>) or the AWS Batch Management Console.<br /> <br /> BFPO and SCOP allocation strategies are supported today in all <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/">AWS Regions</a> where AWS Batch is available. For more information, see the <a href="https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html">AWS Batch User Guide</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 16:30:00 GMT</pubDate>
+<pubDate>Mon, 22 Jun 2026 16:30:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS IAM Identity Center now supports separate quotas for AWS accounts and applications</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/06/aws-identity-center-separate-quotas/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/06/aws-identity-center-separate-quotas/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS IAM Identity Center, quotas, accounts, applications, increase request
+
+<br><br>Summary: AWS IAM Identity Center now offers distinct quotas for configuring AWS accounts and applications within an instance. By default, users can set up to 7,000 AWS accounts and 7,000 applications independently, allowing for more flexible resource management, since utilizing one does not affect the capacity of the other. This is particularly beneficial for organizations managing a large number of AWS accounts, as they can onboard applications without impacting their account quota. For those needing higher limits, it is possible to request an increase through the AWS Service Quotas console. Customers who already possess higher limits will automatically receive the same expanded quotas for both accounts and applications, with no further action necessary. This update is applicable across all AWS Regions where IAM Identity Center is available, enhancing the platform’s usability and scalability for customers. To learn more about these updates and how to get started with IAM Identity Center, additional resources are available, providing guidance on the new capabilities and features. <div>
+<p>AWS IAM Identity Center now supports separate quotas for the number of AWS accounts and applications that can be configured in an IAM Identity Center instance. By default, you can configure up to 7,000 AWS accounts and up to 7,000 applications independently, so that using more of one does not consume capacity from the other. Quotas can be further increased by submitting a quota increase request through AWS Service Quotas console.</p> 
+<p>Customers with existing higher limits are automatically granted the same limit for both accounts and applications, with no action required. Organizations managing thousands of AWS accounts can now onboard applications without consuming account quota capacity.</p> 
+<p>This update is available in all AWS Regions where IAM Identity Center is available.</p> 
+<p>To learn more, see <a href="https://docs.aws.amazon.com/singlesignon/latest/userguide/limits.html" rel="noopener noreferrer" target="_blank">Quotas for IAM Identity Center</a>. Visit the <a href="https://aws.amazon.com/iam/identity-center/" rel="noopener noreferrer" target="_blank">IAM Identity Center product page</a> to get started.</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 16:07:00 GMT</pubDate>
+<pubDate>Mon, 22 Jun 2026 16:07:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon MSK now offers AI Agent Skills to help developers operate MSK efficiently and accelerate migrations to MSK</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/06/amazon-msk-ai-agent-skills</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/06/amazon-msk-ai-agent-skills</guid>
+<content:encoded><![CDATA[
+<div> **Keywords:** Amazon MSK, AI Agent Skills, Kafka, MSK Express, migration  
+
+<br><br>Summary:  
+Amazon MSK now features AI Agent Skills, enhancing AI coding assistants with expert guidance for managing Amazon MSK. These skills assist users with essential operational tasks, including troubleshooting, sizing, and configuring Kafka clusters, as well as monitoring and migrating from external Kafka clusters. By utilizing these skills, teams can maintain the health and performance of their clusters, and seamlessly migrate their workloads to MSK Express. MSK Express offers up to three times more throughput per broker, allows for 20 times faster scaling, and reduces recovery time by 90% compared to standard brokers running Apache Kafka. The AI Agent Skills streamline previously complex tasks into a more manageable experience, permitting developers to navigate them independently and efficiently. Integration is made easy through existing AI coding agents like Kiro, Claude Code, or Cursor. To start leveraging these capabilities, users configure their AI agent and can pose questions such as “What broker type and size should I use for my MSK cluster?” or “Is my Kafka cluster compatible with MSK Express?” This innovative approach enables developers to optimize their use of Amazon MSK effectively. <div>
+<p>Amazon MSK now offers AI Agent Skills that give AI coding assistants expert, up-to-date guidance for operating Amazon MSK. The skills provide expert guidance for common operational tasks such as troubleshooting, sizing, configuring, monitoring, and migration from external Kafka clusters.<br /> <br /> Teams can leverage these skills to keep their clusters healthy and performant, and to migrate their external Kafka workloads to MSK Express to take advantage of up to 3 times more throughput per broker, scale up to 20 times faster, and reduced recovery time by 90 percent as compared to Standard brokers running Apache Kafka. The skills turn tasks that once required specialized knowledge into a guided experience developers can complete quickly, on their own.<br /> <br /> You can use the MSK skills with your existing AI coding agent - Kiro, Claude Code, or Cursor. To get started, configure the <a href="https://docs.aws.amazon.com/agent-toolkit/latest/userguide/what-is-agent-toolkit.html">Agent Toolkit for AWS</a> using the <a href="https://docs.aws.amazon.com/agent-toolkit/latest/userguide/aws-cli.html">AWS CLI</a>, then ask your coding agent a question, such as <i>"What broker type and size should I use for my MSK cluster?" or </i>"Is my Kafka cluster compatible with MSK Express?"</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 15:00:00 GMT</pubDate>
+<pubDate>Mon, 22 Jun 2026 15:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Introducing self-service lifecycle management capabilities for AWS Outposts</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/06/aws-outposts-self-service-lifecycle-management</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/06/aws-outposts-self-service-lifecycle-management</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS Outposts, self-service, configuration, renewal, decommissioning
+
+<br><br>Summary: AWS Outposts now enables self-service capabilities for managing the lifecycle of Outposts via the AWS Management Console, CLI, and API. Previously, customers needed to rely on AWS teams for various lifecycle management tasks, from initial evaluation to term completion. The introduction of a new configuration and quoting tool provides real-time cost estimates based on different payment options and term lengths, identifying account and regional constraints before order submission. Quotes can be generated in seconds and converted to orders directly within the console for new deployments or capacity expansions. Additionally, subscription details, including term dates and billing information, are now accessible in the console and programmatically, eliminating the necessity to contact AWS for this information. As the term end date approaches, customers can utilize self-service workflows to renew their Outpost with a new term and payment option or decommission it through a guided resource cleanup process. These enhancements are available in all commercial AWS Regions supporting AWS Outposts, making it easier for users to manage their Outposts effectively. To find out more, refer to the additional information provided by AWS. <div>
+<p>AWS Outposts now provides self-service capabilities for configuration, quoting, ordering, subscription management, renewal, and decommissioning directly from the AWS Management Console, CLI, and API. Previously, customers relied on AWS teams for managing their Outposts lifecycle, from evaluation through end of term.<br /> <br /> A new configuration and quoting tool generates real-time cost estimates across payment options and term lengths, and proactively surfaces account and regional constraints before order submission. Quotes are generated in seconds and can be converted to orders directly in the console, for both new deployments and capacity additions. Subscription details, including term dates and billing, are now available in the console and programmatically, eliminating the need to contact AWS for contract information. When your term approaches its end date, self-service workflows let you renew with a new term and payment option, or decommission your Outpost through a guided workflow that handles resource cleanup.<br /> <br /> These features are available in all commercial AWS Regions that support AWS Outposts. To learn more, refer to the <a href="https://aws.amazon.com/blogs/compute/simplify-aws-outposts-lifecycle-management/">Launch Blog</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 10:00:00 GMT</pubDate>
+<pubDate>Mon, 22 Jun 2026 10:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Parallel Computing Service supports P6e-GB200 and P6e-GB300 UltraServers</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/06/aws-parallel-computing-service/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/06/aws-parallel-computing-service/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS, Parallel Computing Service, P6e-GB200, GPU workloads, Slurm
+
+<br><br>Summary: AWS Parallel Computing Service (PCS) has introduced support for Amazon EC2 P6e-GB200 and P6e-GB300 UltraServer instances, designed for extensive GPU workloads utilizing the NVIDIA Blackwell architecture in Slurm-managed clusters. Users can reserve these UltraServers via EC2 Capacity Blocks for Machine Learning (ML) and associate them with a PCS compute node group using an EC2 launch template. PCS simplifies the configuration of Slurm by automatically setting the appropriate topology plugin. The P6e-GB200 UltraServers provide access to 72 NVIDIA Blackwell GPUs within one NVLink domain, delivering a remarkable 360 petaflops of FP8 compute (without sparsity) and 13.4 TB of high bandwidth memory (HBM3e). The P6e-GB300 UltraServers enhance capabilities with 1.5 times the GPU memory and 1.5 times FP4 compute (without sparsity) compared to the P6e-GB200. AWS PCS is a managed service that streamlines the running and scaling of HPC workloads on AWS. It allows for the development of comprehensive, elastic environments that include compute, storage, networking, and visualization tools, while managing cluster operations and updates with built-in observability features. The P6e UltraServers are available in all AWS Regions where PCS and EC2 Capacity Blocks for UltraServers are offered. <div>
+<p>AWS Parallel Computing Service (PCS) now supports Amazon EC2 P6e-GB200 and P6e-GB300 UltraServer instances, enabling customers to run large-scale GPU workloads using the NVIDIA Blackwell architecture within Slurm-managed clusters. You can reserve UltraServers through EC2 Capacity Blocks for ML, associate them with a PCS compute node group via an EC2 launch template, and PCS automatically configures Slurm with the correct topology plugin.<br /> <br /> With P6e-GB200 UltraServers, you can access up to 72 NVIDIA Blackwell GPUs within one NVLink domain to use 360 petaflops of FP8 compute (without sparsity) and 13.4 TB of total high bandwidth memory (HBM3e). P6e-GB300 UltraServers provide 1.5x GPU memory and 1.5x FP4 compute (without sparsity) compared to P6e-GB200.<br /> <br /> AWS PCS is a managed service that simplifies running and scaling HPC workloads on AWS using Slurm. You can build complete, elastic environments that integrate compute, storage, networking, and visualization tools, while the service handles cluster operations with managed updates and built-in observability features.<br /> <br /> You can use P6e UltraServers with PCS in all AWS Regions where both PCS and EC2 Capacity Blocks for UltraServers are available. To learn more about P6e UltraServers, visit <a href="https://aws.amazon.com/ec2/instance-types/p6/">Amazon EC2 P6 instances</a>. To reserve P6e UltraServers, contact your AWS sales representative. Read more about PCS support for P6e UltraServers in the <a href="https://docs.aws.amazon.com/pcs/latest/userguide">PCS User Guide</a> and make sure to set the right <a href="https://docs.aws.amazon.com/pcs/latest/userguide/security-min-permissions.html#security-min-permissions_capacity-blocks">Permissions</a>.</p>
+]]></content:encoded>
+<pubDate>Thu, 18 Jun 2026 19:00:00 GMT</pubDate>
+<pubDate>Thu, 18 Jun 2026 19:00:00 GMT</pubDate>
+</item>
+<item>
+<title>v16.3.0-canary.61</title>
+<link>https://github.com/vercel/next.js/releases/tag/v16.3.0-canary.61</link>
+<guid>https://github.com/vercel/next.js/releases/tag/v16.3.0-canary.61</guid>
+<content:encoded><![CDATA[
+<div> Keywords: determinism test, Cache Components, React upgrade, runtime stage, App API routes
+
+<br><br>Summary:  
+A fix was implemented for a failing determinism test related to an adapter. Documentation was improved by correcting a typo in the "slot-missing-default.mdx" file and clarifying that Cache components require a Node.js runtime. Error code attributes were correctly set for App API routes to better handle errors. A script was developed to write pnpm overrides for pnpm projects in pack/patch helpers. In the authentication documentation, Auth and streaming were added, and code fences and imports were corrected. Metadata image routes have been updated to be statically prerendered under Cache Components. React was upgraded to a new version. A codemod was introduced for cache components with an 'instant-false' approach and related to next-cache-components-adoption skills. Legacy PPR code paths were removed to streamline functionality. The `--session` flag was fixed for the next-dev-loop skill, along with clarifications for agent-browser bootstrap and a note on using `--headed` daemon. A global opt-in feature for the runtime stage of Cached Navigations was added. The turbopack module was enhanced by renaming the edge runtime to self-contained runtime and sorting modules by path rather than ID. Finally, the next-cache-components-adoption skill was fine-tuned to emphasize the app router requirement. <div>
+<h3>Misc Changes</h3>
+<ul>
+<li>[test] Fix failing determinism test using adapter: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95051">#95051</a></li>
+<li>docs: fix typo in slot-missing-default.mdx: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/94531">#94531</a></li>
+<li>[otel] Correctly set error code attributes for App API routes: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/94979">#94979</a></li>
+<li>docs: Cache components requires Node.js runtime: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/94897">#94897</a></li>
+<li>[scripts] Write pnpm overrides for pnpm projects in pack/patch helpers: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/94747">#94747</a></li>
+<li>docs(authentication): add Auth and streaming, fix code fences and imports: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95056">#95056</a></li>
+<li>Statically prerender metadata image routes under Cache Components: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/94957">#94957</a></li>
+<li>Upgrade React from <code>b1786c31-20260618</code> to <code>247fbb45-20260622</code>: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95063">#95063</a></li>
+<li>codemod: cache-components-instant-false + next-cache-components-adoption skill: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/94941">#94941</a></li>
+<li>Remove legacy PPR codepaths: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/94955">#94955</a></li>
+<li>skill(next-dev-loop): fix --session flag, agent-browser bootstrap, --headed daemon note: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95005">#95005</a></li>
+<li>Add a global opt-in for the runtime stage of Cached Navigations: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95064">#95064</a></li>
+<li>[turbopack] Rename the edge runtime to the self-contained runtime: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/94726">#94726</a></li>
+<li>[turbopack] Sort modules in files by path not ID: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95065">#95065</a></li>
+<li>skill(next-cache-components-adoption): tune skill to mention app router requirement: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95069">#95069</a></li>
+</ul>
+<h3>Credits</h3>
+<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/mischnic">@mischnic</a>, <a class="user-mention notranslate" href="https://github.com/parkhojeong">@parkhojeong</a>, <a class="user-mention notranslate" href="https://github.com/icyJoseph">@icyJoseph</a>, <a class="user-mention notranslate" href="https://github.com/eps1lon">@eps1lon</a>, <a class="user-mention notranslate" href="https://github.com/aurorascharff">@aurorascharff</a>, <a class="user-mention notranslate" href="https://github.com/unstubbable">@unstubbable</a>, <a class="user-mention notranslate" href="https://github.com/vercel-release-bot">@vercel-release-bot</a>, and <a class="user-mention notranslate" href="https://github.com/sampoder">@sampoder</a> for helping!</p>
+]]></content:encoded>
+
+<pubDate>2026-06-23T00:10:37Z</pubDate>
+</item>
+<item>
+<title>Polymarket's viral videos showed people winning big, but the bets were fake</title>
+<link>https://arstechnica.com/tech-policy/2026/06/polymarkets-viral-videos-showed-people-winning-big-but-the-bets-were-fake/</link>
+<guid>https://arstechnica.com/tech-policy/2026/06/polymarkets-viral-videos-showed-people-winning-big-but-the-bets-were-fake/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: article, comments, points, summary, feedback
+
+<br><br>Summary: The article presents a thorough analysis of a recent topic that has garnered attention and discussion among users. It highlights the engagement level, indicated by the total points (158) and number of comments (8), suggesting a moderately high interest in the subject matter. The comments section serves as a platform for readers to share their insights, reactions, and feedback about the article, fostering community interaction. The discussion points reflect a range of opinions, allowing for a nuanced exchange of ideas. The article's rating emphasizes its relevance and the quality of the discourse, as indicated by the accumulation of points from user interactions. Overall, it signifies the importance of reader engagement in understanding diverse perspectives on contemporary issues, encouraging further exploration and dialogue among its audience. The combination of points and comments offers a snapshot of the article's impact, encouraging both the authors and readers to contemplate the topic further. The conversation sparked by the article not only enhances its reach but also contributes to a deeper understanding of the matter at hand. This collaborative approach underscores the role of community feedback in shaping discussions around significant topics. <div>
+<p>Article URL: <a href="https://arstechnica.com/tech-policy/2026/06/polymarkets-viral-videos-showed-people-winning-big-but-the-bets-were-fake/">https://arstechnica.com/tech-policy/2026/06/polymarkets-viral-videos-showed-people-winning-big-but-the-bets-were-fake/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48638660">https://news.ycombinator.com/item?id=48638660</a></p>
+<p>Points: 158</p>
+<p># Comments: 8</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 00:47:32 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 00:47:32 +0000</pubDate>
+</item>
+<item>
+<title>Runing GLM-5.2 on local hardware</title>
+<link>https://unsloth.ai/docs/models/glm-5.2</link>
+<guid>https://unsloth.ai/docs/models/glm-5.2</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://unsloth.ai/docs/models/glm-5.2">https://unsloth.ai/docs/models/glm-5.2</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48636377">https://news.ycombinator.com/item?id=48636377</a></p>
+<p>Points: 237</p>
+<p># Comments: 108</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 21:21:01 +0000</pubDate>
+<pubDate>Mon, 22 Jun 2026 21:21:01 +0000</pubDate>
+</item>
+<item>
+<title>Nearly half of LG smart TV apps contain residential proxy SDKs</title>
+<link>https://spur.us/blog/smart-tv-apps-residential-proxy-sdks</link>
+<guid>https://spur.us/blog/smart-tv-apps-residential-proxy-sdks</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://spur.us/blog/smart-tv-apps-residential-proxy-sdks">https://spur.us/blog/smart-tv-apps-residential-proxy-sdks</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48635954">https://news.ycombinator.com/item?id=48635954</a></p>
+<p>Points: 210</p>
+<p># Comments: 143</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 20:48:30 +0000</pubDate>
+<pubDate>Mon, 22 Jun 2026 20:48:30 +0000</pubDate>
+</item>
+<item>
+<title>Jobs and Software Is Fucked</title>
+<link>https://urflow.bearblog.dev/jobs-and-software-is-fucked/</link>
+<guid>https://urflow.bearblog.dev/jobs-and-software-is-fucked/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://urflow.bearblog.dev/jobs-and-software-is-fucked/">https://urflow.bearblog.dev/jobs-and-software-is-fucked/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48635112">https://news.ycombinator.com/item?id=48635112</a></p>
+<p>Points: 285</p>
+<p># Comments: 241</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 19:47:52 +0000</pubDate>
+<pubDate>Mon, 22 Jun 2026 19:47:52 +0000</pubDate>
+</item>
+<item>
+<title>Flock-Powered Police Chiefs Stalking Women Shows Why Warrants Are Needed</title>
+<link>https://ipvm.com/reports/police-chiefs-track</link>
+<guid>https://ipvm.com/reports/police-chiefs-track</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://ipvm.com/reports/police-chiefs-track">https://ipvm.com/reports/police-chiefs-track</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48634694">https://news.ycombinator.com/item?id=48634694</a></p>
+<p>Points: 427</p>
+<p># Comments: 170</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 19:13:46 +0000</pubDate>
+<pubDate>Mon, 22 Jun 2026 19:13:46 +0000</pubDate>
+</item>
+<item>
+<title>Canada plans 'nuclear renaissance' with up to 10 reactors built by 2040</title>
+<link>https://www.cbc.ca/news/politics/federal-nuclear-strategy-9.7244509</link>
+<guid>https://www.cbc.ca/news/politics/federal-nuclear-strategy-9.7244509</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.cbc.ca/news/politics/federal-nuclear-strategy-9.7244509">https://www.cbc.ca/news/politics/federal-nuclear-strategy-9.7244509</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48634585">https://news.ycombinator.com/item?id=48634585</a></p>
+<p>Points: 367</p>
+<p># Comments: 221</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 19:06:48 +0000</pubDate>
+<pubDate>Mon, 22 Jun 2026 19:06:48 +0000</pubDate>
+</item>
+<item>
+<title>Steam Machine launches today</title>
+<link>https://store.steampowered.com/news/group/45479024/view/685257114654870245</link>
+<guid>https://store.steampowered.com/news/group/45479024/view/685257114654870245</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://store.steampowered.com/sale/steammachine" rel="nofollow">https://store.steampowered.com/sale/steammachine</a><p><a href="https://www.lttlabs.com/articles/2026/06/22/the-newell-nucleus-steam-machine-ltt-companion-article" rel="nofollow">https://www.lttlabs.com/articles/2026/06/22/the-newell-nucle...</a><p><a href="https://www.youtube.com/watch?v=66QzlDewigE" rel="nofollow">https://www.youtube.com/watch?v=66QzlDewigE</a></p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48632884">https://news.ycombinator.com/item?id=48632884</a></p>
+<p>Points: 1319</p>
+<p># Comments: 1193</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 17:09:51 +0000</pubDate>
+<pubDate>Mon, 22 Jun 2026 17:09:51 +0000</pubDate>
+</item>
+<item>
+<title>Mexican government unveils a prototype for a new homegrown, ultra-affordable EV</title>
+<link>https://gizmodo.com/mexico-just-showed-off-a-new-extremely-cheap-government-backed-ev-2000769080</link>
+<guid>https://gizmodo.com/mexico-just-showed-off-a-new-extremely-cheap-government-backed-ev-2000769080</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://gizmodo.com/mexico-just-showed-off-a-new-extremely-cheap-government-backed-ev-2000769080">https://gizmodo.com/mexico-just-showed-off-a-new-extremely-cheap-government-backed-ev-2000769080</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48632652">https://news.ycombinator.com/item?id=48632652</a></p>
+<p>Points: 194</p>
+<p># Comments: 161</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 16:48:45 +0000</pubDate>
+<pubDate>Mon, 22 Jun 2026 16:48:45 +0000</pubDate>
+</item>
+<item>
+<title>Prompt Injection as Role Confusion</title>
+<link>https://role-confusion.github.io</link>
+<guid>https://role-confusion.github.io</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://arxiv.org/abs/2603.12277" rel="nofollow">https://arxiv.org/abs/2603.12277</a></p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48631888">https://news.ycombinator.com/item?id=48631888</a></p>
+<p>Points: 164</p>
+<p># Comments: 87</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 15:48:55 +0000</pubDate>
+<pubDate>Mon, 22 Jun 2026 15:48:55 +0000</pubDate>
+</item>
+<item>
+<title>Show HN: Oak – Git alternative designed for agents</title>
+<link>https://oak.space/oak/oak</link>
+<guid>https://oak.space/oak/oak</guid>
+<content:encoded><![CDATA[
+
+<p>Oak is a version control system I've been working on designed for agents (<a href="https://oak.space" rel="nofollow">https://oak.space</a>). It improves the speed and context your agents need when working on serious projects. With virtual mounts, agents locally and in the cloud no longer need a full copy of a repo to get working. You can work on many tasks in parallel without needing to download everything or fight worktrees. Version control shouldn't waste you or your agents time. It should be fast, creative and fun to make things with agents.<p>Oak is still early in development. There's no Windows build and missing plenty of features (no CI, no issues, no comments). We still use GitHub Actions for building Oak now, but we've been fully bootstrapped on Oak with no Git backup for several months: <a href="https://oak.space/oak/oak" rel="nofollow">https://oak.space/oak/oak</a>.<p>Blog post: <a href="https://oak.space/blog#git-is-forever" rel="nofollow">https://oak.space/blog#git-is-forever</a><p>Docs: <a href="https://oak.space/docs" rel="nofollow">https://oak.space/docs</a></p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48631726">https://news.ycombinator.com/item?id=48631726</a></p>
+<p>Points: 161</p>
+<p># Comments: 154</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 15:37:48 +0000</pubDate>
+<pubDate>Mon, 22 Jun 2026 15:37:48 +0000</pubDate>
+</item>
+<item>
+<title>The text in Claude Code’s “Extended Thinking” output</title>
+<link>https://patrickmccanna.net/the-text-in-claude-codes-extended-thinking-output-is-not-authentic/</link>
+<guid>https://patrickmccanna.net/the-text-in-claude-codes-extended-thinking-output-is-not-authentic/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://patrickmccanna.net/the-text-in-claude-codes-extended-thinking-output-is-not-authentic/">https://patrickmccanna.net/the-text-in-claude-codes-extended-thinking-output-is-not-authentic/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48630535">https://news.ycombinator.com/item?id=48630535</a></p>
+<p>Points: 288</p>
+<p># Comments: 200</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 14:22:46 +0000</pubDate>
+<pubDate>Mon, 22 Jun 2026 14:22:46 +0000</pubDate>
+</item>
+<item>
+<title>Moebius: 0.2B image inpainting model with 10B-level performance</title>
+<link>https://hustvl.github.io/Moebius/</link>
+<guid>https://hustvl.github.io/Moebius/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://hustvl.github.io/Moebius/">https://hustvl.github.io/Moebius/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48630171">https://news.ycombinator.com/item?id=48630171</a></p>
+<p>Points: 249</p>
+<p># Comments: 65</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 13:53:02 +0000</pubDate>
+<pubDate>Mon, 22 Jun 2026 13:53:02 +0000</pubDate>
+</item>
+<item>
+<title>Never Give Them Your Face</title>
+<link>https://nevergivethemyourface.com/</link>
+<guid>https://nevergivethemyourface.com/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://nevergivethemyourface.com/">https://nevergivethemyourface.com/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48630066">https://news.ycombinator.com/item?id=48630066</a></p>
+<p>Points: 698</p>
+<p># Comments: 387</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 13:45:48 +0000</pubDate>
+<pubDate>Mon, 22 Jun 2026 13:45:48 +0000</pubDate>
+</item>
+<item>
+<title>Pledging another $400k to the Zig software foundation</title>
+<link>https://mitchellh.com/writing/zig-donation-2026</link>
+<guid>https://mitchellh.com/writing/zig-donation-2026</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://mitchellh.com/writing/zig-donation-2026">https://mitchellh.com/writing/zig-donation-2026</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48630020">https://news.ycombinator.com/item?id=48630020</a></p>
+<p>Points: 755</p>
+<p># Comments: 252</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 13:43:01 +0000</pubDate>
+<pubDate>Mon, 22 Jun 2026 13:43:01 +0000</pubDate>
+</item>
+<item>
+<title>Show HN: Got sick of ads, so I made my own logic puzzle site</title>
+<link>https://puzzlelair.com/</link>
+<guid>https://puzzlelair.com/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://puzzlelair.com/">https://puzzlelair.com/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48629213">https://news.ycombinator.com/item?id=48629213</a></p>
+<p>Points: 156</p>
+<p># Comments: 105</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 12:23:46 +0000</pubDate>
+<pubDate>Mon, 22 Jun 2026 12:23:46 +0000</pubDate>
+</item>
+<item>
+<title>Why Drawing Tablet Brands Won't Collaborate on Linux Floss Drivers</title>
+<link>https://www.davidrevoy.com/article1154/why-drawing-tablet-brands-wont-collaborate-on-linux-floss-drivers</link>
+<guid>https://www.davidrevoy.com/article1154/why-drawing-tablet-brands-wont-collaborate-on-linux-floss-drivers</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.davidrevoy.com/article1154/why-drawing-tablet-brands-wont-collaborate-on-linux-floss-drivers">https://www.davidrevoy.com/article1154/why-drawing-tablet-brands-wont-collaborate-on-linux-floss-drivers</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48629064">https://news.ycombinator.com/item?id=48629064</a></p>
+<p>Points: 214</p>
+<p># Comments: 112</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 12:09:34 +0000</pubDate>
+<pubDate>Mon, 22 Jun 2026 12:09:34 +0000</pubDate>
+</item>
+<item>
+<title>Alan Greenspan has died</title>
+<link>https://www.washingtonpost.com/obituaries/2026/06/22/alan-greenspan-most-powerful-central-banker-modern-times-dies-100/</link>
+<guid>https://www.washingtonpost.com/obituaries/2026/06/22/alan-greenspan-most-powerful-central-banker-modern-times-dies-100/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://archive.ph/tSlDZ" rel="nofollow">https://archive.ph/tSlDZ</a><p><a href="https://www.cnbc.com/2026/06/22/alan-greenspan-former-chairman-of-the-fed-dies-at-age-100.html" rel="nofollow">https://www.cnbc.com/2026/06/22/alan-greenspan-former-chairm...</a></p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48628731">https://news.ycombinator.com/item?id=48628731</a></p>
+<p>Points: 213</p>
+<p># Comments: 217</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 11:27:40 +0000</pubDate>
+<pubDate>Mon, 22 Jun 2026 11:27:40 +0000</pubDate>
+</item>
+<item>
+<title>Codex logging bug may write TBs to local SSDs</title>
+<link>https://github.com/openai/codex/issues/28224</link>
+<guid>https://github.com/openai/codex/issues/28224</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://github.com/openai/codex/issues/28224">https://github.com/openai/codex/issues/28224</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48626930">https://news.ycombinator.com/item?id=48626930</a></p>
+<p>Points: 473</p>
+<p># Comments: 258</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 07:30:17 +0000</pubDate>
+<pubDate>Mon, 22 Jun 2026 07:30:17 +0000</pubDate>
+</item>
+<item>
+<title>GLM 5.2 vs. Opus</title>
+<link>https://techstackups.com/comparisons/glm-5.2-vs-opus/</link>
+<guid>https://techstackups.com/comparisons/glm-5.2-vs-opus/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://techstackups.com/comparisons/glm-5.2-vs-opus/">https://techstackups.com/comparisons/glm-5.2-vs-opus/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48626866">https://news.ycombinator.com/item?id=48626866</a></p>
+<p>Points: 491</p>
+<p># Comments: 323</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 07:22:03 +0000</pubDate>
+<pubDate>Mon, 22 Jun 2026 07:22:03 +0000</pubDate>
+</item>
+<item>
+<title>Deno Desktop</title>
+<link>https://docs.deno.com/runtime/desktop/</link>
+<guid>https://docs.deno.com/runtime/desktop/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://docs.deno.com/runtime/desktop/">https://docs.deno.com/runtime/desktop/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48626137">https://news.ycombinator.com/item?id=48626137</a></p>
+<p>Points: 1043</p>
+<p># Comments: 375</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 05:38:40 +0000</pubDate>
+<pubDate>Mon, 22 Jun 2026 05:38:40 +0000</pubDate>
+</item>
+<item>
+<title>One year with Codeberg</title>
+<link>https://guix.gnu.org/en/blog/2026/one-year-with-codeberg/</link>
+<guid>https://guix.gnu.org/en/blog/2026/one-year-with-codeberg/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/pifl3k/one_year_with_codeberg">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 09:02:16 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 09:02:16 -0500</pubDate>
+</item>
+<item>
+<title>Chesterton's middle finger</title>
+<link>https://www.arp242.net/chestersons-finger.html</link>
+<guid>https://www.arp242.net/chestersons-finger.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/dh6o8k/chesterton_s_middle_finger">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 04:02:51 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 04:02:51 -0500</pubDate>
+</item>
+<item>
+<title>help i accidentally a wigglegram</title>
+<link>https://lmao.center/blog/wiggle-accidents/</link>
+<guid>https://lmao.center/blog/wiggle-accidents/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/uuyjxb/help_i_accidentally_wigglegram">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 01:07:05 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 01:07:05 -0500</pubDate>
+</item>
+<item>
+<title>In memory of the man who put red and green squiggles under words</title>
+<link>https://devblogs.microsoft.com/oldnewthing/20260622-00/?p=112451</link>
+<guid>https://devblogs.microsoft.com/oldnewthing/20260622-00/?p=112451</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/wnlece/memory_man_who_put_red_green_squiggles">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 15:23:42 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 15:23:42 -0500</pubDate>
+</item>
+<item>
+<title>Nix needs relocatable binaries</title>
+<link>https://fzakaria.com/2026/06/21/nix-needs-relocatable-binaries</link>
+<guid>https://fzakaria.com/2026/06/21/nix-needs-relocatable-binaries</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/pa1atu/nix_needs_relocatable_binaries">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 06:54:07 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 06:54:07 -0500</pubDate>
+</item>
+<item>
+<title>Rhombus v1.0: A Racket flavored language with syntax</title>
+<link>https://blog.racket-lang.org/2026/06/rhombus-v1.0.html</link>
+<guid>https://blog.racket-lang.org/2026/06/rhombus-v1.0.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/bkwkz5/rhombus_v1_0_racket_flavored_language">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 12:54:04 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 12:54:04 -0500</pubDate>
+</item>
+<item>
+<title>p99 0ms* autocomplete for 240 million domain names</title>
+<link>https://ruurtjan.com/articles/p99-0ms-autocomplete-for-240-million-domain-names</link>
+<guid>https://ruurtjan.com/articles/p99-0ms-autocomplete-for-240-million-domain-names</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/xhpauz/p99_0ms_autocomplete_for_240_million">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 06:31:29 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 06:31:29 -0500</pubDate>
+</item>
+<item>
+<title>How a Computer Should Work</title>
+<link>https://pkgdemon.github.io/how-a-computer-should-work.html</link>
+<guid>https://pkgdemon.github.io/how-a-computer-should-work.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/2nljgf/how_computer_should_work">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 04:51:10 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 04:51:10 -0500</pubDate>
+</item>
+<item>
+<title>Xfwl4's First Preview Release</title>
+<link>https://www.spurint.org/journal/2026/06/xfwl4s-first-preview-release</link>
+<guid>https://www.spurint.org/journal/2026/06/xfwl4s-first-preview-release</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/ut8idd/xfwl4_s_first_preview_release">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 11:06:49 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 11:06:49 -0500</pubDate>
+</item>
+<item>
+<title>The curious history the invention of the CMD+K quick switcher</title>
+<link>https://ux.stackexchange.com/questions/153299/how-did-cmd-k-come-to-be-the-standard-shortcut-for-both-adding-a-hyperlink-and-o</link>
+<guid>https://ux.stackexchange.com/questions/153299/how-did-cmd-k-come-to-be-the-standard-shortcut-for-both-adding-a-hyperlink-and-o</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/zszeab/curious_history_invention_cmd_k_quick">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 16:02:54 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 16:02:54 -0500</pubDate>
+</item>
+<item>
+<title>What are you doing this week?</title>
+<link>https://lobste.rs/s/12jy9c/what_are_you_doing_this_week</link>
+<guid>https://lobste.rs/s/12jy9c/what_are_you_doing_this_week</guid>
+<content:encoded><![CDATA[
+
+<p>What are you doing this week? Feel free to share!</p>
+<p>Keep in mind it’s OK to do nothing at all, too.</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 08:11:56 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 08:11:56 -0500</pubDate>
+</item>
+<item>
+<title>OpenMW 0.51.0 Released</title>
+<link>https://openmw.org/2026/openmw-0-51-0-released/</link>
+<guid>https://openmw.org/2026/openmw-0-51-0-released/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/uz2qia/openmw_0_51_0_released">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 04:27:54 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 04:27:54 -0500</pubDate>
+</item>
+<item>
+<title>British Columbia, Time Zones, and Postgres</title>
+<link>https://www.crunchydata.com/blog/british-columbia-and-time-zone-changes</link>
+<guid>https://www.crunchydata.com/blog/british-columbia-and-time-zone-changes</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/r1l3en/british_columbia_time_zones_postgres">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 06:18:16 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 06:18:16 -0500</pubDate>
+</item>
+<item>
+<title>Network shares: still talking about them in 2026</title>
+<link>https://pointieststick.com/2026/06/22/network-shares-still-talking-about-them-in-2026/</link>
+<guid>https://pointieststick.com/2026/06/22/network-shares-still-talking-about-them-in-2026/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/rm5pca/network_shares_still_talking_about_them">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 12:51:21 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 12:51:21 -0500</pubDate>
+</item>
+<item>
+<title>Web Browsers on PDAs</title>
+<link>https://vale.rocks/posts/pda-browsers</link>
+<guid>https://vale.rocks/posts/pda-browsers</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/kocnfd/web_browsers_on_pdas">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 08:29:29 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 08:29:29 -0500</pubDate>
+</item>
+<item>
+<title>Reclassifying DMARC ARC as historic</title>
+<link>https://datatracker.ietf.org/doc/draft-ietf-dmarc-arc-to-historic/</link>
+<guid>https://datatracker.ietf.org/doc/draft-ietf-dmarc-arc-to-historic/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/onfndb/reclassifying_dmarc_arc_as_historic">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 15:07:06 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 15:07:06 -0500</pubDate>
+</item>
+<item>
+<title>A tale of two path separators (2021)</title>
+<link>https://alexwlchan.net/2021/slashes/</link>
+<guid>https://alexwlchan.net/2021/slashes/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/umm2jh/tale_two_path_separators_2021">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 21:03:34 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 21:03:34 -0500</pubDate>
+</item>
+<item>
+<title>A fully local voice assistant setup</title>
+<link>https://blog.platypush.tech/article/Local-voice-assistant</link>
+<guid>https://blog.platypush.tech/article/Local-voice-assistant</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/luosjw/fully_local_voice_assistant_setup">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 17:25:06 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 17:25:06 -0500</pubDate>
+</item>
+<item>
+<title>Linux and Secure Boot certificate expiration (2025)</title>
+<link>https://lwn.net/Articles/1029767/</link>
+<guid>https://lwn.net/Articles/1029767/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/hpx7an/linux_secure_boot_certificate">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 07:37:47 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 07:37:47 -0500</pubDate>
+</item>
+<item>
+<title>Computing Camera Rays</title>
+<link>https://momentsingraphics.de/CameraRays.html</link>
+<guid>https://momentsingraphics.de/CameraRays.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/k057yw/computing_camera_rays">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 04:39:52 -0500</pubDate>
+<pubDate>Mon, 22 Jun 2026 04:39:52 -0500</pubDate>
+</item>
 
 <item>
 <title>Did my old job only exist because of fraud?</title>
@@ -16,7 +671,6 @@
 <p>Points: 362</p>
 <p># Comments: 157</p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 21:40:53 +0000</pubDate>
 <pubDate>Sun, 21 Jun 2026 21:40:53 +0000</pubDate>
 </item>
 <item>
@@ -31,7 +685,6 @@
 <p># Comments: 102</p>
 ]]></content:encoded>
 <pubDate>Sun, 21 Jun 2026 21:29:43 +0000</pubDate>
-<pubDate>Sun, 21 Jun 2026 21:29:43 +0000</pubDate>
 </item>
 <item>
 <title>Everything is logarithms</title>
@@ -44,7 +697,6 @@
 <p>Points: 164</p>
 <p># Comments: 35</p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 21:10:32 +0000</pubDate>
 <pubDate>Sun, 21 Jun 2026 21:10:32 +0000</pubDate>
 </item>
 <item>
@@ -59,7 +711,6 @@
 <p># Comments: 56</p>
 ]]></content:encoded>
 <pubDate>Sun, 21 Jun 2026 18:51:47 +0000</pubDate>
-<pubDate>Sun, 21 Jun 2026 18:51:47 +0000</pubDate>
 </item>
 <item>
 <title>Tell HN: Happy Fathers Day</title>
@@ -68,14 +719,13 @@
 <content:encoded><![CDATA[
 <div> Keywords: Soviet, Poland, uncle, rocket cars, Milicja  
 
-<br><br>Summary: The story reflects a unique childhood experience under Soviet-controlled Poland, where the narrator's uncle took on the role of a father figure. They shared memorable moments, including a trip to a quarry where they enjoyed launching Estes-style rocket cars. This experience not only fostered creativity but also introduced the narrator to the joys of experimentation and engineering. Additionally, the uncle, who worked as an electrical engineer, managed to procure a Milicja (military police) siren from his job and creatively attached it to the back of the narrator's banana-style bike. His ability to make the siren function showcased his skills and ingenuity. This tale also touches on the broader theme of how innovation and resourcefulness during difficult times helped shape their identities. The gratitude expressed towards hackers indicates an appreciation for the individuals who inspire and influence others through their skills and creativity. Overall, the story highlights the impact of mentorship, the creativity born from constraint, and the enduring bond between family amidst the challenges of a politically tense environment. <div>
+<br /><br />Summary: The story reflects a unique childhood experience under Soviet-controlled Poland, where the narrator's uncle took on the role of a father figure. They shared memorable moments, including a trip to a quarry where they enjoyed launching Estes-style rocket cars. This experience not only fostered creativity but also introduced the narrator to the joys of experimentation and engineering. Additionally, the uncle, who worked as an electrical engineer, managed to procure a Milicja (military police) siren from his job and creatively attached it to the back of the narrator's banana-style bike. His ability to make the siren function showcased his skills and ingenuity. This tale also touches on the broader theme of how innovation and resourcefulness during difficult times helped shape their identities. The gratitude expressed towards hackers indicates an appreciation for the individuals who inspire and influence others through their skills and creativity. Overall, the story highlights the impact of mentorship, the creativity born from constraint, and the enduring bond between family amidst the challenges of a politically tense environment. <div>
 <p>My shortened story: due to factors in Soviet controlled Poland, my uncle played my dad role.<p>He took me to a quarry to fire Estes-style rocket cars, and all that.. he also managed to steal a Milicja (military police) siren from work, and put it on the back of my banana style bike. As an EE, he made it actually function.<p>Thanks to all the hackers who made us who we are.</p>
 <hr />
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48620502">https://news.ycombinator.com/item?id=48620502</a></p>
 <p>Points: 289</p>
 <p># Comments: 44</p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 17:00:26 +0000</pubDate>
 <pubDate>Sun, 21 Jun 2026 17:00:26 +0000</pubDate>
 </item>
 <item>
@@ -85,13 +735,12 @@
 <content:encoded><![CDATA[
 <div> **Keywords:** article, comments, points, summary, discussion  
 
-<br><br>Summary: The article discusses a significant topic of interest that has drawn 302 comments and garnered a total of 448 points from readers. This high level of engagement suggests that the subject resonates deeply with the audience, prompting various viewpoints and discussions within the comments section. The comments reflect a wide range of opinions, highlighting differing perspectives and reactions to the main ideas presented in the article. The multitude of interactions indicates that the article addresses an issue that is not only timely but also relevant to the readers’ experiences. The community's response demonstrates the effectiveness of the piece in sparking dialogue, encouraging readers to share their insights and engage with one another. Overall, the article serves as a catalyst for thoughtful conversation, as evidenced by the significant participation observed in the comments and the substantial points accumulated. Through this engagement, readers contribute to a broader understanding of the topic, showcasing the importance of community input and discourse in the examination of contemporary issues. <div>
+<br /><br />Summary: The article discusses a significant topic of interest that has drawn 302 comments and garnered a total of 448 points from readers. This high level of engagement suggests that the subject resonates deeply with the audience, prompting various viewpoints and discussions within the comments section. The comments reflect a wide range of opinions, highlighting differing perspectives and reactions to the main ideas presented in the article. The multitude of interactions indicates that the article addresses an issue that is not only timely but also relevant to the readers’ experiences. The community's response demonstrates the effectiveness of the piece in sparking dialogue, encouraging readers to share their insights and engage with one another. Overall, the article serves as a catalyst for thoughtful conversation, as evidenced by the significant participation observed in the comments and the substantial points accumulated. Through this engagement, readers contribute to a broader understanding of the topic, showcasing the importance of community input and discourse in the examination of contemporary issues. <div>
 <p>Article URL: <a href="https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction">https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48620090">https://news.ycombinator.com/item?id=48620090</a></p>
 <p>Points: 448</p>
 <p># Comments: 302</p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 16:08:23 +0000</pubDate>
 <pubDate>Sun, 21 Jun 2026 16:08:23 +0000</pubDate>
 </item>
 <item>
@@ -106,7 +755,6 @@
 <p># Comments: 56</p>
 ]]></content:encoded>
 <pubDate>Sun, 21 Jun 2026 15:36:33 +0000</pubDate>
-<pubDate>Sun, 21 Jun 2026 15:36:33 +0000</pubDate>
 </item>
 <item>
 <title>Who owns your ATProto identity?</title>
@@ -120,7 +768,6 @@
 <p># Comments: 145</p>
 ]]></content:encoded>
 <pubDate>Sun, 21 Jun 2026 14:09:07 +0000</pubDate>
-<pubDate>Sun, 21 Jun 2026 14:09:07 +0000</pubDate>
 </item>
 <item>
 <title>Identity verification on Claude</title>
@@ -129,7 +776,7 @@
 <content:encoded><![CDATA[
 <div> **Keywords:** Comments, Points, Article, Summary, Information  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 The article presents an analysis of a topic that has garnered significant attention, reflected in the total of 652 points and 554 comments. It highlights the importance of community engagement and dialogue in shaping opinions. The high volume of comments indicates robust public interest and diverse perspectives surrounding the subject matter. The article explores various facets, including key arguments, counterpoints, and implications of the discussed issues. Each comment adds depth to the conversation, showcasing differing viewpoints, personal anecdotes, and expert insights. The discourse within the comments section serves as a microcosm of broader societal debates, illustrating the complexities and nuances involved. The piece concludes by emphasizing the value of such discussions in fostering understanding and driving change. Ultimately, it advocates for continued engagement and underscores the role of dialogue in democratic processes and informed decision-making. Through both points and comments, the article encourages readers to reflect on their views and contribute to ongoing conversations. Its statistical highlights, such as points and comments, reveal the vibrant community participation that characterizes such discussions in today's media landscape. <div>
 <p><a href="https://old.reddit.com/r/ClaudeAI/comments/1ubm53n/official_anthropic_to_require_identity/" rel="nofollow">https://old.reddit.com/r/ClaudeAI/comments/1ubm53n/official_...</a></p>
 <hr />
@@ -137,7 +784,6 @@ The article presents an analysis of a topic that has garnered significant attent
 <p>Points: 652</p>
 <p># Comments: 554</p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 12:44:13 +0000</pubDate>
 <pubDate>Sun, 21 Jun 2026 12:44:13 +0000</pubDate>
 </item>
 <item>
@@ -147,13 +793,12 @@ The article presents an analysis of a topic that has garnered significant attent
 <content:encoded><![CDATA[
 <div> Keywords: article, comments, points, discussion, insights  
 
-<br><br>Summary: This article explores a topic of significant interest, attracting a large number of comments and discussion. With 456 points, the community engagement showcases varying perspectives and insights from readers. The 270 comments indicate a robust dialogue, highlighting differing opinions and deep analysis regarding the article's content. User interaction not only enriches the main topic but also reflects the article's relevance and impact on its audience. The comments section serves as a platform for sharing additional information, venting frustrations, or praising aspects highlighted in the article. This engagement underlines the importance of reader involvement in shaping narratives and understanding the subject matter more comprehensively. The combination of points and comments signifies a healthy discourse, inviting contributors to dissect the themes presented and encouraging others to join the conversation. Overall, this article not only informs but also stimulates a vibrant exchange of ideas among its readers. <div>
+<br /><br />Summary: This article explores a topic of significant interest, attracting a large number of comments and discussion. With 456 points, the community engagement showcases varying perspectives and insights from readers. The 270 comments indicate a robust dialogue, highlighting differing opinions and deep analysis regarding the article's content. User interaction not only enriches the main topic but also reflects the article's relevance and impact on its audience. The comments section serves as a platform for sharing additional information, venting frustrations, or praising aspects highlighted in the article. This engagement underlines the importance of reader involvement in shaping narratives and understanding the subject matter more comprehensively. The combination of points and comments signifies a healthy discourse, inviting contributors to dissect the themes presented and encouraging others to join the conversation. Overall, this article not only informs but also stimulates a vibrant exchange of ideas among its readers. <div>
 <p>Article URL: <a href="https://www.beyondallreason.info">https://www.beyondallreason.info</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48617990">https://news.ycombinator.com/item?id=48617990</a></p>
 <p>Points: 456</p>
 <p># Comments: 270</p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 11:38:01 +0000</pubDate>
 <pubDate>Sun, 21 Jun 2026 11:38:01 +0000</pubDate>
 </item>
 <item>
@@ -161,13 +806,11 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://blog.apnic.net/2026/04/28/google-hits-50-ipv6/</link>
 <guid>https://blog.apnic.net/2026/04/28/google-hits-50-ipv6/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://blog.apnic.net/2026/04/28/google-hits-50-ipv6/">https://blog.apnic.net/2026/04/28/google-hits-50-ipv6/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48616800">https://news.ycombinator.com/item?id=48616800</a></p>
 <p>Points: 388</p>
 <p># Comments: 413</p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 08:21:22 +0000</pubDate>
 <pubDate>Sun, 21 Jun 2026 08:21:22 +0000</pubDate>
 </item>
 <item>
@@ -175,13 +818,11 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://github.com/namgyaaal/avoxelgame</link>
 <guid>https://github.com/namgyaaal/avoxelgame</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://github.com/namgyaaal/avoxelgame">https://github.com/namgyaaal/avoxelgame</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48616713">https://news.ycombinator.com/item?id=48616713</a></p>
 <p>Points: 151</p>
 <p># Comments: 14</p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 08:04:54 +0000</pubDate>
 <pubDate>Sun, 21 Jun 2026 08:04:54 +0000</pubDate>
 </item>
 <item>
@@ -189,13 +830,11 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://lcamtuf.substack.com/p/the-100000-whys-of-ai</link>
 <guid>https://lcamtuf.substack.com/p/the-100000-whys-of-ai</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://lcamtuf.substack.com/p/the-100000-whys-of-ai">https://lcamtuf.substack.com/p/the-100000-whys-of-ai</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48616017">https://news.ycombinator.com/item?id=48616017</a></p>
 <p>Points: 176</p>
 <p># Comments: 104</p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 05:45:21 +0000</pubDate>
 <pubDate>Sun, 21 Jun 2026 05:45:21 +0000</pubDate>
 </item>
 <item>
@@ -203,13 +842,11 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://martinfowler.com/articles/reliable-llm-bayer.html</link>
 <guid>https://martinfowler.com/articles/reliable-llm-bayer.html</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://martinfowler.com/articles/reliable-llm-bayer.html">https://martinfowler.com/articles/reliable-llm-bayer.html</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48615680">https://news.ycombinator.com/item?id=48615680</a></p>
 <p>Points: 187</p>
 <p># Comments: 47</p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 04:28:39 +0000</pubDate>
 <pubDate>Sun, 21 Jun 2026 04:28:39 +0000</pubDate>
 </item>
 <item>
@@ -217,13 +854,11 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://www.sciencedaily.com/releases/2026/06/260614012006.htm</link>
 <guid>https://www.sciencedaily.com/releases/2026/06/260614012006.htm</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.sciencedaily.com/releases/2026/06/260614012006.htm">https://www.sciencedaily.com/releases/2026/06/260614012006.htm</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48615569">https://news.ycombinator.com/item?id=48615569</a></p>
 <p>Points: 393</p>
 <p># Comments: 313</p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 04:02:08 +0000</pubDate>
 <pubDate>Sun, 21 Jun 2026 04:02:08 +0000</pubDate>
 </item>
 <item>
@@ -231,13 +866,11 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://fosterelli.co/developers-dont-understand-cors</link>
 <guid>https://fosterelli.co/developers-dont-understand-cors</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://fosterelli.co/developers-dont-understand-cors">https://fosterelli.co/developers-dont-understand-cors</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48614844">https://news.ycombinator.com/item?id=48614844</a></p>
 <p>Points: 368</p>
 <p># Comments: 258</p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 01:35:40 +0000</pubDate>
 <pubDate>Sun, 21 Jun 2026 01:35:40 +0000</pubDate>
 </item>
 <item>
@@ -245,13 +878,11 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://vinibrasil.com/when-i-reject-ai-code-even-if-it-works/</link>
 <guid>https://vinibrasil.com/when-i-reject-ai-code-even-if-it-works/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://vinibrasil.com/when-i-reject-ai-code-even-if-it-works/">https://vinibrasil.com/when-i-reject-ai-code-even-if-it-works/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48614631">https://news.ycombinator.com/item?id=48614631</a></p>
 <p>Points: 220</p>
 <p># Comments: 159</p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 00:58:13 +0000</pubDate>
 <pubDate>Sun, 21 Jun 2026 00:58:13 +0000</pubDate>
 </item>
 <item>
@@ -259,13 +890,11 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://sibexi.co/posts/epoll-vs-io_uring/</link>
 <guid>https://sibexi.co/posts/epoll-vs-io_uring/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://sibexi.co/posts/epoll-vs-io_uring/">https://sibexi.co/posts/epoll-vs-io_uring/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48613872">https://news.ycombinator.com/item?id=48613872</a></p>
 <p>Points: 251</p>
 <p># Comments: 60</p>
 ]]></content:encoded>
-<pubDate>Sat, 20 Jun 2026 23:07:09 +0000</pubDate>
 <pubDate>Sat, 20 Jun 2026 23:07:09 +0000</pubDate>
 </item>
 <item>
@@ -273,10 +902,8 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://postmarketos.org/blog/2026/06/21/v26.06-release/</link>
 <guid>https://postmarketos.org/blog/2026/06/21/v26.06-release/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/kn7fi8/postmarketos_v26_06_alpen_avocado">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 10:08:44 -0500</pubDate>
 <pubDate>Sun, 21 Jun 2026 10:08:44 -0500</pubDate>
 </item>
 <item>
@@ -284,10 +911,8 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://lobste.rs/s/lbjdlo/what_s_advice_for_llm_poisoning_artwork</link>
 <guid>https://lobste.rs/s/lbjdlo/what_s_advice_for_llm_poisoning_artwork</guid>
 <content:encoded><![CDATA[
-
 <p>My wife doesn't want to put her artwork online as she does not want it to be used to train LLMs. I wonder if this has culminated in any libraries that makes it feasible for me to build her a custom site where the artwork is processed to defeat LLM training. I don't have a lot of front-end experience, but can cobble together a simple site with a static site generator. (I have used eleventy for my band's website.)</p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 14:57:17 -0500</pubDate>
 <pubDate>Sun, 21 Jun 2026 14:57:17 -0500</pubDate>
 </item>
 <item>
@@ -295,10 +920,8 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://atgreen.github.io/repl-yell/posts/libffi-plan-cache/</link>
 <guid>https://atgreen.github.io/repl-yell/posts/libffi-plan-cache/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/agw0rr/performance_improvements_libffi">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 09:16:43 -0500</pubDate>
 <pubDate>Sun, 21 Jun 2026 09:16:43 -0500</pubDate>
 </item>
 <item>
@@ -306,10 +929,8 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://blog.calif.io/p/apple-internals-swift-in-the-kernel</link>
 <guid>https://blog.calif.io/p/apple-internals-swift-in-the-kernel</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/5j33bp/apple_internals_swift_kernel">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 03:41:24 -0500</pubDate>
 <pubDate>Sun, 21 Jun 2026 03:41:24 -0500</pubDate>
 </item>
 <item>
@@ -317,10 +938,8 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://fzakaria.com/2026/06/21/nix-build-in-under-100-lines</link>
 <guid>https://fzakaria.com/2026/06/21/nix-build-in-under-100-lines</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/gig3cr/nix_build_under_100_lines">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 19:21:05 -0500</pubDate>
 <pubDate>Sun, 21 Jun 2026 19:21:05 -0500</pubDate>
 </item>
 <item>
@@ -328,10 +947,8 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://www.datagubbe.se/os20up/</link>
 <guid>https://www.datagubbe.se/os20up/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/ontg5a/amigaos_2_greatest_upgrade">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 13:35:18 -0500</pubDate>
 <pubDate>Sun, 21 Jun 2026 13:35:18 -0500</pubDate>
 </item>
 <item>
@@ -339,10 +956,8 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://alexwlchan.net/2026/wonky-web-apis/</link>
 <guid>https://alexwlchan.net/2026/wonky-web-apis/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/fb5nuv/what_can_wonky_apis_tell_us_about_web">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 17:52:55 -0500</pubDate>
 <pubDate>Sun, 21 Jun 2026 17:52:55 -0500</pubDate>
 </item>
 <item>
@@ -350,10 +965,8 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://kobzol.github.io/rust/2026/06/21/optimizing-sqlx-test-rebuild-time.html</link>
 <guid>https://kobzol.github.io/rust/2026/06/21/optimizing-sqlx-test-rebuild-time.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/xhplww/optimizing_sqlx_test_rebuild_time">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 13:53:58 -0500</pubDate>
 <pubDate>Sun, 21 Jun 2026 13:53:58 -0500</pubDate>
 </item>
 <item>
@@ -361,10 +974,8 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://github.com/mysk-research/loupe</link>
 <guid>https://github.com/mysk-research/loupe</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/hitg0z/loupe_privacy_focused_ios_app_raises">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 16:01:35 -0500</pubDate>
 <pubDate>Sun, 21 Jun 2026 16:01:35 -0500</pubDate>
 </item>
 <item>
@@ -372,10 +983,8 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://codeberg.org/mlugg/robust-jobserver/src/branch/main/spec.md</link>
 <guid>https://codeberg.org/mlugg/robust-jobserver/src/branch/main/spec.md</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/1jcvyh/robust_jobserver">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 09:29:48 -0500</pubDate>
 <pubDate>Sun, 21 Jun 2026 09:29:48 -0500</pubDate>
 </item>
 <item>
@@ -383,10 +992,8 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://movq.de/blog/postings/2026-06-20/0/POSTING-en.html</link>
 <guid>https://movq.de/blog/postings/2026-06-20/0/POSTING-en.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/vutq1m/windows_ui_evolution_clicking">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 01:24:43 -0500</pubDate>
 <pubDate>Sun, 21 Jun 2026 01:24:43 -0500</pubDate>
 </item>
 <item>
@@ -394,10 +1001,8 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://fgiesen.wordpress.com/2026/06/21/pivco-huffman-merge-operations/</link>
 <guid>https://fgiesen.wordpress.com/2026/06/21/pivco-huffman-merge-operations/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/zdundv/pivco_huffman_merge_operations">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 20:27:10 -0500</pubDate>
 <pubDate>Sun, 21 Jun 2026 20:27:10 -0500</pubDate>
 </item>
 <item>
@@ -405,10 +1010,8 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://www.science.org/doi/10.1126/science.aec7671</link>
 <guid>https://www.science.org/doi/10.1126/science.aec7671</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/dus74u/remote_work_increases_social_isolation">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 12:01:59 -0500</pubDate>
 <pubDate>Sun, 21 Jun 2026 12:01:59 -0500</pubDate>
 </item>
 <item>
@@ -416,7 +1019,6 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://github.com/ryukinix/cl-bbs</link>
 <guid>https://github.com/ryukinix/cl-bbs</guid>
 <content:encoded><![CDATA[
-
 <p>I really like textboards, I think they are some kind superior than imageboard like reddit. I really love authless applications due its simplicity and privacy centric without complication, like strong cryptography and such.</p>
 <p>I've been hosting a SchemeBBS instance for the last 2 years, but MIT scheme is not my favorite Lisp and I particularly think the ecosystem is pretty limited to the application grows with the features I want. The main different feature from schemeBBS are:</p>
 <ul>
@@ -429,17 +1031,14 @@ The article presents an analysis of a topic that has garnered significant attent
 <p><a href="https://lobste.rs/s/wgpa6x/cl_bbs_schemebbs_like_textboard">Comments</a></p>
 ]]></content:encoded>
 <pubDate>Sun, 21 Jun 2026 02:19:03 -0500</pubDate>
-<pubDate>Sun, 21 Jun 2026 02:19:03 -0500</pubDate>
 </item>
 <item>
 <title>Memory Safe Inline Assembly</title>
 <link>https://fil-c.org/inlineasm</link>
 <guid>https://fil-c.org/inlineasm</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/hhk5e0/memory_safe_inline_assembly">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 22:49:35 -0500</pubDate>
 <pubDate>Sun, 21 Jun 2026 22:49:35 -0500</pubDate>
 </item>
 <item>
@@ -447,10 +1046,8 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://www.humprog.org/~stephen/blog/2026/06/15/</link>
 <guid>https://www.humprog.org/~stephen/blog/2026/06/15/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/mi6osr/system_call_instrumentation_on_linux_x86">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 22:19:48 -0500</pubDate>
 <pubDate>Sun, 21 Jun 2026 22:19:48 -0500</pubDate>
 </item>
 <item>
@@ -458,13 +1055,10 @@ The article presents an analysis of a topic that has garnered significant attent
 <link>https://mariusbancila.ro/blog/2026/06/19/improvements-to-stdformat-in-c26/</link>
 <guid>https://mariusbancila.ro/blog/2026/06/19/improvements-to-stdformat-in-c26/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/xtuz4x/improvements_std_format_c_26">Comments</a></p>
 ]]></content:encoded>
 <pubDate>Sun, 21 Jun 2026 01:26:30 -0500</pubDate>
-<pubDate>Sun, 21 Jun 2026 01:26:30 -0500</pubDate>
 </item>
-
 <item>
 <title>v16.3.0-canary.60</title>
 <link>https://github.com/vercel/next.js/releases/tag/v16.3.0-canary.60</link>
