@@ -3,7 +3,713 @@
 <channel>
 <title>tech</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/tech.xml</link>
-<lastBuildDate>Tue, 23 Jun 2026 04:10:54 +0000</lastBuildDate>
+<lastBuildDate>Wed, 24 Jun 2026 04:14:14 +0000</lastBuildDate>
+
+<item>
+<title>Amazon CloudWatch Logs supports managed syslog ingestion</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/06/amazon-cloudwatch-syslog-ingestion/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/06/amazon-cloudwatch-syslog-ingestion/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon CloudWatch Logs, syslog ingestion, managed, TCP, RFC
+
+<br><br>Summary: Amazon CloudWatch Logs has launched managed syslog ingestion, allowing customers to send syslog messages from various devices like firewalls, routers, and Linux servers directly into CloudWatch Logs. This can be accomplished without the need to install or manage any agents, as users can configure their network devices to transmit syslog messages via TCP, TCP+TLS, or UDP directly to a VPC endpoint in their AWS account. The service supports multiple syslog formats, including RFC 5424, RFC 3164, and Cisco FTD/ASA, ensuring compatibility with diverse infrastructures. CloudWatch Logs automatically parses incoming syslog messages, extracting structured fields such as facility, severity, hostname, and application name, which simplifies the log management process and negates the need for custom parsing pipelines. This feature is particularly beneficial for security event investigations and troubleshooting, as it enables users to immediately query logs by severity or hostname using Logs Analytics. Overall, this new functionality centralizes log visibility, streamlines operational workflows, and reduces the logistical burden of maintaining log collection agents, and is available in most AWS regions, excluding the Middle East locations listed. <div>
+<p>Amazon CloudWatch Logs supports managed syslog ingestion, enabling customers to send syslog messages from firewalls, routers, switches, and Linux servers directly into CloudWatch Logs.<br /> <br /> With today's launch, customers can configure their network devices and servers to send syslog messages over TCP, TCP+TLS, or UDP to a VPC endpoint in their account - without installing or managing any agents. Amazon CloudWatch Logs supports RFC 5424, RFC 3164, and Cisco FTD/ASA syslog formats, making it compatible with a wide range of infrastructure. Amazon CloudWatch Logs automatically parses incoming syslog messages and extracts structured fields such as facility, severity, hostname, and application name, thereby eliminating the need for custom parsing pipelines. For example, customers can ingest syslog from their network firewalls and immediately query by severity or hostname using Logs Analytics to investigate security events or troubleshoot connectivity issues. This feature helps teams centralize infrastructure log visibility, simplify operational workflows, and reduce the overhead of deploying and maintaining log collection agents across distributed environments.<br /> <br /> Available in all commercial AWS Regions except Middle East (UAE), Middle East (Bahrain), and Israel (Tel Aviv). To get started, see the Amazon CloudWatch Logs <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_Syslog.html">documentation.</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 20:30:00 GMT</pubDate>
+<pubDate>Tue, 23 Jun 2026 20:30:00 GMT</pubDate>
+</item>
+<item>
+<title>SageMaker Notebook Instances now support G6e instance types</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/03/g6e-new-launch-sagemaker-notebook-instances/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/03/g6e-new-launch-sagemaker-notebook-instances/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon EC2, G6e instances, NVIDIA GPUs, SageMaker, generative AI  
+
+<br><br>Summary:  
+Amazon EC2 G6e instances are now generally available on SageMaker notebook instances. These instances are powered by up to 8 NVIDIA L40 Tensor Core GPUs, each equipped with 48 GB of memory, and utilize third-generation AMD EPYC processors. G6e instances offer a significant performance boost, delivering up to 2.5 times better performance compared to EC2 G5 instances. They are particularly suited for interactive model deployment testing and model training tasks, especially in the realm of generative AI fine-tuning. Users can leverage G6e instances for deploying large language models (LLMs) with parameters reaching up to 13 billion, as well as diffusion models for generating various forms of media such as images, videos, and audio. These instances are available in multiple regions, including the US East (N. Virginia and Ohio), US West (Oregon), Asia Pacific (Tokyo), Middle East (Dubai), and Europe (Frankfurt, Sweden, Spain). For further guidance, developers can refer to the developer guides to set up and utilize applications effectively on SageMaker notebooks. <div>
+<p>We are pleased to announce general availability of Amazon EC2 G6e instances on SageMaker notebook instances.</p> 
+<p><a href="https://aws.amazon.com/ec2/instance-types/g6e/"><u>Amazon EC2 G6e instances</u></a> are powered by up to 8 NVIDIA L40s Tensor Core GPUs with 48 GB of memory per GPU and third generation AMD EPYC processors. G6e instances deliver up to 2.5x better performance compared to EC2 G5 instances. Customers can use G6e instances to interactively test model deployment and for interactive model training use cases such as generative AI fine-tuning. You can use G6e instances to deploy large language models (LLMs) with up to 13B parameters and diffusion models for generating images, video, and audio.</p> 
+<p>Amazon EC2 G6e instances are available on SageMaker notebook instances in the AWS US East (N. Virginia and Ohio), US West (Oregon), Asia Pacific (Tokyo), Middle East (Dubai) and Europe (Frankfurt, Sweden, Spain) regions.</p> 
+<p>Visit developer guides for instructions on setting up and using <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/studio-updated-jl.html"><u>JupyterLab</u></a> and <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/code-editor.html"><u>CodeEditor</u></a> applications on <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/studio-updated.html"><u>SageMaker Studio</u></a> and <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/nbi.html"><u>SageMaker notebook instances</u></a>.</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 18:14:00 GMT</pubDate>
+<pubDate>Tue, 23 Jun 2026 18:14:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Bedrock AgentCore Memory now supports cross-account access</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/06/agentcore-memory-cross-account-access</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/06/agentcore-memory-cross-account-access</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon Bedrock, cross-account access, memory resources, resource-based policies, multi-account architectures
+
+<br><br>Summary: Amazon Bedrock AgentCore Memory has introduced cross-account access, enabling multi-account architectures in which memory resources and consuming agents can span different AWS accounts. You can grant permissions for principals in one account to access memory data plane APIs for resources located in another account by using resource-based policies. Additionally, you can set up memory delivery destinations, such as Amazon S3, Amazon SNS, and Amazon Kinesis Data Streams, in different accounts. To initiate cross-account access, you need to attach a resource-based policy to your memory resource. Once this setup is complete, the principals in the consuming account can create events, write memory records, retrieve those records, and perform semantic searches by referencing the full memory ARN. Furthermore, cross-account delivery destinations allow your memory resource to deliver payloads and stream events to resources in other accounts, streamlining how data is managed across various AWS accounts. This feature is available in all regions where Amazon Bedrock AgentCore Memory is supported. For detailed instructions on getting started, refer to the Amazon Bedrock AgentCore Developer Guide. <div>
+<p>Amazon Bedrock AgentCore Memory now enables cross-account access, allowing you to build multi-account architectures where memory resources and consuming agents span multiple AWS accounts. You can grant principals in one account permission to call memory data plane APIs against resources in another account using resource-based policies, and configure memory delivery destinations (Amazon S3, Amazon SNS, Amazon Kinesis Data Streams) that reside in a separate account.</p> 
+<p>Cross-account access is configured by attaching a resource-based policy to your memory resource. Once configured, principals in the consuming account can create events, write memory records, retrieve records, and perform semantic search by referencing the full memory ARN. Cross-account delivery destinations allow your memory resource to deliver payloads and stream events to S3 buckets, SNS topics, and Kinesis Data Streams in other accounts.</p> 
+<p>To get started, see <a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/memory-cross-account-access.html">Cross-account memory access</a> in the Amazon Bedrock AgentCore Developer Guide. Amazon Bedrock AgentCore Memory cross-account access is available in all <a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/agentcore-regions.html">AWS Regions</a> where Amazon Bedrock AgentCore Memory is supported.&nbsp;&nbsp;&nbsp;&nbsp;</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 17:20:00 GMT</pubDate>
+<pubDate>Tue, 23 Jun 2026 17:20:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS HealthOmics now supports ephemeral storage for private workflows</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/06/healthomics-scratch-storage/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/06/healthomics-scratch-storage/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS HealthOmics, ephemeral storage, bioinformatics, HIPAA-eligible, workflow tasks  
+
+<br><br>Summary:  
+AWS HealthOmics has introduced ephemeral storage for private workflows, providing dedicated scratch space that enhances performance and reduces costs for bioinformatics workloads. Each workflow task now has a dedicated local volume mounted at /tmp, allowing significant improvements in run times for tasks like genomic sequence alignment, BAM sorting, and variant calling. The service is HIPAA-eligible, catering to healthcare and life sciences sectors by enabling fully managed bioinformatics workflows. By default, each task comes with 16 GiB of free ephemeral storage, which can be increased up to 3,072 GiB per task using directives in WDL, Nextflow, or CWL workflow definitions. Users can enable this feature during execution via the StartRun API. All ephemeral volumes are encrypted and automatically deleted upon task completion. This storage option is available in AWS Regions such as US East (N. Virginia), US West (Oregon), Europe (Frankfurt, Ireland, London), Israel (Tel Aviv), and Asia Pacific (Singapore, Seoul). For further details on ephemeral storage and pricing, users are encouraged to visit the relevant AWS HealthOmics pages. <div>
+<p>AWS HealthOmics adds ephemeral storage for private workflows, giving bioinformatics workloads dedicated scratch space that delivers more consistent run performance and lower costs. Each workflow task now receives a dedicated local volume mounted at /tmp, and workflows that generate significant scratch data, such as genomic sequence alignment, BAM sorting, and variant calling,&nbsp;can experience faster run times.&nbsp;<a href="https://aws.amazon.com/healthomics/">AWS HealthOmics</a> is a HIPAA-eligible service that helps healthcare and life sciences customers accelerate scientific breakthroughs with fully managed bioinformatics workflows.</p> 
+<p>With this launch, workflow tasks can write temporary data to their own local volume, keeping scratch I/O isolated from shared run storage that hosts the working directory. By default, each task includes 16 GiB of ephemeral storage at no additional charge. You can increase the amount of ephemeral storage allocated to individual tasks, up to a maximum of 3,072 GiB per task, using the appropriate directive in your WDL, Nextflow, or CWL workflow definition. You can enable ephemeral storage at runtime with the StartRun API.&nbsp;All ephemeral storage volumes are encrypted and deleted when a task terminates.</p> 
+<p>You can use ephemeral storage in all AWS Regions where AWS HealthOmics is available:&nbsp;US East (N. Virginia), US West (Oregon), Europe (Frankfurt, Ireland, London), Israel (Tel Aviv), and Asia Pacific (Singapore, Seoul). To learn more about ephemeral storage, visit the <a href="https://docs.aws.amazon.com/omics/latest/dev/workflows-ephemeral-storage.html">AWS HealthOmics User Guide</a>. For more information on pricing, visit <a href="https://aws.amazon.com/healthomics/pricing/">AWS HealthOmics pricing</a>.</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 17:15:00 GMT</pubDate>
+<pubDate>Tue, 23 Jun 2026 17:15:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Cognito now supports customer managed key for encryption at rest</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/06/amazon-cognito-customer-managed-key</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/06/amazon-cognito-customer-managed-key</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon Cognito, customer managed keys, AWS KMS, encryption, user pools
+
+<br><br>Summary:  
+Amazon Cognito has introduced support for customer managed keys within AWS Key Management Service (KMS) for encrypting user pool data at rest. By default, AWS uses owned keys, but customer managed keys provide organizations with complete control over these encryption keys, facilitating better adherence to data governance policies. Utilizing customer managed keys allows organizations to define specific policies, revoke access to encrypted data, and manage the lifecycle and permissions associated with the keys directly in AWS KMS. Users can either configure a customer managed key when creating a new user pool or update an existing one to use it. Additionally, AWS CloudTrail can be used to monitor and audit the usage of these keys, providing visibility into access patterns of identity data. These customer managed keys are available in user pools that fall under the Essentials and Plus tiers without incurring additional costs. To begin using customer managed keys, users can configure them using the AWS Management Console, AWS CLI, or AWS SDKs, with specific instructions available on the official AWS documentation site. <div>
+<p>Amazon Cognito now supports customer managed keys in AWS Key Management Service (KMS) for encrypting user pool data at rest. While AWS owned keys are used by default to protect your data, customer managed keys give you full control over the encryption keys, helping you achieve your organization's data governance objectives.&nbsp;</p> 
+<p>&nbsp;</p> 
+<p>With customer managed keys, you can define organizational policies and revoke access to encrypted data by disabling or deleting your key. You create and manage the customer managed key lifecycle and usage permissions in AWS KMS. You can configure a customer managed key when creating a new user pool or update an existing user pool to use one. You can also use AWS CloudTrail to monitor and audit all usage of your customer managed keys, giving you visibility into when and how your identity data is accessed.</p> 
+<p>&nbsp;</p> 
+<p>Customer managed keys are available in user pools in Essentials and Plus tiers at no additional costs. <a href="https://aws.amazon.com/kms/pricing/">Standard AWS KMS charges</a> apply. To get started, configure your customer managed keys using the&nbsp;<a href="https://console.aws.amazon.com/cognito/home">AWS Management Console</a>, AWS CLI, or AWS SDKs. Visit the&nbsp;<a href="https://docs.aws.amazon.com/cognito/latest/developerguide/data-protection.html">developer guide</a>&nbsp;for instructions.</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 17:00:46 GMT</pubDate>
+<pubDate>Tue, 23 Jun 2026 17:00:46 GMT</pubDate>
+</item>
+<item>
+<title>Automated Reasoning checks in Amazon Bedrock Guardrails add new policy refinement workflows</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/06/amazon-bedrock-guardrails/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/06/amazon-bedrock-guardrails/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS, Amazon Bedrock, automated reasoning, guardrails, workflows  
+
+<br><br>Summary:  
+AWS has announced the introduction of new automated refinement workflows for Automated Reasoning checks in Amazon Bedrock Guardrails. These checks utilize formal logic to mathematically validate the accuracy of generative AI responses against user-defined policies, aiming to identify hallucinations and provide verifiable explanations. The quality of these validations hinges on how well a policy is articulated. The newly launched workflows are designed to assist customers in refining their policies with reduced manual effort, leading to enhanced reliability in Guardrail validation results. There are two key workflows introduced: the iterative policy improvement workflow allows customers with existing natural language tests to initiate an iterative refinement run, enabling the system to determine necessary changes for policy compliance. The ambiguity reduction workflow aids customers who face frequent ambiguous translation results by automatically refining variable descriptions and type definitions, thereby minimizing ambiguous translations. Both workflows can be accessed through the Amazon Bedrock APIs and the AWS Management Console, where users can initiate them by selecting "Refine policy" on the policy page. These features are available across all AWS Regions where Amazon Bedrock Guardrails are operational. To learn more, customers are encouraged to visit the official AWS documentation. <div>
+<p>Today, AWS announces new automated refinement workflows for Automated Reasoning checks in Amazon Bedrock Guardrails. Automated Reasoning checks use formal logic to mathematically validate the accuracy of generative AI responses against a policy you define, helping detect hallucinations and provide verifiable explanations. The quality of validation results depends on how well a policy is defined. The new workflows help customers improve their policies with less manual effort, leading to more reliable Guardrail validation results.</p> 
+<p>The launch introduces two refinement workflows. With the iterative policy improvement workflow, customers who have created natural language tests for a policy can start an iterative refinement run, letting the system deduce the changes needed for the policy to pass those tests. With the ambiguity reduction workflow, customers who frequently encounter ambiguous translation results can run the resolve policy ambiguities workflow to automatically refine variable descriptions and type definitions, reducing how often ambiguous translations occur. Both workflows are available through the Amazon Bedrock APIs and in the AWS Management Console, where customers can start a workflow by choosing Refine policy on the policy page.</p> 
+<p>These workflows are available in all AWS Regions where Automated Reasoning checks in Amazon Bedrock Guardrails are available. To learn more, visit the <a href="https://aws.amazon.com/bedrock/guardrails/" target="_blank">Amazon Bedrock Guardrails product page</a> and <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails-automated-reasoning-checks.html" target="_blank">the&nbsp;Automated Reasoning checks User Guide</a>.</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 16:20:00 GMT</pubDate>
+<pubDate>Tue, 23 Jun 2026 16:20:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon CloudWatch launches OTel Container Insights for Amazon EKS</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/06/amazon-cloudwatch-otel-amazon-eks/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/06/amazon-cloudwatch-otel-amazon-eks/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: CloudWatch, EKS, metrics, dashboards, PromQL 
+
+<br><br>Summary: CloudWatch OpenTelemetry (OTel) Container Insights for Amazon EKS collects infrastructure metrics at a 30-second granularity using open-source receivers like cAdvisor, Kube State Metrics, and NVIDIA DCGM. Each metric adheres to OpenTelemetry semantic conventions and includes Kubernetes labels, facilitating seamless correlation across nodes, pods, and workloads with a single PromQL query. Immediate visibility into cluster health, node performance, and pod-level resource usage is provided through pre-built dashboards. The CloudWatch PromQL endpoint enables direct connectivity to existing Prometheus and Grafana dashboards for easier integration. Users can enable this functionality via the EKS console, the CloudWatch Observability add-on (version 6.2.0 and above), Helm, or CloudFormation. Availability extends across all commercial AWS Regions, excluding the Middle East (UAE), Middle East (Bahrain), and Israel (Tel Aviv). For detailed pricing information, users can refer to Amazon CloudWatch, and to initiate setup, guidance is available in the OTel Container Insights documentation. <div>
+<p>CloudWatch OTel Container Insights for Amazon EKS collects infrastructure metrics at 30-second granularity using open-source receivers including cAdvisor, Kube State Metrics, and NVIDIA DCGM. Each metric carries OpenTelemetry semantic conventions and Kubernetes labels, making it straightforward to correlate across nodes, pods, and workloads in a single PromQL query.</p> 
+<p>Pre-built dashboards give you immediate visibility into cluster health, node performance, and pod-level resource usage. The CloudWatch PromQL endpoint lets you connect existing Prometheus and Grafana dashboards directly to CloudWatch.</p> 
+<p>Enable it from the EKS console or via the CloudWatch Observability add-on (v6.2.0+), Helm, or CloudFormation.</p> 
+<p>Available in all commercial AWS Regions except Middle East (UAE), Middle East (Bahrain), and Israel (Tel Aviv). For pricing details, see the Amazon CloudWatch <a href="https://aws.amazon.com/cloudwatch/pricing/">pricing page</a>. To get started, see the OTel Container Insights <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/container-insights-eks-otel.html">documentation</a>.</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 15:12:00 GMT</pubDate>
+<pubDate>Tue, 23 Jun 2026 15:12:00 GMT</pubDate>
+</item>
+<item>
+<title>Claude Tag is now available in beta via Claude Enterprise in AWS Marketplace</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/06/claude-tag-aws-marketplace/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/06/claude-tag-aws-marketplace/</guid>
+<content:encoded><![CDATA[
+<div> Claude Tag, Slack, AWS Marketplace, Claude Enterprise, beta  
+
+<br><br>Summary:  
+Anthropic has launched Claude Tag, a new feature that integrates the AI assistant Claude directly into communication channels, with an initial rollout in Slack. Currently, it is available in beta for AWS customers using Claude Enterprise through AWS Marketplace. Claude Tag enables teams to grant access to Claude in selected channels, allowing members to delegate tasks by tagging @Claude while focusing on their other responsibilities. The AI can build context by remembering relevant information from ongoing discussions and planning future tasks. For security and governance, Claude Tag operates with a unique identity per channel, featuring spend controls and an 'ambient mode' that is off by default. AWS Marketplace customers experience the same functionality and setup as first-party Claude Enterprise, with consumption-based pricing that monitors usage instead of headcount, providing visibility into organizational budgets. An admin can provision the agent identity in the Claude admin console within approximately one hour and scope it per channel. For more information, customers can refer to the AWS Marketplace for detailed guidelines. <div>
+<p>Anthropic is launching Claude Tag — bringing Claude directly into the channels where your team already works, starting with Slack. Claude Tag is available today in beta to AWS customers who access Claude Enterprise through AWS Marketplace.</p> 
+<p>Claude Tag is a new way for teams to work with Claude. Grant Claude access to selected channels, and connect it to whichever tools, data—and even codebases—you choose.. It's multiplayer, so anyone in the channel can tag @Claude in, and delegate tasks to it while they focus on other work. Claude builds context by remembering relevant information from the channels it’s in, and can plan out tasks to complete in the future. And, for security and governance teams, Claude Tag operates under its own identity, scoped per channel, with spend controls and ambient mode off by default.</p> 
+<p>Getting started with Claude Enterprise on AWS Marketplace</p> 
+<p>The experience for Claude Enterprise in AWS Marketplace customers is identical to first-party Claude Enterprise: same setup, same capabilities, same controls. Consumption-based pricing tracks usage rather than headcount, with org-wide budget visibility and per-channel limits. Customers use their existing Claude Enterprise on AWS entitlement — an admin provisions the agent identity in the Claude admin console (approximately one hour) and scopes it per channel.</p> 
+<p>To learn more, see the <a href="https://aws.amazon.com/marketplace/pp/prodview-nnvi6wff6ef6m">Claude Enterprise</a> in AWS Marketplace</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 05:00:00 GMT</pubDate>
+<pubDate>Tue, 23 Jun 2026 05:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon OpenSearch Service now offers AI-assisted migrations</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/06/amazon-opensearch-service-ai-migrations</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/06/amazon-opensearch-service-ai-migrations</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Migration Assistant, Amazon OpenSearch Service, Apache Solr, Elasticsearch, live traffic migration
+
+<br><br>Summary: The Migration Assistant for Amazon OpenSearch Service has been enhanced to facilitate the transfer of self-managed Apache Solr, Elasticsearch, or OpenSearch deployments to OpenSearch Serverless or Managed Clusters. Launched in December 2023, this tool automates manual migration tasks, helping to simplify the traditionally complex and error-prone process of data migration. The new AI-assisted experience includes an agent-guided workflow that aids users in planning, deploying infrastructure, and executing both historical and live traffic migration more effectively. It now supports live traffic capture and replay specifically for Solr, providing an additional layer of convenience. The Migration Assistant ensures compatibility with various versions of Solr, Elasticsearch, and OpenSearch, allowing for a broader range of migrations. It is designed to support both OpenSearch Serverless and Managed Clusters, making it versatile for different deployment needs. Additionally, the tool is accessible in all commercial AWS Regions and AWS GovCloud (US) Regions where Amazon OpenSearch Service operates, ensuring widespread availability for users looking to streamline their migration process. For detailed version compatibility and further information, guidance is available through the official documentation. <div>
+<p>Migration Assistant for&nbsp;Amazon OpenSearch Service now includes an <a href="https://docs.aws.amazon.com/solutions/latest/migration-assistant-for-amazon-opensearch-service/agent-assisted-migration.html" rel="noopener noreferrer" target="_blank">AI-assisted experience</a> that simplifies moving your self-managed Apache Solr, Elasticsearch, or OpenSearch deployments to OpenSearch Serverless or Managed Clusters. With the new assistant, you can use your preferred AI tools like Kiro, Claude Code, and others to plan a migration, deploy necessary infrastructure, and execute both historical and live traffic migration.</p> 
+<p>Migrations are often complex and require weeks of planning before any data movement can begin and even then, the process can be error-prone. We launched Migration Assistant in December 2023 to simplify migrating existing and live data from self-managed clusters to Amazon OpenSearch Service by automating manual migration tasks. The new AI-assisted experience takes this further: it provides an agent-guided workflow that helps you structure, execute, and validate your data migration faster and more reliably. Additionally, Migration Assistant for Amazon OpenSearch Service now supports live traffic capture and replay for Solr. To get started, see <a href="https://docs.aws.amazon.com/solutions/migration-assistant-for-amazon-opensearch-service/" rel="noopener noreferrer" target="_blank">Migration Assistant documentation</a>.</p> 
+<p>Migration Assistant supports migrations to OpenSearch Serverless and Managed Clusters from various Solr, Elasticsearch, and OpenSearch versions. For more details about the versions supported, see the <a href="https://docs.aws.amazon.com/solutions/latest/migration-assistant-for-amazon-opensearch-service/solution-overview.html" rel="noopener noreferrer" target="_blank">documentation</a>. Migration Assistant is available in all commercial AWS Regions and AWS GovCloud (US) Regions where Amazon OpenSearch Service is available.</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 03:30:00 GMT</pubDate>
+<pubDate>Tue, 23 Jun 2026 03:30:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon SageMaker Studio notebooks now support G7e instance types</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/02/g7e-new-launch-sagemaker-studio-notebooks/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/02/g7e-new-launch-sagemaker-studio-notebooks/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: NVIDIA RTX PRO 6000, G7e instances, EC2 UltraClusters, AI models, Elastic Fabric Adapter
+
+<br><br>Summary:  
+The Amazon EC2 G7e instances are designed to feature up to 8 NVIDIA RTX PRO 6000 Blackwell Server Edition GPUs, each equipped with 96 GB of memory. They utilize 5th Generation Intel Xeon processors, providing the capability to support up to 192 virtual CPUs (vCPUs). These instances facilitate impressive networking performance with up to 1600 Gbps of Elastic Fabric Adapter (EFA) bandwidth. G7e instances enhance multi-GPU workloads through NVIDIA GPUDirect Peer to Peer (P2P) technology, and for more extensive configurations, they also allow for NVIDIA GPUDirect Remote Direct Memory Access (RDMA) with EFAv4 in EC2 UltraClusters. This reduces latency for small-scale multi-node workloads. G7e instances are ideal for deploying large language models (LLMs), agentic AI models, multimodal generative AI models, and physical AI models. They provide top-tier performance for spatial computing tasks and applications that require combined graphics and AI processing capabilities. Currently, Amazon EC2 G7e instances are available for SageMaker Studio notebooks in the US East (N. Virginia and Ohio) and US West (Oregon) regions, and more information can be found in developer guides and on pricing pages. <div>
+<p><a href="https://aws.amazon.com/ec2/instance-types/g7e/">Amazon G7e instances</a> feature up to 8 NVIDIA RTX PRO 6000 Blackwell Server Edition GPUs, with 96 GB of memory per GPU, and 5th Generation Intel Xeon processors. They support up to 192 virtual CPUs (vCPUs) and up to 1600 Gbps of Elastic Fabric Adapter networking bandwidth. G7e instances support NVIDIA GPUDirect Peer to Peer (P2P) that boosts performance for multi-GPU workloads. Multi-GPU G7e instances also support NVIDIA GPUDirect Remote Direct Memory Access (RDMA) with EFAv4 in EC2 UltraClusters, reducing latency for small-scale multi-node workloads. Customers can use G7e instances to deploy large language models (LLMs), agentic AI models, multimodal generative AI models, and physical AI models. G7e instances offer the highest performance for spatial computing workloads as well as workloads that require both graphics and AI processing capabilities.</p> 
+<p>Amazon EC2 G7e instances are available for SageMaker Studio notebooks in the AWS US East (N. Virginia and Ohio) and US West (Oregon) regions.</p> 
+<p>Visit developer guides for instructions on setting up and using <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/studio-updated-jl.html"><u>JupyterLab</u></a> and <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/code-editor.html"><u>CodeEditor</u></a> applications on <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/studio-updated.html"><u>SageMaker Studio</u></a>. For pricing information on these instances, please visit our <a href="https://aws.amazon.com/sagemaker/ai/pricing/?refid=ft_sagemaker"><u>pricing page</u></a>.</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 01:02:00 GMT</pubDate>
+<pubDate>Tue, 23 Jun 2026 01:02:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Transform for migrations now supports all AWS commercial regions as migration targets</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/06/aws-transform-migrations-region-expansion/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/06/aws-transform-migrations-region-expansion/</guid>
+<content:encoded><![CDATA[
+
+<p>AWS Transform for migrations now supports all AWS commercial regions as migration targets. A migration target region is the AWS region where migrated resources are deployed, including landing zones, network infrastructure, and server rehosting. Customers can now deploy workloads in any commercial region, making it easier to meet data residency requirements.<br /> <br /> The new migration target regions are: US East (N. California), Africa (Cape Town), Asia Pacific (Bangkok), Asia Pacific (Hong Kong), Asia Pacific (Hyderabad), Asia Pacific (Jakarta), Asia Pacific (Kuala Lumpur), Asia Pacific (Melbourne), Asia Pacific (New Zealand), Asia Pacific (Taipei), Canada (Calgary), Europe (Milan), Europe (Spain), Europe (Zurich), Mexico (Querétaro) and Middle East (Tel Aviv).<br /> <br /> Target region selection is available in the AWS Transform for migrations workflow. For the most up-to-date availability information, see the supported migration <a href="https://docs.aws.amazon.com/transform/latest/userguide/transform-vmware-connect-target-account.html#transform-vmware-cta-supported-regions">target region list</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 17:30:40 GMT</pubDate>
+<pubDate>Mon, 22 Jun 2026 17:30:40 GMT</pubDate>
+</item>
+<item>
+<title>MSK Replicator now supports mutual TLS (mTLS) authentication for replication from external Apache Kafka clusters to MSK Express brokers</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/06/amazon-msk-replicator-mtls-support</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/06/amazon-msk-replicator-mtls-support</guid>
+<content:encoded><![CDATA[
+
+<p>Amazon MSK Replicator now supports mutual TLS (mTLS) authentication for data replication from external Apache Kafka clusters - including on-premises, self-managed on AWS, or other cloud providers - to <a href="https://aws.amazon.com/msk/features/express-brokers-for-amazon-msk/">Amazon MSK Express brokers</a>. With this capability, external Apache Kafka clusters configured with mTLS authentication can now use MSK Replicator to migrate workloads to MSK Express brokers, support disaster recovery by using MSK Express-based clusters as a failover or backup target, and enable data distribution across hybrid and multi-cloud environments.<br /> <br /> MSK Replicator is a feature of Amazon MSK that automates data replication between Kafka clusters, eliminating the need to manage custom replication infrastructure or configure open-source tools. Previously, MSK Replicator supported SASL/SCRAM authentication only for connecting to external Apache Kafka clusters. With this launch, you can now also use mTLS authentication with MSK Replicator to replicate data from external Kafka clusters to Express brokers on Amazon MSK. Unlike self-managed replication tools, MSK Replicator lets you retain your original Kafka topic names during replication while automatically avoiding infinite replication loops. It also synchronizes consumer group offsets bidirectionally, enabling you to move producers and consumers across clusters independently, in any order, without coordination constraints or the risk of data loss.<br /> <br /> This new capability is supported in all AWS Regions where MSK Express brokers are available. Visit the MSK Replicator <a href="https://docs.aws.amazon.com/msk/latest/developerguide/msk-replicator.html">documentation</a>, <a href="https://aws.amazon.com/msk/features/msk-replicator/">product page</a>, <a href="https://aws.amazon.com/msk/pricing/">pricing page</a>, and this <a href="https://aws.amazon.com/blogs/big-data/migrate-third-party-and-self-managed-apache-kafka-clusters-to-amazon-msk-express-brokers-with-amazon-msk-replicator/">AWS blog post</a> to learn more.</p>
+]]></content:encoded>
+<pubDate>Mon, 22 Jun 2026 15:00:00 GMT</pubDate>
+<pubDate>Mon, 22 Jun 2026 15:00:00 GMT</pubDate>
+</item>
+<item>
+<title>v16.3.0-canary.63</title>
+<link>https://github.com/vercel/next.js/releases/tag/v16.3.0-canary.63</link>
+<guid>https://github.com/vercel/next.js/releases/tag/v16.3.0-canary.63</guid>
+<content:encoded><![CDATA[
+
+<h3>Misc Changes</h3>
+<ul>
+<li>Serve ISR fallback shells in response to prefetch requests: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/94534">#94534</a></li>
+<li>Insights: drop irrelevant fix cards from instant errors: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/94926">#94926</a></li>
+<li>Navigation inspector UI updates: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/94959">#94959</a></li>
+<li>skill(next-cache-components-adoption): clarify prereqs: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95082">#95082</a></li>
+<li>Turbopack: Delete dead AttachedFileSystem type: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/94960">#94960</a></li>
+<li>Opt Partial Prefetching routes into the runtime stage of Cached Navs: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95097">#95097</a></li>
+<li>Fix <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/issues/95015">#95015</a> by pulling a fix to scattered-collect: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95098">#95098</a></li>
+<li>docs(caching): clarify generateStaticParams prebuild and recommend max for CMS: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95081">#95081</a></li>
+<li>Release the instant navs lock without clearing the whole cookie jar: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/94947">#94947</a></li>
+<li>Compute dev fallback params from the most-specific prerendered route: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95066">#95066</a></li>
+</ul>
+<h3>Credits</h3>
+<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/acdlite">@acdlite</a>, <a class="user-mention notranslate" href="https://github.com/aurorascharff">@aurorascharff</a>, <a class="user-mention notranslate" href="https://github.com/samselikoff">@samselikoff</a>, <a class="user-mention notranslate" href="https://github.com/bgw">@bgw</a>, <a class="user-mention notranslate" href="https://github.com/unstubbable">@unstubbable</a>, <a class="user-mention notranslate" href="https://github.com/lukesandberg">@lukesandberg</a>, and <a class="user-mention notranslate" href="https://github.com/icyJoseph">@icyJoseph</a> for helping!</p>
+]]></content:encoded>
+
+<pubDate>2026-06-24T00:00:39Z</pubDate>
+</item>
+<item>
+<title>v16.3.0-canary.62</title>
+<link>https://github.com/vercel/next.js/releases/tag/v16.3.0-canary.62</link>
+<guid>https://github.com/vercel/next.js/releases/tag/v16.3.0-canary.62</guid>
+<content:encoded><![CDATA[
+
+<h3>Misc Changes</h3>
+<ul>
+<li>[skills] Mark insight-error-page and next-rspack as internal: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95070">#95070</a></li>
+<li>Turbopack: Fix log box test on react 18: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95078">#95078</a></li>
+<li>Turbopack: Avoid clone when sorting by module file path: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95079">#95079</a></li>
+<li>Fix false-positive <code>export const dynamic</code> in Cache Components detection: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95083">#95083</a></li>
+<li>docs: add Interactive Apps guide: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/94020">#94020</a></li>
+</ul>
+<h3>Credits</h3>
+<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/gaojude">@gaojude</a>, <a class="user-mention notranslate" href="https://github.com/bgw">@bgw</a>, <a class="user-mention notranslate" href="https://github.com/eps1lon">@eps1lon</a>, and <a class="user-mention notranslate" href="https://github.com/aurorascharff">@aurorascharff</a> for helping!</p>
+]]></content:encoded>
+
+<pubDate>2026-06-23T15:22:25Z</pubDate>
+</item>
+<item>
+<title>Extreme Heat conference cancelled due to extreme heat warning</title>
+<link>https://www.lse.ac.uk/granthaminstitute/events/extreme-heat-improving-governance-and-strengthening-action-around-the-world/</link>
+<guid>https://www.lse.ac.uk/granthaminstitute/events/extreme-heat-improving-governance-and-strengthening-action-around-the-world/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.lse.ac.uk/granthaminstitute/events/extreme-heat-improving-governance-and-strengthening-action-around-the-world/">https://www.lse.ac.uk/granthaminstitute/events/extreme-heat-improving-governance-and-strengthening-action-around-the-world/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48653060">https://news.ycombinator.com/item?id=48653060</a></p>
+<p>Points: 225</p>
+<p># Comments: 155</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 23:26:43 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 23:26:43 +0000</pubDate>
+</item>
+<item>
+<title>California AB 2047 makes 3D printers off-limits to students, educators, business</title>
+<link>https://www.the3dprintingnerd.com/ab2047</link>
+<guid>https://www.the3dprintingnerd.com/ab2047</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.the3dprintingnerd.com/ab2047">https://www.the3dprintingnerd.com/ab2047</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48652184">https://news.ycombinator.com/item?id=48652184</a></p>
+<p>Points: 248</p>
+<p># Comments: 174</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 22:12:18 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 22:12:18 +0000</pubDate>
+</item>
+<item>
+<title>Don't verify email addresses by sending spam to them</title>
+<link>https://milek7.pl/mailverifyspam/</link>
+<guid>https://milek7.pl/mailverifyspam/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://milek7.pl/mailverifyspam/">https://milek7.pl/mailverifyspam/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48650837">https://news.ycombinator.com/item?id=48650837</a></p>
+<p>Points: 155</p>
+<p># Comments: 49</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 20:23:49 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 20:23:49 +0000</pubDate>
+</item>
+<item>
+<title>Anthropic updates their terms to verify age or identity</title>
+<link>https://www.anthropic.com/legal/privacy</link>
+<guid>https://www.anthropic.com/legal/privacy</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.anthropic.com/legal/privacy">https://www.anthropic.com/legal/privacy</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48650311">https://news.ycombinator.com/item?id=48650311</a></p>
+<p>Points: 188</p>
+<p># Comments: 172</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 19:45:07 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 19:45:07 +0000</pubDate>
+</item>
+<item>
+<title>Jerry's Map</title>
+<link>http://www.jerrysmap.com/the-map</link>
+<guid>http://www.jerrysmap.com/the-map</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://www.openculture.com/2026/06/this-man-has-been-drawing-a-map-of-an-imaginary-land-since-1963.html" rel="nofollow">https://www.openculture.com/2026/06/this-man-has-been-drawin...</a></p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48649435">https://news.ycombinator.com/item?id=48649435</a></p>
+<p>Points: 364</p>
+<p># Comments: 49</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 18:40:22 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 18:40:22 +0000</pubDate>
+</item>
+<item>
+<title>Fired by Google for creating the Google workspace CLI</title>
+<link>https://twitter.com/JPoehnelt/status/2069482265953087602</link>
+<guid>https://twitter.com/JPoehnelt/status/2069482265953087602</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://xcancel.com/JPoehnelt/status/2069482265953087602" rel="nofollow">https://xcancel.com/JPoehnelt/status/2069482265953087602</a></p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48649011">https://news.ycombinator.com/item?id=48649011</a></p>
+<p>Points: 347</p>
+<p># Comments: 226</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 18:13:40 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 18:13:40 +0000</pubDate>
+</item>
+<item>
+<title>Swift Package Index joins Apple</title>
+<link>https://swiftpackageindex.com/blog/swift-package-index-joins-apple</link>
+<guid>https://swiftpackageindex.com/blog/swift-package-index-joins-apple</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://swiftpackageindex.com/blog/swift-package-index-joins-apple">https://swiftpackageindex.com/blog/swift-package-index-joins-apple</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48648779">https://news.ycombinator.com/item?id=48648779</a></p>
+<p>Points: 188</p>
+<p># Comments: 57</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 18:00:58 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 18:00:58 +0000</pubDate>
+</item>
+<item>
+<title>FUTO Swipe – A new swipe typing model</title>
+<link>https://swipe.futo.tech/</link>
+<guid>https://swipe.futo.tech/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://swipe.futo.tech/">https://swipe.futo.tech/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48648619">https://news.ycombinator.com/item?id=48648619</a></p>
+<p>Points: 350</p>
+<p># Comments: 101</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 17:50:22 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 17:50:22 +0000</pubDate>
+</item>
+<item>
+<title>75% More Pedestrians Have Been Killed Since 2009. Giant Trucks and SUVs Are Why</title>
+<link>https://www.thedrive.com/news/75-more-pedestrians-have-been-killed-since-2009-giant-trucks-and-suvs-are-why</link>
+<guid>https://www.thedrive.com/news/75-more-pedestrians-have-been-killed-since-2009-giant-trucks-and-suvs-are-why</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.thedrive.com/news/75-more-pedestrians-have-been-killed-since-2009-giant-trucks-and-suvs-are-why">https://www.thedrive.com/news/75-more-pedestrians-have-been-killed-since-2009-giant-trucks-and-suvs-are-why</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48648371">https://news.ycombinator.com/item?id=48648371</a></p>
+<p>Points: 188</p>
+<p># Comments: 12</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 17:31:34 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 17:31:34 +0000</pubDate>
+</item>
+<item>
+<title>Claude Tag</title>
+<link>https://www.anthropic.com/news/introducing-claude-tag</link>
+<guid>https://www.anthropic.com/news/introducing-claude-tag</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.anthropic.com/news/introducing-claude-tag">https://www.anthropic.com/news/introducing-claude-tag</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48648039">https://news.ycombinator.com/item?id=48648039</a></p>
+<p>Points: 237</p>
+<p># Comments: 162</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 17:09:18 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 17:09:18 +0000</pubDate>
+</item>
+<item>
+<title>F3</title>
+<link>https://github.com/future-file-format/f3</link>
+<guid>https://github.com/future-file-format/f3</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://github.com/future-file-format/f3">https://github.com/future-file-format/f3</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48647799">https://news.ycombinator.com/item?id=48647799</a></p>
+<p>Points: 614</p>
+<p># Comments: 129</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 16:53:32 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 16:53:32 +0000</pubDate>
+</item>
+<item>
+<title>The worthlessness of Vitamin D is mildly exaggerated</title>
+<link>https://dynomight.net/vitamin-d/</link>
+<guid>https://dynomight.net/vitamin-d/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://dynomight.net/vitamin-d/">https://dynomight.net/vitamin-d/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48647486">https://news.ycombinator.com/item?id=48647486</a></p>
+<p>Points: 228</p>
+<p># Comments: 161</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 16:30:18 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 16:30:18 +0000</pubDate>
+</item>
+<item>
+<title>Digital euro clears key hurdle as EU seeks to break free from U.S. credit cards</title>
+<link>https://finance.yahoo.com/markets/currencies/articles/ecb-secures-key-parliamentary-backing-102718449.html</link>
+<guid>https://finance.yahoo.com/markets/currencies/articles/ecb-secures-key-parliamentary-backing-102718449.html</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://finance.yahoo.com/markets/currencies/articles/ecb-secures-key-parliamentary-backing-102718449.html">https://finance.yahoo.com/markets/currencies/articles/ecb-secures-key-parliamentary-backing-102718449.html</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48647444">https://news.ycombinator.com/item?id=48647444</a></p>
+<p>Points: 179</p>
+<p># Comments: 271</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 16:27:49 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 16:27:49 +0000</pubDate>
+</item>
+<item>
+<title>AI's Affordability Crisis</title>
+<link>https://blog.dshr.org/2026/06/ais-affordability-crisis.html</link>
+<guid>https://blog.dshr.org/2026/06/ais-affordability-crisis.html</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://blog.dshr.org/2026/06/ais-affordability-crisis.html">https://blog.dshr.org/2026/06/ais-affordability-crisis.html</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48646276">https://news.ycombinator.com/item?id=48646276</a></p>
+<p>Points: 267</p>
+<p># Comments: 350</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 15:11:17 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 15:11:17 +0000</pubDate>
+</item>
+<item>
+<title>Show HN: TikZ Editor – WYSIWYG editor for figures in LaTeX</title>
+<link>https://tikz.dev/editor/</link>
+<guid>https://tikz.dev/editor/</guid>
+<content:encoded><![CDATA[
+
+<p>Hi all! TikZ is a widely-used LaTeX package for drawing figures in papers. It uses commands like \draw[->] (0,0) -- (1,2); to draw lines, shapes, text, etc. Academics usually code up their figures by hand, so there is lots of twiddling around with the coordinates and recompiling until things look nice. I guess it’s a bit like SVG, but it’s more code than markup, for example it has loops with \foreach.<p>I built an open-source WYSIWYG TikZ editor (available for web and desktop) that allows you to edit your TikZ source code visually by dragging and resizing elements. It simultaneously shows the source code and the rendered figure, and lets you edit either one while the two views stay in sync. I’m not aware of any other editors that are simultaneously source editors and WYSIWYG (even for editing SVG or HTML), and I’m quite pleased with how well the combination works.<p>The way the app is implemented is by parsing the TikZ code, and at all times keeping track of the exact source location of each object. Thereby, when a user drags an element to a new position, the app can override just the numbers in the coordinate without changing anything else in the code (such as line breaks or indentation).<p>This approach essentially required reimplementing a large fraction of TikZ, which is the kind of task that no human would ever want to do. I think building software that doesn’t exist yet because it would be impossibly tedious to code up is one of the great new possibilities thanks to coding agents, and it’s worth brainstorming for other examples. (This app was built almost entirely by Codex.)<p>Implementing the app came with lots of fun side quests, including building converters from SVG / pptx / ipe to TikZ, re-implementing the LaTeX hyphenation and line-breaking algorithm to support multi-line nodes, and making a color picker that uses the red!20!black color mixing notation used in LaTeX papers.</p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48645437">https://news.ycombinator.com/item?id=48645437</a></p>
+<p>Points: 348</p>
+<p># Comments: 66</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 14:24:21 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 14:24:21 +0000</pubDate>
+</item>
+<item>
+<title>Elevated error rate across multiple models</title>
+<link>https://status.claude.com/incidents/jbhf20wjmzrf</link>
+<guid>https://status.claude.com/incidents/jbhf20wjmzrf</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://status.claude.com/incidents/jbhf20wjmzrf">https://status.claude.com/incidents/jbhf20wjmzrf</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48645386">https://news.ycombinator.com/item?id=48645386</a></p>
+<p>Points: 205</p>
+<p># Comments: 253</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 14:19:47 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 14:19:47 +0000</pubDate>
+</item>
+<item>
+<title>What we call "age verification" is actually mass surveillance</title>
+<link>https://pluralistic.net/2026/06/23/destroy-the-village/</link>
+<guid>https://pluralistic.net/2026/06/23/destroy-the-village/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://pluralistic.net/2026/06/23/destroy-the-village/">https://pluralistic.net/2026/06/23/destroy-the-village/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48645173">https://news.ycombinator.com/item?id=48645173</a></p>
+<p>Points: 784</p>
+<p># Comments: 418</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 14:04:43 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 14:04:43 +0000</pubDate>
+</item>
+<item>
+<title>Mistral OCR 4</title>
+<link>https://mistral.ai/news/ocr-4/</link>
+<guid>https://mistral.ai/news/ocr-4/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://mistral.ai/news/ocr-4/">https://mistral.ai/news/ocr-4/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48645152">https://news.ycombinator.com/item?id=48645152</a></p>
+<p>Points: 439</p>
+<p># Comments: 113</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 14:03:19 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 14:03:19 +0000</pubDate>
+</item>
+<item>
+<title>Madison Square Garden compiled a list of activists against facial recognition</title>
+<link>https://www.404media.co/madison-square-garden-made-dossier-on-activists-who-opposed-facial-recognition/</link>
+<guid>https://www.404media.co/madison-square-garden-made-dossier-on-activists-who-opposed-facial-recognition/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.404media.co/madison-square-garden-made-dossier-on-activists-who-opposed-facial-recognition/">https://www.404media.co/madison-square-garden-made-dossier-on-activists-who-opposed-facial-recognition/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48644781">https://news.ycombinator.com/item?id=48644781</a></p>
+<p>Points: 292</p>
+<p># Comments: 87</p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 13:36:10 +0000</pubDate>
+<pubDate>Tue, 23 Jun 2026 13:36:10 +0000</pubDate>
+</item>
+<item>
+<title>Keeping the Web Open and Private in the Bot Era</title>
+<link>https://blog.mozilla.org/en/privacy-security/keeping-the-web-open-and-private-in-the-bot-era/</link>
+<guid>https://blog.mozilla.org/en/privacy-security/keeping-the-web-open-and-private-in-the-bot-era/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/sdqqbb/keeping_web_open_private_bot_era">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 11:06:03 -0500</pubDate>
+<pubDate>Tue, 23 Jun 2026 11:06:03 -0500</pubDate>
+</item>
+<item>
+<title>Please keep code descriptions simple</title>
+<link>https://akselmo.dev/posts/please-keep-code-descriptions-simple/</link>
+<guid>https://akselmo.dev/posts/please-keep-code-descriptions-simple/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/y4hgjd/please_keep_code_descriptions_simple">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 05:29:40 -0500</pubDate>
+<pubDate>Tue, 23 Jun 2026 05:29:40 -0500</pubDate>
+</item>
+<item>
+<title>how a stray "j" ruined my evening</title>
+<link>https://napkins.mtmn.name/posts/stray-jay.html</link>
+<guid>https://napkins.mtmn.name/posts/stray-jay.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/cjnnk3/how_stray_j_ruined_my_evening">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 09:36:54 -0500</pubDate>
+<pubDate>Tue, 23 Jun 2026 09:36:54 -0500</pubDate>
+</item>
+<item>
+<title>Vulnerability Reports Are Not Special Anymore</title>
+<link>https://words.filippo.io/vuln-reports/</link>
+<guid>https://words.filippo.io/vuln-reports/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/bcjwwn/vulnerability_reports_are_not_special">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 08:47:31 -0500</pubDate>
+<pubDate>Tue, 23 Jun 2026 08:47:31 -0500</pubDate>
+</item>
+<item>
+<title>It’s Only When You Look Back</title>
+<link>https://www.markround.com/blog/2026/06/17/25-its-only-when-you-look-back/</link>
+<guid>https://www.markround.com/blog/2026/06/17/25-its-only-when-you-look-back/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/f2ixyf/it_s_only_when_you_look_back">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 03:58:55 -0500</pubDate>
+<pubDate>Tue, 23 Jun 2026 03:58:55 -0500</pubDate>
+</item>
+<item>
+<title>Record type inference for dummies</title>
+<link>https://haskellforall.com/2026/06/record-type-inference-for-dummies</link>
+<guid>https://haskellforall.com/2026/06/record-type-inference-for-dummies</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/ufml52/record_type_inference_for_dummies">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 07:46:26 -0500</pubDate>
+<pubDate>Tue, 23 Jun 2026 07:46:26 -0500</pubDate>
+</item>
+<item>
+<title>Cloudflare Collaborates With Leading Browsers to Develop a Privacy-First Protocol For the Global Internet</title>
+<link>https://cloudflare.net/news/news-details/2026/Cloudflare-Collaborates-With-Leading-Browsers-to-Develop-a-Privacy-First-Protocol-For-the-Global-Internet/default.aspx</link>
+<guid>https://cloudflare.net/news/news-details/2026/Cloudflare-Collaborates-With-Leading-Browsers-to-Develop-a-Privacy-First-Protocol-For-the-Global-Internet/default.aspx</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/fdwnzt/cloudflare_collaborates_with_leading">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 11:20:31 -0500</pubDate>
+<pubDate>Tue, 23 Jun 2026 11:20:31 -0500</pubDate>
+</item>
+<item>
+<title>The Low-Tech AI Of Elden Ring</title>
+<link>https://nega.tv/posts/low-tech-ai-of-elden-ring.html</link>
+<guid>https://nega.tv/posts/low-tech-ai-of-elden-ring.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/fzz7pf/low_tech_ai_elden_ring">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 00:25:04 -0500</pubDate>
+<pubDate>Tue, 23 Jun 2026 00:25:04 -0500</pubDate>
+</item>
+<item>
+<title>FEXPRs vs. vtable: how LispE interpreter works</title>
+<link>https://github.com/naver/lispe/wiki/2.7-FEXPR-vs.-vtable</link>
+<guid>https://github.com/naver/lispe/wiki/2.7-FEXPR-vs.-vtable</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/leh6g3/fexprs_vs_vtable_how_lispe_interpreter">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 07:00:13 -0500</pubDate>
+<pubDate>Tue, 23 Jun 2026 07:00:13 -0500</pubDate>
+</item>
+<item>
+<title>How we found a bug in the hyper HTTP library</title>
+<link>https://blog.cloudflare.com/hyper-bug/</link>
+<guid>https://blog.cloudflare.com/hyper-bug/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/pvdvww/how_we_found_bug_hyper_http_library">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 19:18:29 -0500</pubDate>
+<pubDate>Tue, 23 Jun 2026 19:18:29 -0500</pubDate>
+</item>
+<item>
+<title>Adversarial Communication</title>
+<link>https://blog.glyph.im/2026/06/adversarial-communication.html</link>
+<guid>https://blog.glyph.im/2026/06/adversarial-communication.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/gfroei/adversarial_communication">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 20:36:05 -0500</pubDate>
+<pubDate>Tue, 23 Jun 2026 20:36:05 -0500</pubDate>
+</item>
+<item>
+<title>Performance of WebAssembly runtimes in 2026</title>
+<link>https://00f.net/2026/06/23/webassembly-runtimes-2026/</link>
+<guid>https://00f.net/2026/06/23/webassembly-runtimes-2026/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/fhmvsf/performance_webassembly_runtimes_2026">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 09:29:29 -0500</pubDate>
+<pubDate>Tue, 23 Jun 2026 09:29:29 -0500</pubDate>
+</item>
+<item>
+<title>Legibility of Effort</title>
+<link>https://eieio.games/blog/legibility-of-effort/</link>
+<guid>https://eieio.games/blog/legibility-of-effort/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/7q9qwr/legibility_effort">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 21:18:36 -0500</pubDate>
+<pubDate>Tue, 23 Jun 2026 21:18:36 -0500</pubDate>
+</item>
+<item>
+<title>Blobly</title>
+<link>https://blobly.medv.io/</link>
+<guid>https://blobly.medv.io/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/czrkxh/blobly">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 00:01:01 -0500</pubDate>
+<pubDate>Tue, 23 Jun 2026 00:01:01 -0500</pubDate>
+</item>
+<item>
+<title>ytr: YouTube radio for Emacs</title>
+<link>https://xenodium.com/ytr-youtube-radio-for-emacs</link>
+<guid>https://xenodium.com/ytr-youtube-radio-for-emacs</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/eobxls/ytr_youtube_radio_for_emacs">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 09:48:44 -0500</pubDate>
+<pubDate>Tue, 23 Jun 2026 09:48:44 -0500</pubDate>
+</item>
+<item>
+<title>Datastar – It’s Pretty Good</title>
+<link>https://data-star.dev/essays/datastar_its_pretty_good</link>
+<guid>https://data-star.dev/essays/datastar_its_pretty_good</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/cdxin1/datastar_it_s_pretty_good">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 06:25:31 -0500</pubDate>
+<pubDate>Tue, 23 Jun 2026 06:25:31 -0500</pubDate>
+</item>
+<item>
+<title>Ultra: A from-scratch kernel that aims for full ABI compatibility with the Linux userland</title>
+<link>https://github.com/UltraOS/Ultra</link>
+<guid>https://github.com/UltraOS/Ultra</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/qzw7no/ultra_from_scratch_kernel_aims_for_full">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 14:46:37 -0500</pubDate>
+<pubDate>Tue, 23 Jun 2026 14:46:37 -0500</pubDate>
+</item>
+<item>
+<title>Matt’s Script Archive: The Scripts That Reshaped The Web</title>
+<link>https://tedium.co/2026/06/22/matts-script-archive-retrospective/</link>
+<guid>https://tedium.co/2026/06/22/matts-script-archive-retrospective/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/mvjcxs/matt_s_script_archive_scripts_reshaped">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 00:33:44 -0500</pubDate>
+<pubDate>Tue, 23 Jun 2026 00:33:44 -0500</pubDate>
+</item>
+<item>
+<title>maestro: Lightweight, Linux-compatible kernel, written in Rust</title>
+<link>https://github.com/maestro-os/maestro</link>
+<guid>https://github.com/maestro-os/maestro</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/yvydvs/maestro_lightweight_linux_compatible">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 23 Jun 2026 19:13:28 -0500</pubDate>
+<pubDate>Tue, 23 Jun 2026 19:13:28 -0500</pubDate>
+</item>
 
 <item>
 <title>AWS HealthOmics now supports Nextflow profiles</title>
@@ -12,13 +718,12 @@
 <content:encoded><![CDATA[
 <div> Keywords: AWS HealthOmics, Nextflow profiles, workflow, HIPAA-eligible, bioinformatics  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 AWS HealthOmics has introduced support for Nextflow profiles, allowing customers to activate predefined execution settings during runtime. This feature enables the definition of reusable settings, facilitating a smoother transition between different execution scenarios without altering the core workflow source code. It supports HIPAA compliance, making it beneficial for healthcare and life sciences sectors focused on accelerating scientific research and bioinformatics workflows. With Nextflow profiles, users can segregate platform-specific configurations, such as resource limits and execution options, from the main workflow logic. This separation simplifies the switch between development and production settings, minimizing errors linked to manual edits and enhancing workflow portability. This is particularly advantageous when scaling from development to production environments. Additionally, users of nf-core workflows can activate pre-existing built-in and institutional profiles that come with those pipelines. Nextflow profiles can be specified in workflow runs across all AWS HealthOmics regions, including US East (N. Virginia), US West (Oregon), select European locations, Israel (Tel Aviv), and Asia Pacific (Singapore, Seoul). For further details, refer to the Nextflow Profiles section in the HealthOmics documentation. <div>
 <p>AWS HealthOmics now supports Nextflow profiles, enabling customers to activate predefined execution settings at run time. Nextflow profiles allow customers to define reusable settings and select them at the point of execution, making it easy to switch between execution settings without modifying workflow source code. <a href="https://aws.amazon.com/healthomics/">AWS HealthOmics</a> is a HIPAA-eligible service that helps healthcare and life sciences customers accelerate scientific breakthroughs at scale with fully managed bioinformatics workflows.</p> 
 <p>With Nextflow profiles, you can cleanly separate platform-specific settings such as resource limits or execution options from core workflow logic. You can switch between development and production settings without creating separate workflow definitions. This reduces errors from manual edits, accelerates workflow portability, and saves time when scaling from development to production. If you use nf-core workflows, you can now activate the built-in and institutional profiles those pipelines already ship with.</p> 
 <p>You can now specify one or more Nextflow profiles in your workflow runs in all AWS HealthOmics Regions: US East (N. Virginia), US West (Oregon), Europe (Frankfurt, Ireland, London), Israel (Tel Aviv), and Asia Pacific (Singapore, Seoul). To learn more, visit the Nextflow Profiles section on HealthOmics <a href="https://docs.aws.amazon.com/omics/latest/dev/starting-a-run.html#start-run-api-engine-settings">Nextflow engine settings</a> documentation.</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 22:00:00 GMT</pubDate>
 <pubDate>Mon, 22 Jun 2026 22:00:00 GMT</pubDate>
 </item>
 <item>
@@ -28,13 +733,12 @@ AWS HealthOmics has introduced support for Nextflow profiles, allowing customers
 <content:encoded><![CDATA[
 <div> Keywords: AWS, Lambda MicroVMs, isolation, execution environment, serverless
 
-<br><br>Summary: AWS has introduced Lambda MicroVMs, a new serverless compute primitive that offers VM-level isolation, rapid launch speeds, and state preservation for executing user-generated or AI-generated code. This solution enables developers to build multi-tenant applications where each user or job has a separate, isolated execution environment. Traditional options forced developers to compromise between security, speed, and state retention; however, Lambda MicroVMs combine these features without trade-offs. Built on Firecracker virtualization, which supports over 15 trillion monthly Lambda Function invocations, these MicroVMs allow for near-instant launch and suspension of execution for up to 8 hours. Developers can create MicroVM images from their Dockerfiles and launch MicroVMs with dedicated HTTPS URLs that are compatible with protocols like HTTP/2, gRPC, and WebSockets. Lambda MicroVMs are currently available in regions including US East (N. Virginia), US East (Ohio), US West (Oregon), Asia Pacific (Tokyo), and Europe (Ireland). Usage is billed based on baseline compute resources while the MicroVM is running, with additional charges only for resource use exceeding the baseline. For more details, visit the AWS website. <div>
+<br /><br />Summary: AWS has introduced Lambda MicroVMs, a new serverless compute primitive that offers VM-level isolation, rapid launch speeds, and state preservation for executing user-generated or AI-generated code. This solution enables developers to build multi-tenant applications where each user or job has a separate, isolated execution environment. Traditional options forced developers to compromise between security, speed, and state retention; however, Lambda MicroVMs combine these features without trade-offs. Built on Firecracker virtualization, which supports over 15 trillion monthly Lambda Function invocations, these MicroVMs allow for near-instant launch and suspension of execution for up to 8 hours. Developers can create MicroVM images from their Dockerfiles and launch MicroVMs with dedicated HTTPS URLs that are compatible with protocols like HTTP/2, gRPC, and WebSockets. Lambda MicroVMs are currently available in regions including US East (N. Virginia), US East (Ohio), US West (Oregon), Asia Pacific (Tokyo), and Europe (Ireland). Usage is billed based on baseline compute resources while the MicroVM is running, with additional charges only for resource use exceeding the baseline. For more details, visit the AWS website. <div>
 <p>AWS introduces Lambda MicroVMs, a new serverless compute primitive that provides VM-level isolation, near-instant launch and resume speeds, and state preservation for executing user or AI-generated code. You can now give each user or job their own compute environment to securely run code without managing virtualization infrastructure or choosing between isolation, speed, and state retention.</p> 
 <p>Developers are increasingly building multi-tenant applications that execute code supplied by end users or AI for use cases such as interactive coding environments, data analytics platforms, coding assistants, and vulnerability scanning platforms. For these applications, developers need to allocate a separate, isolated execution environment per user or session to limit the impact of incorrect or malicious code on other concurrently running users or jobs. Previously, developers needed to choose between strong isolation, fast launch times, and state retention when building these applications. Starting today, Lambda MicroVMs provides you these capabilities without any trade-offs. You get VM-level isolation, near-instant launch speeds, and the ability to suspend and resume execution for up to 8 hours. Lambda MicroVMs is built on Firecracker virtualization, the technology powering more than 15 trillion monthly Lambda Function invocations.&nbsp;</p> 
 <p>To get started, create a MicroVM image from your Dockerfile, then launch MicroVMs from that image. Give each user or job their own MicroVM with a dedicated HTTPS URL that supports popular connectivity protocols such as HTTP/2, gRPC, and WebSockets.&nbsp;</p> 
 <p>Lambda MicroVMs is available today in the following AWS Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Asia Pacific (Tokyo), and Europe (Ireland). To learn more, visit the <a href="https://docs.aws.amazon.com/lambda/latest/dg/lambda-microvms-guide.html" rel="noopener noreferrer" target="_blank">AWS Lambda MicroVMs developer guide</a>&nbsp;and the <a href="https://aws.amazon.com/blogs/aws/run-isolated-sandboxes-with-full-lifecycle-control-aws-lambda-introduces-microvms" rel="noopener noreferrer" target="_blank">launch blog post</a>. Get started with MicroVMs through the AWS Lambda console, AWS CloudFormation, AWS Cloud Development Kit, or use the <a href="https://github.com/aws/agent-toolkit-for-aws/tree/main/skills/specialized-skills/serverless-skills/aws-lambda-microvms" rel="noopener noreferrer" target="_blank">Agent Toolkit for AWS</a>&nbsp;with your preferred Agentic development tools. You pay for baseline compute resources while your MicroVM is running, and only for the active duration of additional resources consumed when your workload exceeds the baseline. To learn more about pricing, see <a href="https://aws.amazon.com/lambda/pricing/" rel="noopener noreferrer" target="_blank">Lambda MicroVMs pricing</a>.</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 20:37:00 GMT</pubDate>
 <pubDate>Mon, 22 Jun 2026 20:37:00 GMT</pubDate>
 </item>
 <item>
@@ -44,10 +748,9 @@ AWS HealthOmics has introduced support for Nextflow profiles, allowing customers
 <content:encoded><![CDATA[
 <div> Keywords: AWS Network Firewall, application drop, stateful action, policies, TCP packets  
 
-<br><br>Summary: AWS Network Firewall has updated its default stateful action for newly created firewall policies from "Application drop established (bidirectional)" to "Application drop established (server-directed only)." This change addresses significant issues by preventing the silent dropping of legitimate TCP packets like window updates, keep-alives, and resets, which previously led to intermittent connection failures that were challenging to diagnose. This safer default action enhances the reliability of network communications. Existing policies that require the previous setting for post-quantum cryptography (PQC) fragmented TLS handshakes can follow specific documentation guidelines to switch to the new default or can add the “to_server” flag to TCP drop rules to ensure legitimate flow control packets are not blocked. This update is universally applicable across all AWS Regions where AWS Network Firewall is available, making it easier for users to create new policies without needing to take further action. For those looking to implement these changes or learn more, detailed guidance is available in the AWS Network Firewall service documentation. <div>
+<br /><br />Summary: AWS Network Firewall has updated its default stateful action for newly created firewall policies from "Application drop established (bidirectional)" to "Application drop established (server-directed only)." This change addresses significant issues by preventing the silent dropping of legitimate TCP packets like window updates, keep-alives, and resets, which previously led to intermittent connection failures that were challenging to diagnose. This safer default action enhances the reliability of network communications. Existing policies that require the previous setting for post-quantum cryptography (PQC) fragmented TLS handshakes can follow specific documentation guidelines to switch to the new default or can add the “to_server” flag to TCP drop rules to ensure legitimate flow control packets are not blocked. This update is universally applicable across all AWS Regions where AWS Network Firewall is available, making it easier for users to create new policies without needing to take further action. For those looking to implement these changes or learn more, detailed guidance is available in the AWS Network Firewall service documentation. <div>
 <p><a href="https://aws.amazon.com/network-firewall/">AWS Network Firewall</a> now uses "Application drop established (server-directed only)" as the default stateful action for all newly created firewall policies, replacing the previous default of "Application drop established (bidirectional)" (formerly named "Application layer drop established"). No action is required to benefit from this change when creating new policies.<br /> <br /> AWS Network Firewall is a managed service that lets you deploy network protections across your Amazon VPCs. Previously, the “Application drop established (bidirectional)” default could silently drop legitimate server-to-client TCP packets, such as window updates, keep-alives, and resets — causing intermittent connection failures that were difficult to diagnose. With the safer default now in place, new policies avoid this issue.<br /> <br /> If your existing environment requires “Application drop established (bidirectional)” to support post-quantum cryptography (PQC) fragmented TLS handshakes, refer to our documentation for guidance on on switching to "Application drop established (server-directed only)" or adding the “to_server” flag to your TCP drop rules so legitimate flow control packets are not blocked.<br /> <br /> This update is available in all AWS Regions where AWS Network Firewall is offered. To get started, see <a href="https://docs.aws.amazon.com/network-firewall/latest/developerguide/suricata-rule-evaluation-order.html">Managing evaluation order for Suricata compatible rules</a> in the AWS Network Firewall service documentation.</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 17:00:00 GMT</pubDate>
 <pubDate>Mon, 22 Jun 2026 17:00:00 GMT</pubDate>
 </item>
 <item>
@@ -57,10 +760,9 @@ AWS HealthOmics has introduced support for Nextflow profiles, allowing customers
 <content:encoded><![CDATA[
 <div> Keywords: AWS Batch, BFPO, SCOP, instance types, compute environments
 
-<br><br>Summary: AWS Batch has introduced two new allocation strategies: Best Fit Progressive Ordered (BFPO) and Spot Capacity Optimized Prioritized (SCOP), enhancing user control over instance type prioritization within compute environments. These strategies allow users to manually define the order of instance types based on the performance characteristics specific to their workloads. To implement these features in AWS Batch, users need to specify the BEST_FIT_PROGRESSIVE_ORDERED strategy for on-demand compute environments and SPOT_CAPACITY_OPTIMIZED_PRIORITIZED for EC2 Spot compute environments. Additionally, an ordered list of instance types or families must be provided to utilize these strategies effectively. The new BFPO and SCOP allocation strategies are available through the AWS Batch API, specifically via the CreateComputeEnvironment or UpdateComputeEnvironment methods, as well as through the AWS Batch Management Console. These features are currently supported in all regions where AWS Batch is operational. For further details, users are encouraged to refer to the AWS documentation. <div>
+<br /><br />Summary: AWS Batch has introduced two new allocation strategies: Best Fit Progressive Ordered (BFPO) and Spot Capacity Optimized Prioritized (SCOP), enhancing user control over instance type prioritization within compute environments. These strategies allow users to manually define the order of instance types based on the performance characteristics specific to their workloads. To implement these features in AWS Batch, users need to specify the BEST_FIT_PROGRESSIVE_ORDERED strategy for on-demand compute environments and SPOT_CAPACITY_OPTIMIZED_PRIORITIZED for EC2 Spot compute environments. Additionally, an ordered list of instance types or families must be provided to utilize these strategies effectively. The new BFPO and SCOP allocation strategies are available through the AWS Batch API, specifically via the CreateComputeEnvironment or UpdateComputeEnvironment methods, as well as through the AWS Batch Management Console. These features are currently supported in all regions where AWS Batch is operational. For further details, users are encouraged to refer to the AWS documentation. <div>
 <p>AWS Batch now offers the Best Fit Progressive Ordered (BFPO) and Spot Capacity Optimized Prioritized (SCOP) allocation strategies, giving you more control over instance type prioritization in your compute environments. BFPO and SCOP enable you to manually define instance type ordering based on your workload-specific performance characteristics.<br /> <br /> To use these features in AWS Batch, specify BEST_FIT_PROGRESSIVE_ORDERED allocation strategy for your on-demand compute environments or SPOT_CAPACITY_OPTIMIZED_PRIORITIZED for your Amazon EC2 Spot compute environments and provide an ordered list of instance types or families. These features are available via the AWS Batch API (<i>CreateComputeEnvironment </i>or <i>UpdateComputeEnvironment</i>) or the AWS Batch Management Console.<br /> <br /> BFPO and SCOP allocation strategies are supported today in all <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/">AWS Regions</a> where AWS Batch is available. For more information, see the <a href="https://docs.aws.amazon.com/batch/latest/userguide/allocation-strategies.html">AWS Batch User Guide</a>.</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 16:30:00 GMT</pubDate>
 <pubDate>Mon, 22 Jun 2026 16:30:00 GMT</pubDate>
 </item>
 <item>
@@ -70,13 +772,12 @@ AWS HealthOmics has introduced support for Nextflow profiles, allowing customers
 <content:encoded><![CDATA[
 <div> Keywords: AWS IAM Identity Center, quotas, accounts, applications, increase request
 
-<br><br>Summary: AWS IAM Identity Center now offers distinct quotas for configuring AWS accounts and applications within an instance. By default, users can set up to 7,000 AWS accounts and 7,000 applications independently, allowing for more flexible resource management, since utilizing one does not affect the capacity of the other. This is particularly beneficial for organizations managing a large number of AWS accounts, as they can onboard applications without impacting their account quota. For those needing higher limits, it is possible to request an increase through the AWS Service Quotas console. Customers who already possess higher limits will automatically receive the same expanded quotas for both accounts and applications, with no further action necessary. This update is applicable across all AWS Regions where IAM Identity Center is available, enhancing the platform’s usability and scalability for customers. To learn more about these updates and how to get started with IAM Identity Center, additional resources are available, providing guidance on the new capabilities and features. <div>
+<br /><br />Summary: AWS IAM Identity Center now offers distinct quotas for configuring AWS accounts and applications within an instance. By default, users can set up to 7,000 AWS accounts and 7,000 applications independently, allowing for more flexible resource management, since utilizing one does not affect the capacity of the other. This is particularly beneficial for organizations managing a large number of AWS accounts, as they can onboard applications without impacting their account quota. For those needing higher limits, it is possible to request an increase through the AWS Service Quotas console. Customers who already possess higher limits will automatically receive the same expanded quotas for both accounts and applications, with no further action necessary. This update is applicable across all AWS Regions where IAM Identity Center is available, enhancing the platform’s usability and scalability for customers. To learn more about these updates and how to get started with IAM Identity Center, additional resources are available, providing guidance on the new capabilities and features. <div>
 <p>AWS IAM Identity Center now supports separate quotas for the number of AWS accounts and applications that can be configured in an IAM Identity Center instance. By default, you can configure up to 7,000 AWS accounts and up to 7,000 applications independently, so that using more of one does not consume capacity from the other. Quotas can be further increased by submitting a quota increase request through AWS Service Quotas console.</p> 
 <p>Customers with existing higher limits are automatically granted the same limit for both accounts and applications, with no action required. Organizations managing thousands of AWS accounts can now onboard applications without consuming account quota capacity.</p> 
 <p>This update is available in all AWS Regions where IAM Identity Center is available.</p> 
 <p>To learn more, see <a href="https://docs.aws.amazon.com/singlesignon/latest/userguide/limits.html" rel="noopener noreferrer" target="_blank">Quotas for IAM Identity Center</a>. Visit the <a href="https://aws.amazon.com/iam/identity-center/" rel="noopener noreferrer" target="_blank">IAM Identity Center product page</a> to get started.</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 16:07:00 GMT</pubDate>
 <pubDate>Mon, 22 Jun 2026 16:07:00 GMT</pubDate>
 </item>
 <item>
@@ -86,11 +787,10 @@ AWS HealthOmics has introduced support for Nextflow profiles, allowing customers
 <content:encoded><![CDATA[
 <div> **Keywords:** Amazon MSK, AI Agent Skills, Kafka, MSK Express, migration  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 Amazon MSK now features AI Agent Skills, enhancing AI coding assistants with expert guidance for managing Amazon MSK. These skills assist users with essential operational tasks, including troubleshooting, sizing, and configuring Kafka clusters, as well as monitoring and migrating from external Kafka clusters. By utilizing these skills, teams can maintain the health and performance of their clusters, and seamlessly migrate their workloads to MSK Express. MSK Express offers up to three times more throughput per broker, allows for 20 times faster scaling, and reduces recovery time by 90% compared to standard brokers running Apache Kafka. The AI Agent Skills streamline previously complex tasks into a more manageable experience, permitting developers to navigate them independently and efficiently. Integration is made easy through existing AI coding agents like Kiro, Claude Code, or Cursor. To start leveraging these capabilities, users configure their AI agent and can pose questions such as “What broker type and size should I use for my MSK cluster?” or “Is my Kafka cluster compatible with MSK Express?” This innovative approach enables developers to optimize their use of Amazon MSK effectively. <div>
 <p>Amazon MSK now offers AI Agent Skills that give AI coding assistants expert, up-to-date guidance for operating Amazon MSK. The skills provide expert guidance for common operational tasks such as troubleshooting, sizing, configuring, monitoring, and migration from external Kafka clusters.<br /> <br /> Teams can leverage these skills to keep their clusters healthy and performant, and to migrate their external Kafka workloads to MSK Express to take advantage of up to 3 times more throughput per broker, scale up to 20 times faster, and reduced recovery time by 90 percent as compared to Standard brokers running Apache Kafka. The skills turn tasks that once required specialized knowledge into a guided experience developers can complete quickly, on their own.<br /> <br /> You can use the MSK skills with your existing AI coding agent - Kiro, Claude Code, or Cursor. To get started, configure the <a href="https://docs.aws.amazon.com/agent-toolkit/latest/userguide/what-is-agent-toolkit.html">Agent Toolkit for AWS</a> using the <a href="https://docs.aws.amazon.com/agent-toolkit/latest/userguide/aws-cli.html">AWS CLI</a>, then ask your coding agent a question, such as <i>"What broker type and size should I use for my MSK cluster?" or </i>"Is my Kafka cluster compatible with MSK Express?"</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 15:00:00 GMT</pubDate>
 <pubDate>Mon, 22 Jun 2026 15:00:00 GMT</pubDate>
 </item>
 <item>
@@ -100,10 +800,9 @@ Amazon MSK now features AI Agent Skills, enhancing AI coding assistants with exp
 <content:encoded><![CDATA[
 <div> Keywords: AWS Outposts, self-service, configuration, renewal, decommissioning
 
-<br><br>Summary: AWS Outposts now enables self-service capabilities for managing the lifecycle of Outposts via the AWS Management Console, CLI, and API. Previously, customers needed to rely on AWS teams for various lifecycle management tasks, from initial evaluation to term completion. The introduction of a new configuration and quoting tool provides real-time cost estimates based on different payment options and term lengths, identifying account and regional constraints before order submission. Quotes can be generated in seconds and converted to orders directly within the console for new deployments or capacity expansions. Additionally, subscription details, including term dates and billing information, are now accessible in the console and programmatically, eliminating the necessity to contact AWS for this information. As the term end date approaches, customers can utilize self-service workflows to renew their Outpost with a new term and payment option or decommission it through a guided resource cleanup process. These enhancements are available in all commercial AWS Regions supporting AWS Outposts, making it easier for users to manage their Outposts effectively. To find out more, refer to the additional information provided by AWS. <div>
+<br /><br />Summary: AWS Outposts now enables self-service capabilities for managing the lifecycle of Outposts via the AWS Management Console, CLI, and API. Previously, customers needed to rely on AWS teams for various lifecycle management tasks, from initial evaluation to term completion. The introduction of a new configuration and quoting tool provides real-time cost estimates based on different payment options and term lengths, identifying account and regional constraints before order submission. Quotes can be generated in seconds and converted to orders directly within the console for new deployments or capacity expansions. Additionally, subscription details, including term dates and billing information, are now accessible in the console and programmatically, eliminating the necessity to contact AWS for this information. As the term end date approaches, customers can utilize self-service workflows to renew their Outpost with a new term and payment option or decommission it through a guided resource cleanup process. These enhancements are available in all commercial AWS Regions supporting AWS Outposts, making it easier for users to manage their Outposts effectively. To find out more, refer to the additional information provided by AWS. <div>
 <p>AWS Outposts now provides self-service capabilities for configuration, quoting, ordering, subscription management, renewal, and decommissioning directly from the AWS Management Console, CLI, and API. Previously, customers relied on AWS teams for managing their Outposts lifecycle, from evaluation through end of term.<br /> <br /> A new configuration and quoting tool generates real-time cost estimates across payment options and term lengths, and proactively surfaces account and regional constraints before order submission. Quotes are generated in seconds and can be converted to orders directly in the console, for both new deployments and capacity additions. Subscription details, including term dates and billing, are now available in the console and programmatically, eliminating the need to contact AWS for contract information. When your term approaches its end date, self-service workflows let you renew with a new term and payment option, or decommission your Outpost through a guided workflow that handles resource cleanup.<br /> <br /> These features are available in all commercial AWS Regions that support AWS Outposts. To learn more, refer to the <a href="https://aws.amazon.com/blogs/compute/simplify-aws-outposts-lifecycle-management/">Launch Blog</a>.</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 10:00:00 GMT</pubDate>
 <pubDate>Mon, 22 Jun 2026 10:00:00 GMT</pubDate>
 </item>
 <item>
@@ -113,10 +812,9 @@ Amazon MSK now features AI Agent Skills, enhancing AI coding assistants with exp
 <content:encoded><![CDATA[
 <div> Keywords: AWS, Parallel Computing Service, P6e-GB200, GPU workloads, Slurm
 
-<br><br>Summary: AWS Parallel Computing Service (PCS) has introduced support for Amazon EC2 P6e-GB200 and P6e-GB300 UltraServer instances, designed for extensive GPU workloads utilizing the NVIDIA Blackwell architecture in Slurm-managed clusters. Users can reserve these UltraServers via EC2 Capacity Blocks for Machine Learning (ML) and associate them with a PCS compute node group using an EC2 launch template. PCS simplifies the configuration of Slurm by automatically setting the appropriate topology plugin. The P6e-GB200 UltraServers provide access to 72 NVIDIA Blackwell GPUs within one NVLink domain, delivering a remarkable 360 petaflops of FP8 compute (without sparsity) and 13.4 TB of high bandwidth memory (HBM3e). The P6e-GB300 UltraServers enhance capabilities with 1.5 times the GPU memory and 1.5 times FP4 compute (without sparsity) compared to the P6e-GB200. AWS PCS is a managed service that streamlines the running and scaling of HPC workloads on AWS. It allows for the development of comprehensive, elastic environments that include compute, storage, networking, and visualization tools, while managing cluster operations and updates with built-in observability features. The P6e UltraServers are available in all AWS Regions where PCS and EC2 Capacity Blocks for UltraServers are offered. <div>
+<br /><br />Summary: AWS Parallel Computing Service (PCS) has introduced support for Amazon EC2 P6e-GB200 and P6e-GB300 UltraServer instances, designed for extensive GPU workloads utilizing the NVIDIA Blackwell architecture in Slurm-managed clusters. Users can reserve these UltraServers via EC2 Capacity Blocks for Machine Learning (ML) and associate them with a PCS compute node group using an EC2 launch template. PCS simplifies the configuration of Slurm by automatically setting the appropriate topology plugin. The P6e-GB200 UltraServers provide access to 72 NVIDIA Blackwell GPUs within one NVLink domain, delivering a remarkable 360 petaflops of FP8 compute (without sparsity) and 13.4 TB of high bandwidth memory (HBM3e). The P6e-GB300 UltraServers enhance capabilities with 1.5 times the GPU memory and 1.5 times FP4 compute (without sparsity) compared to the P6e-GB200. AWS PCS is a managed service that streamlines the running and scaling of HPC workloads on AWS. It allows for the development of comprehensive, elastic environments that include compute, storage, networking, and visualization tools, while managing cluster operations and updates with built-in observability features. The P6e UltraServers are available in all AWS Regions where PCS and EC2 Capacity Blocks for UltraServers are offered. <div>
 <p>AWS Parallel Computing Service (PCS) now supports Amazon EC2 P6e-GB200 and P6e-GB300 UltraServer instances, enabling customers to run large-scale GPU workloads using the NVIDIA Blackwell architecture within Slurm-managed clusters. You can reserve UltraServers through EC2 Capacity Blocks for ML, associate them with a PCS compute node group via an EC2 launch template, and PCS automatically configures Slurm with the correct topology plugin.<br /> <br /> With P6e-GB200 UltraServers, you can access up to 72 NVIDIA Blackwell GPUs within one NVLink domain to use 360 petaflops of FP8 compute (without sparsity) and 13.4 TB of total high bandwidth memory (HBM3e). P6e-GB300 UltraServers provide 1.5x GPU memory and 1.5x FP4 compute (without sparsity) compared to P6e-GB200.<br /> <br /> AWS PCS is a managed service that simplifies running and scaling HPC workloads on AWS using Slurm. You can build complete, elastic environments that integrate compute, storage, networking, and visualization tools, while the service handles cluster operations with managed updates and built-in observability features.<br /> <br /> You can use P6e UltraServers with PCS in all AWS Regions where both PCS and EC2 Capacity Blocks for UltraServers are available. To learn more about P6e UltraServers, visit <a href="https://aws.amazon.com/ec2/instance-types/p6/">Amazon EC2 P6 instances</a>. To reserve P6e UltraServers, contact your AWS sales representative. Read more about PCS support for P6e UltraServers in the <a href="https://docs.aws.amazon.com/pcs/latest/userguide">PCS User Guide</a> and make sure to set the right <a href="https://docs.aws.amazon.com/pcs/latest/userguide/security-min-permissions.html#security-min-permissions_capacity-blocks">Permissions</a>.</p>
 ]]></content:encoded>
-<pubDate>Thu, 18 Jun 2026 19:00:00 GMT</pubDate>
 <pubDate>Thu, 18 Jun 2026 19:00:00 GMT</pubDate>
 </item>
 <item>
@@ -126,7 +824,7 @@ Amazon MSK now features AI Agent Skills, enhancing AI coding assistants with exp
 <content:encoded><![CDATA[
 <div> Keywords: determinism test, Cache Components, React upgrade, runtime stage, App API routes
 
-<br><br>Summary:  
+<br /><br />Summary:  
 A fix was implemented for a failing determinism test related to an adapter. Documentation was improved by correcting a typo in the "slot-missing-default.mdx" file and clarifying that Cache components require a Node.js runtime. Error code attributes were correctly set for App API routes to better handle errors. A script was developed to write pnpm overrides for pnpm projects in pack/patch helpers. In the authentication documentation, Auth and streaming were added, and code fences and imports were corrected. Metadata image routes have been updated to be statically prerendered under Cache Components. React was upgraded to a new version. A codemod was introduced for cache components with an 'instant-false' approach and related to next-cache-components-adoption skills. Legacy PPR code paths were removed to streamline functionality. The `--session` flag was fixed for the next-dev-loop skill, along with clarifications for agent-browser bootstrap and a note on using `--headed` daemon. A global opt-in feature for the runtime stage of Cached Navigations was added. The turbopack module was enhanced by renaming the edge runtime to self-contained runtime and sorting modules by path rather than ID. Finally, the next-cache-components-adoption skill was fine-tuned to emphasize the app router requirement. <div>
 <h3>Misc Changes</h3>
 <ul>
@@ -149,7 +847,6 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <h3>Credits</h3>
 <p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/mischnic">@mischnic</a>, <a class="user-mention notranslate" href="https://github.com/parkhojeong">@parkhojeong</a>, <a class="user-mention notranslate" href="https://github.com/icyJoseph">@icyJoseph</a>, <a class="user-mention notranslate" href="https://github.com/eps1lon">@eps1lon</a>, <a class="user-mention notranslate" href="https://github.com/aurorascharff">@aurorascharff</a>, <a class="user-mention notranslate" href="https://github.com/unstubbable">@unstubbable</a>, <a class="user-mention notranslate" href="https://github.com/vercel-release-bot">@vercel-release-bot</a>, and <a class="user-mention notranslate" href="https://github.com/sampoder">@sampoder</a> for helping!</p>
 ]]></content:encoded>
-
 <pubDate>2026-06-23T00:10:37Z</pubDate>
 </item>
 <item>
@@ -159,13 +856,12 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <content:encoded><![CDATA[
 <div> Keywords: article, comments, points, summary, feedback
 
-<br><br>Summary: The article presents a thorough analysis of a recent topic that has garnered attention and discussion among users. It highlights the engagement level, indicated by the total points (158) and number of comments (8), suggesting a moderately high interest in the subject matter. The comments section serves as a platform for readers to share their insights, reactions, and feedback about the article, fostering community interaction. The discussion points reflect a range of opinions, allowing for a nuanced exchange of ideas. The article's rating emphasizes its relevance and the quality of the discourse, as indicated by the accumulation of points from user interactions. Overall, it signifies the importance of reader engagement in understanding diverse perspectives on contemporary issues, encouraging further exploration and dialogue among its audience. The combination of points and comments offers a snapshot of the article's impact, encouraging both the authors and readers to contemplate the topic further. The conversation sparked by the article not only enhances its reach but also contributes to a deeper understanding of the matter at hand. This collaborative approach underscores the role of community feedback in shaping discussions around significant topics. <div>
+<br /><br />Summary: The article presents a thorough analysis of a recent topic that has garnered attention and discussion among users. It highlights the engagement level, indicated by the total points (158) and number of comments (8), suggesting a moderately high interest in the subject matter. The comments section serves as a platform for readers to share their insights, reactions, and feedback about the article, fostering community interaction. The discussion points reflect a range of opinions, allowing for a nuanced exchange of ideas. The article's rating emphasizes its relevance and the quality of the discourse, as indicated by the accumulation of points from user interactions. Overall, it signifies the importance of reader engagement in understanding diverse perspectives on contemporary issues, encouraging further exploration and dialogue among its audience. The combination of points and comments offers a snapshot of the article's impact, encouraging both the authors and readers to contemplate the topic further. The conversation sparked by the article not only enhances its reach but also contributes to a deeper understanding of the matter at hand. This collaborative approach underscores the role of community feedback in shaping discussions around significant topics. <div>
 <p>Article URL: <a href="https://arstechnica.com/tech-policy/2026/06/polymarkets-viral-videos-showed-people-winning-big-but-the-bets-were-fake/">https://arstechnica.com/tech-policy/2026/06/polymarkets-viral-videos-showed-people-winning-big-but-the-bets-were-fake/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48638660">https://news.ycombinator.com/item?id=48638660</a></p>
 <p>Points: 158</p>
 <p># Comments: 8</p>
 ]]></content:encoded>
-<pubDate>Tue, 23 Jun 2026 00:47:32 +0000</pubDate>
 <pubDate>Tue, 23 Jun 2026 00:47:32 +0000</pubDate>
 </item>
 <item>
@@ -173,13 +869,11 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://unsloth.ai/docs/models/glm-5.2</link>
 <guid>https://unsloth.ai/docs/models/glm-5.2</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://unsloth.ai/docs/models/glm-5.2">https://unsloth.ai/docs/models/glm-5.2</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48636377">https://news.ycombinator.com/item?id=48636377</a></p>
 <p>Points: 237</p>
 <p># Comments: 108</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 21:21:01 +0000</pubDate>
 <pubDate>Mon, 22 Jun 2026 21:21:01 +0000</pubDate>
 </item>
 <item>
@@ -187,13 +881,11 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://spur.us/blog/smart-tv-apps-residential-proxy-sdks</link>
 <guid>https://spur.us/blog/smart-tv-apps-residential-proxy-sdks</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://spur.us/blog/smart-tv-apps-residential-proxy-sdks">https://spur.us/blog/smart-tv-apps-residential-proxy-sdks</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48635954">https://news.ycombinator.com/item?id=48635954</a></p>
 <p>Points: 210</p>
 <p># Comments: 143</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 20:48:30 +0000</pubDate>
 <pubDate>Mon, 22 Jun 2026 20:48:30 +0000</pubDate>
 </item>
 <item>
@@ -201,13 +893,11 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://urflow.bearblog.dev/jobs-and-software-is-fucked/</link>
 <guid>https://urflow.bearblog.dev/jobs-and-software-is-fucked/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://urflow.bearblog.dev/jobs-and-software-is-fucked/">https://urflow.bearblog.dev/jobs-and-software-is-fucked/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48635112">https://news.ycombinator.com/item?id=48635112</a></p>
 <p>Points: 285</p>
 <p># Comments: 241</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 19:47:52 +0000</pubDate>
 <pubDate>Mon, 22 Jun 2026 19:47:52 +0000</pubDate>
 </item>
 <item>
@@ -215,13 +905,11 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://ipvm.com/reports/police-chiefs-track</link>
 <guid>https://ipvm.com/reports/police-chiefs-track</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://ipvm.com/reports/police-chiefs-track">https://ipvm.com/reports/police-chiefs-track</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48634694">https://news.ycombinator.com/item?id=48634694</a></p>
 <p>Points: 427</p>
 <p># Comments: 170</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 19:13:46 +0000</pubDate>
 <pubDate>Mon, 22 Jun 2026 19:13:46 +0000</pubDate>
 </item>
 <item>
@@ -229,13 +917,11 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://www.cbc.ca/news/politics/federal-nuclear-strategy-9.7244509</link>
 <guid>https://www.cbc.ca/news/politics/federal-nuclear-strategy-9.7244509</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.cbc.ca/news/politics/federal-nuclear-strategy-9.7244509">https://www.cbc.ca/news/politics/federal-nuclear-strategy-9.7244509</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48634585">https://news.ycombinator.com/item?id=48634585</a></p>
 <p>Points: 367</p>
 <p># Comments: 221</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 19:06:48 +0000</pubDate>
 <pubDate>Mon, 22 Jun 2026 19:06:48 +0000</pubDate>
 </item>
 <item>
@@ -243,7 +929,6 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://store.steampowered.com/news/group/45479024/view/685257114654870245</link>
 <guid>https://store.steampowered.com/news/group/45479024/view/685257114654870245</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://store.steampowered.com/sale/steammachine" rel="nofollow">https://store.steampowered.com/sale/steammachine</a><p><a href="https://www.lttlabs.com/articles/2026/06/22/the-newell-nucleus-steam-machine-ltt-companion-article" rel="nofollow">https://www.lttlabs.com/articles/2026/06/22/the-newell-nucle...</a><p><a href="https://www.youtube.com/watch?v=66QzlDewigE" rel="nofollow">https://www.youtube.com/watch?v=66QzlDewigE</a></p>
 <hr />
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48632884">https://news.ycombinator.com/item?id=48632884</a></p>
@@ -251,20 +936,17 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <p># Comments: 1193</p>
 ]]></content:encoded>
 <pubDate>Mon, 22 Jun 2026 17:09:51 +0000</pubDate>
-<pubDate>Mon, 22 Jun 2026 17:09:51 +0000</pubDate>
 </item>
 <item>
 <title>Mexican government unveils a prototype for a new homegrown, ultra-affordable EV</title>
 <link>https://gizmodo.com/mexico-just-showed-off-a-new-extremely-cheap-government-backed-ev-2000769080</link>
 <guid>https://gizmodo.com/mexico-just-showed-off-a-new-extremely-cheap-government-backed-ev-2000769080</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://gizmodo.com/mexico-just-showed-off-a-new-extremely-cheap-government-backed-ev-2000769080">https://gizmodo.com/mexico-just-showed-off-a-new-extremely-cheap-government-backed-ev-2000769080</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48632652">https://news.ycombinator.com/item?id=48632652</a></p>
 <p>Points: 194</p>
 <p># Comments: 161</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 16:48:45 +0000</pubDate>
 <pubDate>Mon, 22 Jun 2026 16:48:45 +0000</pubDate>
 </item>
 <item>
@@ -272,7 +954,6 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://role-confusion.github.io</link>
 <guid>https://role-confusion.github.io</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://arxiv.org/abs/2603.12277" rel="nofollow">https://arxiv.org/abs/2603.12277</a></p>
 <hr />
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48631888">https://news.ycombinator.com/item?id=48631888</a></p>
@@ -280,14 +961,12 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <p># Comments: 87</p>
 ]]></content:encoded>
 <pubDate>Mon, 22 Jun 2026 15:48:55 +0000</pubDate>
-<pubDate>Mon, 22 Jun 2026 15:48:55 +0000</pubDate>
 </item>
 <item>
 <title>Show HN: Oak – Git alternative designed for agents</title>
 <link>https://oak.space/oak/oak</link>
 <guid>https://oak.space/oak/oak</guid>
 <content:encoded><![CDATA[
-
 <p>Oak is a version control system I've been working on designed for agents (<a href="https://oak.space" rel="nofollow">https://oak.space</a>). It improves the speed and context your agents need when working on serious projects. With virtual mounts, agents locally and in the cloud no longer need a full copy of a repo to get working. You can work on many tasks in parallel without needing to download everything or fight worktrees. Version control shouldn't waste you or your agents time. It should be fast, creative and fun to make things with agents.<p>Oak is still early in development. There's no Windows build and missing plenty of features (no CI, no issues, no comments). We still use GitHub Actions for building Oak now, but we've been fully bootstrapped on Oak with no Git backup for several months: <a href="https://oak.space/oak/oak" rel="nofollow">https://oak.space/oak/oak</a>.<p>Blog post: <a href="https://oak.space/blog#git-is-forever" rel="nofollow">https://oak.space/blog#git-is-forever</a><p>Docs: <a href="https://oak.space/docs" rel="nofollow">https://oak.space/docs</a></p>
 <hr />
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48631726">https://news.ycombinator.com/item?id=48631726</a></p>
@@ -295,20 +974,17 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <p># Comments: 154</p>
 ]]></content:encoded>
 <pubDate>Mon, 22 Jun 2026 15:37:48 +0000</pubDate>
-<pubDate>Mon, 22 Jun 2026 15:37:48 +0000</pubDate>
 </item>
 <item>
 <title>The text in Claude Code’s “Extended Thinking” output</title>
 <link>https://patrickmccanna.net/the-text-in-claude-codes-extended-thinking-output-is-not-authentic/</link>
 <guid>https://patrickmccanna.net/the-text-in-claude-codes-extended-thinking-output-is-not-authentic/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://patrickmccanna.net/the-text-in-claude-codes-extended-thinking-output-is-not-authentic/">https://patrickmccanna.net/the-text-in-claude-codes-extended-thinking-output-is-not-authentic/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48630535">https://news.ycombinator.com/item?id=48630535</a></p>
 <p>Points: 288</p>
 <p># Comments: 200</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 14:22:46 +0000</pubDate>
 <pubDate>Mon, 22 Jun 2026 14:22:46 +0000</pubDate>
 </item>
 <item>
@@ -316,13 +992,11 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://hustvl.github.io/Moebius/</link>
 <guid>https://hustvl.github.io/Moebius/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://hustvl.github.io/Moebius/">https://hustvl.github.io/Moebius/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48630171">https://news.ycombinator.com/item?id=48630171</a></p>
 <p>Points: 249</p>
 <p># Comments: 65</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 13:53:02 +0000</pubDate>
 <pubDate>Mon, 22 Jun 2026 13:53:02 +0000</pubDate>
 </item>
 <item>
@@ -330,13 +1004,11 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://nevergivethemyourface.com/</link>
 <guid>https://nevergivethemyourface.com/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://nevergivethemyourface.com/">https://nevergivethemyourface.com/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48630066">https://news.ycombinator.com/item?id=48630066</a></p>
 <p>Points: 698</p>
 <p># Comments: 387</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 13:45:48 +0000</pubDate>
 <pubDate>Mon, 22 Jun 2026 13:45:48 +0000</pubDate>
 </item>
 <item>
@@ -344,13 +1016,11 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://mitchellh.com/writing/zig-donation-2026</link>
 <guid>https://mitchellh.com/writing/zig-donation-2026</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://mitchellh.com/writing/zig-donation-2026">https://mitchellh.com/writing/zig-donation-2026</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48630020">https://news.ycombinator.com/item?id=48630020</a></p>
 <p>Points: 755</p>
 <p># Comments: 252</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 13:43:01 +0000</pubDate>
 <pubDate>Mon, 22 Jun 2026 13:43:01 +0000</pubDate>
 </item>
 <item>
@@ -358,13 +1028,11 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://puzzlelair.com/</link>
 <guid>https://puzzlelair.com/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://puzzlelair.com/">https://puzzlelair.com/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48629213">https://news.ycombinator.com/item?id=48629213</a></p>
 <p>Points: 156</p>
 <p># Comments: 105</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 12:23:46 +0000</pubDate>
 <pubDate>Mon, 22 Jun 2026 12:23:46 +0000</pubDate>
 </item>
 <item>
@@ -372,13 +1040,11 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://www.davidrevoy.com/article1154/why-drawing-tablet-brands-wont-collaborate-on-linux-floss-drivers</link>
 <guid>https://www.davidrevoy.com/article1154/why-drawing-tablet-brands-wont-collaborate-on-linux-floss-drivers</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.davidrevoy.com/article1154/why-drawing-tablet-brands-wont-collaborate-on-linux-floss-drivers">https://www.davidrevoy.com/article1154/why-drawing-tablet-brands-wont-collaborate-on-linux-floss-drivers</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48629064">https://news.ycombinator.com/item?id=48629064</a></p>
 <p>Points: 214</p>
 <p># Comments: 112</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 12:09:34 +0000</pubDate>
 <pubDate>Mon, 22 Jun 2026 12:09:34 +0000</pubDate>
 </item>
 <item>
@@ -386,7 +1052,6 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://www.washingtonpost.com/obituaries/2026/06/22/alan-greenspan-most-powerful-central-banker-modern-times-dies-100/</link>
 <guid>https://www.washingtonpost.com/obituaries/2026/06/22/alan-greenspan-most-powerful-central-banker-modern-times-dies-100/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://archive.ph/tSlDZ" rel="nofollow">https://archive.ph/tSlDZ</a><p><a href="https://www.cnbc.com/2026/06/22/alan-greenspan-former-chairman-of-the-fed-dies-at-age-100.html" rel="nofollow">https://www.cnbc.com/2026/06/22/alan-greenspan-former-chairm...</a></p>
 <hr />
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48628731">https://news.ycombinator.com/item?id=48628731</a></p>
@@ -394,20 +1059,17 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <p># Comments: 217</p>
 ]]></content:encoded>
 <pubDate>Mon, 22 Jun 2026 11:27:40 +0000</pubDate>
-<pubDate>Mon, 22 Jun 2026 11:27:40 +0000</pubDate>
 </item>
 <item>
 <title>Codex logging bug may write TBs to local SSDs</title>
 <link>https://github.com/openai/codex/issues/28224</link>
 <guid>https://github.com/openai/codex/issues/28224</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://github.com/openai/codex/issues/28224">https://github.com/openai/codex/issues/28224</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48626930">https://news.ycombinator.com/item?id=48626930</a></p>
 <p>Points: 473</p>
 <p># Comments: 258</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 07:30:17 +0000</pubDate>
 <pubDate>Mon, 22 Jun 2026 07:30:17 +0000</pubDate>
 </item>
 <item>
@@ -415,13 +1077,11 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://techstackups.com/comparisons/glm-5.2-vs-opus/</link>
 <guid>https://techstackups.com/comparisons/glm-5.2-vs-opus/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://techstackups.com/comparisons/glm-5.2-vs-opus/">https://techstackups.com/comparisons/glm-5.2-vs-opus/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48626866">https://news.ycombinator.com/item?id=48626866</a></p>
 <p>Points: 491</p>
 <p># Comments: 323</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 07:22:03 +0000</pubDate>
 <pubDate>Mon, 22 Jun 2026 07:22:03 +0000</pubDate>
 </item>
 <item>
@@ -429,13 +1089,11 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://docs.deno.com/runtime/desktop/</link>
 <guid>https://docs.deno.com/runtime/desktop/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://docs.deno.com/runtime/desktop/">https://docs.deno.com/runtime/desktop/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48626137">https://news.ycombinator.com/item?id=48626137</a></p>
 <p>Points: 1043</p>
 <p># Comments: 375</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 05:38:40 +0000</pubDate>
 <pubDate>Mon, 22 Jun 2026 05:38:40 +0000</pubDate>
 </item>
 <item>
@@ -443,10 +1101,8 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://guix.gnu.org/en/blog/2026/one-year-with-codeberg/</link>
 <guid>https://guix.gnu.org/en/blog/2026/one-year-with-codeberg/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/pifl3k/one_year_with_codeberg">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 09:02:16 -0500</pubDate>
 <pubDate>Mon, 22 Jun 2026 09:02:16 -0500</pubDate>
 </item>
 <item>
@@ -454,10 +1110,8 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://www.arp242.net/chestersons-finger.html</link>
 <guid>https://www.arp242.net/chestersons-finger.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/dh6o8k/chesterton_s_middle_finger">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 04:02:51 -0500</pubDate>
 <pubDate>Mon, 22 Jun 2026 04:02:51 -0500</pubDate>
 </item>
 <item>
@@ -465,10 +1119,8 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://lmao.center/blog/wiggle-accidents/</link>
 <guid>https://lmao.center/blog/wiggle-accidents/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/uuyjxb/help_i_accidentally_wigglegram">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 01:07:05 -0500</pubDate>
 <pubDate>Mon, 22 Jun 2026 01:07:05 -0500</pubDate>
 </item>
 <item>
@@ -476,10 +1128,8 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://devblogs.microsoft.com/oldnewthing/20260622-00/?p=112451</link>
 <guid>https://devblogs.microsoft.com/oldnewthing/20260622-00/?p=112451</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/wnlece/memory_man_who_put_red_green_squiggles">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 15:23:42 -0500</pubDate>
 <pubDate>Mon, 22 Jun 2026 15:23:42 -0500</pubDate>
 </item>
 <item>
@@ -487,10 +1137,8 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://fzakaria.com/2026/06/21/nix-needs-relocatable-binaries</link>
 <guid>https://fzakaria.com/2026/06/21/nix-needs-relocatable-binaries</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/pa1atu/nix_needs_relocatable_binaries">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 06:54:07 -0500</pubDate>
 <pubDate>Mon, 22 Jun 2026 06:54:07 -0500</pubDate>
 </item>
 <item>
@@ -498,10 +1146,8 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://blog.racket-lang.org/2026/06/rhombus-v1.0.html</link>
 <guid>https://blog.racket-lang.org/2026/06/rhombus-v1.0.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/bkwkz5/rhombus_v1_0_racket_flavored_language">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 12:54:04 -0500</pubDate>
 <pubDate>Mon, 22 Jun 2026 12:54:04 -0500</pubDate>
 </item>
 <item>
@@ -509,10 +1155,8 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://ruurtjan.com/articles/p99-0ms-autocomplete-for-240-million-domain-names</link>
 <guid>https://ruurtjan.com/articles/p99-0ms-autocomplete-for-240-million-domain-names</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/xhpauz/p99_0ms_autocomplete_for_240_million">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 06:31:29 -0500</pubDate>
 <pubDate>Mon, 22 Jun 2026 06:31:29 -0500</pubDate>
 </item>
 <item>
@@ -520,10 +1164,8 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://pkgdemon.github.io/how-a-computer-should-work.html</link>
 <guid>https://pkgdemon.github.io/how-a-computer-should-work.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/2nljgf/how_computer_should_work">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 04:51:10 -0500</pubDate>
 <pubDate>Mon, 22 Jun 2026 04:51:10 -0500</pubDate>
 </item>
 <item>
@@ -531,10 +1173,8 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://www.spurint.org/journal/2026/06/xfwl4s-first-preview-release</link>
 <guid>https://www.spurint.org/journal/2026/06/xfwl4s-first-preview-release</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/ut8idd/xfwl4_s_first_preview_release">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 11:06:49 -0500</pubDate>
 <pubDate>Mon, 22 Jun 2026 11:06:49 -0500</pubDate>
 </item>
 <item>
@@ -542,10 +1182,8 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://ux.stackexchange.com/questions/153299/how-did-cmd-k-come-to-be-the-standard-shortcut-for-both-adding-a-hyperlink-and-o</link>
 <guid>https://ux.stackexchange.com/questions/153299/how-did-cmd-k-come-to-be-the-standard-shortcut-for-both-adding-a-hyperlink-and-o</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/zszeab/curious_history_invention_cmd_k_quick">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 16:02:54 -0500</pubDate>
 <pubDate>Mon, 22 Jun 2026 16:02:54 -0500</pubDate>
 </item>
 <item>
@@ -553,11 +1191,9 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://lobste.rs/s/12jy9c/what_are_you_doing_this_week</link>
 <guid>https://lobste.rs/s/12jy9c/what_are_you_doing_this_week</guid>
 <content:encoded><![CDATA[
-
 <p>What are you doing this week? Feel free to share!</p>
 <p>Keep in mind it’s OK to do nothing at all, too.</p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 08:11:56 -0500</pubDate>
 <pubDate>Mon, 22 Jun 2026 08:11:56 -0500</pubDate>
 </item>
 <item>
@@ -565,10 +1201,8 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://openmw.org/2026/openmw-0-51-0-released/</link>
 <guid>https://openmw.org/2026/openmw-0-51-0-released/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/uz2qia/openmw_0_51_0_released">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 04:27:54 -0500</pubDate>
 <pubDate>Mon, 22 Jun 2026 04:27:54 -0500</pubDate>
 </item>
 <item>
@@ -576,10 +1210,8 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://www.crunchydata.com/blog/british-columbia-and-time-zone-changes</link>
 <guid>https://www.crunchydata.com/blog/british-columbia-and-time-zone-changes</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/r1l3en/british_columbia_time_zones_postgres">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 06:18:16 -0500</pubDate>
 <pubDate>Mon, 22 Jun 2026 06:18:16 -0500</pubDate>
 </item>
 <item>
@@ -587,10 +1219,8 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://pointieststick.com/2026/06/22/network-shares-still-talking-about-them-in-2026/</link>
 <guid>https://pointieststick.com/2026/06/22/network-shares-still-talking-about-them-in-2026/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/rm5pca/network_shares_still_talking_about_them">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 12:51:21 -0500</pubDate>
 <pubDate>Mon, 22 Jun 2026 12:51:21 -0500</pubDate>
 </item>
 <item>
@@ -598,10 +1228,8 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://vale.rocks/posts/pda-browsers</link>
 <guid>https://vale.rocks/posts/pda-browsers</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/kocnfd/web_browsers_on_pdas">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 08:29:29 -0500</pubDate>
 <pubDate>Mon, 22 Jun 2026 08:29:29 -0500</pubDate>
 </item>
 <item>
@@ -609,10 +1237,8 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://datatracker.ietf.org/doc/draft-ietf-dmarc-arc-to-historic/</link>
 <guid>https://datatracker.ietf.org/doc/draft-ietf-dmarc-arc-to-historic/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/onfndb/reclassifying_dmarc_arc_as_historic">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 15:07:06 -0500</pubDate>
 <pubDate>Mon, 22 Jun 2026 15:07:06 -0500</pubDate>
 </item>
 <item>
@@ -620,10 +1246,8 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://alexwlchan.net/2021/slashes/</link>
 <guid>https://alexwlchan.net/2021/slashes/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/umm2jh/tale_two_path_separators_2021">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 21:03:34 -0500</pubDate>
 <pubDate>Mon, 22 Jun 2026 21:03:34 -0500</pubDate>
 </item>
 <item>
@@ -631,10 +1255,8 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://blog.platypush.tech/article/Local-voice-assistant</link>
 <guid>https://blog.platypush.tech/article/Local-voice-assistant</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/luosjw/fully_local_voice_assistant_setup">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 17:25:06 -0500</pubDate>
 <pubDate>Mon, 22 Jun 2026 17:25:06 -0500</pubDate>
 </item>
 <item>
@@ -642,10 +1264,8 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://lwn.net/Articles/1029767/</link>
 <guid>https://lwn.net/Articles/1029767/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/hpx7an/linux_secure_boot_certificate">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 07:37:47 -0500</pubDate>
 <pubDate>Mon, 22 Jun 2026 07:37:47 -0500</pubDate>
 </item>
 <item>
@@ -653,13 +1273,10 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <link>https://momentsingraphics.de/CameraRays.html</link>
 <guid>https://momentsingraphics.de/CameraRays.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/k057yw/computing_camera_rays">Comments</a></p>
 ]]></content:encoded>
 <pubDate>Mon, 22 Jun 2026 04:39:52 -0500</pubDate>
-<pubDate>Mon, 22 Jun 2026 04:39:52 -0500</pubDate>
 </item>
-
 <item>
 <title>Did my old job only exist because of fraud?</title>
 <link>https://david.newgas.net/did-my-old-job-only-exist-because-of-fraud/</link>
