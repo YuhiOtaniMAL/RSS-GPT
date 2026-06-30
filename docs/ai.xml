@@ -3,7 +3,415 @@
 <channel>
 <title>ai</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/ai.xml</link>
-<lastBuildDate>Mon, 29 Jun 2026 04:49:51 +0000</lastBuildDate>
+<lastBuildDate>Tue, 30 Jun 2026 04:16:52 +0000</lastBuildDate>
+
+<item>
+<title>HTML table extractor</title>
+<link>https://simonwillison.net/2026/Jun/29/html-table-extractor/</link>
+<guid>https://simonwillison.net/2026/Jun/29/html-table-extractor/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: paste-conversion, tables, CORS API, HTML content, Wikipedia
+
+<br><br>Summary: This article introduces a tool designed for converting pasted rich text from browsers into various formats, including HTML, Markdown, CSV, TSV, and JSON. Users can test the tool by copying content from a Wikipedia page, which often includes embedded HTML tables. The tool has recently been updated to enhance its user interface and add support for tables. A significant improvement is the integration of an open CORS API provided by Wikipedia that allows users to fetch the fully rendered HTML content of any Wikipedia page. This feature simplifies the process of retrieving and displaying tables from selected pages, making it more efficient for users who need data extraction from Wikipedia. Overall, the tool aims to streamline the conversion process and enhance user experience while handling rich text content and tables specifically sourced from Wikipedia. By employing these functions, the tool becomes a valuable resource for individuals looking for easy and quick data formatting options from website content. <div>
+<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/html-table-extractor">HTML table extractor</a></p>
+        <p>Yet another in my growing collection of paste-conversion tools. This one accepts pasted rich text from browsers (with embedded HTML tables) and converts every detected table into HTML, Markdown, CSV, TSV, or JSON.</p>
+<p>Try it out by selecting everything on the Wikipedia <a href="https://en.wikipedia.org/wiki/List_of_cities_and_towns_in_the_San_Francisco_Bay_Area">List of cities and towns in the San Francisco Bay Area</a> page and pasting it directly into the tool:</p>
+<p><img alt="Screenshot of a web interface for converting table data between formats. A row of tabs labeled HTML, Markdown, CSV, TSV, and JSON sits below the bottom edge of a styled data table, with the TSV tab currently selected. The TSV tab displays the table's contents as tab-separated plain text in a monospaced font inside a bordered panel, with a &quot;Copy&quot; button in the upper right of that panel." src="https://static.simonwillison.net/static/2026/html-table.jpg" /></p>
+<p>On a similar note, I recently <a href="https://github.com/simonw/tools/commit/f278e977751dbc1948baedfc2f26b6de870f60e6">rebuilt</a> my <a href="https://tools.simonwillison.net/rich-text-to-markdown">Rich text to markdown</a> tool to add support for tables and generally improve the UI.</p>
+<p><strong>Update</strong>: It turns out Wikipedia has an open CORS API for retrieving the full rendered HTML content of any page - <a href="https://tools.simonwillison.net/cors-fetch#url=https%3A%2F%2Fen.wikipedia.org%2Fw%2Fapi.php%3Faction%3Dparse%26page%3DList_of_cities_and_towns_in_the_San_Francisco_Bay_Area%26prop%3Dtext%26format%3Djson%26origin%3D%2A">demo here</a>  - so I <a href="https://gist.github.com/simonw/f226fe96f464ec7d81d6996cb466436d">had Codex</a> add the ability to search Wikipedia for a page and then automatically import and display any tables from that page.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/html">html</a>, <a href="https://simonwillison.net/tags/tools">tools</a>, <a href="https://simonwillison.net/tags/wikipedia">wikipedia</a>, <a href="https://simonwillison.net/tags/cors">cors</a></p>
+]]></content:encoded>
+<pubDate>2026-06-29T23:38:21+00:00</pubDate>
+<pubDate>2026-06-29T23:38:21+00:00</pubDate>
+</item>
+<item>
+<title>Count the number of Safari tabs</title>
+<link>https://simonwillison.net/2026/Jun/29/safari-tab-count/</link>
+<guid>https://simonwillison.net/2026/Jun/29/safari-tab-count/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AppleScript, Safari, count, browser, tabs
+
+<br><br>Summary: 
+Using AppleScript, you can easily count the number of open browser tabs in Safari. This is a handy tip for those who frequently manage multiple tabs and want to keep track of their browsing activities. The command involves using the `osascript` utility on macOS, which allows users to execute AppleScript code from the Terminal. The specific command to achieve this is: `osascript -e 'tell application "Safari" to count tabs of every window'`. This script triggers Safari and instructs it to count the tabs across all open windows, providing an immediate total. This method is particularly useful for users who want a quick overview of their browsing session without manually checking each window. By making use of such scripting techniques, users can enhance their productivity and streamline their workflow on Safari. Overall, the integration of AppleScript for this purpose exemplifies how automation can assist in everyday computing tasks, making it easier for users to manage their digital environments effectively. <div>
+<p>Tiniest TIL, using AppleScript to count the number of open browser tabs in Safari:</p>
+<pre><code>osascript -e 'tell application "Safari" to count tabs of every window'
+</code></pre>
+<p><img alt="I ran it in a terminal window and got back 370." src="https://static.simonwillison.net/static/2026/tab-shame.jpg" /></p>
+
+    <p>Tags: <a href="https://simonwillison.net/tags/safari">safari</a>, <a href="https://simonwillison.net/tags/til">til</a>, <a href="https://simonwillison.net/tags/applescript">applescript</a></p>
+]]></content:encoded>
+<pubDate>2026-06-29T18:36:18+00:00</pubDate>
+<pubDate>2026-06-29T18:36:18+00:00</pubDate>
+</item>
+<item>
+<title>Ornith-1.0: Self-Scaffolding LLMs for Agentic Coding</title>
+<link>https://simonwillison.net/2026/Jun/29/ornith/</link>
+<guid>https://simonwillison.net/2026/Jun/29/ornith/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: DeepReinforce, open-source, Gemma 4, Qwen 3.5, coding benchmarks
+
+<br><br>Summary: DeepReinforce has released its first open weights model under the MIT license, featuring various variants such as 9B Dense, 31B Dense, 35B MoE, and 397B MoE. This model is built upon the pretrained Gemma 4 and Qwen 3.5, both of which are licensed under Apache 2.0, allowing their compatible use. Initial tests of the model with LM Studio utilizing the 20GB GGUF have shown promising results, especially in executing agent harness tasks efficiently. For instance, when asked to locate the code that decodes the actor cookie and the code responsible for opening the insert dialog, the model performed these tasks competently against a Datasette checkout. Additionally, it showcased a processing speed of 103 tokens per second during a test. Although the output was slightly imperfect, it was clear enough to identify the subject, which was a pelican. There is limited information available about DeepReinforce itself, with the earliest paper attributed to the group being dated from June 2025. <div>
+<p><strong><a href="https://deep-reinforce.com/ornith_1_0.html">Ornith-1.0: Self-Scaffolding LLMs for Agentic Coding</a></strong></p>
+This is an interesting new open weights (MIT licensed) model, the first model release from DeepReinforce.</p>
+<blockquote>
+<p>[...] with variants including 9B Dense, 31B Dense, 35B MoE, and 397B MoE. Built on top of pretrained Gemma 4 and Qwen 3.5, it achieves state-of-the-art performance among open-source models of comparable size on coding benchmarks.</p>
+</blockquote>
+<p>As far as I can tell the licenses of those underlying models is compatible with being used in this way - Gemma 4 is Apache 2.0 licensed (and not bound by the janky additional <a href="https://ai.google.dev/gemma/terms">Gemma Terms of Use</a> that afflicted the previous Gemma models) and Qwen 3.5 is Apache 2.0 licensed as well.</p>
+<p>I've been running the model using LM Studio and the <a href="https://huggingface.co/deepreinforce-ai/Ornith-1.0-35B-GGUF">ornith-1.0-35b-Q4_K_M.gguf</a> (20GB) GGUF, hooked up to <a href="https://pi.dev/">Pi</a>. Initial impressions are very good - it seems to be able to run the agent harness over many tool calls in a proficient way.</p>
+<p>Here's <a href="https://gisthost.github.io/?35da4d9ce7f0c27124c67655a0dc9e5d">a terminal session</a> where I asked it to "find the code that decodes the actor cookie" and then "find the code that opens the insert dialog when thebutton is clicked" against a Datasette checkout, which it handled with ease.</p>
+<p>I also had it <a href="https://gist.github.com/simonw/1869e1bbcafe5bcad0f26351f6a978a6">draw this pelican</a>, which came out at 103 tokens/second:</p>
+<p><img alt="Cartoon illustration of a white pelican (albeit slightly mangled) with a large orange beak riding a red bicycle across green hills. The scene has a blue sky with a yellow sun and three white clouds, and small grass tufts dot the foreground." src="https://static.simonwillison.net/static/2024/ornith-1-pelican.png" /></p>
+<p>It's a little bit mangled but the pelican is clearly a pelican.</p>
+<p>I couldn't find much information about DeepReinforce themselves. The earliest paper I could find from the was <a href="https://arxiv.org/abs/2507.14111">CUDA-L1: Improving CUDA Optimization via Contrastive Reinforcement Learning</a> from June 2025.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/qwen">qwen</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/gemma">gemma</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/lm-studio">lm-studio</a></p>
+]]></content:encoded>
+<pubDate>2026-06-29T16:17:59+00:00</pubDate>
+<pubDate>2026-06-29T16:17:59+00:00</pubDate>
+</item>
+<item>
+<title>Tidal won’t pay royalties on AI-generated music but isn’t banning it outright</title>
+<link>https://www.theverge.com/tech/959211/tidal-ai-music-policy-demonetizingdetect-label</link>
+<guid>https://www.theverge.com/tech/959211/tidal-ai-music-policy-demonetizingdetect-label</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Tidal, AI-generated, royalties, artists, monetizable
+
+<br><br>Summary: Tidal has announced a new approach to manage AI-generated music on its platform. Rather than an outright ban on such tracks, Tidal will implement a labeling system that will identify songs classified as 100 percent AI-generated with a specific icon. This move is part of Tidal's broader initiative to protect artists and ensure that royalties are properly allocated. Effective immediately, Tidal will no longer allow these entirely AI-generated tracks to be monetized. The company's core priority is to make certain that royalties are directed only to original works that are created, written, and performed by human artists. Tidal explicitly stated that it will not knowingly attribute royalties to music identified as wholly AI-generated, underscoring its commitment to supporting genuine artistry in the music industry. However, details about the specific tools or technologies that Tidal plans to utilize for identifying these AI-generated tracks have not been provided. This initiative seeks to create a clearer distinction for listeners and reinforce the value of human-created music in an increasingly automated environment. <div>
+<figure>
+
+<img alt="Colorful graphic of Tidal logo" src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25319678/STK301_Tidal_01.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption>
+		</figcaption>
+</figure>
+<p class="wp-block-paragraph">Tidal <a href="https://tidal.com/ai-policy">shared its new policies regarding AI-generated music today</a> and how the platform plans to "protect artists" and "inform listeners." Instead of banning it outright, <a href="https://x.com/TIDAL/status/2071593228952822146">starting on July 15th</a> Tidal will label tracks it has identified as being 100 percent AI-generated with an icon. But starting today those tracks will no longer be monetizable. "Tidal's priority is ensuring royalties go to original works directly produced, written, and performed by people. We will therefore not knowingly attribute royalties to music we identify as wholly AI-generated," the company's announcement reads. </p>
+<p class="wp-block-paragraph">The platform didn't specify what tools it's using to iden …</p>
+<p><a href="https://www.theverge.com/tech/959211/tidal-ai-music-policy-demonetizingdetect-label">Read the full story at The Verge.</a></p>
+]]></content:encoded>
+<pubDate>2026-06-29T15:47:35-04:00</pubDate>
+<pubDate>2026-06-29T15:47:35-04:00</pubDate>
+</item>
+<item>
+<title>OpenAI is teasing new hardware… for Codex</title>
+<link>https://www.theverge.com/ai-artificial-intelligence/959174/openai-codex-hardware-work-louder</link>
+<guid>https://www.theverge.com/ai-artificial-intelligence/959174/openai-codex-hardware-work-louder</guid>
+<content:encoded><![CDATA[
+<div> Keywords: OpenAI, Codex, device, Work Louder, mechanical keyboards  
+
+<br><br>Summary: OpenAI is set to release a new device related to its AI-powered coding tool, Codex, on July 15th. The announcement was made on Monday, showcasing a square-shaped device equipped with multiple buttons. The caption accompanying the teaser mentioned that "Your favorite Codex shortcuts are getting an upgrade." This upcoming device is specifically designed in collaboration with Work Louder, a company known for offering a wide range of mechanical keyboards and macro pads that feature mappable keys, dials, and switches. It's important to note that this device is distinct from another product OpenAI is rumored to be developing with former Apple designer Jony Ive. The silhouette of the device, as revealed in the teaser, suggests it may appeal to users looking for enhanced functionality and customization in their coding tools. Overall, this release signifies OpenAI's commitment to improving the user experience for Codex by providing a specialized hardware tool that complements its software capabilities. <div>
+<figure>
+
+<img alt="An image of OpenAI’s upcoming Codex device" src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/06/openai-codex-hardware.png?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption>
+		</figcaption>
+</figure>
+<p class="wp-block-paragraph">OpenAI is releasing some sort of device related to its AI-powered coding tool, Codex, on July 15th. In <a href="https://x.com/OpenAIDevs/status/2071639953927438440">a video posted to X</a> on Monday, OpenAI shows a square-shaped device with several buttons, alongside the caption, "Your favorite Codex shortcuts are getting an upgrade."</p>
+<p class="wp-block-paragraph">This isn't the mysterious <a href="https://www.theverge.com/news/827607/openai-hardware-prototype-chatgpt-jony-ive-sam-altman">AI-powered device OpenAI</a> is working on with former Apple designer Jony Ive, however. As shown in the teaser, OpenAI is launching the device in partnership with Work Louder, a company that sells an array of mechanical keyboards and macro pads with mappable keys, dials, and switches.</p>
+<p class="wp-block-paragraph">The silhouette of the device shown by OpenAI looks a bit <a href="https://worklouder.cc/creator-micro-2">like Work  …</a></p>
+<p><a href="https://www.theverge.com/ai-artificial-intelligence/959174/openai-codex-hardware-work-louder">Read the full story at The Verge.</a></p>
+]]></content:encoded>
+<pubDate>2026-06-29T14:52:03-04:00</pubDate>
+<pubDate>2026-06-29T14:52:41-04:00</pubDate>
+</item>
+<item>
+<title>Lawmakers want to ban AI companies from selling your health data</title>
+<link>https://www.theverge.com/ai-artificial-intelligence/959033/health-location-data-protection-act-ai-warren-scanlon</link>
+<guid>https://www.theverge.com/ai-artificial-intelligence/959033/health-location-data-protection-act-ai-warren-scanlon</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Health data, location data, data brokers, legislation, AI era  
+
+<br><br>Summary:  
+A new proposal is set to ban the sale of Americans' health and location information to data brokers, including data revealed through AI chatbots like ChatGPT or Claude. Senator Elizabeth Warren (D-MA) and Representative Mary Gay Scanlon (D-PA) are preparing to introduce an updated version of the Health and Location Data Protection Act aimed at addressing concerns pertinent to the AI era. The original version of the bill, introduced four years ago, focused solely on prohibiting data brokers from collecting and selling health and location data. The new iteration expands its reach by also banning other companies from selling this sensitive information to data brokers. This legislative move seeks to strengthen privacy protections for individuals amidst growing concerns over data exploitation and the complexities introduced by AI technologies. The updated bill reflects the need to adapt to the evolving digital landscape where personal information is increasingly vulnerable to unauthorized collection and sale. Overall, the proposal aims to safeguard personal data, enhance consumer privacy, and ensure responsible practices surrounding sensitive health and location information in light of technological advancements. <div>
+<figure>
+
+<img alt="Illustration of a password above a closed combination lock." src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25299197/STK442_Password_Manager_A_CVirginia.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption>
+		</figcaption>
+</figure>
+<p class="wp-block-paragraph">A new proposal would ban the sale of Americans' health and location information to data brokers - including information people reveal to an AI chatbot like ChatGPT or Claude. </p>
+<p class="wp-block-paragraph">In the coming weeks, Senator Elizabeth Warren (D-MA) and Representative Mary Gay Scanlon (D-PA) are planning to debut a new version of the Health and Location Data Protection Act that's better suited to the AI era. The former version of the bill, first introduced in <a href="https://www.warren.senate.gov/news/press-releases/warren-wyden-murray-whitehouse-sanders-introduce-legislation-to-ban-data-brokers-from-selling-americans-location-and-health-data/">June 2022</a>, prohibited data brokers from collecting and selling health and location data. Four years later, it's expanded to ban other companies from selling such data to brokers, and to specifically cover  …</p>
+<p><a href="https://www.theverge.com/ai-artificial-intelligence/959033/health-location-data-protection-act-ai-warren-scanlon">Read the full story at The Verge.</a></p>
+]]></content:encoded>
+<pubDate>2026-06-29T12:00:00-04:00</pubDate>
+<pubDate>2026-06-29T12:07:14-04:00</pubDate>
+</item>
+<item>
+<title>AI agents are not your “coworkers”</title>
+<link>https://www.technologyreview.com/2026/06/29/1139849/ai-agents-are-not-your-coworkers/</link>
+<guid>https://www.technologyreview.com/2026/06/29/1139849/ai-agents-are-not-your-coworkers/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AI, employees, managers, responsibilities, errors  
+
+<br><br>Summary: A study by Boston University’s Emma Wiles reveals that treating AI tools like "employees" can diminish the performance of human managers, as they catch 18% fewer errors. This trend in Silicon Valley, where major companies promote AI agents as digital colleagues, may create unrealistic expectations of AI capabilities. Nearly a third of surveyed managers already view AI agents as employees, which can lead to a sense of diminished responsibility among humans for the AI's output. Wiles' research indicates that managers are 44% more likely to pass questionable AI work up the chain rather than trust their judgment. This has broader implications for sectors like health care and government, where AI may become a scapegoat for human failures. Economist Daron Acemoglu emphasizes that AI should enhance human capabilities instead of replacing them. A Stanford study found that while workers approved of automation in certain tasks, they often disagreed with experts about the suitability of AI for other tasks. Ultimately, branding AI tools as employees may hinder human performance, as managers and workers are the ones with true agency in their roles. They deserve better than being sidelined by the misrepresentation of AI tools. <div>
+<p><em>This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, </em><a href="https://forms.technologyreview.com/newsletters/ai-demystified-the-algorithm/"><em>sign up here</em></a><em>.</em></p>
+
+
+
+<p>Imagine coming in to work to learn that a new underling will report to you. The worker is not a person but an AI tool—one that your company nonetheless calls Alex, an “employee” with a title and defined responsibilities. How well do you think you would work with Alex?</p>
+
+
+
+<p>If you’re anything like the managers recently studied by Emma Wiles, a Boston University business professor, treating Alex as a “coworker” and not a software tool would lead you to do a worse job. Wiles <a href="https://hbr.org/2026/05/research-why-you-shouldnt-treat-ai-agents-like-employees">found</a> that people caught 18% fewer errors when the work was said to have come from an agentic “AI employee” rather than a chatbot. It turns out that what’s in a name matters. A lot. </p>
+
+
+
+<p>This is an alarming glimpse of the future Silicon Valley is hurling us toward. Last year Nvidia’s CEO, Jensen Huang, <a href="https://fortune.com/2025/10/20/jensen-huang-nvidia-ai-future-workforce-digital-humans-hiring-onboarding-orientation/">talked</a> about workplaces of “digital humans.” Since April, Microsoft, OpenAI, Anthropic, and Google have all released new tools oriented toward managing teams of AI agents, many of which are explicitly advertised as digital colleagues with the flexibility and cognitive power of actual humans. And nearly a third of the 1,261 managers who participated in Wiles’s study said their companies already frame AI agents as employees (23% even list them on org charts).</p>
+
+
+
+<p>The technical progress of agentic AI is not all hot air, of course. Agents, which can effectively be thought of as AI tools programmed to work in a loop until they achieve a goal, have become <a href="https://www.technologyreview.com/2026/02/05/1132254/this-is-the-most-misunderstood-graph-in-ai/">measurably better</a> at more complicated tasks. But it’s a huge leap to refer to these tools as coworkers or employees, and doing so will set unrealistic expectations for what AI can do while leaving the human employees supposedly responsible for them worse off.</p>
+
+
+
+<p>That’s partially because, Wiles’s research suggests, it inverts our sense of who’s in charge. When an AI tool was framed as an employee, participants in the study saw themselves as less responsible for its output. They were also 44% more likely to escalate its questionable work to a manager for further review rather than trusting their own corrections (thus negating the time-saving purpose of using the AI agent in the first place).&nbsp;</p>
+
+
+
+<p>That matters far beyond office culture: As AI agents are embedded into health care, warfare, education, and government, there’s a growing risk they’ll become a convenient place to dump blame for failures that are instead the product of bad human decisions, incentives, and oversight (recall how the bomb strike on a girls’ school in Iran was popularly blamed on Claude, when <a href="https://www.theguardian.com/news/2026/mar/26/ai-got-the-blame-for-the-iran-school-bombing-the-truth-is-far-more-worrying">all signs</a> point to a cascade of human errors).</p>
+
+
+
+
+
+<p>“AI agents right now are being marketed as things that can replace humans, and I think that’s just a losing proposition,” says Daron Acemoglu, an economist at MIT who won the Nobel Prize in 2024 and studies AI’s impact on the economy. “They should instead be optimized so that they can improve human capabilities, which is not what they have [been] at the moment.”</p>
+
+
+
+<p>What could that look like? Consider a new <a href="https://futureofwork.saltlab.stanford.edu/">effort</a> at Stanford, where researchers presented 1,500 workers in 104 jobs with information about what tasks AI could potentially do in their work and then asked what would actually be most helpful and productive. Workers <em>did</em> want automation in certain areas: Law clerks thought AI could help ensure that adequate progress was being made across cases, for example. But often the tasks that tech experts deemed most suitable for AI—like verifying customer credit ratings for sales reps—were what the actual workers said they definitely did not want or need an agent to do. </p>
+
+
+
+<p>Which brings us back to Alex. Calling Alex an employee is easy—and convenient, especially when something goes wrong—but it’s a branding exercise. It doesn’t make the tool more fit for the job, and as Wiles’s research shows, it makes the humans around it worse at theirs. And recall that <em>they</em> are the ones with the agency that AI is trying to replicate. They deserve better than Alex.&nbsp;</p>
+]]></content:encoded>
+<pubDate>Mon, 29 Jun 2026 18:00:00 +0000</pubDate>
+<pubDate>Mon, 29 Jun 2026 18:00:00 +0000</pubDate>
+</item>
+<item>
+<title>Agent confidence on the technical frontier</title>
+<link>https://www.technologyreview.com/2026/06/29/1139635/agent-confidence-on-the-technical-frontier/</link>
+<guid>https://www.technologyreview.com/2026/06/29/1139635/agent-confidence-on-the-technical-frontier/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AI, agents, technology, workflows, confidence
+
+<br><br>Summary:  
+Enterprise investment in AI is rapidly increasing, with Gartner predicting that 2026 will be a pivotal year for aligning AI projects with strategic business objectives. As organizations feel pressure to demonstrate ROI, executives are increasingly looking to agentic AI for measurable financial outcomes. The tech function represents a significant opportunity, as IT infrastructure costs are expected to soar while budgets remain static. Over the past 18 months, tech teams have started to successfully implement AI agents to automate and manage workflows. However, confidence in agentic AI can diminish when lack of business context complicates tasks. Experts suggest that human oversight is crucial for successful deployment. Tech teams can spearhead this transformation, as experience with agents is anticipated to boost their confidence. Trust in agents is particularly high for structured tasks in data workflows, where the potential for reliable decision-making is greater. The report highlights that tech experts see agents enhancing everyday work and simplifying complex tasks, indicating that the integration of agentic AI can lead to improved efficiency and outcomes in the workplace. The importance of human involvement is emphasized as organizations design agents to align with existing operational and governance frameworks. <div>
+<p>Enterprise investment in AI is booming. Gartner is calling 2026 an “<a href="https://www.gartner.com/en/newsroom/press-releases/2026-05-19-gartner-forecasts-worldwideai-spending-to-grow-47-percent-in-2026" rel="noreferrer noopener" target="_blank">inflection year</a>” for organizations to align their AI projects with strategic business objectives. As the pressure to prove ROI mounts, executives and technology leaders are looking to agentic AI to drive the measurable financial outcomes their businesses seek.</p>
+
+
+
+<p>A prime opportunity for AI agents exists in the tech function, where IT infrastructure costs are projected to grow two to three times by 2030, even as budgets remain unchanged, according to <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/" rel="noreferrer noopener" target="_blank">McKinsey</a>. And in the last 18 months, tech teams—the engineers, developers, architects, and other practitioners who are building, deploying, and continually improving their organizations’ infrastructure and applications—are clearly putting agents to work.</p>
+
+
+
+<figure class="wp-block-image size-full is-resized"><a href="https://wp.technologyreview.com/wp-content/uploads/2026/06/MITTRI_Microsoft_Report_June26_.pdf" rel=" noreferrer noopener" target="_blank"><img alt="" class="wp-image-1139637" height="1594" src="https://wp.technologyreview.com/wp-content/uploads/2026/06/Microsoft-Report-2026-cover.png" style="width: 379px; height: auto;" width="1240" /></a></figure>
+
+
+
+<div class="wp-block-buttons is-content-justification-left is-layout-flex wp-container-core-buttons-is-layout-fc4fd283 wp-block-buttons-is-layout-flex">
+<div class="wp-block-button has-custom-width wp-block-button__width-auto is-style-fill is-style-fill--1"><a class="wp-block-button__link has-mittr-white-color has-text-color has-background has-custom-font-size wp-element-button" href="https://wp.technologyreview.com/wp-content/uploads/2026/06/MITTRI_Microsoft_Report_June26_.pdf" rel="noreferrer noopener" style="border-radius: 4px; background-color: #f04e1f; font-size: 16px;" target="_blank">DOWNLOAD THE REPORT</a></div>
+</div>
+
+
+
+<p>The ultimate promise of agents is not only to automate tasks but to manage and coordinate entire workflows, pursuing business goals in a way that allows humans and agents to work together. Given the risks involved in automated decision-making, teams cannot delegate the work that agents do without confidence that they are fully capable of performing the task and that it will do so in a safe, reliable, and secure manner.</p>
+
+
+
+<p>Among technology experts, our research shows that teams are exceedingly confident about using agentic AI across a significant amount of AI, data, and cloud tasks.</p>
+
+
+
+<figure class="wp-block-image size-full"><a href="https://wp.technologyreview.com/wp-content/uploads/2026/06/MITTRI_Microsoft_Report_June26_.pdf" rel=" noreferrer noopener" target="_blank"><img alt="" class="wp-image-1139772" height="1350" src="https://wp.technologyreview.com/wp-content/uploads/2026/06/Microsoft-LinkedIn-Figure-9-updated-1.png" width="1080" /></a></figure>
+
+
+
+<p>Where agent readiness drops is largely due to a lack of business context being supplied to agentic systems. The more complex the task, the more reasoning capability an agent requires and the greater its need for business context. Such context-generation capabilities for agents are still at an early stage of development, especially in situations where enterprise data is difficult to wrangle and connect into the agent lifecycle at the speed and quality in which developers and executives need it. Human oversight is a key factor of success in deploying agentic AI.</p>
+
+
+
+<p>Knowing that tech teams are in a pivotal position to lead this transformation, the experts we interviewed expect agent confidence to accelerate as experience with agents deepens and business environments mature. “As we design agents to operate within the same operational boundaries, identity systems, and governance models that teams already use, they start to behave more like the systems organizations already trust,” says Jeremy Winter, corporate vice president and chief product officer at Microsoft Azure Platform.</p>
+
+
+
+<p>This report, based on a survey of 300 global technology experts, ranks 101 tasks across AI, data, and cloud workflows based on respondents’ confidence in agents acting on their behalf. It also examines how technology teams view the opportunities and challenges related to agentic AI, along with the potential for the technology to enhance their careers.</p>
+
+
+
+<p>Key findings from the report include:</p>
+
+
+
+<p><strong>Confidence in agents is surging for measurable tasks and growing in areas of complex judgment. </strong>Technology experts overwhelmingly believe agents help with everyday work including streamlining processes, improving performance, and reducing repetitive tasks. Confidence is highest for processes like generating reports and boilerplate code, and there is clear opportunity where tasks involve multistep workflows and advanced reasoning to make decisions.</p>
+
+
+
+<p><strong>Data workflows are the breakthrough domain. </strong>Tech teams trust agents most where structure can provide a reliable foundation for decisions. This includes areas such as data quality monitoring, visualization anomaly detection, real-time data stream monitoring, and data profiling. This is where domain experts closest to the point of data generation can provide context to allow agents to act and deliver trusted outcomes.</p>
+
+
+
+<p><em><span style="text-decoration: underline;"><a href="https://wp.technologyreview.com/wp-content/uploads/2026/06/MITTRI_Microsoft_Report_June26_.pdf" rel="noreferrer noopener" target="_blank">Download the full report.</a></span></em></p>
+
+
+
+<p></p>
+
+
+
+<p><em>Read the <a href="https://aka.ms/agentconfidenceindex" rel="noreferrer noopener" target="_blank">Microsoft Cloud blog</a> by Amanda Silver, corporate vice president of Microsoft 365 Core and Work IQ, which underscores the importance of keeping humans in the loop and how systems thinking advances careers. And for a deeper dive into data workflows as a breakthrough use case for agents, check out the <a href="https://aka.ms/Confidence-Index-Data-Blog" rel="noreferrer noopener" target="_blank">Fabric blog</a> to hear from Kim Manis, corporate vice president of Product for Microsoft Fabric.</em></p>
+
+
+
+<p><em>This content was produced by Insights, the custom content arm of MIT Technology Review. It was not written by MIT Technology Review’s editorial staff. It was researched, designed, and written by human writers, editors, analysts, and illustrators. This includes the writing of surveys and collection of data for surveys. AI tools that may have been used were limited to secondary production processes that passed thorough human review.</em><br /><br /><br /><br /><br /></p>
+]]></content:encoded>
+<pubDate>Mon, 29 Jun 2026 14:44:01 +0000</pubDate>
+<pubDate>Mon, 29 Jun 2026 14:44:01 +0000</pubDate>
+</item>
+<item>
+<title>South Korea to spend $1T on more memory chip production and humanoid robots</title>
+<link>https://arstechnica.com/ai/2026/06/south-korea-to-spend-1t-on-more-memory-chip-production-and-humanoid-robots/</link>
+<guid>https://arstechnica.com/ai/2026/06/south-korea-to-spend-1t-on-more-memory-chip-production-and-humanoid-robots/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: South Korea, AI, memory chips, humanoid robots, investment
+
+<br><br>Summary: South Korea's government and major tech firms are investing $1 trillion into significant projects aimed at enhancing global memory chip supply, developing AI data centers, and advancing the commercial use of humanoid robots by 2028. This initiative is driven by increasing demand for memory chips from the AI industry, which has caused supply constraints and elevated prices for consumer electronics. Samsung and SK Hynix are among the companies that have benefited from this surge in demand. Concurrently, Hyundai Motor Company is striving to mass-produce humanoid robots through its subsidiary, Boston Dynamics, to automate laborious tasks in automotive factories and other industries. In a televised speech on June 29, President Lee Jae Myung emphasized the urgency of securing essential AI components rapidly, asserting that semiconductors, physical AI, and AI data centers are vital for South Korea's progress. This strategic move aims to solidify the country's position in the global tech landscape and ensure it remains competitive in the fast-evolving domains of AI and robotics. <div>
+<p>South Korea’s government and top tech companies are committing $1 trillion to several flagship megaprojects that could bolster global memory chip supply, build new AI data centers and spur commercial deployment of humanoid robots by 2028.</p>
+<p>The announcement comes as South Korean companies such as Samsung and SK Hynix have enjoyed <a href="https://www.chosun.com/english/industry-en/2026/06/26/DDEEK436YJFZBH5GZDUR2BKCZM/">record profits</a> and <a href="https://www.reuters.com/world/asia-pacific/sk-hynix-overtakes-samsung-become-koreas-most-valuable-company-2026-06-22/">stock valuations</a> due to the AI industry’s demand for memory chips—with the subsequent supply strain leading to <a href="https://arstechnica.com/gadgets/2026/01/ram-shortage-chaos-expands-to-gpus-high-capacity-ssds-and-even-hard-drives/">memory chip shortages</a> and higher prices for consumer electronics. Meanwhile, Hyundai Motor Company is racing to mass manufacture humanoid robots developed by its subsidiary, Boston Dynamics, so that the robotic workers can start taking over certain laborious tasks in automotive factories and other workplaces.</p>
+<p>“We must secure the core elements of AI faster than any other country,” said South Korean President Lee Jae Myung in a televised speech on June 29, as reported by <a href="https://www.bbc.com/news/articles/c9q2pwzngjqo">BBC News</a> and other media outlets. “Semiconductors, physical AI, and AI data centers are the triple axis for a great leap forward."</p><p><a href="https://arstechnica.com/ai/2026/06/south-korea-to-spend-1t-on-more-memory-chip-production-and-humanoid-robots/">Read full article</a></p>
+<p><a href="https://arstechnica.com/ai/2026/06/south-korea-to-spend-1t-on-more-memory-chip-production-and-humanoid-robots/#comments">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 29 Jun 2026 21:09:43 +0000</pubDate>
+<pubDate>Mon, 29 Jun 2026 21:09:43 +0000</pubDate>
+</item>
+<item>
+<title>Agent Mode by Receiptor AI</title>
+<link>https://www.producthunt.com/products/receiptor-ai</link>
+<guid>https://www.producthunt.com/products/receiptor-ai</guid>
+<content:encoded><![CDATA[
+<div> **Keywords:** Bookkeeping, Assistant, Receipt, Workflows, Automation
+
+<br><br>Summary: The bookkeeping assistant is designed to streamline receipt workflows from start to finish, enhancing efficiency in financial operations. By automating the process of capturing, organizing, and managing receipts, it reduces manual data entry errors and time spent on accounting tasks. The system allows for easy customization, enabling businesses to tailor workflows according to their specific needs. Additionally, the assistant integrates seamlessly with existing accounting software, promoting a cohesive financial ecosystem. Users benefit from real-time tracking and reporting, offering insights into spending patterns and financial health. The end-to-end nature of the workflow allows for quick approvals and facilitates better communication among team members. Ultimately, this bookkeeping assistant serves as a valuable tool for businesses looking to optimize their financial management processes, save time, and ensure accuracy in their accounting practices. By implementing such a solution, organizations can focus more on strategic decision-making rather than tedious administrative tasks, leading to improved overall productivity and profitability. <div>
+<p>
+            Bookkeeping assistant that runs receipt workflows end-to-end
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/receiptor-ai?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1182365?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-06-27T05:16:36-07:00</pubDate>
+<pubDate>2026-06-29T21:11:52-07:00</pubDate>
+</item>
+<item>
+<title>ClinePass</title>
+<link>https://www.producthunt.com/products/cline-4</link>
+<guid>https://www.producthunt.com/products/cline-4</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Run the best open-weights models in Cline
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/cline-4?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1181198?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-06-25T15:55:24-07:00</pubDate>
+<pubDate>2026-06-29T21:16:12-07:00</pubDate>
+</item>
+<item>
+<title>PMB</title>
+<link>https://www.producthunt.com/products/pmb-local-first-memory-for-ai</link>
+<guid>https://www.producthunt.com/products/pmb-local-first-memory-for-ai</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Stop re-explaining your project to AI coding agents
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/pmb-local-first-memory-for-ai?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1182762?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-06-27T21:10:11-07:00</pubDate>
+<pubDate>2026-06-29T21:09:38-07:00</pubDate>
+</item>
+<item>
+<title>Spira for Product Hunt Makers</title>
+<link>https://www.producthunt.com/products/spira-ai</link>
+<guid>https://www.producthunt.com/products/spira-ai</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Social media growth agents that build your momentum 
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/spira-ai?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1175520?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-06-18T12:23:44-07:00</pubDate>
+<pubDate>2026-06-29T21:16:19-07:00</pubDate>
+</item>
+<item>
+<title>VisibAI</title>
+<link>https://www.producthunt.com/products/visibai-ai-visibility-audit-tool</link>
+<guid>https://www.producthunt.com/products/visibai-ai-visibility-audit-tool</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Are you in AI answers? Find out and fix it in minutes
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/visibai-ai-visibility-audit-tool?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1133685?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-04-27T11:58:57-07:00</pubDate>
+<pubDate>2026-06-29T21:14:32-07:00</pubDate>
+</item>
+<item>
+<title>Outpaint - Ad Reframe</title>
+<link>https://www.producthunt.com/products/outpaint-com-ad-reframe</link>
+<guid>https://www.producthunt.com/products/outpaint-com-ad-reframe</guid>
+<content:encoded><![CDATA[
+
+<p>
+            AI to turn vertical UGC into widescreen ads
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/outpaint-com-ad-reframe?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1180072?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-06-24T07:14:23-07:00</pubDate>
+<pubDate>2026-06-29T20:38:58-07:00</pubDate>
+</item>
+<item>
+<title>Intelli</title>
+<link>https://www.producthunt.com/products/intelli</link>
+<guid>https://www.producthunt.com/products/intelli</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Convert leads into customers with AI conversations
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/intelli?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1179811?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-06-24T01:29:18-07:00</pubDate>
+<pubDate>2026-06-29T21:12:16-07:00</pubDate>
+</item>
 
 <item>
 <title>Quoting Jon Udell</title>
@@ -12,7 +420,7 @@
 <content:encoded><![CDATA[
 <div> Keywords: human in the loop, agent-assisted, software development, authority, collaboration
 
-<br><br>Summary: The phrase “human in the loop” suggests that machines hold authority over processes, implying a disconnect between humans and technology. To shift this narrative, the article proposes framing it as “our loop,” where humans retain control and actively recruit agents—software programs or AI tools—to enhance their workflows. This approach allows for a collaborative environment, making processes more transparent and understandable rather than operating in a black box. The goal is to create an agent-assisted software development methodology that integrates these agents seamlessly into existing workflows, ensuring they support rather than replace human decision-making. It emphasizes the importance of maintaining oversight and engagement in the development process, fostering accountability and clarity. The humorous reference to a doctor highlights the absurdity of allowing agents to create unreviewable pull requests (PRs), reinforcing the idea that human involvement is essential in ensuring the quality and integrity of the output. By inviting agents into the team as collaborators, developers can leverage their strengths while keeping human agency front and center in the process. <div>
+<br /><br />Summary: The phrase “human in the loop” suggests that machines hold authority over processes, implying a disconnect between humans and technology. To shift this narrative, the article proposes framing it as “our loop,” where humans retain control and actively recruit agents—software programs or AI tools—to enhance their workflows. This approach allows for a collaborative environment, making processes more transparent and understandable rather than operating in a black box. The goal is to create an agent-assisted software development methodology that integrates these agents seamlessly into existing workflows, ensuring they support rather than replace human decision-making. It emphasizes the importance of maintaining oversight and engagement in the development process, fostering accountability and clarity. The humorous reference to a doctor highlights the absurdity of allowing agents to create unreviewable pull requests (PRs), reinforcing the idea that human involvement is essential in ensuring the quality and integrity of the output. By inviting agents into the team as collaborators, developers can leverage their strengths while keeping human agency front and center in the process. <div>
 <blockquote cite="https://blog.jonudell.net/2026/06/28/doctor-it-hurts-when-agents-create-unreviewable-prs-dont-do-that/"><p><strong><del>Human</del> Agent in the loop</strong></p>
 <p>I dislike the phrase “human in the loop” because it cedes authority to the machines. Let’s flip the narrative. It’s our loop, we work the same way we always have, now we recruit agents to join the team. An agent-assisted process need not be a black box that takes in prompts and emits features. [...]</p>
 <p>Let’s do agentic software development like that. Not as a loop we’ve been excluded from, instead as one we invite agents into.</p></blockquote>
@@ -20,7 +428,6 @@
 
     <p>Tags: <a href="https://simonwillison.net/tags/jon-udell">jon-udell</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>
 ]]></content:encoded>
-<pubDate>2026-06-28T21:57:41+00:00</pubDate>
 <pubDate>2026-06-28T21:57:41+00:00</pubDate>
 </item>
 <item>
@@ -30,7 +437,7 @@
 <content:encoded><![CDATA[
 <div> Keywords: Hack Your Summer, internship crisis, students, mentors, project
 
-<br><br>Summary: 
+<br /><br />Summary: 
 
 Hack Your Summer is a 4-week production sprint designed for undergraduate students, graduate students, and recent graduates looking to create real projects over the summer. The initiative aims to teach participants how to identify projects, maintain steady progress, receive support from mentors and peers, and produce tangible, public-facing work that can enhance their resumes. This program is a response to the significant internship crisis affecting US college students this year, as many companies have reduced hiring and lack the capacity to mentor interns. Hack Your Summer serves as an alternative for students who were unable to secure one of the scarce internships. A second cohort, which is free of charge, is set to begin on July 13th, with applications closing on July 8th. The program also invites volunteers who are interested in mentoring students throughout this creative process. Through this initiative, participants will gain valuable skills and experience that will make them more competitive in the job market, while also connecting with other like-minded individuals. Overall, Hack Your Summer aims to empower students during a challenging time.  <div>
 <p><strong><a href="https://www.hackyoursummer.org/">Hack Your Summer</a></strong></p>
@@ -47,7 +454,6 @@ I learned about this initiative from DJ Patil this morning:</p>
     <p>Tags: <a href="https://simonwillison.net/tags/careers">careers</a></p>
 ]]></content:encoded>
 <pubDate>2026-06-28T19:26:11+00:00</pubDate>
-<pubDate>2026-06-28T19:26:11+00:00</pubDate>
 </item>
 <item>
 <title>China’s Z.ai claims it can match Mythos on cybersecurity</title>
@@ -56,7 +462,7 @@ I learned about this initiative from DJ Patil this morning:</p>
 <content:encoded><![CDATA[
 <div> Keywords: China, Zhipu AI, GLM-5.2, cybersecurity, US government  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 China's Zhipu AI has launched its open-weight GLM-5.2 model, which has shown promise in specific areas such as bug-finding and cybersecurity. This development suggests that Chinese AI capabilities are catching up to those of leading firms like Google's and OpenAI's, particularly in niche applications. Although GLM-5.2 may still fall short in more general tasks, its advancements indicate a significant progress in AI technology in China. This situation raises concerns for the US government, which has been actively working to limit China's access to cutting-edge AI models, including those from Anthropic and other companies. The shift in AI competitiveness is viewed as a critical issue, leading to actions aimed at restricting access to advanced hardware and models essential for training and deployment. In light of these developments, the US is intensifying its efforts to maintain its technological edge and prevent potential cybersecurity threats posed by advancements in Chinese AI. The increasing capabilities of China's AI models underscore the ongoing race in AI technology on a global scale and the implications for national security in the US. <div>
 <figure>
 
@@ -69,7 +475,6 @@ China's Zhipu AI has launched its open-weight GLM-5.2 model, which has shown pro
 <p><a href="https://www.theverge.com/ai-artificial-intelligence/958804/chinas-z-ai-glm-52-mythos-cybersecurity">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
 <pubDate>2026-06-28T17:42:51-04:00</pubDate>
-<pubDate>2026-06-28T17:42:51-04:00</pubDate>
 </item>
 <item>
 <title>Suno launches Spark incubator program to feed independent artists to its AI machine</title>
@@ -78,7 +483,7 @@ China's Zhipu AI has launched its open-weight GLM-5.2 model, which has shown pro
 <content:encoded><![CDATA[
 <div> Keywords: Suno, independent artists, grants, remixing, music license
 
-<br><br>Summary: Suno aims to expand its role beyond just being a toy for generating AI content; it aspires to become a streaming platform that supports and promotes independent artists. To achieve this, Suno has launched a new program specifically designed for unsigned singers, songwriters, or producers who release music under their own name. Artists interested in this program can apply for grants, mentorship, and marketing support to help boost their careers. However, applicants must agree to certain terms that have sparked controversy within the artistic community. Notably, artists are required to make their songs available on Suno for remixing purposes. While this might not raise immediate red flags, the broad license that Suno claims over the works does concern many potential applicants. This aspect of the agreement signals that artists may relinquish some control over their creations, prompting discussions about the implications of such a dedicated license on their artistic freedom and rights. Ultimately, while Suno's initiative offers valuable resources for artists, the conditions attached may deter some from participating in the program. <div>
+<br /><br />Summary: Suno aims to expand its role beyond just being a toy for generating AI content; it aspires to become a streaming platform that supports and promotes independent artists. To achieve this, Suno has launched a new program specifically designed for unsigned singers, songwriters, or producers who release music under their own name. Artists interested in this program can apply for grants, mentorship, and marketing support to help boost their careers. However, applicants must agree to certain terms that have sparked controversy within the artistic community. Notably, artists are required to make their songs available on Suno for remixing purposes. While this might not raise immediate red flags, the broad license that Suno claims over the works does concern many potential applicants. This aspect of the agreement signals that artists may relinquish some control over their creations, prompting discussions about the implications of such a dedicated license on their artistic freedom and rights. Ultimately, while Suno's initiative offers valuable resources for artists, the conditions attached may deter some from participating in the program. <div>
 <figure>
 
 <img alt="Keyboard with a robotic arm playing it" src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/01/STK467_AI_MUSIC_CVirginia_C.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
@@ -90,7 +495,6 @@ China's Zhipu AI has launched its open-weight GLM-5.2 model, which has shown pro
 <p><a href="https://www.theverge.com/ai-artificial-intelligence/958801/suno-launches-spark-incubator-program-to-feed-independent-artists-to-its-ai-machine">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
 <pubDate>2026-06-28T16:27:36-04:00</pubDate>
-<pubDate>2026-06-28T16:27:36-04:00</pubDate>
 </item>
 <item>
 <title>Prosecutors used ChatGPT logs as evidence in the Palisades fire trial</title>
@@ -99,7 +503,7 @@ China's Zhipu AI has launched its open-weight GLM-5.2 model, which has shown pro
 <content:encoded><![CDATA[
 <div> Keywords: Jonathan Rinderknecht, arson charges, ChatGPT logs, location data, security footage  
 
-<br><br>Summary: Jonathan Rinderknecht faced arson charges for starting a fire on New Year's Day in 2025. The incident gained significant attention due to its severity and implications. To build their case against him, prosecutors utilized various forms of evidence, including location data from his iPhone, security camera footage, and witness testimony. Additionally, they examined Rinderknecht's interactions with ChatGPT, an AI chatbot. Prosecutors highlighted that he had generated images of fire using ChatGPT and engaged in discussions about his anger and frustrations, particularly regarding the wealthy's impact on the world. They presented a screen recording where Rinderknecht queried ChatGPT about the potential for blame associated with starting a fire. This use of AI-generated data raised questions about the relevance and admissibility of such evidence in a court of law, marking a unique intersection of technology and criminal prosecution. The case reflects broader societal issues, including mental health and the influence of wealth disparity, while also showcasing the evolving role of digital communication in legal investigations. <div>
+<br /><br />Summary: Jonathan Rinderknecht faced arson charges for starting a fire on New Year's Day in 2025. The incident gained significant attention due to its severity and implications. To build their case against him, prosecutors utilized various forms of evidence, including location data from his iPhone, security camera footage, and witness testimony. Additionally, they examined Rinderknecht's interactions with ChatGPT, an AI chatbot. Prosecutors highlighted that he had generated images of fire using ChatGPT and engaged in discussions about his anger and frustrations, particularly regarding the wealthy's impact on the world. They presented a screen recording where Rinderknecht queried ChatGPT about the potential for blame associated with starting a fire. This use of AI-generated data raised questions about the relevance and admissibility of such evidence in a court of law, marking a unique intersection of technology and criminal prosecution. The case reflects broader societal issues, including mental health and the influence of wealth disparity, while also showcasing the evolving role of digital communication in legal investigations. <div>
 <figure>
 
 <img alt="Palisades fire burns above Topanga Canyon Blvd in Los Angeles, CA." src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/22530766/1232927726.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
@@ -111,7 +515,6 @@ China's Zhipu AI has launched its open-weight GLM-5.2 model, which has shown pro
 <p><a href="https://www.theverge.com/ai-artificial-intelligence/958751/prosecutors-chatgpt-palisades-wildfire-arson-mistrial">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
 <pubDate>2026-06-28T10:12:06-04:00</pubDate>
-<pubDate>2026-06-28T10:12:06-04:00</pubDate>
 </item>
 <item>
 <title>discode.ai</title>
@@ -120,7 +523,7 @@ China's Zhipu AI has launched its open-weight GLM-5.2 model, which has shown pro
 <content:encoded><![CDATA[
 <div> Keywords: AI models, interface, eco-friendly, technology, innovation
 
-<br><br>Summary: The article highlights a revolutionary platform that integrates over 100 AI models into a single, user-friendly interface. This innovation aims to simplify access to advanced AI technologies, making them more manageable for users across various domains. Emphasizing sustainability, the platform is designed to be eco-friendly, aligning its operations with environmental standards and reducing carbon footprints. The integration of multiple AI models allows businesses and individuals to leverage specialized tools for tasks ranging from data analysis to natural language processing. This versatility caters to diverse needs—from small enterprises seeking automation solutions to large corporations requiring complex data insights. Furthermore, the platform promotes collaboration among users by allowing them to share insights and innovations, fostering a community-driven approach to AI utilization. Overall, the combination of powerful AI capabilities with a commitment to ecological sustainability resonates well in today's technology landscape, addressing both operational efficiency and environmental responsibility. As the demand for AI solutions continues to grow, this platform stands at the forefront, setting new standards for accessibility and environmental consciousness in the tech industry. <div>
+<br /><br />Summary: The article highlights a revolutionary platform that integrates over 100 AI models into a single, user-friendly interface. This innovation aims to simplify access to advanced AI technologies, making them more manageable for users across various domains. Emphasizing sustainability, the platform is designed to be eco-friendly, aligning its operations with environmental standards and reducing carbon footprints. The integration of multiple AI models allows businesses and individuals to leverage specialized tools for tasks ranging from data analysis to natural language processing. This versatility caters to diverse needs—from small enterprises seeking automation solutions to large corporations requiring complex data insights. Furthermore, the platform promotes collaboration among users by allowing them to share insights and innovations, fostering a community-driven approach to AI utilization. Overall, the combination of powerful AI capabilities with a commitment to ecological sustainability resonates well in today's technology landscape, addressing both operational efficiency and environmental responsibility. As the demand for AI solutions continues to grow, this platform stands at the forefront, setting new standards for accessibility and environmental consciousness in the tech industry. <div>
 <p>
             100+ AI models, one interface. ECO friendly.
           </p>
@@ -130,7 +533,6 @@ China's Zhipu AI has launched its open-weight GLM-5.2 model, which has shown pro
             <a href="https://www.producthunt.com/r/p/1103513?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-03-20T19:10:53-07:00</pubDate>
 <pubDate>2026-06-28T21:47:59-07:00</pubDate>
 </item>
 <item>
@@ -140,7 +542,7 @@ China's Zhipu AI has launched its open-weight GLM-5.2 model, which has shown pro
 <content:encoded><![CDATA[
 <div> Keywords: AI agent, browser, tools, messaging, integration  
 
-<br><br>Summary: The article discusses the integration of a single AI agent that operates seamlessly across various platforms, including web browsers, tools, and messaging apps. This AI agent is designed to enhance user experience by providing assistance in real-time, making tasks more efficient. By leveraging its capabilities across different mediums, users can benefit from a cohesive workflow without switching between multiple applications. The AI agent can streamline communications and manage tools effectively, allowing for a more organized approach to both personal and professional tasks. This integration aims to foster productivity and alleviate the burden of multitasking. Furthermore, the article highlights the adaptability of the AI agent to different environments, showcasing its potential to cater to individual user needs. Ultimately, the goal is to create a unified interface that empowers users, enhances accessibility to information, and simplifies task management. The seamless interaction between the agent and various platforms represents a significant advancement in technology, illustrating how AI can redefine our daily digital interactions and workflow efficiency. <div>
+<br /><br />Summary: The article discusses the integration of a single AI agent that operates seamlessly across various platforms, including web browsers, tools, and messaging apps. This AI agent is designed to enhance user experience by providing assistance in real-time, making tasks more efficient. By leveraging its capabilities across different mediums, users can benefit from a cohesive workflow without switching between multiple applications. The AI agent can streamline communications and manage tools effectively, allowing for a more organized approach to both personal and professional tasks. This integration aims to foster productivity and alleviate the burden of multitasking. Furthermore, the article highlights the adaptability of the AI agent to different environments, showcasing its potential to cater to individual user needs. Ultimately, the goal is to create a unified interface that empowers users, enhances accessibility to information, and simplifies task management. The seamless interaction between the agent and various platforms represents a significant advancement in technology, illustrating how AI can redefine our daily digital interactions and workflow efficiency. <div>
 <p>
             "One AI agent across your browser, tools, and messages "
           </p>
@@ -150,7 +552,6 @@ China's Zhipu AI has launched its open-weight GLM-5.2 model, which has shown pro
             <a href="https://www.producthunt.com/r/p/1182460?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-06-27T08:17:01-07:00</pubDate>
 <pubDate>2026-06-28T21:39:14-07:00</pubDate>
 </item>
 <item>
@@ -160,7 +561,7 @@ China's Zhipu AI has launched its open-weight GLM-5.2 model, which has shown pro
 <content:encoded><![CDATA[
 <div> **Keywords:** WebMCP, AI chat, Frontend, integration, development  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 WebMCP is introduced as a solution for integrating AI chat functionalities into any Frontend application seamlessly. This platform enables developers to embed intelligent chat features without extensive coding or infrastructure setups. The native support provided allows quick deployment, ensuring users can access AI-driven conversations promptly. One of the primary advantages is its compatibility with various programming languages and frameworks, making it a versatile choice for developers across different tech stacks. Additionally, WebMCP offers customizable options, allowing businesses to tailor interactions to their specific needs and branding. Security and privacy measures are also emphasized, ensuring data protection while utilizing AI chat capabilities. As communication channels evolve, the integration of WebMCP-native AI chat can significantly enhance user engagement and customer service effectiveness. This positioning aligns with the growing demand for automated interactions, showcasing how businesses can leverage modern AI technologies to improve operational efficiency and consumer satisfaction. With straightforward integration processes, WebMCP establishes itself as an essential tool for forward-thinking organizations looking to incorporate AI into their digital platforms. <div>
 <p>
             Add WebMCP-native AI chat to any Frontend
@@ -171,10 +572,8 @@ WebMCP is introduced as a solution for integrating AI chat functionalities into 
             <a href="https://www.producthunt.com/r/p/1178202?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-06-22T07:59:06-07:00</pubDate>
 <pubDate>2026-06-28T21:47:31-07:00</pubDate>
 </item>
-
 <item>
 <title>[AINews] OpenAI GPT-5.6 Sol / Terra / Luna — restricted to trusted partners</title>
 <link>https://www.latent.space/p/ainews-openai-gpt-56-sol-terra-luna</link>
