@@ -3,7 +3,342 @@
 <channel>
 <title>ai</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/ai.xml</link>
-<lastBuildDate>Sat, 04 Jul 2026 03:52:06 +0000</lastBuildDate>
+<lastBuildDate>Sun, 05 Jul 2026 04:10:40 +0000</lastBuildDate>
+
+<item>
+<title>sqlite-utils 4.0rc2, mostly written by Claude Fable (for about $149.25)</title>
+<link>https://simonwillison.net/2026/Jul/5/sqlite-utils-fable/</link>
+<guid>https://simonwillison.net/2026/Jul/5/sqlite-utils-fable/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: sqlite-utils, transactions, release notes, Fable, error handling
+
+<br><br>Summary:  
+The author aimed to finalize a stable 4.0 release of sqlite-utils, utilizing Claude Fable for assistance. During the review, a critical bug was discovered in the `delete_where()` function, which caused data loss due to improper transaction handling. Through 37 prompts and 34 commits, significant code changes were made to improve transaction handling so that every write method now operates within its transaction, committing changes immediately. The author also identified that connections created with Python 3.12+ behave differently, leading to a majority of tests failing, prompting necessary adjustments. A cross-review by GPT-5.5 uncovered two significant issues with `db.query()`, which varied from documentation. The changelog captures each change in the release, with breaking changes like automatic commits and improved error handling detailed clearly. Other improvements include transaction control methods like `db.begin()` and new documentation to ease the transition between versions. The author upgraded their Fable subscription in anticipation of future costs, ultimately completing an extensive review before the release of sqlite-utils 4.0rc2. <div>
+<p>I wrote about the <a href="https://simonwillison.net/2026/Jun/21/sqlite-utils-40rc1/">sqlite-utils 4.0rc1</a> release a couple of weeks ago. Since we only have Claude Fable on our Max subscriptions for a few more days, I decided to see if it could help me get to a 4.0 stable release that I felt truly comfortable about, since I try to keep to <a href="https://semver.org">SemVer</a> and like my incompatible major versions to be as rare as possible.</p>
+<p>I started with this prompt, in Claude Code for web on my iPhone:</p>
+<blockquote>
+<p><code>Final review before shipping a stable 4.0 release - very important to spot any last minute things that would be a breaking change if we fix them later</code></p>
+</blockquote>
+<p>Here's <a href="https://github.com/simonw/sqlite-utils/blob/0c369a447eeaf39084f0d14a45b3eeb7eacb631b/fable-review-4.0rc1.md">that initial report</a> it created for me. There were some <em>significant</em> problems that I hadn't myself encountered yet - 5 that Fable categorized as "release blockers". Here's the worst of the bunch:</p>
+<blockquote>
+<p><strong>1. <code>delete_where()</code> never commits and poisons the connection (data loss)</strong></p>
+<p><code>Table.delete_where()</code> (<code>sqlite_utils/db.py:2948</code>) runs its DELETE via a bare <code>self.db.execute()</code> with no <code>atomic()</code> wrapper — compare <code>Table.delete()</code> at <code>db.py:2944</code>, which wraps correctly. The connection is left <code>in_transaction=True</code>, so every <em>subsequent</em> <code>atomic()</code> call takes the savepoint branch (<code>db.py:430-440</code>) and never commits either.</p>
+<p>Reproduced end-to-end:</p>
+<pre><span class="pl-s1">db</span> <span class="pl-c1">=</span> <span class="pl-s1">sqlite_utils</span>.<span class="pl-c1">Database</span>(<span class="pl-s">"dw.db"</span>)
+<span class="pl-s1">db</span>[<span class="pl-s">"t"</span>].<span class="pl-c1">insert_all</span>([{<span class="pl-s">"id"</span>: <span class="pl-s1">i</span>} <span class="pl-k">for</span> <span class="pl-s1">i</span> <span class="pl-c1">in</span> <span class="pl-en">range</span>(<span class="pl-c1">3</span>)], <span class="pl-s1">pk</span><span class="pl-c1">=</span><span class="pl-s">"id"</span>)
+<span class="pl-s1">db</span>[<span class="pl-s">"t"</span>].<span class="pl-c1">delete_where</span>(<span class="pl-s">"id = ?"</span>, [<span class="pl-c1">0</span>])   <span class="pl-c"># conn.in_transaction is now True</span>
+<span class="pl-s1">db</span>[<span class="pl-s">"t"</span>].<span class="pl-c1">insert</span>({<span class="pl-s">"id"</span>: <span class="pl-c1">50</span>})
+<span class="pl-s1">db</span>[<span class="pl-s">"u"</span>].<span class="pl-c1">insert</span>({<span class="pl-s">"a"</span>: <span class="pl-c1">1</span>})
+<span class="pl-s1">db</span>.<span class="pl-c1">close</span>()
+<span class="pl-c"># Reopen: rows are [0, 1, 2] — the delete, row 50, AND table u are all gone.</span></pre>
+</blockquote>
+<p>That's a really bad bug! Very glad I didn't ship that, although at least it would have been a bug I could fix in a 4.0.1 point release, not a design flaw that would force a 5.0.</p>
+<p>Over the course of 37 prompts, 34 commits and +1,321 -190 code changes over 30 separate files, we worked through the entire set of feedback in turn, making several other design improvements along the way.</p>
+<p>A weird thing about coding agents is that harder tasks like this one actually provide <em>more</em> opportunity to do other things at the same time, since the agent sometimes needs 10-15 minutes to churn away on a new task. I went out to enjoy the Half Moon Bay 4th of July parade, occasionally checking in and prompting the next step for Fable from my phone.</p>
+<p>Full details <a href="https://github.com/simonw/sqlite-utils/pull/767">in the PR</a> and <a href="https://claude.ai/code/session_01UnLnhsH25Nnv7LHhekUfPd">this shared transcript</a>. I switched to my laptop for the final review, which I conducted through GitHub's PR interface.</p>
+<p>The most significant changes relate to transaction handling, which was the signature new feature in <a href="https://simonwillison.net/2026/Jun/21/sqlite-utils-40rc1/#new-feature-db-atomic-transactions">the earlier RC</a>. The new RC now includes <a href="https://sqlite-utils.datasette.io/en/latest/python-api.html#transactions-and-saving-your-changes">comprehensive documentation</a> on the new transaction model, the intro to which I'll quote here in full:</p>
+<blockquote>
+<p>Every method in this library that writes to the database - <code>insert()</code>, <code>upsert()</code>, <code>update()</code>, <code>delete()</code>, <code>delete_where()</code>, <code>transform()</code>, <code>create_table()</code>, <code>create_index()</code>, <code>enable_fts()</code> and the rest - runs inside its own transaction and commits it before returning. Your changes are saved to disk as soon as the method call finishes:</p>
+<pre><span class="pl-s1">db</span> <span class="pl-c1">=</span> <span class="pl-en">Database</span>(<span class="pl-s">"data.db"</span>)
+<span class="pl-s1">db</span>.<span class="pl-c1">table</span>(<span class="pl-s">"news"</span>).<span class="pl-c1">insert</span>({<span class="pl-s">"headline"</span>: <span class="pl-s">"Dog wins award"</span>})
+<span class="pl-c"># The new row is already saved - no commit() required</span></pre>
+<p>The same applies to raw SQL executed with <a href="https://sqlite-utils.datasette.io/en/latest/python-api.html#python-api-transactions-execute">db.execute()</a> - a write statement is committed as soon as it has run.</p>
+<p>You never need to call <code>commit()</code>, and you do not need to close the database to persist your changes. There are exactly two situations where you need to think about transactions:</p>
+<ol>
+<li>
+<p>You want to group several write operations together, so they either all succeed or all fail - use <a href="https://sqlite-utils.datasette.io/en/latest/python-api.html#python-api-atomic">db.atomic()</a>.</p>
+</li>
+<li>
+<p>You are <a href="https://sqlite-utils.datasette.io/en/latest/python-api.html#python-api-transactions-manual">managing a transaction yourself</a> with <code>db.begin()</code>, in which case nothing is committed until you commit - the library will never commit a transaction you opened.</p>
+</li>
+</ol>
+</blockquote>
+<p>In reviewing Fable's documentation - I find that reviewing the documentation edits first is an <em>excellent</em> way to build an initial understanding of what has changed - I spotted <a href="https://github.com/simonw/sqlite-utils/blob/6c88067ab76b9597fb1c538c53164632526a2891/docs/python-api.rst?plain=1#L386">this detail</a>:</p>
+<blockquote>
+<p><code>db.atomic()</code> and the automatic per-method transactions are designed for connections in Python's default transaction handling mode. Connections created with the Python 3.12+ <code>sqlite3.connect(..., autocommit=True)</code> or <code>autocommit=False</code> options are not supported, because <code>commit()</code> and <code>rollback()</code> behave differently on those connections.</p>
+</blockquote>
+<p>I admit I hadn't thought about how <code>sqlite-utils</code> would react to the more recent <a href="https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.autocommit">autocommit setting</a>, added in Python 3.12. It turns out "behave differently on those connections" equated to almost the entire test suite failing, so I worked with the model to <a href="https://github.com/simonw/sqlite-utils/commit/f7ff3e2027aefb9905ebb2e611e5bbb0a62382c5">ensure that this difference</a> would not break how the library works.</p>
+<h4 id="and-a-final-review-by-gpt-5-5">And a final review by GPT-5.5</h4>
+<p>I used to think that the idea of having one model review the work of another was somewhat absurd - it felt weirdly superstitious. The problem is <em>it really does work</em> - I've started habitually having Anthropic's best model review OpenAI's work and vice versa, because I've had that turn up interesting results often enough to be valuable.</p>
+<p>I prompted Codex Desktop and GPT-5.5 xhigh with the following:</p>
+<blockquote>
+<p><code>Review changes since the last RC. Also confirm that the changelog is up-to-date.</code></p>
+</blockquote>
+<p>Which was enough to turn up two issues worth investigating:</p>
+<blockquote>
+<p><strong>Findings</strong></p>
+<ul>
+<li>[P1] <a href="https://github.com/simonw/sqlite-utils/blob/04f8971546418962aaf6579d4028c7117d6c3a20/sqlite_utils/db.py#L663">sqlite_utils/db.py:663</a> <code>db.query()</code> now rejects non-row statements only after calling <code>db.execute()</code>, and <a href="https://github.com/simonw/sqlite-utils/blob/04f8971546418962aaf6579d4028c7117d6c3a20/sqlite_utils/db.py#L705">sqlite_utils/db.py:705</a> auto-commits those writes first. So <code>db.query("update ...")</code> raises <code>ValueError</code> but the update is already committed. That is a surprising side effect for a method documented as “can only be used with SQL that returns rows.”</li>
+<li>[P1] <a href="https://github.com/simonw/sqlite-utils/blob/04f8971546418962aaf6579d4028c7117d6c3a20/sqlite_utils/db.py#L672">sqlite_utils/db.py:672</a> <code>INSERT ... RETURNING</code> through <code>db.query()</code> only commits after the returned generator is fully exhausted. <code>db.query("insert ... returning ...")</code> without iteration, or common <code>next(db.query(...))</code> usage, leaves the transaction open and the write can be rolled back on close. This contradicts <a href="https://github.com/simonw/sqlite-utils/blob/04f8971546418962aaf6579d4028c7117d6c3a20/docs/changelog.rst?plain=1#L15">docs/changelog.rst:15</a> and <a href="https://github.com/simonw/sqlite-utils/blob/04f8971546418962aaf6579d4028c7117d6c3a20/docs/python-api.rst?plain=1#L232">docs/python-api.rst:232</a>, which say it takes effect without iteration.</li>
+</ul>
+</blockquote>
+<p>I pasted that into a fresh Fable session, which ran some experiments to confirm the problem:</p>
+<blockquote>
+<p>Both findings were confirmed. <code>db.query()</code> called <code>self.execute()</code> first, which auto-commits writes, and only then checked <code>cursor.description</code> — so <code>db.query("update ...")</code> committed the update before raising <code>ValueError</code>. And the <code>INSERT ... RETURNING</code> commit lived at the end of the returned generator, so it never fired unless you exhausted the iterator — <code>next(db.query(...))</code> or an un-iterated call left the transaction open, contradicting what the changelog and docs promise.</p>
+</blockquote>
+<p>Here's <a href="https://github.com/simonw/sqlite-utils/pull/768">the PR</a> with the fix, and the <a href="https://claude.ai/code/session_012U3iRfJoTZ5vd22cBSF2nJ">full Claude Code transcript</a>. Reviewing this code helped me build a better mental model of the edge cases of SQLite transaction semantics!</p>
+<h4 id="for-an-estimated-unsubsidized-cost-of-149-25">For an estimated (unsubsidized) cost of $149.25</h4>
+<p>I upgraded to the Claude Max $200/month plan (I was previously on $100/month) to increase my Fable allowance for the remaining time until <a href="https://www.anthropic.com/news/redeploying-fable-5">the July 7th Fablepocalypse</a>, when even Claude Max subscribers will have to pay full API cost for the model.</p>
+<p>I was curious as to how much this would have cost me if I had been paying those costs directly. At first I thought those numbers weren't available to me since I had run the work remotely using Claude Code for web, and then I realized I could run <a href="https://www.agentsview.io">AgentsView</a> inside that existing session to get that cost estimate!</p>
+<blockquote>
+<p><code>Run "uvx agentsview --help"​ and then use that tool to calculate the cost of this session</code></p>
+</blockquote>
+<p>Claude figured out how to use the <code>session list --include-children</code> command and came out with the following:</p>
+<table>
+<thead>
+<tr>
+<th>Transcript</th>
+<th>Model</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Main session</td>
+<td>claude-fable-5</td>
+<td>$141.02</td>
+</tr>
+<tr>
+<td>API-surface sweep agent</td>
+<td>claude-fable-5</td>
+<td>$2.40</td>
+</tr>
+<tr>
+<td>Transactions/atomic review agent</td>
+<td>claude-fable-5</td>
+<td>$2.39</td>
+</tr>
+<tr>
+<td>Post-rc1 commits review agent</td>
+<td>claude-fable-5</td>
+<td>$1.72</td>
+</tr>
+<tr>
+<td>Migrations review agent</td>
+<td>claude-fable-5</td>
+<td>$1.40</td>
+</tr>
+<tr>
+<td>Prompt-counting agent</td>
+<td>claude-opus-4-8</td>
+<td>$0.32</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td><strong>$149.25</strong></td>
+</tr>
+</tbody>
+</table>
+<p>I'm very glad I'm on that subscription! I really should have <a href="https://simonwillison.net/2026/Jul/3/judgement/">followed my own advice</a> and leaned more heavily into subagents with cheaper models.</p>
+<p>Here's what <a href="https://claude.ai/settings/usage">claude.ai/settings/usage</a> is showing me right now:</p>
+<p><img alt="Screenshot of a Claude plan usage limits panel: &quot;Plan usage limits Max (20x)&quot;; &quot;Current session&quot; with &quot;Resets in 3 hr 52 min&quot; showing a progress bar at &quot;7% used&quot;; &quot;Weekly limits&quot; heading with a &quot;Learn more about usage limits&quot; link; &quot;All models&quot; with &quot;Resets Wed 12:00 PM&quot; showing a progress bar at &quot;32% used&quot;; &quot;Fable&quot; with &quot;Resets Wed 12:00 PM&quot; showing a progress bar at &quot;63% used&quot;." src="https://static.simonwillison.net/static/2026/fable-plan-usage.webp" /></p>
+<p>I have several other major Fable-driven projects on the go right now as well, with the goal of hitting 100% on that Fable bar just in time for the price increase.</p>
+<h4 id="the-full-release-notes-for-sqlite-utils-4-0rc2">The full release notes for sqlite-utils 4.0rc2</h4>
+<p>Here are <a href="https://sqlite-utils.datasette.io/en/latest/changelog.html#rc2-2026-07-04">the full release notes</a> for the RC. I had Fable add these to an "Unreleased" section of the changelog as each change landed, reviewing them as it went. This has the neat side effect that <a href="https://github.com/simonw/sqlite-utils/commits/4.0rc2/docs/changelog.rst">the commit history of the changelog</a> acts as a concise summary of each of the changes that went into the release.</p>
+<p>In the past I've had a policy of writing release notes by hand, but honestly these are better than I would have created myself. Release notes are a great example of writing that I'm OK to outsource to agents because they need to be boring, predictable and accurate.</p>
+<blockquote>
+<p>Breaking changes:</p>
+<ul>
+<li>Write statements executed with <code>db.execute()</code> are now committed automatically, unless a transaction is already open in which case they join it. Previously they opened an implicit transaction that stayed open until something committed it - writes appeared to work when read on the same connection but were silently rolled back when the connection closed. Code that relied on rolling back uncommitted <code>db.execute()</code> writes should use the new <code>db.begin()</code> method to open an explicit transaction first. The transaction model is documented in full at <a href="https://sqlite-utils.datasette.io/en/latest/python-api.html#python-api-transactions">Transactions and saving your changes</a>.</li>
+<li>
+<code>db.query()</code> now executes its SQL as soon as it is called, rather than waiting until the returned generator is first iterated. Rows are still fetched lazily during iteration. SQL errors are now raised at the call site, statements such as <code>INSERT ... RETURNING</code> are executed and committed immediately without needing to iterate over their results, and passing a statement that returns no rows - previously a silent no-op - now raises a <code>ValueError</code> recommending <code>db.execute()</code> instead. A statement rejected this way is rolled back before the error is raised, so it has no effect on the database.</li>
+<li>Python API validation errors now raise <code>ValueError</code> instead of <code>AssertionError</code>. Previously invalid arguments - such as <code>create_table()</code> with no columns, <code>transform()</code> on a table that does not exist, or passing both <code>ignore=True</code> and <code>replace=True</code> - were rejected using bare <code>assert</code> statements, which are silently skipped when Python runs with the <code>-O</code> flag. Code that caught <code>AssertionError</code> for these cases should catch <code>ValueError</code> instead.</li>
+<li>
+<code>table.upsert()</code> and <code>table.upsert_all()</code> now raise <code>PrimaryKeyRequired</code> if a record is missing a value for any primary key column, or has a value of <code>None</code> for one. Previously such records - which can never match an existing row - were quietly inserted as brand new rows, or triggered a confusing <code>KeyError</code> after the insert had already taken place.</li>
+<li>
+<code>db.enable_wal()</code> and <code>db.disable_wal()</code> now raise a <code>sqlite_utils.db.TransactionError</code> if called while a transaction is open. Previously they would silently commit the open transaction as a side effect of changing the journal mode, breaking the rollback guarantee of <code>db.atomic()</code> and of user-managed transactions.</li>
+<li>The <code>View</code> class no longer has an <code>enable_fts()</code> method. It existed only to raise <code>NotImplementedError</code>, since full-text search is not supported for views - calling it now raises <code>AttributeError</code> instead, and the method no longer appears in the API reference. The <code>sqlite-utils enable-fts</code> command shows a clean error when pointed at a view.</li>
+<li>The no-op <code>-d/--detect-types</code> flag has been removed from the <code>insert</code> and <code>upsert</code> commands. Type detection has been the default for CSV/TSV data since 4.0a1, so the flag did nothing - invocations using it should simply drop it. <code>--no-detect-types</code> remains available to disable detection.</li>
+<li>
+<code>Database()</code> now raises a <code>sqlite_utils.db.TransactionError</code> if passed a connection created with the Python 3.12+ <code>sqlite3.connect(..., autocommit=True)</code> or <code>autocommit=False</code> options. <code>commit()</code> and <code>rollback()</code> behave differently on those connections, which previously caused every write made by the library to be silently discarded when the connection closed.</li>
+</ul>
+<p>Everything else:</p>
+<ul>
+<li>Fixed a bug where <code>table.delete_where()</code>, <code>table.optimize()</code> and <code>table.rebuild_fts()</code> did not commit their changes, leaving the connection inside an open transaction. Their work - and any subsequent writes - could then be silently rolled back when the connection was closed. All three now use <code>db.atomic()</code>, consistent with the other write methods.</li>
+<li>The <code>sqlite-utils drop-table</code> command now refuses to drop a view, and <code>drop-view</code> refuses to drop a table. Previously each would silently drop the wrong type of object if the name matched. Both now exit with an error suggesting the correct command to use.</li>
+<li>Migrations applied by the new <a href="https://sqlite-utils.datasette.io/en/latest/migrations.html#migrations">migrations system</a> now run inside a transaction, together with the record of the migration having been applied. If a migration raises an exception its changes are rolled back and it stays pending, so it can be safely re-applied after the error is fixed. Migrations that cannot run inside a transaction, such as those executing <code>VACUUM</code>, can opt out using <code>@migrations(transactional=False)</code> - see <a href="https://sqlite-utils.datasette.io/en/latest/migrations.html#migrations-transactions">Migrations and transactions</a>.</li>
+<li>
+<code>table.upsert()</code> and <code>table.upsert_all()</code> now detect the primary key or compound primary key of an existing table, so the <code>pk=</code> argument is no longer required when upserting into a table that already has a primary key.</li>
+<li>
+<code>db.table(table_name).insert({})</code> can now be used to insert a row consisting entirely of default values into an existing table, using <code>INSERT INTO ... DEFAULT VALUES</code>. (<a href="https://github.com/simonw/sqlite-utils/issues/759">#759</a>)</li>
+<li>Improvements to the <code>sqlite-utils migrate</code> command: <code>--stop-before</code> values that do not match any known migration are now an error instead of being silently ignored, <code>--stop-before</code> now works correctly with migration files that still use the older <code>sqlite_migrate.Migrations</code> class, and <code>--list</code> is now a read-only operation that no longer creates the database file or the migrations tracking table. <code>migrations.applied()</code> now returns migrations in the order they were applied.</li>
+<li>New <code>db.begin()</code>, <code>db.commit()</code> and <code>db.rollback()</code> methods for taking manual control of transactions, as an alternative to the <code>db.atomic()</code> context manager.</li>
+<li>New documentation: <a href="https://sqlite-utils.datasette.io/en/latest/python-api.html#python-api-transactions">Transactions and saving your changes</a> describes how transactions work and when changes are committed, and a new <a href="https://sqlite-utils.datasette.io/en/latest/upgrading.html#upgrading">Upgrading</a> page details the changes needed to move between major versions.</li>
+</ul>
+</blockquote>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/gpt">gpt</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a></p>
+]]></content:encoded>
+<pubDate>2026-07-05T01:00:48+00:00</pubDate>
+<pubDate>2026-07-05T01:00:48+00:00</pubDate>
+</item>
+<item>
+<title>sqlite-utils 4.0rc2</title>
+<link>https://simonwillison.net/2026/Jul/5/sqlite-utils/</link>
+<guid>https://simonwillison.net/2026/Jul/5/sqlite-utils/</guid>
+<content:encoded><![CDATA[
+<div> It seems there is a misunderstanding as I don't have access to external content or articles. If you could provide the text or main points of the article you would like summarized, I'd be happy to help! <div>
+<p><strong>Release:</strong> <a href="https://github.com/simonw/sqlite-utils/releases/tag/4.0rc2">sqlite-utils 4.0rc2</a></p>
+        <p>See <a href="https://simonwillison.net/2026/Jul/5/sqlite-utils-fable/">sqlite-utils 4.0rc2, mostly written by Claude Fable (for about $149.25)</a>.</p>
+]]></content:encoded>
+<pubDate>2026-07-05T00:47:38+00:00</pubDate>
+<pubDate>2026-07-05T00:47:38+00:00</pubDate>
+</item>
+<item>
+<title>Building a World Map with only 500 bytes</title>
+<link>https://simonwillison.net/2026/Jul/4/building-a-world-map-with-only-500-bytes/</link>
+<guid>https://simonwillison.net/2026/Jul/4/building-a-world-map-with-only-500-bytes/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: ASCII, world map, deflate compression, JavaScript, fetch
+
+<br><br>Summary:  
+Iwo Kadziela, with assistance from Codex, successfully created a compact ASCII representation of a world map using only 445 bytes of data. This innovative approach takes advantage of deflate compression, which allows for efficient data storage and transmission. A notable aspect of this implementation involves the use of JavaScript to fetch and process the compressed data. The code snippet demonstrates how to utilize the fetch() function with data URIs, enabling the retrieval of the compressed map seamlessly. By piping the response through a DecompressionStream set to 'deflate-raw', it decompresses the data stream efficiently. The resulting uncompressed text can then be displayed in an HTML element, specifically within a `<pre>` tag to preserve formatting, and adjusted using CSS for better visual representation. This technique not only showcases the potential of combining compression with modern web technologies but also highlights the creativity involved in producing intricate visual representations within minimal data constraints. The overall success of this project may inspire further exploration into ASCII art and web-based visualizations, prompting similar endeavors in data representation across various platforms. <div>
+<p><strong><a href="https://www.experimentlog.com/blog/building-a-world-map-with-only-500-bytes">Building a World Map with only 500 bytes</a></strong></p>
+Iwo Kadziela (assisted by Codex) figured out a way to generate a credible ASCII world map using 445 bytes of data:</p>
+<p><img alt="A map of the world rendered as black asterisk ASCII characters, it looks very good" src="https://static.simonwillison.net/static/2026/world-map-ascii.png" /></p>
+<p>The key trick is to use deflate compression, which is then wired together using this neat snippet of JavaScript. I didn't know you could use <code>fetch()</code> with <code>data:</code> URIs like this:</p>
+<pre><code>fetch('data:;base64,1ZpLsgIxCEXnrM...==').then(
+  r =&gt; r.body.pipeThrough(new DecompressionStream('deflate-raw'))
+).then(
+  s =&gt; new Response(s).text()
+).then(
+  t =&gt; b.innerHTML = '&lt;pre style=font-size:.65vw&gt;' + t
+)
+</code></pre>
+
+    <p><small></small>Via <a href="https://news.ycombinator.com/item?id=48747762">Hacker News</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ascii-art">ascii-art</a>, <a href="https://simonwillison.net/tags/data-urls">data-urls</a>, <a href="https://simonwillison.net/tags/javascript">javascript</a></p>
+]]></content:encoded>
+<pubDate>2026-07-04T23:09:02+00:00</pubDate>
+<pubDate>2026-07-04T23:09:02+00:00</pubDate>
+</item>
+<item>
+<title>Better Models: Worse Tools</title>
+<link>https://simonwillison.net/2026/Jul/4/better-models-worse-tools/</link>
+<guid>https://simonwillison.net/2026/Jul/4/better-models-worse-tools/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Claude models, Pi, edit tools, malformed tool calls, reinforcement learning
+
+<br><br>Summary: Armin encountered an unusual issue with newer Claude models, specifically Opus 4.8 and Sonnet 5, which mistakenly include extra, invented fields in the nested edits[] array when using Pi’s edit tool. While the edits themselves are generally accurate, these invented fields do not conform to the expected schema, leading to rejection of the tool call by Pi and prompting users to try again. This problem is notable because it appears that newer Anthropic models are exhibiting worse compliance with the tool schema compared to their older counterparts. Armin theorizes that this decline in performance may stem from recent models being trained via Reinforcement Learning to better utilize built-in edit tools in Claude Code, inadvertently causing increased errors in other coding frameworks like Pi. In contrast, older models do not exhibit this issue. This raises a significant question for third-party coding harnesses like Pi: Should they implement multiple edit tools to accommodate varying performance levels based on the model chosen by the user to ensure optimal functionality? <div>
+<p><strong><a href="https://lucumr.pocoo.org/2026/7/4/better-models-worse-tools/">Better Models: Worse Tools</a></strong></p>
+Armin reports on a weird problem he ran into while hacking on Pi:</p>
+<blockquote>
+<p>The short version is that newer Claude models sometimes call Pi’s edit tool with extra, invented fields in the nested <code>edits[]</code> array. And not Haiku or some small model: Opus 4.8. The edit itself is usually correct but the arguments do not match the schema as the model invents made-up keys and Pi thus rejects the tool call and asks to try again.</p>
+<p>That alone is not too surprising as models emit malformed tool calls sometimes. Particularly small ones. What surprised me is that this is getting worse with newer Anthropic models as both Opus 4.8 and Sonnet 5 show it but none of the older models. In other words, the SOTA models of the family are worse at this specific tool schema than their older siblings.</p>
+</blockquote>
+<p>Armin theorizes that this is because more recent Anthropic models have been specifically trained (presumably via Reinforcement Learning) to better use the edit tools that are baked into Claude Code. This has the unfortunate effect that other coding harnesses, such as Pi, may find that their own custom edit tools are more likely to be used incorrectly.</p>
+<p>Claude's edit tool <a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/text-editor-tool#str-replace">uses search and replace</a>. OpenAI's Codex <a href="https://developers.openai.com/api/docs/guides/tools-apply-patch">uses an apply_patch mechanism instead</a>, and OpenAI have talked in the past about how their models are trained to use that tool effectively.</p>
+<p>Does this mean third-party coding harnesses like Pi should implement multiple edit tools just so they can use the one with the best performance for the underlying model the user has selected?
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/armin-ronacher">armin-ronacher</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/llm-tool-use">llm-tool-use</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/pi">pi</a></p>
+]]></content:encoded>
+<pubDate>2026-07-04T22:53:52+00:00</pubDate>
+<pubDate>2026-07-04T22:53:52+00:00</pubDate>
+</item>
+<item>
+<title>The fanfiction community is at war with AI — and itself</title>
+<link>https://www.theverge.com/tech/960854/ai-fanfiction-ao3-claude-detector</link>
+<guid>https://www.theverge.com/tech/960854/ai-fanfiction-ao3-claude-detector</guid>
+<content:encoded><![CDATA[
+<div> Keywords: fanfiction, AI-generated, Claude, ChatGPT, detection
+
+<br><br>Summary: Recently, a movement has emerged within fanfiction communities aiming to identify writers who utilize generative AI tools such as Claude and ChatGPT to create their works. This initiative stems from ongoing discussions about the authenticity of fan-generated content. Fans have circulated various strategies to detect AI-generated writing, drawing attention to specific stylistic features like the use of em dashes and overly embellished language, also known as "purple prose." However, the detection methods being proposed have raised concerns about their reliability. On June 29th, an anonymous account on X (formerly Twitter) shared what it claimed to be a more dependable approach to identifying AI-generated fanfiction. Despite the intentions behind this movement, there is significant apprehension that legitimate fanfic writers might be mistakenly flagged as AI users due to the flawed nature of detection techniques. This situation highlights broader issues within creative communities, as members grapple with the implications of AI-generated content on their work and its impact on the authenticity of fan culture. As the debate continues, the fanfiction community faces a challenging landscape of technological advancement and artistic integrity. <div>
+<figure>
+
+<img alt="Hands with too many fingers typing on a keyboard." src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/08/AI_Hands_A_Bernis_02.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption>
+	Fanfiction communities are trying to hunt down writers who haven’t written works with their own hands. | Image: Álvaro Bernis / The Verge	</figcaption>
+</figure>
+<p class="has-drop-cap wp-block-paragraph">Over the past week, a new fanworks movement has kicked off, with the aim to root out authors using generative AI. But the detection methods being implemented are questionable, and any fanfic writer could be caught in the crossfire.</p>
+<p class="wp-block-paragraph"><a href="https://www.theverge.com/podcast/897900/ai-trust-gap-killer-app-vergecast">Broad distaste</a> around the use of Claude, ChatGPT, and other AI tools has long been <em>a thing</em> in <a href="https://www.theverge.com/ai-artificial-intelligence/864951/human-artistry-campaign-ai-licensing-artists">creative communities</a>, including the world of fanfiction. Readers and writers have passed around tips for spotting supposedly AI-generated works, citing anything from em dashes to the <a href="https://x.com/ffe2ff/status/2070804900871634965">broad concept</a> of purple prose. But on June 29th, an anonymous X account called <a href="https://x.com/heatedrivalryai">@heatedrivalryai</a> promised a seemingly more reliable solution …</p>
+<p><a href="https://www.theverge.com/tech/960854/ai-fanfiction-ao3-claude-detector">Read the full story at The Verge.</a></p>
+]]></content:encoded>
+<pubDate>2026-07-04T08:00:00-04:00</pubDate>
+<pubDate>2026-07-03T04:42:57-04:00</pubDate>
+</item>
+<item>
+<title>Vida</title>
+<link>https://www.producthunt.com/products/vida-5</link>
+<guid>https://www.producthunt.com/products/vida-5</guid>
+<content:encoded><![CDATA[
+<div> **Keywords:** AI, productivity, automation, efficiency, collaboration  
+
+<br><br>Summary:  
+The article discusses the transformative impact of artificial intelligence (AI) on productivity and work processes. It emphasizes the potential of AI to automate repetitive tasks, allowing employees to focus on more strategic activities. By leveraging AI tools, organizations can enhance their operational efficiency, reduce human error, and improve overall output. The article also highlights the importance of collaboration between human intelligence and AI, suggesting that successful integration of these technologies can lead to innovative solutions and greater creativity in the workplace. Furthermore, the piece mentions the necessity for workers to adapt and acquire new skills to work alongside AI effectively. The balance between automation and human insight is crucial, as the human touch remains vital in areas requiring empathy and complex decision-making. Overall, the article advocates for embracing AI as a means to complement human efforts, driving productivity while enabling employees to channel their expertise into higher-value tasks. The conclusion stresses that organizations should view AI as a partner in the quest for efficiency and excellence. <div>
+<p>
+            Clone yourself. Let AI do the work before you ask
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/vida-5?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1174638?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-06-17T13:02:52-07:00</pubDate>
+<pubDate>2026-07-04T21:09:06-07:00</pubDate>
+</item>
+<item>
+<title>Termi Protocol</title>
+<link>https://www.producthunt.com/products/termi-protocol</link>
+<guid>https://www.producthunt.com/products/termi-protocol</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AI, coding agents, live, 3D, build
+
+<br><br>Summary: The article discusses the innovative use of AI in creating coding agents that function effectively in a 3D environment. These agents are designed to assist developers by automating various programming tasks, thereby increasing efficiency and reducing potential errors. By visualizing coding processes in three dimensions, users can better comprehend complex interactions and workflows that are difficult to grasp in traditional 2D coding environments. The live aspect enables real-time feedback, allowing developers to see immediate results of their code changes. This immersive approach not only enhances creativity but also fosters collaboration among team members, as they can interact with the 3D models and each other seamlessly. Furthermore, the technology adapts to user input, learning from experiences to improve performance over time. As this trend grows, it has the potential to revolutionize the coding landscape, making programming more accessible to beginners while providing advanced tools for experienced developers. Overall, the integration of AI coding agents into a 3D space promises to transform how coding is approached, developed, and taught. <div>
+<p>
+            Watch your AI coding agents build, live in 3D
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/termi-protocol?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1187434?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-07-03T14:14:15-07:00</pubDate>
+<pubDate>2026-07-04T21:09:47-07:00</pubDate>
+</item>
+<item>
+<title>ChecklistFox</title>
+<link>https://www.producthunt.com/products/checklistfox</link>
+<guid>https://www.producthunt.com/products/checklistfox</guid>
+<content:encoded><![CDATA[
+<div> Sure! Please provide me the article you'd like summarized. <div>
+<p>
+            AI checklist maker for beautiful pdfs, free & instant
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/checklistfox?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1187416?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-07-03T13:40:09-07:00</pubDate>
+<pubDate>2026-07-04T21:08:14-07:00</pubDate>
+</item>
+<item>
+<title>CentryAI</title>
+<link>https://www.producthunt.com/products/centryai</link>
+<guid>https://www.producthunt.com/products/centryai</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Subscription, Tracker, Forget, Management, Oversight
+
+<br><br>Summary: This article discusses the experience of an individual who created a subscription tracker to manage their various services and memberships effectively. However, the individual discovered that they had overlooked 11 subscriptions they were still paying for, emphasizing the challenge many users face in keeping track of multiple recurring payments. The author highlights the ease with which subscriptions can be overlooked, leading to unnecessary expenses that can accumulate over time. The article provides tips on how to better manage subscriptions through organization tools and reminders, suggesting that regular reviews of monthly statements can help identify forgotten subscriptions. Additionally, the piece underscores the importance of being proactive in subscription management to avoid wasting money on services that are no longer utilized. By sharing this personal anecdote, the author aims to encourage others to take control of their subscriptions and be mindful of their spending habits. The insights provided serve as a valuable reminder of the need for diligence in personal finance management, particularly in an age where subscription services are prevalent across various sectors, from entertainment to utilities. Overall, it promotes a thoughtful approach to subscription management to enhance financial well-being. <div>
+<p>
+            Subscription tracker built by someone who forgot 11 of them
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/centryai?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1163471?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-06-04T07:40:47-07:00</pubDate>
+<pubDate>2026-07-04T21:03:37-07:00</pubDate>
+</item>
 
 <item>
 <title>Open Source AI Gap Map</title>
@@ -12,7 +347,7 @@
 <content:encoded><![CDATA[
 <div> Keywords: global partnership, public option, AI ecosystem, Gap Map, open source
 
-<br><br>Summary: A global partnership focused on creating a public option for AI was established as a non-profit organization during the AI Action Summit in Paris in February 2025, with $400 million in committed funding. Recently, this initiative released the Gap Map v0.1, aiming to index the current state of open source AI. The map provides detailed insights into 421 products, which include 266 software tools and libraries, 85 models, 50 datasets, and 20 hardware projects, all produced by 228 organizations. These products are categorized into 14 categories spanning 3 layers of the tech stack: model components, product/UX, and infrastructure. Additionally, the long tail of the open source AI ecosystem consists of 24,400 uncategorized artifacts that will not receive a score until further research and citation are conducted. The underlying data of the Gap Map, which is made available under an MIT license, includes 1,184 YAML files and various scripts used for data collection. This data is accessible on GitHub, and users can explore some of it using Datasette Lite, highlighting an innovative step toward advancing open source AI. <div>
+<br /><br />Summary: A global partnership focused on creating a public option for AI was established as a non-profit organization during the AI Action Summit in Paris in February 2025, with $400 million in committed funding. Recently, this initiative released the Gap Map v0.1, aiming to index the current state of open source AI. The map provides detailed insights into 421 products, which include 266 software tools and libraries, 85 models, 50 datasets, and 20 hardware projects, all produced by 228 organizations. These products are categorized into 14 categories spanning 3 layers of the tech stack: model components, product/UX, and infrastructure. Additionally, the long tail of the open source AI ecosystem consists of 24,400 uncategorized artifacts that will not receive a score until further research and citation are conducted. The underlying data of the Gap Map, which is made available under an MIT license, includes 1,184 YAML files and various scripts used for data collection. This data is accessible on GitHub, and users can explore some of it using Datasette Lite, highlighting an innovative step toward advancing open source AI. <div>
 <p><strong><a href="https://map.currentai.org">Open Source AI Gap Map</a></strong></p>
 <a href="https://www.currentai.org">Current AI</a> is "a global partnership building a public option for AI", founded as a non-profit at the AI Action Summit in Paris in February 2025 and backed by serious capital ($400m already committed).</p>
 <p>They <a href="https://www.currentai.org/blogs/introducing-the-gap-map-v0-1">launched their Gap Map</a> a couple of days ago - an attempt at indexing the current state of open source AI:</p>
@@ -26,7 +361,6 @@
     <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/datasette-lite">datasette-lite</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/local-llms">local-llms</a>, <a href="https://simonwillison.net/tags/llms">llms</a></p>
 ]]></content:encoded>
 <pubDate>2026-07-03T22:04:31+00:00</pubDate>
-<pubDate>2026-07-03T22:04:31+00:00</pubDate>
 </item>
 <item>
 <title>Quoting Josh W. Comeau</title>
@@ -35,7 +369,7 @@
 <content:encoded><![CDATA[
 <div> Keywords: course sales, AI impact, developer jobs, personalized tutoring, revenue decline  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 The author recently launched their third course, Whimsical Animations, but sales are only tracking at about a third of what they would typically expect. This trend extends to their existing courses, which are also experiencing a significant drop in sales compared to last year. A key concern is the impact of artificial intelligence; many potential learners are hesitant to invest in new developer skills while uncertain about the future of jobs in the tech industry. Furthermore, even those willing to learn are increasingly inclined to utilize large language models (LLMs) for personalized tutoring, reducing the incentive to purchase paid courses. The author has communicated with other course creators facing similar challenges, noting that many are witnessing revenue declines of over 50%, a drop in audience engagement, and a shift towards LLMs that absorb and replicate their content without proper consent or compensation. Overall, the combination of job uncertainty in tech and the rise of AI-driven tutoring seems to be reshaping the landscape for course creators and learners alike. <div>
 <blockquote cite="https://bsky.app/profile/joshwcomeau.com/post/3mkxyqgrp2d2t"><p>I just launched my third course, Whimsical Animations, and so far, it’s on track to sell roughly ⅓ as many copies as a typical course launch.</p>
 <p>It’s a similar story with my two existing courses. Sales are down significantly from last year.</p>
@@ -50,7 +384,6 @@ The author recently launched their third course, Whimsical Animations, but sales
     <p>Tags: <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/careers">careers</a>, <a href="https://simonwillison.net/tags/josh-comeau">josh-comeau</a></p>
 ]]></content:encoded>
 <pubDate>2026-07-03T21:25:52+00:00</pubDate>
-<pubDate>2026-07-03T21:25:52+00:00</pubDate>
 </item>
 <item>
 <title>Fable's judgement</title>
@@ -59,7 +392,7 @@ The author recently launched their third course, Whimsical Animations, but sales
 <content:encoded><![CDATA[
 <div> Keywords: Fable, subagents, judgement, coding tasks, efficiency  
 
-<br><br>Summary: Simon hosted a session with Cat Wu and Thariq Shihipar from the Claude Code team, where they emphasized the importance of allowing Fable and Opus to use their own judgement for tasks, such as testing. Instead of imposing strict rules, it’s more effective to let Fable determine when to apply automated testing. Jesse Vincent also provided advice to optimize the use of Fable tokens by instructing Fable to select lower-power models for smaller tasks based on its judgement. Simon prompted Claude Code to delegate coding tasks to subagents that employ lower-power models, which resulted in a stored memory file detailing this approach. The plan specifies that when coding tasks are needed, an Agent with a model override should be spawned to handle the work, allowing the main model to focus on review and synthesis. This strategy has increased productivity while conserving Fable's resources. Consequently, Simon has been able to complete a significant amount of work while monitoring the Fable allowance effectively, indicating that the approach is yielding positive results. <div>
+<br /><br />Summary: Simon hosted a session with Cat Wu and Thariq Shihipar from the Claude Code team, where they emphasized the importance of allowing Fable and Opus to use their own judgement for tasks, such as testing. Instead of imposing strict rules, it’s more effective to let Fable determine when to apply automated testing. Jesse Vincent also provided advice to optimize the use of Fable tokens by instructing Fable to select lower-power models for smaller tasks based on its judgement. Simon prompted Claude Code to delegate coding tasks to subagents that employ lower-power models, which resulted in a stored memory file detailing this approach. The plan specifies that when coding tasks are needed, an Agent with a model override should be spawned to handle the work, allowing the main model to focus on review and synthesis. This strategy has increased productivity while conserving Fable's resources. Consequently, Simon has been able to complete a significant amount of work while monitoring the Fable allowance effectively, indicating that the approach is yielding positive results. <div>
 <p>One of the most interesting tips I got from <a href="https://www.ai.engineer/worldsfair/schedule?session=asn_slot_2026_06_30_main_stage_1230_2026_06_08t09_35_43_039z">the Fireside Chat</a> I hosted with Cat Wu and Thariq Shihipar from the Claude Code team at AIE on Wednesday was to let Fable (and to a certain extent Opus) use their own judgement rather than dictating how they should work.</p>
 <p>The example they gave was testing. You can tell Fable "only use automated testing for larger features, don't update and run tests for small copy or design changes" - but it's better to just tell Fable to use its own judgement when deciding to write tests instead.</p>
 <p>Jesse Vincent just gave me a related tip to help avoid burning too many of those valuable Fable tokens in the few days we have left before the prices go up. Tell Fable to use other models for smaller tasks, applying its own judgement about which model to use.</p>
@@ -94,7 +427,6 @@ model. See also [[project-goals]].</p>
     <p>Tags: <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/claude-code">claude-code</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/prompt-engineering">prompt-engineering</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a></p>
 ]]></content:encoded>
 <pubDate>2026-07-03T18:51:06+00:00</pubDate>
-<pubDate>2026-07-03T18:51:06+00:00</pubDate>
 </item>
 <item>
 <title>June 2026 newsletter</title>
@@ -103,7 +435,7 @@ model. See also [[project-goals]].</p>
 <content:encoded><![CDATA[
 <div> Keywords: Claude Fable, GPT-5.6, GLM-5.2, Datasette, WASM projects  
 
-<br><br>Summary: The June edition of the newsletter highlights several significant topics in the AI landscape. It discusses the latest developments regarding Claude Fable 5, GPT-5.6, and the implications of US export restrictions on AI technology. The newsletter presents GLM-5.2 as the new leading open weights model. It also declares the end of "Tokenmaxxing," a trend that has been prevalent in AI discussions. The edition covers Datasette Apps, alongside tools like sqlite-utils and shot-scraper, which enhance data utilization. Additionally, there are mentions of miscellaneous WebAssembly (WASM) projects, indicating an interest in various applications of this technology. The newsletter also includes updates on other model releases, showcasing the dynamic nature of AI advancements. Lastly, the author shares their personal usage recommendations, providing subscribers with insights into practical applications of the discussed technologies. For a $10/month sponsorship, readers can gain early access to this valuable content before the free edition is released, ensuring they stay updated on the latest trends and innovations in AI. <div>
+<br /><br />Summary: The June edition of the newsletter highlights several significant topics in the AI landscape. It discusses the latest developments regarding Claude Fable 5, GPT-5.6, and the implications of US export restrictions on AI technology. The newsletter presents GLM-5.2 as the new leading open weights model. It also declares the end of "Tokenmaxxing," a trend that has been prevalent in AI discussions. The edition covers Datasette Apps, alongside tools like sqlite-utils and shot-scraper, which enhance data utilization. Additionally, there are mentions of miscellaneous WebAssembly (WASM) projects, indicating an interest in various applications of this technology. The newsletter also includes updates on other model releases, showcasing the dynamic nature of AI advancements. Lastly, the author shares their personal usage recommendations, providing subscribers with insights into practical applications of the discussed technologies. For a $10/month sponsorship, readers can gain early access to this valuable content before the free edition is released, ensuring they stay updated on the latest trends and innovations in AI. <div>
 <p>The June edition of my <a href="https://github.com/sponsors/simonw/">sponsors-only monthly newsletter</a> is out. If you are a sponsor (or if you start a sponsorship now) you can <a href="https://github.com/simonw-private/monthly/blob/main/2026-06-june.md">access it here</a>.</p>
 <p>This month:</p>
 <ul>
@@ -121,7 +453,6 @@ model. See also [[project-goals]].</p>
     <p>Tags: <a href="https://simonwillison.net/tags/newsletter">newsletter</a></p>
 ]]></content:encoded>
 <pubDate>2026-07-03T14:50:50+00:00</pubDate>
-<pubDate>2026-07-03T14:50:50+00:00</pubDate>
 </item>
 <item>
 <title>AIEWF Daily Dispatch: The great loops debate and the state of AI engineering</title>
@@ -130,10 +461,9 @@ model. See also [[project-goals]].</p>
 <content:encoded><![CDATA[
 <div> Keywords: loops, autonomous software, AI Engineer, software factories, automation
 
-<br><br>Summary: The AI Engineer World’s Fair featured a lively debate on the viability of autonomous software factories, moderated by Allie Howe. Proponents Geoffrey Huntley and Ian Livingstone argued that loops in software development are already effective, expediting the cycle of trying, learning, and applying. They highlighted the inevitability of loops and their potential verifiability. On the opposing side, Dex Horthy and Greg Pstrucha expressed skepticism, citing a gap between hype and practical application, and the economic unsustainability of agentic loops. Anthropic's Mike Krieger introduced Claude Tag, a more delegated and proactive internal model, which represents an initial step toward a software factory but also raised concerns about team bottlenecks. Barr Yaron presented findings from an annual survey, indicating 95% of respondents now use agents, with many focusing on actions beyond mere summarization. However, concerns about control layers and cost limitations were prevalent, with 59% fearing long-term liabilities from AI-generated code. Closing sessions encouraged optimism, as speakers emphasized that AI can empower developers to undertake bigger projects, suggesting that building AI-native companies may be the path forward in software development. <div>
+<br /><br />Summary: The AI Engineer World’s Fair featured a lively debate on the viability of autonomous software factories, moderated by Allie Howe. Proponents Geoffrey Huntley and Ian Livingstone argued that loops in software development are already effective, expediting the cycle of trying, learning, and applying. They highlighted the inevitability of loops and their potential verifiability. On the opposing side, Dex Horthy and Greg Pstrucha expressed skepticism, citing a gap between hype and practical application, and the economic unsustainability of agentic loops. Anthropic's Mike Krieger introduced Claude Tag, a more delegated and proactive internal model, which represents an initial step toward a software factory but also raised concerns about team bottlenecks. Barr Yaron presented findings from an annual survey, indicating 95% of respondents now use agents, with many focusing on actions beyond mere summarization. However, concerns about control layers and cost limitations were prevalent, with 59% fearing long-term liabilities from AI-generated code. Closing sessions encouraged optimism, as speakers emphasized that AI can empower developers to undertake bigger projects, suggesting that building AI-native companies may be the path forward in software development. <div>
 <div class="captioned-image-container"><figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!M0WA!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8d4f7346-6688-4240-b077-16bf6f4a4a34_1280x815.jpeg" target="_blank"><div class="image2-inset"><source type="image/webp" /><img alt="" class="sizing-normal" height="815" src="https://substackcdn.com/image/fetch/$s_!M0WA!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8d4f7346-6688-4240-b077-16bf6f4a4a34_1280x815.jpeg" width="1280" /><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></a></figure></div><p>One of the highlights of the final day of the AI Engineer World&#8217;s Fair was a debate about loops. It nicely captured an argument running through the whole conference: are autonomous software factories viable now, or is the engineering discipline lagging behind the ambition?</p><p>Allie Howe from Keycard was the moderator and she opened by asking, &#8220;is there or is there not a delta between the hype behind loops and what actually works in practice?&#8221;</p><p>The pro-loop case was presented by Geoffrey Huntley, creator of the <a href="https://ghuntley.com/loop/">Ralph Loop</a>, and Keycard CEO Ian Livingstone. Huntley opened by saying loops are already here. &#8220;It&#8217;s inevitable, it&#8217;s here to stay,&#8221; adding that &#8220;I don&#8217;t see myself going back to writing code by hand.&#8221;</p><p>Livingstone said that verifiability is ultimately what it&#8217;s about &#8212; and you can achieve that with any code, regardless of how it was produced. He also pointed out that loops have always been a core aspect of software development:</p><p>&#8220;A loop is at the core of &#8216;I try something, I learn something, I apply something.&#8217; And all we&#8217;re really talking about is how quickly we can expedite that process.&#8221;</p><p>On the skeptical side were Dex Horthy from HumanLayer and Greg Pstrucha from Subroutine. Horthy began by noting that he wasn&#8217;t anti-loops. &#8220;The basic take here is not whether loops are good or bad,&#8221; he said, noting that &#8220;Kubernetes is actually built on loops &#8212; built on control loops. But they&#8217;re deterministic loops.&#8221; Horthy&#8217;s issue is that &#8220;the hype is outrunning the discipline.&#8221;</p><p>&#8220;I haven&#8217;t seen proof that we are at a point where we can just step up an abstraction level,&#8221; Horthy said, referring to agents controlling the coding. &#8220;I actually think we need to step down an abstraction level, if anything.&#8221;</p><p>Pstrucha was mainly concerned about the economic viability of agentic loops, which he said wasn&#8217;t sustainable. You can&#8217;t &#8220;orchestrate your problems away by buying more tokens,&#8221; he said.</p><div class="pullquote"><p>&#8220;[We&#8217;re] kind of like locomotive engineers now. That&#8217;s our job: to keep the locomotive on the rails.&#8221;<br />- Geoffrey Huntley, loops advocate</p></div><p>Huntley then offered this wonderful analogy for loopmaxxing: &#8220;[We&#8217;re] kind of like locomotive engineers now. That&#8217;s our job: to keep the locomotive on the rails.&#8221;</p><p>The discussion turned to <a href="https://www.latent.space/p/software-factories">software factories</a>, the metaphor that has really taken hold of the industry. Horthy worries that when everything is automated in a factory-like agent environment, &#8220;you never touch the problem.&#8221; So instead, he advises to start small and iterate with agent loops &#8212; to &#8220;build up intuition&#8221; and not try to automate end to end from the start.</p><p>Even Huntley recognized some of the dangers in loops. He said that software factories represent where we are headed in the future, but cautioned that it&#8217;s not yet solved in the market. &#8220;This is frontier thinking,&#8221; he said.</p><p>At the end of the hour-long debate, Howe polled the audience to ask which side &#8216;won&#8217;. Ironically, this resulted in a human failure: the stage lights were too bright for Howe or any of the debate participants to see how many hands were raised. If only an agent was in charge of dimming the lights.</p><h2>Anthropic&#8217;s next big thing: Claude Tag</h2><p>Perhaps one example of a company moving to a software factory model is Anthropic. Mike Krieger, one of the co-founders of Instagram back in Web 2.0 and now Head of Labs at Anthropic, was interviewed by swyx in one of the morning sessions.</p><p>Krieger talked about <a href="https://www.anthropic.com/news/introducing-claude-tag">Claude Tag</a>, Anthropic&#8217;s internal model which the company announced to the world last week. He described Tag as more delegated, asynchronous and proactive than Claude. It perhaps suggests what an early software factory looks like in practice &#8212; not agents replacing a team, but multiple people delegating responsibilities to a system like Claude Tag.</p><div class="captioned-image-container"><figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!Av0r!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F26adc828-7702-490a-be57-f91ac1adb699_1280x800.jpeg" target="_blank"><div class="image2-inset"><source type="image/webp" /><img alt="" class="sizing-normal" height="800" src="https://substackcdn.com/image/fetch/$s_!Av0r!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F26adc828-7702-490a-be57-f91ac1adb699_1280x800.jpeg" width="1280" /><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></a><figcaption class="image-caption">Mike Krieger talking with swyx at AIEWF today.</figcaption></figure></div><p>&#8220;Most usage is actually much more delegated,&#8221; he said regarding his team&#8217;s usage of Tag. He gave an example of how they instruct the agents: &#8220;Don&#8217;t just fix this bug. Now you are responsible for this part of the codebase, and I want you to monitor this feedback channel and proactively take on tasks.&#8221;</p><p>&#8220;That&#8217;s really changed how we operate currently,&#8221; he continued. &#8220;It&#8217;s much more this multiplayer, async, proactive way.&#8221;</p><p>However, he also indicated there are some negative consequences to becoming more automated. He noted that his team is &#8220;bottlenecked on reviews&#8221; and on the &#8220;human ability to fully conceptualize what we&#8217;re doing.&#8221;</p><h2>2026 AI Engineer Survey</h2><p>Back to the current reality for most AI engineers. This morning, Barr Yaron from Amplify presented her annual survey of the industry.</p><p>According to Amplify&#8217;s data, 95% of respondents now use agents &#8212; roughly double last year&#8217;s share. Among teams using agents, 89% said those agents could write data, up from 52% the previous year.</p><p>&#8220;Agents are no longer reading, summarizing, drafting,&#8221; Yaron said. &#8220;They&#8217;re taking actions inside the systems.&#8221;</p><div class="captioned-image-container"><figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!zAbI!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fce7fe746-5558-4484-92a2-82f5309f0230_1280x800.jpeg" target="_blank"><div class="image2-inset"><source type="image/webp" /><img alt="" class="sizing-normal" height="800" src="https://substackcdn.com/image/fetch/$s_!zAbI!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fce7fe746-5558-4484-92a2-82f5309f0230_1280x800.jpeg" width="1280" /><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></a><figcaption class="image-caption">Barr Yaron presenting her AI engineering survey.</figcaption></figure></div><p>The controls, however, remain comparatively primitive. Human approvals and permissions were the two leading safeguards, followed by a scattered collection of task decomposition, retrieval, memory and sandboxing techniques.</p><p>&#8220;Nobody has settled the control layer for agents,&#8221; Yaron said.</p><p>Cost is also a concern. Forty percent of respondents said that AI costs regularly limit how ambitiously they use AI, while another 36% said it sometimes does. Token usage is now the second-most monitored production metric, behind quality.</p><p>The survey captured the conference&#8217;s central contradiction. AI has made experimentation cheaper and enabled teams to produce more software, but 59% of respondents to the Amplify survey fear that today&#8217;s AI-generated code is creating long-term liabilities.</p><h2>Closing keynotes</h2><p>The final sessions of the conference appropriately took us back to thinking optimistically about AI technology &#8212; about building with it. After all, that&#8217;s why the AI Engineer World&#8217;s Fair exists, and it&#8217;s where the fun is! </p><p>Theo Browne showcased several software projects he had built, or was still building, with AI. His point was that the scale of what an individual developer can realistically attempt has shifted. &#8220;What used to be a startup is now a side project,&#8221; he said, while projects he would once have dismissed as &#8220;too big&#8221; are moving within reach. </p><p>Garry Tan, president and CEO of Y Combinator, followed by giving that optimism an organizational form. The fastest-growing founders YC sees, he said, are &#8220;not treating AI as autocomplete, they&#8217;re treating it as a workforce.&#8221; </p><div class="captioned-image-container"><figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!TVDr!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1f4f4636-6d5b-422a-97c9-e653e4f100e3_1280x750.jpeg" target="_blank"><div class="image2-inset"><source type="image/webp" /><img alt="" class="sizing-normal" height="750" src="https://substackcdn.com/image/fetch/$s_!TVDr!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1f4f4636-6d5b-422a-97c9-e653e4f100e3_1280x750.jpeg" width="1280" /><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></a><figcaption class="image-caption">Garry Tan at AIEWF.</figcaption></figure></div><p>Tan&#8217;s closing prescription was: &#8220;Build an AI-native company, not a company that just uses AI.&#8221;</p><p>The debates during the week showed how much engineering remains before the AI-native vision is viable for all. But the closing keynotes offered a reminder of why the engineers who attended this conference are pursuing it: they just want to ride those locomotives!</p>
 ]]></content:encoded>
-<pubDate>Fri, 03 Jul 2026 05:11:43 GMT</pubDate>
 <pubDate>Fri, 03 Jul 2026 05:11:43 GMT</pubDate>
 </item>
 <item>
@@ -143,7 +473,7 @@ model. See also [[project-goals]].</p>
 <content:encoded><![CDATA[
 <div> Keywords: Anthropic, AI, scientific discovery, drug development, biotech  
 
-<br><br>Summary: Anthropic, a leading player in the AI industry, recently launched a new tool designed to unify fragmented datasets and tools into a single environment that can generate figures and visuals. This launch highlights Anthropic's commitment to leveraging AI to significantly enhance the pace of scientific discovery and healthcare intervention development. Already, numerous biotech and pharmaceutical companies have integrated Anthropic’s technology, specifically its Claude AI model, into their operations. By framing its capabilities around acceleration in scientific research, Anthropic aims to underscore the transformative potential of AI in these critical fields. Furthermore, the company announced plans to develop drugs using its advanced AI technologies, signaling a bold step into the pharmaceutical space. This marks a significant expansion of Anthropic’s offerings and positions it as a key player not just in coding tools but also in drug discovery and development. With a strong emphasis on collaboration with healthcare and biotech sectors, Anthropic could redefine how innovations are brought to market, harnessing AI to tackle some of the toughest challenges in medicine and research. <div>
+<br /><br />Summary: Anthropic, a leading player in the AI industry, recently launched a new tool designed to unify fragmented datasets and tools into a single environment that can generate figures and visuals. This launch highlights Anthropic's commitment to leveraging AI to significantly enhance the pace of scientific discovery and healthcare intervention development. Already, numerous biotech and pharmaceutical companies have integrated Anthropic’s technology, specifically its Claude AI model, into their operations. By framing its capabilities around acceleration in scientific research, Anthropic aims to underscore the transformative potential of AI in these critical fields. Furthermore, the company announced plans to develop drugs using its advanced AI technologies, signaling a bold step into the pharmaceutical space. This marks a significant expansion of Anthropic’s offerings and positions it as a key player not just in coding tools but also in drug discovery and development. With a strong emphasis on collaboration with healthcare and biotech sectors, Anthropic could redefine how innovations are brought to market, harnessing AI to tackle some of the toughest challenges in medicine and research. <div>
 <figure>
 
 <img alt="" src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/STKB364_CLAUDE_2_A_3800fc-1.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
@@ -155,7 +485,6 @@ model. See also [[project-goals]].</p>
 <p><a href="https://www.theverge.com/ai-artificial-intelligence/961311/anthropic-claude-science-ai-drug-development">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
 <pubDate>2026-07-03T09:56:52-04:00</pubDate>
-<pubDate>2026-07-03T09:56:52-04:00</pubDate>
 </item>
 <item>
 <title>A behind-the-scenes look at Midjourney’s medical scanner leaves many questions unanswered</title>
@@ -164,7 +493,7 @@ model. See also [[project-goals]].</p>
 <content:encoded><![CDATA[
 <div> Keywords: Midjourney, ultrasound scanner, imaging, Marcin Plaza, technology  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 Midjourney, primarily recognized for its image-generating technology, has unveiled more details about its innovative ultrasound scanner. However, evidence showcasing its effectiveness remains limited. The startup's latest offering is an unconventional dunk-tank ultrasound scanner, which aims to provide affordable, high-resolution imaging without the use of radiation. The product is tailored for deployment in spas, reflecting the company’s vision to revolutionize medical imaging. Marcin Plaza, a tech YouTuber and engineer at Midjourney, provides an extensive 20-minute tour of the scanner. He candidly describes its construction, indicating that it consists of multiple ultrasound probes that have been "hacked apart" and assembled onto a modified hot tub equipped with an elevator. Additionally, the setup relies on commercially available computers and Raspberry Pi devices to operate. While the concept is intriguing, the success of this design will ultimately depend on the performance and accuracy of the imaging capabilities in real-world scenarios, as the company seeks to demonstrate tangible results and validate its claims about transforming the healthcare landscape. <div>
 <figure>
 
@@ -178,7 +507,6 @@ Midjourney, primarily recognized for its image-generating technology, has unveil
 <p><a href="https://www.theverge.com/ai-artificial-intelligence/961265/midjourney-medical-ultrasound-scanner-behind-the-scenes-video">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
 <pubDate>2026-07-03T07:49:10-04:00</pubDate>
-<pubDate>2026-07-03T07:49:10-04:00</pubDate>
 </item>
 <item>
 <title>Osloq</title>
@@ -187,7 +515,7 @@ Midjourney, primarily recognized for its image-generating technology, has unveil
 <content:encoded><![CDATA[
 <div> Keywords: AI agent, GitHub issues, reproduction, automation, efficiency
 
-<br><br>Summary: An innovative AI agent has been developed to streamline the process of managing GitHub issues. This agent takes advantage of machine learning algorithms to identify and reproduce issues reported by users automatically. By automating the reproduction of bugs and feature requests, the AI agent enhances the efficiency of developers, allowing them to focus on core programming tasks rather than troubleshooting. The system analyzes the context provided in the issues, correlates it with previous data, and generates step-by-step instructions to replicate the problem. This process not only saves time but also reduces the potential for human error. Additionally, the AI agent is designed to learn from previous interactions, improving its accuracy and effectiveness over time. As developers continue to face increasing workloads, leveraging such automation tools could have significant implications for productivity within software development. This advancement highlights a growing trend where artificial intelligence plays a crucial role in programming environments, ultimately aiming to create a more efficient workflow and streamline complex processes. <div>
+<br /><br />Summary: An innovative AI agent has been developed to streamline the process of managing GitHub issues. This agent takes advantage of machine learning algorithms to identify and reproduce issues reported by users automatically. By automating the reproduction of bugs and feature requests, the AI agent enhances the efficiency of developers, allowing them to focus on core programming tasks rather than troubleshooting. The system analyzes the context provided in the issues, correlates it with previous data, and generates step-by-step instructions to replicate the problem. This process not only saves time but also reduces the potential for human error. Additionally, the AI agent is designed to learn from previous interactions, improving its accuracy and effectiveness over time. As developers continue to face increasing workloads, leveraging such automation tools could have significant implications for productivity within software development. This advancement highlights a growing trend where artificial intelligence plays a crucial role in programming environments, ultimately aiming to create a more efficient workflow and streamline complex processes. <div>
 <p>
             An AI agent that reproduces GitHub issues for you
           </p>
@@ -197,7 +525,6 @@ Midjourney, primarily recognized for its image-generating technology, has unveil
             <a href="https://www.producthunt.com/r/p/1186689?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-07-02T15:37:18-07:00</pubDate>
 <pubDate>2026-07-03T20:49:14-07:00</pubDate>
 </item>
 <item>
@@ -215,7 +542,6 @@ Midjourney, primarily recognized for its image-generating technology, has unveil
             <a href="https://www.producthunt.com/r/p/1185396?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-07-01T03:43:09-07:00</pubDate>
 <pubDate>2026-07-03T20:43:58-07:00</pubDate>
 </item>
 <item>
@@ -225,7 +551,7 @@ Midjourney, primarily recognized for its image-generating technology, has unveil
 <content:encoded><![CDATA[
 <div> Keywords: Mac apps, AI, chat, development, technology
 
-<br><br>Summary: Creating Mac applications has become significantly easier with the integration of AI technology. By engaging in chat-based conversations with AI, users can streamline the development process and generate app concepts, designs, and functionalities with minimal effort. This innovative approach allows both experienced developers and beginners to explore app creation without requiring extensive coding knowledge. Key features of this AI-powered development include real-time feedback, personalized suggestions, and the ability to quickly modify existing ideas based on user requirements. Moreover, the AI can assist in troubleshooting and refining app performance, making it an invaluable tool for app developers. As the demand for custom applications continues to rise, leveraging AI in the development process can lead to more efficient workflows and innovative solutions. The accessible nature of this technology also fosters creativity, encouraging users to experiment with new ideas and functionalities that they might not have considered before. Ultimately, the combination of AI with app development signifies a transformative step in technology, allowing for the creation of diverse and functional Mac applications tailored to various user needs. <div>
+<br /><br />Summary: Creating Mac applications has become significantly easier with the integration of AI technology. By engaging in chat-based conversations with AI, users can streamline the development process and generate app concepts, designs, and functionalities with minimal effort. This innovative approach allows both experienced developers and beginners to explore app creation without requiring extensive coding knowledge. Key features of this AI-powered development include real-time feedback, personalized suggestions, and the ability to quickly modify existing ideas based on user requirements. Moreover, the AI can assist in troubleshooting and refining app performance, making it an invaluable tool for app developers. As the demand for custom applications continues to rise, leveraging AI in the development process can lead to more efficient workflows and innovative solutions. The accessible nature of this technology also fosters creativity, encouraging users to experiment with new ideas and functionalities that they might not have considered before. Ultimately, the combination of AI with app development signifies a transformative step in technology, allowing for the creation of diverse and functional Mac applications tailored to various user needs. <div>
 <p>
             Create your own Mac apps by chatting with AI
           </p>
@@ -235,7 +561,6 @@ Midjourney, primarily recognized for its image-generating technology, has unveil
             <a href="https://www.producthunt.com/r/p/1186480?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-07-02T08:57:02-07:00</pubDate>
 <pubDate>2026-07-03T20:47:42-07:00</pubDate>
 </item>
 <item>
@@ -243,7 +568,6 @@ Midjourney, primarily recognized for its image-generating technology, has unveil
 <link>https://www.producthunt.com/products/vox-5</link>
 <guid>https://www.producthunt.com/products/vox-5</guid>
 <content:encoded><![CDATA[
-
 <p>
             Voice in, voice out — with GitHub Copilot
           </p>
@@ -253,10 +577,8 @@ Midjourney, primarily recognized for its image-generating technology, has unveil
             <a href="https://www.producthunt.com/r/p/1186717?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-07-02T17:08:51-07:00</pubDate>
 <pubDate>2026-07-03T20:44:51-07:00</pubDate>
 </item>
-
 <item>
 <title>llm-coding-agent 0.1a0</title>
 <link>https://simonwillison.net/2026/Jul/2/llm-coding-agent/</link>
