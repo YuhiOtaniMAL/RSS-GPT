@@ -3,7 +3,322 @@
 <channel>
 <title>ai</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/ai.xml</link>
-<lastBuildDate>Mon, 06 Jul 2026 04:18:11 +0000</lastBuildDate>
+<lastBuildDate>Tue, 07 Jul 2026 04:08:55 +0000</lastBuildDate>
+
+<item>
+<title>tencent/Hy3</title>
+<link>https://simonwillison.net/2026/Jul/6/hy3/</link>
+<guid>https://simonwillison.net/2026/Jul/6/hy3/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Hy3, Tencent, Mixture-of-Experts, model, performance  
+
+<br><br>Summary:  
+Tencent has launched a new model called Hy3, which is a 295B-parameter Mixture-of-Experts (MoE) architecture with 21B active parameters and 3.8B parameters dedicated to the MTP layer. After gathering feedback from over 50 products following its preview launch in late April, the Tencent Hy Team scaled up the model using higher quality data. The Hy3 model outperforms similar-size models and rivals flagship open-source models that have 2-5 times the number of parameters. This model demonstrates significant improvements in utility across various products and enhances productivity tasks. The full-sized Hy3 model is available on Hugging Face, occupying 598GB of space, with a FP8 quantized version also available. It supports an impressive context length of 256K tokens, making it adaptable for a wide range of applications. Importantly, Hy3 is offered for free, allowing broader access to its advanced capabilities. During testing, the model was capable of generating creative outputs, such as an SVG of a pelican riding a bicycle, showcasing its versatility in generating diverse content. <div>
+<p><strong><a href="https://huggingface.co/tencent/Hy3">tencent/Hy3</a></strong></p>
+New Apache 2.0 licensed model from Tencent in China:</p>
+<blockquote>
+<p>Hy3 is a 295B-parameter Mixture-of-Experts (MoE) model with 21B active parameters and 3.8B MTP layer parameters, developed by the Tencent Hy Team. Following the Hy3 Preview launch in late April, we gathered feedback from 50+ products and scaled up post-training with higher quality data. Today, we introduce Hy3, which outperforms similar-size models and rivals flagship open-source models with 2-5x parameters. It also shows significant gains in utility across various products and productivity tasks.</p>
+</blockquote>
+<p>The full-sized model is 598GB on Hugging Face, and the FP8 quantized one <a href="https://huggingface.co/tencent/Hy3-FP8/tree/main">is 300GB</a>. The context length is 256K.</p>
+<p>It's available for free <a href="https://openrouter.ai/tencent/hy3:free">on OpenRouter until July 21st</a>. I had it "Generate an SVG of a pelican riding a bicycle" there and got this:</p>
+<p><img alt="Flat-style cartoon illustration  of a white pelican with a large orange beak riding a red bicycle across a pale blue background, its long orange legs stretched down to the pedals, with gray horizontal motion lines behind it suggesting speed." src="https://static.simonwillison.net/static/2026/hy3-pelican.png" />
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>
+]]></content:encoded>
+<pubDate>2026-07-06T23:57:35+00:00</pubDate>
+<pubDate>2026-07-06T23:57:35+00:00</pubDate>
+</item>
+<item>
+<title>sqlite-utils 4.0rc3</title>
+<link>https://simonwillison.net/2026/Jul/6/sqlite-utils/</link>
+<guid>https://simonwillison.net/2026/Jul/6/sqlite-utils/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: sqlite-utils, 4.0, foreign keys, breaking change, case insensitive
+
+<br><br>Summary: I planned to release sqlite-utils 4.0 stable this weekend but needed more time to address outstanding issues and pull requests using Claude Fable 5 and GPT-5.5 since the changelog from rc2. The most significant addition in this release is the support for introspecting and creating compound foreign keys. This feature introduces a subtle breaking change, making it essential to incorporate it before launching the stable version of 4.0. Additionally, sqlite-utils now adheres to SQLite's conventions regarding case-insensitive column names. This adaptation touches various parts of the codebase, ensuring consistency with SQLite’s behavior. Overall, these enhancements improve sqlite-utils' functionality and usability, making it more robust for developers working with SQLite databases. The new features and changes aim to streamline database management and facilitate complex data relationships, aligning with modern development needs. As I finalize the release, I want to ensure that users are aware of the updates and the implications of the changes introduced. Hence, the rollout will be carefully managed to ensure a smooth transition to the new version. <div>
+<p><strong>Release:</strong> <a href="https://github.com/simonw/sqlite-utils/releases/tag/4.0rc3">sqlite-utils 4.0rc3</a></p>
+        <p>I hoped to release <code>sqlite-utils 4.0</code> stable this weekend, but as I worked through the backlog of issues and PRs with a combination of Claude Fable 5 and GPT-5.5 the changelog since rc2 <a href="https://sqlite-utils.datasette.io/en/latest/changelog.html#rc3-2026-07-05">kept getting bigger</a>.</p>
+<p>The biggest new feature is support for introspecting and creating compound foreign keys - a feature that involves a subtle breaking change to <a href="https://sqlite-utils.datasette.io/en/latest/python-api.html#foreign-keys">table.foreign_keys</a> and hence needed to land for the 4.0 stable release.</p>
+<p><code>sqlite-utils</code> also now follows SQLite's convention for case insensitive column names, which turned out to touch <a href="https://sqlite-utils.datasette.io/en/latest/changelog.html#case-insensitive-column-matching">a bunch of different places at once</a>.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/gpt">gpt</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a></p>
+]]></content:encoded>
+<pubDate>2026-07-06T05:40:08+00:00</pubDate>
+<pubDate>2026-07-06T05:40:08+00:00</pubDate>
+</item>
+<item>
+<title>I spy</title>
+<link>https://www.theverge.com/column/961707/smart-glasses-ai-wearables-meta-surveillance-privacy</link>
+<guid>https://www.theverge.com/column/961707/smart-glasses-ai-wearables-meta-surveillance-privacy</guid>
+<content:encoded><![CDATA[
+<div> Keywords: privacy, smart glasses, Netflix, A Man on the Inside, Ted Danson  
+
+<br><br>Summary: The article discusses the ethical implications of privacy in the age of advanced technology, particularly focusing on smart glasses. It reflects on how Hollywood portrays the invasion of privacy through the character Charles Nieuwendyk, played by Ted Danson in the Netflix series A Man on the Inside. Nieuwendyk is an elderly widower who finds purpose as a private investigator, equipped with Ray-Ban Meta-like smart glasses that enable him to invade the personal spaces of others in a retirement home. The narrative unfolds to highlight the various privacy violations that occur during his investigations, illustrating the moral dilemmas faced by individuals using such technology. The binge-watching experience has prompted the author to reassess the cultural problems associated with smart glasses today, emphasizing the discomfort and ethical challenges that arise when personal privacy is compromised in the name of curiosity or investigation. Overall, the show raises important questions about the implications of surveillance technology in everyday life and how it can affect interpersonal relationships and societal norms. <div>
+<figure>
+
+<img alt="Senior reviewer Victoria Song wearing Meta Ray-Ban Display glasses while looking over her shoulder. The photo is lit so there are dramatic shadows across her face." src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/10/257980_Meta_Ray-Ban_Display_AKrales_0111.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption>
+	I’m just doing my job, but turns out, it feels lousy holding other people’s privacy in your hands.	</figcaption>
+</figure>
+<p class="has-drop-cap wp-block-paragraph">I've long argued that Hollywood has <a href="https://www.theverge.com/23678696/smart-glasses-spy-films-gadgets-privacy">simultaneously set</a> and <a href="https://gizmodo.com/video/how-science-fiction-ruined-smart-glasses">ruined our expectations for smart glasses</a>. But after binge-watching two seasons of Netflix's <em>A Man on the Inside</em>, this is perhaps the first time I've seen Hollywood, perhaps inadvertently, illustrate the biggest cultural problem with smart glasses as they stand today. </p>
+<p class="wp-block-paragraph">In a nutshell, Ted Danson plays Charles Nieuwendyk, an elderly widower who finds a new purpose working for a private investigator. Armed with a pair of Ray-Ban Meta-like glasses, a voice recorder, and a smartphone, Nieuwendyk infiltrates a retirement home, and several privacy-infringing hijinks ensue as he hunts for t …</p>
+<p><a href="https://www.theverge.com/column/961707/smart-glasses-ai-wearables-meta-surveillance-privacy">Read the full story at The Verge.</a></p>
+]]></content:encoded>
+<pubDate>2026-07-06T12:00:00-04:00</pubDate>
+<pubDate>2026-07-06T16:02:22-04:00</pubDate>
+</item>
+<item>
+<title>Microsoft is laying off 4,800 employees</title>
+<link>https://www.theverge.com/news/961528/microsoft-layoffs-july-2026-sales-xbox</link>
+<guid>https://www.theverge.com/news/961528/microsoft-layoffs-july-2026-sales-xbox</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Microsoft, layoffs, employees, technology, AI  
+
+<br><br>Summary: In February 2026, Microsoft announced further layoffs, cutting approximately 4,800 employees, which accounts for about 2.1% of its workforce. This decision comes a year after the company had previously laid off a significant number of employees. The layoffs primarily affect two areas: the commercial sales business and the Xbox division. Amy Coleman, the executive vice president and chief people officer, communicated this decision in an internal memo. She cited a changing technology industry as a key factor behind the job losses. The memo emphasized the necessity for Microsoft to adjust its resources and reallocate roles to better respond to the evolving landscape, especially in light of the increasing influence of artificial intelligence (AI) on operational strategies. Overall, these layoffs reflect Microsoft's ongoing efforts to navigate the challenges and opportunities presented by rapid advancements in technology, while also realigning its workforce to better meet market demands. The company continues to adapt its operations in response to AI developments, highlighting the dynamic nature of the tech industry. <div>
+<figure>
+
+<img alt="" src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/gettyimages-2262967364.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption>
+	Satya Nadella in February 2026. | Photo by Sven Hoppe / picture alliance via Getty Images	</figcaption>
+</figure>
+<p class="wp-block-paragraph">A year after cutting around <a href="https://www.theverge.com/news/693535/microsoft-layoffs-july-2025-xbox">9,100 employees</a>, Microsoft is making further layoffs today as it begins its new financial year. The software maker is laying off around 4,800 employees today, approximately 2.1 percent of its workforce. Most of the employees affected by today's cuts are in Microsoft's commercial sales business or the company's Xbox division.</p>
+<p class="wp-block-paragraph">In an internal memo to employees, Amy Coleman, executive vice president and Microsoft's chief people officer, blamed the job losses on a changing technology industry and the "need to adjust resources and roles and shift how we operate" to respond to how AI is impacting companies like Microsof …</p>
+<p><a href="https://www.theverge.com/news/961528/microsoft-layoffs-july-2026-sales-xbox">Read the full story at The Verge.</a></p>
+]]></content:encoded>
+<pubDate>2026-07-06T09:30:00-04:00</pubDate>
+<pubDate>2026-07-06T17:03:15-04:00</pubDate>
+</item>
+<item>
+<title>Your family’s $300 stake in OpenAI</title>
+<link>https://www.technologyreview.com/2026/07/06/1140176/your-familys-300-stake-in-openai/</link>
+<guid>https://www.technologyreview.com/2026/07/06/1140176/your-familys-300-stake-in-openai/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: OpenAI, Sam Altman, AI wealth, equity stake, safety net
+
+<br><br>Summary: OpenAI CEO Sam Altman has proposed that Americans share in the wealth generated by AI, with recent discussions including giving the U.S. government a 5% stake in OpenAI. This initiative aims to provide compensation for creators whose works have contributed to AI training and address fears that AI could disrupt the labor market. Altman's previous aim was a broader tax on profitable companies to fund annual payments to citizens. The current 5% stake in OpenAI, valued at approximately $852 billion, could translate to about $320 per U.S. household, if distributed evenly. However, the funds might instead be managed as a wealth fund for greater long-term dividends. For tech companies, promising payouts could help improve public perception amid rising concerns about AI's impact. Additionally, aligning with the Trump administration may offer strategic advantages, such as favorable regulatory conditions. Despite these discussions, a concrete policy is still lacking, and Altman’s proposals appear more illustrative of ongoing debates about AI's future rather than actionable plans. Ultimately, Altman's vision emphasizes AI’s potential for long-term wealth generation, even as questions about equitable distribution remain unresolved. <div>
+<p><em>This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, </em><a href="https://forms.technologyreview.com/newsletters/ai-demystified-the-algorithm/"><em>sign up here</em></a><em>.</em></p>
+
+
+
+<p>OpenAI CEO Sam Altman’s oft-discussed promise that Americans will share in the wealth AI creates was in the news again last week. On Thursday, the <em>Financial Times</em> <a href="https://www.ft.com/content/7c803eab-8e80-4431-9a87-e943bf00e00b?syn-25a6b1a6=1">reported</a> that Altman is in talks with President Trump about giving the US government a 5% stake in OpenAI.</p>
+
+
+
+<p>In some ways, Altman’s plan is old news. He wrote about a more radical version of this <a href="https://www.technologyreview.com/2025/12/15/1129169/a-brief-history-of-sam-altmans-hype/">back in 2021</a>, proposing that <em>all </em>companies above a certain valuation (not just AI companies) pay 2.5% of their market value each year into a fund that sends Americans annual disbursements. In April this year, OpenAI <a href="https://cdn.openai.com/pdf/561e7512-253e-424b-9734-ef4098440601/Industrial%20Policy%20for%20the%20Intelligence%20Age.pdf">described</a> a narrower proposal that closely resembles what Altman is reportedly discussing with Trump now. And the notion has broad political appeal: Senator Bernie Sanders has <a href="https://www.sanders.senate.gov/press-releases/news-sanders-introduces-legislation-to-create-7-trillion-ai-sovereign-wealth-fund/">proposed</a> giving Americans a <em>50%</em> stake in top AI companies.</p>
+
+
+
+<p>What’s the logic here?<strong> </strong>For would-be recipients, it’s twofold. First, AI learns directly from human-generated work—books, movies, art—but AI companies generally never pay the authors of that work. A free equity stake could serve as a form of belated compensation. Second, the payout could mitigate the widespread anxiety that AI will cause a collapse of the labor market (even if <a href="https://www.technologyreview.com/2026/05/26/1137855/a-reality-check-on-the-ai-jobs-hysteria/">economists disagree</a>) by providing a safety net. </p>
+
+
+
+<p>How <em>large</em> a safety net is up for debate. Details of OpenAI’s latest proposal are sparse, but let’s say the government were to distribute this equity stake directly to Americans. After its funding round in March the company was valued at $852 billion, making a 5% stake in OpenAI worth about $42.6 billion today (the company is <a href="https://www.nytimes.com/2026/06/25/technology/openai-ipo-artificial-intelligence.html">reportedly delaying</a> its IPO until it can reach a $1 trillion evaluation, a tall order given that it’s spending heavily on data centers and still has not turned a profit). Distributing that $42.6 billion equally among the roughly 133 million American households would give each about $320 in equity. But if it were to operate like other wealth funds, the government would not give equity directly to Americans but rather let the fund grow and then share a portion of the returns with everyone, perhaps delivering a bigger payout, if and when AI companies can ever start sustainably turning a profit.</p>
+
+
+
+<p>If this dividend does materialize, what’s in it for tech companies? Altman might hope the promise of payouts could help swing public opinion a bit more back toward AI companies. (A majority of Americans <a href="https://www.bentley.edu/gallup/ai">don’t trust</a> companies to use AI responsibly and <a href="https://news.gallup.com/poll/709772/americans-oppose-data-centers-area.aspx">oppose</a> construction of data centers in their area, and <a href="https://www.pewresearch.org/short-reads/2026/03/12/key-findings-about-how-americans-view-artificial-intelligence/">half</a> are more concerned than excited about the increased creep of AI into their daily lives.)</p>
+
+
+
+<p>But the bigger prize for OpenAI might be that the Trump administration loves making tech deals—like its equity stake in <a href="https://www.whitehouse.gov/releases/2026/05/president-trumps-intel-deal-and-soaring-markets-prove-america-first-works/">Intel</a> and its <a href="https://www.wsj.com/tech/nvidia-amd-chip-sales-us-government-f9e34b5f">share</a> of Nvidia’s sales to China, among <a href="https://www.cfr.org/articles/washingtons-growing-portfolio-tracking-u-s-government-investments">others</a>.&nbsp; Staying on the administration’s good side is pretty essential for AI companies right now (just ask Anthropic). It could mean not having your models deemed <a href="https://www.technologyreview.com/2026/06/22/1139424/three-things-to-watch-amid-anthropics-latest-feud-with-the-government/">a supply chain risk</a>, or getting <a href="https://www.npr.org/2026/04/24/g-s1-118582/administration-crackdown-on-chinese-firms-exploiting-u-s-ai-models">more help</a> from the White House in stopping your rivals from China.&nbsp;</p>
+
+
+
+<p>My main takeaway is that these plans currently function more as a story than a policy.<strong> </strong>Altman has been talking about some version of this idea for five years and reportedly pitched it to President Trump soon after he took office, yet there is still little indication that a concrete plan is taking shape. The more ambitious proposal from Sanders is even less likely to gain traction.</p>
+
+
+
+<p>But what these plans <em>do</em> reveal is just how up for debate the future of AI still is. Altman drew inspiration for his plan from the Alaska Permanent Fund, which was set up in the 1970s to give Alaskans a share in oil profits. The idea was based on two premises: that oil is a shared resource, and that eventually it will run out. Altman seems happy to concede the first claim about AI. But he’d balk at the second, having <a href="https://moores.samaltman.com/">promised</a> that AI will generate extraordinary wealth for decades to come. Whether Americans ever receive a check is beside the point; the proposal’s real purpose may be to convince them that the AI boom will be large enough to share.</p>
+]]></content:encoded>
+<pubDate>Mon, 06 Jul 2026 18:00:00 +0000</pubDate>
+<pubDate>Mon, 06 Jul 2026 18:00:00 +0000</pubDate>
+</item>
+<item>
+<title>Secret Claude tracker shocks users after Anthropic’s anti-surveillance stance</title>
+<link>https://arstechnica.com/tech-policy/2026/07/anthropic-outed-for-claude-tracker-that-secretly-monitored-chinese-users/</link>
+<guid>https://arstechnica.com/tech-policy/2026/07/anthropic-outed-for-claude-tracker-that-secretly-monitored-chinese-users/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Anthropic, Claude Code, tracker, user trust, privacy
+
+<br><br>Summary: Anthropic has quickly removed a tracker embedded in Claude Code that was secretly monitoring users in China after it was discovered by a security researcher known as “Thereallo.” The researcher found that the AI firm employed “prompt steganography” to conceal code tracking Chinese users, which communicated information back to Anthropic without user detection. This hidden code, while not malicious, flagged users’ time zones, proxies, and potential connections to Chinese AI labs, raising significant concerns about privacy. Anthropic engineer Thariq Shihipar confirmed that the tracker was implemented as an "experiment" in March with the intention of preventing account abuse from unauthorized resellers and protecting against distillation. There have been reports of unauthorized sellers offering access to Claude Code models at drastically reduced prices, undermining the service's worth. The situation has been characterized as a serious breach of user trust due to the stealthy approach taken by Anthropic, leading to criticism of their privacy handling practices. The incident highlights the ongoing challenges of security and ethical behavior within the AI industry. <div>
+<p>Anthropic quickly removed a tracker secretly monitoring Claude Code users in China after a security researcher <a href="https://thereallo.dev/blog/claude-code-prompt-steganography">exposed</a> the hidden code and condemned the spyware-like tracking as a “serious breach of user trust.”</p>
+<p>Last week, a web developer known as “Thereallo” was researching privacy issues in Claude Code and was shocked to find that the AI firm was using “prompt steganography” to hide code that tracks Chinese users “in plain sight.” This code wasn’t malicious, but it was sending information to Anthropic that most users wouldn’t detect, relying on shorthand markers to quietly flag users’ timezone, proxy, and potential connection to Chinese AI labs that <a href="https://arstechnica.com/tech-policy/2026/06/anthropic-claims-alibaba-defied-trump-to-attack-claude-and-steal-capabilities/">Anthropic has accused of distillation attacks</a>.</p>
+<p>On X, Anthropic engineer Thariq Shihipar confirmed that the tracker was added to Claude Code as an “experiment” in March. According to Shihipar, the code “was meant to prevent account abuse from unauthorized resellers and protect against distillation.” Regarding the former, <a href="https://www.washingtonpost.com/national-security/2026/07/06/why-anthropic-alleges-chinese-firms-are-distilling-knowledge-claude/">The Washington Post found</a> unauthorized retailers have sold access to free models for $1 a month, and pro subscriptions that can cost $100 monthly sell for "as little as $12."</p><p><a href="https://arstechnica.com/tech-policy/2026/07/anthropic-outed-for-claude-tracker-that-secretly-monitored-chinese-users/">Read full article</a></p>
+<p><a href="https://arstechnica.com/tech-policy/2026/07/anthropic-outed-for-claude-tracker-that-secretly-monitored-chinese-users/#comments">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 06 Jul 2026 16:44:18 +0000</pubDate>
+<pubDate>Mon, 06 Jul 2026 16:44:18 +0000</pubDate>
+</item>
+<item>
+<title>UK regulator warns of "arms race" to keep up with AI use in financial services</title>
+<link>https://arstechnica.com/ai/2026/07/uk-regulator-warns-of-arms-race-to-keep-up-with-ai-use-in-financial-services/</link>
+<guid>https://arstechnica.com/ai/2026/07/uk-regulator-warns-of-arms-race-to-keep-up-with-ai-use-in-financial-services/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: regulators, AI, financial services, Sheldon Mills, FCA
+
+<br><br>Summary: Sheldon Mills, a senior official at the Financial Conduct Authority (FCA), has highlighted the urgent need for regulators to adapt to the rapid advancements in artificial intelligence (AI) within financial services. As millions of people increasingly rely on AI technologies like ChatGPT and Claude for personal finance decisions, Mills emphasizes that the FCA needs enhanced powers to effectively oversee this growth. He calls on UK authorities to evaluate whether such large language models should fall under regulatory frameworks. Ahead of the release of an FCA-commissioned report detailing the implications of AI in finance, Mills stresses the necessity for regulators to integrate AI tools themselves to keep pace with the unprecedented speed and scale of change in the industry. This approach is essential for effectively monitoring, detecting, and addressing the risks associated with AI usage in the financial sector. Without these adaptations, regulators may struggle to safeguard consumer interests and maintain market integrity amidst the transformative effects of AI technologies. <div>
+<p>Regulators are in an “arms race” to keep up with the use of artificial intelligence in financial services, a senior UK official has warned, with millions of people using the technology to help them make personal finance decisions.</p>
+<p>Sheldon Mills, an executive director at the Financial Conduct Authority, told the FT the watchdog would need greater powers to stay on top of the rapid growth of AI and urged UK authorities to review whether the use of ChatGPT, Claude, Gemini, and other large language models should be subject to their rules.</p>
+<p>Speaking ahead of the publication on Monday of an FCA-commissioned report he has written on the impact of AI in financial services, Mills said regulators in the area would have to embrace AI themselves to keep up with the “speed, pace, and scale of change” the technology is bringing to the sector and to help “monitor, detect, and tackle the risks.”</p><p><a href="https://arstechnica.com/ai/2026/07/uk-regulator-warns-of-arms-race-to-keep-up-with-ai-use-in-financial-services/">Read full article</a></p>
+<p><a href="https://arstechnica.com/ai/2026/07/uk-regulator-warns-of-arms-race-to-keep-up-with-ai-use-in-financial-services/#comments">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 06 Jul 2026 14:17:42 +0000</pubDate>
+<pubDate>Mon, 06 Jul 2026 14:17:42 +0000</pubDate>
+</item>
+<item>
+<title>AnySearch</title>
+<link>https://www.producthunt.com/products/anysearch</link>
+<guid>https://www.producthunt.com/products/anysearch</guid>
+<content:encoded><![CDATA[
+<div> Keywords: real-time search, structured data, trusted, agents, developers 
+
+<br><br>Summary: The article discusses the importance of real-time structured search in various applications, emphasizing its reliability for both agents and developers. It highlights how this type of search enables quick and accurate retrieval of information from large datasets, which is crucial in fields such as real estate, IT, and customer service. The structured nature of the data allows for better indexing and querying, making it easier for agents and developers to access relevant information efficiently. The article also touches upon the technology behind real-time search, including advancements in algorithms and data management practices. This tech-savvy approach enhances user experience, helping professionals to make informed decisions quickly. Furthermore, it notes the growing demand for such tools in the digital landscape as organizations seek to leverage data for strategic advantage. The combination of trustworthiness and innovative technology is key to the adoption of real-time structured search solutions, ultimately contributing to improved operational effectiveness and better service delivery across various industries. <div>
+<p>
+            Real-time structured search trusted by agents and developers
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/anysearch?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1185300?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-07-01T01:58:38-07:00</pubDate>
+<pubDate>2026-07-06T21:08:41-07:00</pubDate>
+</item>
+<item>
+<title>Typeahead 2.0</title>
+<link>https://www.producthunt.com/products/typeahead</link>
+<guid>https://www.producthunt.com/products/typeahead</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Private AI, autocomplete, Mac, productivity, applications
+
+<br><br>Summary: 
+The article discusses the integration of Private AI technology for autocompletion across various applications on Mac devices. This innovative feature enhances user productivity by streamlining typing tasks, allowing for faster document creation and message composition. By leveraging machine learning, the Private AI system learns individual writing styles and preferences to provide personalized suggestions that align with users' needs. This technology not only saves time but also reduces the cognitive load associated with repetitive typing tasks. Privacy is a crucial aspect of this application; it ensures that user data remains confidential and is processed locally without compromising personal information. The implementation of Private AI can be beneficial for a range of applications, including email clients, word processors, and messaging apps, making everyday tasks more efficient. Additionally, the adaptability of this technology means it can continually improve based on user interactions, leading to increasingly accurate and relevant completions over time. Overall, the introduction of Private AI autocomplete features promises to significantly enhance the user experience on Mac devices while prioritizing privacy and data security. <div>
+<p>
+            Private AI autocomplete for every app on your Mac
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/typeahead?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1186655?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-07-02T14:39:18-07:00</pubDate>
+<pubDate>2026-07-06T21:01:52-07:00</pubDate>
+</item>
+<item>
+<title>CodeMote</title>
+<link>https://www.producthunt.com/products/codemote-remote-control-for-any-ai</link>
+<guid>https://www.producthunt.com/products/codemote-remote-control-for-any-ai</guid>
+<content:encoded><![CDATA[
+<div> **Keywords:** Claude Code, Codex, CLI agent, iPhone, driven  
+
+<br><br>Summary:  
+Claude Code and Codex are advanced code generation tools that can assist developers in creating software applications more efficiently. These tools utilize AI to understand and generate code snippets, making programming more accessible. A Command Line Interface (CLI) agent allows users to interact with these tools through a text-based interface, providing an efficient way to run commands and retrieve outputs. The availability of CLI agents on mobile devices, such as the iPhone, allows users to harness these powerful coding tools anywhere, enhancing productivity. With mobile innovation, developers can now access coding assistance on the go, making it particularly useful for quick coding tasks or debugging. The seamless integration of these technologies signifies a shift towards more mobile-focused development environments and could lead to more streamlined workflows. As AI continues to evolve, tools like Claude Code and Codex will likely improve further, offering more sophisticated features and capabilities to enhance the overall development process. In summary, the combination of AI-driven code tools, CLI agents, and mobile technology is setting a new standard in software development, fostering greater flexibility and efficiency for developers around the world. <div>
+<p>
+            Claude Code, Codex, any CLI agent. Driven from your iPhone
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/codemote-remote-control-for-any-ai?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1188554?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-07-05T06:39:06-07:00</pubDate>
+<pubDate>2026-07-06T21:05:32-07:00</pubDate>
+</item>
+<item>
+<title>Octolens</title>
+<link>https://www.producthunt.com/products/octolens-ai</link>
+<guid>https://www.producthunt.com/products/octolens-ai</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Social listening for the agent era
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/octolens-ai?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1183905?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-06-29T09:11:04-07:00</pubDate>
+<pubDate>2026-07-06T21:04:53-07:00</pubDate>
+</item>
+<item>
+<title>Edgee Claude Code Compressor V2</title>
+<link>https://www.producthunt.com/products/edgee</link>
+<guid>https://www.producthunt.com/products/edgee</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Fewer tokens, same context, 50% cost reduction
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/edgee?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1186793?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-07-02T21:38:17-07:00</pubDate>
+<pubDate>2026-07-06T20:33:06-07:00</pubDate>
+</item>
+<item>
+<title>AirKaren</title>
+<link>https://www.producthunt.com/products/airkaren</link>
+<guid>https://www.producthunt.com/products/airkaren</guid>
+<content:encoded><![CDATA[
+
+<p>
+            AI that fights customer service for you
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/airkaren?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1187340?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-07-03T10:56:07-07:00</pubDate>
+<pubDate>2026-07-06T21:05:31-07:00</pubDate>
+</item>
+<item>
+<title>Mozaik</title>
+<link>https://www.producthunt.com/products/mozaik-4</link>
+<guid>https://www.producthunt.com/products/mozaik-4</guid>
+<content:encoded><![CDATA[
+
+<p>
+            TypeScript runtime for self-organizing AI agents
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/mozaik-4?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1188511?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-07-05T05:31:38-07:00</pubDate>
+<pubDate>2026-07-06T21:05:54-07:00</pubDate>
+</item>
+<item>
+<title>Nixmac</title>
+<link>https://www.producthunt.com/products/nixmac</link>
+<guid>https://www.producthunt.com/products/nixmac</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Nix-darwin that speaks plain English
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/nixmac?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1188550?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-07-05T06:33:34-07:00</pubDate>
+<pubDate>2026-07-06T21:04:45-07:00</pubDate>
+</item>
 
 <item>
 <title>Some of the nation’s rich are letting AI teach their kids</title>
@@ -12,7 +327,7 @@
 <content:encoded><![CDATA[
 <div> Keywords: AI tutors, Silicon Valley, Forge Prep, Alpha School, education  
 
-<br><br>Summary: Many Americans lack knowledge of essential topics, including even basic preferences like pizza. Despite this, affluent families are pivoting towards artificial intelligence (AI) for their children's education instead of traditional schooling. Companies such as Forge Prep and Alpha School are offering AI-driven education solutions, with fees often reaching tens of thousands of dollars. These firms position themselves as innovators by developing AI tutors and interactive project-based workshops that allow students to learn in a more engaging environment. Silicon Valley, a hub for tech innovation, has been particularly quick to adopt this new educational model, attracting wealthy families seeking a competitive advantage for their children. One prominent figure in the venture capital space, Shaun Johnson from San Francisco, has expressed his plans to enroll his child in these experimental education setups, indicating a trend where high-income families are seeking alternative education resources that leverage cutting-edge technology. This move highlights a growing divide in educational approaches, as those with financial means explore innovative methodologies while traditional public schooling appears to lag behind in delivering effective learning experiences. <div>
+<br /><br />Summary: Many Americans lack knowledge of essential topics, including even basic preferences like pizza. Despite this, affluent families are pivoting towards artificial intelligence (AI) for their children's education instead of traditional schooling. Companies such as Forge Prep and Alpha School are offering AI-driven education solutions, with fees often reaching tens of thousands of dollars. These firms position themselves as innovators by developing AI tutors and interactive project-based workshops that allow students to learn in a more engaging environment. Silicon Valley, a hub for tech innovation, has been particularly quick to adopt this new educational model, attracting wealthy families seeking a competitive advantage for their children. One prominent figure in the venture capital space, Shaun Johnson from San Francisco, has expressed his plans to enroll his child in these experimental education setups, indicating a trend where high-income families are seeking alternative education resources that leverage cutting-edge technology. This move highlights a growing divide in educational approaches, as those with financial means explore innovative methodologies while traditional public schooling appears to lag behind in delivering effective learning experiences. <div>
 <figure>
 
 <img alt="Photo collage of a pixelated student at a desk." src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25584700/STK483_EDUCATION_C.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
@@ -24,7 +339,6 @@
 <p><a href="https://www.theverge.com/ai-artificial-intelligence/961505/wealthy-ai-schools-alpha-forge-prep">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
 <pubDate>2026-07-05T18:30:54-04:00</pubDate>
-<pubDate>2026-07-05T18:30:54-04:00</pubDate>
 </item>
 <item>
 <title>Infuriating Google commercial imagines the founding fathers embracing AI</title>
@@ -33,7 +347,7 @@
 <content:encoded><![CDATA[
 <div> Keywords: founding fathers, Google, collaboration tools, Declaration of Independence, AI
 
-<br><br>Summary: The article discusses a new commercial that humorously portrays the founding fathers using modern collaboration tools from Google. It begins with the phrase "Group project, but make it 1776," setting the tone for a comedic twist on history. In the imagined scenario, Benjamin Franklin communicates with Thomas Jefferson via text to check on his work on the Declaration of Independence. Jefferson takes a photo of his draft and uses AI to transcribe it into a Google Doc. Franklin and John Adams join in to make collaborative edits in suggestion mode. The commercial highlights the efficiency of Google's tools as it showcases Gemini helping to schedule meetings and taking notes during a Google Meet call. Additionally, a character named Nano Banana creatively designs the seal for the United States featuring a turkey, adding to the absurdity of the scenario. The ad brings a light-hearted perspective to the serious historical event, merging contemporary technological tools with the founding era's challenges, ultimately emphasizing the theme of collaboration across time. <div>
+<br /><br />Summary: The article discusses a new commercial that humorously portrays the founding fathers using modern collaboration tools from Google. It begins with the phrase "Group project, but make it 1776," setting the tone for a comedic twist on history. In the imagined scenario, Benjamin Franklin communicates with Thomas Jefferson via text to check on his work on the Declaration of Independence. Jefferson takes a photo of his draft and uses AI to transcribe it into a Google Doc. Franklin and John Adams join in to make collaborative edits in suggestion mode. The commercial highlights the efficiency of Google's tools as it showcases Gemini helping to schedule meetings and taking notes during a Google Meet call. Additionally, a character named Nano Banana creatively designs the seal for the United States featuring a turkey, adding to the absurdity of the scenario. The ad brings a light-hearted perspective to the serious historical event, merging contemporary technological tools with the founding era's challenges, ultimately emphasizing the theme of collaboration across time. <div>
 <figure>
 
 <img alt="The founding fathers having a conference call with all of their cameras off via Google Meet, as if they wouldn’t be a bunch of stodgy Microsoft Teams users." src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/Q3RjZY-rSsc-HD.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
@@ -44,7 +358,6 @@
 <p class="wp-block-paragraph">Ben Franklin texts Thomas Jefferson to check on the status of a draft, who takes a photo and uses AI to transcribe it into a Google Doc. Franklin and Adams hop in to make edits in suggestion mode, Gemini finds them a meeting time, takes notes during a Google Meet call, and then Nano Banana whips up a seal for the United States featuring a turkey ( …</p>
 <p><a href="https://www.theverge.com/ai-artificial-intelligence/961468/google-ai-commercial-founding-fathers-declaration-of-independence">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
-<pubDate>2026-07-05T10:23:11-04:00</pubDate>
 <pubDate>2026-07-05T10:55:03-04:00</pubDate>
 </item>
 <item>
@@ -54,7 +367,7 @@
 <content:encoded><![CDATA[
 <div> **Keywords:** Disposable, Test Environments, AI, Coding Agents, Development
 
-<br><br>Summary:  
+<br /><br />Summary:  
 Disposable test environments play a crucial role in the development and testing of AI coding agents. These environments enable developers to create, modify, and assess their algorithms rapidly without the need for extensive computing resources. This flexibility encourages experimentation and innovation, allowing for the quick iteration of ideas. The use of container technology simplifies the setup and teardown of testing environments, ensuring that they can be easily replicated with consistent results. This approach minimizes the risk of errors and conflicts that can arise in more permanent setups. Furthermore, these environments provide isolated spaces where coding agents can be evaluated under controlled conditions, leading to better assessment of their capabilities. They also enhance collaboration among developers by allowing teams to work in parallel without interfering with each other's progress. Ultimately, disposable test environments contribute to more efficient workflows and a faster development cycle, enabling the rapid advancement of AI technology. By integrating such environments into the coding process, companies can significantly boost productivity and foster innovation in AI applications. <div>
 <p>
             Disposable test environments for AI coding agents
@@ -65,7 +378,6 @@ Disposable test environments play a crucial role in the development and testing 
             <a href="https://www.producthunt.com/r/p/1166992?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-06-08T15:02:08-07:00</pubDate>
 <pubDate>2026-07-05T21:12:10-07:00</pubDate>
 </item>
 <item>
@@ -75,7 +387,7 @@ Disposable test environments play a crucial role in the development and testing 
 <content:encoded><![CDATA[
 <div> **Keywords:** AI experts, productivity, teamwork, efficiency, results
 
-<br><br>Summary: Artificial Intelligence (AI) has transformed the way teams operate by augmenting productivity and enhancing results. With a dedicated team of AI experts, organizations can harness advanced technologies to streamline processes and improve decision-making. The role of AI in collaborative settings promotes efficiency, allowing team members to focus on complex problem-solving while AI handles data analysis and routine tasks. Moreover, the integration of AI fosters a culture of innovation, enabling teams to adapt swiftly to market changes and customer needs. Training and support from AI specialists ensure that everyone on the team can leverage AI tools effectively. By emphasizing teamwork and collaboration, results are not only achieved faster but also with higher accuracy, minimizing the likelihood of errors. Overall, a well-rounded team of AI experts can significantly enhance the capability of any organization to produce sharpened results in less time, thereby driving growth and success in an increasingly competitive landscape. By prioritizing AI-driven solutions, businesses can gain a substantial advantage over their rivals and position themselves for future challenges. <div>
+<br /><br />Summary: Artificial Intelligence (AI) has transformed the way teams operate by augmenting productivity and enhancing results. With a dedicated team of AI experts, organizations can harness advanced technologies to streamline processes and improve decision-making. The role of AI in collaborative settings promotes efficiency, allowing team members to focus on complex problem-solving while AI handles data analysis and routine tasks. Moreover, the integration of AI fosters a culture of innovation, enabling teams to adapt swiftly to market changes and customer needs. Training and support from AI specialists ensure that everyone on the team can leverage AI tools effectively. By emphasizing teamwork and collaboration, results are not only achieved faster but also with higher accuracy, minimizing the likelihood of errors. Overall, a well-rounded team of AI experts can significantly enhance the capability of any organization to produce sharpened results in less time, thereby driving growth and success in an increasingly competitive landscape. By prioritizing AI-driven solutions, businesses can gain a substantial advantage over their rivals and position themselves for future challenges. <div>
 <p>
             Produce sharpened results faster with a team of AI experts
           </p>
@@ -85,7 +397,6 @@ Disposable test environments play a crucial role in the development and testing 
             <a href="https://www.producthunt.com/r/p/1184211?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-06-29T19:39:48-07:00</pubDate>
 <pubDate>2026-07-05T21:12:06-07:00</pubDate>
 </item>
 <item>
@@ -103,10 +414,8 @@ Disposable test environments play a crucial role in the development and testing 
             <a href="https://www.producthunt.com/r/p/1175845?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-06-19T00:54:26-07:00</pubDate>
 <pubDate>2026-07-05T21:07:04-07:00</pubDate>
 </item>
-
 <item>
 <title>sqlite-utils 4.0rc2, mostly written by Claude Fable (for about $149.25)</title>
 <link>https://simonwillison.net/2026/Jul/5/sqlite-utils-fable/</link>
