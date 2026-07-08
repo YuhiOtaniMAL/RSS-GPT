@@ -3,7 +3,895 @@
 <channel>
 <title>ai</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/ai.xml</link>
-<lastBuildDate>Tue, 07 Jul 2026 04:08:55 +0000</lastBuildDate>
+<lastBuildDate>Wed, 08 Jul 2026 03:34:08 +0000</lastBuildDate>
+
+<item>
+<title>sqlite-utils 4.0, now with database schema migrations</title>
+<link>https://simonwillison.net/2026/Jul/7/sqlite-utils-4/</link>
+<guid>https://simonwillison.net/2026/Jul/7/sqlite-utils-4/</guid>
+<content:encoded><![CDATA[
+<div> **Keywords:** migrations, sqlite-utils, database, features, transactions
+
+<br><br>Summary:  
+This morning, I released the 124th version of sqlite-utils, marking the first major version bump since November 2020. This release includes significant breaking changes and three major features: database migrations, nested transactions, and compound foreign key support. Migrations are executed through Python files, offering a mechanism for tracking changes in SQLite databases. The db.atomic() method allows for nested transactions, enhancing transaction management. Demonstrated through an example, the migrations construct a creatures table, adding columns and changing types over time. Other notable updates in version 4.0 include improved upserts, immediate execution of db.query(), and automatic type detection during CSV imports. The sqlite-migrate package has been integrated into sqlite-utils, enhancing usability across projects. Backwards-incompatible changes were made, with feedback and assistance significantly improving this release’s quality, particularly through AI models like Claude Fable 5. The release emphasizes a simpler approach compared to Django’s migrations, prioritizing programmatic features while forgoing rollback capabilities. Overall, sqlite-utils 4.0 aims for a more cohesive development experience and greater functionality within the SQLite ecosystem. <div>
+<p>This morning I released <a href="https://sqlite-utils.datasette.io/en/stable/changelog.html#v4-0">sqlite-utils 4.0</a>, the 124th release of that project and the first major version bump since <a href="https://sqlite-utils.datasette.io/en/stable/changelog.html#v3-0">3.0</a> in November 2020. In addition to some small but significant breaking changes (described in <a href="https://sqlite-utils.datasette.io/en/stable/upgrading.html">this upgrade guide</a>), this version introduces three major features: <strong>database migrations</strong>, <strong>nested transactions</strong> (via a new <code>db.atomic()</code> method), and support for <strong>compound foreign keys</strong>.</p>
+<h4 id="database-schema-migrations-using-sqlite-utils">Database schema migrations using sqlite-utils</h4>
+<p>Schema migrations define a sequence of changes to be made to a SQLite database, plus a mechanism for tracking which migrations have been applied and applying any that are found to be pending.</p>
+<p>Migrations are defined in Python files using the <a href="https://sqlite-utils.datasette.io/en/stable/python-api.html">sqlite-utils Python library</a>, which includes a powerful <code>table.transform()</code> method providing <a href="https://sqlite-utils.datasette.io/en/stable/python-api.html#transforming-a-table">enhanced alter table capabilities</a> that are not supported by SQLite's <code>ALTER TABLE</code> statement.</p>
+<p>(<code>table.transform()</code> implements the pattern <a href="https://www.sqlite.org/lang_altertable.html#otheralter">recommended by the SQLite documentation</a> - create a new temporary table with the new schema, copy across the data, then drop the old table and rename the temporary one in its place.)</p>
+<p>Here's an example migration file which creates a table called <code>creatures</code>, adds an additional column to it in a second step, then changes the types of two of the columns in a third:</p>
+<pre><span class="pl-k">from</span> <span class="pl-s1">sqlite_utils</span> <span class="pl-k">import</span> <span class="pl-v">Migrations</span>
+
+<span class="pl-s1">migrations</span> <span class="pl-c1">=</span> <span class="pl-en">Migrations</span>(<span class="pl-s">"creatures"</span>)
+
+<span class="pl-en">@<span class="pl-en">migrations</span>()</span>
+<span class="pl-k">def</span> <span class="pl-en">create_table</span>(<span class="pl-s1">db</span>):
+    <span class="pl-s1">db</span>[<span class="pl-s">"creatures"</span>].<span class="pl-c1">create</span>(
+        {<span class="pl-s">"id"</span>: <span class="pl-s1">int</span>, <span class="pl-s">"name"</span>: <span class="pl-s1">str</span>, <span class="pl-s">"species"</span>: <span class="pl-s1">str</span>},
+        <span class="pl-s1">pk</span><span class="pl-c1">=</span><span class="pl-s">"id"</span>,
+    )
+
+<span class="pl-en">@<span class="pl-en">migrations</span>()</span>
+<span class="pl-k">def</span> <span class="pl-en">add_weight</span>(<span class="pl-s1">db</span>):
+    <span class="pl-s1">db</span>[<span class="pl-s">"creatures"</span>].<span class="pl-c1">add_column</span>(<span class="pl-s">"weight"</span>, <span class="pl-s1">float</span>)
+
+<span class="pl-en">@<span class="pl-en">migrations</span>()</span>
+<span class="pl-k">def</span> <span class="pl-en">change_column_types</span>(<span class="pl-s1">db</span>):
+    <span class="pl-s1">db</span>[<span class="pl-s">"creatures"</span>].<span class="pl-c1">transform</span>(<span class="pl-s1">types</span><span class="pl-c1">=</span>{<span class="pl-s">"species"</span>: <span class="pl-s1">int</span>, <span class="pl-s">"weight"</span>: <span class="pl-s1">str</span>})</pre>
+<p>Save that as <code>migrations.py</code> and run it against a fresh database like this:</p>
+<div class="highlight highlight-source-shell"><pre>uvx sqlite-utils migrate data.db migrations.py</pre></div>
+<p>Then if you check the schema of that database:</p>
+<div class="highlight highlight-source-shell"><pre>uvx sqlite-utils schema data.db</pre></div>
+<p>You'll see this SQL:</p>
+<div class="highlight highlight-source-sql"><pre><span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> "<span class="pl-en">_sqlite_migrations</span>" (
+   <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span> <span class="pl-k">INTEGER</span> <span class="pl-k">PRIMARY KEY</span>,
+   <span class="pl-s"><span class="pl-pds">"</span>migration_set<span class="pl-pds">"</span></span> <span class="pl-k">TEXT</span>,
+   <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span> <span class="pl-k">TEXT</span>,
+   <span class="pl-s"><span class="pl-pds">"</span>applied_at<span class="pl-pds">"</span></span> <span class="pl-k">TEXT</span>
+);
+<span class="pl-k">CREATE</span> <span class="pl-k">UNIQUE INDEX</span> "<span class="pl-en">idx__sqlite_migrations_migration_set_name</span>"
+    <span class="pl-k">ON</span> <span class="pl-s"><span class="pl-pds">"</span>_sqlite_migrations<span class="pl-pds">"</span></span> (<span class="pl-s"><span class="pl-pds">"</span>migration_set<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>);
+<span class="pl-k">CREATE</span> <span class="pl-k">TABLE</span> "<span class="pl-en">creatures</span>" (
+   <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span> <span class="pl-k">INTEGER</span> <span class="pl-k">PRIMARY KEY</span>,
+   <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span> <span class="pl-k">TEXT</span>,
+   <span class="pl-s"><span class="pl-pds">"</span>species<span class="pl-pds">"</span></span> <span class="pl-k">INTEGER</span>,
+   <span class="pl-s"><span class="pl-pds">"</span>weight<span class="pl-pds">"</span></span> <span class="pl-k">TEXT</span>
+);</pre></div>
+<p>The <code>_sqlite_migrations</code> table is used to keep track of which migration functions have been run. The <code>creatures</code> table above is the schema after all three migrations have been applied.</p>
+<p>To see a list of migrations, both pending and applied, run this:</p>
+<div class="highlight highlight-source-shell"><pre>uvx sqlite-utils migrate data.db migrations.py --list</pre></div>
+<p>Output:</p>
+<pre><code>Migrations for: creatures
+
+  Applied:
+    create_table - 2026-07-07 17:58:41.360051+00:00
+    add_weight - 2026-07-07 17:58:41.360608+00:00
+    change_column_types - 2026-07-07 18:01:15.802000+00:00
+
+  Pending:
+    (none)
+</code></pre>
+<p>If you don't specify a migrations file, the <code>sqlite-utils migrate data.db</code> command will scan the current directory and its subdirectories for files called <code>migrations.py</code> and apply any <code>Migrations()</code> instances it finds in them.</p>
+<p>You can also execute migrations <a href="https://sqlite-utils.datasette.io/en/stable/migrations.html#applying-migrations-in-python">from Python code</a> using the <code>migrations.apply(db)</code> method, which is useful for building tools that manage their own database schemas over multiple versions. My own <a href="https://llm.datasette.io/">LLM tool</a> has been using a version of this pattern for several years now, as shown in <a href="https://github.com/simonw/llm/blob/0.31/llm/embeddings_migrations.py">llm/embeddings_migrations.py</a>.</p>
+<h4 id="prior-art">Prior art</h4>
+<p>My favorite implementation of this pattern remains <a href="https://docs.djangoproject.com/en/6.0/topics/migrations/">Django's Migrations</a>, developed by Andrew Godwin based on his earlier project <a href="https://github.com/andrewgodwin/south">South</a>. Fun fact: Andrew, Russ Keith-Magee, and I presented our competing approaches to schema migrations for Django on the <a href="https://www.youtube.com/watch?v=VSq8m00p1FM">Schema Evolution panel</a> at the very first DjangoCon back in 2008! My attempt was called <a href="https://simonwillison.net/2008/Sep/3/dmigrations/">dmigrations</a>, developed with a team at Global Radio in London.</p>
+<p>Django's migrations can be automatically generated from model definitions and include the ability to roll back to a previous version. The <code>sqlite-utils</code> approach is deliberately simpler: unlike Django, <code>sqlite-utils</code> encourages programmatic table creation rather than a model definition ORM, so there isn't anything we can use to automatically generate migrations.</p>
+<p>I decided to skip rollback, since in my experience it's a feature that is rarely used. With a SQLite project, an easy way to achieve rollback is to create a copy of your database file before you apply the migrations!</p>
+<h4 id="migrating-from-sqlite-migrate">Migrating from sqlite-migrate</h4>
+<p>The design of <code>sqlite-utils</code> migrations is three years old now - I had originally released it as a separate package called <a href="https://github.com/simonw/sqlite-migrate">sqlite-migrate</a>, which never quite graduated beyond a beta release.</p>
+<p>I've used that package in enough places now that I'm confident in the design, so I've decided to promote it to a feature of <code>sqlite-utils</code> to make it available by default to all of the other tools in the growing sqlite-utils/Datasette/LLM ecosystem.</p>
+<p>I made <a href="https://github.com/simonw/sqlite-migrate/releases/tag/0.2">one last release</a> of <code>sqlite-migrate</code>, which switches it to depend on <code>sqlite-utils&gt;=4</code> and replaces the <code>__init__.py</code> file with the following:</p>
+<pre><span class="pl-k">from</span> <span class="pl-s1">sqlite_utils</span> <span class="pl-k">import</span> <span class="pl-v">Migrations</span>
+
+<span class="pl-s1">__all__</span> <span class="pl-c1">=</span> [<span class="pl-s">"Migrations"</span>]</pre>
+<p>Any existing project that depends on <code>sqlite-migrate</code> should continue to work without alterations.</p>
+<h4 id="everything-else-in-sqlite-utils-4-0">Everything else in sqlite-utils 4.0</h4>
+<p>Here are the release notes for this version, with some inline annotations:</p>
+<blockquote>
+<p>The 4.0 release includes some minor backwards-incompatible fixes (hence the major version number bump) and introduces three major new features:</p>
+<ul>
+<li>
+<a href="https://sqlite-utils.datasette.io/en/stable/migrations.html#migrations">Database migrations</a>, providing a structured mechanism for evolving a project’s schema over time. (<a href="https://github.com/simonw/sqlite-utils/issues/752">#752</a>)</li>
+</ul>
+</blockquote>
+<p>I think of migrations as the signature new feature, hence this blog post.</p>
+<blockquote>
+<ul>
+<li>
+<a href="https://sqlite-utils.datasette.io/en/stable/python-api.html#python-api-atomic">Nested transaction support</a> via <code>db.atomic()</code>, plus numerous improvements to how transactions work across the library. (<a href="https://github.com/simonw/sqlite-utils/issues/755">#755</a>)</li>
+</ul>
+</blockquote>
+<p><code>sqlite-utils</code> has long had a confused relationship with database transactions, partly because when I started designing the library back in 2018 I didn't yet have a great feel for how those worked in SQLite itself.</p>
+<p>Adding migrations to the core library made me determined to finally crack this nut, since transactions make migration systems a whole lot safer and easier to reason about.</p>
+<p>I ended up building this around a <code>db.atomic()</code> context manager which looks like this:</p>
+<pre><span class="pl-k">with</span> <span class="pl-s1">db</span>.<span class="pl-c1">atomic</span>():
+    <span class="pl-s1">db</span>.<span class="pl-c1">table</span>(<span class="pl-s">"dogs"</span>).<span class="pl-c1">insert</span>({<span class="pl-s">"id"</span>: <span class="pl-c1">1</span>, <span class="pl-s">"name"</span>: <span class="pl-s">"Cleo"</span>}, <span class="pl-s1">pk</span><span class="pl-c1">=</span><span class="pl-s">"id"</span>)
+    <span class="pl-s1">db</span>.<span class="pl-c1">table</span>(<span class="pl-s">"dogs"</span>).<span class="pl-c1">insert</span>({<span class="pl-s">"id"</span>: <span class="pl-c1">2</span>, <span class="pl-s">"name"</span>: <span class="pl-s">"Pancakes"</span>})</pre>
+<p>SQLite supports <a href="https://sqlite.org/lang_savepoint.html">Savepoints</a>, and as a result <code>db.atomic()</code> can be nested to carry out transactions inside of transactions. It's pretty neat!</p>
+<blockquote>
+<ul>
+<li>Support for <a href="https://sqlite-utils.datasette.io/en/stable/python-api.html#python-api-compound-foreign-keys">compound foreign keys</a>, including creation, transformation and introspection through <a href="https://sqlite-utils.datasette.io/en/stable/python-api.html#python-api-introspection-foreign-keys">table.foreign_keys</a>. (<a href="https://github.com/simonw/sqlite-utils/issues/594">#594</a>)</li>
+</ul>
+</blockquote>
+<p>This came about when I asked a coding agent to review all open issues and PRs for things that should be included in a 4.0 release since they would represent breaking changes if I added them later, and it correctly identified that compound foreign keys were exactly that kind of feature.</p>
+<p>I started with a breaking change to the <a href="https://sqlite-utils.datasette.io/en/stable/python-api.html#python-api-introspection-foreign-keys">table.foreign_keys</a> introspection method, and then decided to see if Claude Fable 5 could handle the more fiddly job of integrating compound foreign key <em>creation</em> into the library. The API design it helped create felt <a href="https://sqlite-utils.datasette.io/en/stable/python-api.html#compound-foreign-keys">exactly right to me</a> - consistent with how the rest of the library worked already.</p>
+<blockquote>
+<p>Other notable changes include:</p>
+<ul>
+<li>Upserts now use SQLite’s <code>INSERT ... ON CONFLICT ... DO UPDATE SET</code> syntax, detect existing table primary keys automatically and reject records that are missing required primary key values. (<a href="https://github.com/simonw/sqlite-utils/issues/652">#652</a>)</li>
+</ul>
+</blockquote>
+<p>This was the change that first pushed me to consider a breaking-change 4.0 version bump. I built this to help support <a href="https://github.com/simonw/sqlite-chronicle">sqlite-chronicle</a>, which uses triggers to keep track of rows in a table that have been inserted, updated or deleted.</p>
+<blockquote>
+<ul>
+<li>
+<code>db.query()</code> now executes immediately and rejects statements that do not return rows; use <code>db.execute()</code> for writes and DDL.</li>
+</ul>
+</blockquote>
+<p>Probably the <a href="https://sqlite-utils.datasette.io/en/stable/upgrading.html#python-api-changes">most disruptive breaking change</a> - I've had to update a few places in my own code to switch from <code>db.query()</code> to <code>db.execute()</code> as a result.</p>
+<blockquote>
+<ul>
+<li>CSV and TSV imports now detect column types by default, while inserts into existing tables preserve those tables’ column types. (<a href="https://github.com/simonw/sqlite-utils/issues/679">#679</a>)</li>
+</ul>
+</blockquote>
+<p>The <code>sqlite-utils insert data.db creatures creatures.csv --detect-types</code> flag was a later addition to allow column types (text, integer, real) to be automatically detected based on the data in a CSV. It should be the default, and releasing a 4.0 means I can make it so.</p>
+<blockquote>
+<ul>
+<li>
+<code>table.extract()</code> and <code>extracts=</code> no longer create lookup table records for all-<code>null</code> values. (<a href="https://github.com/simonw/sqlite-utils/issues/186">#186</a>)</li>
+</ul>
+</blockquote>
+<p>The oldest issue addressed by this release - the underlying bug was opened (by me) in October 2020.</p>
+<blockquote>
+<p>See <a href="https://sqlite-utils.datasette.io/en/stable/upgrading.html#upgrading-3-to-4">Upgrading from 3.x to 4.0</a> for details on backwards-incompatible changes.</p>
+<p>The detailed release notes for the features and fixes shipped during the 4.0 pre-release cycle are available in <a href="https://sqlite-utils.datasette.io/en/stable/changelog.html#v4-0a0">4.0a0</a>, <a href="https://sqlite-utils.datasette.io/en/stable/changelog.html#v4-0a1">4.0a1</a>, <a href="https://sqlite-utils.datasette.io/en/stable/changelog.html#v4-0rc1">4.0rc1</a>, <a href="https://sqlite-utils.datasette.io/en/stable/changelog.html#v4-0rc2">4.0rc2</a>, <a href="https://sqlite-utils.datasette.io/en/stable/changelog.html#v4-0rc3">4.0rc3</a> and <a href="https://sqlite-utils.datasette.io/en/stable/changelog.html#v4-0rc4">4.0rc4</a>.</p>
+</blockquote>
+<p>The upgrade guide was entirely written by Claude Fable 5, Claude Opus 4.8 and GPT-5.5. The same is true of the release notes.</p>
+<p>This is the kind of documentation I've slowly become comfortable outsourcing to the robots. It doesn't need to convince people of anything, or express any opinions - its job is to be as accurate and detailed as possible. I've reviewed the release notes closely and can confirm they are accurate and comprehensive.</p>
+<h4 id="claude-fable-5-helped-a-lot">Claude Fable 5 helped a lot</h4>
+<p>I released the first alpha of sqlite-utils 4.0 <a href="https://sqlite-utils.datasette.io/en/stable/changelog.html#a0-2025-05-08">over a year ago</a>. I've been dragging my heels on the stable release because of the amount of work it would take to track down and clean up the many other minor design flaws that a major version number allowed me to take on.</p>
+<p>Assistance from Claude Fable 5 (and to a lesser extent Opus 4.8 and GPT-5.5) gave me just the boost I needed to overcome inertia and make the most of the time I could afford to spend on this library.</p>
+<p>Fable has <em>really good taste</em> in API design, and is <a href="https://simonwillison.net/2026/Jun/11/fable-is-relentlessly-proactive/">relentlessly proactive</a> if you give it a more open goal. My most successful prompt was a review task that I issued against what I thought was the last release candidate:</p>
+<blockquote>
+<p><code>review the changes on main since the last tagged 3.x release - I am about to ship them as sqlite-utils 4.0, a stable version that promises no backwards-incompatible fixes for a very long time.</code></p>
+<p><code>review the changelog and upgrade guide, and write yourself scratch scripts to try out all of the new features in v4 - save those scripts but don't commit them</code></p>
+</blockquote>
+<p>I tried this with GPT-5.5 xhigh in Codex Desktop and Fable 5 in Claude Code.</p>
+<p>GPT-5.5 <a href="https://gist.github.com/simonw/823fdecc031371d56dce39537adc0096">wrote 5 Python scripts</a> and didn't turn up anything particularly interesting - its <a href="https://github.com/simonw/sqlite-utils/issues/769#issuecomment-4899982463">final report is here</a>.</p>
+<p>Fable 5 <a href="https://gist.github.com/simonw/95800bf584f8e437f1cf0d48d9ef81e6">wrote 12 scripts</a>, identified 4 release blockers and 10 additional issues <a href="https://github.com/simonw/sqlite-utils/issues/769#issuecomment-4900034150">in its report</a>, and built a neat <a href="https://gist.githubusercontent.com/simonw/95800bf584f8e437f1cf0d48d9ef81e6/raw/c43918b36a129bba1d2f2a129117aa11c85146c0/12_bug_repros.py">combined repro script</a>, which, when run, output the following:</p>
+<pre><code>=== 1. Failed db.execute() write leaves an implicit transaction open ===
+  in_transaction after failed write: True
+  BUG: table 'other' silently lost when connection closed
+
+=== 2. Leading ';' bypasses the query() first-token scanner ===
+  BUG: raised OperationalError: no such savepoint: sqlite_utils_query
+  BUG: row persisted despite rollback (count=1)
+
+=== 3. Rejected write PRAGMA via query() still takes effect ===
+  BUG: user_version=5 after 'rejected' statement (docs say no effect)
+
+=== 4. Implicit compound FK resolves pk columns in table order, not PK order ===
+  BUG: other_columns reported as ('b', 'a'), should be ('a', 'b')
+  BUG: transform of valid data raised IntegrityError: FOREIGN KEY constraint failed
+
+=== 5. ForeignKey (now a dataclass) is no longer hashable ===
+  BUG: cannot use 'sqlite_utils.db.ForeignKey' as a set element (unhashable type: 'ForeignKey')
+
+=== 6. Mixed ForeignKey objects and tuples in foreign_keys= rejected ===
+  BUG: foreign_keys= should be a list of tuples
+
+=== 7. insert --csv into an EXISTING table transforms its column types ===
+  BUG: existing zip '01234' is now 1234 (column type: int)
+
+=== 8. insert(pk=, alter=True) regression: InvalidColumns before alter runs ===
+  BUG: InvalidColumns: Invalid primary key column ['id'] for table t with columns ['a']
+
+=== 9. migrate --stop-before an already-applied migration applies everything ===
+  BUG: m2 was applied despite --stop-before m1 (m1 already applied)
+
+=== 10. ensure_autocommit_on() silently commits an open transaction ===
+  BUG: row survived rollback (count=1) - transaction was committed
+</code></pre>
+<p>I found myself agreeing with almost all of them. Here's <a href="https://github.com/simonw/sqlite-utils/pull/779">the PR with 16 commits</a> where we worked through them in turn.</p>
+<p>There's no doubt in my mind that sqlite-utils 4.0 is a significantly higher-quality release than if I had built it without the assistance of the latest frontier models.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/schema-migrations">schema-migrations</a>, <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/claude">claude</a>, <a href="https://simonwillison.net/tags/agentic-engineering">agentic-engineering</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a></p>
+]]></content:encoded>
+<pubDate>2026-07-07T19:32:57+00:00</pubDate>
+<pubDate>2026-07-07T19:32:57+00:00</pubDate>
+</item>
+<item>
+<title>sqlite-migrate 0.2</title>
+<link>https://simonwillison.net/2026/Jul/7/sqlite-migrate/</link>
+<guid>https://simonwillison.net/2026/Jul/7/sqlite-migrate/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: library, compatibility, sqlite-utils, version, dependency
+
+<br><br>Summary: The latest version marks the retirement of the existing library, transitioning to a new framework designed to enhance compatibility with the updated sqlite-utils 4.0 dependency. This change is essential as it aims to improve functionality and ensure that users can continue to operate seamlessly without disruption. The retirement of the old library indicates a significant shift in priorities towards adopting more modern and efficient technologies. With the implementation of a compatibility shim, users are expected to experience a smoother transition, allowing existing applications depending on the retired library to function correctly with the new sqlite-utils version. The compatibility layer acts as an intermediary, bridging the gap between the outdated system and the new functionalities introduced in version 4.0. Moving forward, developers are encouraged to familiarize themselves with the new features and enhancements that sqlite-utils 4.0 offers, ensuring they can make the most out of the updated library. Overall, this release reflects a commitment to continuous improvement and user support in the evolving landscape of software development, signaling a move towards more robust and innovative solutions for database management. <div>
+<p><strong>Release:</strong> <a href="https://github.com/simonw/sqlite-migrate/releases/tag/0.2">sqlite-migrate 0.2</a></p>
+        <p>The version that retires the library, instead implementing a compatibility shim against the new sqlite-utils 4.0 dependency.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a></p>
+]]></content:encoded>
+<pubDate>2026-07-07T16:33:55+00:00</pubDate>
+<pubDate>2026-07-07T16:33:55+00:00</pubDate>
+</item>
+<item>
+<title>github-code Web Component</title>
+<link>https://simonwillison.net/2026/Jul/7/github-code-component/</link>
+<guid>https://simonwillison.net/2026/Jul/7/github-code-component/</guid>
+<content:encoded><![CDATA[
+<div> **Keywords:** Web Component, GitHub, fetch, line numbers, code display
+
+<br><br>Summary: 
+A new experimental Web Component has been created for embedding code snippets from GitHub repositories directly into web pages. This component, referred to as `<github-code>`, accepts a specific URL format that points to a file on GitHub, including a specified range of line numbers. When a user provides a valid URL, the component automatically converts it into a raw content URL by appending the required path to GitHub's raw content domain. Using the `fetch()` API, it retrieves the code from the specified file and displays it in the web page. Notably, the displayed code will include line numbers for easier reference but will not apply any syntax highlighting, keeping it straightforward for users who wish to reference or share code segments without the distraction of formatting. The component aims to streamline the process of embedding GitHub code into modern web applications, enhancing how developers share and present code to their audiences. The use of Web Components ensures that this feature can be seamlessly integrated into various web platforms. <div>
+<p><strong>Tool:</strong> <a href="https://tools.simonwillison.net/github-code-component">github-code Web Component</a></p>
+        <p>An experimental Web Component built using GPT-5.5 and <a href="https://gist.github.com/simonw/0e3db21947b5ae7e29e8a4f69a0b0617">the following prompt</a>:</p>
+<blockquote>
+<p><code>let's build a Web Component for embedding code from GitHub</code></p>
+<p><code>&lt;github-code href="https://github.com/simonw/sqlite-ast/blob/437c759129154f05296324a7f82aa1246340dd14/sqlite_ast/parser.py#L9-L18"&gt;&lt;/github-code&gt;</code></p>
+<p><code>It takes URLs like that, converts them to https://raw.githubusercontent.com/simonw/sqlite-ast/437c759129154f05296324a7f82aa1246340dd14/sqlite_ast/parser.py, then uses fetch() to fetch them and displays the specified range of lines - with line numbers, no syntax highlighting though</code></p>
+<p><code>Show me a preview web browser so I can see your work</code></p>
+</blockquote>
+<p>Here's what it looks like embedded on this page:</p>
+<p></p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/github">github</a>, <a href="https://simonwillison.net/tags/web-components">web-components</a>, <a href="https://simonwillison.net/tags/gpt">gpt</a></p>
+]]></content:encoded>
+<pubDate>2026-07-07T16:18:16+00:00</pubDate>
+<pubDate>2026-07-07T16:18:16+00:00</pubDate>
+</item>
+<item>
+<title>sqlite-utils 4.0</title>
+<link>https://simonwillison.net/2026/Jul/7/sqlite-utils/</link>
+<guid>https://simonwillison.net/2026/Jul/7/sqlite-utils/</guid>
+<content:encoded><![CDATA[
+<div> Sure! Please provide the article or details you would like summarized. <div>
+<p><strong>Release:</strong> <a href="https://github.com/simonw/sqlite-utils/releases/tag/4.0">sqlite-utils 4.0</a></p>
+        <p>See <a href="https://simonwillison.net/2026/Jul/7/sqlite-utils-4/">sqlite-utils 4.0, now with database schema migrations</a> for details.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a></p>
+]]></content:encoded>
+<pubDate>2026-07-07T15:42:43+00:00</pubDate>
+<pubDate>2026-07-07T15:42:43+00:00</pubDate>
+</item>
+<item>
+<title>sqlite-utils 4.0rc4</title>
+<link>https://simonwillison.net/2026/Jul/7/sqlite-utils-2/</link>
+<guid>https://simonwillison.net/2026/Jul/7/sqlite-utils-2/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: release, RC, review, stable, Claude Fable 5
+
+<br><br>Summary: 
+The latest release candidate (RC) marks the final stage before the anticipated stable version 4.0. This RC has undergone significant improvements based on detailed feedback and evaluations conducted by Claude Fable 5. The review process has focused on refining features, enhancing user experience, and addressing any existing bugs or performance issues identified in prior versions. This thorough examination aims to ensure that the eventual stable release meets the highest standards of quality and functionality. The development team has been proactive in implementing suggested changes to make the software more robust and user-friendly. As the project approaches its official release, all eyes are on the enhancements made during this critical period. The insights gained from the review not only help in polishing the current features but also set a strong foundation for future updates and new feature integrations. This final RC serves as a important benchmark and reflects the collective effort of contributors and testers involved, promising users a more reliable and efficient experience in the upcoming stable version. Overall, the focus remains on collaboration and continual improvement leading up to the stable rollout. <div>
+<p><strong>Release:</strong> <a href="https://github.com/simonw/sqlite-utils/releases/tag/4.0rc4">sqlite-utils 4.0rc4</a></p>
+        <p>The last RC before the 4.0 stable release. Mainly <a href="https://github.com/simonw/sqlite-utils/issues/769#issuecomment-4900034150">implements feedback</a> from a detailed review by Claude Fable 5.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a></p>
+]]></content:encoded>
+<pubDate>2026-07-07T05:36:15+00:00</pubDate>
+<pubDate>2026-07-07T05:36:15+00:00</pubDate>
+</item>
+<item>
+<title>[AINews] Lilian Weng summarizes 35 papers on Harness Engineering for RSI</title>
+<link>https://www.latent.space/p/ainews-lilian-weng-summarizes-35</link>
+<guid>https://www.latent.space/p/ainews-lilian-weng-summarizes-35</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Meta, Superintelligence, harnesses, AI, research recap  
+
+<br><br>Summary: Meta Superintelligence Labs launched Muse Image and previewed Muse Video, emphasizing agentic generation with performance improvements and scaled test-time compute. Anthropic's Claude expanded its “background agent” UX, positioning itself as a task-running teammate. Lilian Weng highlighted the importance of harnesses in recursive self-improvement, which is also reflected in LangChain and Google's latest announcements. Notable audio releases from NVIDIA and Cohere included unified text+audio work and Arabic ASR models. Liquid AI introduced an open-source training method targeting reasoning-loop failures, while NVIDIA's compression work focused on maintaining model performance while enhancing efficiency. The interpretability debate around Anthropic's J-space work showcased both mechanistic analysis and criticisms regarding consciousness framing. Legal benchmarks like Harvey LAB-AA exposed gaps in AI task success rates, indicating that models can meet rubric criteria without delivering comprehensive results. Finally, Google and DeepMind are advancing research automation and domain-specific systems across scientific and legal workflows, while Tencent re-licensed its Hy3 model collection under Apache 2.0, sparking discussions on its real-world applicability. <div>
+<p>Congrats to Meta Superintelligence on <a href="https://x.com/AIatMeta/status/2074577662840832382">having the top 2/3 image/video models</a> in the world! This would&#8217;ve been a candidate for a title story, but unfortunately that is pretty much all the detail we have about Muse Image/Video - no paper, no technical detail whatsoever. Still, this beats <a href="https://www.latent.space/p/ainews-microsoft-build-mai-thinking">the Microsoft MAI models from last month</a> which is nice.</p><p>We are noted <a href="https://news.smol.ai/issues?pattern=lilian%2520weng">Lilian Weng fans</a>, so we take notice whenever she drops another research recap, especially rare now that she is a cofounder at Thinky. Today she is thinking about the relationship of harnesses to RSI:</p><div class="twitter-embed"></div><p>While we have written before about how <a href="https://www.latent.space/p/ainews-all-model-labs-are-now-agent?utm_source=publication-search">even Greg Brockman is now quietly endorsing agent/harness engineering</a>, it is refreshing for a respected thinker and neolab cofounder like Lilian to also agree that &#8220;<em>Even when many harness improvement[s] get eventually internalized into core model, <strong>the need to specify goals and context will not disappear</strong></em>.&#8221; </p><div class="captioned-image-container"><figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!BNEu!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5005c722-fdff-4ea8-aee0-6b37e44da978_1512x886.png" target="_blank"><div class="image2-inset"><source type="image/webp" /><img alt="" class="sizing-normal" height="853" src="https://substackcdn.com/image/fetch/$s_!BNEu!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5005c722-fdff-4ea8-aee0-6b37e44da978_1512x886.png" width="1456" /><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></a></figure></div><p></p><p><a href="https://lilianweng.github.io/posts/2026-07-04-harness/#harness-layer-vs-core-intelligence">Her post</a> breaks out the main proven design trends in harnesses that everyone should know, and then recaps the harness optimization literature, most notably from the well <a href="https://arxiv.org/abs/2510.04618">known ACE paper</a> to even more recent trends like <a href="https://arxiv.org/abs/2603.28052">Meta-Harnesses</a>,  which we have <a href="https://www.latent.space/p/ainews-its-meta-harness-summer">covered anecdotally on AINews</a>.</p><div class="captioned-image-container"><figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!L_Ci!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F603a46c6-cedc-4b38-a660-2fa1d4b3f4ba_1626x1146.png" target="_blank"><div class="image2-inset"><source type="image/webp" /><img alt="" class="sizing-normal" height="1026" src="https://substackcdn.com/image/fetch/$s_!L_Ci!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F603a46c6-cedc-4b38-a660-2fa1d4b3f4ba_1626x1146.png" width="1456" /><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></a></figure></div><p></p><p>It surely also provides a hint as to what Thinky is Thinking, beyond just <a href="https://www.latent.space/p/ainews-thinking-machines-native-interaction?utm_source=publication-search">Interaction Models</a>.</p><p></p><blockquote><p>AI News for 7/06/2026-7/07/2026. We checked 12 subreddits, <a href="https://twitter.com/i/lists/1585430245762441216">544 Twitters</a> and no further Discords. <a href="https://news.smol.ai/">AINews&#8217; website</a> lets you search all past issues. As a reminder, <a href="https://www.latent.space/p/2026">AINews is now a section of Latent Space</a>. You can <a href="https://support.substack.com/hc/en-us/articles/8914938285204-How-do-I-subscribe-to-or-unsubscribe-from-a-section-on-Substack">opt in/out</a> of email frequencies!</p></blockquote><div><hr /></div><h1><strong>AI Twitter Recap</strong></h1><p><strong>Agent Products, Harnesses, and Long-Running Workflows</strong></p><ul><li><p><strong>Anthropic expands &#8220;background agent&#8221; UX on top of Claude</strong>: The biggest product launch by engagement was <a href="https://x.com/claudeai/status/2074525815820169320">Claude Cowork coming to mobile and web</a>, positioning Claude as a task-running background teammate rather than a foreground chat UI. Related posts show the product convergence around a shared home tab and tighter Chat/Cowork integration from <a href="https://x.com/mikeyk/status/2074531605537046953">@mikeyk</a>. Separately, Anthropic extended access to <strong>Claude Fable 5</strong> on paid plans through July 12 in a highly engaged announcement from <a href="https://x.com/claudeai/status/2074548242386178258">@claudeai</a>, though many users noted the awkward timing relative to weekly limits in reactions from <a href="https://x.com/kimmonismus/status/2074606005963391225">@kimmonismus</a> and others.</p></li><li><p><strong>Harness engineering is increasingly the center of agent design</strong>: Lilian Weng&#8217;s new post was widely referenced as reframing recursive self-improvement around the <strong>harness</strong>, not direct weight self-modification; Sakana&#8217;s summary connects this to <strong>The AI Scientist</strong>, <strong>ShinkaEvolve</strong>, and <strong>Darwin G&#246;del Machine</strong> in <a href="https://x.com/SakanaAILabs/status/2074489949529776308">their thread</a>. LangChain echoed the same shift with a new <strong>Deep Agents</strong> course and an open-source harness project in posts from <a href="https://x.com/LangChain/status/2074539083204820997">@LangChain</a> and <a href="https://x.com/hwchase17/status/2074547871194698207">@hwchase17</a>. Google is also productizing this direction: Gemini API <strong>Managed Agents</strong> added <strong>background execution</strong>, <strong>remote MCP servers</strong>, <strong>custom function calling</strong>, and <strong>credential refresh</strong> in posts from <a href="https://x.com/_philschmid/status/2074533915038027972">@_philschmid</a> and <a href="https://x.com/OfficialLoganK/status/2074552932318765376">@OfficialLoganK</a>.</p></li><li><p><strong>Practical agent infra keeps getting more opinionated</strong>: There were several notable operator-facing updates: <strong>Codex Mobile iOS</strong> added task management, filtered diffs, SSH key login, branch comparison, and attachment flows in posts from <a href="https://x.com/Dimillian/status/2074396968223211819">@Dimillian</a> and <a href="https://x.com/reach_vb/status/2074400018769793176">@reach_vb</a>; <strong>Hermes Agent</strong> added pluggable secrets managers plus native <strong>1Password</strong> integration and export of sessions/datasets to formats including private Hugging Face repos in <a href="https://x.com/Teknium/status/2074564207555772912">@Teknium&#8217;s</a> <a href="https://x.com/Teknium/status/2074639961727655959">threads</a>; <strong>Weaviate 1.38</strong> made its MCP server GA with runtime-gated write access, notably allowing <strong>MCP_SERVER_WRITE_ACCESS_ENABLED</strong> to be flipped live without restart in <a href="https://x.com/victorialslocum/status/2074493681403339104">@victorialslocum&#8217;s post</a>. A more experimental pattern came from <a href="https://x.com/omarsar0/status/2074506169352180108">@omarsar0</a>, using a Dial MCP server so agents can escalate decisions via phone call/SMS/iMessage for human-in-the-loop control.</p></li></ul><p><strong>Model and Modality Releases: Audio, Speech, Robotics, and Media Generation</strong></p><ul><li><p><strong>Meta&#8217;s Muse Image/Muse Video push agentic generation into media</strong>: Meta Superintelligence Labs launched <strong>Muse Image</strong> and previewed <strong>Muse Video</strong> in announcements from <a href="https://x.com/AIatMeta/status/2074577662840832382">@AIatMeta</a>, <a href="https://x.com/alexandr_wang/status/2074555909347369105">@alexandr_wang</a>, and <a href="https://x.com/_tim_brooks/status/2074578008296628698">@_tim_brooks</a>. The notable technical angle is not just image quality, but an explicitly <strong>agentic generation loop</strong>: planning, web search, tool use, code execution, and self-refinement before rendering. Meta also says performance improves with <strong>scaled test-time compute</strong>, and that self-refinement behavior emerged during RL rather than being hand-scripted in <a href="https://x.com/AIatMeta/status/2074587864923250873">this follow-up</a>. On public evals, Muse Image quickly reached <strong>#2 on Image Arena</strong> behind GPT Image 2 in <a href="https://x.com/arena/status/2074581979765539153">Arena&#8217;s ranking</a>, while Muse Video debuted at <strong>#3 on Video Arena</strong> in <a href="https://x.com/arena/status/2074591193783320851">another Arena post</a>.</p></li><li><p><strong>NVIDIA and Cohere both shipped strong audio releases</strong>: NVIDIA released <strong>Audex</strong>, a <strong>30B parameter / 3B active MoE</strong> with <strong>1M context</strong> for unified text+audio work, summarized by <a href="https://x.com/HuggingPapers/status/2074384562952749254">@HuggingPapers</a> and described in more detail by <a href="https://x.com/_weiping/status/2074537900172050704">@_weiping</a>. The model&#8217;s core claim is preserving text intelligence while adding broad audio generation and understanding via a single MoE backbone. Cohere launched <strong>Cohere Transcribe Arabic</strong>, described as the most accurate open-source Arabic ASR model, under <strong>Apache 2.0</strong>, with emphasis on <strong>dialects</strong>, <strong>code-switching</strong>, and <strong>Arabic-accented English</strong> in posts from <a href="https://x.com/cohere/status/2074499759616729149">@cohere</a> and <a href="https://x.com/JayAlammar/status/2074511963934118282">@JayAlammar</a>.</p></li><li><p><strong>Open robotics keeps consolidating around Hugging Face + NVIDIA</strong>: NVIDIA expanded its robotics stack into the HF ecosystem by bringing <strong>GR00T 1.7</strong> and <strong>Isaac Teleop</strong> into <strong>LeRobot</strong>, aimed at open humanoid robotics workflows, in <a href="https://x.com/NVIDIARobotics/status/2074380795855147072">@NVIDIARobotics&#8217;s announcement</a> and <a href="https://x.com/NVIDIARobotics/status/2074390485251113317">integration guide</a>. On the embodied side, UMA showed a strong full-stack robotics narrative: <a href="https://x.com/RemiCadene/status/2074442725814878510">@RemiCadene</a> described a prototype built by a small team in 9 months, while <a href="https://x.com/RemiCadene/status/2074442439142609237">the Northstar reveal</a> and <a href="https://x.com/psermanet/status/2074512829617491996">@psermanet&#8217;s safety note</a> emphasized vertically integrated hardware/software for trustworthy robots.</p></li></ul><p><strong>Training, Inference, and Post-Training Techniques</strong></p><ul><li><p><strong>Liquid AI&#8217;s &#8220;Antidoom&#8221; directly targets reasoning-loop failure modes</strong>: One of the clearest technical releases of the day was <a href="https://x.com/liquidai/status/2074494130126811473">Liquid AI&#8217;s Antidoom</a>, an open-source training method to reduce <strong>doom loops</strong> where small reasoning models repeat tokens until context exhaustion. The reported reductions are substantial: <strong>LFM2.5-2.6B from 10.2% &#8594; 1.4%</strong> and <strong>Qwen3.5-4B from 22.9% &#8594; 1%</strong> under greedy sampling, with downstream eval gains. The method, <strong>FTPO (Final Token Preference Optimization)</strong>, relabels the loop-triggering token and redistributes probability toward alternatives, summarized well by <a href="https://x.com/helloiamleonie/status/2074498103982408044">@helloiamleonie</a> and <a href="https://x.com/LiorOnAI/status/2074547819114086561">@LiorOnAI</a>. This is a good example of the field&#8217;s recent pattern: removing specific failure modes rather than only scaling parameters.</p></li><li><p><strong>Inference efficiency and compression remain a major frontier</strong>: NVIDIA&#8217;s <strong>Puzzle-75B-A9B</strong> compression work got strong attention via <a href="https://x.com/omarsar0/status/2074543978129793462">@omarsar0</a>: compressing a hybrid MoE parent model while preserving reasoning, coding, long-context, and agentic quality, with roughly <strong>2x server throughput</strong> and <strong>1M-context concurrency on H100 rising from 1 request to 8</strong>. On the tooling side, <strong>Nsight Python 1.0</strong> launched in <a href="https://x.com/HagedornBastian/status/2074509770342445375">@HagedornBastian&#8217;s post</a>, making GPU perf analysis scriptable in Python. Unsloth also shipped <strong>GGUFs for DeepSeek-V4-Flash</strong>, plus export to <strong>NVFP4/FP8</strong> and speedups for <strong>GRPO</strong> and MoEs in <a href="https://x.com/danielhanchen/status/2074510444778463331">@danielhanchen&#8217;s update</a>.</p></li><li><p><strong>Agent RL and verification are getting more specialized</strong>: <a href="https://x.com/cwolferesearch/status/2074558199819067606">@cwolferesearch</a> highlighted how <strong>GRPO-style normalization</strong> is being adapted for agentic RL at the <strong>task</strong> or <strong>environment</strong> level to handle higher reward variance in multi-turn environments. Separately, <a href="https://x.com/omarsar0/status/2074556579580711050">@omarsar0</a> flagged a training-free <strong>verifier</strong> paper from Stanford/NVIDIA/Berkeley that reads calibrated continuous scores off scoring-token logits, posting strong numbers across <strong>Terminal-Bench V2, SWE-Bench Verified, RoboRewardBench, and MedAgentBench</strong> and suggesting verification is becoming an independent scaling axis.</p></li></ul><p><strong>Interpretability, Model Internals, and the &#8220;J-Space&#8221; Debate</strong></p><ul><li><p><strong>Anthropic&#8217;s J-space work dominated interpretability discussion, but also drew sharp criticism</strong>: The community split between seeing the work as useful mechanistic analysis and objecting to the consciousness framing. Strong critiques came from <a href="https://x.com/danburonline/status/2074429991576650014">@danburonline</a>, <a href="https://x.com/paul_cal/status/2074388528243310976">@paul_cal</a>, and <a href="https://x.com/scaling01/status/2074432865794679235">@scaling01</a>, who argued the vectors are causal largely by construction under the Jacobian-lens definition. A useful historical reference came from <a href="https://x.com/jacobandreas/status/2074487546692735002">@jacobandreas</a>, pointing readers back to the original <strong>Jacobian lenses</strong> paper.</p></li><li><p><strong>The stronger technical takeaway is cross-model structure, not consciousness rhetoric</strong>: <a href="https://x.com/eliebakouch/status/2074532904009421260">@eliebakouch</a> computed <strong>CKA similarity</strong> on J-lens geometry across <strong>38 open models</strong> and found surprisingly universal layer/depth organization, even across unrelated families like <strong>Llama</strong> and <strong>OLMo</strong>. Anthropic and Neuronpedia also released <strong>J-lens weights for open models</strong>, noted in <a href="https://x.com/eliebakouch/status/2074537985102565795">this follow-up</a>. In parallel, Goodfire introduced <strong>Block-Sparse Featurizers</strong> for multidimensional concepts in activations, arguing many vision concepts are inherently <strong>2&#8211;4 dimensional blocks</strong> rather than single directions, in <a href="https://x.com/GoodfireAI/status/2074634702737281303">their thread</a>.</p></li></ul><p><strong>Benchmarks, Evaluations, and Domain-Specific Systems</strong></p><ul><li><p><strong>Agent and legal benchmarks continue to expose the gap between &#8220;passes many criteria&#8221; and &#8220;fully solves real work&#8221;</strong>: <a href="https://x.com/arena/status/2074484787663052849">Agent Arena</a> placed <strong>Claude Sonnet 5 (Thinking)</strong> at <strong>#6</strong>, with strongest signals in confirmed task success and bash usage, but still with uncertainty around steerability. Artificial Analysis launched <strong>Harvey LAB-AA</strong>, a legal-agent benchmark over <strong>120 private legal tasks across 24 practice areas</strong>, where <strong>Claude Fable 5</strong> led at <strong>14.2% all-pass rate</strong>; <strong>Claude Opus 4.8</strong> and <strong>GLM-5.2</strong> tied at <strong>7.5%</strong>, with GLM hitting that at roughly <strong>~6% of Fable&#8217;s cost per task</strong> in <a href="https://x.com/ArtificialAnlys/status/2074541975186165887">their release</a>. The big message is that models can satisfy many individual rubric items yet still fail to produce acceptable end-to-end deliverables.</p></li><li><p><strong>Research automation and specialized domain systems are broadening</strong>: Google promoted <strong>Experience AI Scientist</strong>, a multi-agent system for end-to-end scientific workflows, in <a href="https://x.com/GoogleResearch/status/2074384746076135575">this ICML post</a>. DeepMind also launched <strong>Predicting the Past</strong>, grounding Gemini in <strong>Aeneas</strong> and <strong>Ithaca</strong> for Greek/Latin historical analysis via plain-English interactions, in <a href="https://x.com/GoogleDeepMind/status/2074513661750546762">their thread</a>. On legal AI commercialization, <strong>Norm Ai</strong> announced a <strong>$120M Series C at $1.2B valuation</strong> and described a full-stack &#8220;agentic law&#8221; setup spanning software plus an AI-native law firm in <a href="https://x.com/johnjnay/status/2074485345593245833">@johnjnay&#8217;s post</a>.</p></li></ul><p><strong>Top tweets (by engagement)</strong></p><ul><li><p><strong>Claude access / product rollout</strong>: <a href="https://x.com/claudeai/status/2074525815820169320">Claude Cowork on mobile and web</a> and <a href="https://x.com/claudeai/status/2074548242386178258">Fable 5 access extended through July 12</a> were the most-engaged technically relevant product announcements.</p></li><li><p><strong>Open-source developer program</strong>: <a href="https://x.com/ClaudeDevs/status/2074570404035993780">@ClaudeDevs offering 6 months of Claude Max 20x for open-source maintainers</a> drew massive engagement and is likely to matter for tool adoption in OSS ecosystems.</p></li><li><p><strong>Meta media generation</strong>: <a href="https://x.com/AIatMeta/status/2074577662840832382">Muse Image launch</a> and <a href="https://x.com/arena/status/2074581979765539153">Arena&#8217;s #2 ranking for Muse Image</a> were the biggest multimodal product stories.</p></li><li><p><strong>Reasoning reliability</strong>: <a href="https://x.com/liquidai/status/2074494130126811473">Liquid AI&#8217;s Antidoom release</a> stood out as the day&#8217;s highest-signal training technique post.</p></li><li><p><strong>Interpretability</strong>: <a href="https://x.com/eliebakouch/status/2074532904009421260">Cross-model J-lens universality across 38 open models</a> was the strongest technical follow-on to the J-space discourse.</p></li></ul><div><hr /></div><h1><strong>AI Reddit Recap</strong></h1><h2><strong>/r/LocalLlama + /r/localLLM Recap</strong></h2><h3><strong>1. Open Model Releases and Inference Efficiency</strong></h3><ul><li><p><strong><a href="https://www.reddit.com/r/LocalLLaMA/comments/1uoozt4/new_open_model_from_tencent_hy_hy3_295b_total_21b/">New open model from Tencent Hy: Hy3 (295B total 21B active - apache 2.0)</a></strong> (Activity: 653): <strong>Tencent released the non-preview Hy3 open model collection on <a href="https://huggingface.co/collections/tencent/hy3">Hugging Face</a>, described as a </strong><code>295B</code><strong>-parameter MoE with </strong><code>21B</code><strong> active parameters, now under Apache 2.0 rather than the prior restrictive community license. The post highlights that the earlier license reportedly excluded use in regions including South Korea, the UK, and the EU, while top comments point to claimed benchmark gains over HY3-Preview and frame this as potentially relevant for high-end local/home inference setups.</strong> Commenters viewed the Apache 2.0 relicensing as the most important change, especially given Tencent&#8217;s recent translation models also using Apache licensing. There was cautious optimism that the reported benchmark improvements may translate to real-world usefulness, but with implicit skepticism until tested outside vendor charts.</p><ul><li><p>Commenters highlighted that <strong>Hunyuan/HY3</strong> is now listed as <strong>Apache 2.0</strong>, contrasting it with the prior &#8220;community&#8221; license that reportedly restricted usage in regions such as <strong>South Korea, the UK, and the EU</strong>. This was viewed as technically important for deployment because Apache 2.0 removes many commercial and geographic usage barriers.</p></li><li><p>Several users focused on whether Tencent&#8217;s claimed benchmark improvements over <strong>HY3-Preview</strong> will translate into real-world workloads. Given the reported <code>295B</code><strong> total / </strong><code>21B</code><strong> active</strong> MoE-style configuration, commenters suggested it could be relevant for &#8220;high-end home setups&#8221; if inference formats such as <strong>GGUF</strong> become available.</p></li><li><p>There was early speculation that HY3 could become an alternative to <strong>Qwen</strong> and <strong>MiniMax</strong> models in local/open-weight workflows, but commenters were waiting for quantized releases and independent testing before drawing conclusions.</p></li></ul></li></ul><p></p><p></p>
+      <p>
+          <a href="https://www.latent.space/p/ainews-lilian-weng-summarizes-35">
+              Read more
+          </a>
+      </p>
+]]></content:encoded>
+<pubDate>Wed, 08 Jul 2026 02:20:25 GMT</pubDate>
+<pubDate>Wed, 08 Jul 2026 02:20:25 GMT</pubDate>
+</item>
+<item>
+<title>[AINews] The Field Guide to Fable</title>
+<link>https://www.latent.space/p/ainews-the-field-guide-to-fable</link>
+<guid>https://www.latent.space/p/ainews-the-field-guide-to-fable</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Fable 5, Hy3, Claude, AI models, interpretability
+
+<br><br>Summary: Thariq delivered a pivotal keynote focused on Fable 5, emphasizing the concept of "unhobbling" AI models to unleash their potential, and how constraints affect behaviors. He discussed methods for exploring unknowns, including techniques like "blindspot passes" and maintaining implementation notes. The emotional shift in productivity due to AI's efficiency was spotlighted, alongside a call for higher expectations in performance without sacrifices. Tencent released Hy3, an advanced open model noted for its competitive reasoning abilities and reliability improvements, which boosted community engagement significantly. Despite aggressive competition, open-source models lagged behind in performance. Enhanced evaluation tools were introduced for agents, with Claude Fable 5 ranking highest on real-world tasks. Advancements in memory management for AI were also discussed to tackle persistent issues, while Anthropic presented findings on Claude's internal architecture, igniting debate over interpretability and consciousness. The article concludes by celebrating innovations in inference efficiency and multimodal applications, highlighting MIRA, a collaborative project showcasing advanced world modeling. Discussions about memory systems and deployment burdens, particularly for the significant new models, reaffirm the necessity of infrastructure adaptation in the AI landscape. <div>
+<p>While we congratulate <a href="https://www.latent.space/p/world-models-and-general-intuition">(friend of the show!) General Intuition</a> on <a href="https://x.com/gen_intuition/status/2074104524596457706">their new model</a> and <a href="https://www.latent.space/p/shunyu">(friend of the show!) Shunyu Yao </a>on <a href="https://x.com/ShunyuYao12/status/2074151389945827744">their new model</a>, and the world awaits the release of <a href="https://news.ycombinator.com/item?id=48799614">GPT-5.6 Sol Ultra</a>, people are racing to find the limits of Fable 5 before the <a href="https://www.latent.space/p/ainews-sonnet-5-today-and-fable-5">subscription subsidy ends tomorrow</a>. </p><p>Thariq had been working on a &#8220;<a href="https://x.com/trq212/status/2073100352921215386">Field Guide to Fable</a>&#8221; blog series, and happened to have a keynote planned the day of the relaunch, so he kindly pivoted the entire keynote in one night to give the most timely advice he had, which was released today:</p><div class="youtube-wrap" id="youtube2-9fubhllmsBU"><div class="youtube-inner"></div></div><p>The 4 segments are (my watchalong commentary in italics):</p><ul><li><p><a href="https://www.youtube.com/watch?v=9fubhllmsBU"><span>0:00</span></a><span> Introduction and setting the stage for Fable</span></p></li><li><p><a href="https://www.youtube.com/watch?v=9fubhllmsBU&amp;t=152s"><span>2:32</span></a><span> </span><strong><span>Unhobbling Claude:</span></strong><span> Understanding model behavior</span></p><ul><li><p><em>The constraints on a model are often imposed by US - </em><strong>&#8220;the harness we put them in, and the way we prompt them&#8221;</strong><em>. Therefore when we encounter a new class of model, we should expect to remove or change those harnesses and prompts in order to elicit new behaviors that you otherwise would never see because you were overly limiting (aka hobbling) the model.</em></p></li><li><p><em>Case in point: most people have come to agree with Thariq on the <a href="https://x.com/trq212/status/2052809885763747935">unreasonable effectiveness of HTML</a>.</em></p></li></ul></li><li><p><a href="https://www.youtube.com/watch?v=9fubhllmsBU&amp;t=548s"><span>9:08</span></a><span> </span><strong><span>Finding your unknowns</span></strong><span>: Navigating the gap between map and territory</span></p><ul><li><p><a href="https://x.com/trq212/status/2073100352921215386">already blogged here</a>.</p></li><li><p><em>a close cousin to &#8220;unhobbling&#8221; - if unhobbling is about clearing out outdated knowns, then this is about finding things you didn&#8217;t even know you didn&#8217;t know.</em></p></li><li><p><em>easiest techniques:</em></p><ul><li><p><em>telling claude to do a &#8220;<strong>blindspot pass</strong>&#8221; for your unknowns</em></p></li><li><p><em><strong>brainstorm</strong> for &#8220;wildly different design directions&#8221;</em></p></li><li><p><em><strong>interview me</strong> - similar to <a href="https://www.youtube.com/watch?v=v4F1gFy-hqg&amp;t=132s">/grill-me</a>, but prioritizing high impact questions</em></p></li><li><p><em><strong>use references</strong>: in the case of migrations</em></p></li><li><p><em><strong>keep implementation-notes.md</strong>: a running log of underspecified decisions made on your behalf</em></p></li><li><p><em><strong>quiz me</strong> - ensure MY understanding</em></p></li></ul></li></ul></li><li><p><a href="https://www.youtube.com/watch?v=9fubhllmsBU&amp;t=869s"><span>14:29</span></a><span> </span><strong><span>Dealing with Grief: </span></strong><span>Reflecting on the emotional shift in coding productivity</span></p><ul><li><p><em>What you used to spend weeks on is now done in hours</em></p></li></ul></li><li><p><a href="https://www.youtube.com/watch?v=9fubhllmsBU&amp;t=990s"><span>16:30</span></a><span> </span><strong><span>Being unreasonable</span></strong><span>: Demanding good, fast, and cheap results</span></p><ul><li><p>&#8220;<strong>Tradeoffs are not real</strong>&#8221;<em> - because Fable is more capable, you can be more ambitious and not accept tradeoffs.</em></p></li><li><p>&#8220;<em>Building is easy, generating value is still hard&#8221;</em>.</p><div class="captioned-image-container"><figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!p3LG!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F179f6ab6-62ad-492e-bb2c-67f7f2dbb861_862x1396.png" target="_blank"><div class="image2-inset"><source type="image/webp" /><img alt="" class="sizing-normal" height="1396" src="https://substackcdn.com/image/fetch/$s_!p3LG!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F179f6ab6-62ad-492e-bb2c-67f7f2dbb861_862x1396.png" width="862" /><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></a></figure></div><p></p></li></ul></li></ul><p>Overall, an excellent talk that we will be mapping out the implications of as the world acclimatizes to the first Fable-class models.</p><p></p><blockquote><p>AI News for 7/04/2026-7/06/2026. We checked 12 subreddits, <a href="https://twitter.com/i/lists/1585430245762441216">544 Twitters</a> and no further Discords. <a href="https://news.smol.ai/">AINews&#8217; website</a> lets you search all past issues. As a reminder, <a href="https://www.latent.space/p/2026">AINews is now a section of Latent Space</a>. You can <a href="https://support.substack.com/hc/en-us/articles/8914938285204-How-do-I-subscribe-to-or-unsubscribe-from-a-section-on-Substack">opt in/out</a> of email frequencies!</p></blockquote><div><hr /></div><h1><strong>AI Twitter Recap</strong></h1><p><strong>Tencent Hunyuan&#8217;s Hy3 Release and the Open-Weight Frontier</strong></p><ul><li><p><strong>Hy3 lands as a serious open model</strong>: Tencent released <strong>Hy3</strong> under <strong>Apache 2.0</strong>, a <strong>295B MoE</strong> with <strong>21B active parameters</strong>, <strong>192 experts / top-8 routing</strong>, <strong>GQA</strong>, <strong>256K context</strong>, and a <strong>3.8B MTP layer</strong> for speculative decoding. Multiple posts framed it as competitive with much larger systems on reasoning, coding, and agentic tasks, with particular emphasis on reliability improvements like tool-calling stability and anti-hallucination work <a href="https://x.com/eliebakouch/status/2074011171661701466">@eliebakouch</a>, <a href="https://x.com/HuggingPapers/status/2074024501201813797">@HuggingPapers</a>, <a href="https://x.com/ShunyuYao12/status/2074151389945827744">@ShunyuYao12</a>.</p></li><li><p><strong>Inference support was unusually day-0 mature</strong>: <a href="https://x.com/vllm_project/status/2074147504254517529">@vllm_project</a> said Hy3 runs natively in <strong>vLLM</strong> from launch with tool-call and reasoning parsers, <strong>MTP speculative decoding</strong>, and validated support on <strong>NVIDIA and AMD</strong>. A follow-up detailed Tencent production kernels now upstreamed into vLLM main, including load-balanced decode scheduling and fused FP8 MoE serving, with reported gains of <strong>up to 2.95x</strong> on mixed-length decode and latency reductions of roughly <strong>24% TTFT</strong> and <strong>17% TPOT</strong> versus default backends <a href="https://x.com/vllm_project/status/2074147506875969754">@vllm_project</a>. Community reaction was strong enough that <a href="https://x.com/Teknium/status/2074264567803531589">@Teknium</a> quickly made Hy3 free on Nous Portal for two weeks.</p></li><li><p><strong>Broader open-model context</strong>: Hy3 was immediately compared against <strong>GLM-5.2</strong>, with some posters arguing Tencent has now joined the very top tier of open-source labs if the benchmark and vibe-test results hold <a href="https://x.com/teortaxesTex/status/2074012467886178725">@teortaxesTex</a>, while others still maintained <strong>GLM-5.2</strong> as the best currently usable open-weight model in practice <a href="https://x.com/__tinygrad__/status/2074206866641752190">@</a><strong><a href="https://x.com/__tinygrad__/status/2074206866641752190">tinygrad</a></strong>, <a href="https://x.com/mbusigin/status/2074238100251799998">@mbusigin</a>. The net takeaway: the open frontier is compressing fast, and the competition is increasingly about deployment robustness rather than just raw leaderboard deltas.</p></li></ul><p><strong>Agent Benchmarks, Harnesses, and Long-Running Memory</strong></p><ul><li><p><strong>AutomationBench-AA adds a more realistic agent eval</strong>: <a href="https://x.com/ArtificialAnlys/status/2074194764510208230">@ArtificialAnlys</a> launched an independent leaderboard for Zapier&#8217;s <strong>AutomationBench</strong>, evaluating agents across <strong>657 tasks</strong> and <strong>40 simulated SaaS apps</strong> with both objectives and guardrails. <strong>Claude Fable 5</strong> led at <strong>48.6%</strong>, narrowly ahead of <strong>Opus 4.8</strong> at <strong>48.5%</strong>, with <strong>Gemini 3.5 Flash</strong> at <strong>42.6%</strong> and <strong>GPT-5.5 xhigh</strong> at <strong>42.1%</strong>. More interesting than the ranking: every model still breaks business rules, and Gemini looked notably strong on <strong>objective-per-guardrail-violation</strong> and <strong>cost efficiency</strong>. Open weights remain meaningfully behind, with <strong>GLM-5.2 max</strong> the best listed open model at <strong>27.8%</strong>.</p></li><li><p><strong>Capability indices are becoming multidimensional</strong>: Artificial Analysis also introduced six domain-specific indices&#8212;<strong>Finance &amp; Accounting, Legal, Healthcare &amp; Medical, Strategy &amp; Ops, Engineering, Economics</strong>&#8212;to move past single scalar model scores <a href="https://x.com/ArtificialAnlys/status/2074299714699469221">@ArtificialAnlys</a>. The headline was familiar&#8212;<strong>Claude Fable 5</strong> plus <strong>Opus 4.8 fallback</strong> leads&#8212;but the more useful insight is how sharply rankings reshuffle by domain and how steep the price/performance frontier has become. This aligns with <a href="https://x.com/fchollet/status/2074242671103889799">@fchollet</a>, who argued that reporting benchmark scores without <strong>cost per task</strong> is increasingly meaningless.</p></li><li><p><strong>Memory and retrieval remain bottlenecks for persistent agents</strong>: Two papers got traction here. First, <strong>A-TMA</strong> tackles &#8220;ghost memory,&#8221; where stale and current facts are retrieved together in long-running assistants; on the LTP benchmark, adding it to Graphiti reportedly improves conflict accuracy by <strong>+0.240 absolute</strong> <a href="https://x.com/omarsar0/status/2074121191846261022">@omarsar0</a>. Second, <strong>ReContext</strong> is a training-free long-context inference harness that replays model-internal evidence right before answer generation, improving evidence utilization across eight 128K datasets <a href="https://x.com/dair_ai/status/2074178316819677238">@dair_ai</a>. Combined with <strong>BlockSearch</strong> for million-token in-context retrieval <a href="https://x.com/dair_ai/status/2074117920133898707">@dair_ai</a>, the theme is clear: better memory behavior is increasingly being engineered at inference time, not just trained in.</p></li></ul><p><strong>Anthropic&#8217;s J-Space / Global Workspace Results</strong></p><ul><li><p><strong>Mechanistic interpretability took center stage</strong>: Anthropic released research claiming a <strong>global-workspace-like internal structure</strong> in Claude, centered on a small subset of activations they call <strong>J-space</strong> <a href="https://x.com/AnthropicAI/status/2074185348142280912">@AnthropicAI</a>, <a href="https://x.com/AnthropicAI/status/2074185387577094398">@AnthropicAI</a>. The core claim is not chain-of-thought extraction, but identification of a privileged internal representational substrate that appears available for report, modulation, and flexible reasoning. Anthropic also shipped a Neuronpedia demo for open-weight models <a href="https://x.com/AnthropicAI/status/2074185390060110138">@AnthropicAI</a>.</p></li><li><p><strong>Why researchers cared</strong>: Interpretability researchers treated this as stronger evidence for a model &#8220;working memory&#8221; or internal workspace than prior public work, even if they disagreed with the framing. <a href="https://x.com/NeelNanda5/status/2074193936588148891">@NeelNanda5</a> called it the best evidence yet for a working-memory-like mechanism. <a href="https://x.com/Jack_W_Lindsey/status/2074215950602379388">@Jack_W_Lindsey</a> argued understanding this privileged space could be key to LLM cognition. Posts also highlighted practical safety angles: the workspace can reportedly surface hidden concepts, detect prompt injections, and expose internal sabotage-related features before they are verbalized <a href="https://x.com/mlpowered/status/2074190714100146483">@mlpowered</a>, <a href="https://x.com/LiorOnAI/status/2074198891990548940">@LiorOnAI</a>, <a href="https://x.com/omarsar0/status/2074264122330612223">@omarsar0</a>.</p></li><li><p><strong>But the &#8220;consciousness&#8221; language was contested</strong>: Anthropic&#8217;s public framing invited strong pushback. Supporters said the results suggest a functional analog of <strong>access consciousness</strong> rather than phenomenal consciousness <a href="https://x.com/BorisMPower/status/2074201312531734567">@BorisMPower</a>, while critics argued the company was overclaiming by conflating privileged latent activation with consciousness <a href="https://x.com/AlanCowen/status/2074265992570736919">@AlanCowen</a>. Even some sympathetic takes emphasized the bigger story is a new <strong>intervention point</strong> for auditing and steering models, not philosophy.</p></li></ul><p><strong>Inference, Serving, and Systems Efficiency</strong></p><ul><li><p><strong>Speculative decoding remains hot infrastructure</strong>: <a href="https://x.com/lmsysorg/status/2074176669108367549">@lmsysorg</a> added <strong>DSpark</strong> to SGLang for confidence-driven, variable-length verification. The pitch is that under high load it avoids verifying every draft token, improving the throughput/latency tradeoff relative to fixed-budget speculative methods; DeepSeek-V4-Pro reportedly reached <strong>383.7 tok/s at batch=1 on B300</strong>. Microsoft also discussed prompt-level optimization of <strong>GPT-5.5</strong> in the GitHub Copilot harness to improve latency and token efficiency after launch <a href="https://x.com/code/status/2074178799512539571">@code</a>, <a href="https://x.com/pierceboggan/status/2074180737147027757">@pierceboggan</a>.</p></li><li><p><strong>Inference efficiency is increasingly the strategic bottleneck</strong>: <a href="https://x.com/jon_durbin/status/2074169183835685351">@jon_durbin</a> argued that inference, not training alone, is now &#8220;the whole game,&#8221; because every data pipeline, RL loop, and agent runtime ultimately cashes out as test-time compute. That perspective also showed up in lower-level kernel work: Chutes reported major speedups for <strong>MiniMax MSA</strong> and <strong>GatedDeltaNet-2</strong>, including <strong>~7x</strong> sparse-attention training improvements on <strong>RTX Pro 6000 / SM120</strong> and better fused FP8 kernels <a href="https://x.com/jon_durbin/status/2074119835366134188">@jon_durbin</a>.</p></li><li><p><strong>Infra releases beyond model serving</strong>: Cloudflare launched <strong>Workers Cache</strong>, a regionally tiered cache in front of Worker entrypoints configured via standard HTTP headers <a href="https://x.com/Cloudflare/status/2074117419728007181">@Cloudflare</a>. OpenAI shipped <strong>GPT-Realtime-2.1-mini</strong>, bringing reasoning and tool use to the mini realtime line at the same price as the prior mini, alongside claimed <strong>25%+ p95 latency reductions</strong> from caching improvements <a href="https://x.com/OpenAIDevs/status/2074255408013955466">@OpenAIDevs</a>, <a href="https://x.com/OpenAIDevs/status/2074255420831735824">@OpenAIDevs</a>.</p></li></ul><p><strong>World Models, Speech, and Document AI</strong></p><ul><li><p><strong>MIRA is a notable world-model demo</strong>: General Intuition and Kyutai, with Epic Games, introduced <strong>MIRA</strong>, a playable multiplayer world model for Rocket League trained on <strong>10k hours</strong> of bot-collected data <a href="https://x.com/gen_intuition/status/2074104524596457706">@gen_intuition</a>. It runs in real time at <strong>20 fps</strong>, and posts highlighted a <strong>5B-parameter</strong> model running an entire 2v2 match on a single <strong>NVIDIA B200</strong>, with no explicit physics or rendering engine <a href="https://x.com/TheRundownAI/status/2074184559768277398">@TheRundownAI</a>. This was one of the clearest signals that video/world-model work is moving from toy demos toward interactive simulators.</p></li><li><p><strong>Speech remains highly competitive</strong>: AssemblyAI released <strong>Universal-3.5 Pro Realtime</strong>, a streaming STT model with <strong>4.1% WER</strong> on AA-WER Streaming and contextual priming that can be updated mid-call without reconnecting <a href="https://x.com/ArtificialAnlys/status/2074160133702402314">@ArtificialAnlys</a>. On the TTS side, Artificial Analysis said <strong>Speechify Simba 3.2</strong> now leads its Speech Arena at <strong>1233 Elo</strong>, ahead of Gemini 3.1 Flash TTS, Sonic 3.5, and Inworld Realtime TTS 1.5 Max, while also being the cheapest among top-ranked models <a href="https://x.com/ArtificialAnlys/status/2074265309985570890">@ArtificialAnlys</a>.</p></li><li><p><strong>Document-context pipelines are becoming multimodal by default</strong>: LlamaIndex and LanceDB described a retrieval pipeline for messy PDFs that separates <strong>pages, chunks, and extracted assets</strong> into linked multimodal tables, reporting <strong>82% any-page-hit@5</strong> and <strong>74% answer accuracy</strong> on a labeled ESG-report benchmark <a href="https://x.com/lancedb/status/2074153945631457663">@lancedb</a>, <a href="https://x.com/llama_index/status/2074170470119752084">@llama_index</a>. This pairs with Jerry Liu&#8217;s broader argument for a dedicated &#8220;document context layer&#8221; for agents <a href="https://x.com/jerryjliu0/status/2074165277634253106">@jerryjliu0</a>.</p></li></ul><p><strong>Top tweets (by engagement)</strong></p><ul><li><p><strong>Anthropic&#8217;s global workspace paper</strong> dominated engagement, with the primary announcement on Claude&#8217;s internal workspace/J-space far above everything else <a href="https://x.com/AnthropicAI/status/2074185348142280912">@AnthropicAI</a>.</p></li><li><p><strong>Tencent Hy3</strong> was the biggest pure model-release story, especially among technical accounts discussing open-source competitiveness and deployment <a href="https://x.com/teortaxesTex/status/2074012467886178725">@teortaxesTex</a>, <a href="https://x.com/ShunyuYao12/status/2074151389945827744">@ShunyuYao12</a>.</p></li><li><p><strong>MIRA&#8217;s playable world model</strong> was the standout multimodal/system demo <a href="https://x.com/gen_intuition/status/2074104524596457706">@gen_intuition</a>.</p></li><li><p><strong>Will Depue&#8217;s &#8220;Stargate for Data&#8221;</strong> thread was the most substantive strategy post, arguing that data collection&#8212;not compute alone&#8212;becomes the binding constraint and potential moat for frontier labs <a href="https://x.com/willdepue/status/2074178395462848800">@willdepue</a>.</p></li><li><p><strong>John Carmack&#8217;s memory-system thread</strong> drew significant technical interest by arguing inference hardware could exploit deterministic access patterns and much cheaper memory tiers than HBM for large-model serving <a href="https://x.com/ID_AA_Carmack/status/2074248758422864226">@ID_AA_Carmack</a>.</p></li></ul><div><hr /></div><h1><strong>AI Reddit Recap</strong></h1><h2><strong>/r/LocalLlama + /r/localLLM Recap</strong></h2><h3><strong>1. Large Open-Weight MoE Model Releases</strong></h3><ul><li><p><strong><a href="https://www.reddit.com/r/LocalLLaMA/comments/1unyvnz/longcat_20_16t_48b_active_weights_are_now_open/">longcat 2.0 (1.6T, ~48B active) weights are now open under MIT license</a></strong> (Activity: 638): <strong>LongCat 2.0 weights are now open under the MIT license via announcements from <a href="https://x.com/eliebakouch/status/2073690402503487902">elie</a> and <a href="https://x.com/ModelScope2022/status/2073710226365165679">ModelScope</a>, with technical details in the <a href="https://longcat.chat/blog/longcat-2.0/">LongCat 2.0 blog post</a>. The model is a very large MoE system with </strong><code>1.6T</code><strong> total parameters and roughly </strong><code>48B</code><strong> active parameters per inference; commenters note the released weights occupy about </strong><code>3.55 TB</code><strong> in BF16 and </strong><code>2.05 TB</code><strong> in FP8.</strong> Commenters emphasized the practical deployment burden from the multi-terabyte weight size, and noted that <strong>Meituan</strong>&#8212;described as China&#8217;s Groupon/Uber Eats analogue&#8212;reportedly trained it on fully domestic Chinese chips, prompting discussion about the geopolitical/market significance.</p><ul><li><p>Commenters highlighted the scale and deployment footprint of <strong>LongCat 2.0</strong>: <code>1.6T</code> total parameters with approximately <code>48B</code> active parameters, implying a sparse/MoE-style architecture. One user noted the released weights require about <code>3.55 TB</code> in <strong>BF16</strong> and <code>2.05 TB</code> in <strong>FP8</strong>, which is important for anyone planning local storage or inference infrastructure.</p></li><li><p>A technical point raised was that <strong>Meituan</strong> reportedly trained the model on <code>100%</code> domestic Chinese chips, which commenters framed as significant for AI hardware supply-chain independence. This is especially notable given Meituan&#8217;s role as a major Chinese internet company comparable to a mix of Groupon and Uber Eats rather than a traditional AI lab.</p></li><li><p>Several users focused on the permissive <strong>MIT license</strong> and planned benchmarking against frontier open models such as <strong>Qwen</strong> and <strong>DeepSeek</strong>. The combination of <code>1.6T</code> total parameters, only <code>~48B</code> active parameters, and open weights suggests the model may be practical to compare with other high-end MoE open models if inference tooling supports its architecture efficiently.</p></li></ul></li></ul><p></p>
+      <p>
+          <a href="https://www.latent.space/p/ainews-the-field-guide-to-fable">
+              Read more
+          </a>
+      </p>
+]]></content:encoded>
+<pubDate>Tue, 07 Jul 2026 04:44:53 GMT</pubDate>
+<pubDate>Tue, 07 Jul 2026 04:44:53 GMT</pubDate>
+</item>
+<item>
+<title>Meta’s new Muse Image model can pull other Instagram users into AI photos</title>
+<link>https://www.theverge.com/tech/962485/meta-muse-image-ai-model-instagram</link>
+<guid>https://www.theverge.com/tech/962485/meta-muse-image-ai-model-instagram</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Meta, AI image generation, Superintelligence Labs, Muse, Alexandr Wang  
+
+<br><br>Summary: Meta is launching its first AI image generation model developed by its Superintelligence Labs division. This model now powers the image-making tools integrated into the Meta AI app, Instagram, and WhatsApp, with plans for future implementation on Facebook and Messenger. The new model is part of the expanding Muse family of AI models, which is set to replace Meta's previous Llama lineup. Alexandr Wang, who was hired by Meta last year, emphasized that the model is designed to be "agentic," which means it can collaborate with users' prompts to reason through requests, search the web for relevant information, and plan effectively before generating the final output. Meta aims to enhance the creative capabilities of its platforms through this innovative technology, reinforcing its commitment to advancing AI-driven tools for better user experience and engagement across its social media ecosystem. This strategic move highlights Meta's ongoing investment in cutting-edge AI research and development to stay competitive in the rapidly evolving digital landscape. <div>
+<figure>
+
+<img alt="An AI-generated image from Muse AI" src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/meta-muse-image-instagram-tag.png?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption>
+		</figcaption>
+</figure>
+<p class="wp-block-paragraph">Meta is launching the first AI image generation model made by its Superintelligence Labs division. The <a href="https://ai.meta.com/blog/introducing-muse-image-muse-video-msl/">Muse Image model</a> now powers the image-making tools across the Meta AI app, Instagram, and WhatsApp, and it's coming soon to Facebook and Messenger, <a href="https://about.fb.com/news/2026/07/introducing-muse-image-meta-ai/">according to an announcement on Tuesday</a>.</p>
+<p class="wp-block-paragraph">It's part of the growing Muse family of AI models that replace Meta's Llama lineup. Alexandr Wang, who Meta hired to <a href="https://www.theverge.com/news/695355/mark-zuckerberg-meta-ai-superintelligence-labs">head up its Superintelligence Labs</a> last year, <a href="https://www.threads.com/@alexanddeer/post/DagKCLtkfHn">says on Threads that Muse Image is</a> "agentic," meaning it works with its <a href="https://www.theverge.com/tech/908769/meta-muse-spark-ai-model-launch-rollout">Muse Spark large language model</a> "to reason through your prompt, search the web, and plan before it generates." Meta is al …</p>
+<p><a href="https://www.theverge.com/tech/962485/meta-muse-image-ai-model-instagram">Read the full story at The Verge.</a></p>
+]]></content:encoded>
+<pubDate>2026-07-07T16:31:58-04:00</pubDate>
+<pubDate>2026-07-07T16:41:03-04:00</pubDate>
+</item>
+<item>
+<title>Anthropic is launching Claude Cowork on mobile and web</title>
+<link>https://www.theverge.com/ai-artificial-intelligence/961978/anthropic-claude-cowork-mobile-web</link>
+<guid>https://www.theverge.com/ai-artificial-intelligence/961978/anthropic-claude-cowork-mobile-web</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Anthropic, Claude, Cowork, Max subscribers, cloud sessions  
+
+<br><br>Summary: Starting Tuesday, Anthropic will expand access to Claude Cowork for the first time, initially rolling it out to Max subscribers, with other users due to receive access in the coming weeks. Previously, Claude Cowork was limited to the Claude desktop app available on macOS and Windows; however, the new update now allows use on iOS and Android devices as well. Despite this expansion, Anthropic notes that the "full experience" of Cowork will still be primarily available through the desktop app, which includes additional features like local file access that mobile versions may not support. Furthermore, Cowork sessions will now run in the cloud by default, enabling users to continue their sessions seamlessly across different devices. This cloud integration reflects Anthropic's efforts to enhance user accessibility and convenience, allowing for greater flexibility in how and where users engage with Cowork. These changes mark a significant step forward in making Claude Cowork more widely accessible and functional across various platforms. <div>
+<figure>
+
+<img alt="A phone and laptop side by side running Claude Cowork" src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/Cowork-Web-Mobile-Press-No-Logo-1920x1080-1.png?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption>
+		</figcaption>
+</figure>
+<p class="wp-block-paragraph">Starting Tuesday, Anthropic's <a href="https://www.theverge.com/ai-artificial-intelligence/860730/anthropic-cowork-feature-ai-agents-claude-code">Claude Cowork AI platform</a> will be <a href="https://claude.com/blog/cowork-web-mobile/">available on mobile and web</a> for the first time. The expanded access is rolling out first to Max subscribers and coming to Claude users on other plans "in the coming weeks." </p>
+<p class="wp-block-paragraph">Claude Cowork was previously only accessible through the Claude desktop app for macOS and Windows, but now users on iOS and Android can also use it. However, Anthropic says the "full experience" for Cowork will still be on the desktop app, including features like local file access. </p>
+<p class="wp-block-paragraph">Cowork sessions will also now run in the cloud by default, so you can continue them across different devices or run Cowork ta …</p>
+<p><a href="https://www.theverge.com/ai-artificial-intelligence/961978/anthropic-claude-cowork-mobile-web">Read the full story at The Verge.</a></p>
+]]></content:encoded>
+<pubDate>2026-07-07T13:46:59-04:00</pubDate>
+<pubDate>2026-07-07T13:47:03-04:00</pubDate>
+</item>
+<item>
+<title>Solos debuts an even lighter version of its camera-less smart glasses</title>
+<link>https://www.theverge.com/tech/961711/solos-airgo-a6-smart-glasses-ai-assistant-privacy</link>
+<guid>https://www.theverge.com/tech/961711/solos-airgo-a6-smart-glasses-ai-assistant-privacy</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AirGo A6, smart glasses, AI assistant, lightweight, prescription lenses
+
+<br><br>Summary: Solos has unveiled its latest version of the AirGo smart glasses, the AirGo A6, which feature a camera-free design that emphasizes a sleeker aesthetic. Unlike its predecessor, the AirGo A5, which weighed between 36 to 40 grams, the new AirGo A6 is significantly lighter at approximately 19 grams. This reduction in weight is achieved through the use of thinner temple arms that accommodate essential components such as speakers, batteries, and other electronics. In comparison, many competing smart glasses typically weigh between 54 to nearly 60 grams, highlighting the A6's lightweight advantage. The new model is equipped with an AI assistant that facilitates voice interactions, enhancing user experience without the need for a camera. While pricing and availability details have yet to be confirmed, it is noteworthy that the AirGo A6 will support full prescription lens compatibility, making it accessible for users with vision correction needs. This innovation positions the AirGo A6 as a promising option in the smart glasses market for those seeking a stylish, lightweight, and interactive eyewear solution. <div>
+<figure>
+
+<img alt="Solos’ AirGo A6 smart glasses in a clear shiny honey design." src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/solos1.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption>
+	The AirGo A6 are available in multiple designs including several transparent color options. | Image: Solos	</figcaption>
+</figure>
+<p class="wp-block-paragraph">Solos announced a new version of its AirGo smart glasses, one that forgoes cameras for a sleeker design and an AI assistant that relies on voice interactions. Last year's AirGo A5 weighed 36 to 40 grams depending on the frame style, but the new AirGo A6 weigh around 19 grams. Part of the weight savings comes from thinner temple arms housing speakers, batteries, and other electronics. For comparison, the <a href="https://www.theverge.com/tech/954052/meta-glasses-hands-on-kylie-jenner-smart-glasses-price-battery-privacy">new Meta Glasses announced last month</a> weigh around 54 to nearly 60 grams depending on the style.</p>
+<p class="wp-block-paragraph">Pricing and availability for the new AirGo A6 hasn't been finalized yet, but the smart glasses will support "full prescription lens compatibilit …</p>
+<p><a href="https://www.theverge.com/tech/961711/solos-airgo-a6-smart-glasses-ai-assistant-privacy">Read the full story at The Verge.</a></p>
+]]></content:encoded>
+<pubDate>2026-07-07T09:00:00-04:00</pubDate>
+<pubDate>2026-07-06T13:18:51-04:00</pubDate>
+</item>
+<item>
+<title>The foundational elements of AI architecture that IT leaders need to scale</title>
+<link>https://www.technologyreview.com/2026/07/07/1139413/the-foundational-elements-of-ai-architecture-that-it-leaders-need-to-scale/</link>
+<guid>https://www.technologyreview.com/2026/07/07/1139413/the-foundational-elements-of-ai-architecture-that-it-leaders-need-to-scale/</guid>
+<content:encoded><![CDATA[
+
+<p>With the rapid progress of AI capabilities and the move to agentic systems, organizations are expanding their use cases as the technology continues to grow. That constant evolution also introduces risk, leaving IT leaders to wonder which investments will prove valuable even six months into the future.</p>
+
+
+
+<p>Returning to the foundational elements of AI architecture—the structural framework required for deploying and managing reliable, integrated AI systems at scale—allows technology leaders to make astute decisions today while supporting a future of AI agents that can retrieve information, make decisions, and execute complex workflows across systems.</p>
+
+
+
+<figure class="wp-block-image size-full"><img alt="" class="wp-image-1139416" height="768" src="https://wp.technologyreview.com/wp-content/uploads/2026/06/iStock-2216481617.jpg" width="1365" /></figure>
+
+
+
+<h3 class="wp-block-heading">Four elements of AI architecture you can count on</h3>
+
+
+
+<p>The following capabilities provide a stable compass on the path to production-ready deployment, regardless of how the underlying technology evolves.</p>
+
+
+
+<h4 class="wp-block-heading">1. Prepare data for AI at scale</h4>
+
+
+
+<p>Models are only as reliable as the data they can access, and poor data quality leads to AI hallucinations, bias, and unreliable outputs.</p>
+
+
+
+<p>Most enterprises rely on legacy systems, inconsistent data structures, fragmented ownership, and incomplete datasets, making it difficult to scale AI effectively. Powerful as it is, AI itself cannot solve these underlying data problems.</p>
+
+
+
+<p>As Adnan Adil, CIO of Elastic, explains: “The data is a durable part of AI architecture because without it, these models won&#8217;t run, won&#8217;t provide the right context, or won&#8217;t give the right level of services that we&#8217;re looking to implement.” Industry <a href="https://www.deloitte.com/mt/en/Industries/technology/perspectives/Data-governance-and-AI-readiness.html" rel="noreferrer noopener" target="_blank">surveys</a> consistently cite data quality as one of the greatest barriers to AI success. “The data quality has to be good; otherwise, the user loses confidence in the system,” says Adil.</p>
+
+
+
+<p>An effective AI strategy begins with connecting data across the organization and ensuring it is organized, accurate, governed, and accessible in real time. These considerations are most effective when built into models and architecture from the start. Scalable data architecture allows AI systems to evolve alongside the business and connect reliably to the internal information needed to deliver meaningful value.</p>
+
+
+
+<p><a href="https://www.gartner.com/en/newsroom/press-releases/2025-02-26-lack-of-ai-ready-data-puts-ai-projects-at-risk" rel="noreferrer noopener" target="_blank">Gartner</a> predicts that companies will abandon 60% of all AI projects through 2026 if they are not supported by AI-ready data. Avoiding that outcome includes clear data standards and ownership, clean and labeled data, and pipelines that support real-time retrieval.</p>
+
+
+
+<h4 class="wp-block-heading">2. Use context engineering to deliver the right data to every AI query</h4>
+
+
+
+<p>Context engineering ensures that the model draws on the most pertinent information for each query, selecting and organizing the data needed to produce accurate answers efficiently.</p>
+
+
+
+<p>Effective context engineering shapes the inputs that guide AI reasoning and action. While prompt engineering focuses on how a request is worded, context engineering designs the entire information environment around the model: retrieving the right data and presenting it in a structured, machine-readable way. Many organizations are discovering that reliable AI depends as much on context quality as on the strength of the model.</p>
+
+
+
+<p>Context engineering relies on a modernized, unified data foundation as well as retrieval and memory systems such as retrieval augmented generation (RAG) and vector databases. It also requires careful prioritization to determine what information matters most, what should be excluded, and when different types of information should be used. Feeding models too much context can dilute relevant details, increase costs, and slow response times.</p>
+
+
+
+<p>“Minimum context, correct and current data, and machine-readable information are critical to effective context engineering,” Adil says.</p>
+
+
+
+<h4 class="wp-block-heading">3. Build AI governance and LLM observability in from the start</h4>
+
+
+
+<p>Strong governance and LLM observability help organizations maintain control over how AI systems use data, monitor system performance, and identify problems before they affect operations.</p>
+
+
+
+<p>In the absence of clear controls around retrieval, workflows, and model usage, AI systems often process far more information than necessary. This inefficiency also drives up operating costs by requiring additional computing resources, often reflected in higher token consumption and API charges.</p>
+
+
+
+<p>Governance also works in tandem with robust security. AI expands the attack surface, introducing risks such as prompt-based data leakage, model vulnerabilities, and adversarial inputs. Protecting sensitive information requires strong access controls, monitoring, and oversight.</p>
+
+
+
+<p>Adil notes that essential controls — including those related to security, granular cost management, project controls, data security, and architecture—are frequently insufficient.</p>
+
+
+
+<p>For governance systems to support transparent, compliant, trustworthy, and cost-effective AI, organizations cannot leave them as a layer to add later. Governance structures need to be embedded into architecture, workflows, and decision-making processes from the outset.</p>
+
+
+
+<p>When governance is established from the start, it enables robust observability. Observability helps organizations understand how AI applications are performing in practice. Mechanisms for LLM observability and benchmarking allow teams to assess accuracy and utility over time, monitor adoption patterns, and adjust systems as conditions change. Observability also helps organizations gain trust by increasing visibility of model performance, behavior, and failure points.</p>
+
+
+
+<p>Furthermore, observability is essential to get <a href="https://www.elastic.co/blog/how-it-leaders-measure-roi-of-agentic-ai-initiatives?utm_source=mittechnologyreview-db&amp;utm_medium=publisher-native&amp;utm_campaign=cxo-mit-tr-article-gc" rel="noreferrer noopener" target="_blank">ROI of AI initiatives</a>, as the benefits of it are often indirect and business value depends heavily on how systems are adopted and used. Real-time visibility into AI behavior allows organizations to measure performance against expectations, identify gaps between intent and reality, and continuously refine systems as requirements evolve.</p>
+
+
+
+<p>In a 2026 report from <a href="https://www.elastic.co/blog/2026-observability-trends-generative-ai-opentelemetry?utm_source=mittechnologyreview-db&amp;utm_medium=publisher-native&amp;utm_campaign=cxo-mit-tr-article-gc" rel="noreferrer noopener" target="_blank">Elastic</a>, 85% of IT decision makers expect to enable LLM observability for their internal generative AI apps.</p>
+
+
+
+<p>“Observability is actually huge. We can use observability data for cost control, decision-making, and engineering efficiency,” Adil says.</p>
+
+
+
+<h4 class="wp-block-heading">4. Keep humans in the loop</h4>
+
+
+
+<p>The thoughtful design, integration, and governance that maximize AI value demand specialized in-house expertise. Nearly 70% of respondents in <a href="https://www.deloitte.com/us/en/insights/topics/technology-management/tech-trends/2026/ai-future-it-function.html#endnote-7" rel="noreferrer noopener" target="_blank">Deloitte’s</a> 2025 Tech Executive Survey report plan to grow teams in direct response to generative AI, a clear contrast to widely reported AI-related cuts. Adil agrees: “We think the people aspect is largely what&#8217;s going to make AI impactful going forward.”</p>
+
+
+
+<p>As AI systems become more embedded in operations, organizations need people who can govern workflows, evaluate outputs, redesign processes, and adapt systems as conditions change. Evolution toward increasingly autonomous tools requires teams skilled in prompt engineering, orchestration, and change management.&nbsp;</p>
+
+
+
+<p>Talent adept at critical thinking and prepared to adapt with technology’s rapid advances will be in high demand. Although turnover brings in fresh thinking, it also presents high costs in system continuity, institutional understanding, and innovation. Human-centered strategy needs to be built into AI execution stages to ensure smooth implementation.&nbsp;</p>
+
+
+
+<p>As Adil says, “Many aspects of the stack are moving very, very fast, but institutional knowledge and the ability to adapt remain durable.</p>
+
+
+
+<h3 class="wp-block-heading"><a></a>Thoughtful AI investment for future growth</h3>
+
+
+
+<p>As AI systems evolve from single-task assistants to increasingly autonomous agents, the organizations best positioned to benefit will be those that invest in the underlying systems, governance, and expertise that make AI reliable at scale.</p>
+
+
+
+<p>Tech leaders who focus on these fundamentals can move effectively from experimentation to reliable, production-level deployment in the medium term, confident that these elements will remain relevant and adaptable amid constant advancements.</p>
+
+
+
+<p>“We fundamentally believe that with these tools, velocity of work will get much faster,” Adil says. “We are really focused on how we can do work with these tools in ways we had not thought of before.”</p>
+
+
+
+<p></p>
+
+
+
+<p><em>Learn more about how <a href="https://www.elastic.co/resources/article/ai-first-enterprise-internal-playbook?utm_source=mittechnologyreview-db&amp;utm_medium=publisher-native&amp;utm_campaign=cxo-mit-tr-article-gc" rel="noreferrer noopener" target="_blank">Elastic is building an AI-first enterprise with these core foundational components</a>.</em></p>
+
+
+
+<p><em>This content was produced by Insights, the custom content arm of MIT Technology Review. It was not written by MIT Technology Review’s editorial staff. It was researched, designed, and written by human writers, editors, analysts, and illustrators. This includes the writing of surveys and collection of data for surveys. AI tools that may have been used were limited to secondary production processes that passed thorough human review.</em></p>
+
+
+
+<p><a id="_msocom_1"></a></p>
+
+
+
+<p></p>
+]]></content:encoded>
+<pubDate>Tue, 07 Jul 2026 11:10:52 +0000</pubDate>
+<pubDate>Tue, 07 Jul 2026 11:10:52 +0000</pubDate>
+</item>
+<item>
+<title>Building the foundation for an autonomous enterprise</title>
+<link>https://www.technologyreview.com/2026/07/02/1138433/building-the-foundation-for-an-autonomous-enterprise/</link>
+<guid>https://www.technologyreview.com/2026/07/02/1138433/building-the-foundation-for-an-autonomous-enterprise/</guid>
+<content:encoded><![CDATA[
+
+<p>Artificial intelligence may have captured the public imagination through chatbots and image generators, but some of its most consequential use cases are unfolding far from consumer-facing tools. In industries where physical infrastructure, operational continuity, and safety are paramount, AI is becoming a core operating layer. With its sprawling industrial systems and constant stream of operational data, the energy sector offers a glimpse into what that future could look like.</p>
+
+
+
+<p>At Woodside Energy, AI adoption did not begin with generative models or enterprise copilots. The company has spent years building predictive analytics, optimization systems, and machine learning tools across exploration, drilling, maintenance, and plant operations. “We’ve always had very large volumes of operational data coming from the equipment and the plants and the assets that we operate,” says the company&#8217;s vice president for digital Andrew Melouney. “Those have created really clear, quite high-value use cases for us.”</p>
+
+
+
+<p>That long-term investment in infrastructure and governance is now enabling a broader shift toward agentic AI systems that can support complex industrial workflows. Rather than <a>replace</a> human operators, Woodside designs AI systems to augment expertise in high-stakes environments. A prime example is its “Startup Advisor,” an AI copilot that helps operators manage the complex process of starting liquefied natural gas (LNG) plants. “We’re really thinking about, how does it support the people in the organization in terms of empowering them to make better decisions, to make faster decisions,” Melouney explains.</p>
+
+
+
+<p>The company’s approach reflects a wider evolution taking place across industrial AI: graduating from isolated experiments to enterprise-wide systems built on standardized platforms, governed data, and repeatable deployment patterns. That transition, Melouney argues, requires organizations to rethink both their technology stacks and how work itself gets done. “We’re not just bolting AI onto an existing process,” he says. “We’re deeply thinking about how that work needs to be reimagined.”</p>
+
+
+
+<p>Melouney&#8217;s motto has become: “Think big, prototype small, and scale fast.&#8221;</p>
+
+
+
+<p>As AI systems become more autonomous and interconnected, the companies poised to succeed may be those that spent years building the operational foundations beneath the hype.</p>
+
+
+
+<p>&#8220;Our ambition is really for an autonomous enterprise, where we have agents with agency that are able to really deeply interact with our core workflows,&#8221; says Melouney.</p>
+
+
+
+<p><em>This episode of Business Lab is produced in partnership with Infosys.</em></p>
+
+
+
+<p><strong>Full Transcript:</strong></p>
+
+
+
+<p><em>Megan Tatum:</em> From MIT Technology Review, I&#8217;m Megan Tatum, and this is Business Lab, the show that helps business leaders make sense of new technologies coming out of the lab and into the marketplace.</p>
+
+
+
+<p>This episode is produced in partnership with Infosys.<br /><br /></p>
+
+
+
+<p>Now, when people think about artificial intelligence, they often picture chatbots or productivity tools, but some of the most sophisticated and high impact uses of AI are actually happening far from consumer apps, inside complex industrial environments where safety, reliability, and physical systems matter. The global energy sector is a prime example.<br /><br />Companies like Woodside Energy, a global energy producer headquartered in Western Australia, have been applying AI for more than a decade now, from advanced analytics and operations, to remote decision support, to smarter maintenance, and energy efficiency across large scale assets. Today, Woodside is scaling that experience, embedding AI more deeply across its operations and the enterprise with a strong focus on governance, data quality, and human accountability.<br /><br /></p>
+
+
+
+<p>Two words for you: technological fuel.</p>
+
+
+
+<p>My guest today is Andrew Melouney, vice president for digital at Woodside Energy. Welcome, Andrew.</p>
+
+
+
+<p><em>Andrew Melouney:</em> Thanks, Megan. It&#8217;s great to be here.</p>
+
+
+
+<p><em>Megan: </em>Lovely to have you. Now, Andrew, as I said there, the energy sector has approached AI quite differently from technology or consumer businesses. Early value has emerged in operational and industrial environments, rather than consumer-facing generative AI tools. Why is that? And what differentiates the energy sector&#8217;s AI journey?</p>
+
+
+
+<p><em>Andrew:</em> Megan, I think it really comes down to the nature of the work we do. Energy operations and what Woodside does is very asset intensive, it&#8217;s very safety critical, and it&#8217;s highly physical. And when you think about how Woodside operates, we operate across the full value chain. We do exploration through to drilling and subsurface work, to project development, all the way through to operating assets, which are often operated in harsh and remote locations, and then global energy portfolio marketing and trading as well.<br /><br />We&#8217;ve always had very large volumes of operational data coming from the equipment and the plants and the assets that we operate, and those have created really clear, quite high-value use cases for us. When you think about reliability, when you think about safety and efficiency, those are really critical things for a company like Woodside. We&#8217;ve been doing traditional AI for many years now. If you think about analytics, if you think about optimization, if you think about things like predictive models, those techniques we&#8217;ve been applying to our data sets and to our business since around 2015.<br /><br />And more recently with the advent of generative AI, we&#8217;ve really found that we&#8217;ve got a pretty strong and awesome foundation to build on top of and to really solve problems in the service of improving the business. And again, whether that is keeping people safe, keeping the environments we operate in safe, or improving returns for the organization.</p>
+
+
+
+<p><em>Megan: </em>Fantastic. I mean you touched on it there, but how has this reality shaped your own AI strategy at Woodside? Where did you start, and where did the technology prove most impactful in those early days?</p>
+
+
+
+<p><em>Andrew: </em>Well, like I said, we&#8217;ve had a very long journey, in terms of understanding our operational data, recognizing the value of it, and collecting it at scale so that we can use it. And we&#8217;ve been very deliberate in that approach, Megan. We&#8217;ve really thought about where the value is and where the risks were manageable. And we&#8217;ve started looking at, in today&#8217;s world from an agentic AI perspective, we&#8217;ve started looking at the problems that were solved with traditional AI and machine learning and data science in the past. And we&#8217;ve started to think about, where can we then layer agentic AI over the top to provide an even better outcome?</p>
+
+
+
+<p>For our asset intensive industry and organization, we&#8217;re looking at areas such as maintenance optimization. We&#8217;re looking at areas such as, how do we ensure our LNG plants start up reliably, consistently, and safely? And we&#8217;re considering really our frontline workforce and making sure that we&#8217;re giving people on the frontline the tools required to do their jobs. When we think about AI, we&#8217;re really thinking about, how does it support the people in the organization in terms of empowering them to make better decisions, to make faster decisions? I think over time, this has just evolved from what has been traditional analytics to now artificial intelligence and generative AI. And we&#8217;ve learned along the way that the technology is important, but it&#8217;s about aligning people, processes, and the technology together.</p>
+
+
+
+<p>We&#8217;ve spent a long time not only in collecting the data and having a well-curated data set that we can build on top of, but we&#8217;ve also spent a lot of time teaching people how to work in agile ways, how to do design thinking, how to problem solve, and how to really make sure that the technology that, say, my team can bring to bear to the organization is adopted effectively and purposefully. And I think once we had that solid foundation in place from a technology perspective, from a data perspective, once we got strong trust built between our digital teams and the organization, we really saw quite a material uptick and the scaling of technology occur more broadly across the enterprise.</p>
+
+
+
+<p><em>Megan:</em> Fantastic. That people piece so important, isn&#8217;t it? It&#8217;s just a tool, technology, that needs to be in the right hands. And you touched on data there; industrial AI obviously depends on vast amounts of data. Can you walk us through how you&#8217;ve approached data at Woodside in a little more detail? How it&#8217;s structured and governed, and how tools like maintenance intelligence as well fit into that.</p>
+
+
+
+<p><em>Andrew: </em>Well, data is really foundational and fundamental to everything we do, particularly from a technology perspective. It gives us the ability to innovate at <a>pace</a> when we are building over the top of a strong foundation. As I said before, we&#8217;ve had the benefit of a long-term investment in our underlying operational data. I think the way we think about data is that it&#8217;s an asset for us.</p>
+
+
+
+<p>And when you think about operating a facility where you&#8217;ve got sensors everywhere, you&#8217;ve got data streaming in real time, you&#8217;ve got operators needing to make decisions in real time, we have consciously made a decision over many, many years to invest in that enterprise scale data platform to make sure that it&#8217;s secure. We&#8217;ve got well-structured data assets, and we&#8217;ve got strong governance over the top of that data so that when it is used, when it&#8217;s built in a data science application or an AI agent, that we&#8217;ve got a level of trust in it that it&#8217;s going to be used responsibly. And that when it&#8217;s used, it can be trusted to give the outcome that we expect.<br /><br />We have developed platforms that continuously ingest really high frequency data from the assets and from our enterprise systems. Once we&#8217;ve been able to develop solutions on top of that, parts of the business that might own the systems that collect that data, they see the value in it.<br /><br />When you look at something like <a>maintenance</a> intelligence is a really good example of how we&#8217;ve been able to take something that we&#8217;ve been working on for a long time. Woodside does a lot of maintenance, it&#8217;s a very important part of our business, and it occurs across all of our operating assets. But we have been looking at how we do predictive analytics and predictive maintenance for a long time across that data set that we own. And something like maintenance intelligence is a solution that gives us the ability to optimize how we do that maintenance. And what it does <a>is it analyzes</a> historical maintenance records, alongside the performance of the equipment. And again, by having that data set well-governed and in one place, we get the ability to correlate different data sets, such as maintenance records out of SAP, alongside say equipment and performance coming from our time series data lake.</p>
+
+
+
+<p>And when we build over the top of that, something like maintenance intelligence gives us the opportunity to recommend to the assets what the optimal timing for maintenance activities might be, and really give what is quite a simple aim, which is do the right work at the right time. And with something like maintenance intelligence, we have seen the opportunity, and we have the opportunity to reduce maintenance hours by up to 15% over five years on one of the assets that we&#8217;ve piloted this on. And as we&#8217;ve built out that underlying analytical model, we&#8217;re now able to put agentic AI over the top of that and provide better insights and optimize that solution more.<br /><br />It really comes down to providing our asset teams and our operational teams with the right decision support capability that ensures they&#8217;re still accountable to make the decision and to ensure the right work is being done, but we are giving them the best possible opportunity to use their judgment and experience with the data that we provide to make the right decision.</p>
+
+
+
+<p><em>Megan: </em>Sounds like a really impactful change. Last year also marked a milestone in moving from early AI learnings to scale, using AI more deliberately as a force multiplier. What transition were you trying to make and how did you approach it?</p>
+
+
+
+<p><em>Andrew: </em>Well, Megan, we&#8217;ve had a philosophy for a long time in Woodside from an innovation perspective, where we really want to think big, we want to prototype small, and we want to scale fast. We want to find big opportunities that we can go after, but we want to ensure that we look at how we deploy those on a small scale first, and then provide the right learning and insight that then can scale it everywhere. Something like maintenance intelligence is a good example of that, or our Startup Advisor, where we know that we&#8217;ve got multiple plants that we need to start up. We know that we&#8217;ve got multiple assets that need to do maintenance, so we have a big, bold ambition about how we can improve and optimize that. We start with a small prototype; it might be one subsystem, it might be just a part of an asset, and then we scale it out, we learn, and we scale faster.<br /><br />I think from an AI learning perspective, one of the key things we&#8217;ve learned is really the transition from moving from isolated AI solutions to a more coordinated enterprise-wide capability. If you look back maybe 18 months, two years, in our generative AI journey, we rarely started by deploying AI as broadly as we could in the organization from a personal productivity perspective. And probably being quite open in terms of the problems that we will solve, the business problems that we&#8217;ll solve with AI. That had a lot of benefits for us in terms of allowing our organization to get to know AI, get to know the capabilities, to build the trust in it.<br /><br />What we&#8217;ve learned though is that we&#8217;ve needed to pivot from that to being a little bit tighter in terms of where we are going to invest our time and resources and more higher value solutions. How do we then enable and empower the rest of the organization so that they can actually effectively problem solve with technology in their domain or in their personal productivity without having to come to a central team?<br /><br />When we think about that, think big, prototype small, scale fast, has been something really important for us. The transition from a more broader approach to use case development and solution development to now a narrower focus on the high value priorities. We&#8217;ve seen that paying dividends to us and allowing us to go after solutions and opportunities, things like Startup Advisor.<br /><br />And so our Startup Advisor is a agentic AI solution that really aims to optimize and empower and better support our operators that sit in front of a panel and have to start up LNG plants, which are incredibly technical facilities and require really specialist skills to start up. And so our Startup Advisor is almost like a copilot that sits alongside those operators, and it gives them the ability to be able to play back previous startups. It gives them the ability to look at how the current startup is progressing, and it provides them better insights to optimize how they start up that facility. And again, starting up an LNG facility is incredibly complex.</p>
+
+
+
+<p><em>Megan: </em>I can imagine.</p>
+
+
+
+<p><em>Andrew:</em> When we think about opportunities like Startup Advisor, again, it goes back to that think big, prototype small, and scale fast. We started with a very bold vision of, how do we start up all of our LNG plants in a much more structured and optimized fashion? How do we better support our panel operators? How do we make, say, a more junior panel operator have a copilot that can help them almost like an experienced panel operator sitting next to them? And when we think about that vision and the ability then to prototype on a small scale and then scale fast, I think it&#8217;s been really successful for us.<br /><br />As we scale, we&#8217;ve just naturally expanded into more agent-based solutions. Today, we&#8217;ve got around 50 AI agents in production, supporting both our operating assets and our enterprise workflows. These tools have been proven in live environments, and we have really seen the benefit of being able to shift from point solutions that maybe solve small scale problems in specific areas, to AI and agentic solutions with agency that can really work across our workflows.<br /><br />We&#8217;re able to do this because we&#8217;ve standardized on the platform that we build on and we&#8217;ve got repeatable patterns. That&#8217;s been another really important learning for us, is that we don&#8217;t want to build 50 solutions in 50 different ways. We really want to be empowering our organization and our technical teams and the users of our solutions to roll them out quickly, to roll them out safely, and to do it in a patternized and platform manner.<br /><br />But the last point I&#8217;ll make, Megan, from a learning perspective is that we&#8217;ve really understood that a strong governance around how AI is deployed and developed is critical for us, and it&#8217;s critical for us to go fast as well. The traditional ways of governing how we roll out different solutions or digital systems isn&#8217;t going to scale to the breadth that we need when we are thinking about AI. Being able to have a clear philosophy around how we innovate, transitioning from isolated solutions to that enterprise-wide capability, and making sure that we&#8217;ve got strong platforms with strong patterns and clear governance are the three really critical things that we&#8217;ve learned.</p>
+
+
+
+<p><em>Megan: </em>Such important pillars, all of them. And you&#8217;ve been working with Infosys on this journey. How has that partnership helped accelerate scaling and embedding AI across the business?</p>
+
+
+
+<p><em>Andrew: </em>Well, Infosys is our managed service provider, and so they play a really critical role in the operations of our core business. One of the things that I like to say is that our license to innovate is based on our license to operate. And so, for my team to be able to turn up to an operating asset or a corporate function and have the trust that&#8217;s needed to be able to innovate and reimagine and redesign how work gets done, to be able to do that, we need to make sure that our core platforms, our core systems, our applications are running really reliably, safely, and consistently every day. Having an experienced partner like Infosys looking after those core operations in partnership with our internal teams is really, really important to us.<br /><br />As we move from pilots to enterprise-wide deployment, the ability to partner with someone like Infosys also gives us the ability to scale. And so being from Perth and Western Australia, while we&#8217;ve got a really strong local team in Western Australia, and we&#8217;ve also got a very strong team in some of our other operating locations, like everyone, we&#8217;re struggling to find people that can fill AI roles. Being able to partner with Infosys and have a number of different operating models at our disposal becomes really important for us. Having co-mingled teams where they are staff, they are Infosys staff, Woodside staff, and some of our other partners, really just brings diversity of thought and experience to how we solve problems.<br /><br />Fundamentally, the partnership has allowed us to operate and innovate with more confidence. While Woodside always retains ownership of the strategy and where we&#8217;re going and the governance and my teams remain accountable for the outcomes, we can&#8217;t do what we do without strong partnerships like the one we have with Infosys.</p>
+
+
+
+<p><em>Megan: </em>Fantastic. And as AI adoption scales, you mentioned yourself, governance becomes increasingly important. How challenging has that been, and what guardrails have you put in place at Woodside?</p>
+
+
+
+<p><em>Andrew:</em> So, Megan, governance is really important to us, and we operate in a well-regulated environment. That means we&#8217;ve got to make really deliberate and well-reasoned decisions when we&#8217;re thinking about how we deploy technology into our organization, whether it&#8217;s artificial intelligence or anything else, for that matter. And so, governance is really central to how we approach the execution of our AI strategy at Woodside.<br /><br />We&#8217;ve got maybe two or three really key things that we&#8217;ve put in place. The first one is just making sure that every AI use case goes through a structured assessment, and that&#8217;s making sure it meets our privacy controls, our cyber controls. We&#8217;re also asking the question, not just, could we do this, but should we do this? We&#8217;ve really got to bring together safety, ethics, transparency, accountability, and make sure that we make an informed decision. When an AI solution is going through that structured assessment, if there are concerns about how we might use that solution, it then goes to an AI council that&#8217;s made up of senior leaders across the organization. That council and that group really oversee some of the prioritization and risk management. That&#8217;s where we can have really strong, robust debates around, again, could we do something, should we do it, and how do we mitigate any of the risks that we might introduce here?<br /><br />I think the last one, Megan, is really around lifecycle management. When you start thinking about, we&#8217;ve got 50 at the moment, but if we had 500 agents working in our organization, really amplifying the experience and the decision-making and the value creation of our staff, we really want to have an ability to manage the lifecycle of how those agents operate. We want to know, how many people are using them? What&#8217;s the efficacy and the outcome? Is there model drift? Do we need to retune or retrain? I think that&#8217;s an area where many organizations, including Woodside, are still leaning into and still figuring out the best way to do this. We can do it quite easily with 50 agents, but 500, 5,000, 50,000 becomes an opportunity for us. Again, thinking about how we partner with others, solving problems like that really present an opportunity to co-create and to co-solve with some of our partners, like with Infosys.</p>
+
+
+
+<p><em>Megan:</em> Fantastic. Just to close, what&#8217;s your long-term vision for AI at Woodside? How do you see this evolving over the years ahead, and what could it unlock for the sector in your view?</p>
+
+
+
+<p><em>Andrew: </em>So Megan, I think our ambition is really for an autonomous enterprise, where we have agents with agency that are able to really deeply interact with our core workflows. The outcome that we want to get from that is to protect our people, to protect the environments we operate in, and to be able to provide energy at a lower cost to the world. When we think about that ambition, we can really see that being applied to almost all of the areas that Woodside work in. Whether that&#8217;s from exploration through to project developments, through to operations or marketing, the scale of the opportunity in front of us and the ability for us to really change the way that work flows through the organization is really exciting.</p>
+
+
+
+<p>For us, there&#8217;s three things that we have to get right in terms of being able to execute on that ambition. The first one is really thinking about how the work gets done in the organization so that we&#8217;re not just bolting AI onto an existing process, but we&#8217;re deeply thinking about how that work needs to be reimagined. We&#8217;ve also got to think about how we enable our workforce to work differently. Providing them with the skills and the tools and the ability to really harness the power of the technology that we provide.<br /><br />Secondly, we&#8217;ve got to continue to move from and restrain ourselves from deploying point solutions that solve very narrow problems, to having more connected, agentic systems of systems that can interact with each other. To do that, and if we do that successfully, that&#8217;s where we really get the high value unlock from agents being able to interact with workflows and really change how the work gets done.<br /><br />And lastly, Megan, it&#8217;s about how we must continue our philosophy of thinking big, prototyping small, and scaling fast.</p>
+
+
+
+<p><em>Megan: </em>Which is a fantastic lens to which to make all these decisions. Thank you so much, Andrew. That was Andrew Melouney, vice president for digital at Woodside Energy, whom I spoke with from Brighton in England.<br /><br />That&#8217;s it for this episode of Business Lab. I&#8217;m your host, Megan Tatum. I&#8217;m a contributing editor and host for Insights, the custom publishing division of MIT Technology Review. We were founded in 1899 at the Massachusetts Institute of Technology, and you can find us in print, on the web, and at events each year around the world. For more information about us and the show, please check out our website at technologyreview.com.<br /><br />This show is available wherever you get your podcasts. And if you enjoyed this episode, we hope you&#8217;ll take a moment to rate and review us. Business Lab is a production of MIT Technology Review, and this episode was produced by Giro Studios. Thanks ever so much for listening. Goodbye.</p>
+
+
+
+<p><em>This content was produced by Insights, the custom content arm of MIT Technology Review. It was not written by MIT Technology Review’s editorial staff. It was researched, designed, and written by human writers, editors, analysts, and illustrators. This includes the writing of surveys and collection of data for surveys. AI tools that may have been used were limited to secondary production processes that passed thorough human review.</em></p>
+
+
+
+<p></p>
+]]></content:encoded>
+<pubDate>Thu, 02 Jul 2026 12:51:44 +0000</pubDate>
+<pubDate>Thu, 02 Jul 2026 12:51:44 +0000</pubDate>
+</item>
+<item>
+<title>Data centers’ energy demand threatens Trump’s “Made in America” plan</title>
+<link>https://arstechnica.com/tech-policy/2026/07/us-manufacturers-energy-costs-soar-because-of-ai-data-center-demand/</link>
+<guid>https://arstechnica.com/tech-policy/2026/07/us-manufacturers-energy-costs-soar-because-of-ai-data-center-demand/</guid>
+<content:encoded><![CDATA[
+
+<p>US manufacturers in many Rust Belt cities and towns are paying significantly higher electricity costs as growing energy demand from data centers strains the largest power grid operator in the United States. The resulting squeeze on profit margins for steelmakers and brick factories could further undermine President Donald Trump’s “Made in America” plan to revive US manufacturing, and it comes as Trump has simultaneously championed the tech companies behind the AI data center boom.</p>
+<p>Factory electricity bills are generally rising faster than those for other business customers or residential customers, <a href="https://www.reuters.com/business/energy/big-tech-data-centers-are-driving-up-power-bills-americas-rust-belt-factories-2026-07-07/">according to a Reuters analysis</a>. It highlighted the example of the Belden Brick Company, a 141-year-old brick manufacturer in Ohio, whose electricity bills have soared from $1,600 to $12,000 per month due to a higher monthly capacity charge in the 13-state region served by the grid operator PJM Interconnection.</p>
+<p>Meanwhile, the <a href="https://steelnet.org/wp-content/uploads/2026/06/SMA-4-Point-Electricity-Brochure.pdf">Steel Manufacturers Association</a> warned that US steel companies concentrated in the Rust Belt region served by PJM Interconnection are paying tens of millions of dollars in higher power costs per year. Electricity accounts for 20 to 40 percent of the total production costs of making steel.</p><p><a href="https://arstechnica.com/tech-policy/2026/07/us-manufacturers-energy-costs-soar-because-of-ai-data-center-demand/">Read full article</a></p>
+<p><a href="https://arstechnica.com/tech-policy/2026/07/us-manufacturers-energy-costs-soar-because-of-ai-data-center-demand/#comments">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 07 Jul 2026 21:03:07 +0000</pubDate>
+<pubDate>Tue, 07 Jul 2026 21:03:07 +0000</pubDate>
+</item>
+<item>
+<title>Facing US export controls, China's DeepSeek plans to make its own chips</title>
+<link>https://arstechnica.com/ai/2026/07/facing-us-export-controls-chinas-deepseek-plans-to-make-its-own-chips/</link>
+<guid>https://arstechnica.com/ai/2026/07/facing-us-export-controls-chinas-deepseek-plans-to-make-its-own-chips/</guid>
+<content:encoded><![CDATA[
+
+<p><!-- obsidian --></p>
+<p>DeepSeek, the Chinese startup developing large language models that are competitive with those from US companies like OpenAI and Anthropic, is planning to enter the silicon business, according to <a href="https://www.reuters.com/world/china/chinas-deepseek-developing-its-own-ai-chip-sources-say-2026-07-07/">Reuters</a>.</p>
+<p>Citing three people familiar with the matter, Reuters writes that DeepSeek has been working on a move into silicon for about a year. It has been meeting with potential partners in the hardware and silicon space and has been hiring engineers for the project.</p><p><a href="https://arstechnica.com/ai/2026/07/facing-us-export-controls-chinas-deepseek-plans-to-make-its-own-chips/">Read full article</a></p>
+<p><a href="https://arstechnica.com/ai/2026/07/facing-us-export-controls-chinas-deepseek-plans-to-make-its-own-chips/#comments">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 07 Jul 2026 16:14:53 +0000</pubDate>
+<pubDate>Tue, 07 Jul 2026 16:14:53 +0000</pubDate>
+</item>
+<item>
+<title>How AI could enable autonomous robot workers in workplaces—and maybe homes</title>
+<link>https://arstechnica.com/features/2026/07/robot-workers-rising-how-ai-may-drive-general-purpose-autonomy-in-robotics/</link>
+<guid>https://arstechnica.com/features/2026/07/robot-workers-rising-how-ai-may-drive-general-purpose-autonomy-in-robotics/</guid>
+<content:encoded><![CDATA[
+
+<p>In a world where self-driving robotaxis glide through major city streets without drivers behind the wheel and delivery drones autonomously fly through the skies to drop off orders at customers’ homes, the idea of general-purpose robots helping humans with various tasks in workplaces or even homes may not seem far-fetched.</p>
+<p>But that future hinges on developing increasingly autonomous robots powered by modern artificial intelligence—an ambitious vision that has motivated many researchers to become startup founders while also attracting billions of dollars in investment.</p>
+<p>“When I started maybe about 15 years ago, I led a project team that was focused on autonomy, but in that era, the goal of that team was to just get a robot to navigate from point A to point B,” said <a href="https://www.linkedin.com/in/mattmalchano/">Matt Malchano</a>, vice president of software at the robotics company Boston Dynamics based in Waltham, Massachusetts. “And now, when we think of autonomy, we think of this huge space of tasks and things that we can imagine a robot doing on its own.”</p><p><a href="https://arstechnica.com/features/2026/07/robot-workers-rising-how-ai-may-drive-general-purpose-autonomy-in-robotics/">Read full article</a></p>
+<p><a href="https://arstechnica.com/features/2026/07/robot-workers-rising-how-ai-may-drive-general-purpose-autonomy-in-robotics/#comments">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 07 Jul 2026 11:00:18 +0000</pubDate>
+<pubDate>Tue, 07 Jul 2026 11:00:18 +0000</pubDate>
+</item>
+<item>
+<title>Katalyst</title>
+<link>https://www.producthunt.com/products/katalyst</link>
+<guid>https://www.producthunt.com/products/katalyst</guid>
+<content:encoded><![CDATA[
+
+<p>
+            The AI agent that works your Salesforce Pipeline
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/katalyst?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1172798?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-06-15T15:45:28-07:00</pubDate>
+<pubDate>2026-07-07T20:33:37-07:00</pubDate>
+</item>
+<item>
+<title>Mira</title>
+<link>https://www.producthunt.com/products/mira-the-ai-moderator</link>
+<guid>https://www.producthunt.com/products/mira-the-ai-moderator</guid>
+<content:encoded><![CDATA[
+
+<p>
+            AI moderated interviews that read how people feel
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/mira-the-ai-moderator?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1183892?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-06-29T08:47:02-07:00</pubDate>
+<pubDate>2026-07-07T20:29:51-07:00</pubDate>
+</item>
+<item>
+<title>Ogment AI</title>
+<link>https://www.producthunt.com/products/ogment-mcp-builder</link>
+<guid>https://www.producthunt.com/products/ogment-mcp-builder</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Your AI coworker, in Slack. Just tag @O.
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/ogment-mcp-builder?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1181363?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-06-25T22:57:47-07:00</pubDate>
+<pubDate>2026-07-07T20:29:11-07:00</pubDate>
+</item>
+<item>
+<title>Scribble Network</title>
+<link>https://www.producthunt.com/products/scribble-network</link>
+<guid>https://www.producthunt.com/products/scribble-network</guid>
+<content:encoded><![CDATA[
+
+<p>
+            The product that makes AI recommend your brand
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/scribble-network?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1184570?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-06-30T04:38:46-07:00</pubDate>
+<pubDate>2026-07-07T20:25:08-07:00</pubDate>
+</item>
+<item>
+<title>Ellis</title>
+<link>https://www.producthunt.com/products/ellis-your-conversations-remembered</link>
+<guid>https://www.producthunt.com/products/ellis-your-conversations-remembered</guid>
+<content:encoded><![CDATA[
+
+<p>
+            AI notes for in-person meetings
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/ellis-your-conversations-remembered?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1153345?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-05-22T04:59:11-07:00</pubDate>
+<pubDate>2026-07-07T20:08:09-07:00</pubDate>
+</item>
+<item>
+<title>Zoho Tables</title>
+<link>https://www.producthunt.com/products/zoho-tables</link>
+<guid>https://www.producthunt.com/products/zoho-tables</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Smarter way to manage work and data.
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/zoho-tables?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1188995?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-07-05T23:04:23-07:00</pubDate>
+<pubDate>2026-07-07T18:47:35-07:00</pubDate>
+</item>
+<item>
+<title>LongCat-2.0</title>
+<link>https://www.producthunt.com/products/longcat</link>
+<guid>https://www.producthunt.com/products/longcat</guid>
+<content:encoded><![CDATA[
+
+<p>
+            1.6T MoE trained entirely on AI ASICs
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/longcat?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1189943?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-07-06T23:27:32-07:00</pubDate>
+<pubDate>2026-07-07T19:42:17-07:00</pubDate>
+</item>
+<item>
+<title>Badge</title>
+<link>https://www.producthunt.com/products/badge-3</link>
+<guid>https://www.producthunt.com/products/badge-3</guid>
+<content:encoded><![CDATA[
+
+<p>
+            AI agents collect peer reviews to generate proof of work
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/badge-3?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1131659?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-04-24T09:55:34-07:00</pubDate>
+<pubDate>2026-07-07T20:33:08-07:00</pubDate>
+</item>
 
 <item>
 <title>tencent/Hy3</title>
@@ -12,7 +900,7 @@
 <content:encoded><![CDATA[
 <div> Keywords: Hy3, Tencent, Mixture-of-Experts, model, performance  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 Tencent has launched a new model called Hy3, which is a 295B-parameter Mixture-of-Experts (MoE) architecture with 21B active parameters and 3.8B parameters dedicated to the MTP layer. After gathering feedback from over 50 products following its preview launch in late April, the Tencent Hy Team scaled up the model using higher quality data. The Hy3 model outperforms similar-size models and rivals flagship open-source models that have 2-5 times the number of parameters. This model demonstrates significant improvements in utility across various products and enhances productivity tasks. The full-sized Hy3 model is available on Hugging Face, occupying 598GB of space, with a FP8 quantized version also available. It supports an impressive context length of 256K tokens, making it adaptable for a wide range of applications. Importantly, Hy3 is offered for free, allowing broader access to its advanced capabilities. During testing, the model was capable of generating creative outputs, such as an SVG of a pelican riding a bicycle, showcasing its versatility in generating diverse content. <div>
 <p><strong><a href="https://huggingface.co/tencent/Hy3">tencent/Hy3</a></strong></p>
 New Apache 2.0 licensed model from Tencent in China:</p>
@@ -27,7 +915,6 @@ New Apache 2.0 licensed model from Tencent in China:</p>
     <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>
 ]]></content:encoded>
 <pubDate>2026-07-06T23:57:35+00:00</pubDate>
-<pubDate>2026-07-06T23:57:35+00:00</pubDate>
 </item>
 <item>
 <title>sqlite-utils 4.0rc3</title>
@@ -36,7 +923,7 @@ New Apache 2.0 licensed model from Tencent in China:</p>
 <content:encoded><![CDATA[
 <div> Keywords: sqlite-utils, 4.0, foreign keys, breaking change, case insensitive
 
-<br><br>Summary: I planned to release sqlite-utils 4.0 stable this weekend but needed more time to address outstanding issues and pull requests using Claude Fable 5 and GPT-5.5 since the changelog from rc2. The most significant addition in this release is the support for introspecting and creating compound foreign keys. This feature introduces a subtle breaking change, making it essential to incorporate it before launching the stable version of 4.0. Additionally, sqlite-utils now adheres to SQLite's conventions regarding case-insensitive column names. This adaptation touches various parts of the codebase, ensuring consistency with SQLite’s behavior. Overall, these enhancements improve sqlite-utils' functionality and usability, making it more robust for developers working with SQLite databases. The new features and changes aim to streamline database management and facilitate complex data relationships, aligning with modern development needs. As I finalize the release, I want to ensure that users are aware of the updates and the implications of the changes introduced. Hence, the rollout will be carefully managed to ensure a smooth transition to the new version. <div>
+<br /><br />Summary: I planned to release sqlite-utils 4.0 stable this weekend but needed more time to address outstanding issues and pull requests using Claude Fable 5 and GPT-5.5 since the changelog from rc2. The most significant addition in this release is the support for introspecting and creating compound foreign keys. This feature introduces a subtle breaking change, making it essential to incorporate it before launching the stable version of 4.0. Additionally, sqlite-utils now adheres to SQLite's conventions regarding case-insensitive column names. This adaptation touches various parts of the codebase, ensuring consistency with SQLite’s behavior. Overall, these enhancements improve sqlite-utils' functionality and usability, making it more robust for developers working with SQLite databases. The new features and changes aim to streamline database management and facilitate complex data relationships, aligning with modern development needs. As I finalize the release, I want to ensure that users are aware of the updates and the implications of the changes introduced. Hence, the rollout will be carefully managed to ensure a smooth transition to the new version. <div>
 <p><strong>Release:</strong> <a href="https://github.com/simonw/sqlite-utils/releases/tag/4.0rc3">sqlite-utils 4.0rc3</a></p>
         <p>I hoped to release <code>sqlite-utils 4.0</code> stable this weekend, but as I worked through the backlog of issues and PRs with a combination of Claude Fable 5 and GPT-5.5 the changelog since rc2 <a href="https://sqlite-utils.datasette.io/en/latest/changelog.html#rc3-2026-07-05">kept getting bigger</a>.</p>
 <p>The biggest new feature is support for introspecting and creating compound foreign keys - a feature that involves a subtle breaking change to <a href="https://sqlite-utils.datasette.io/en/latest/python-api.html#foreign-keys">table.foreign_keys</a> and hence needed to land for the 4.0 stable release.</p>
@@ -46,7 +933,6 @@ New Apache 2.0 licensed model from Tencent in China:</p>
         <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a>, <a href="https://simonwillison.net/tags/annotated-release-notes">annotated-release-notes</a>, <a href="https://simonwillison.net/tags/gpt">gpt</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a></p>
 ]]></content:encoded>
 <pubDate>2026-07-06T05:40:08+00:00</pubDate>
-<pubDate>2026-07-06T05:40:08+00:00</pubDate>
 </item>
 <item>
 <title>I spy</title>
@@ -55,7 +941,7 @@ New Apache 2.0 licensed model from Tencent in China:</p>
 <content:encoded><![CDATA[
 <div> Keywords: privacy, smart glasses, Netflix, A Man on the Inside, Ted Danson  
 
-<br><br>Summary: The article discusses the ethical implications of privacy in the age of advanced technology, particularly focusing on smart glasses. It reflects on how Hollywood portrays the invasion of privacy through the character Charles Nieuwendyk, played by Ted Danson in the Netflix series A Man on the Inside. Nieuwendyk is an elderly widower who finds purpose as a private investigator, equipped with Ray-Ban Meta-like smart glasses that enable him to invade the personal spaces of others in a retirement home. The narrative unfolds to highlight the various privacy violations that occur during his investigations, illustrating the moral dilemmas faced by individuals using such technology. The binge-watching experience has prompted the author to reassess the cultural problems associated with smart glasses today, emphasizing the discomfort and ethical challenges that arise when personal privacy is compromised in the name of curiosity or investigation. Overall, the show raises important questions about the implications of surveillance technology in everyday life and how it can affect interpersonal relationships and societal norms. <div>
+<br /><br />Summary: The article discusses the ethical implications of privacy in the age of advanced technology, particularly focusing on smart glasses. It reflects on how Hollywood portrays the invasion of privacy through the character Charles Nieuwendyk, played by Ted Danson in the Netflix series A Man on the Inside. Nieuwendyk is an elderly widower who finds purpose as a private investigator, equipped with Ray-Ban Meta-like smart glasses that enable him to invade the personal spaces of others in a retirement home. The narrative unfolds to highlight the various privacy violations that occur during his investigations, illustrating the moral dilemmas faced by individuals using such technology. The binge-watching experience has prompted the author to reassess the cultural problems associated with smart glasses today, emphasizing the discomfort and ethical challenges that arise when personal privacy is compromised in the name of curiosity or investigation. Overall, the show raises important questions about the implications of surveillance technology in everyday life and how it can affect interpersonal relationships and societal norms. <div>
 <figure>
 
 <img alt="Senior reviewer Victoria Song wearing Meta Ray-Ban Display glasses while looking over her shoulder. The photo is lit so there are dramatic shadows across her face." src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/10/257980_Meta_Ray-Ban_Display_AKrales_0111.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
@@ -66,7 +952,6 @@ New Apache 2.0 licensed model from Tencent in China:</p>
 <p class="wp-block-paragraph">In a nutshell, Ted Danson plays Charles Nieuwendyk, an elderly widower who finds a new purpose working for a private investigator. Armed with a pair of Ray-Ban Meta-like glasses, a voice recorder, and a smartphone, Nieuwendyk infiltrates a retirement home, and several privacy-infringing hijinks ensue as he hunts for t …</p>
 <p><a href="https://www.theverge.com/column/961707/smart-glasses-ai-wearables-meta-surveillance-privacy">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
-<pubDate>2026-07-06T12:00:00-04:00</pubDate>
 <pubDate>2026-07-06T16:02:22-04:00</pubDate>
 </item>
 <item>
@@ -76,7 +961,7 @@ New Apache 2.0 licensed model from Tencent in China:</p>
 <content:encoded><![CDATA[
 <div> Keywords: Microsoft, layoffs, employees, technology, AI  
 
-<br><br>Summary: In February 2026, Microsoft announced further layoffs, cutting approximately 4,800 employees, which accounts for about 2.1% of its workforce. This decision comes a year after the company had previously laid off a significant number of employees. The layoffs primarily affect two areas: the commercial sales business and the Xbox division. Amy Coleman, the executive vice president and chief people officer, communicated this decision in an internal memo. She cited a changing technology industry as a key factor behind the job losses. The memo emphasized the necessity for Microsoft to adjust its resources and reallocate roles to better respond to the evolving landscape, especially in light of the increasing influence of artificial intelligence (AI) on operational strategies. Overall, these layoffs reflect Microsoft's ongoing efforts to navigate the challenges and opportunities presented by rapid advancements in technology, while also realigning its workforce to better meet market demands. The company continues to adapt its operations in response to AI developments, highlighting the dynamic nature of the tech industry. <div>
+<br /><br />Summary: In February 2026, Microsoft announced further layoffs, cutting approximately 4,800 employees, which accounts for about 2.1% of its workforce. This decision comes a year after the company had previously laid off a significant number of employees. The layoffs primarily affect two areas: the commercial sales business and the Xbox division. Amy Coleman, the executive vice president and chief people officer, communicated this decision in an internal memo. She cited a changing technology industry as a key factor behind the job losses. The memo emphasized the necessity for Microsoft to adjust its resources and reallocate roles to better respond to the evolving landscape, especially in light of the increasing influence of artificial intelligence (AI) on operational strategies. Overall, these layoffs reflect Microsoft's ongoing efforts to navigate the challenges and opportunities presented by rapid advancements in technology, while also realigning its workforce to better meet market demands. The company continues to adapt its operations in response to AI developments, highlighting the dynamic nature of the tech industry. <div>
 <figure>
 
 <img alt="" src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/gettyimages-2262967364.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
@@ -87,7 +972,6 @@ New Apache 2.0 licensed model from Tencent in China:</p>
 <p class="wp-block-paragraph">In an internal memo to employees, Amy Coleman, executive vice president and Microsoft's chief people officer, blamed the job losses on a changing technology industry and the "need to adjust resources and roles and shift how we operate" to respond to how AI is impacting companies like Microsof …</p>
 <p><a href="https://www.theverge.com/news/961528/microsoft-layoffs-july-2026-sales-xbox">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
-<pubDate>2026-07-06T09:30:00-04:00</pubDate>
 <pubDate>2026-07-06T17:03:15-04:00</pubDate>
 </item>
 <item>
@@ -97,7 +981,7 @@ New Apache 2.0 licensed model from Tencent in China:</p>
 <content:encoded><![CDATA[
 <div> Keywords: OpenAI, Sam Altman, AI wealth, equity stake, safety net
 
-<br><br>Summary: OpenAI CEO Sam Altman has proposed that Americans share in the wealth generated by AI, with recent discussions including giving the U.S. government a 5% stake in OpenAI. This initiative aims to provide compensation for creators whose works have contributed to AI training and address fears that AI could disrupt the labor market. Altman's previous aim was a broader tax on profitable companies to fund annual payments to citizens. The current 5% stake in OpenAI, valued at approximately $852 billion, could translate to about $320 per U.S. household, if distributed evenly. However, the funds might instead be managed as a wealth fund for greater long-term dividends. For tech companies, promising payouts could help improve public perception amid rising concerns about AI's impact. Additionally, aligning with the Trump administration may offer strategic advantages, such as favorable regulatory conditions. Despite these discussions, a concrete policy is still lacking, and Altman’s proposals appear more illustrative of ongoing debates about AI's future rather than actionable plans. Ultimately, Altman's vision emphasizes AI’s potential for long-term wealth generation, even as questions about equitable distribution remain unresolved. <div>
+<br /><br />Summary: OpenAI CEO Sam Altman has proposed that Americans share in the wealth generated by AI, with recent discussions including giving the U.S. government a 5% stake in OpenAI. This initiative aims to provide compensation for creators whose works have contributed to AI training and address fears that AI could disrupt the labor market. Altman's previous aim was a broader tax on profitable companies to fund annual payments to citizens. The current 5% stake in OpenAI, valued at approximately $852 billion, could translate to about $320 per U.S. household, if distributed evenly. However, the funds might instead be managed as a wealth fund for greater long-term dividends. For tech companies, promising payouts could help improve public perception amid rising concerns about AI's impact. Additionally, aligning with the Trump administration may offer strategic advantages, such as favorable regulatory conditions. Despite these discussions, a concrete policy is still lacking, and Altman’s proposals appear more illustrative of ongoing debates about AI's future rather than actionable plans. Ultimately, Altman's vision emphasizes AI’s potential for long-term wealth generation, even as questions about equitable distribution remain unresolved. <div>
 <p><em>This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, </em><a href="https://forms.technologyreview.com/newsletters/ai-demystified-the-algorithm/"><em>sign up here</em></a><em>.</em></p>
 
 
@@ -133,7 +1017,6 @@ New Apache 2.0 licensed model from Tencent in China:</p>
 <p>But what these plans <em>do</em> reveal is just how up for debate the future of AI still is. Altman drew inspiration for his plan from the Alaska Permanent Fund, which was set up in the 1970s to give Alaskans a share in oil profits. The idea was based on two premises: that oil is a shared resource, and that eventually it will run out. Altman seems happy to concede the first claim about AI. But he’d balk at the second, having <a href="https://moores.samaltman.com/">promised</a> that AI will generate extraordinary wealth for decades to come. Whether Americans ever receive a check is beside the point; the proposal’s real purpose may be to convince them that the AI boom will be large enough to share.</p>
 ]]></content:encoded>
 <pubDate>Mon, 06 Jul 2026 18:00:00 +0000</pubDate>
-<pubDate>Mon, 06 Jul 2026 18:00:00 +0000</pubDate>
 </item>
 <item>
 <title>Secret Claude tracker shocks users after Anthropic’s anti-surveillance stance</title>
@@ -142,13 +1025,12 @@ New Apache 2.0 licensed model from Tencent in China:</p>
 <content:encoded><![CDATA[
 <div> Keywords: Anthropic, Claude Code, tracker, user trust, privacy
 
-<br><br>Summary: Anthropic has quickly removed a tracker embedded in Claude Code that was secretly monitoring users in China after it was discovered by a security researcher known as “Thereallo.” The researcher found that the AI firm employed “prompt steganography” to conceal code tracking Chinese users, which communicated information back to Anthropic without user detection. This hidden code, while not malicious, flagged users’ time zones, proxies, and potential connections to Chinese AI labs, raising significant concerns about privacy. Anthropic engineer Thariq Shihipar confirmed that the tracker was implemented as an "experiment" in March with the intention of preventing account abuse from unauthorized resellers and protecting against distillation. There have been reports of unauthorized sellers offering access to Claude Code models at drastically reduced prices, undermining the service's worth. The situation has been characterized as a serious breach of user trust due to the stealthy approach taken by Anthropic, leading to criticism of their privacy handling practices. The incident highlights the ongoing challenges of security and ethical behavior within the AI industry. <div>
+<br /><br />Summary: Anthropic has quickly removed a tracker embedded in Claude Code that was secretly monitoring users in China after it was discovered by a security researcher known as “Thereallo.” The researcher found that the AI firm employed “prompt steganography” to conceal code tracking Chinese users, which communicated information back to Anthropic without user detection. This hidden code, while not malicious, flagged users’ time zones, proxies, and potential connections to Chinese AI labs, raising significant concerns about privacy. Anthropic engineer Thariq Shihipar confirmed that the tracker was implemented as an "experiment" in March with the intention of preventing account abuse from unauthorized resellers and protecting against distillation. There have been reports of unauthorized sellers offering access to Claude Code models at drastically reduced prices, undermining the service's worth. The situation has been characterized as a serious breach of user trust due to the stealthy approach taken by Anthropic, leading to criticism of their privacy handling practices. The incident highlights the ongoing challenges of security and ethical behavior within the AI industry. <div>
 <p>Anthropic quickly removed a tracker secretly monitoring Claude Code users in China after a security researcher <a href="https://thereallo.dev/blog/claude-code-prompt-steganography">exposed</a> the hidden code and condemned the spyware-like tracking as a “serious breach of user trust.”</p>
 <p>Last week, a web developer known as “Thereallo” was researching privacy issues in Claude Code and was shocked to find that the AI firm was using “prompt steganography” to hide code that tracks Chinese users “in plain sight.” This code wasn’t malicious, but it was sending information to Anthropic that most users wouldn’t detect, relying on shorthand markers to quietly flag users’ timezone, proxy, and potential connection to Chinese AI labs that <a href="https://arstechnica.com/tech-policy/2026/06/anthropic-claims-alibaba-defied-trump-to-attack-claude-and-steal-capabilities/">Anthropic has accused of distillation attacks</a>.</p>
 <p>On X, Anthropic engineer Thariq Shihipar confirmed that the tracker was added to Claude Code as an “experiment” in March. According to Shihipar, the code “was meant to prevent account abuse from unauthorized resellers and protect against distillation.” Regarding the former, <a href="https://www.washingtonpost.com/national-security/2026/07/06/why-anthropic-alleges-chinese-firms-are-distilling-knowledge-claude/">The Washington Post found</a> unauthorized retailers have sold access to free models for $1 a month, and pro subscriptions that can cost $100 monthly sell for "as little as $12."</p><p><a href="https://arstechnica.com/tech-policy/2026/07/anthropic-outed-for-claude-tracker-that-secretly-monitored-chinese-users/">Read full article</a></p>
 <p><a href="https://arstechnica.com/tech-policy/2026/07/anthropic-outed-for-claude-tracker-that-secretly-monitored-chinese-users/#comments">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 16:44:18 +0000</pubDate>
 <pubDate>Mon, 06 Jul 2026 16:44:18 +0000</pubDate>
 </item>
 <item>
@@ -158,13 +1040,12 @@ New Apache 2.0 licensed model from Tencent in China:</p>
 <content:encoded><![CDATA[
 <div> Keywords: regulators, AI, financial services, Sheldon Mills, FCA
 
-<br><br>Summary: Sheldon Mills, a senior official at the Financial Conduct Authority (FCA), has highlighted the urgent need for regulators to adapt to the rapid advancements in artificial intelligence (AI) within financial services. As millions of people increasingly rely on AI technologies like ChatGPT and Claude for personal finance decisions, Mills emphasizes that the FCA needs enhanced powers to effectively oversee this growth. He calls on UK authorities to evaluate whether such large language models should fall under regulatory frameworks. Ahead of the release of an FCA-commissioned report detailing the implications of AI in finance, Mills stresses the necessity for regulators to integrate AI tools themselves to keep pace with the unprecedented speed and scale of change in the industry. This approach is essential for effectively monitoring, detecting, and addressing the risks associated with AI usage in the financial sector. Without these adaptations, regulators may struggle to safeguard consumer interests and maintain market integrity amidst the transformative effects of AI technologies. <div>
+<br /><br />Summary: Sheldon Mills, a senior official at the Financial Conduct Authority (FCA), has highlighted the urgent need for regulators to adapt to the rapid advancements in artificial intelligence (AI) within financial services. As millions of people increasingly rely on AI technologies like ChatGPT and Claude for personal finance decisions, Mills emphasizes that the FCA needs enhanced powers to effectively oversee this growth. He calls on UK authorities to evaluate whether such large language models should fall under regulatory frameworks. Ahead of the release of an FCA-commissioned report detailing the implications of AI in finance, Mills stresses the necessity for regulators to integrate AI tools themselves to keep pace with the unprecedented speed and scale of change in the industry. This approach is essential for effectively monitoring, detecting, and addressing the risks associated with AI usage in the financial sector. Without these adaptations, regulators may struggle to safeguard consumer interests and maintain market integrity amidst the transformative effects of AI technologies. <div>
 <p>Regulators are in an “arms race” to keep up with the use of artificial intelligence in financial services, a senior UK official has warned, with millions of people using the technology to help them make personal finance decisions.</p>
 <p>Sheldon Mills, an executive director at the Financial Conduct Authority, told the FT the watchdog would need greater powers to stay on top of the rapid growth of AI and urged UK authorities to review whether the use of ChatGPT, Claude, Gemini, and other large language models should be subject to their rules.</p>
 <p>Speaking ahead of the publication on Monday of an FCA-commissioned report he has written on the impact of AI in financial services, Mills said regulators in the area would have to embrace AI themselves to keep up with the “speed, pace, and scale of change” the technology is bringing to the sector and to help “monitor, detect, and tackle the risks.”</p><p><a href="https://arstechnica.com/ai/2026/07/uk-regulator-warns-of-arms-race-to-keep-up-with-ai-use-in-financial-services/">Read full article</a></p>
 <p><a href="https://arstechnica.com/ai/2026/07/uk-regulator-warns-of-arms-race-to-keep-up-with-ai-use-in-financial-services/#comments">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 14:17:42 +0000</pubDate>
 <pubDate>Mon, 06 Jul 2026 14:17:42 +0000</pubDate>
 </item>
 <item>
@@ -174,7 +1055,7 @@ New Apache 2.0 licensed model from Tencent in China:</p>
 <content:encoded><![CDATA[
 <div> Keywords: real-time search, structured data, trusted, agents, developers 
 
-<br><br>Summary: The article discusses the importance of real-time structured search in various applications, emphasizing its reliability for both agents and developers. It highlights how this type of search enables quick and accurate retrieval of information from large datasets, which is crucial in fields such as real estate, IT, and customer service. The structured nature of the data allows for better indexing and querying, making it easier for agents and developers to access relevant information efficiently. The article also touches upon the technology behind real-time search, including advancements in algorithms and data management practices. This tech-savvy approach enhances user experience, helping professionals to make informed decisions quickly. Furthermore, it notes the growing demand for such tools in the digital landscape as organizations seek to leverage data for strategic advantage. The combination of trustworthiness and innovative technology is key to the adoption of real-time structured search solutions, ultimately contributing to improved operational effectiveness and better service delivery across various industries. <div>
+<br /><br />Summary: The article discusses the importance of real-time structured search in various applications, emphasizing its reliability for both agents and developers. It highlights how this type of search enables quick and accurate retrieval of information from large datasets, which is crucial in fields such as real estate, IT, and customer service. The structured nature of the data allows for better indexing and querying, making it easier for agents and developers to access relevant information efficiently. The article also touches upon the technology behind real-time search, including advancements in algorithms and data management practices. This tech-savvy approach enhances user experience, helping professionals to make informed decisions quickly. Furthermore, it notes the growing demand for such tools in the digital landscape as organizations seek to leverage data for strategic advantage. The combination of trustworthiness and innovative technology is key to the adoption of real-time structured search solutions, ultimately contributing to improved operational effectiveness and better service delivery across various industries. <div>
 <p>
             Real-time structured search trusted by agents and developers
           </p>
@@ -184,7 +1065,6 @@ New Apache 2.0 licensed model from Tencent in China:</p>
             <a href="https://www.producthunt.com/r/p/1185300?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-07-01T01:58:38-07:00</pubDate>
 <pubDate>2026-07-06T21:08:41-07:00</pubDate>
 </item>
 <item>
@@ -194,7 +1074,7 @@ New Apache 2.0 licensed model from Tencent in China:</p>
 <content:encoded><![CDATA[
 <div> Keywords: Private AI, autocomplete, Mac, productivity, applications
 
-<br><br>Summary: 
+<br /><br />Summary: 
 The article discusses the integration of Private AI technology for autocompletion across various applications on Mac devices. This innovative feature enhances user productivity by streamlining typing tasks, allowing for faster document creation and message composition. By leveraging machine learning, the Private AI system learns individual writing styles and preferences to provide personalized suggestions that align with users' needs. This technology not only saves time but also reduces the cognitive load associated with repetitive typing tasks. Privacy is a crucial aspect of this application; it ensures that user data remains confidential and is processed locally without compromising personal information. The implementation of Private AI can be beneficial for a range of applications, including email clients, word processors, and messaging apps, making everyday tasks more efficient. Additionally, the adaptability of this technology means it can continually improve based on user interactions, leading to increasingly accurate and relevant completions over time. Overall, the introduction of Private AI autocomplete features promises to significantly enhance the user experience on Mac devices while prioritizing privacy and data security. <div>
 <p>
             Private AI autocomplete for every app on your Mac
@@ -205,7 +1085,6 @@ The article discusses the integration of Private AI technology for autocompletio
             <a href="https://www.producthunt.com/r/p/1186655?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-07-02T14:39:18-07:00</pubDate>
 <pubDate>2026-07-06T21:01:52-07:00</pubDate>
 </item>
 <item>
@@ -215,7 +1094,7 @@ The article discusses the integration of Private AI technology for autocompletio
 <content:encoded><![CDATA[
 <div> **Keywords:** Claude Code, Codex, CLI agent, iPhone, driven  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 Claude Code and Codex are advanced code generation tools that can assist developers in creating software applications more efficiently. These tools utilize AI to understand and generate code snippets, making programming more accessible. A Command Line Interface (CLI) agent allows users to interact with these tools through a text-based interface, providing an efficient way to run commands and retrieve outputs. The availability of CLI agents on mobile devices, such as the iPhone, allows users to harness these powerful coding tools anywhere, enhancing productivity. With mobile innovation, developers can now access coding assistance on the go, making it particularly useful for quick coding tasks or debugging. The seamless integration of these technologies signifies a shift towards more mobile-focused development environments and could lead to more streamlined workflows. As AI continues to evolve, tools like Claude Code and Codex will likely improve further, offering more sophisticated features and capabilities to enhance the overall development process. In summary, the combination of AI-driven code tools, CLI agents, and mobile technology is setting a new standard in software development, fostering greater flexibility and efficiency for developers around the world. <div>
 <p>
             Claude Code, Codex, any CLI agent. Driven from your iPhone
@@ -226,7 +1105,6 @@ Claude Code and Codex are advanced code generation tools that can assist develop
             <a href="https://www.producthunt.com/r/p/1188554?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-07-05T06:39:06-07:00</pubDate>
 <pubDate>2026-07-06T21:05:32-07:00</pubDate>
 </item>
 <item>
@@ -234,7 +1112,6 @@ Claude Code and Codex are advanced code generation tools that can assist develop
 <link>https://www.producthunt.com/products/octolens-ai</link>
 <guid>https://www.producthunt.com/products/octolens-ai</guid>
 <content:encoded><![CDATA[
-
 <p>
             Social listening for the agent era
           </p>
@@ -244,7 +1121,6 @@ Claude Code and Codex are advanced code generation tools that can assist develop
             <a href="https://www.producthunt.com/r/p/1183905?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-06-29T09:11:04-07:00</pubDate>
 <pubDate>2026-07-06T21:04:53-07:00</pubDate>
 </item>
 <item>
@@ -252,7 +1128,6 @@ Claude Code and Codex are advanced code generation tools that can assist develop
 <link>https://www.producthunt.com/products/edgee</link>
 <guid>https://www.producthunt.com/products/edgee</guid>
 <content:encoded><![CDATA[
-
 <p>
             Fewer tokens, same context, 50% cost reduction
           </p>
@@ -262,7 +1137,6 @@ Claude Code and Codex are advanced code generation tools that can assist develop
             <a href="https://www.producthunt.com/r/p/1186793?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-07-02T21:38:17-07:00</pubDate>
 <pubDate>2026-07-06T20:33:06-07:00</pubDate>
 </item>
 <item>
@@ -270,7 +1144,6 @@ Claude Code and Codex are advanced code generation tools that can assist develop
 <link>https://www.producthunt.com/products/airkaren</link>
 <guid>https://www.producthunt.com/products/airkaren</guid>
 <content:encoded><![CDATA[
-
 <p>
             AI that fights customer service for you
           </p>
@@ -280,7 +1153,6 @@ Claude Code and Codex are advanced code generation tools that can assist develop
             <a href="https://www.producthunt.com/r/p/1187340?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-07-03T10:56:07-07:00</pubDate>
 <pubDate>2026-07-06T21:05:31-07:00</pubDate>
 </item>
 <item>
@@ -288,7 +1160,6 @@ Claude Code and Codex are advanced code generation tools that can assist develop
 <link>https://www.producthunt.com/products/mozaik-4</link>
 <guid>https://www.producthunt.com/products/mozaik-4</guid>
 <content:encoded><![CDATA[
-
 <p>
             TypeScript runtime for self-organizing AI agents
           </p>
@@ -298,7 +1169,6 @@ Claude Code and Codex are advanced code generation tools that can assist develop
             <a href="https://www.producthunt.com/r/p/1188511?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-07-05T05:31:38-07:00</pubDate>
 <pubDate>2026-07-06T21:05:54-07:00</pubDate>
 </item>
 <item>
@@ -306,7 +1176,6 @@ Claude Code and Codex are advanced code generation tools that can assist develop
 <link>https://www.producthunt.com/products/nixmac</link>
 <guid>https://www.producthunt.com/products/nixmac</guid>
 <content:encoded><![CDATA[
-
 <p>
             Nix-darwin that speaks plain English
           </p>
@@ -316,10 +1185,8 @@ Claude Code and Codex are advanced code generation tools that can assist develop
             <a href="https://www.producthunt.com/r/p/1188550?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-07-05T06:33:34-07:00</pubDate>
 <pubDate>2026-07-06T21:04:45-07:00</pubDate>
 </item>
-
 <item>
 <title>Some of the nation’s rich are letting AI teach their kids</title>
 <link>https://www.theverge.com/ai-artificial-intelligence/961505/wealthy-ai-schools-alpha-forge-prep</link>
