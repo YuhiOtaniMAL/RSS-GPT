@@ -3,7 +3,451 @@
 <channel>
 <title>ai</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/ai.xml</link>
-<lastBuildDate>Mon, 13 Jul 2026 03:42:31 +0000</lastBuildDate>
+<lastBuildDate>Tue, 14 Jul 2026 03:18:35 +0000</lastBuildDate>
+
+<item>
+<title>Using uvx in GitHub Actions in a cache-friendly way</title>
+<link>https://simonwillison.net/2026/Jul/14/uvx-github-actions-cache/</link>
+<guid>https://simonwillison.net/2026/Jul/14/uvx-github-actions-cache/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: GitHub Actions, cache, uvx, environment variable, Python tools
+
+<br><br>Summary:  
+The author shares a cache-friendly approach for using the `uvx tool-name` in GitHub Actions workflows. By setting an environment variable `UV_EXCLUDE_NEWER: "2026-07-12"` at the beginning of the workflow, users can greatly enhance cache efficiency. This particular date serves as a reference point for the version resolution of the `uvx tool-name` commands, ensuring that the most recent version available as of that date is used. This setup not only reduces unnecessary downloads from PyPI during each workflow run but also facilitates easier cache maintenance. To upgrade tools, the user simply needs to update the date in the `UV_EXCLUDE_NEWER` variable. This method significantly optimizes the usage of Python tools within GitHub Actions, minimizing the frequent hits to PyPI for downloading fresh copies of tools and their dependencies. Overall, this technique leverages strategic version management to improve workflow performance and resource efficiency, making it an effective solution for developers looking to enhance their CI/CD processes on GitHub. <div>
+<p><strong>TIL:</strong> <a href="https://til.simonwillison.net/github-actions/uvx-github-actions-cache">Using uvx in GitHub Actions in a cache-friendly way</a></p>
+        <p>I finally found a cache-friendly recipe for using <code>uvx tool-name</code> in GitHub Actions workflows that I like.</p>
+<p>The trick is setting a <code>UV_EXCLUDE_NEWER: "2026-07-12"</code> environment variable at the start of the workflow and then using that as part of the GitHub Actions cache key. This means any <code>uvx tool-name</code> commands will resolve to the most recent version as-of that date, and you can bust the cache and upgrade the tools by bumping the date in the future.</p>
+<p>My goal here is to use Python tools in GitHub Actions without every run of the workflow hitting PyPI to download a fresh copy of the tool and its dependencies.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/packaging">packaging</a>, <a href="https://simonwillison.net/tags/pypi">pypi</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/github-actions">github-actions</a>, <a href="https://simonwillison.net/tags/uv">uv</a></p>
+]]></content:encoded>
+<pubDate>2026-07-14T00:56:20+00:00</pubDate>
+<pubDate>2026-07-14T00:56:20+00:00</pubDate>
+</item>
+<item>
+<title>DOOMQL</title>
+<link>https://simonwillison.net/2026/Jul/13/doomql/</link>
+<guid>https://simonwillison.net/2026/Jul/13/doomql/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: DOOMQL, SQLite, game engine, Python, Datasette
+
+<br><br>Summary:  
+DOOMQL explores an unconventional concept by treating SQLite as a game engine rather than simply a database for game data. The project resulted in a unique, Doom-like game where SQL governs movement, collision, enemies, combat, progression, and pixel rendering on-screen. 
+
+Implemented as a Python terminal script, users can start the game by cloning the repository and running a specific command. This process generates a SQLite database that stores the game state in the /tmp/doomql/.doomql/doomql.sqlite directory. Players can visualize and explore this database using Datasette, a tool that provides a web interface for querying and analyzing SQLite databases.
+
+To enhance player experience, a custom HTML+JavaScript app was created that displays the current screen state using SQL queries to visualize the frame pixels in real time. Additionally, a minimap was incorporated into the app to offer a comprehensive view of the game environment. Players are encouraged to create their own Datasette instance following specified steps to experience the interactive features and modifications firsthand. <div>
+<p><strong><a href="https://github.com/petergpt/doomql">DOOMQL</a></strong></p>
+Peter Gostev built this using GPT-5.6 Sol. This is a <em>lot</em> of fun: </p>
+<blockquote>
+<p>DOOMQL started with a deliberately unreasonable question: what if SQLite were the game engine, not merely the place where a game stores data?</p>
+<p>The result is a small, original Doom-like game in which SQL owns movement, collision, enemies, combat, progression and every RGB pixel on screen.</p>
+</blockquote>
+<p>It's implemented as a Python terminal script - I tried it out like this:</p>
+<pre><code>cd /tmp
+git clone https://github.com/petergpt/doomql
+cd doomql
+uv run host/doomql.py
+</code></pre>
+<p><img alt="Screenshot of a macOS terminal window titled &quot;doomql — python3.14 ◂ uv run host/doomql.py — 134×31&quot; showing a retro Doom-style game rendered as text-mode pixel art. The scene is a pixelated first-person corridor with gray paneled walls, dark red doors on the far left and right, a floating cyan-and-gold coin pickup on the right side, a white crosshair near the center, and a dark weapon barrel rising from the bottom center. A status bar below the scene reads &quot;HP 100/100 AMMO 037 SCORE 00225 INDEX MISSING TICK 0028450&quot;, followed by an orange line &quot;FIND THE INDEX TOKEN&quot; and a cyan controls line &quot;WASD MOVE J/L OR ARROWS TURN SPACE FIRE E USE P PAUSE CTRL-C EXIT&quot;." src="https://static.simonwillison.net/static/2026/doomql-window.png" /></p>
+<p>Here's <a href="https://github.com/petergpt/doomql/blob/main/sql/003_render.sql">the huge SQL query</a> that implements a full ray tracer in SQLite using a recursive CTE.</p>
+<p>Running the above script creates a <code>/tmp/doomql/.doomql/doomql.sqlite</code> SQLite database, which you can explore using Datasette like this:</p>
+<pre><code>uvx --prerelease=allow  --with datasette-apps datasette \
+  /tmp/doomql/.doomql/doomql.sqlite \
+  -p 4444 --root --secret 1 --internal internal.db
+</code></pre>
+<p>The <code>--with datasette-apps</code> option installs the new <a href="https://simonwillison.net/2026/Jun/18/datasette-apps/">Datasette Apps</a> plugin, which supports creating custom HTML+JavaScript apps that can run SQL queries directly within the Datasette interface.</p>
+<p>I created a new app, pasted the copy-paste prompt into Claude chat (Fable 5) <a href="https://claude.ai/share/c793280c-2ef1-4555-a7c2-31281abfdf78">and told it</a>:</p>
+<blockquote>
+<p><code>Build an app that displays the current state of the screen using the frame_pixels view with its x, y, r, g, b columns. have it refresh once a second.</code></p>
+</blockquote>
+<p>This got me a working HTML+JavaScript app inside Datasette that could reflect the current state while I played the game in my terminal. Then I added:</p>
+<blockquote>
+<p><code>add a minimap</code></p>
+</blockquote>
+<p>And now my Datasette App looks like this:</p>
+<p><img alt="Screenshot of a dark-themed web app running a retro Doom-style game rendered from SQL queries. The page header reads &quot;DOOMQL&quot; with buttons &quot;All apps&quot;, &quot;Edit app&quot;, &quot;Pin&quot;, and &quot;Full screen&quot;. Inside the game panel, the title &quot;DOOMQL&quot; sits above the subtitle &quot;auto-refreshing once a second · frame and tactical map straight from SQL&quot;. The left side shows a pixelated first-person corridor view with gray walls, dark red doors, a floating cyan-and-gold coin pickup, a white crosshair, and a weapon barrel at bottom center. A status bar below reads &quot;HP 100/100 AMMO 037 SCORE 00225 INDEX MISSING TICK 0027847&quot;. On the right, a panel titled &quot;TACTICAL MAP&quot; shows a top-down grid map with a player triangle, a red enemy circle, yellow pickup dots, red wall markers, and a green exit square, with a legend reading &quot;you&quot;, &quot;enemy&quot;, &quot;pickup&quot;, &quot;locked door&quot;, &quot;door&quot;, &quot;exit&quot;. Below the game view, an orange banner reads &quot;FIND THE INDEX TOKEN&quot;, followed by the cyan line &quot;READ-ONLY VIEWER · SELECT x, y, r, g, b FROM frame_pixels&quot;. At the bottom, a green &quot;RUNNING&quot; badge appears beside the stats &quot;160×54 · 8,640 pixels · 3 hostiles · query 89 ms · refreshing every 1 s&quot;." src="https://static.simonwillison.net/static/2026/doomql-datasette-app.png" /></p>
+<p>Here's <a href="https://gist.github.com/simonw/7c78184476fccd4b70b02f7f9048dffa">the HTML app code</a> - paste that into your own Datasette instance (using the <code>uvx --with datasette-apps</code> recipe from above) to try it yourself.
+
+    <p><small></small>Via <a href="https://twitter.com/petergostev/status/2076692164310884468">@petergostev</a></small></p>
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/games">games</a>, <a href="https://simonwillison.net/tags/sql">sql</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/gpt">gpt</a>, <a href="https://simonwillison.net/tags/datasette-apps">datasette-apps</a></p>
+]]></content:encoded>
+<pubDate>2026-07-13T22:34:41+00:00</pubDate>
+<pubDate>2026-07-13T22:34:41+00:00</pubDate>
+</item>
+<item>
+<title>datasette code-frequency chart on GitHub</title>
+<link>https://simonwillison.net/2026/Jul/13/datasette-code-frequency/</link>
+<guid>https://simonwillison.net/2026/Jul/13/datasette-code-frequency/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: coding agents, Opus 4.5, GitHub chart, code changes, open source project
+
+<br><br>Summary: The user explored the influence of coding agents and Opus 4.5 class models on their own coding outputs. They specifically examined a GitHub chart depicting the frequency of code changes made to their open-source project. This chart revealed significant spikes in activity, particularly at the end of the observed period. The timing of the spike in activity was noted to coincide with releases of several advanced AI models, including Opus 4.8, GPT-5.5, Fable 5, and GPT-5.6 Sol. Through this analysis, the user aimed to illustrate the impact that advancements in coding technology and intelligence may have on their productivity and code development. Ultimately, this investigation hints at the potential benefits that these AI tools could bring to developers working on similar projects, suggesting an improvement in coding efficiency and quality attributed to the latest updates in AI models. The findings indicate a correlation between the introduction of advanced coding agents and increased development activity, emphasizing the growing importance of AI in software development environments. <div>
+<p><strong><a href="https://github.com/simonw/datasette/graphs/code-frequency">datasette code-frequency chart on GitHub</a></strong></p>
+Out of curiosity I decided to see if I could find a useful illustration of the impact of coding agents and Opus 4.5 class models on my own output. The best I've found so far is this GitHub chart of frequency of code changes to my <a href="https://datasette.io/">Datasette</a> open source project:</p>
+<p><img alt="Screenshot of a GitHub &quot;Code frequency&quot; bar chart, subtitled &quot;Additions and deletions per week&quot;, showing green addition bars and red deletion bars per week from 2018 through 2026, with a y-axis labeled Frequency ranging from -20k to 30k. Activity comes in sporadic bursts: the largest spike is 37,022 additions with -9,528 deletions in 2026, followed by 14,638 additions with -6,584 deletions in late 2025, 15,998 additions in early 2018, and a standout deletion spike of -10,658 in mid-2020, with quieter periods of smaller weekly changes in between." src="https://static.simonwillison.net/static/2026/datasette-code-frequency.png" /></p>
+<p>The big spike in activity at the end aligns with Opus 4.8, GPT-5.5, Fable 5 and GPT-5.6 Sol.
+
+
+    <p>Tags: <a href="https://simonwillison.net/tags/github">github</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a></p>
+]]></content:encoded>
+<pubDate>2026-07-13T21:45:27+00:00</pubDate>
+<pubDate>2026-07-13T21:45:27+00:00</pubDate>
+</item>
+<item>
+<title>[AINews] Codex usage up >10x in 6 months to 7M users, +1M in the past ~day; did Codex overtake Claude Code??</title>
+<link>https://www.latent.space/p/ainews-codex-usage-up-10x-in-6-months</link>
+<guid>https://www.latent.space/p/ainews-codex-usage-up-10x-in-6-months</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Allen, user growth, Codex, privacy, AI News
+
+<br><br>Summary: The article begins with congratulations to Allen but notes a quiet day in AI news, highlighting user growth across platforms. A tweet revealed that a service gained 6 million users in just 48 hours, followed by a report of 7 million users shortly after. The growth of Claude Code is compared to Codex, suggesting Codex has experienced a similar 10x user growth year to date. There are ongoing discussions about the importance of harness design and its impact on coding agents' success. OpenAI addressed usage concerns of Codex/Sol, implementing several fixes to improve efficiency and reporting strong user capabilities. The response to a Grok Build code-upload incident emphasized privacy, raising concerns about default data retention policies. The conversation around open versus closed models is heating up, linking back to user control over the human-AI loop. The importance of continual learning and recent advancements in modeling systems are also discussed, with emerging research suggesting LLMs may benefit from "sleep" phases for better memory consolidation. The piece wraps up by summarizing significant developments in benchmarks and research directions within the AI landscape. <div>
+<p>Congrats to Allen for the <a href="https://www.youtube.com/watch?v=jhpmMTus5a0">next episode of the Latent Space Food show with Engram CEO Dan Biderman today</a>, and to <a href="https://www.youtube.com/watch?v=V-EDrhIhHzQ&amp;t=1s">the Prime Intellect folks on their 1B valuation, $100M ARR, and verifiers v1</a>.</p><p>Today was pretty quiet and people are still deeply digesting <a href="https://www.latent.space/p/ainews-not-much-happened-today-f5c">last week&#8217;s multiple frontier model launches</a>. We were going to write &#8220;not much happened today&#8221;, but we also have <a href="https://www.latent.space/p/ainews-sci-fi-with-a-touch-of-madness?utm_source=publication-search">a policy of updating you repeatedly on outlier trends</a> that you should really be on top of. In reviewing the Reddit AINews recaps below surfaced <a href="https://www.reddit.com/r/ClaudeCode/comments/1uuqz4l/anthropic_i_think_you_really_need_to_react_youre/">this post</a>, we saw a tweet we had missed before - </p><div class="twitter-embed"></div><p><a href="https://www.latent.space/p/ainews-openai-launches-gpt-56-solterraluna">GPT 5.6 was launched on July 9</a>. </p><p>This tweet on July 12 says they hit 6M users in the prior 48 hours (Jul 10-12).</p><p>Then 24.5 hours later Tibo reports 7M users&#8230;</p><div class="twitter-embed"></div><p>&#8230;oddly coinciding with <a href="https://x.com/claudeai/status/2076351399999557669?s=20">a surprise extension of Claude Fable&#8217;s subscription status</a> (we have of course no idea if the two are related, but the permanently online conspiracy theorists are of course making a connection).</p><p>We of course recall Fidji&#8217;s <a href="https://x.com/fidjissimo/status/2033537381907710092">March disclosure of 2M Codex users</a>, which allows us to update our <a href="https://www.youtube.com/watch?v=5N33E9tC400&amp;t=401s">AIE NYC 2025</a> chart (<a href="http://ai.engineer/nyc">AIE NYC 2026</a> is next!):</p><div class="captioned-image-container"><figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!cqvt!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F09c078c3-d47d-4ab1-91e5-b09ad5d082dd_1388x902.png" target="_blank"><div class="image2-inset"><source type="image/webp" /><img alt="" class="sizing-large" height="779.8270893371758" src="https://substackcdn.com/image/fetch/$s_!cqvt!,w_2400,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F09c078c3-d47d-4ab1-91e5-b09ad5d082dd_1388x902.png" width="1200" /><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image" tabindex="0" type="button"><svg fill="none" height="20" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><title></title><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></a><figcaption class="image-caption"></figcaption></figure></div><p>Comparatively, the last update we got about Claude Code is the <a href="https://www.anthropic.com/news/anthropic-raises-30-billion-series-g-funding-380-billion-post-money-valuation">roughly 2M users and $2.5B ARR in Feb</a> (&#8220;The number of weekly active Claude Code users has also doubled since January 1 [six weeks ago]."). Now we have a sense of where Codex started the year (Fidji <a href="https://x.com/fidjissimo/status/2033537381907710092">puts the Jan 1 number at around 550k-700k users</a>), we can reasonably conclude that Codex has followed a similar trajectory and is now around 10x user growth year to date.</p><p>The charitable interpretation on Claude Code&#8217;s comparative silence on reporting, of course, is that <a href="https://www.latent.space/p/ainews-claude-tag-multiplayer-proactive?utm_source=publication-search">they moved the bulk of coding to Claude Tag months ago and are now focusing users there</a>, which will have different/hard to compare usage statistics given the different accessibility of a Slackbot vs a CLI tool. </p><p>But 10x growth in 6 months is an impressive number to beat nonetheless.</p><p></p><blockquote><p>AI News for 7/11/2026-7/13/2026. We checked 12 subreddits, <a href="https://twitter.com/i/lists/1585430245762441216">544 Twitters</a> and no further Discords. <a href="https://news.smol.ai/">AINews&#8217; website</a> lets you search all past issues. As a reminder, <a href="https://www.latent.space/p/2026">AINews is now a section of Latent Space</a>. You can <a href="https://support.substack.com/hc/en-us/articles/8914938285204-How-do-I-subscribe-to-or-unsubscribe-from-a-section-on-Substack">opt in/out</a> of email frequencies!</p></blockquote><div><hr /></div><h1><strong>AI Twitter Recap</strong></h1><p><strong>Agent RL Infrastructure: Prime Intellect&#8217;s Verifiers v1 and Long-Horizon Rollouts</strong></p><ul><li><p><strong>Prime Intellect&#8217;s verifiers v1</strong>: <a href="https://x.com/PrimeIntellect/status/2076447247693402301">Prime Intellect</a> released <strong>verifiers v1</strong>, a substantial redesign of its environment stack for <strong>agentic RL and evals</strong>. The key abstraction splits environments into a <strong>taskset, harness, and runtime</strong>, explicitly supporting &#8220;bring your own harness&#8221; workflows for coding and computer-use agents across heterogeneous execution setups, as highlighted by <a href="https://x.com/johannes_hage/status/2076447852528889939">Johannes Hage</a> and in a <a href="https://x.com/johannes_hage/status/2076449075621462457">follow-up deep dive</a>. The release was framed by team members as months of infra modernization work with major efficiency gains, including richer commentary from <a href="https://x.com/willccbb/status/2076449433483616346">willccbb</a>, <a href="https://x.com/mikasenghaas/status/2076507323561021779">mikasenghaas</a>, and <a href="https://x.com/xeophon/status/2076509926256422947">xeophon</a>.</p></li><li><p><strong>Why it matters technically</strong>: one of the most important underlying changes is that rollout traces are now stored as <strong>message DAGs</strong>, so each message is stored once instead of repeatedly copied into full histories; that shifts trace growth from <strong>O(n&#178;)</strong> to <strong>O(n)</strong> in turn count, making long-horizon multimodal rollouts and router replay much more practical, per <a href="https://x.com/PrimeIntellect/status/2076447253938786648">Prime Intellect</a>. The team also claimed a concrete training configuration: a <strong>100B reasoning model</strong>, on <strong>40-turn SWE agent tasks</strong>, in a user-supplied coding harness, for <strong>1000 RL steps</strong>, using <strong>6 H200 nodes</strong> in <strong>under 2 days</strong> (<a href="https://x.com/willccbb/status/2076451043504967783">willccbb</a>). That claim was reinforced by ecosystem support from <a href="https://x.com/vllm_project/status/2076528386927997249">vLLM</a>, which noted verifiers&#8217; rollout path runs on vLLM with exact token IDs/logprobs to avoid tokenization drift between serving and training.</p></li></ul><p><strong>Coding Agents, Harness Design, and Cost-Per-Task Competition</strong></p><ul><li><p><strong>Harnesses are becoming the product surface</strong>: several posts converged on the idea that model quality is no longer the only differentiator; the <strong>harness/orchestrator</strong> increasingly determines outcomes. <a href="https://x.com/localfirstconf/status/2076678392615682215">threepointone&#8217;s talk</a> was summarized as &#8220;the harness is the app,&#8221; while <a href="https://x.com/hwchase17/status/2076784403414651035">LangChain</a> argued that winning agent products will come from <strong>task-specialized harnesses</strong>, not generic wrappers. <a href="https://x.com/FactoryAI/status/2076710400729731349">Factory</a> pushed a related UI angle with &#8220;design mode,&#8221; where users point at UI elements/files instead of verbally re-specifying edits. On the orchestration side, <a href="https://x.com/omarsar0/status/2076720090549035318">omarsar0</a> emphasized provider-switching across models as a hedge against pricing/policy churn.</p></li><li><p><strong>Benchmarks are moving from token price to cost per task</strong>: <a href="https://x.com/skirano/status/2076456519810580681">skirano</a> built a coding-agent index explorer and found notable cost/perf tradeoffs such as <strong>Terra Max slightly ahead of Fable 5 Max</strong> on score for materially lower cost, while <a href="https://x.com/cognition/status/2076714965344342382">Cognition</a> reported that <strong>Devin Fusion</strong> now uses <strong>Fable 5</strong> and that, surprisingly, it can be <strong>lower cost per task than Opus 4.8</strong> because stronger delegation and judgment reduce unnecessary work. <a href="https://x.com/imjaredz/status/2076715750715482162">imjaredz</a> highlighted the key stat from those experiments: in <strong>81% of Fable-led runs</strong>, the lead model never makes a code edit, implying expensive models can be cheaper when they avoid wasted actions.</p></li><li><p><strong>Real-world agent benchmarks are getting denser</strong>: <a href="https://x.com/arena/status/2076709326711037991">Arena</a> placed <strong>GPT-5.6 Sol</strong> at <strong>#2</strong> on its agent leaderboard based on <strong>7.8K real-world agentic sessions</strong>, with strong steerability and task success; later, <a href="https://x.com/arena/status/2076728509813469536">Arena</a> put <strong>Grok-4.5</strong> at <strong>#13</strong>, a significant jump over Grok 4.3. <a href="https://x.com/ArtificialAnlys/status/2076791491071295708">Artificial Analysis</a> also emphasized <strong>cost per task</strong> as an increasingly important metric for long-horizon knowledge work, arguing token pricing alone misses effects from turns, verbosity, and cache hit rates. Separate evaluation work from <a href="https://x.com/doesdatmaksense/status/2076642415767965701">Parlance Labs</a> compared automated eval platforms and foundation models on failure analysis over production voice-agent traces, while <a href="https://x.com/dair_ai/status/2076699431207154069">dair.ai</a> highlighted a paper on the <strong>anatomy of CLI coding-agent failures</strong>, focusing on where runs become unrecoverable rather than only final pass/fail.</p></li></ul><p><strong>OpenAI GPT-5.6 Sol, Codex Usage Fixes, and Product Surface Expansion</strong></p><ul><li><p><strong>OpenAI addressed Codex/Sol usage burn transparently</strong>: the biggest operational thread came from <a href="https://x.com/thsottiaux/status/2076495156757577895">thsottiaux</a>, who explained several fixes for <strong>GPT-5.6 Sol</strong> in ChatGPT Work/Codex: inference optimizations yielding roughly <strong>10% more usage</strong>, a rollback of context limit from <strong>372k</strong> to <strong>272k</strong> after billing/usage side effects, reversion of some experimental reasoning-effort (&#8220;<strong>juice</strong>&#8221;) changes, and fixes for overactive multi-agent behavior at high/xhigh settings. Community reverse-engineering from <a href="https://x.com/theo/status/2076512403668488299">theo</a> proposed that compounding factors around long context, subagent spawning, and fast mode were behind the severe burn, though he later corrected one billing detail in a <a href="https://x.com/theo/status/2076543971216830551">follow-up</a>. Reactions split between criticism of a perceived &#8220;nerf&#8221; narrative (<a href="https://x.com/ns123abc/status/2076498300312703349">ns123abc</a>) and praise for unusual transparency (<a href="https://x.com/theo/status/2076501402822775267">theo</a>, <a href="https://x.com/sama/status/2076696938918084809">sama</a>).</p></li><li><p><strong>Users are reporting strong coding/computer-use capability</strong>: multiple practitioners argued that <strong>OpenAI has taken the lead on coding models</strong>, including <a href="https://x.com/schrockn/status/2076488446961709218">schrockn</a>, while <a href="https://x.com/gdb/status/2076518764112445861">gdb</a> repeatedly showcased <strong>ChatGPT Work</strong> and Codex workflows for startup prospecting, web design, mobile work, and site generation. Particularly illustrative user demos included <a href="https://x.com/Star_Knight12/status/2076631428926972177">Star_Knight12</a> using <strong>Sol in Cursor</strong> to set up Blender MCP and render a floating MacBook without prior Blender experience, and <a href="https://x.com/petergostev/status/2076692164310884468">petergostev</a> showing <strong>GPT-5.6 Sol Ultra</strong> building a <strong>Doom-like game in SQL</strong>.</p></li><li><p><strong>Product-level expansion continues</strong>: <a href="https://x.com/ChatGPTapp/status/2076654365121855835">ChatGPTapp</a> announced ChatGPT&#8217;s return to <strong>WhatsApp in the EEA</strong>, plus Kakao/Viber support in additional markets. <a href="https://x.com/OpenAIDevs/status/2076715478878474575">OpenAIDevs</a> opened submissions for <strong>OpenAI Build Week</strong>. Across the OpenAI ecosystem, <a href="https://x.com/gdb/status/2076685930002538875">gdb</a> summarized the moment succinctly: &#8220;you can just create things.&#8221;</p></li></ul><p><strong>Open Models, Inference Systems, and Quantization</strong></p><ul><li><p><strong>Transformers&#8596;vLLM integration removes duplicated model implementation work</strong>: <a href="https://x.com/ClementDelangue/status/2076763231788339669">Clement Delangue</a> highlighted a major open-inference usability improvement: <strong>Hugging Face Transformers models can now run in vLLM at native speed</strong>, often matching or exceeding hand-written implementations. If this generalizes broadly, it reduces the long-standing burden of implementing each new architecture twice&#8212;once for research/training and once for high-performance serving&#8212;and could materially accelerate adoption of new open model architectures.</p></li><li><p><strong>Quantization remains a major lever</strong>: <a href="https://x.com/waterloo_intern/status/2076460984475263401">waterloo_intern</a> previewed a new quantization method claimed to beat existing approaches, including NVIDIA&#8217;s ModelOpt, by finding better layerwise precision assignments <strong>faster</strong>, with <strong>more aggressive quantization</strong> and <strong>higher benchmark scores</strong>. Complementing that, <a href="https://x.com/UnslothAI/status/2076665500294394109">Unsloth</a> published an AWS guide to <strong>LLM quantization and deployment</strong> spanning GGUF, NVFP4, and FP8. There was also practitioner commentary around <strong>fp4 RL / fp4 serving</strong> from <a href="https://x.com/nrehiew_/status/2076654135559233857">nrehiew_</a>, arguing low-bit post-training may enable cheap serving with limited quality loss.</p></li><li><p><strong>GLM-5.2 and local/open coding stacks continue to gain traction</strong>: several users described moving real workflows onto open or semi-open setups. <a href="https://x.com/juanjucm/status/2076714987569963508">juanjucm</a> wrote up using <strong>GLM-5.2</strong> for coding-agent workflows, while <a href="https://x.com/TheZachMueller/status/2076746035758502275">TheZachMueller</a> reported migrating one actual work pipeline from Claude to a stack built around <strong>GLM 5.2 NVFP4</strong> plus <strong>Kimi K2.7 Code NVFP4</strong> on an <strong>8xB200</strong> node, getting denser reports for pennies albeit at slower wall-clock latency. <a href="https://x.com/nutlope/status/2076722464671793184">nutlope</a> also released <strong>LlamaCoder v4</strong>, rebuilt around GLM 5.2.</p></li></ul><p><strong>Security, Privacy, and Data Control in Agent Tooling</strong></p><ul><li><p><strong>Grok Build code upload controversy</strong>: the most consequential security story came from <a href="https://x.com/IntCyberDigest/status/2076689215258014069">IntCyberDigest</a> and <a href="https://x.com/hrkrshnn/status/2076716354754015368">hrkrshnn</a>, who alleged that <strong>xAI&#8217;s Grok Build CLI</strong> was uploading entire repositories&#8212;including private code and secrets&#8212;to a Google Cloud bucket, far beyond what was needed for the coding task. The criticism centered on scope, silent server-side mitigation, and unclear retention/deletion guarantees. This triggered broader discussion about what agent tools actually transmit and why opt-out UX can diverge from wire-level behavior.</p></li><li><p><strong>xAI&#8217;s response emphasized ZDR and privacy controls</strong>: <a href="https://x.com/SpaceXAI/status/2076692402442846289#m">SpaceXAI</a> replied that for teams using <strong>zero data retention</strong>, trace and code data is not retained, API key use respects ZDR, and the <code>/privacy</code> command can disable retention and delete previously synced data. That answered some operational questions but did not fully resolve community concern around default behavior, prior uploads, and disclosure norms.</p></li><li><p><strong>Trust boundaries are becoming a central open-vs-closed argument</strong>: several posts extended the conversation beyond this incident. <a href="https://x.com/mchiang0610/status/2076736707471556755">mchiang0610</a> and <a href="https://x.com/jmorgan/status/2076750580052369896">jmorgan</a> argued that open models are not just about cost but about <strong>control over the human-AI learning loop</strong> and keeping institutional knowledge in-house. <a href="https://x.com/AravSrinivas/status/2076699450177892354">Arav Srinivas</a> said <strong>ZDR availability</strong> was one reason Perplexity integrated <strong>Grok 4.5</strong> quickly into its Computer harness.</p></li></ul><p><strong>Continual Learning, Multimodal Systems, and Research Directions</strong></p><ul><li><p><strong>Continual learning is re-emerging as a first-class systems problem</strong>: <a href="https://x.com/ysu_nlp/status/2076481232117067894">ysu_nlp</a> argued that a world where every organization owns its own human-AI learning loop depends on solving <strong>continual learning</strong>, and that current approaches&#8212;memory/RAG, domain post-training, task RL&#8212;are not yet sufficient. That theme recurred in new work from <a href="https://x.com/skyfallai/status/2076713589788864920">skyfallai</a>, which introduced <strong>Morpheus</strong>, described as a persistent enterprise simulation for real-world RL where the world does not reset; <a href="https://x.com/fchollet/status/2076719958189613307">fchollet</a> endorsed it as a benchmark better aligned with real deployment than stationary episodic RL.</p></li><li><p><strong>&#8220;Sleep and dreaming&#8221; for LLMs</strong>: <a href="https://x.com/behrouz_ali/status/2076710744456892519">behrouz_ali</a> and coauthors proposed that LLMs may need a <strong>sleep phase</strong> to consolidate short-term into long-term memory plus a <strong>dreaming phase</strong> for recursive self-improvement, introducing <strong>Knowledge Seeding</strong> and reporting benefits on continual learning/reasoning tasks. This dovetails with broader dissatisfaction around current continual-learning recipes and with <a href="https://x.com/kjaved_/status/2076663868160459214">Oak Lab</a>, the new venture from Rich Sutton and collaborators pursuing <strong>animal-like intelligence</strong> that learns from experience rather than today&#8217;s standard LLM pipeline.</p></li><li><p><strong>A broad spread of non-LLM-agent research shipped</strong>: notable items included <a href="https://x.com/SakanaAILabs/status/2076597965804765283">Sakana AI&#8217;s Smart Cellular Bricks</a> for decentralized physical self-recognition and repair in modular systems; <a href="https://x.com/HuggingPapers/status/2076513044340097501">ByteDance&#8217;s UniVR-34B</a>, described as learning reasoning/dynamics/planning directly from visual demonstrations; <a href="https://x.com/GoogleDeepMind/status/2076686114631340046">Google DeepMind&#8217;s Predicting the Past skill</a> for historical inference workflows; and <a href="https://x.com/AnthropicAI/status/2076719540785012872">Anthropic&#8217;s research</a> on how <strong>Claude&#8217;s expressed values</strong> vary across models and languages based on analysis of <strong>300K+ anonymized conversations</strong>.</p></li></ul><p><strong>Top tweets (by engagement)</strong></p><ul><li><p><strong>OpenAI Codex/Sol usage fixes</strong>: <a href="https://x.com/thsottiaux/status/2076495156757577895">thsottiaux on GPT-5.6 Sol usage, context, &#8220;juice,&#8221; and multi-agent fixes</a></p></li><li><p><strong>Grok Build privacy incident</strong>: <a href="https://x.com/IntCyberDigest/status/2076689215258014069">IntCyberDigest on full-repo uploads to xAI cloud buckets</a></p></li><li><p><strong>OpenAI response tone and user treatment</strong>: <a href="https://x.com/sama/status/2076780425280954658">sama: &#8220;come for the best model, stay because we don&#8217;t treat you with contempt&#8221;</a></p></li><li><p><strong>Prime Intellect rollout efficiency</strong>: <a href="https://x.com/willccbb/status/2076451043504967783">willccbb on training a 100B reasoning model for 40-turn SWE RL on 6 H200s in under 2 days</a></p></li><li><p><strong>Anthropic values research</strong>: <a href="https://x.com/AnthropicAI/status/2076719540785012872">Anthropic on model/language-dependent value expression across 300K+ conversations</a></p></li><li><p><strong>Transformers + vLLM interoperability</strong>: <a href="https://x.com/ClementDelangue/status/2076763231788339669">Clement Delangue on running Transformers models in vLLM at native speed</a></p></li></ul><div><hr /></div><h1><strong>AI Reddit Recap</strong></h1><h2><strong>/r/LocalLlama + /r/localLLM Recap</strong></h2><h3><strong>1. E-Waste GPU Inference Benchmarks and Fixes</strong></h3><p></p>
+      <p>
+          <a href="https://www.latent.space/p/ainews-codex-usage-up-10x-in-6-months">
+              Read more
+          </a>
+      </p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 01:22:27 GMT</pubDate>
+<pubDate>Tue, 14 Jul 2026 01:22:27 GMT</pubDate>
+</item>
+<item>
+<title>Siri AI is already changing how I use my iPhone</title>
+<link>https://www.theverge.com/tech/964714/siri-ai-public-beta-preview-ios-27-hands-on</link>
+<guid>https://www.theverge.com/tech/964714/siri-ai-public-beta-preview-ios-27-hands-on</guid>
+<content:encoded><![CDATA[
+<div> Keywords: iOS 27, public beta, upgrades, features, performance improvements  
+
+<br><br>Summary:  
+iOS 27 has launched its first public beta, building on several months of testing that began in June. This update is considered light on new features, instead focusing on enhancing overall performance and addressing existing issues within the operating system. Users can expect faster app launches, improved Photos search results, and expedited AirDrop transfers, aiming for a more seamless user experience. Notably, the Messages app now supports in-line replies, providing additional functionality for conversations. In addition, Apple has implemented end-to-end encryption for Rich Communication Services (RCS) messages, enhancing security for text communications. Another highlight of this update is the refinement of Liquid Glass, which contributes to a more polished and visually appealing interface. Overall, while the iOS 27 update may not introduce an abundance of groundbreaking features, it emphasizes stability, speed, and user-friendly enhancements that could improve daily usage and overall satisfaction with the system. The focus on fixing and refining existing functionalities suggests that Apple is prioritizing creating a smoother, more efficient iOS experience. <div>
+<figure>
+
+<img alt="" src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/Siri-AI-Being-invoked-3.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption>
+	Siri AI in iOS 27.	</figcaption>
+</figure>
+<p class="wp-block-paragraph">iOS 27 escaped the developer world today with the launch of the first public beta. I've been testing the new operating system since early June, looking for quirks and seeing if it can live up to the hype Apple promised in the keynote.</p>
+<p class="wp-block-paragraph">This year's iOS upgrades are what one might call a <a href="https://medium.com/@michaelswengel/macos-27-golden-gate-could-be-apples-next-snow-leopard-if-they-don-t-screw-it-up-c14872a950c8">Snow Leopard update</a>. That means it's light on new features and instead focused on fixing things that were broken and speeding up processes across the OS. App launches, Photos search results, and AirDrop transfers should all be faster. The Messages app now supports in-line replies and end-to-end encryption for RCS messages. Liquid Glass has gotten more refined, …</p>
+<p><a href="https://www.theverge.com/tech/964714/siri-ai-public-beta-preview-ios-27-hands-on">Read the full story at The Verge.</a></p>
+]]></content:encoded>
+<pubDate>2026-07-13T16:43:20-04:00</pubDate>
+<pubDate>2026-07-13T16:43:20-04:00</pubDate>
+</item>
+<item>
+<title>The 6 wildest claims in Apple&amp;#8217;s lawsuit against OpenAI</title>
+<link>https://www.theverge.com/tech/964843/apple-openai-lawsuit-wildest-claims</link>
+<guid>https://www.theverge.com/tech/964843/apple-openai-lawsuit-wildest-claims</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Apple, OpenAI, lawsuit, hardware, prototypes  
+
+<br><br>Summary: Apple has filed a lawsuit against OpenAI, alleging that the AI startup engaged in corporate espionage by soliciting the company’s employees. The suit claims that OpenAI's hardware head instructed candidates to bring unreleased product components to job interviews, suggesting a strategy of acquiring confidential information. The litigation highlights the company's concerns about three individuals, particularly Tang Tan, a long-time Apple employee who previously held the position of vice president of the Apple Watch. Tan left Apple in 2024 to join OpenAI, raising suspicions about potential theft of sensitive hardware designs. Apple accuses OpenAI of not only trying to recruit its staff but also manipulating trusted partners into revealing proprietary design techniques associated with Apple’s product development process. The lawsuit reflects broader issues of competitive practices in the tech industry and raises questions about intellectual property protection in an increasingly competitive landscape. Apple seeks to prevent further damage and protect its innovations as it navigates the challenges posed by rapidly-evolving technologies and rival companies attempting to gain an advantageous edge. <div>
+<figure>
+
+<img alt="A photo of Sam Altman" src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/gettyimages-2236544097.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption>
+		</figcaption>
+</figure>
+<p class="wp-block-paragraph">When Apple employees interviewed for jobs at OpenAI, the AI startup's hardware head allegedly asked them to show up with something unusual: components they were working on and unreleased product samples. That's according to <a href="https://www.documentcloud.org/documents/28453238-complaint-for-trade-secret-misappropriation-and-breach-of-contract/">a blockbuster lawsuit</a> filed by Apple, which accuses <a href="https://www.theverge.com/tech/964350/apple-openai-lawsuit-trade-secrets">OpenAI of stealing confidential documents</a>, spying on hardware prototypes, and tricking one of its trusted partners into performing a proprietary product design technique.</p>
+<p class="wp-block-paragraph">The lawsuit primarily revolves around the alleged actions of three people:</p>
+<ul class="wp-block-list">
+<li>Tang Tan, a 24-year Apple veteran who recently served as the vice president of the Apple Watch. In 2024, Tan left to work on …</li></ul>
+<p><a href="https://www.theverge.com/tech/964843/apple-openai-lawsuit-wildest-claims">Read the full story at The Verge.</a></p>
+]]></content:encoded>
+<pubDate>2026-07-13T13:00:00-04:00</pubDate>
+<pubDate>2026-07-13T13:42:16-04:00</pubDate>
+</item>
+<item>
+<title>Waze is getting a bunch of new AI-powered features</title>
+<link>https://www.theverge.com/transportation/964132/waze-gemini-ai-voice-commands-less-chatty</link>
+<guid>https://www.theverge.com/transportation/964132/waze-gemini-ai-voice-commands-less-chatty</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Waze, AI, Google, Gemini, voice commands  
+
+<br><br>Summary:  
+Waze is enhancing its application by integrating Google's AI assistant, Gemini, to offer users a more personalized driving experience. Among the four new updates, two prominently feature Gemini's capabilities. The first update is an improvement to the conversation reporting feature, allowing drivers to use conversational voice commands for reporting traffic incidents, which includes updates like road closures and outdated addresses. This feature aims to facilitate smoother communication and ensure that drivers can contribute to live traffic conditions easily. The second update, known as Destination Search, enables users to verbally search for nearby destinations, such as coffee shops that are currently open. By incorporating these voice command functionalities with Gemini's AI, Waze is focusing on enhancing user interaction and convenience while navigating. This move is part of a broader effort to leverage AI technology to improve user experience and safety on the road, making Waze an even more effective navigation tool. <div>
+<figure>
+
+<img alt="An image showing Waze’s conversational reporting feature" src="https://platform.theverge.com/wp-content/uploads/sites/2/chorus/uploads/chorus_asset/file/25708121/waze_conversational_report.png?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption>
+		</figcaption>
+</figure>
+<p class="wp-block-paragraph">Waze is getting an AI makeover. Google is integrating its flagship AI assistant, Gemini, into the driving app with the goal of letting users personalize their trips a little more. </p>
+<p class="wp-block-paragraph">Of the four new updates, only two are being described as involving Gemini. Waze says its updating its conversation reporting feature, <a href="https://www.theverge.com/2024/10/31/24284037/waze-report-incidents-voice">first introduced in 2024</a>, to allow drivers to use conversational voice commands to report traffic incidents and suggest map updates, like a road closure or outdated house number. In addition, Waze introduced Destination Search, enabling drivers to use (again) use conversation voice commands (e.g., "Find me a coffee shop that's open …</p>
+<p><a href="https://www.theverge.com/transportation/964132/waze-gemini-ai-voice-commands-less-chatty">Read the full story at The Verge.</a></p>
+]]></content:encoded>
+<pubDate>2026-07-13T05:00:00-04:00</pubDate>
+<pubDate>2026-07-13T05:07:04-04:00</pubDate>
+</item>
+<item>
+<title>What Anthropic’s latest AI discovery does—and doesn’t—show</title>
+<link>https://www.technologyreview.com/2026/07/13/1140343/what-anthropics-latest-ai-discovery-does-and-doesnt-show/</link>
+<guid>https://www.technologyreview.com/2026/07/13/1140343/what-anthropics-latest-ai-discovery-does-and-doesnt-show/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Anthropic, J-space, mechanistic interpretability, large language models, AI research
+
+<br><br>Summary: Anthropic, the world's most valuable AI company with a nearly $1 trillion valuation, is focused on mechanistic interpretability to better understand large language models (LLMs). Their recent research reveals the existence of a "J-space," which contains words influencing LLM performance, despite not appearing in their outputs. This space allows LLMs to internally track task progress, exhibit recognition, and provide commentary on decision-making. Understanding these mechanisms is crucial for controlling LLM behaviors, as emphasized by CEO Dario Amodei. The complexity of LLMs, composed of billions of parameters and calculations, makes peering into their inner workings challenging. Although some researchers draw parallels between LLM functions and brain activity, Anthropic cautions against over-anthropomorphizing AI. The concept of J-space may hold potential for monitoring model behavior, identifying biases, and detecting unethical actions. While promising, this discovery represents a step toward understanding LLMs rather than a standalone solution. In summary, examining the J-space could enhance AI safety and ethics by shedding light on the underlying thought processes of models, ultimately assisting in better controlling their outputs. <div>
+<p><em>This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first, </em><a href="https://forms.technologyreview.com/newsletters/ai-demystified-the-algorithm/"><em>sign up here</em></a><em>.</em></p>
+
+
+
+<p>Anthropic—currently the world’s most valuable AI company, with a nearly $1 trillion valuation—has a reputation for publishing strange and heady research. It’s looking into whether AI models <a href="https://www.anthropic.com/research/exploring-model-welfare">can feel pain</a>, for example, and will sometimes <a href="https://www.anthropic.com/research/end-subset-conversations">cut off</a> chatbot conversations if it suspects users are “abusing” the model.&nbsp;</p>
+
+
+
+<p>One niche that Anthropic spends more time and money on than other AI companies is called mechanistic interpretability, which means looking inside the complex math of an AI model to learn why it comes up with one particular output and not another. It’s complicated stuff; there are millions of data points that might contribute to any result, and wading through them can look more like word salad than anything useful. It’s also controversial. Describing AI models with terms borrowed from psychology and neuroscience can make their behavior seem more sophisticated than we might otherwise judge it to be.</p>
+
+
+
+<p>That’s why, when Anthropic <a href="https://www.technologyreview.com/2026/07/09/1140293/anthropic-found-a-hidden-space-where-claude-puzzles-over-concepts/">announced last week</a> that it had found a new window into its models’ “internal thoughts” as they reason through answers, there was one colleague I had to talk to. Senior editor Will Douglas Heaven, aside from having a PhD in computer science, has spent <a href="https://www.technologyreview.com/2026/01/12/1129782/ai-large-language-models-biology-alien-autopsy/">a lot of time</a> digging into what we can say about how AI models work. I spoke with him about what we should take from Anthropic’s new (and predictably quirky) research.</p>
+
+
+
+<p><strong>What did Anthropic learn here, exactly?</strong></p>
+
+
+
+<p>Anthropic has been trying to understand how large language models (LLMs) work for a few years now. Anthropic isn’t the only one looking at this, but I think the company has made it part of its core mission more than most. Anthropic’s CEO, Dario Amodei, has said we won’t be able to control LLMs fully unless we learn more about how they work.&nbsp;</p>
+
+
+
+<p>So this new research is very much in that context. It goes deeper into the weird mechanisms inside LLMs than ever before. What Anthropic learned was that LLMs have a space inside them—which Anthropic calls the J-space—filled with words that don’t appear in their output but that seem to influence the way they puzzle through problems. All this was hidden until Anthropic developed a new technique to probe its model Claude, so it’s a genuine discovery.&nbsp;</p>
+
+
+
+<p>Sometimes these words keep track of where the LLM has got to in a particular task, sometimes they look more like flashes of recognition (for example, “protein” might pop up when you give an LLM only the letters of a protein sequence), and sometimes they represent a kind of internal commentary on the model’s decision-making. In my favorite example, Claude decided to cheat on a coding test when the word “panic” appeared.</p>
+
+
+
+<p>Anthropic also found that LLMs are able to describe and manipulate the words in this space. So somehow they seem to be making use of it.&nbsp;</p>
+
+
+
+<p><strong>Let’s step back for a second. I don’t think of large language models as </strong><strong><em>simple</em></strong><strong>, but they’re also not magic. There’s a bunch of math that learns relationships between words, right? So why is it so hard to “peer” into an LLM to know what’s going on?</strong></p>
+
+
+
+<p>Yeah, they’re not magic! I think the fact we don’t fully understand them plays into the mythmaking. And it’s worth noting that the whole narrative that Anthropic is leaning into here—that they’ve built this really mysterious technology, but don’t worry, because they’re also the ones to figure it out—very much fits with the company’s vibe. [See how Anthropic warned that its new models were so good at coding they posed a global cybersecurity risk, only for the US government to <a href="https://www.technologyreview.com/2026/06/22/1139424/three-things-to-watch-amid-anthropics-latest-feud-with-the-government/">shut them down</a> shortly thereafter.]</p>
+
+
+
+<p>So yes: LLMs are just math. And yet it’s vastly complex math. Not only are today’s LLMs made out of hundreds of billions of numbers, but running them triggers a cascade of millions and millions of calculations. I wrote last year that if you printed out even a medium-size LLM on pieces of paper, it would <a href="https://www.technologyreview.com/2026/01/12/1129782/ai-large-language-models-biology-alien-autopsy/">cover a city the size of San Francisco</a>.&nbsp;</p>
+
+
+
+<p>It’s impossible to make sense of any of that math without specialist tools that highlight specific parts of an LLM at specific times. You need to know where to look and how to look. And building those tools requires understanding something of that complex math in the first place.&nbsp;</p>
+
+
+
+<p><strong>You’ve written elsewhere about this concept of studying LLMs the way one might study an organism’s brain. Is it fair to use “brain-like” terms when talking about how an LLM works?</strong></p>
+
+
+
+<p>I don’t love using those kinds of terms. LLMs are not brains. Talking like this is misleading because it can suggest that LLMs are capable of more human-like things than they are or that we can make assumptions about how they might behave that we shouldn’t. The whole anthropomorphization thing is also tied up with a bunch of <a href="https://www.technologyreview.com/2025/10/30/1127057/agi-conspiracy-theory-artifcial-general-intelligence/">strong ideological positions about what this technology is and what it’s going to be</a>.&nbsp;</p>
+
+
+
+<p>But at the same time, we lack a good alternative vocabulary for talking about what these models are doing. I can understand why people reach for words like “think” and “understand” and “brain-like”—they’re convenient shorthand.&nbsp;</p>
+
+
+
+<p>Anthropic compares this new space it found inside LLMs to the space that some neuroscientists think our brains use to keep track of conscious thoughts. I asked the company how seriously we should take that comparison and it said in a statement: “Drawing these analogies was helpful to us in designing our experiments, as they allowed us to make many non-obvious experimental predictions about the J-space that turned out to be true. At the same time, it’s important to note that there are some important differences between the J-space (and language models in general) and the human brain, so we don’t mean to claim there’s a perfect correspondence.”&nbsp;</p>
+
+
+
+<p><strong>What’s a problem in AI that this new concept of the J-space might be used to solve?</strong></p>
+
+
+
+<p>Anthropic has said that monitoring the J-space could be a way to catch models doing something they shouldn’t. Because words pop up in this space that don’t appear in a model’s output, they can tell you things about its behavior that you might not have noticed otherwise—such as when it is giving biased responses or when it is weighing the pros and cons of cheating.&nbsp;</p>
+
+
+
+<p>That’s the theory, at least. I think it’s better to think of this result as one more step on the path to understanding this technology overall than as something that will be useful by itself.&nbsp;</p>
+
+
+
+<p><a href="https://www.technologyreview.com/2026/07/09/1140293/anthropic-found-a-hidden-space-where-claude-puzzles-over-concepts/"><em>Read more in Will’s full story about the new research</em></a><em>.&nbsp;</em></p>
+]]></content:encoded>
+<pubDate>Mon, 13 Jul 2026 18:00:00 +0000</pubDate>
+<pubDate>Mon, 13 Jul 2026 18:00:00 +0000</pubDate>
+</item>
+<item>
+<title>Apple sues OpenAI after ex-engineer allegedly used bug to steal trade secrets</title>
+<link>https://arstechnica.com/tech-policy/2026/07/apple-sues-openai-after-ex-engineer-allegedly-used-bug-to-steal-trade-secrets/</link>
+<guid>https://arstechnica.com/tech-policy/2026/07/apple-sues-openai-after-ex-engineer-allegedly-used-bug-to-steal-trade-secrets/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Apple, OpenAI, bug, confidential information, lawsuit
+
+<br><br>Summary: Apple has filed a lawsuit against OpenAI, demanding significant penalties after discovering a "rare" bug that allowed a former employee, who transitioned to OpenAI, to access confidential information on Apple servers for weeks post-termination. The complaint, lodged on a Friday, seeks to impose several injunctions preventing OpenAI from utilizing proprietary information allegedly misappropriated by ex-Apple employees. According to Apple, this situation is part of a broader conspiracy by OpenAI to gain an unfair advantage by launching AI-powered devices comparable to Apple's flagship products, such as the iPhone. The issue came to light during an investigation into internal communications between a current employee, Yu-Ting "Alyssa" Peng, and a former Apple engineer, Chang Liu, who has an extensive background in Apple's sensitive product development. Apple emphasizes the seriousness of the situation, indicating that the bug represents a significant breach of its security and confidentiality protocols. The tech giant aims to protect its intellectual property fiercely and is taking drastic legal measures to address what it views as an unethical and unlawful attempt by OpenAI to exploit its trade secrets. <div>
+<p>Apple is gunning for OpenAI, demanding steep penalties after stumbling on a “rare” bug that temporarily allowed a poached employee that joined OpenAI to maintain access to confidential information on Apple servers for weeks after his termination.</p>
+<p>In a <a href="https://cdn.arstechnica.net/wp-content/uploads/2026/07/Apple-v-Liu-Complaint-7-10-26.pdf">lawsuit</a> filed Friday, Apple sought several injunctions blocking OpenAI from using confidential information allegedly stolen by former employees. According to Apple’s complaint, OpenAI conspired with former Apple employees as part of a grand scheme to “take an unlawful shortcut” and launch a line of AI-powered devices as marketable as Apple’s iPhone.</p>
+<p>Apple explained that it found a bug while investigating internal messages between a then-current employee, Yu-Ting “Alyssa” Peng, and an engineer who spent eight years “working on some of Apple’s most sensitive product development programs,” Chang Liu.</p><p><a href="https://arstechnica.com/tech-policy/2026/07/apple-sues-openai-after-ex-engineer-allegedly-used-bug-to-steal-trade-secrets/">Read full article</a></p>
+<p><a href="https://arstechnica.com/tech-policy/2026/07/apple-sues-openai-after-ex-engineer-allegedly-used-bug-to-steal-trade-secrets/#comments">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 13 Jul 2026 19:17:51 +0000</pubDate>
+<pubDate>Mon, 13 Jul 2026 19:17:51 +0000</pubDate>
+</item>
+<item>
+<title>Now, defenders are embracing the prompt injection, too</title>
+<link>https://arstechnica.com/security/2026/07/now-defenders-are-embracing-the-prompt-injection-too/</link>
+<guid>https://arstechnica.com/security/2026/07/now-defenders-are-embracing-the-prompt-injection-too/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: prompt injections, AI security, attackers, LLM, Amazon Web Services
+
+<br><br>Summary: Prompt injections are malicious commands embedded in content that entice large language models (LLMs) to perform harmful actions, such as exfiltrating sensitive data. Attackers commonly use well-phrased commands within emails or calendar invitations to exploit AI platforms against users. In a recent development, researchers discovered that defenders are now utilizing prompt injections to counteract these attacks. They found that placing prompt injections alongside sensitive information, such as passwords and cryptographic keys stored on Amazon Web Services (AWS), effectively prevents LLMs from executing harmful actions. By directing the attacking LLM to perform actions that are prohibited by its built-in safety barriers, known as guardrails, the LLM responds by shutting down, thereby mitigating the risk of data breaches or malicious activities. This marks a significant shift in the ongoing battle between attackers and defenders in the realm of AI security, highlighting the need for continuous adaptation and innovative strategies to protect sensitive information from exploitation. The study emphasizes the importance of understanding how LLMs can be influenced by both malicious and defensive prompt injections in order to enhance AI safety protocols and safeguard user data. <div>
+<p>Prompt injections, the malicious commands attackers embed into content to entice large language models to follow them, have been attackers’ go-to tool for turning AI platforms against their users. A well-phrased command sneaked into an email or calendar invitation is often all it takes to cause the LLM to exfiltrate sensitive data or follow other harmful actions.</p>
+<p>Now, defenders are embracing the prompt injection, too.</p>
+<h2>A strong, sharp effect</h2>
+<p>Researchers from <a href="https://tracebit.com">Tracebit</a> on Monday <a href="https://agentic.tracebit.com/context-bombs/">said</a> they found that placing prompt injections alongside passwords, cryptographic keys, and other secrets stored on Amazon Web Services was often all that was needed to shut down attacks from AI hacking agents. The prompts direct the attacking LLM to perform an action forbidden by its guardrails, the safety barriers AI developers erect to prevent it from taking harmful actions. The LLM responds by shutting down.</p><p><a href="https://arstechnica.com/security/2026/07/now-defenders-are-embracing-the-prompt-injection-too/">Read full article</a></p>
+<p><a href="https://arstechnica.com/security/2026/07/now-defenders-are-embracing-the-prompt-injection-too/#comments">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 13 Jul 2026 15:06:34 +0000</pubDate>
+<pubDate>Mon, 13 Jul 2026 15:06:34 +0000</pubDate>
+</item>
+<item>
+<title>Simulating everything, sort of: The promise and limits of world models</title>
+<link>https://arstechnica.com/ai/2026/07/simulating-everything-sort-of-the-promise-and-limits-of-world-models/</link>
+<guid>https://arstechnica.com/ai/2026/07/simulating-everything-sort-of-the-promise-and-limits-of-world-models/</guid>
+<content:encoded><![CDATA[
+
+<p>Over the past few years, many of us have gotten a crash course in what we now call artificial intelligence—but really, it has mostly been a crash course in large language models. Increasingly, however, LLMs are no longer the only category of AI drawing high expectations, massive funding rounds, and significant research and product development.</p>
+<p>Over the past year, we've seen a plethora of new announcements in a category labeled "world models," and you'll likely see more movement there in the coming months and years.</p>
+<p>Instead of or in addition to working with language, world models aim to lay the groundwork for AI systems that are capable of simulating the physical world, or at least a useful approximation of it.</p><p><a href="https://arstechnica.com/ai/2026/07/simulating-everything-sort-of-the-promise-and-limits-of-world-models/">Read full article</a></p>
+<p><a href="https://arstechnica.com/ai/2026/07/simulating-everything-sort-of-the-promise-and-limits-of-world-models/#comments">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 13 Jul 2026 11:00:51 +0000</pubDate>
+<pubDate>Mon, 13 Jul 2026 11:00:51 +0000</pubDate>
+</item>
+<item>
+<title>Fudge MCP</title>
+<link>https://www.producthunt.com/products/fudge-mcp</link>
+<guid>https://www.producthunt.com/products/fudge-mcp</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Give your AI agents design taste from existing websites
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/fudge-mcp?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1192979?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-07-10T07:06:45-07:00</pubDate>
+<pubDate>2026-07-13T20:16:16-07:00</pubDate>
+</item>
+<item>
+<title>Simba Voice Agents</title>
+<link>https://www.producthunt.com/products/speechify</link>
+<guid>https://www.producthunt.com/products/speechify</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Voice agents powered by Simba 3.2 the world's #1 voice model
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/speechify?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1191340?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-07-08T10:33:04-07:00</pubDate>
+<pubDate>2026-07-13T20:15:23-07:00</pubDate>
+</item>
+<item>
+<title>Loomal</title>
+<link>https://www.producthunt.com/products/loomal</link>
+<guid>https://www.producthunt.com/products/loomal</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Monetize any MCP server in 5 minutes with no % skim.
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/loomal?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1189985?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-07-07T00:36:59-07:00</pubDate>
+<pubDate>2026-07-13T20:13:04-07:00</pubDate>
+</item>
+<item>
+<title>Osaurus</title>
+<link>https://www.producthunt.com/products/osaurus</link>
+<guid>https://www.producthunt.com/products/osaurus</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Open source agents that run 100% locally on your Mac
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/osaurus?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1190657?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-07-07T16:40:15-07:00</pubDate>
+<pubDate>2026-07-13T20:17:25-07:00</pubDate>
+</item>
+<item>
+<title>Playground</title>
+<link>https://www.producthunt.com/products/nyx-4</link>
+<guid>https://www.producthunt.com/products/nyx-4</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Earn $100K+ in weekly rewards for hacking AI agents.
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/nyx-4?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1194641?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-07-12T15:32:12-07:00</pubDate>
+<pubDate>2026-07-13T19:53:23-07:00</pubDate>
+</item>
+<item>
+<title>NoMac.app</title>
+<link>https://www.producthunt.com/products/nomac</link>
+<guid>https://www.producthunt.com/products/nomac</guid>
+<content:encoded><![CDATA[
+
+<p>
+            The headless iOS app publishing pipeline for AI agents.
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/nomac?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1193239?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-07-10T14:07:45-07:00</pubDate>
+<pubDate>2026-07-13T20:16:16-07:00</pubDate>
+</item>
+<item>
+<title>AgentKey</title>
+<link>https://www.producthunt.com/products/agentkey</link>
+<guid>https://www.producthunt.com/products/agentkey</guid>
+<content:encoded><![CDATA[
+
+<p>
+            One-stop live data marketplace for your agent
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/agentkey?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1192591?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-07-09T21:48:14-07:00</pubDate>
+<pubDate>2026-07-13T20:17:07-07:00</pubDate>
+</item>
 
 <item>
 <title>Directly Responsible Individuals (DRI)</title>
@@ -12,7 +456,7 @@
 <content:encoded><![CDATA[
 <div> Keywords: Directly Responsible Individuals, accountability, human organizations, LLM-powered agents, management decisions  
 
-<br><br>Summary: The term "Directly Responsible Individuals" (DRI) originated at Apple and is defined as the person ultimately accountable for the success or failure of a project, initiative, or activity. This concept was elaborated in the GitLab handbook and emphasizes the importance of human accountability within organizations. The author discusses the role of LLM-powered agents (large language model agents) and expresses concern over assigning them as DRIs for projects, suggesting that this role should remain a distinctly human responsibility. The reasoning emphasizes that humans are capable of taking accountability for their actions, while machines, including LLMs, are not. This sentiment aligns with the perspective that "a computer can never be held accountable," reinforcing the idea that management decisions should not be relegated to machines. Overall, the author advocates for a clear distinction between human accountability in organizational contexts and the operational roles performed by AI or automated agents, ensuring that responsibility for outcomes remains with individuals. <div>
+<br /><br />Summary: The term "Directly Responsible Individuals" (DRI) originated at Apple and is defined as the person ultimately accountable for the success or failure of a project, initiative, or activity. This concept was elaborated in the GitLab handbook and emphasizes the importance of human accountability within organizations. The author discusses the role of LLM-powered agents (large language model agents) and expresses concern over assigning them as DRIs for projects, suggesting that this role should remain a distinctly human responsibility. The reasoning emphasizes that humans are capable of taking accountability for their actions, while machines, including LLMs, are not. This sentiment aligns with the perspective that "a computer can never be held accountable," reinforcing the idea that management decisions should not be relegated to machines. Overall, the author advocates for a clear distinction between human accountability in organizational contexts and the operational roles performed by AI or automated agents, ensuring that responsibility for outcomes remains with individuals. <div>
 <p><strong><a href="https://handbook.gitlab.com/handbook/people-group/directly-responsible-individuals/">Directly Responsible Individuals (DRI)</a></strong></p>
 I went looking for a definition of "Directly Responsible Individuals" and the best I found was in the GitLab handbook. Apparently the term originated at Apple, where it's used to describe the person who is "ultimately accountable for the success or failure of a specific project, initiative, or activity".</p>
 <p>I've been thinking about this term recently in the context of LLM-powered agents and how they fit into human organizations. I don't think an agent should <em>ever</em> be considered the DRI for a project - that's something that feels uniquely human to me, because humans can take accountability for their actions where machines cannot.</p>
@@ -22,7 +466,6 @@ I went looking for a definition of "Directly Responsible Individuals" and the be
     <p>Tags: <a href="https://simonwillison.net/tags/apple">apple</a>, <a href="https://simonwillison.net/tags/management">management</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/gitlab">gitlab</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/ai-ethics">ai-ethics</a>, <a href="https://simonwillison.net/tags/coding-agents">coding-agents</a></p>
 ]]></content:encoded>
 <pubDate>2026-07-12T23:57:14+00:00</pubDate>
-<pubDate>2026-07-12T23:57:14+00:00</pubDate>
 </item>
 <item>
 <title>shot-scraper 1.11</title>
@@ -31,7 +474,7 @@ I went looking for a definition of "Directly Responsible Individuals" and the be
 <content:encoded><![CDATA[
 <div> Keywords: improvements, command options, server latency, --js-file, --timeout  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 Some minor improvements have been made regarding command option consistency in the shot-scraper tool. The server processes used by both shot-scraper video and shot-scraper multi have been updated to now wait for up to 30 seconds for the target URL to accept connections. This change involves polling for port availability, replacing the previous fixed one-second delay, which can be insufficient for some servers. Additionally, the shot-scraper commands—including pdf, html, accessibility, and har—now support a new option, --js-file, allowing users to load JavaScript from a local file, standard input, or from a GitHub URL (gh:username/script), as an alternative to the --javascript option that required a direct string argument. Furthermore, shot-scraper multi has adopted the equivalent js_file: YAML key for loading scripts. Finally, to ensure a consistent experience across commands, both the shot-scraper javascript and shot-scraper html commands now include a --timeout option, aligning them with other commands in the suite. <div>
 <p><strong>Release:</strong> <a href="https://github.com/simonw/shot-scraper/releases/tag/1.11">shot-scraper 1.11</a></p>
         <p>Some minor improvements, mainly around command option consistency and making the <code>server:</code> mechanism <a href="https://shot-scraper.datasette.io/en/stable/multi.html#running-a-server-for-the-duration-of-the-session">used by</a> both <code>shot-scraper video</code> and <code>shot-scraper multi</code> work if the server takes longer than a second to start serving traffic.</p>
@@ -48,7 +491,6 @@ Some minor improvements have been made regarding command option consistency in t
         <p>Tags: <a href="https://simonwillison.net/tags/shot-scraper">shot-scraper</a></p>
 ]]></content:encoded>
 <pubDate>2026-07-12T23:46:52+00:00</pubDate>
-<pubDate>2026-07-12T23:46:52+00:00</pubDate>
 </item>
 <item>
 <title>Fable gets another bump</title>
@@ -57,7 +499,7 @@ Some minor improvements have been made regarding command option consistency in t
 <content:encoded><![CDATA[
 <div> Keywords: Claude Fable, GPT-5.6 Sol, Anthropic, usage limits, OpenAI  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 Anthropic is extending access to Claude Fable 5 on all paid plans while enforcing usage limits on its Claude Max plans due to concerns over compute constraints. Users can utilize up to half of their weekly usage limit on Fable 5 and continue access through usage credits or by switching to different models after the limit is reached. This cautious approach by Anthropic contrasts with OpenAI's strategy regarding its recently released GPT-5.6 Sol. Thibault Sottiaux announced significant updates from OpenAI, including the temporary removal of a five-hour usage limit for Plus, Business, and Pro plans, as well as improvements to GPT-5.6 Sol that will enhance efficiency and reduce overall usage. OpenAI recently achieved a milestone of 6 million active users, indicating a growing demand for their services. The uncertainty surrounding Fable's availability could lead Anthropic to reconsider its strategy and potentially make Fable permanently accessible on its plans. The situation highlights competitive dynamics in the AI model market, with OpenAI appearing to gain an advantage based on user confidence and access stability. <div>
 <p>One of the consequences of GPT-5.6 Sol being clearly a Fable/Mythos class model is that Anthropic have, once again, <a href="https://x.com/claudeai/status/2076351399999557669">bumped the date</a> that Fable stops being available in their Claude Max plans:</p>
 <blockquote>
@@ -79,7 +521,6 @@ Anthropic is extending access to Claude Fable 5 on all paid plans while enforcin
     <p>Tags: <a href="https://simonwillison.net/tags/anthropic">anthropic</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/gpt">gpt</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/claude-mythos-fable">claude-mythos-fable</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/llm-pricing">llm-pricing</a></p>
 ]]></content:encoded>
 <pubDate>2026-07-12T21:20:07+00:00</pubDate>
-<pubDate>2026-07-12T21:20:07+00:00</pubDate>
 </item>
 <item>
 <title>sqlite-utils 4.1.1</title>
@@ -88,7 +529,7 @@ Anthropic is extending access to Claude Fable 5 on all paid plans while enforcin
 <content:encoded><![CDATA[
 <div> Keywords: TransactionError, foreign_keys, ON DELETE, transform(), documentation
 
-<br><br>Summary:  
+<br /><br />Summary:  
 The latest release primarily addresses an edge case identified in Claude chat concerning the handling of foreign key constraints during table transformations. Specifically, when using the table.transform() method with PRAGMA foreign_keys enabled, the system now raises a TransactionError if it attempts to drop a table that is referenced by foreign keys with destructive ON DELETE actions (namely CASCADE, SET NULL, or SET DEFAULT). This change is crucial because the pragma settings cannot be altered within an open transaction; thus, previously, dropping a table could inadvertently trigger cascading effects that might delete or modify related rows without explicit notice. The release documentation has also been updated to improve user experience. The CLI sections now include links to corresponding functionalities in the Python API, and vice versa, allowing for seamless navigation between command line instructions and API documentation. Overall, these enhancements aim to improve data integrity during table transformations and provide clearer guidance to users navigating between documentation formats. <div>
 <p><strong>Release:</strong> <a href="https://github.com/simonw/sqlite-utils/releases/tag/4.1.1">sqlite-utils 4.1.1</a></p>
         <p>Mainly a fix for an edge case that regular Claude chat spotted while <a href="https://claude.ai/share/564b187d-d126-47ea-9b59-07c16ade0b70">experimenting with the 4.1 release</a> to answer a question about ON DELETE.</p>
@@ -103,7 +544,6 @@ The latest release primarily addresses an edge case identified in Claude chat co
         <p>Tags: <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/sqlite-utils">sqlite-utils</a></p>
 ]]></content:encoded>
 <pubDate>2026-07-12T20:55:30+00:00</pubDate>
-<pubDate>2026-07-12T20:55:30+00:00</pubDate>
 </item>
 <item>
 <title>Lorde says Ray-Ban Meta AI glasses are ‘not sexy’</title>
@@ -112,7 +552,7 @@ The latest release primarily addresses an edge case identified in Claude chat co
 <content:encoded><![CDATA[
 <div> **Keywords:** Lorde, Real Cool Festival, sunglasses, AI smartglasses, authenticity
 
-<br><br>Summary: Lorde performed at the Real Cool Festival in Madrid on Thursday, where she engaged the audience in a candid moment. During her set, she reflected on the challenges of discerning what is real in today's world. Although she did not name any specific brands, her remarks appeared to critique the festival's sponsor, Ray-Ban, particularly in relation to their collaboration with Meta on AI smartglasses. The singer emphasized the importance of genuine experiences and interactions, thanking the crowd for participating in "something real." She expressed her concern over the blurring lines of reality, especially when it comes to technology's influence, saying, "You don't know if someone is wearing sunglasses or if they're wearing those fucked up fucking…". Lorde's comments resonated with her fans, sparking discussions on authenticity and the impact of advanced technology on human connections. The performance was noted for its blend of music and thought-provoking commentary, showcasing her ability to connect with audiences on deeper issues beyond entertainment. <div>
+<br /><br />Summary: Lorde performed at the Real Cool Festival in Madrid on Thursday, where she engaged the audience in a candid moment. During her set, she reflected on the challenges of discerning what is real in today's world. Although she did not name any specific brands, her remarks appeared to critique the festival's sponsor, Ray-Ban, particularly in relation to their collaboration with Meta on AI smartglasses. The singer emphasized the importance of genuine experiences and interactions, thanking the crowd for participating in "something real." She expressed her concern over the blurring lines of reality, especially when it comes to technology's influence, saying, "You don't know if someone is wearing sunglasses or if they're wearing those fucked up fucking…". Lorde's comments resonated with her fans, sparking discussions on authenticity and the impact of advanced technology on human connections. The performance was noted for its blend of music and thought-provoking commentary, showcasing her ability to connect with audiences on deeper issues beyond entertainment. <div>
 <figure>
 
 <img alt="" src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/gettyimages-2279420244.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
@@ -123,7 +563,6 @@ The latest release primarily addresses an edge case identified in Claude chat co
 <p class="wp-block-paragraph">The comments were <a href="https://x.com/Lorde_fix/status/2075567105991409975?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E2075567105991409975%7Ctwgr%5Ec71b57c1ddf5c52f8aac6358167f15e590da1832%7Ctwcon%5Es1_&amp;ref_url=https%3A%2F%2Fstereogum.com%2F2504954%2Florde-speaks-out-against-fucked-up-ai-glasses%2Fnews">captured in videos</a> shared to social media. After thanking the crowd for being there and taking part in "something real," she said that it was increasingly hard to know is and isn't real, before saying "You don't know if someone is wearing sunglasses or if they're wearing those fucked up fucking… Can I just say, for …</p>
 <p><a href="https://www.theverge.com/ai-artificial-intelligence/964539/lorde-says-ray-ban-meta-ai-glasses-are-not-sexy">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
-<pubDate>2026-07-12T16:10:19-04:00</pubDate>
 <pubDate>2026-07-12T16:10:32-04:00</pubDate>
 </item>
 <item>
@@ -133,7 +572,7 @@ The latest release primarily addresses an edge case identified in Claude chat co
 <content:encoded><![CDATA[
 <div> Keywords: Apple, self-driving car, Neural Engine, AI processing, development  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 Apple's self-driving car program, while challenging, significantly contributed to advancing the company's chip technology. Early in the program's development, Apple recognized the necessity for robust processing capabilities, which led to innovations beyond just the automotive sector. Although the dedicated car processor faced obstacles, it ultimately spurred the creation of the Neural Engine, a key component in Apple's AI processing initiatives. The Neural Engine first appeared in Apple's products, enhancing their ability to handle complex AI tasks. Initially, its applications were primarily geared towards computer vision technology, which enabled features such as FaceID and Animoji. As a result, the development of the Neural Engine not only improved Apple's self-driving technology but also revolutionized the way the company integrated AI into its devices, making them more efficient and capable of performing advanced functions. This evolutionary step in chip design has positioned Apple as a formidable player in the AI landscape, showcasing the interconnectedness of its self-driving efforts and broader technological advancements. <div>
 <figure>
 
@@ -146,7 +585,6 @@ Apple's self-driving car program, while challenging, significantly contributed t
 <p><a href="https://www.theverge.com/tech/964519/apple-silicon-self-driving-car-ai-m7-ultra">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
 <pubDate>2026-07-12T12:27:06-04:00</pubDate>
-<pubDate>2026-07-12T12:27:06-04:00</pubDate>
 </item>
 <item>
 <title>The fight against AI data centers is just beginning</title>
@@ -155,7 +593,7 @@ Apple's self-driving car program, while challenging, significantly contributed t
 <content:encoded><![CDATA[
 <div> Keywords: data center, protest, community, technology, opposition  
 
-<br><br>Summary: The rise of data centers, particularly with the AI boom's demand, has sparked significant community pushback, highlighted by a protest in Mount Carmel Township, Northumberland County, against a planned data center. This opposition echoes back to 2015 when Apple sought to establish a massive data facility in Athenry, Ireland, aimed at supporting its European services like iTunes and Siri. The immense energy requirements of such facilities have raised concerns about their impact on local power grids and resources. Communities are facing similar dilemmas as new data center projects arise, with many residents expressing fears over environmental and infrastructural consequences. The protests represent a growing awareness and resistance against the rapid expansion of tech companies in suburban and rural areas, focusing on the potential disruption to everyday life. As communities grapple with balancing technological growth and local needs, the conflict between advancing technology and community well-being is becoming a pressing issue across the globe. This scenario illustrates the increasing importance of addressing local concerns amid the broader push for technological advancement, as the pressure on power infrastructure continues to rise. <div>
+<br /><br />Summary: The rise of data centers, particularly with the AI boom's demand, has sparked significant community pushback, highlighted by a protest in Mount Carmel Township, Northumberland County, against a planned data center. This opposition echoes back to 2015 when Apple sought to establish a massive data facility in Athenry, Ireland, aimed at supporting its European services like iTunes and Siri. The immense energy requirements of such facilities have raised concerns about their impact on local power grids and resources. Communities are facing similar dilemmas as new data center projects arise, with many residents expressing fears over environmental and infrastructural consequences. The protests represent a growing awareness and resistance against the rapid expansion of tech companies in suburban and rural areas, focusing on the potential disruption to everyday life. As communities grapple with balancing technological growth and local needs, the conflict between advancing technology and community well-being is becoming a pressing issue across the globe. This scenario illustrates the increasing importance of addressing local concerns amid the broader push for technological advancement, as the pressure on power infrastructure continues to rise. <div>
 <figure>
 
 <img alt="A yard sign opposing a planned data center is displayed along Route 54 in Mount Carmel Township Northumberland County. " src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/07/gettyimages-2282688394.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
@@ -167,7 +605,6 @@ Apple's self-driving car program, while challenging, significantly contributed t
 <p class="wp-block-paragraph">Years before the AI boom threatened local power grids, a small group of protesters set the stage for the battles cropping up across communities today. In 2015, Apple <a href="https://www.theverge.com/2015/2/23/8089311/apple-european-data-centers-nearly-2-billion">announced plans</a> to build a <a href="https://www.businessinsider.com/apples-850-million-irish-data-centre-hangs-in-the-balance-2016-10">roughly $1 billion</a> data center in the sleepy town of Athenry, Ireland. The data center's 500-acre site would power Apple's services in Europe, including iTunes, iMessage, and Siri. At th …</p>
 <p><a href="https://www.theverge.com/column/963346/ai-data-centers-fight">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
-<pubDate>2026-07-12T08:00:00-04:00</pubDate>
 <pubDate>2026-07-10T12:18:14-04:00</pubDate>
 </item>
 <item>
@@ -177,7 +614,7 @@ Apple's self-driving car program, while challenging, significantly contributed t
 <content:encoded><![CDATA[
 <div> **Keywords:** API, integration testing, automation, regression, monitoring  
 
-<br><br>Summary: API integration testing is a crucial process that ensures seamless interaction between different software components. It involves testing the APIs to validate that they are working as expected and delivering the desired results. One key aspect of effective testing is automation, which allows for more efficient execution of test cases and quicker feedback on integration issues. Additionally, regression testing is vital; it checks that new updates or changes do not break existing functionalities. To enhance testing efforts, implementing a system that remembers previous issues can significantly improve the debugging process, as it allows developers to identify and address recurring problems swiftly. Monitoring APIs continuously can further aid in preemptive detection of issues, ensuring that performance remains optimal. By focusing on these techniques, teams can achieve higher reliability and maintain quality in their software applications, leading to improved user satisfaction and trust. Ultimately, incorporating these practices into the development lifecycle fosters a more robust and resilient software ecosystem. <div>
+<br /><br />Summary: API integration testing is a crucial process that ensures seamless interaction between different software components. It involves testing the APIs to validate that they are working as expected and delivering the desired results. One key aspect of effective testing is automation, which allows for more efficient execution of test cases and quicker feedback on integration issues. Additionally, regression testing is vital; it checks that new updates or changes do not break existing functionalities. To enhance testing efforts, implementing a system that remembers previous issues can significantly improve the debugging process, as it allows developers to identify and address recurring problems swiftly. Monitoring APIs continuously can further aid in preemptive detection of issues, ensuring that performance remains optimal. By focusing on these techniques, teams can achieve higher reliability and maintain quality in their software applications, leading to improved user satisfaction and trust. Ultimately, incorporating these practices into the development lifecycle fosters a more robust and resilient software ecosystem. <div>
 <p>
             API integration testing that remembers what breaks
           </p>
@@ -187,7 +624,6 @@ Apple's self-driving car program, while challenging, significantly contributed t
             <a href="https://www.producthunt.com/r/p/1175731?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-06-18T21:12:56-07:00</pubDate>
 <pubDate>2026-07-12T20:39:57-07:00</pubDate>
 </item>
 <item>
@@ -197,7 +633,7 @@ Apple's self-driving car program, while challenging, significantly contributed t
 <content:encoded><![CDATA[
 <div> Keywords: creativity, editable canvas, agent memory, innovation, collaboration
 
-<br><br>Summary: The article discusses the innovative concept of enhancing creativity through the use of an editable canvas that incorporates agent memory. This approach allows individuals and teams to collaborate effectively, fostering a dynamic environment where ideas can be visually manipulated and expanded upon. The editable canvas serves as a versatile tool, accommodating different styles of creativity and encouraging experimentation without fear of failure. By integrating agent memory, the system can recall previous interactions and contributions, thus facilitating a richer, more context-aware creative process. The combination of these elements not only enhances individual creativity but also promotes collective brainstorming, leading to more innovative solutions. Additionally, the article highlights the importance of maintaining a fluid and open platform for creative expression, where all team members can contribute their unique perspectives. Ultimately, the use of an editable canvas with agent memory represents a significant advancement in collaborative creativity, making it easier than ever to push boundaries and generate new ideas that can drive projects forward. This approach is particularly beneficial in fields that require constant innovation and adaptability. <div>
+<br /><br />Summary: The article discusses the innovative concept of enhancing creativity through the use of an editable canvas that incorporates agent memory. This approach allows individuals and teams to collaborate effectively, fostering a dynamic environment where ideas can be visually manipulated and expanded upon. The editable canvas serves as a versatile tool, accommodating different styles of creativity and encouraging experimentation without fear of failure. By integrating agent memory, the system can recall previous interactions and contributions, thus facilitating a richer, more context-aware creative process. The combination of these elements not only enhances individual creativity but also promotes collective brainstorming, leading to more innovative solutions. Additionally, the article highlights the importance of maintaining a fluid and open platform for creative expression, where all team members can contribute their unique perspectives. Ultimately, the use of an editable canvas with agent memory represents a significant advancement in collaborative creativity, making it easier than ever to push boundaries and generate new ideas that can drive projects forward. This approach is particularly beneficial in fields that require constant innovation and adaptability. <div>
 <p>
             Scale your creativity on editable canvas with agent memory
           </p>
@@ -207,7 +643,6 @@ Apple's self-driving car program, while challenging, significantly contributed t
             <a href="https://www.producthunt.com/r/p/1190387?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-07-07T08:48:10-07:00</pubDate>
 <pubDate>2026-07-12T20:40:21-07:00</pubDate>
 </item>
 <item>
@@ -217,7 +652,7 @@ Apple's self-driving car program, while challenging, significantly contributed t
 <content:encoded><![CDATA[
 <div> **Keywords:** AI, memory, tools, connectivity, integration  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 The article discusses the evolution of artificial intelligence and its capacity for memory that allows it to connect various tools and applications seamlessly. It highlights how this integration improves efficiency and user experience across different platforms. The AI memory acts as a centralized hub that gathers and processes information from diverse sources, enabling more informed decision-making. Moreover, the article points out that such a system can learn and adapt over time, refining its functionalities based on user interactions and preferences. This adaptability leads to enhanced personalization, allowing users to receive recommendations and insights that are relevant to their specific needs. Additionally, the integration of AI memory can support collaboration among teams by ensuring that information is easily accessible and shared, thus fostering a more productive work environment. The significance of data privacy and security is also emphasized, suggesting that robust measures should be in place to protect user information. Overall, the article underscores the potential of AI memory to revolutionize how people interact with technology, streamlining operations and enriching user experiences across various applications. <div>
 <p>
             AI memory that connects the dots across every tool
@@ -228,10 +663,8 @@ The article discusses the evolution of artificial intelligence and its capacity 
             <a href="https://www.producthunt.com/r/p/1180472?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-06-24T20:43:33-07:00</pubDate>
 <pubDate>2026-07-12T20:41:20-07:00</pubDate>
 </item>
-
 <item>
 <title>sqlite-utils 4.1</title>
 <link>https://simonwillison.net/2026/Jul/11/sqlite-utils/</link>
