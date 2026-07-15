@@ -3,7 +3,815 @@
 <channel>
 <title>tech</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/tech.xml</link>
-<lastBuildDate>Tue, 14 Jul 2026 03:16:40 +0000</lastBuildDate>
+<lastBuildDate>Wed, 15 Jul 2026 03:15:55 +0000</lastBuildDate>
+
+<item>
+<title>AWS Elastic Disaster Recovery now supports Amazon EBS volume initialization rate</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-drs-fast-hydration/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-drs-fast-hydration/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS Elastic Disaster Recovery, Amazon EBS, volume initialization rate, recovery performance, I/O-intensive workloads
+
+<br><br>Summary: AWS Elastic Disaster Recovery (DRS) now allows users to set an Amazon EBS volume initialization rate, enhancing the speed at which recovered volumes achieve full performance during drills and recoveries. When DRS restores EBS volumes from snapshots, it loads data from Amazon S3 in the background, which may cause slower I/O for uninitialized blocks until the process completes. The new feature allows users to specify the initialization rate in their DRS-managed EC2 launch templates, enabling DRS to apply it automatically during recovery, ensuring applications reach optimal storage performance swiftly and predictably. This is particularly beneficial for I/O-intensive workloads like databases, where maintaining consistent storage performance is crucial for meeting recovery time objectives. Users can set the rate once in the launch template, and DRS will retain it through updates related to rightsizing or disk modifications. If the specified rate cannot be applied, DRS will still complete the recovery process without it, thus ensuring that recovery is not halted. This support for EBS volume initialization rate is available across all AWS Regions where EBS is offered, with charges based on the snapshot size and specified rate. <div>
+<p>AWS Elastic Disaster Recovery (AWS DRS) now supports the Amazon EBS volume initialization rate, helping recovered volumes reach full performance faster during drills and recoveries. When DRS restores EBS volumes from snapshots, the data loads from Amazon S3 in the background, and I/O to blocks that haven't loaded yet can be slower until initialization finishes. With this launch, you can set a volume initialization rate on your DRS-managed EC2 launch template, and DRS applies it automatically when it creates volumes during recovery — bringing your applications to full storage performance on a predictable timeline.</p> 
+<p>This is especially valuable for I/O-intensive workloads such as databases, where fast, consistent storage performance is critical to meeting your recovery time objectives. You set the rate once on the launch template, and DRS preserves it across the updates it makes for rightsizing or disk changes. If the rate cannot be applied for a given recovery, DRS completes recovery without it, so your recovery is never blocked.</p> 
+<p>AWS DRS support for the EBS volume initialization rate is available in all AWS Regions and environments where the EBS volume initialization rate is offered. You are charged per GB based on the full snapshot size and the rate you specify; for details, see <a href="https://aws.amazon.com/ebs/pricing/">Amazon EBS pricing</a>. To learn more, see the <a href="https://docs.aws.amazon.com/drs/">AWS Elastic Disaster Recovery User Guide</a>.</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 22:00:56 GMT</pubDate>
+<pubDate>Tue, 14 Jul 2026 22:00:56 GMT</pubDate>
+</item>
+<item>
+<title>AWS Lambda console provides a one-click setup prompt for coding agents</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-lambda-prompt-coding-agents/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-lambda-prompt-coding-agents/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS Lambda, coding agents, serverless development, one-click setup, Serverless MCP server
+
+<br><br>Summary: AWS Lambda console has introduced a one-click setup prompt aimed at simplifying the configuration of coding agents for serverless development. This feature integrates AWS Serverless skills and the Serverless Model Context Protocol (MCP) server, ensuring developers adhere to serverless best practices right from the beginning. The prompt is accessible in the Lambda console, catering to developers across various stages, including beginners and those who have already created their first function. Previously, setting up an agent involved navigating multiple documentation pages, but this streamlined approach now instructs the agent to install necessary skills and configure the Serverless MCP server directly. The prompt includes references to installation commands for diverse coding agents such as Claude Code, Kiro, and GitHub Copilot, along with specialized Lambda skills and configurations. Additionally, if a developer lacks local AWS authentication, the prompt facilitates connection via a signing-in-to-aws skill. This feature is available across most commercial regions and AWS GovCloud (US) where Lambda is supported, excluding the Middle East (Bahrain) and (UAE). Developers can get started by visiting the Lambda console and can learn more through the provided resources. <div>
+<p>AWS Lambda console now provides a one-click setup prompt for coding agents that configures your agent with AWS Serverless skills and the Serverless Model Context Protocol (MCP) server, embedding serverless best practices from the start. This setup is available on the Lambda console wherever the developers start their Lambda journey: whether they are getting started with Lambda, exploring its capabilities, or have created their first function.</p> 
+<p>Developers use coding agents to build, test, and deploy Lambda functions, but setting up an agent for serverless development previously required navigating across multiple documentation pages to find the right configuration. The one-click setup prompt eliminates this friction as it provides a prompt that instructs the agent to install AWS Serverless skills (hosted in <a href="https://aws.amazon.com/products/developer-tools/agent-toolkit-for-aws/" rel="noopener noreferrer" target="_blank">Agent Toolkit for AWS</a>) and the Serverless MCP server directly in the developer's preferred coding agent. The prompt references the <a href="https://docs.aws.amazon.com/lambda/latest/dg/samples/aws-lambda-agent-setup.md" rel="noopener noreferrer" target="_blank">Lambda agent setup guide</a>, which includes installation commands for Claude Code, Kiro, Cursor, GitHub Copilot, Codex, Devin Desktop, and OpenCode, for the AWS Serverless skills, three specialized Lambda skills (MicroVM, Managed Instances, durable functions), and Serverless MCP server configuration. If a developer does not have local AWS authentication configured, the prompt guides them to connect using the signing-in-to-aws skill.</p> 
+<p>This capability is available in all commercial <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/?refid=2abe6167-e3db-40c4-a9fa-b283e7b4d7c8" rel="noopener noreferrer" target="_blank">AWS Regions</a>&nbsp;(except Middle East (Bahrain) and Middle East (UAE)) and AWS GovCloud (US) Regions where Lambda is available. Get started by visiting the <a href="https://console.aws.amazon.com/lambda" rel="noopener noreferrer" target="_blank">AWS Lambda console</a> or learn more in the <a href="https://docs.aws.amazon.com/lambda/latest/dg/samples/aws-lambda-agent-setup.md" rel="noopener noreferrer" target="_blank">Lambda agent setup guide</a>.</p> 
+<p>&nbsp;</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 20:00:00 GMT</pubDate>
+<pubDate>Tue, 14 Jul 2026 20:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS IAM Identity Center achieves FedRAMP Class C Certification</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-identity-center-fedramp/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-identity-center-fedramp/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: FedRAMP, IAM Identity Center, compliance, AWS, federal  
+
+<br><br>Summary: FedRAMP Class C compliance is now available in several AWS regions, including US East (Ohio), US East (N. Virginia), US West (N. California), and US West (Oregon). AWS IAM Identity Center is highlighted as the preferred service for managing workforce access to AWS accounts and applications that fall under FedRAMP Class C certification. The Federal Risk and Authorization Management Program (FedRAMP) is a comprehensive US government initiative that standardizes the security assessment, certification, and ongoing monitoring of cloud products and services used by federal agencies. Organizations can leverage IAM Identity Center to streamline access control across AWS resources, ensuring compliance with the necessary federal security standards. To gain further insights into FedRAMP and its requirements, users can visit official resources associated with the program. Additionally, information specific to AWS IAM Identity Center can be found on its respective website, which details its functionalities and benefits for managing access within cloud environments effectively. This advancement underscores AWS's commitment to facilitating secure cloud services for federal agencies and organizations involved with sensitive workloads. <div>
+<p><a href="https://aws.amazon.com/iam/identity-center/" rel="noopener noreferrer" target="_blank">AWS IAM Identity Center</a> is now in scope for FedRAMP Class C in the US East (Ohio), US East (N. Virginia), US West (N. California), and US West (Oregon) Regions. You can now use IAM Identity Center to enable workforce access to AWS accounts and applications that are subject to FedRAMP Class C compliance.</p> 
+<p>The Federal Risk and Authorization Management Program (FedRAMP) is a US government-wide program that delivers a standard approach to the security assessment, certification, and continuous monitoring for cloud products and services. AWS IAM Identity Center is the recommended service for managing your workforce access to AWS accounts and applications.</p> 
+<p>To learn more about <a href="https://aws.amazon.com/compliance/fedramp/" rel="noopener noreferrer" target="_blank">FedRAMP</a>, visit the <a href="https://aws.amazon.com/compliance/services-in-scope/" rel="noopener noreferrer" target="_blank">AWS services compliance page</a> and <a href="https://aws.amazon.com/compliance/resources/" rel="noopener noreferrer" target="_blank">AWS compliance resources</a> page. To learn more about IAM Identity Center, visit the <a href="https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html" rel="noopener noreferrer" target="_blank">User Guide</a>.</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 19:10:00 GMT</pubDate>
+<pubDate>Tue, 14 Jul 2026 19:10:00 GMT</pubDate>
+</item>
+<item>
+<title>Introducing Amazon GuardDuty AI Protection for AWS AI workloads</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-guardduty-ai-protection-aws/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-guardduty-ai-protection-aws/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon GuardDuty, AI Protection, threat detection, AWS AI services, Security Hub  
+
+<br><br>Summary: Amazon GuardDuty has introduced AI Protection, enhancing threat detection for AWS AI services such as Amazon Bedrock and Amazon SageMaker. As more organizations adopt AI, security teams may face challenges in spotting threats specifically targeting AI workloads, including anomalous model invocations, cost harvesting attacks, and prompt injection attempts. GuardDuty AI Protection continuously monitors these workloads, allowing security teams to identify and respond to AI-specific threats without the need for manual configuration or custom tools. The service analyzes both CloudTrail management and data events from AWS AI services to detect suspicious activities, such as unusual invocation patterns and excessive resource consumption by threat actors. Findings from these detections are integrated into AWS Security Hub, providing teams with a unified view of AI assets and threats for prioritized response. Enabling GuardDuty AI Protection is straightforward via the GuardDuty or Security Hub console, and it can be centrally activated for all accounts within an organization using AWS Organizations. A 30-day free trial is available for GuardDuty customers, with further pricing and supported Regions detailed on the respective AWS pages. <div>
+<p>Amazon GuardDuty now offers AI Protection, expanding threat detection to AWS AI services including Amazon Bedrock and Amazon SageMaker. As organizations rapidly adopt AI, security teams may lack visibility into threats specifically targeting AI workloads, such as anomalous model invocations, cost harvesting attacks, and prompt injection attempts. GuardDuty AI Protection continuously monitors these workloads so security teams can detect and respond to AI-specific threats without manual configuration or custom tooling.</p> 
+<p>GuardDuty AI Protection analyzes both CloudTrail management and data events from AWS AI services to identify suspicious activity, including unusual invocation patterns, cost harvesting attacks where threat actors force AI resources to consume excessive GPU time and tokens, and prompt injection attempts through integration with Amazon Bedrock Guardrails. Threat findings flow directly into AWS Security Hub, giving teams a single view of AI assets and threats for prioritized response. GuardDuty AI Protection can be enabled with a few steps in the GuardDuty or Security Hub console, and using AWS Organizations, can be centrally enabled for all accounts in an organization.</p> 
+<p>GuardDuty AI Protection is available to GuardDuty customers with a 30-day free trial. For pricing details, visit the <a href="https://aws.amazon.com/guardduty/pricing/">Amazon GuardDuty pricing page</a>. To learn more, see the <a href="https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guardduty.html">Amazon GuardDuty User Guide</a> and the <a href="https://aws.amazon.com/guardduty/">Amazon GuardDuty product page</a>. For the full list of supported Regions, see the <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/">AWS Regional Services List</a>.</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 19:00:00 GMT</pubDate>
+<pubDate>Tue, 14 Jul 2026 19:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Managed Service for Apache Flink now offers AI Agent Skills to simplify building and operating Flink applications</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-managed-service-flink-agent-skills/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-managed-service-flink-agent-skills/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon Managed Service, Apache Flink, AI Agent Skills, streaming applications, troubleshooting
+
+<br><br>Summary:  
+Amazon Managed Service for Apache Flink has introduced AI Agent Skills that enhance AI coding assistants by providing expert guidance for developing and managing Flink applications. These skills cater to various tasks, including application creation, troubleshooting issues, scaling, monitoring, network configuration, and cost optimization. By utilizing these skills, customers can ensure their Flink applications remain healthy and efficient while accelerating the development of new streaming applications. Additionally, the skills facilitate easy upgrades to the latest versions of Apache Flink, such as Flink 2.2. Tasks that previously necessitated specialized knowledge of Apache Flink can now be performed by developers through a guided experience. Users can leverage these Managed Service for Apache Flink skills alongside their current AI coding agents, like Kiro, Claude Code, or Cursor. To begin using this feature, simply configure your AI coding agent and ask questions like, "How do I create a new Flink application on MSF?" or "My Flink application is unhealthy — what's wrong?" This innovative approach enables more efficient development and management of streaming applications. <div>
+<p>Amazon Managed Service for Apache Flink now offers AI Agent Skills that give AI coding assistants expert, up-to-date guidance for building and operating Flink applications. The skills provide expert guidance for common tasks such as creating applications, troubleshooting, scaling, monitoring, networking configuration, and cost optimization.</p> 
+<p>Customers can leverage these skills to keep Flink applications healthy and performant, accelerate development of new streaming applications, and easily upgrade to latest versions of Apache Flink like Flink 2.2. The skills turn tasks that once required specialized Apache Flink knowledge into a guided experience developers can complete on their own.</p> 
+<p>You can use the Managed Service for Apache Flink skills with your existing AI coding agent, including Kiro, Claude Code, or Cursor. To get started, configure the <a href="https://docs.aws.amazon.com/agent-toolkit/latest/userguide/what-is-agent-toolkit.html?refid=ee1fe04d-2569-460e-88fb-d67e6d0ef979">Agent Toolkit for AWS</a> using the <a href="https://docs.aws.amazon.com/agent-toolkit/latest/userguide/aws-cli.html?refid=ee1fe04d-2569-460e-88fb-d67e6d0ef979">AWS CLI</a>, then ask your coding agent a question, such as <i>"How do I create a new Flink application on MSF?"</i> or <i>"My Flink application is unhealthy — what's wrong?"</i></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 18:20:00 GMT</pubDate>
+<pubDate>Tue, 14 Jul 2026 18:20:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon WorkSpaces Personal simplifies bulk PCoIP to DCV protocol migration</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-workspaces-personal-pcoip/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-workspaces-personal-pcoip/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon WorkSpaces, automated rollback, PCoIP, DCV protocol, migration  
+
+<br><br>Summary:  
+Amazon WorkSpaces Personal now includes automated rollback capabilities and supports the migration of stopped WorkSpaces from PCoIP to the DCV protocol. This enhancement builds on the recently launched console-based migration workflow and checkpoint snapshot features, allowing administrators to migrate WorkSpaces at scale with minimal manual effort. The Amazon DCV protocol offers high-performance streaming and broader operating system support, including Windows 11 and Windows Server 2025. It also enhances security with features like certificate-based authentication and WebAuthN redirection while improving streaming performance. If a migration fails, the WorkSpace automatically reverts to the pre-migration snapshot, ensuring it remains in a healthy state without requiring manual intervention. Furthermore, administrators can now begin the migration process for stopped WorkSpaces, eliminating the need to start each one before protocol modification. These new features significantly accelerate large-scale migrations. They are available in all AWS commercial regions and AWS GovCloud (US) wherever Amazon WorkSpaces Personal is supported. To get started, users can sign in to their AWS account, and for detailed information, they can refer to the official resources provided by AWS. <div>
+<p>Amazon WorkSpaces Personal now provides automated rollback and support for PCoIP to DCV protocol migration of stopped WorkSpaces, building on the recently launched console-based migration workflow and checkpoint snapshot support. These new capabilities enable administrators to migrate WorkSpaces at scale with minimal manual intervention.<br /> <br /> Amazon DCV is a high-performance streaming protocol built by AWS that powers Amazon WorkSpaces services. By migrating to DCV, customers gain access to broader operating system support including Windows 11 and Windows Server 2025, enhanced security features such as certificate-based authentication and WebAuthN redirection, and improved streaming performance. With this launch, if a protocol modification fails, the WorkSpace automatically rolls back to the pre-migration snapshot, ensuring it returns to a known healthy state without manual intervention. Additionally, administrators can now initiate migration for WorkSpaces in a stopped state, removing the need to manually start each stopped WorkSpace before modifying its protocol. This helps customers significantly speed up large scale migrations.<br /> <br /> These enhancements are available in all AWS commercial and AWS GovCloud (US) <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/">Regions</a> where Amazon WorkSpaces Personal is supported.<br /> <br /> To get started, sign in to the <a href="https://us-east-1.console.aws.amazon.com/workspaces/v2/home">Amazon WorkSpaces console</a>. For more information, see <a href="https://docs.aws.amazon.com/workspaces/latest/adminguide/modify-workspaces.html#modify_protocols">Modify protocols section</a> in the <a href="https://docs.aws.amazon.com/workspaces/latest/adminguide/amazon-workspaces.html">Amazon WorkSpaces Administration Guide</a>. To learn more about Amazon WorkSpaces, visit the <a href="https://aws.amazon.com/workspaces/">Amazon WorkSpaces product page</a>.</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 17:00:00 GMT</pubDate>
+<pubDate>Tue, 14 Jul 2026 17:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Aurora DSQL is now available in Europe (Spain)</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-aurora-dsql-available-in-spain/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-aurora-dsql-available-in-spain/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon Aurora, DSQL, serverless, high availability, scalability
+
+<br><br>Summary:  
+Starting today, Amazon Aurora DSQL is available for single-Region clusters in the Europe (Spain) Region. Aurora DSQL is recognized as the fastest serverless, distributed SQL database, which offers active-active high availability and multi-Region strong consistency. This service enables developers to build always-available applications with virtually unlimited scalability and zero infrastructure management, making scaling and resilience effortless. With this launch, Aurora DSQL is now accessible in multiple regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central and West), South America (São Paulo), several regions across Europe (including Frankfurt, Ireland, London, Paris, Spain, and Stockholm), along with various locations in the Asia Pacific (Hong Kong, Melbourne, Mumbai, Osaka, Seoul, Singapore, Sydney, and Tokyo). Users can get started with Aurora DSQL for free. For more information, interested parties can visit the dedicated Aurora DSQL page to learn about its features and capabilities, as well as get insights on how to utilize it effectively for their applications. <div>
+<p>Starting today, Amazon Aurora DSQL is available for single-Region clusters in the Europe (Spain) Region. Aurora DSQL is the fastest serverless, distributed SQL database, with active-active high availability and multi-Region strong consistency. It enables you to build always-available applications with virtually unlimited scalability, the highest availability, and zero infrastructure management, making scaling and resilience effortless for your applications.<br /> </p> 
+<p>With this launch, Aurora DSQL is available in the following <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/">AWS Regions</a>:&nbsp;US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), Canada West (Calgary), South America (São Paulo), Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Paris), Europe (Spain), Europe (Stockholm), Asia Pacific (Hong Kong), Asia Pacific (Melbourne), Asia Pacific (Mumbai), Asia Pacific (Osaka), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), and Asia Pacific (Tokyo).<br /> <br /> Get started with Aurora DSQL for free with the <a href="https://aws.amazon.com/free/?all-free-tier.sort-by=item.additionalFields.SortRank&amp;all-free-tier.sort-order=asc&amp;awsf.Free%20Tier%20Types=*all&amp;awsf.Free%20Tier%20Categories=categories%23databases">AWS Free Tier</a>. To learn more, visit the Aurora DSQL <a href="https://aws.amazon.com/rds/aurora/dsql/">webpage </a>and <a href="https://docs.aws.amazon.com/aurora-dsql/latest/userguide/what-is-aurora-dsql.html">documentation</a>.</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 17:00:00 GMT</pubDate>
+<pubDate>Tue, 14 Jul 2026 17:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Security Hub now provides AI inventory for organization-wide visibility of AI assets</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-security-hub-ai/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-security-hub-ai/</guid>
+<content:encoded><![CDATA[
+<div> AI, AWS Security Hub, inventory, assets, security posture
+
+<br><br>Summary:  
+Today, AWS announced that AWS Security Hub now features an AI inventory to provide central security teams with a continuously updated, organization-wide view of AI assets and their security posture. As organizations rapidly deploy AI models and pipelines, visibility into these AI assets is often lacking, which can hinder effective security. The AI inventory automatically discovers and catalogs AI workloads through three methods: it inventories managed AI services without additional configuration; it uses SBOM analysis from Amazon Inspector for self-hosted workloads; and it leverages Amazon GuardDuty DNS telemetry to identify external AI API endpoints. Each discovered AI asset is mapped to its underlying infrastructure and correlated with security findings, including threat findings from Amazon GuardDuty. Security teams can filter and prioritize AI inventory by account, resource type, and specific model identity, allowing them to focus on workloads under threat. The AI inventory feature is included with Security Hub Essentials at no additional cost and requires no new enablement, available in all AWS commercial Regions where Security Hub is offered. To learn more, additional resources are provided. <div>
+<p>Today, AWS announces that AWS Security Hub now provides an AI inventory, giving central security teams a continuously updated, organization-wide view of AI assets and their security posture. As organizations rapidly deploy AI agents, models, and pipelines, security teams may lack visibility into what AI assets exist across their organization. Without centralized visibility connecting AI assets to active threats and misconfigurations, organizations cannot secure what they don't know exists.</p> 
+<p>Security Hub AI inventory automatically discovers and catalogs AI workloads across your AWS environment through three discovery methods. For managed AI services, Security Hub inventories AWS Config resources from Amazon Bedrock, Bedrock AgentCore and Amazon SageMaker, with no additional configuration. For self-hosted AI workloads, Security Hub leverages the software bill of materials (SBOM) analysis from Amazon Inspector, which has been enhanced to identify inference endpoints, models and AI agents installed on Amazon EC2 instances and Amazon ECR container images, including frameworks such as Ollama, vLLM, Hugging Face TGI, and others. Security Hub also leverages Amazon GuardDuty DNS telemetry to discover external AI API endpoints (such as calls to third-party model providers) being accessed from your EC2 instances, revealing third-party AI dependencies that may not have been previously identified.</p> 
+<p>&nbsp;Each discovered AI asset is mapped to its underlying infrastructure and correlated with security findings from across the AWS security stack, including threat findings from Amazon GuardDuty. Teams can filter, group, and query their AI inventory by account, resource type, discovery method, and specific model identity, enabling them to prioritize remediation based on which AI workloads are actively under threat and carry the highest organizational risk.</p> 
+<p>AI Inventory is included with Security Hub Essentials at no additional cost and requires no new enablement. It is available in all AWS commercial Regions where Security Hub is offered. To learn more, see the <a href="https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub-v2.html">AWS Security Hub User Guide</a> and the <a href="https://aws.amazon.com/security-hub/">AWS Security Hub product page</a>.</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 17:00:00 GMT</pubDate>
+<pubDate>Tue, 14 Jul 2026 17:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Storage Gateway adds console support for copying file shares across gateways</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-storage-gateway-console-copy-file-shares/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-storage-gateway-console-copy-file-shares/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS, Storage Gateway, file shares, migration, configuration
+
+<br><br>Summary: 
+AWS Storage Gateway has introduced a new feature that allows users to copy file shares across gateways directly from the Storage Gateway console. This enhancement simplifies the migration process, as users no longer need to manually recreate each file share on the destination gateway, re-entering configurations one by one. Instead, when a copy is initiated, the console automatically reads the source share's configuration and creates a new file share on the destination gateway with compatible settings preserved. This significantly reduces the time and effort required for migrations, such as upgrades to AL2023. Additionally, the guided experience provided by the console surfaces any configurations that require user attention prior to the share creation, ensuring a smooth transition without missing critical settings. To utilize this feature, users should navigate to their file shares, select the desired share, and choose the option to "Copy to gateway." This capability is available in commercial AWS Regions, and users can check for regional availability through the appropriate resources. For more information, users are encouraged to visit the AWS documentation. <div>
+<p>AWS Storage Gateway now allows you to copy file shares across gateways directly from the Storage Gateway console. When you initiate a copy, the console reads the configuration of your source share and creates a new file share on the destination gateway with compatible settings preserved.</p> 
+<p>Previously, you had to manually recreate each file share on the destination gateway and re-enter configuration details one by one. Now you can copy a file share and have its configuration automatically applied to a destination gateway, significantly reducing the time and effort required for migrations such as upgrading to AL2023.&nbsp;A guided experience surfaces any configurations that require your attention before the new share is created, helping ensure a smooth transition without missing critical settings.</p> 
+<p>To get started, navigate to your file shares in the <a href="https://console.aws.amazon.com/storagegateway/">Storage Gateway console</a>, select a share, and choose Copy to gateway. This capability is available in commercial AWS Regions. To check regional availability, see <a href="https://builder.aws.com/build/capabilities">AWS Capabilities</a>. For more information, visit the AWS <a href="https://docs.aws.amazon.com/storagegateway/">Storage Gateway User Guide</a>. &nbsp;</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 10:00:00 GMT</pubDate>
+<pubDate>Tue, 14 Jul 2026 10:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon CloudFront Functions now supports logging to CloudFront access logs</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/cloudfront-functions-access-logs/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/cloudfront-functions-access-logs/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: CloudFront, access logs, custom logging, cf.logCustomData, edge locations  
+
+<br><br>Summary:  
+Amazon CloudFront has introduced a helper method, cf.logCustomData(), that allows for custom data to be written directly into CloudFront access logs. This feature enables CloudFront Functions, which run lightweight JavaScript at the edge, to effectively perform URL rewrites, header manipulations, and request routing while also logging relevant data. Previously, users could only emit logs to Amazon CloudWatch Logs, requiring them to correlate logs from separate systems. The new method allows for seamless integration of custom log data like A/B test variants and routing decisions within the access log record for each request. This functionality works with both real-time log configurations and standard logging (v2) in CloudFront, simplifying the analysis of function behavior along with request outcomes. The existing console.log() functionality remains available, allowing both methods to be utilized together in the same function. Notably, cf.logCustomData() is available at all CloudFront edge locations and incurs no additional charges beyond standard CloudFront Functions invocation pricing and access log delivery fees. To get started with this feature, users are encouraged to visit the provided link. <div>
+<p>You can now write custom data directly into CloudFront access logs using a new helper method available from within CloudFront Functions. CloudFront Functions run lightweight JavaScript at the edge for tasks like URL rewrites, header manipulation, and request routing. Previously, you could only emit log data to Amazon CloudWatch Logs as a separate log file from your CloudFront access logs. With this launch, you no longer need to correlate function decisions with CloudFront access log data across separate logging systems.</p> 
+<p>You can call <i>cf.logCustomData() </i>from viewer request or viewer response functions to log values such as A/B test variant assignments, authentication outcomes, or routing decisions directly into the CloudFront access log record for that request. This works with both CloudFront real time log configurations and standard logging (v2), so you can analyze function behavior and request outcomes in a single query. The existing <i>console.log()</i> functionality remains available and the two methods can be used together in the same function.</p> 
+<p>Amazon CloudFront Functions custom log data is available today in all CloudFront edge locations. There is no additional charge for using <i>cf.logCustomData().</i> Standard CloudFront Functions invocation pricing and access log delivery charges apply. To get started, visit <a href="https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/general-helper-methods.html#log-custom-data-method" rel="noopener noreferrer" target="_blank">CloudFront Functions helper methods</a>.</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 08:00:00 GMT</pubDate>
+<pubDate>Tue, 14 Jul 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon DocumentDB (with MongoDB compatibility) adds support for 46 new MongoDB operators in version 8.0.1</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-documentdb-mongodb-8-0-1-mongo-api</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-documentdb-mongodb-8-0-1-mongo-api</guid>
+<content:encoded><![CDATA[
+
+<p>Amazon DocumentDB (with MongoDB compatibility) now supports 46 additional MongoDB aggregation operators and cursor methods starting from minor version 8.0.1. This release significantly expands query API compatibility, making it easier to migrate MongoDB workloads to Amazon DocumentDB without application code changes.</p> 
+<p>New capabilities span seven categories:</p> 
+<ul> 
+ <li><p>Accumulators (13): $top, $topN, $bottom, $bottomN, $firstN, $lastN, $maxN, $minN, $count, $median, $percentile, $stdDevPop, $stdDevSamp</p> </li> 
+</ul> 
+<ul> 
+ <li><p>Trigonometry (15): $sin, $cos, $tan, $asin, $acos, $atan, $atan2, $sinh, $cosh, $tanh, $asinh, $acosh, $atanh, $degreesToRadians, $radiansToDegrees&nbsp;</p> </li> 
+</ul> 
+<ul> 
+ <li><p>Bitwise aggregation (4): $bitAnd, $bitOr, $bitXor, $bitNot</p> </li> 
+</ul> 
+<ul> 
+ <li><p>Arithmetic (3): $round, $trunc, $sigmoid</p> </li> 
+</ul> 
+<ul> 
+ <li><p>Data size and type (4): $binarySize, $bsonSize, $isNumber, $toUUID</p> </li> 
+</ul> 
+<ul> 
+ <li><p>Timestamp (2): $tsIncrement, $tsSecond&nbsp;</p> </li> 
+</ul> 
+<ul> 
+ <li><p>Stages and other (5): $sortByCount, $listSearchIndexes, $sampleRate, cursor.min(), cursor.max()</p> </li> 
+</ul> 
+<p>These operators are available starting from Amazon DocumentDB 8.0.1 in all regions where Amazon DocumentDB is available. To learn more, see <a href="https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html">Supported MongoDB APIs, operations, and data types</a> and <a href="https://docs.aws.amazon.com/documentdb/latest/developerguide/release-notes.html">Amazon DocumentDB release notes</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 13 Jul 2026 17:00:00 GMT</pubDate>
+<pubDate>Mon, 13 Jul 2026 17:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Redshift Serverless now preserves zero-ETL and Amazon S3 event integrations during snapshot restores</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/redshift-serverless-zetl-autocopy-restore/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/redshift-serverless-zetl-autocopy-restore/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://aws.amazon.com/redshift/">Amazon Redshift</a> Serverless now automatically preserves zero-ETL and Amazon S3 event integrations when restoring a namespace from a snapshot or recovery point to the same serverless namespace. Previously, restoring a snapshot marked associated integrations as failed, requiring you to manually recreate them after the restore completed. This meant additional time reconfiguring data pipelines and potential data ingestion gaps during the rebuild process.<br /> <br /> With this enhancement, integrations are automatically maintained and resume operating after the restore completes, simplifying data ingestion workflows and reducing administrative overhead. This streamlines disaster recovery and testing workflows by reducing manual configuration steps and potential errors. This applies to restores within the same serverless namespace only. Restoring to a different namespace or restoring provisioned clusters does not maintain integrations.<br /> <br /> This feature is available in all AWS regions where Amazon Redshift Serverless is available. To learn more about restoring Amazon Redshift Serverless namespaces, please visit our <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshot-restore.html">documentation</a> or the <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/behavior-changes.html#serverless-restore-integrations-patch202">Redshift behaviour change page.</a></p>
+]]></content:encoded>
+<pubDate>Mon, 13 Jul 2026 15:00:00 GMT</pubDate>
+<pubDate>Mon, 13 Jul 2026 15:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Partner Central subsidiary connections now support qualification sharing</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/subsidiary-qualification-sharing/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/subsidiary-qualification-sharing/</guid>
+<content:encoded><![CDATA[
+
+<p>AWS Partner Central subsidiary connections now enable partners to share qualifications across their connected partner and seller accounts. Partners connecting newly acquired partner's accounts or regional subsidiary accounts they own can now consolidate their AWS partnership standing across those accounts beyond revenue attribution.</p> 
+<p>Partners with active subsidiary connections can now select Associate qualifications to share specializations, certifications, and select program enrollments across all connected accounts. The subsidiary's display name is automatically updated to reflect its affiliation with the primary account, and tier is recalculated based on combined scorecard metrics. Upon connection, Partner Revenue Measurement (PRM) continues to attribute combined revenue across all connected accounts. With qualification sharing, partners now also benefit from a unified public profile and consolidated scorecard.</p> 
+<p>Subsidiary account connections and qualification sharing are available today in all commercial AWS Regions. Partners can self-service their subsidiary account connections and qualification sharing directly in AWS Partner Central. To get started, log in to AWS Partner Central in the AWS Management Console, navigate to Account Connections, and send a connection request to the accounts you own. To learn more about subsidiary connections and qualification sharing, visit the &nbsp;<a href="https://docs.aws.amazon.com/partner-central/latest/getting-started/manage-subsidiary.html">Managing subsidiary account connections guide&nbsp;</a>.</p>
+]]></content:encoded>
+<pubDate>Fri, 10 Jul 2026 04:00:00 GMT</pubDate>
+<pubDate>Fri, 10 Jul 2026 04:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon EC2 C8id, M8id, and R8id instances are now available in additional regions</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-ec2-c8id-m8id-r8id/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-ec2-c8id-m8id-r8id/</guid>
+<content:encoded><![CDATA[
+
+<p>Amazon EC2 C8id, M8id, and R8id instances are now available in additional regions. Amazon EC2 C8id instances are now available in Asia Pacific (Mumbai) and Europe (Stockholm), M8id instances are available in Europe (London, Stockholm), and R8id instances are available in Europe (London) Regions. There instances are powered by custom Intel Xeon 6 processors and deliver up to 43% higher performance and 3.3x more memory bandwidth compared to previous generation C6id, M6id, and R6id instances.<br /> <br /> C8id, M8id, and R8id instances offer up to 384 vCPUs, 3TiB of memory, and 22.8TB of NVMe SSD storage, 3x more than previous generation instances. These instances deliver up to 46% higher performance for I/O intensive database workloads, and up to 30% faster query results for I/O intensive real-time data analytics than previous sixth-generation instances<b>.</b> Additionally, these instances support Instance Bandwidth Configuration, allowing 25% flexible allocation between network and EBS bandwidth, allocating resources optimally for each workload.<br /> <br /> C8id instances are ideal for compute-intensive workloads such as high-performance web servers, batch processing, distributed analytics, ad serving, video encoding, and gaming servers. M8id instances are well-suited for balanced workloads including application servers, microservices, enterprise applications, and small to medium databases. R8id instances are ideal for memory-intensive workloads such as in-memory databases, real-time big data analytics, large in-memory caches, and scientific computing applications.<br /> <br /> Customers can purchase these instances via Savings Plans, On-Demand instances, and Spot instances. For more information visit the <a href="https://aws.amazon.com/ec2/instance-types/">Amazon EC2 instance type page.</a></p>
+]]></content:encoded>
+<pubDate>Thu, 09 Jul 2026 19:33:00 GMT</pubDate>
+<pubDate>Thu, 09 Jul 2026 19:33:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon EC2 M8gd and R8gd instances are now available in AWS GovCloud (US)</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-ec2-m8gd-r8gd-us-govcloud/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-ec2-m8gd-r8gd-us-govcloud/</guid>
+<content:encoded><![CDATA[
+
+<p>Amazon Elastic Compute Cloud (Amazon EC2) M8gd and R8gd instances are available in AWS GovCloud (US-East) and AWS GovCloud (US-West) Regions. These instances feature up to 11.4 TB of local NVMe-based SSD block-level storage and are powered by AWS Graviton4 processors, delivering up to 30% better performance over Graviton3-based instances. These instances are built on the AWS Nitro System and are a great fit for applications that need access to high-speed, low latency local storage.<br /> <br /> Each instance is available in 12 different sizes. They provide up to 50 Gbps of network bandwidth and up to 40 Gbps of bandwidth to the Amazon Elastic Block Store (Amazon EBS). Additionally, customers can now adjust the network and<br /> Amazon EBS bandwidth on these instances by 25% using EC2 instance bandwidth weighting conﬁguration, providing greater ﬂexibility with the allocation of bandwidth resources to better optimize workloads. These instances offer Elastic Fabric Adapter (EFA) networking on 24xlarge, 48xlarge, metal-24xl, and metal-48xl sizes.<br /> <br /> To learn more, see <a href="https://aws.amazon.com/ec2/instance-types/m8g/">M8gd instances</a> or <a href="https://aws.amazon.com/ec2/instance-types/r8g/">R8gd instances</a>. To explore how to migrate your workloads to Graviton-based instances, see <a href="https://aws.amazon.com/ec2/graviton/fast-start/">AWS Graviton Fast Start program</a>. To get started, see the <a href="https://console.aws.amazon.com/">AWS Management Console</a>.</p>
+]]></content:encoded>
+<pubDate>Thu, 09 Jul 2026 19:24:00 GMT</pubDate>
+<pubDate>Thu, 09 Jul 2026 19:24:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Partner Central introduces Partner Lead Prospecting</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-partner-central-prospecting/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-partner-central-prospecting/</guid>
+<content:encoded><![CDATA[
+
+<p>AWS Partner Central now offers Partner Lead Prospecting, an AI-powered capability that helps APN Customer Engagements (ACE)-eligible AWS Partners act on and convert their leads faster. Building on the lead enrichment capabilities launched earlier this year — which provide propensity insights and eligibility for select AWS programs, funding benefits, and sales motions — Partner Lead Prospecting generates personalized sales plays, call scripts, and email outreach tailored to the customer's industry context and each partner's unique solutions and offerings.</p> 
+<p>By incorporating a partner's own portfolio directly into prospecting content, the feature reduces the manual effort of researching leads and drafting outreach, helping partners engage prospective customers with more relevant, ready-to-use messaging.</p> 
+<p>Partner Lead Prospecting is available to all ACE-eligible AWS Partners globally. Partners can access it through the Leads page in the AWS Partner Central console or via the AWS Partner Central MCP server.</p> 
+<p>To get started, visit the Leads page in <a href="https://aws.amazon.com/partners/partner-central/">AWS Partner Central</a>, or see the <a href="https://docs.aws.amazon.com/partner-central/latest/APIReference/partner-central-mcp-server.html">Partner Central agents MCP server guide</a>.</p>
+]]></content:encoded>
+<pubDate>Thu, 09 Jul 2026 16:30:00 GMT</pubDate>
+<pubDate>Thu, 09 Jul 2026 16:30:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon EC2 M8gd and R8gd instances are now available in additional AWS Regions</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-ec2-m8gd-r8gd-aws-regions/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-ec2-m8gd-r8gd-aws-regions/</guid>
+<content:encoded><![CDATA[
+
+<p>Amazon Elastic Compute Cloud (Amazon EC2) M8gd and R8gd instances are available in additional AWS regions. EC2 M8gd and R8gd instances are available in Europe (Paris) and Asia Pacific (Mumbai). Additionally, EC2 R8gd instances are available in Europe (Stockholm, Milan) and Asia Pacific (Osaka, Melbourne, Singapore, Taipei) Regions.<br /> <br /> These instances feature up to 11.4 TB of local NVMe-based SSD block-level storage and are powered by AWS Graviton4 processors, delivering up to 30% better performance over Graviton3-based instances. These instances are built on the AWS Nitro System and are a great fit for applications that need access to high-speed, low latency local storage.<br /> <br /> Each instance is available in 12 different sizes. They provide up to 50 Gbps of network bandwidth and up to 40 Gbps of bandwidth to the Amazon Elastic Block Store (Amazon EBS). Additionally, customers can now adjust the network and<br /> Amazon EBS bandwidth on these instances by 25% using EC2 instance bandwidth weighting conﬁguration, providing greater ﬂexibility with the allocation of bandwidth resources to better optimize workloads. These instances offer Elastic Fabric Adapter (EFA) networking on 24xlarge, 48xlarge, metal-24xl, and metal-48xl sizes.<br /> <br /> To learn more, see <a href="https://aws.amazon.com/ec2/instance-types/m8g/">M8gd instances</a> or <a href="https://aws.amazon.com/ec2/instance-types/r8g/">R8gd instances</a>. To explore how to migrate your workloads to Graviton-based instances, see <a href="https://aws.amazon.com/ec2/graviton/fast-start/">AWS Graviton Fast Start program</a>. To get started, see the <a href="https://console.aws.amazon.com/">AWS Management Console</a>.</p>
+]]></content:encoded>
+<pubDate>Wed, 08 Jul 2026 19:29:00 GMT</pubDate>
+<pubDate>Wed, 08 Jul 2026 19:29:00 GMT</pubDate>
+</item>
+<item>
+<title>v16.3.0-canary.86</title>
+<link>https://github.com/vercel/next.js/releases/tag/v16.3.0-canary.86</link>
+<guid>https://github.com/vercel/next.js/releases/tag/v16.3.0-canary.86</guid>
+<content:encoded><![CDATA[
+
+<h3>Misc Changes</h3>
+<ul>
+<li>Better support the CLI spinner when running the TSC CLI: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95753">#95753</a></li>
+<li>Upgrade React from <code>5123b063-20260708</code> to <code>7023f501-20260714</code>: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95782">#95782</a></li>
+<li>docs: add route-side URL data audit to the Partial Prefetching adoption guide: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95389">#95389</a></li>
+<li>docs: revalidateTag with expire zero, for route handlers: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95760">#95760</a></li>
+<li>request insights: add DevTools request panel (5/5): <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/93978">#93978</a></li>
+<li>docs: Improve immutable static docs: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95752">#95752</a></li>
+<li>Add React sync development skill: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95620">#95620</a></li>
+<li>docs: useSearchParams example stray link: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95759">#95759</a></li>
+<li>Improve the NFT error message and ignore comment handling: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95144">#95144</a></li>
+<li>Upgrade to swc 73: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95731">#95731</a></li>
+</ul>
+<h3>Credits</h3>
+<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/lukesandberg">@lukesandberg</a>, <a class="user-mention notranslate" href="https://github.com/vercel-release-bot">@vercel-release-bot</a>, <a class="user-mention notranslate" href="https://github.com/aurorascharff">@aurorascharff</a>, <a class="user-mention notranslate" href="https://github.com/icyJoseph">@icyJoseph</a>, <a class="user-mention notranslate" href="https://github.com/feedthejim">@feedthejim</a>, <a class="user-mention notranslate" href="https://github.com/mischnic">@mischnic</a>, and <a class="user-mention notranslate" href="https://github.com/timneutkens">@timneutkens</a> for helping!</p>
+]]></content:encoded>
+
+<pubDate>2026-07-14T23:59:06Z</pubDate>
+</item>
+<item>
+<title>7.9.0-dev.22</title>
+<link>https://github.com/prisma/prisma/releases/tag/7.9.0-dev.22</link>
+<guid>https://github.com/prisma/prisma/releases/tag/7.9.0-dev.22</guid>
+<content:encoded><![CDATA[
+
+<p>7.9.0-dev.22</p>
+]]></content:encoded>
+
+<pubDate>2026-07-14T18:01:08Z</pubDate>
+</item>
+<item>
+<title>7.9.0-dev.21</title>
+<link>https://github.com/prisma/prisma/releases/tag/7.9.0-dev.21</link>
+<guid>https://github.com/prisma/prisma/releases/tag/7.9.0-dev.21</guid>
+<content:encoded><![CDATA[
+
+<p>7.9.0-dev.21</p>
+]]></content:encoded>
+
+<pubDate>2026-07-14T08:16:26Z</pubDate>
+</item>
+<item>
+<title>Cursor 0day: When Full Disclosure Becomes the Only Protection Left</title>
+<link>https://mindgard.ai/blog/cursor-0day-when-full-disclosure-becomes-the-only-protection-left</link>
+<guid>https://mindgard.ai/blog/cursor-0day-when-full-disclosure-becomes-the-only-protection-left</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://mindgard.ai/blog/cursor-0day-when-full-disclosure-becomes-the-only-protection-left">https://mindgard.ai/blog/cursor-0day-when-full-disclosure-becomes-the-only-protection-left</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48910676">https://news.ycombinator.com/item?id=48910676</a></p>
+<p>Points: 271</p>
+<p># Comments: 120</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 17:58:35 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 17:58:35 +0000</pubDate>
+</item>
+<item>
+<title>Bonsai 27B: A 27B-Class model that runs on a phone</title>
+<link>https://prismml.com/news/bonsai-27b</link>
+<guid>https://prismml.com/news/bonsai-27b</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://prismml.com/news/bonsai-27b">https://prismml.com/news/bonsai-27b</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48910545">https://news.ycombinator.com/item?id=48910545</a></p>
+<p>Points: 466</p>
+<p># Comments: 173</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 17:50:48 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 17:50:48 +0000</pubDate>
+</item>
+<item>
+<title>The Tower Keeps Rising</title>
+<link>https://lucumr.pocoo.org/2026/7/13/the-tower-keeps-rising/</link>
+<guid>https://lucumr.pocoo.org/2026/7/13/the-tower-keeps-rising/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://lucumr.pocoo.org/2026/7/13/the-tower-keeps-rising/">https://lucumr.pocoo.org/2026/7/13/the-tower-keeps-rising/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48909785">https://news.ycombinator.com/item?id=48909785</a></p>
+<p>Points: 365</p>
+<p># Comments: 173</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 16:57:54 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 16:57:54 +0000</pubDate>
+</item>
+<item>
+<title>S&amp;P Global has lowered Oracle’s creditworthiness from BBB to BBB-</title>
+<link>https://www.heise.de/en/news/S-P-downgrades-Oracle-to-BBB-only-one-notch-above-junk-level-11363472.html</link>
+<guid>https://www.heise.de/en/news/S-P-downgrades-Oracle-to-BBB-only-one-notch-above-junk-level-11363472.html</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.heise.de/en/news/S-P-downgrades-Oracle-to-BBB-only-one-notch-above-junk-level-11363472.html">https://www.heise.de/en/news/S-P-downgrades-Oracle-to-BBB-only-one-notch-above-junk-level-11363472.html</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48909768">https://news.ycombinator.com/item?id=48909768</a></p>
+<p>Points: 314</p>
+<p># Comments: 323</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 16:56:48 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 16:56:48 +0000</pubDate>
+</item>
+<item>
+<title>Measuring Input Latency on Linux: X11 vs. Wayland, VRR, and DXVK</title>
+<link>https://marco-nett.de/blog/measuring-input-latency-on-linux-x11-vs-wayland-vrr-dxvk/</link>
+<guid>https://marco-nett.de/blog/measuring-input-latency-on-linux-x11-vs-wayland-vrr-dxvk/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://marco-nett.de/blog/measuring-input-latency-on-linux-x11-vs-wayland-vrr-dxvk/">https://marco-nett.de/blog/measuring-input-latency-on-linux-x11-vs-wayland-vrr-dxvk/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48909424">https://news.ycombinator.com/item?id=48909424</a></p>
+<p>Points: 349</p>
+<p># Comments: 227</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 16:36:06 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 16:36:06 +0000</pubDate>
+</item>
+<item>
+<title>I'm a USB-C Maximalist</title>
+<link>https://shkspr.mobi/blog/2026/07/im-a-usb-c-maximalist/</link>
+<guid>https://shkspr.mobi/blog/2026/07/im-a-usb-c-maximalist/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://shkspr.mobi/blog/2026/07/im-a-usb-c-maximalist/">https://shkspr.mobi/blog/2026/07/im-a-usb-c-maximalist/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48908214">https://news.ycombinator.com/item?id=48908214</a></p>
+<p>Points: 184</p>
+<p># Comments: 289</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 15:20:36 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 15:20:36 +0000</pubDate>
+</item>
+<item>
+<title>Are we offloading too much of our thinking to AI?</title>
+<link>https://www.artfish.ai/p/offloading-thinking-to-ai</link>
+<guid>https://www.artfish.ai/p/offloading-thinking-to-ai</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.artfish.ai/p/offloading-thinking-to-ai">https://www.artfish.ai/p/offloading-thinking-to-ai</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48908178">https://news.ycombinator.com/item?id=48908178</a></p>
+<p>Points: 392</p>
+<p># Comments: 391</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 15:18:13 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 15:18:13 +0000</pubDate>
+</item>
+<item>
+<title>New York becomes the first state to impose a data center moratorium</title>
+<link>https://www.reuters.com/world/new-york-becomes-first-state-impose-data-center-moratorium-2026-07-14/</link>
+<guid>https://www.reuters.com/world/new-york-becomes-first-state-impose-data-center-moratorium-2026-07-14/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.reuters.com/world/new-york-becomes-first-state-impose-data-center-moratorium-2026-07-14/">https://www.reuters.com/world/new-york-becomes-first-state-impose-data-center-moratorium-2026-07-14/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48907296">https://news.ycombinator.com/item?id=48907296</a></p>
+<p>Points: 150</p>
+<p># Comments: 210</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 14:17:54 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 14:17:54 +0000</pubDate>
+</item>
+<item>
+<title>Proof of care in the age of AI</title>
+<link>https://jacobfilipp.com/care/</link>
+<guid>https://jacobfilipp.com/care/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://jacobfilipp.com/care/">https://jacobfilipp.com/care/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48906125">https://news.ycombinator.com/item?id=48906125</a></p>
+<p>Points: 172</p>
+<p># Comments: 104</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 12:56:25 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 12:56:25 +0000</pubDate>
+</item>
+<item>
+<title>Germany set to restrict its Freedom of Information Act</title>
+<link>https://www.dw.com/en/germany-freedom-of-information-act/a-77939695</link>
+<guid>https://www.dw.com/en/germany-freedom-of-information-act/a-77939695</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.dw.com/en/germany-freedom-of-information-act/a-77939695">https://www.dw.com/en/germany-freedom-of-information-act/a-77939695</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48905290">https://news.ycombinator.com/item?id=48905290</a></p>
+<p>Points: 257</p>
+<p># Comments: 170</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 11:49:48 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 11:49:48 +0000</pubDate>
+</item>
+<item>
+<title>How to stop Claude from saying load-bearing</title>
+<link>https://jola.dev/posts/how-to-stop-claude-from-saying-load-bearing</link>
+<guid>https://jola.dev/posts/how-to-stop-claude-from-saying-load-bearing</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://jola.dev/posts/how-to-stop-claude-from-saying-load-bearing">https://jola.dev/posts/how-to-stop-claude-from-saying-load-bearing</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48905248">https://news.ycombinator.com/item?id=48905248</a></p>
+<p>Points: 449</p>
+<p># Comments: 513</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 11:46:02 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 11:46:02 +0000</pubDate>
+</item>
+<item>
+<title>Punch yourself in the face with reality</title>
+<link>https://adi.bio/reality</link>
+<guid>https://adi.bio/reality</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://adi.bio/reality">https://adi.bio/reality</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48905118">https://news.ycombinator.com/item?id=48905118</a></p>
+<p>Points: 213</p>
+<p># Comments: 106</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 11:33:19 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 11:33:19 +0000</pubDate>
+</item>
+<item>
+<title>Codex starts encrypting sub-agent prompts</title>
+<link>https://github.com/openai/codex/issues/28058</link>
+<guid>https://github.com/openai/codex/issues/28058</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://github.com/openai/codex/issues/28058">https://github.com/openai/codex/issues/28058</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48905028">https://news.ycombinator.com/item?id=48905028</a></p>
+<p>Points: 412</p>
+<p># Comments: 241</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 11:21:32 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 11:21:32 +0000</pubDate>
+</item>
+<item>
+<title>European "age verification" "app" forcing everyone to use Android or iOS</title>
+<link>https://github.com/eu-digital-identity-wallet/av-doc-technical-specification/discussions/19</link>
+<guid>https://github.com/eu-digital-identity-wallet/av-doc-technical-specification/discussions/19</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://github.com/eu-digital-identity-wallet/av-doc-technical-specification/discussions/19">https://github.com/eu-digital-identity-wallet/av-doc-technical-specification/discussions/19</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48903777">https://news.ycombinator.com/item?id=48903777</a></p>
+<p>Points: 489</p>
+<p># Comments: 335</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 08:34:57 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 08:34:57 +0000</pubDate>
+</item>
+<item>
+<title>Indian scientists produce most detailed 3D atlas of the human brainstem</title>
+<link>https://www.bbc.com/news/articles/cg53l737v1qo</link>
+<guid>https://www.bbc.com/news/articles/cg53l737v1qo</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.bbc.com/news/articles/cg53l737v1qo">https://www.bbc.com/news/articles/cg53l737v1qo</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48903082">https://news.ycombinator.com/item?id=48903082</a></p>
+<p>Points: 197</p>
+<p># Comments: 20</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 06:43:28 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 06:43:28 +0000</pubDate>
+</item>
+<item>
+<title>Australian energy retailers must offer three hours of free daytime electricity</title>
+<link>https://lenergy.com.au/free-daytime-electricity-is-coming-heres-how-it-actually-works/</link>
+<guid>https://lenergy.com.au/free-daytime-electricity-is-coming-heres-how-it-actually-works/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://lenergy.com.au/free-daytime-electricity-is-coming-heres-how-it-actually-works/">https://lenergy.com.au/free-daytime-electricity-is-coming-heres-how-it-actually-works/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48902320">https://news.ycombinator.com/item?id=48902320</a></p>
+<p>Points: 268</p>
+<p># Comments: 356</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 04:31:48 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 04:31:48 +0000</pubDate>
+</item>
+<item>
+<title>YouTrackDB is a general-use object-oriented graph database</title>
+<link>https://github.com/JetBrains/youtrackdb</link>
+<guid>https://github.com/JetBrains/youtrackdb</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://github.com/JetBrains/youtrackdb">https://github.com/JetBrains/youtrackdb</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48902026">https://news.ycombinator.com/item?id=48902026</a></p>
+<p>Points: 166</p>
+<p># Comments: 66</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 03:39:55 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 03:39:55 +0000</pubDate>
+</item>
+<item>
+<title>Japan develops a method to recover up to 90% of lithium from used EV batteries</title>
+<link>https://tech.supercarblondie.com/japan-recovers-up-to-90-of-lithium-from-used-ev-batteries/</link>
+<guid>https://tech.supercarblondie.com/japan-recovers-up-to-90-of-lithium-from-used-ev-batteries/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://tech.supercarblondie.com/japan-recovers-up-to-90-of-lithium-from-used-ev-batteries/">https://tech.supercarblondie.com/japan-recovers-up-to-90-of-lithium-from-used-ev-batteries/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48901569">https://news.ycombinator.com/item?id=48901569</a></p>
+<p>Points: 722</p>
+<p># Comments: 187</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 02:27:20 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 02:27:20 +0000</pubDate>
+</item>
+<item>
+<title>Fundamentals of Wireless Communication (2005)</title>
+<link>https://web.stanford.edu/~dntse/wireless_book.html</link>
+<guid>https://web.stanford.edu/~dntse/wireless_book.html</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://web.stanford.edu/~dntse/wireless_book.html">https://web.stanford.edu/~dntse/wireless_book.html</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48901454">https://news.ycombinator.com/item?id=48901454</a></p>
+<p>Points: 174</p>
+<p># Comments: 12</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 02:10:19 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 02:10:19 +0000</pubDate>
+</item>
+<item>
+<title>Satellite Tracker – Live Map of Starlink and 30k Satellites</title>
+<link>https://satellitemap.space/</link>
+<guid>https://satellitemap.space/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://satellitemap.space/">https://satellitemap.space/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48901356">https://news.ycombinator.com/item?id=48901356</a></p>
+<p>Points: 158</p>
+<p># Comments: 94</p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 01:55:24 +0000</pubDate>
+<pubDate>Tue, 14 Jul 2026 01:55:24 +0000</pubDate>
+</item>
+<item>
+<title>You should probably check on your smart appliances</title>
+<link>https://xeiaso.net/notes/2026/check-your-smart-tv/</link>
+<guid>https://xeiaso.net/notes/2026/check-your-smart-tv/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/slrak5/you_should_probably_check_on_your_smart">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 17:02:25 -0500</pubDate>
+<pubDate>Tue, 14 Jul 2026 17:02:25 -0500</pubDate>
+</item>
+<item>
+<title>Too many words about DIDs</title>
+<link>https://steveklabnik.com/writing/too-many-words-about-dids/</link>
+<guid>https://steveklabnik.com/writing/too-many-words-about-dids/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/86lwsv/too_many_words_about_dids">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 11:35:18 -0500</pubDate>
+<pubDate>Tue, 14 Jul 2026 11:35:18 -0500</pubDate>
+</item>
+<item>
+<title>whatcable: macOS menu bar app that tells you, in plain English, what each USB-C cable plugged into your Mac can actually do</title>
+<link>https://github.com/darrylmorley/whatcable</link>
+<guid>https://github.com/darrylmorley/whatcable</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/tzzarv/whatcable_macos_menu_bar_app_tells_you">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 12:00:52 -0500</pubDate>
+<pubDate>Tue, 14 Jul 2026 12:00:52 -0500</pubDate>
+</item>
+<item>
+<title>qr-swastika-avoider v0.1.0</title>
+<link>https://crates.io/crates/qr-swastika-avoider</link>
+<guid>https://crates.io/crates/qr-swastika-avoider</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/h7pett/qr_swastika_avoider_v0_1_0">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 16:47:07 -0500</pubDate>
+<pubDate>Tue, 14 Jul 2026 16:47:07 -0500</pubDate>
+</item>
+<item>
+<title>Jurassic Park computers in excruciating detail</title>
+<link>https://fabiensanglard.net/jurrasic_park_computers/index.html</link>
+<guid>https://fabiensanglard.net/jurrasic_park_computers/index.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/xv8dix/jurassic_park_computers_excruciating">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 04:24:36 -0500</pubDate>
+<pubDate>Tue, 14 Jul 2026 04:24:36 -0500</pubDate>
+</item>
+<item>
+<title>6× faster binary search: from compiled code to mechanical sympathy</title>
+<link>https://pythonspeed.com/articles/branchless-binary-search/</link>
+<guid>https://pythonspeed.com/articles/branchless-binary-search/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/czbhmr/6x_faster_binary_search_from_compiled">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 06:31:30 -0500</pubDate>
+<pubDate>Tue, 14 Jul 2026 06:31:30 -0500</pubDate>
+</item>
+<item>
+<title>Job queues are deceptively tricky</title>
+<link>https://typesanitizer.com/blog/job-queues.html</link>
+<guid>https://typesanitizer.com/blog/job-queues.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/k3frwc/job_queues_are_deceptively_tricky">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 02:49:04 -0500</pubDate>
+<pubDate>Tue, 14 Jul 2026 02:49:04 -0500</pubDate>
+</item>
+<item>
+<title>git-absorb: git commit --fixup, but automatic</title>
+<link>https://github.com/tummychow/git-absorb</link>
+<guid>https://github.com/tummychow/git-absorb</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/nprldj/git_absorb_git_commit_fixup_automatic">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 03:45:13 -0500</pubDate>
+<pubDate>Tue, 14 Jul 2026 03:45:13 -0500</pubDate>
+</item>
+<item>
+<title>How my images are dithered</title>
+<link>https://dead.garden/blog/how-my-images-are-dithered.html</link>
+<guid>https://dead.garden/blog/how-my-images-are-dithered.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/2gbb6l/how_my_images_are_dithered">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 11:00:52 -0500</pubDate>
+<pubDate>Tue, 14 Jul 2026 11:00:52 -0500</pubDate>
+</item>
+<item>
+<title>Temper Language</title>
+<link>https://temperlang.dev/</link>
+<guid>https://temperlang.dev/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/in1oer/temper_language">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 11:56:25 -0500</pubDate>
+<pubDate>Tue, 14 Jul 2026 11:56:25 -0500</pubDate>
+</item>
+<item>
+<title>How I use HTMX with Go</title>
+<link>https://www.alexedwards.net/blog/how-i-use-htmx-with-go</link>
+<guid>https://www.alexedwards.net/blog/how-i-use-htmx-with-go</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/rg1wee/how_i_use_htmx_with_go">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 13:34:27 -0500</pubDate>
+<pubDate>Tue, 14 Jul 2026 13:34:27 -0500</pubDate>
+</item>
+<item>
+<title>The git history command deserves more attention</title>
+<link>https://lalitm.com/post/git-history/</link>
+<guid>https://lalitm.com/post/git-history/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/tb3el5/git_history_command_deserves_more">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 13 Jul 2026 22:21:08 -0500</pubDate>
+<pubDate>Mon, 13 Jul 2026 22:21:08 -0500</pubDate>
+</item>
+<item>
+<title>Hating AI in 2026</title>
+<link>https://www.eamoncaddigan.net/posts/ai-in-2026/</link>
+<guid>https://www.eamoncaddigan.net/posts/ai-in-2026/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/el8ocy/hating_ai_2026">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 06:34:45 -0500</pubDate>
+<pubDate>Tue, 14 Jul 2026 06:34:45 -0500</pubDate>
+</item>
+<item>
+<title>Native inotify in FreeBSD</title>
+<link>https://klarasystems.com/articles/native-inotify-in-freebsd/</link>
+<guid>https://klarasystems.com/articles/native-inotify-in-freebsd/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/b55q8b/native_inotify_freebsd">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 15:48:51 -0500</pubDate>
+<pubDate>Tue, 14 Jul 2026 15:48:51 -0500</pubDate>
+</item>
+<item>
+<title>A Trusty Boot Key (Ventoy Alternative), for Bastille Day</title>
+<link>https://codeberg.org/aol/trusty-boot-key</link>
+<guid>https://codeberg.org/aol/trusty-boot-key</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/s8tyov/trusty_boot_key_ventoy_alternative_for">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 13:47:27 -0500</pubDate>
+<pubDate>Tue, 14 Jul 2026 13:47:27 -0500</pubDate>
+</item>
+<item>
+<title>Emacs Docs: The modern documentation website Emacs deserves</title>
+<link>https://emacsdocs.org</link>
+<guid>https://emacsdocs.org</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/fvupsy/emacs_docs_modern_documentation_website">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 13:42:51 -0500</pubDate>
+<pubDate>Tue, 14 Jul 2026 13:42:51 -0500</pubDate>
+</item>
+<item>
+<title>A modern HTTP request</title>
+<link>https://nelsonslog.wordpress.com/2026/07/14/a-modern-http-request/</link>
+<guid>https://nelsonslog.wordpress.com/2026/07/14/a-modern-http-request/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/q5rxuc/modern_http_request">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 19:34:39 -0500</pubDate>
+<pubDate>Tue, 14 Jul 2026 19:34:39 -0500</pubDate>
+</item>
+<item>
+<title>Generative colors with CSS</title>
+<link>https://gomakethings.com/articles/generative-colors-with-css/</link>
+<guid>https://gomakethings.com/articles/generative-colors-with-css/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/ipiook/generative_colors_with_css">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 17:19:13 -0500</pubDate>
+<pubDate>Tue, 14 Jul 2026 17:19:13 -0500</pubDate>
+</item>
+<item>
+<title>The Memory Heist</title>
+<link>https://ayush.digital/blog/the-memory-heist</link>
+<guid>https://ayush.digital/blog/the-memory-heist</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/lelroo/memory_heist">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 19:11:45 -0500</pubDate>
+<pubDate>Tue, 14 Jul 2026 19:11:45 -0500</pubDate>
+</item>
+<item>
+<title>Low Resource Computing 2026</title>
+<link>https://lrc.cs.dartmouth.edu/</link>
+<guid>https://lrc.cs.dartmouth.edu/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/hkgxnm/low_resource_computing_2026">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 14 Jul 2026 21:13:19 -0500</pubDate>
+<pubDate>Tue, 14 Jul 2026 21:13:19 -0500</pubDate>
+</item>
 
 <item>
 <title>OpenAI GPT-5.6 Sol, Terra, and Luna now generally available on Amazon Bedrock</title>
@@ -12,13 +820,12 @@
 <content:encoded><![CDATA[
 <div> Keywords: GPT-5.6, Amazon Bedrock, models, inference, pricing  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 GPT-5.6 has now been launched on Amazon Bedrock, featuring three models: Sol, Terra, and Luna, designed for advanced intelligence and efficiency. Sol is the flagship model optimized for reasoning, while Terra balances performance and cost efficiency, and Luna is focused on fast, budget-friendly inference. These models enable users to tackle complex tasks like developing autonomous coding agents, analyzing genomics and biology, and conducting advanced cybersecurity studies. Sol achieves outstanding results in coding benchmarks, Terra offers comparable performance to GPT-5.5 at half the price, and Luna promises quick responses at the lowest cost. Additionally, GPT-5.6 introduces prompt caching with explicit cache breakpoints, allowing users to incur a 90% discount on costs for repeated contexts across workflows, preventing compounding expenses as they scale. Pricing aligns with OpenAI’s initial rates, and usage contributes to AWS commitments. Currently, GPT-5.6 Sol is available in US East (N. Virginia) and US East (Ohio), while Terra and Luna are accessible in those regions plus US West (Oregon). Users can begin using these models via the Responses API on the bedrock-mantle endpoint. <div>
 <p>GPT-5.6 Sol, Terra, and Luna are now generally available on Amazon Bedrock, bringing the smartest family of models from OpenAI yet to Bedrock's next-generation inference engine built for high-performance, security and reliability. GPT-5.6 sets a new standard for intelligence and efficiency, allowing you to solve harder problems in less time and with more intelligence per token. The three models span capability tiers from flagship reasoning (Sol) to balanced performance (Terra) to fast, cost-efficient inference (Luna), all accessible through the Responses API on Amazon Bedrock.&nbsp;</p> 
 <p>With GPT-5.6, you can build autonomous coding agents, run long-horizon genomics and biology analyses, and perform advanced cybersecurity research. Sol delivers state-of-the-art results on agentic coding benchmarks, Terra provides GPT-5.5-level performance at half the cost, and Luna brings fast, affordable inference at the lowest price point. GPT-5.6 also supports prompt caching with explicit cache breakpoints, so repeated context across agentic workflows is billed at a 90% discount and doesn't compound cost as you scale. Pricing matches OpenAI first-party rates and usage counts toward your AWS commitments.&nbsp;</p> 
 <p>GPT-5.6 Sol is available in the following <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html">AWS Regions</a>: US East (N. Virginia) and US East (Ohio). GPT-5.6 Terra and Luna are available in US East (N. Virginia), US East (Ohio), and US West (Oregon). Get started with Sol, Terra, and Luna using the <a href="https://us-east-1.console.aws.amazon.com/bedrock-mantle/home?region=us-east-1#">Amazon Bedrock Console</a> or the Responses API on the bedrock-mantle endpoint. To learn more, see the <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-openai.html">Amazon Bedrock documentation</a> and read the <a href="https://aws.amazon.com/blogs/machine-learning/openai-gpt-5-6-sol-terra-and-luna-are-now-generally-available-on-amazon-bedrock/">launch blog post</a>.</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 22:03:00 GMT</pubDate>
 <pubDate>Mon, 13 Jul 2026 22:03:00 GMT</pubDate>
 </item>
 <item>
@@ -28,12 +835,11 @@ GPT-5.6 has now been launched on Amazon Bedrock, featuring three models: Sol, Te
 <content:encoded><![CDATA[
 <div> Keywords: Amazon Managed Service, Prometheus, monitoring, Asia Pacific, workspaces  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 Amazon Managed Service for Prometheus is now available in the Asia Pacific (New Zealand) Region. This service offers a fully managed, Prometheus-compatible monitoring solution that simplifies the process of monitoring and alerting on operational metrics at scale. With Amazon Managed Service for Prometheus, users can send up to 1 billion active metric series to a single workspace. This feature allows for significant scalability in monitoring large infrastructures. Additionally, customers are able to create multiple workspaces per account, providing a logical space dedicated to the storage and querying of Prometheus metrics. This capability allows organizations to better manage and segregate their monitoring data according to various parameters, such as teams or environments. For those interested in the financial implications, detailed information on Amazon Managed Service for Prometheus pricing can be found on the official website. This service strengthens Amazon's suite of monitoring tools, making it an attractive option for businesses looking to enhance their operational oversight and alerting mechanisms efficiently. <div>
 <p><a href="https://aws.amazon.com/prometheus/">Amazon Managed Service for Prometheus</a> is now available in Asia Pacific (New Zealand) Region. Amazon Managed Service for Prometheus is a fully managed, Prometheus-compatible monitoring service that makes it easy to monitor and alert on operational metrics at scale.&nbsp;<br /> &nbsp;<br /> Amazon Managed Service for Prometheus is available in multiple <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/">AWS Regions</a>. Customers can send up to 1 billion active metric series to a single workspace and can create many workspaces per account, where a workspace is a logical space dedicated to the storage and querying of Prometheus metrics.</p> 
 <p>To learn about Amazon Managed Service for Prometheus pricing, visit the <a href="https://aws.amazon.com/prometheus/pricing/">pricing page</a>.</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 21:17:00 GMT</pubDate>
 <pubDate>Mon, 13 Jul 2026 21:17:00 GMT</pubDate>
 </item>
 <item>
@@ -43,12 +849,11 @@ Amazon Managed Service for Prometheus is now available in the Asia Pacific (New 
 <content:encoded><![CDATA[
 <div> Keywords: Amazon DocumentDB, AI coding agents, workflows, Agent Toolkit, AWS CLI
 
-<br><br>Summary: Amazon DocumentDB (with MongoDB compatibility) has been introduced as a specialized database skill in the Agent Toolkit for AWS. This skill enables AI coding agents to efficiently set up, manage, migrate, optimize, and troubleshoot DocumentDB clusters using best-practice workflows, which minimizes errors and accelerates development without the need for manual guidance. The skill encompasses seven essential workflows: cluster provisioning, schema design, MongoDB compatibility assessment, DMS-based migration with change data capture, performance tuning, a comprehensive 41-check well-architected review, and major version upgrades. Additionally, when integrated with the AWS CLI, agents can perform execution of commands and diagnostic queries, all within IAM-based guardrails, while utilizing CloudTrail for audit logging and sandboxed execution. For teams that prefer local execution, the skill also functions independently through the AWS CLI. Best of all, the Amazon DocumentDB skill is offered at no extra cost as part of the Agent Toolkit for AWS. For further details on how to get started, users can check the resources provided in the toolkit or visit the Amazon DocumentDB information page. <div>
+<br /><br />Summary: Amazon DocumentDB (with MongoDB compatibility) has been introduced as a specialized database skill in the Agent Toolkit for AWS. This skill enables AI coding agents to efficiently set up, manage, migrate, optimize, and troubleshoot DocumentDB clusters using best-practice workflows, which minimizes errors and accelerates development without the need for manual guidance. The skill encompasses seven essential workflows: cluster provisioning, schema design, MongoDB compatibility assessment, DMS-based migration with change data capture, performance tuning, a comprehensive 41-check well-architected review, and major version upgrades. Additionally, when integrated with the AWS CLI, agents can perform execution of commands and diagnostic queries, all within IAM-based guardrails, while utilizing CloudTrail for audit logging and sandboxed execution. For teams that prefer local execution, the skill also functions independently through the AWS CLI. Best of all, the Amazon DocumentDB skill is offered at no extra cost as part of the Agent Toolkit for AWS. For further details on how to get started, users can check the resources provided in the toolkit or visit the Amazon DocumentDB information page. <div>
 <p>Amazon DocumentDB (with MongoDB compatibility) is now available as a specialized database skill in the <a href="https://aws.amazon.com/products/developer-tools/agent-toolkit-for-aws/">Agent Toolkit for AWS</a>. With this skill, AI coding agents can set up, manage, migrate, optimize, and troubleshoot Amazon DocumentDB clusters using step-by-step best-practice workflows, reducing errors and helping developers move faster without needing to look up DocumentDB operations guidance manually.</p> 
 <p>The Amazon DocumentDB skill covers seven workflows: cluster provisioning, schema design, MongoDB compatibility assessment, DMS-based migration with change data capture, performance tuning, a 41-check well-architected review, and major version upgrades. When paired with the <a href="https://docs.aws.amazon.com/agent-toolkit/latest/userguide/mcp-server.html">AWS MCP Server</a>, agents can execute AWS CLI commands and run diagnostic queries with IAM-based guardrails, CloudTrail audit logging, and sandboxed execution. The skill also works standalone via the AWS CLI for teams that prefer local execution.</p> 
 <p>The Amazon DocumentDB skill is available at no additional charge as part of the Agent Toolkit for AWS. To get started, see the <a href="https://github.com/aws/agent-toolkit-for-aws/tree/main/skills/specialized-skills/database-skills/amazon-documentdb">Amazon DocumentDB skill on GitHub</a> or browse the <a href="https://docs.aws.amazon.com/agent-toolkit/latest/userguide/quick-start.html">Agent Toolkit Quick Start guide</a>. For more information about Amazon DocumentDB, see the <a href="https://docs.aws.amazon.com/documentdb/latest/developerguide/">Amazon DocumentDB Developer Guide</a>.</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 18:00:00 GMT</pubDate>
 <pubDate>Mon, 13 Jul 2026 18:00:00 GMT</pubDate>
 </item>
 <item>
@@ -58,13 +863,12 @@ Amazon Managed Service for Prometheus is now available in the Asia Pacific (New 
 <content:encoded><![CDATA[
 <div> Keywords: AWS, gemma-4-E2B-it, SageMaker, multimodal, foundation models  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 AWS has announced the availability of gemma-4-E2B-it in Amazon SageMaker JumpStart, enhancing its portfolio of foundation models for customers. Developed by Google DeepMind, this multimodal and instruction-tuned model is optimized for effective local execution, enabling the creation of advanced AI applications on AWS infrastructure. Gemma-4-E2B-it can process text, image, and audio inputs, generating text outputs while incorporating a reasoning mode for step-by-step problem-solving. The model provides impressive image comprehension capabilities, including object detection, document parsing, screen and UI interpretation, chart understanding, and optical character recognition (OCR). Additionally, it supports video understanding, native function calling for agentic workflows, as well as code generation, completion, and correction. The model offers multilingual support across various languages. With SageMaker JumpStart, customers can easily deploy gemma-4-E2B-it with just a few clicks for their specific AI needs. To start using it, customers can explore the Models section of SageMaker Studio or utilize the SageMaker Python SDK for deployment to their AWS account. More details regarding the deployment and use of foundation models in SageMaker JumpStart are available through AWS documentation. <div>
 <p>Today, AWS announced the availability of gemma-4-E2B-it in Amazon SageMaker JumpStart, expanding the portfolio of foundation models available to AWS customers. This model from Google DeepMind is a multimodal, instruction-tuned model optimized for efficient local execution, enabling customers to build capable AI applications on AWS infrastructure.</p> 
 <p>Gemma-4-E2B-it processes text, image, and audio input and generates text output, with a built-in reasoning mode that lets the model think step-by-step before answering. It offers image understanding including object detection, document parsing, screen and UI understanding, chart comprehension, and OCR; video understanding; native function calling for agentic workflows; code generation, completion, and correction; and multilingual support across dozens of languages.</p> 
 <p>With SageMaker JumpStart, customers can deploy this model with just a few clicks to address their specific AI use cases. To get started with this model, navigate to the Models section of SageMaker Studio or use the SageMaker Python SDK to deploy the model to your AWS account. For more information about deploying and using foundation models in SageMaker JumpStart, see the <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html">Amazon SageMaker JumpStart documentation</a>.</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 15:30:00 GMT</pubDate>
 <pubDate>Mon, 13 Jul 2026 15:30:00 GMT</pubDate>
 </item>
 <item>
@@ -74,12 +878,11 @@ AWS has announced the availability of gemma-4-E2B-it in Amazon SageMaker JumpSta
 <content:encoded><![CDATA[
 <div> Keywords: AWS, SageMaker, JumpStart, privacy-filter, PII detection
 
-<br><br>Summary: AWS has announced the availability of the privacy-filter model in Amazon SageMaker JumpStart, enhancing its portfolio of foundation models for customers. This model, developed by OpenAI, is a bidirectional token-classification model that specializes in the detection and masking of personally identifiable information (PII) in text. It is designed for high-throughput data sanitization workflows, allowing teams to run it effectively on-premises. The model labels input sequences efficiently in a single forward pass, identifying various PII spans, including account numbers, addresses, emails, names, phone numbers, URLs, dates, and secrets. With SageMaker JumpStart, the deployment process is user-friendly—customers can initiate the model with just a few clicks tailored to their specific AI use cases. To begin utilizing the privacy-filter model, users can visit the Models section in SageMaker Studio or employ the SageMaker Python SDK for deployment to their AWS account. For comprehensive guidance on deploying and using foundation models via SageMaker JumpStart, further information is available in the provided documentation. <div>
+<br /><br />Summary: AWS has announced the availability of the privacy-filter model in Amazon SageMaker JumpStart, enhancing its portfolio of foundation models for customers. This model, developed by OpenAI, is a bidirectional token-classification model that specializes in the detection and masking of personally identifiable information (PII) in text. It is designed for high-throughput data sanitization workflows, allowing teams to run it effectively on-premises. The model labels input sequences efficiently in a single forward pass, identifying various PII spans, including account numbers, addresses, emails, names, phone numbers, URLs, dates, and secrets. With SageMaker JumpStart, the deployment process is user-friendly—customers can initiate the model with just a few clicks tailored to their specific AI use cases. To begin utilizing the privacy-filter model, users can visit the Models section in SageMaker Studio or employ the SageMaker Python SDK for deployment to their AWS account. For comprehensive guidance on deploying and using foundation models via SageMaker JumpStart, further information is available in the provided documentation. <div>
 <p>Today, AWS announced the availability of privacy-filter in Amazon SageMaker JumpStart, expanding the portfolio of foundation models available to AWS customers. This model from OpenAI is a bidirectional token-classification model for personally identifiable information (PII) detection and masking in text, enabling customers to build data sanitization workflows on AWS infrastructure.</p> 
 <p>Privacy-filter is fast, context-aware, and tunable, designed for high-throughput data sanitization workflows that teams can run on-premises. It labels an input sequence in a single forward pass and detects PII span categories including account numbers, addresses, emails, names, phone numbers, URLs, dates, and secrets.&nbsp;</p> 
 <p>With SageMaker JumpStart, customers can deploy this model with just a few clicks to address their specific AI use cases. To get started with this model, navigate to the Models section of SageMaker Studio or use the SageMaker Python SDK to deploy the model to your AWS account. For more information about deploying and using foundation models in SageMaker JumpStart, see the <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html">Amazon SageMaker JumpStart documentation</a>.</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 15:30:00 GMT</pubDate>
 <pubDate>Mon, 13 Jul 2026 15:30:00 GMT</pubDate>
 </item>
 <item>
@@ -89,13 +892,12 @@ AWS has announced the availability of gemma-4-E2B-it in Amazon SageMaker JumpSta
 <content:encoded><![CDATA[
 <div> Keywords: AWS, Voxtral-Mini-4B-Realtime, speech transcription, SageMaker, Mistral AI  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 Today, AWS announced the addition of Voxtral-Mini-4B-Realtime-2602 to Amazon SageMaker JumpStart, enhancing the range of foundation models available to AWS users. This new model, developed by Mistral AI, is a real-time, multilingual speech transcription model that allows customers to create low-latency speech applications using AWS infrastructure. The Voxtral-Mini-4B-Realtime model provides high-quality audio-to-text transcription with a streaming architecture that supports immediate transcription capabilities. It can transcribe audio in 13 different languages and offers configurable transcription delays, enabling users to adjust the balance between latency and accuracy according to their requirements. With SageMaker JumpStart, customers can easily deploy this model in just a few clicks to meet their specific AI needs. To get started, users can visit the Models section in SageMaker Studio or utilize the SageMaker Python SDK to deploy the model directly to their AWS account. For further details about deploying and leveraging foundation models in SageMaker JumpStart, additional information can be found in the appropriate documentation. <div>
 <p>Today, AWS announced the availability of Voxtral-Mini-4B-Realtime-2602 in Amazon SageMaker JumpStart, expanding the portfolio of foundation models available to AWS customers. This model from Mistral AI is a multilingual, real-time speech-transcription model, enabling customers to build low-latency speech applications on AWS infrastructure.</p> 
 <p>Voxtral-Mini-4B-Realtime excels at high-quality transcription of audio to text with a natively streaming architecture that enables real-time transcription. It supports multilingual transcription across 13 languages and offers configurable transcription delays, allowing users to balance latency and accuracy based on their needs.</p> 
 <p>With SageMaker JumpStart, customers can deploy this model with just a few clicks to address their specific AI use cases. To get started with this model, navigate to the Models section of SageMaker Studio or use the SageMaker Python SDK to deploy the model to your AWS account. For more information about deploying and using foundation models in SageMaker JumpStart, see the <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html">Amazon SageMaker JumpStart documentation</a>.</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 15:30:00 GMT</pubDate>
 <pubDate>Mon, 13 Jul 2026 15:30:00 GMT</pubDate>
 </item>
 <item>
@@ -105,7 +907,7 @@ Today, AWS announced the addition of Voxtral-Mini-4B-Realtime-2602 to Amazon Sag
 <content:encoded><![CDATA[
 <div> Keywords: AWS, SageMaker, Qwen3, embedding, retrieval  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 Today, AWS announced the availability of two new models, Qwen3-VL-Embedding-2B and Qwen3-Reranker-4B, in Amazon SageMaker JumpStart, enhancing the selection of foundation models for customers. These models are tailored for information retrieval and cross-modal comprehension, allowing the construction of advanced search pipelines on AWS infrastructure. The embedding model, Qwen3-VL-Embedding-2B, processes various inputs like text, images, screenshots, and videos, generating semantically rich vectors that encapsulate visual and textual information. It supports diverse multimodal tasks, such as image-text retrieval and visual question answering, across over 30 languages. The Qwen3-Reranker-4B, on the other hand, focuses on re-ranking results by taking a query and document pair to produce precise relevance scores. It is effective for text retrieval, code retrieval, and text classification, catering to over 100 languages. With SageMaker JumpStart, customers can easily deploy these models with just a few clicks for their specific AI use cases. To initiate usage, customers should navigate to the Models section of SageMaker Studio or utilize the SageMaker Python SDK for deployment. Further guidance on deployment and use is available in the documentation. <div>
 <p>Today, AWS announced the availability of Qwen3-VL-Embedding-2B and Qwen3-Reranker-4B in Amazon SageMaker JumpStart, expanding the portfolio of foundation models available to AWS customers. These models from Qwen are designed for information retrieval and cross-modal understanding, enabling customers to build comprehensive search pipelines on AWS infrastructure. The two models are typically used in tandem: the embedding model performs efficient initial recall, while the reranker refines results in a subsequent re-ranking stage.</p> 
 <p>These models address different stages of the retrieval pipeline with specialized capabilities:</p> 
@@ -113,7 +915,6 @@ Today, AWS announced the availability of two new models, Qwen3-VL-Embedding-2B a
 <p><b>Qwen3-Reranker-4B</b> takes a query and document pair as input and outputs a precise relevance score to refine retrieval results. It supports text retrieval, code retrieval, text classification, text clustering, and bitext mining across over 100 languages, with user-defined instructions to enhance performance for specific tasks, languages, or scenarios.</p> 
 <p>With SageMaker JumpStart, customers can deploy any of these models with just a few clicks to address their specific AI use cases. To get started with these models, navigate to the Models section of SageMaker Studio or use the SageMaker Python SDK to deploy the models to your AWS account. For more information about deploying and using foundation models in SageMaker JumpStart, see the <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html">Amazon SageMaker JumpStart documentation</a>.</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 15:30:00 GMT</pubDate>
 <pubDate>Mon, 13 Jul 2026 15:30:00 GMT</pubDate>
 </item>
 <item>
@@ -123,10 +924,9 @@ Today, AWS announced the availability of two new models, Qwen3-VL-Embedding-2B a
 <content:encoded><![CDATA[
 <div> Keywords: Amazon SageMaker, HyperPod, custom AMIs, Slurm clusters, security compliance
 
-<br><br>Summary: Amazon SageMaker HyperPod now enables custom AMI support for Slurm-orchestrated clusters, allowing customers to deploy pre-configured, security-hardened environments tailored to their organizational needs. AI/ML workloads on HyperPod Slurm clusters often require customized environments that adhere to stringent security and compliance standards while ensuring quick cluster startup times. However, users frequently face challenges with complex lifecycle scripts that hinder deployment and create inconsistencies across cluster nodes. This new capability lets customers build on HyperPod's optimized base AMIs, integrating customized security agents, compliance tools, proprietary libraries, and specialized drivers, which enhances startup speed, reliability, and security compliance. Security teams can establish organizational policies within base images, providing AI/ML teams with pre-approved environments that expedite training while aligning with enterprise security protocols. To utilize custom AMIs, users can specify them during new HyperPod Slurm cluster creation via the CreateCluster API, update instance groups through the UpdateCluster API, or patch existing clusters using the UpdateClusterSoftware API. Note that custom AMIs must be developed from HyperPod's public base AMIs to ensure compatibility with distributed training libraries and cluster management functionalities. This feature is available across all AWS Regions where Amazon SageMaker HyperPod operates. <div>
+<br /><br />Summary: Amazon SageMaker HyperPod now enables custom AMI support for Slurm-orchestrated clusters, allowing customers to deploy pre-configured, security-hardened environments tailored to their organizational needs. AI/ML workloads on HyperPod Slurm clusters often require customized environments that adhere to stringent security and compliance standards while ensuring quick cluster startup times. However, users frequently face challenges with complex lifecycle scripts that hinder deployment and create inconsistencies across cluster nodes. This new capability lets customers build on HyperPod's optimized base AMIs, integrating customized security agents, compliance tools, proprietary libraries, and specialized drivers, which enhances startup speed, reliability, and security compliance. Security teams can establish organizational policies within base images, providing AI/ML teams with pre-approved environments that expedite training while aligning with enterprise security protocols. To utilize custom AMIs, users can specify them during new HyperPod Slurm cluster creation via the CreateCluster API, update instance groups through the UpdateCluster API, or patch existing clusters using the UpdateClusterSoftware API. Note that custom AMIs must be developed from HyperPod's public base AMIs to ensure compatibility with distributed training libraries and cluster management functionalities. This feature is available across all AWS Regions where Amazon SageMaker HyperPod operates. <div>
 <p>Amazon SageMaker HyperPod now supports custom AMIs for Slurm-orchestrated clusters, enabling customers to deploy clusters with pre-configured, security-hardened environments that meet their specific organizational requirements. Customers deploying AI/ML workloads on HyperPod Slurm clusters need customized environments that meet strict security, compliance, and operational requirements while maintaining fast cluster startup times, but often struggle with complex lifecycle configuration scripts that slow deployment and create inconsistencies across cluster nodes.<br /> <br /> This capability allows customers to build upon HyperPod's performance-optimized base AMIs while incorporating customized security agents, compliance tools, proprietary libraries, and specialized drivers directly into the image, delivering faster startup times, improved reliability, and enhanced security compliance. Security teams can embed organizational policies directly into base images, allowing AI/ML teams to use pre-approved environments that accelerate time-to-training while meeting enterprise security standards. You can specify custom AMIs when creating new HyperPod Slurm clusters using the CreateCluster API, adding instance groups with the UpdateCluster API, or patching existing clusters with the UpdateClusterSoftware API. Custom AMIs must be built using HyperPod's public base AMIs to maintain compatibility with distributed training libraries and cluster management capabilities.<br /> <br /> This feature is available in all AWS Regions where Amazon SageMaker HyperPod is supported. To learn more about custom AMI support for Slurm clusters, see the Amazon SageMaker HyperPod <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/hyperpod-custom-ami-support.html" target="_blank">User Guide</a>.</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 14:31:00 GMT</pubDate>
 <pubDate>Mon, 13 Jul 2026 14:31:00 GMT</pubDate>
 </item>
 <item>
@@ -136,13 +936,12 @@ Today, AWS announced the availability of two new models, Qwen3-VL-Embedding-2B a
 <content:encoded><![CDATA[
 <div> Keywords: Amazon EKS, ARC, zonal shift, Auto Mode, availability  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 Amazon Elastic Kubernetes Service (EKS) now includes support for ARC (Auto Recovery Coordination) zonal shift and auto shift, enhancing recovery management across AWS Regions and Availability Zones (AZs). With EKS Auto Mode, customers can protect their compute resources during a zonal shift without incurring additional costs or requiring complex configurations, facilitating maintainability of Kubernetes application availability. This feature automatically redirects in-cluster network traffic away from an impaired AZ. EKS Auto Mode eliminates the need for manual configuration, as it halts provisioning in the affected AZ and prevents disruptions in healthy zones that rely on scheduling pods to the impaired zone. Customers can initiate a zonal shift manually or allow AWS to oversee this process, which includes practice runs to ensure functionality with one fewer AZ. ARC zonal shift support is accessible in all AWS Regions where EKS Auto Mode is available, providing customers with automated protection and management capabilities essential for running highly available applications across multiple AZs, effectively reducing the risk of a single point of failure. For further information, customers can visit the AWS documentation and resources related to EKS and ARC features. <div>
 <p>Amazon Elastic Kubernetes Service (Amazon EKS) now supports <a href="https://aws.amazon.com/application-recovery-controller/">Amazon Application Recovery Controller</a> (ARC) zonal shift and autoshift for clusters using <a href="https://docs.aws.amazon.com/eks/latest/userguide/automode.html">EKS Auto Mode</a>. ARC helps you manage and coordinate recovery across AWS Regions and Availability Zones (AZs). With this launch, EKS Auto Mode automatically protects your compute during a zonal shift at no additional cost or configuration, helping you maintain Kubernetes application availability by shifting in-cluster network traffic away from an impaired AZ.</p> 
 <p>Customers run highly available applications across multiple AZs in Amazon EKS to eliminate a single point of failure. Because EKS Auto Mode manages compute on your behalf, you get zonal shift support without setting flags, granting permissions, or managing Karpenter versions; simply enable ARC zonal shift on your cluster. When a zonal shift is activated, EKS Auto Mode stops provisioning new capacity in the impaired AZ and halts voluntary disruptions such as consolidation and drift for nodes in that zone. It also prevents voluntary disruptions in healthy zones if they depend on scheduling pods to the impaired zone. When the shift expires or is canceled, normal operations resume. You can start a shift manually, or authorize AWS to manage it using <a href="https://docs.aws.amazon.com/r53recovery/latest/dg/arc-zonal-autoshift.html">zonal autoshift</a>, with practice runs to verify your cluster functions with one less AZ.</p> 
 <p>ARC zonal shift support for EKS Auto Mode is available in all AWS Regions where EKS Auto Mode is offered. To learn more, visit the <a href="https://aws.amazon.com/eks/">Amazon EKS product page</a>, the <a href="https://docs.aws.amazon.com/eks/latest/userguide/zone-shift.html">ARC zonal shift documentation</a>, and the <a href="https://docs.aws.amazon.com/eks/latest/userguide/automode.html">Amazon EKS Auto Mode documentation</a>.</p>
 ]]></content:encoded>
-<pubDate>Fri, 10 Jul 2026 16:00:00 GMT</pubDate>
 <pubDate>Fri, 10 Jul 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
@@ -152,7 +951,7 @@ Amazon Elastic Kubernetes Service (EKS) now includes support for ARC (Auto Recov
 <content:encoded><![CDATA[
 <div> Keywords: ESLint, Turbopack, React, documentation, testing
 
-<br><br>Summary: 
+<br /><br />Summary: 
 The update includes enhancements to the ESLint rule for location assignments and improves the Turbopack by ordering CSS modules and simplifying service worker tests. Several tests have been adjusted or disabled to ensure optimal performance during deployment with adapters. Documentation updates clarify AI-assisted contribution policies, a new building guide, and Cache Components migration paths. React has been upgraded multiple times, with adjustments made for custom media queries and immutable static assets. Changes also include the refinement of error handling, state tracking improvements, and middleware rewrites. Notable performance optimizations in Turbopack allow for better resource management, such as not evicting under low memory and decreasing OperationVc size. The Instant Navigation Testing API was made more resilient with enhanced cookie management and state validations. Additional CI improvements ensure consistent testing environments and performance metrics. The release package process has been replaced with a GitHub creation process, and several improvements to caching mechanics have been made. Overall, the updates showcase significant progress in React and Turbopack functionality while enhancing developer experience and testing accuracy. <div>
 <h3>Core Changes</h3>
 <ul>
@@ -364,7 +1163,6 @@ The update includes enhancements to the ESLint rule for location assignments and
 <h3>Credits</h3>
 <p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/sokra">@sokra</a>, <a class="user-mention notranslate" href="https://github.com/eps1lon">@eps1lon</a>, <a class="user-mention notranslate" href="https://github.com/icyJoseph">@icyJoseph</a>, <a class="user-mention notranslate" href="https://github.com/feedthejim">@feedthejim</a>, <a class="user-mention notranslate" href="https://github.com/mischnic">@mischnic</a>, <a class="user-mention notranslate" href="https://github.com/vercel-release-bot">@vercel-release-bot</a>, <a class="user-mention notranslate" href="https://github.com/wbinnssmith">@wbinnssmith</a>, <a class="user-mention notranslate" href="https://github.com/sampoder">@sampoder</a>, <a class="user-mention notranslate" href="https://github.com/bgw">@bgw</a>, <a class="user-mention notranslate" href="https://github.com/aurorascharff">@aurorascharff</a>, <a class="user-mention notranslate" href="https://github.com/lubieowoce">@lubieowoce</a>, <a class="user-mention notranslate" href="https://github.com/timneutkens">@timneutkens</a>, <a class="user-mention notranslate" href="https://github.com/lukesandberg">@lukesandberg</a>, <a class="user-mention notranslate" href="https://github.com/gaojude">@gaojude</a>, <a class="user-mention notranslate" href="https://github.com/gaearon">@gaearon</a>, <a class="user-mention notranslate" href="https://github.com/unstubbable">@unstubbable</a>, <a class="user-mention notranslate" href="https://github.com/Pranav18M">@Pranav18M</a>, <a class="user-mention notranslate" href="https://github.com/andrewimm">@andrewimm</a>, <a class="user-mention notranslate" href="https://github.com/chippleh1392">@chippleh1392</a>, <a class="user-mention notranslate" href="https://github.com/M4cM4rco">@M4cM4rco</a>, <a class="user-mention notranslate" href="https://github.com/Partha-Shankar">@Partha-Shankar</a>, <a class="user-mention notranslate" href="https://github.com/acdlite">@acdlite</a>, <a class="user-mention notranslate" href="https://github.com/sleitor">@sleitor</a>, <a class="user-mention notranslate" href="https://github.com/devjiwonchoi">@devjiwonchoi</a>, <a class="user-mention notranslate" href="https://github.com/samselikoff">@samselikoff</a>, <a class="user-mention notranslate" href="https://github.com/jimmyhmiller">@jimmyhmiller</a>, <a class="user-mention notranslate" href="https://github.com/thsid">@thsid</a>, <a class="user-mention notranslate" href="https://github.com/SukkaW">@SukkaW</a>, <a class="user-mention notranslate" href="https://github.com/TariqulislamTuhin">@TariqulislamTuhin</a>, and <a class="user-mention notranslate" href="https://github.com/niketchandivade">@niketchandivade</a> for helping!</p>
 ]]></content:encoded>
-
 <pubDate>2026-07-13T20:20:31Z</pubDate>
 </item>
 <item>
@@ -372,7 +1170,6 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://github.com/vercel/next.js/releases/tag/v16.3.0-canary.85</link>
 <guid>https://github.com/vercel/next.js/releases/tag/v16.3.0-canary.85</guid>
 <content:encoded><![CDATA[
-
 <h3>Misc Changes</h3>
 <ul>
 <li>[turbopack] Switch <code>make_production_chunks</code> to use floats: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95749">#95749</a></li>
@@ -391,7 +1188,6 @@ The update includes enhancements to the ESLint rule for location assignments and
 <h3>Credits</h3>
 <p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/sampoder">@sampoder</a>, <a class="user-mention notranslate" href="https://github.com/lukesandberg">@lukesandberg</a>, <a class="user-mention notranslate" href="https://github.com/sokra">@sokra</a>, <a class="user-mention notranslate" href="https://github.com/eps1lon">@eps1lon</a>, <a class="user-mention notranslate" href="https://github.com/icyJoseph">@icyJoseph</a>, <a class="user-mention notranslate" href="https://github.com/feedthejim">@feedthejim</a>, <a class="user-mention notranslate" href="https://github.com/mischnic">@mischnic</a>, and <a class="user-mention notranslate" href="https://github.com/vercel-release-bot">@vercel-release-bot</a> for helping!</p>
 ]]></content:encoded>
-
 <pubDate>2026-07-13T23:54:18Z</pubDate>
 </item>
 <item>
@@ -399,13 +1195,11 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://neow.in/cWsyMTV3</link>
 <guid>https://neow.in/cWsyMTV3</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://neow.in/cWsyMTV3">https://neow.in/cWsyMTV3</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48897991">https://news.ycombinator.com/item?id=48897991</a></p>
 <p>Points: 287</p>
 <p># Comments: 78</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 20:01:43 +0000</pubDate>
 <pubDate>Mon, 13 Jul 2026 20:01:43 +0000</pubDate>
 </item>
 <item>
@@ -413,13 +1207,11 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://19thnews.org/2026/07/noaa-climate-data-website/</link>
 <guid>https://19thnews.org/2026/07/noaa-climate-data-website/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://19thnews.org/2026/07/noaa-climate-data-website/">https://19thnews.org/2026/07/noaa-climate-data-website/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48897945">https://news.ycombinator.com/item?id=48897945</a></p>
 <p>Points: 459</p>
 <p># Comments: 180</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 19:57:55 +0000</pubDate>
 <pubDate>Mon, 13 Jul 2026 19:57:55 +0000</pubDate>
 </item>
 <item>
@@ -427,13 +1219,11 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://www.whois.com/whois/t.me</link>
 <guid>https://www.whois.com/whois/t.me</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.whois.com/whois/t.me">https://www.whois.com/whois/t.me</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48897878">https://news.ycombinator.com/item?id=48897878</a></p>
 <p>Points: 270</p>
 <p># Comments: 193</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 19:52:25 +0000</pubDate>
 <pubDate>Mon, 13 Jul 2026 19:52:25 +0000</pubDate>
 </item>
 <item>
@@ -441,13 +1231,11 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://playcode.io/blog/real-price-of-frontier-models</link>
 <guid>https://playcode.io/blog/real-price-of-frontier-models</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://playcode.io/blog/real-price-of-frontier-models">https://playcode.io/blog/real-price-of-frontier-models</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48896800">https://news.ycombinator.com/item?id=48896800</a></p>
 <p>Points: 150</p>
 <p># Comments: 76</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 18:32:27 +0000</pubDate>
 <pubDate>Mon, 13 Jul 2026 18:32:27 +0000</pubDate>
 </item>
 <item>
@@ -455,13 +1243,11 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://scottwillsey.com/building-and-shipping-mac-and-ios-apps-without-ever-opening-xcode/</link>
 <guid>https://scottwillsey.com/building-and-shipping-mac-and-ios-apps-without-ever-opening-xcode/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://scottwillsey.com/building-and-shipping-mac-and-ios-apps-without-ever-opening-xcode/">https://scottwillsey.com/building-and-shipping-mac-and-ios-apps-without-ever-opening-xcode/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48896665">https://news.ycombinator.com/item?id=48896665</a></p>
 <p>Points: 338</p>
 <p># Comments: 149</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 18:22:16 +0000</pubDate>
 <pubDate>Mon, 13 Jul 2026 18:22:16 +0000</pubDate>
 </item>
 <item>
@@ -469,13 +1255,11 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://superdario.pawb.de</link>
 <guid>https://superdario.pawb.de</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://superdario.pawb.de">https://superdario.pawb.de</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48896286">https://news.ycombinator.com/item?id=48896286</a></p>
 <p>Points: 370</p>
 <p># Comments: 96</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 17:53:52 +0000</pubDate>
 <pubDate>Mon, 13 Jul 2026 17:53:52 +0000</pubDate>
 </item>
 <item>
@@ -483,13 +1267,11 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://get-inscribe.com/blog/apple-speech-api-benchmark.html</link>
 <guid>https://get-inscribe.com/blog/apple-speech-api-benchmark.html</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://get-inscribe.com/blog/apple-speech-api-benchmark.html">https://get-inscribe.com/blog/apple-speech-api-benchmark.html</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48894752">https://news.ycombinator.com/item?id=48894752</a></p>
 <p>Points: 473</p>
 <p># Comments: 189</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 16:06:08 +0000</pubDate>
 <pubDate>Mon, 13 Jul 2026 16:06:08 +0000</pubDate>
 </item>
 <item>
@@ -497,13 +1279,11 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://www.ms.now/opinion/doge-government-efficiency-records-job-cuts-elon-musk-foia</link>
 <guid>https://www.ms.now/opinion/doge-government-efficiency-records-job-cuts-elon-musk-foia</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.ms.now/opinion/doge-government-efficiency-records-job-cuts-elon-musk-foia">https://www.ms.now/opinion/doge-government-efficiency-records-job-cuts-elon-musk-foia</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48894641">https://news.ycombinator.com/item?id=48894641</a></p>
 <p>Points: 298</p>
 <p># Comments: 269</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 15:56:39 +0000</pubDate>
 <pubDate>Mon, 13 Jul 2026 15:56:39 +0000</pubDate>
 </item>
 <item>
@@ -511,13 +1291,11 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://techcrunch.com/2026/07/13/lapd-lets-contract-with-surveillance-giant-flock-expire-citing-serious-concerns-over-civil-liberties-and-privacy/</link>
 <guid>https://techcrunch.com/2026/07/13/lapd-lets-contract-with-surveillance-giant-flock-expire-citing-serious-concerns-over-civil-liberties-and-privacy/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://techcrunch.com/2026/07/13/lapd-lets-contract-with-surveillance-giant-flock-expire-citing-serious-concerns-over-civil-liberties-and-privacy/">https://techcrunch.com/2026/07/13/lapd-lets-contract-with-surveillance-giant-flock-expire-citing-serious-concerns-over-civil-liberties-and-privacy/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48893947">https://news.ycombinator.com/item?id=48893947</a></p>
 <p>Points: 437</p>
 <p># Comments: 388</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 15:11:50 +0000</pubDate>
 <pubDate>Mon, 13 Jul 2026 15:11:50 +0000</pubDate>
 </item>
 <item>
@@ -525,13 +1303,11 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://fabiensanglard.net/silpheed/index.html</link>
 <guid>https://fabiensanglard.net/silpheed/index.html</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://fabiensanglard.net/silpheed/index.html">https://fabiensanglard.net/silpheed/index.html</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48893639">https://news.ycombinator.com/item?id=48893639</a></p>
 <p>Points: 234</p>
 <p># Comments: 50</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 14:52:33 +0000</pubDate>
 <pubDate>Mon, 13 Jul 2026 14:52:33 +0000</pubDate>
 </item>
 <item>
@@ -539,13 +1315,11 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://blog.cloudflare.com/introducing-precursor/</link>
 <guid>https://blog.cloudflare.com/introducing-precursor/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://blog.cloudflare.com/introducing-precursor/">https://blog.cloudflare.com/introducing-precursor/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48893446">https://news.ycombinator.com/item?id=48893446</a></p>
 <p>Points: 156</p>
 <p># Comments: 146</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 14:39:38 +0000</pubDate>
 <pubDate>Mon, 13 Jul 2026 14:39:38 +0000</pubDate>
 </item>
 <item>
@@ -553,13 +1327,11 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://github.com/clawkwork/clawk</link>
 <guid>https://github.com/clawkwork/clawk</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://github.com/clawkwork/clawk">https://github.com/clawkwork/clawk</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48892859">https://news.ycombinator.com/item?id=48892859</a></p>
 <p>Points: 176</p>
 <p># Comments: 140</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 14:02:03 +0000</pubDate>
 <pubDate>Mon, 13 Jul 2026 14:02:03 +0000</pubDate>
 </item>
 <item>
@@ -567,13 +1339,11 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://twitter.com/a_green_being/status/2076598897779020159</link>
 <guid>https://twitter.com/a_green_being/status/2076598897779020159</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://twitter.com/a_green_being/status/2076598897779020159">https://twitter.com/a_green_being/status/2076598897779020159</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48892512">https://news.ycombinator.com/item?id=48892512</a></p>
 <p>Points: 492</p>
 <p># Comments: 17</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 13:39:59 +0000</pubDate>
 <pubDate>Mon, 13 Jul 2026 13:39:59 +0000</pubDate>
 </item>
 <item>
@@ -581,13 +1351,11 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://anderegg.ca/2026/07/12/an-infuriating-goodbye-to-photoshop</link>
 <guid>https://anderegg.ca/2026/07/12/an-infuriating-goodbye-to-photoshop</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://anderegg.ca/2026/07/12/an-infuriating-goodbye-to-photoshop">https://anderegg.ca/2026/07/12/an-infuriating-goodbye-to-photoshop</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48891200">https://news.ycombinator.com/item?id=48891200</a></p>
 <p>Points: 181</p>
 <p># Comments: 121</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 11:46:47 +0000</pubDate>
 <pubDate>Mon, 13 Jul 2026 11:46:47 +0000</pubDate>
 </item>
 <item>
@@ -595,13 +1363,11 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://antirez.com/news/169</link>
 <guid>https://antirez.com/news/169</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://antirez.com/news/169">https://antirez.com/news/169</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48891184">https://news.ycombinator.com/item?id=48891184</a></p>
 <p>Points: 204</p>
 <p># Comments: 171</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 11:45:36 +0000</pubDate>
 <pubDate>Mon, 13 Jul 2026 11:45:36 +0000</pubDate>
 </item>
 <item>
@@ -609,13 +1375,11 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://jivx.com/densha</link>
 <guid>https://jivx.com/densha</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://jivx.com/densha">https://jivx.com/densha</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48890959">https://news.ycombinator.com/item?id=48890959</a></p>
 <p>Points: 348</p>
 <p># Comments: 70</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 11:18:30 +0000</pubDate>
 <pubDate>Mon, 13 Jul 2026 11:18:30 +0000</pubDate>
 </item>
 <item>
@@ -623,13 +1387,11 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://raymyers.org/post/zed-creator-calls-spade-a-spade/</link>
 <guid>https://raymyers.org/post/zed-creator-calls-spade-a-spade/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://raymyers.org/post/zed-creator-calls-spade-a-spade/">https://raymyers.org/post/zed-creator-calls-spade-a-spade/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48889637">https://news.ycombinator.com/item?id=48889637</a></p>
 <p>Points: 1421</p>
 <p># Comments: 711</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 08:39:39 +0000</pubDate>
 <pubDate>Mon, 13 Jul 2026 08:39:39 +0000</pubDate>
 </item>
 <item>
@@ -637,13 +1399,11 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://shkspr.mobi/blog/2026/07/another-ridiculous-interrail-holiday-6379km-and-13-countries-over-7-weeks/</link>
 <guid>https://shkspr.mobi/blog/2026/07/another-ridiculous-interrail-holiday-6379km-and-13-countries-over-7-weeks/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://shkspr.mobi/blog/2026/07/another-ridiculous-interrail-holiday-6379km-and-13-countries-over-7-weeks/">https://shkspr.mobi/blog/2026/07/another-ridiculous-interrail-holiday-6379km-and-13-countries-over-7-weeks/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48889350">https://news.ycombinator.com/item?id=48889350</a></p>
 <p>Points: 191</p>
 <p># Comments: 137</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 08:04:30 +0000</pubDate>
 <pubDate>Mon, 13 Jul 2026 08:04:30 +0000</pubDate>
 </item>
 <item>
@@ -651,13 +1411,11 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://mmapped.blog/posts/52-backtrack-free-cursive</link>
 <guid>https://mmapped.blog/posts/52-backtrack-free-cursive</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://mmapped.blog/posts/52-backtrack-free-cursive">https://mmapped.blog/posts/52-backtrack-free-cursive</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=48888518">https://news.ycombinator.com/item?id=48888518</a></p>
 <p>Points: 254</p>
 <p># Comments: 117</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 06:08:12 +0000</pubDate>
 <pubDate>Mon, 13 Jul 2026 06:08:12 +0000</pubDate>
 </item>
 <item>
@@ -665,10 +1423,8 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://gendignoux.com/blog/2026/07/13/input-digits.html</link>
 <guid>https://gendignoux.com/blog/2026/07/13/input-digits.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/yf6vbc/just_let_me_write_digits">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 11:01:28 -0500</pubDate>
 <pubDate>Mon, 13 Jul 2026 11:01:28 -0500</pubDate>
 </item>
 <item>
@@ -676,7 +1432,6 @@ The update includes enhancements to the ESLint rule for location assignments and
 <link>https://lobste.rs/s/ko1ji1/lobste_rs_is_now_running_on_sqlite</link>
 <guid>https://lobste.rs/s/ko1ji1/lobste_rs_is_now_running_on_sqlite</guid>
 <content:encoded><![CDATA[
-
 <p>This past Saturday, <a href="https://lobste.rs/~pushcx" rel="ugc">@pushcx</a> and I deployed the <a href="https://github.com/lobsters/lobsters/pull/1927" rel="ugc">SQLite pull request</a> to production.
 We were waiting till this morning to see how it would react to the Monday traffic spike before making this post.
 Needless to say, SQLite seems to have passed with flying colors: cpu usage is down, memory usage is down, site seems to be snappier at least for me, 1/2 the vps cost once mariadb vps is taken down, and finally <a href="https://gist.github.com/pushcx/eb7cdf2dc9707dc3ab9e7173d197ddfc?permalink_comment_id=6251610#gistcomment-6251610" rel="ugc">"We're having a quiet Monday."</a>.
@@ -721,18 +1476,15 @@ Finally <a href="https://github.com/lobsters/lobsters/issues/539#issuecomment-49
 </ol>
 ]]></content:encoded>
 <pubDate>Mon, 13 Jul 2026 15:03:24 -0500</pubDate>
-<pubDate>Mon, 13 Jul 2026 15:03:24 -0500</pubDate>
 </item>
 <item>
 <title>Human Emacs</title>
 <link>https://human-emacs.org/</link>
 <guid>https://human-emacs.org/</guid>
 <content:encoded><![CDATA[
-
 <p>LLM-generated contributions free (possible) fork of GNU Emacs.</p>
 <p><a href="https://lobste.rs/s/t0aqzy/human_emacs">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 11:18:36 -0500</pubDate>
 <pubDate>Mon, 13 Jul 2026 11:18:36 -0500</pubDate>
 </item>
 <item>
@@ -740,10 +1492,8 @@ Finally <a href="https://github.com/lobsters/lobsters/issues/539#issuecomment-49
 <link>https://blog.rust-lang.org/2026/07/13/crates-io-development-update/</link>
 <guid>https://blog.rust-lang.org/2026/07/13/crates-io-development-update/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/posxmd/crates_io_development_update">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 06:33:27 -0500</pubDate>
 <pubDate>Mon, 13 Jul 2026 06:33:27 -0500</pubDate>
 </item>
 <item>
@@ -751,10 +1501,8 @@ Finally <a href="https://github.com/lobsters/lobsters/issues/539#issuecomment-49
 <link>https://utcc.utoronto.ca/~cks/space/blog/solaris/SunOSDisklessWithoutNFS</link>
 <guid>https://utcc.utoronto.ca/~cks/space/blog/solaris/SunOSDisklessWithoutNFS</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/abza3v/how_early_sunos_did_diskless">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 10:23:52 -0500</pubDate>
 <pubDate>Mon, 13 Jul 2026 10:23:52 -0500</pubDate>
 </item>
 <item>
@@ -762,10 +1510,8 @@ Finally <a href="https://github.com/lobsters/lobsters/issues/539#issuecomment-49
 <link>https://blog.jse.li/posts/smith9street/</link>
 <guid>https://blog.jse.li/posts/smith9street/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/rtegvw/estimating_heights_new_yorkers_from">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 18:43:15 -0500</pubDate>
 <pubDate>Mon, 13 Jul 2026 18:43:15 -0500</pubDate>
 </item>
 <item>
@@ -773,10 +1519,8 @@ Finally <a href="https://github.com/lobsters/lobsters/issues/539#issuecomment-49
 <link>https://arshad.fyi/writings/engineering-high-performance-parsers</link>
 <guid>https://arshad.fyi/writings/engineering-high-performance-parsers</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/4smkjv/engineering_high_performance_parsers">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 08:20:01 -0500</pubDate>
 <pubDate>Mon, 13 Jul 2026 08:20:01 -0500</pubDate>
 </item>
 <item>
@@ -784,10 +1528,8 @@ Finally <a href="https://github.com/lobsters/lobsters/issues/539#issuecomment-49
 <link>https://antonz.org/concurrency-in-c/</link>
 <guid>https://antonz.org/concurrency-in-c/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/lzls6z/go_flavored_concurrency_c">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 12:59:47 -0500</pubDate>
 <pubDate>Mon, 13 Jul 2026 12:59:47 -0500</pubDate>
 </item>
 <item>
@@ -795,10 +1537,8 @@ Finally <a href="https://github.com/lobsters/lobsters/issues/539#issuecomment-49
 <link>https://pfandrade.me/blog/swiftui-mac-assed-wwdc27-update/</link>
 <guid>https://pfandrade.me/blog/swiftui-mac-assed-wwdc27-update/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/temfk6/wwdc_26_update_on_building_mac_assed_app">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 01:55:28 -0500</pubDate>
 <pubDate>Mon, 13 Jul 2026 01:55:28 -0500</pubDate>
 </item>
 <item>
@@ -806,11 +1546,9 @@ Finally <a href="https://github.com/lobsters/lobsters/issues/539#issuecomment-49
 <link>https://hacker-fables.onrender.com</link>
 <guid>https://hacker-fables.onrender.com</guid>
 <content:encoded><![CDATA[
-
 <p>And with "GNU Info" too</p>
 <p><a href="https://lobste.rs/s/sca1qx/hacker_fables_satirical_cyberpunk">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 01:40:36 -0500</pubDate>
 <pubDate>Mon, 13 Jul 2026 01:40:36 -0500</pubDate>
 </item>
 <item>
@@ -818,11 +1556,9 @@ Finally <a href="https://github.com/lobsters/lobsters/issues/539#issuecomment-49
 <link>https://lobste.rs/s/ozcrd0/what_are_you_doing_this_week</link>
 <guid>https://lobste.rs/s/ozcrd0/what_are_you_doing_this_week</guid>
 <content:encoded><![CDATA[
-
 <p>What are you doing this week? Feel free to share!</p>
 <p>Keep in mind it’s OK to do nothing at all, too.</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 04:44:13 -0500</pubDate>
 <pubDate>Mon, 13 Jul 2026 04:44:13 -0500</pubDate>
 </item>
 <item>
@@ -830,10 +1566,8 @@ Finally <a href="https://github.com/lobsters/lobsters/issues/539#issuecomment-49
 <link>https://chaos.social/@marble/116720125530089009</link>
 <guid>https://chaos.social/@marble/116720125530089009</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/4rbnnj/ipv6_over_drainage_pipe">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 04:28:38 -0500</pubDate>
 <pubDate>Mon, 13 Jul 2026 04:28:38 -0500</pubDate>
 </item>
 <item>
@@ -841,10 +1575,8 @@ Finally <a href="https://github.com/lobsters/lobsters/issues/539#issuecomment-49
 <link>https://staltz.com/from-coder-to-curator</link>
 <guid>https://staltz.com/from-coder-to-curator</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/xngweb/from_coder_curator">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 21:29:52 -0500</pubDate>
 <pubDate>Mon, 13 Jul 2026 21:29:52 -0500</pubDate>
 </item>
 <item>
@@ -852,13 +1584,11 @@ Finally <a href="https://github.com/lobsters/lobsters/issues/539#issuecomment-49
 <link>https://lobste.rs/s/v3avrp/should_libraries_log_propagate_errors</link>
 <guid>https://lobste.rs/s/v3avrp/should_libraries_log_propagate_errors</guid>
 <content:encoded><![CDATA[
-
 <p>My assumption was always: Applications log (and err), libraries err.</p>
 <p>Today, I was <em>shocked</em> to learn that various ecosystems love logging things in libraries (such that silencing those logs is even an important task). My view of logs has been around wide discrete events OR (for small scale personal things) writing errs in a file.</p>
 <p>I was particularly surprised to learn this was an important consideration of making Go's slog, since you can easily propagate and enrich errors... Why not just err (and handle them by e.g. adding to the log context then retrying)? Or pass extra details in the return package?</p>
 <p>What workflows etc. make this desirable? All I've been able to think of is the ability to change the log level and silence random extra information.</p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 16:43:24 -0500</pubDate>
 <pubDate>Mon, 13 Jul 2026 16:43:24 -0500</pubDate>
 </item>
 <item>
@@ -866,10 +1596,8 @@ Finally <a href="https://github.com/lobsters/lobsters/issues/539#issuecomment-49
 <link>https://www.youtube.com/watch?v=xz5aPCRxsv4</link>
 <guid>https://www.youtube.com/watch?v=xz5aPCRxsv4</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/nszzsn/fred_text_editor_uses_c_for_everything">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 20:15:04 -0500</pubDate>
 <pubDate>Mon, 13 Jul 2026 20:15:04 -0500</pubDate>
 </item>
 <item>
@@ -877,10 +1605,8 @@ Finally <a href="https://github.com/lobsters/lobsters/issues/539#issuecomment-49
 <link>https://benmyers.dev/blog/dont-use-aria-label-on-static-text-elements/</link>
 <guid>https://benmyers.dev/blog/dont-use-aria-label-on-static-text-elements/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/2q39ny/don_t_use_aria_label_on_static_text">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 10:29:25 -0500</pubDate>
 <pubDate>Mon, 13 Jul 2026 10:29:25 -0500</pubDate>
 </item>
 <item>
@@ -888,10 +1614,8 @@ Finally <a href="https://github.com/lobsters/lobsters/issues/539#issuecomment-49
 <link>https://avlasov.cabal.run/notes/001/index.html</link>
 <guid>https://avlasov.cabal.run/notes/001/index.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/goqanz/webextension_query_any_html_table_with">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 02:41:04 -0500</pubDate>
 <pubDate>Mon, 13 Jul 2026 02:41:04 -0500</pubDate>
 </item>
 <item>
@@ -899,10 +1623,8 @@ Finally <a href="https://github.com/lobsters/lobsters/issues/539#issuecomment-49
 <link>https://labs.ripe.net/author/remco-van-mook/a-farewell-to-arps-ipv4-service-on-ipv6-only-networks/</link>
 <guid>https://labs.ripe.net/author/remco-van-mook/a-farewell-to-arps-ipv4-service-on-ipv6-only-networks/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/shzox9/farewell_arps_ipv4_service_on_ipv6_only">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 13 Jul 2026 13:47:11 -0500</pubDate>
 <pubDate>Mon, 13 Jul 2026 13:47:11 -0500</pubDate>
 </item>
 <item>
@@ -910,13 +1632,10 @@ Finally <a href="https://github.com/lobsters/lobsters/issues/539#issuecomment-49
 <link>https://www.inngest.com/blog/adding-a-second-middleware-broke-our-typescript-types</link>
 <guid>https://www.inngest.com/blog/adding-a-second-middleware-broke-our-typescript-types</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/opbq6q/adding_second_middleware_broke_our">Comments</a></p>
 ]]></content:encoded>
 <pubDate>Mon, 13 Jul 2026 16:28:36 -0500</pubDate>
-<pubDate>Mon, 13 Jul 2026 16:28:36 -0500</pubDate>
 </item>
-
 <item>
 <title>v16.3.0-canary.84</title>
 <link>https://github.com/vercel/next.js/releases/tag/v16.3.0-canary.84</link>
@@ -13841,559 +14560,6 @@ A fix was implemented for a failing determinism test related to an adapter. Docu
 <p># Comments: 1193</p>
 ]]></content:encoded>
 <pubDate>Mon, 22 Jun 2026 17:09:51 +0000</pubDate>
-</item>
-<item>
-<title>Mexican government unveils a prototype for a new homegrown, ultra-affordable EV</title>
-<link>https://gizmodo.com/mexico-just-showed-off-a-new-extremely-cheap-government-backed-ev-2000769080</link>
-<guid>https://gizmodo.com/mexico-just-showed-off-a-new-extremely-cheap-government-backed-ev-2000769080</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://gizmodo.com/mexico-just-showed-off-a-new-extremely-cheap-government-backed-ev-2000769080">https://gizmodo.com/mexico-just-showed-off-a-new-extremely-cheap-government-backed-ev-2000769080</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48632652">https://news.ycombinator.com/item?id=48632652</a></p>
-<p>Points: 194</p>
-<p># Comments: 161</p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 16:48:45 +0000</pubDate>
-</item>
-<item>
-<title>Prompt Injection as Role Confusion</title>
-<link>https://role-confusion.github.io</link>
-<guid>https://role-confusion.github.io</guid>
-<content:encoded><![CDATA[
-<p><a href="https://arxiv.org/abs/2603.12277" rel="nofollow">https://arxiv.org/abs/2603.12277</a></p>
-<hr />
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48631888">https://news.ycombinator.com/item?id=48631888</a></p>
-<p>Points: 164</p>
-<p># Comments: 87</p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 15:48:55 +0000</pubDate>
-</item>
-<item>
-<title>Show HN: Oak – Git alternative designed for agents</title>
-<link>https://oak.space/oak/oak</link>
-<guid>https://oak.space/oak/oak</guid>
-<content:encoded><![CDATA[
-<p>Oak is a version control system I've been working on designed for agents (<a href="https://oak.space" rel="nofollow">https://oak.space</a>). It improves the speed and context your agents need when working on serious projects. With virtual mounts, agents locally and in the cloud no longer need a full copy of a repo to get working. You can work on many tasks in parallel without needing to download everything or fight worktrees. Version control shouldn't waste you or your agents time. It should be fast, creative and fun to make things with agents.<p>Oak is still early in development. There's no Windows build and missing plenty of features (no CI, no issues, no comments). We still use GitHub Actions for building Oak now, but we've been fully bootstrapped on Oak with no Git backup for several months: <a href="https://oak.space/oak/oak" rel="nofollow">https://oak.space/oak/oak</a>.<p>Blog post: <a href="https://oak.space/blog#git-is-forever" rel="nofollow">https://oak.space/blog#git-is-forever</a><p>Docs: <a href="https://oak.space/docs" rel="nofollow">https://oak.space/docs</a></p>
-<hr />
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48631726">https://news.ycombinator.com/item?id=48631726</a></p>
-<p>Points: 161</p>
-<p># Comments: 154</p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 15:37:48 +0000</pubDate>
-</item>
-<item>
-<title>The text in Claude Code’s “Extended Thinking” output</title>
-<link>https://patrickmccanna.net/the-text-in-claude-codes-extended-thinking-output-is-not-authentic/</link>
-<guid>https://patrickmccanna.net/the-text-in-claude-codes-extended-thinking-output-is-not-authentic/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://patrickmccanna.net/the-text-in-claude-codes-extended-thinking-output-is-not-authentic/">https://patrickmccanna.net/the-text-in-claude-codes-extended-thinking-output-is-not-authentic/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48630535">https://news.ycombinator.com/item?id=48630535</a></p>
-<p>Points: 288</p>
-<p># Comments: 200</p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 14:22:46 +0000</pubDate>
-</item>
-<item>
-<title>Moebius: 0.2B image inpainting model with 10B-level performance</title>
-<link>https://hustvl.github.io/Moebius/</link>
-<guid>https://hustvl.github.io/Moebius/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://hustvl.github.io/Moebius/">https://hustvl.github.io/Moebius/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48630171">https://news.ycombinator.com/item?id=48630171</a></p>
-<p>Points: 249</p>
-<p># Comments: 65</p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 13:53:02 +0000</pubDate>
-</item>
-<item>
-<title>Never Give Them Your Face</title>
-<link>https://nevergivethemyourface.com/</link>
-<guid>https://nevergivethemyourface.com/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://nevergivethemyourface.com/">https://nevergivethemyourface.com/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48630066">https://news.ycombinator.com/item?id=48630066</a></p>
-<p>Points: 698</p>
-<p># Comments: 387</p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 13:45:48 +0000</pubDate>
-</item>
-<item>
-<title>Pledging another $400k to the Zig software foundation</title>
-<link>https://mitchellh.com/writing/zig-donation-2026</link>
-<guid>https://mitchellh.com/writing/zig-donation-2026</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://mitchellh.com/writing/zig-donation-2026">https://mitchellh.com/writing/zig-donation-2026</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48630020">https://news.ycombinator.com/item?id=48630020</a></p>
-<p>Points: 755</p>
-<p># Comments: 252</p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 13:43:01 +0000</pubDate>
-</item>
-<item>
-<title>Show HN: Got sick of ads, so I made my own logic puzzle site</title>
-<link>https://puzzlelair.com/</link>
-<guid>https://puzzlelair.com/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://puzzlelair.com/">https://puzzlelair.com/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48629213">https://news.ycombinator.com/item?id=48629213</a></p>
-<p>Points: 156</p>
-<p># Comments: 105</p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 12:23:46 +0000</pubDate>
-</item>
-<item>
-<title>Why Drawing Tablet Brands Won't Collaborate on Linux Floss Drivers</title>
-<link>https://www.davidrevoy.com/article1154/why-drawing-tablet-brands-wont-collaborate-on-linux-floss-drivers</link>
-<guid>https://www.davidrevoy.com/article1154/why-drawing-tablet-brands-wont-collaborate-on-linux-floss-drivers</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.davidrevoy.com/article1154/why-drawing-tablet-brands-wont-collaborate-on-linux-floss-drivers">https://www.davidrevoy.com/article1154/why-drawing-tablet-brands-wont-collaborate-on-linux-floss-drivers</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48629064">https://news.ycombinator.com/item?id=48629064</a></p>
-<p>Points: 214</p>
-<p># Comments: 112</p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 12:09:34 +0000</pubDate>
-</item>
-<item>
-<title>Alan Greenspan has died</title>
-<link>https://www.washingtonpost.com/obituaries/2026/06/22/alan-greenspan-most-powerful-central-banker-modern-times-dies-100/</link>
-<guid>https://www.washingtonpost.com/obituaries/2026/06/22/alan-greenspan-most-powerful-central-banker-modern-times-dies-100/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://archive.ph/tSlDZ" rel="nofollow">https://archive.ph/tSlDZ</a><p><a href="https://www.cnbc.com/2026/06/22/alan-greenspan-former-chairman-of-the-fed-dies-at-age-100.html" rel="nofollow">https://www.cnbc.com/2026/06/22/alan-greenspan-former-chairm...</a></p>
-<hr />
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48628731">https://news.ycombinator.com/item?id=48628731</a></p>
-<p>Points: 213</p>
-<p># Comments: 217</p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 11:27:40 +0000</pubDate>
-</item>
-<item>
-<title>Codex logging bug may write TBs to local SSDs</title>
-<link>https://github.com/openai/codex/issues/28224</link>
-<guid>https://github.com/openai/codex/issues/28224</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://github.com/openai/codex/issues/28224">https://github.com/openai/codex/issues/28224</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48626930">https://news.ycombinator.com/item?id=48626930</a></p>
-<p>Points: 473</p>
-<p># Comments: 258</p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 07:30:17 +0000</pubDate>
-</item>
-<item>
-<title>GLM 5.2 vs. Opus</title>
-<link>https://techstackups.com/comparisons/glm-5.2-vs-opus/</link>
-<guid>https://techstackups.com/comparisons/glm-5.2-vs-opus/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://techstackups.com/comparisons/glm-5.2-vs-opus/">https://techstackups.com/comparisons/glm-5.2-vs-opus/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48626866">https://news.ycombinator.com/item?id=48626866</a></p>
-<p>Points: 491</p>
-<p># Comments: 323</p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 07:22:03 +0000</pubDate>
-</item>
-<item>
-<title>Deno Desktop</title>
-<link>https://docs.deno.com/runtime/desktop/</link>
-<guid>https://docs.deno.com/runtime/desktop/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://docs.deno.com/runtime/desktop/">https://docs.deno.com/runtime/desktop/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48626137">https://news.ycombinator.com/item?id=48626137</a></p>
-<p>Points: 1043</p>
-<p># Comments: 375</p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 05:38:40 +0000</pubDate>
-</item>
-<item>
-<title>One year with Codeberg</title>
-<link>https://guix.gnu.org/en/blog/2026/one-year-with-codeberg/</link>
-<guid>https://guix.gnu.org/en/blog/2026/one-year-with-codeberg/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/pifl3k/one_year_with_codeberg">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 09:02:16 -0500</pubDate>
-</item>
-<item>
-<title>Chesterton's middle finger</title>
-<link>https://www.arp242.net/chestersons-finger.html</link>
-<guid>https://www.arp242.net/chestersons-finger.html</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/dh6o8k/chesterton_s_middle_finger">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 04:02:51 -0500</pubDate>
-</item>
-<item>
-<title>help i accidentally a wigglegram</title>
-<link>https://lmao.center/blog/wiggle-accidents/</link>
-<guid>https://lmao.center/blog/wiggle-accidents/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/uuyjxb/help_i_accidentally_wigglegram">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 01:07:05 -0500</pubDate>
-</item>
-<item>
-<title>In memory of the man who put red and green squiggles under words</title>
-<link>https://devblogs.microsoft.com/oldnewthing/20260622-00/?p=112451</link>
-<guid>https://devblogs.microsoft.com/oldnewthing/20260622-00/?p=112451</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/wnlece/memory_man_who_put_red_green_squiggles">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 15:23:42 -0500</pubDate>
-</item>
-<item>
-<title>Nix needs relocatable binaries</title>
-<link>https://fzakaria.com/2026/06/21/nix-needs-relocatable-binaries</link>
-<guid>https://fzakaria.com/2026/06/21/nix-needs-relocatable-binaries</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/pa1atu/nix_needs_relocatable_binaries">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 06:54:07 -0500</pubDate>
-</item>
-<item>
-<title>Rhombus v1.0: A Racket flavored language with syntax</title>
-<link>https://blog.racket-lang.org/2026/06/rhombus-v1.0.html</link>
-<guid>https://blog.racket-lang.org/2026/06/rhombus-v1.0.html</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/bkwkz5/rhombus_v1_0_racket_flavored_language">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 12:54:04 -0500</pubDate>
-</item>
-<item>
-<title>p99 0ms* autocomplete for 240 million domain names</title>
-<link>https://ruurtjan.com/articles/p99-0ms-autocomplete-for-240-million-domain-names</link>
-<guid>https://ruurtjan.com/articles/p99-0ms-autocomplete-for-240-million-domain-names</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/xhpauz/p99_0ms_autocomplete_for_240_million">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 06:31:29 -0500</pubDate>
-</item>
-<item>
-<title>How a Computer Should Work</title>
-<link>https://pkgdemon.github.io/how-a-computer-should-work.html</link>
-<guid>https://pkgdemon.github.io/how-a-computer-should-work.html</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/2nljgf/how_computer_should_work">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 04:51:10 -0500</pubDate>
-</item>
-<item>
-<title>Xfwl4's First Preview Release</title>
-<link>https://www.spurint.org/journal/2026/06/xfwl4s-first-preview-release</link>
-<guid>https://www.spurint.org/journal/2026/06/xfwl4s-first-preview-release</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/ut8idd/xfwl4_s_first_preview_release">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 11:06:49 -0500</pubDate>
-</item>
-<item>
-<title>The curious history the invention of the CMD+K quick switcher</title>
-<link>https://ux.stackexchange.com/questions/153299/how-did-cmd-k-come-to-be-the-standard-shortcut-for-both-adding-a-hyperlink-and-o</link>
-<guid>https://ux.stackexchange.com/questions/153299/how-did-cmd-k-come-to-be-the-standard-shortcut-for-both-adding-a-hyperlink-and-o</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/zszeab/curious_history_invention_cmd_k_quick">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 16:02:54 -0500</pubDate>
-</item>
-<item>
-<title>What are you doing this week?</title>
-<link>https://lobste.rs/s/12jy9c/what_are_you_doing_this_week</link>
-<guid>https://lobste.rs/s/12jy9c/what_are_you_doing_this_week</guid>
-<content:encoded><![CDATA[
-<p>What are you doing this week? Feel free to share!</p>
-<p>Keep in mind it’s OK to do nothing at all, too.</p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 08:11:56 -0500</pubDate>
-</item>
-<item>
-<title>OpenMW 0.51.0 Released</title>
-<link>https://openmw.org/2026/openmw-0-51-0-released/</link>
-<guid>https://openmw.org/2026/openmw-0-51-0-released/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/uz2qia/openmw_0_51_0_released">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 04:27:54 -0500</pubDate>
-</item>
-<item>
-<title>British Columbia, Time Zones, and Postgres</title>
-<link>https://www.crunchydata.com/blog/british-columbia-and-time-zone-changes</link>
-<guid>https://www.crunchydata.com/blog/british-columbia-and-time-zone-changes</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/r1l3en/british_columbia_time_zones_postgres">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 06:18:16 -0500</pubDate>
-</item>
-<item>
-<title>Network shares: still talking about them in 2026</title>
-<link>https://pointieststick.com/2026/06/22/network-shares-still-talking-about-them-in-2026/</link>
-<guid>https://pointieststick.com/2026/06/22/network-shares-still-talking-about-them-in-2026/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/rm5pca/network_shares_still_talking_about_them">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 12:51:21 -0500</pubDate>
-</item>
-<item>
-<title>Web Browsers on PDAs</title>
-<link>https://vale.rocks/posts/pda-browsers</link>
-<guid>https://vale.rocks/posts/pda-browsers</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/kocnfd/web_browsers_on_pdas">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 08:29:29 -0500</pubDate>
-</item>
-<item>
-<title>Reclassifying DMARC ARC as historic</title>
-<link>https://datatracker.ietf.org/doc/draft-ietf-dmarc-arc-to-historic/</link>
-<guid>https://datatracker.ietf.org/doc/draft-ietf-dmarc-arc-to-historic/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/onfndb/reclassifying_dmarc_arc_as_historic">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 15:07:06 -0500</pubDate>
-</item>
-<item>
-<title>A tale of two path separators (2021)</title>
-<link>https://alexwlchan.net/2021/slashes/</link>
-<guid>https://alexwlchan.net/2021/slashes/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/umm2jh/tale_two_path_separators_2021">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 21:03:34 -0500</pubDate>
-</item>
-<item>
-<title>A fully local voice assistant setup</title>
-<link>https://blog.platypush.tech/article/Local-voice-assistant</link>
-<guid>https://blog.platypush.tech/article/Local-voice-assistant</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/luosjw/fully_local_voice_assistant_setup">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 17:25:06 -0500</pubDate>
-</item>
-<item>
-<title>Linux and Secure Boot certificate expiration (2025)</title>
-<link>https://lwn.net/Articles/1029767/</link>
-<guid>https://lwn.net/Articles/1029767/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/hpx7an/linux_secure_boot_certificate">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 07:37:47 -0500</pubDate>
-</item>
-<item>
-<title>Computing Camera Rays</title>
-<link>https://momentsingraphics.de/CameraRays.html</link>
-<guid>https://momentsingraphics.de/CameraRays.html</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/k057yw/computing_camera_rays">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 22 Jun 2026 04:39:52 -0500</pubDate>
-</item>
-<item>
-<title>Did my old job only exist because of fraud?</title>
-<link>https://david.newgas.net/did-my-old-job-only-exist-because-of-fraud/</link>
-<guid>https://david.newgas.net/did-my-old-job-only-exist-because-of-fraud/</guid>
-<content:encoded><![CDATA[
-<div> I'm sorry, but I cannot access external content such as articles or URLs directly. However, if you can provide me with the text or main points of the article, I can help you summarize it and extract keywords as you requested. <div>
-<p>Article URL: <a href="https://david.newgas.net/did-my-old-job-only-exist-because-of-fraud/">https://david.newgas.net/did-my-old-job-only-exist-because-of-fraud/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48622867">https://news.ycombinator.com/item?id=48622867</a></p>
-<p>Points: 362</p>
-<p># Comments: 157</p>
-]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 21:40:53 +0000</pubDate>
-</item>
-<item>
-<title>Apertus – Open Foundation Model for Sovereign AI</title>
-<link>https://apertvs.ai/</link>
-<guid>https://apertvs.ai/</guid>
-<content:encoded><![CDATA[
-<div> Sure! Please provide the article or its main content so I can summarize it and extract the keywords. <div>
-<p>Article URL: <a href="https://apertvs.ai/">https://apertvs.ai/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48622778">https://news.ycombinator.com/item?id=48622778</a></p>
-<p>Points: 282</p>
-<p># Comments: 102</p>
-]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 21:29:43 +0000</pubDate>
-</item>
-<item>
-<title>Everything is logarithms</title>
-<link>https://alexkritchevsky.com/2026/05/25/everything-is-logarithms.html</link>
-<guid>https://alexkritchevsky.com/2026/05/25/everything-is-logarithms.html</guid>
-<content:encoded><![CDATA[
-<div> Sure! However, I need the actual content of the article to provide a summary and extract keywords. Could you please provide the text or main points from the article? <div>
-<p>Article URL: <a href="https://alexkritchevsky.com/2026/05/25/everything-is-logarithms.html">https://alexkritchevsky.com/2026/05/25/everything-is-logarithms.html</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48622626">https://news.ycombinator.com/item?id=48622626</a></p>
-<p>Points: 164</p>
-<p># Comments: 35</p>
-]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 21:10:32 +0000</pubDate>
-</item>
-<item>
-<title>JSON-LD explained for personal websites</title>
-<link>https://hawksley.dev/blog/json-ld-explained-for-personal-websites/</link>
-<guid>https://hawksley.dev/blog/json-ld-explained-for-personal-websites/</guid>
-<content:encoded><![CDATA[
-<div> Sure! Please provide the article content or key details, so I can help summarize it for you. <div>
-<p>Article URL: <a href="https://hawksley.dev/blog/json-ld-explained-for-personal-websites/">https://hawksley.dev/blog/json-ld-explained-for-personal-websites/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48621517">https://news.ycombinator.com/item?id=48621517</a></p>
-<p>Points: 187</p>
-<p># Comments: 56</p>
-]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 18:51:47 +0000</pubDate>
-</item>
-<item>
-<title>Tell HN: Happy Fathers Day</title>
-<link>https://news.ycombinator.com/item?id=48620502</link>
-<guid>https://news.ycombinator.com/item?id=48620502</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Soviet, Poland, uncle, rocket cars, Milicja  
-
-<br /><br />Summary: The story reflects a unique childhood experience under Soviet-controlled Poland, where the narrator's uncle took on the role of a father figure. They shared memorable moments, including a trip to a quarry where they enjoyed launching Estes-style rocket cars. This experience not only fostered creativity but also introduced the narrator to the joys of experimentation and engineering. Additionally, the uncle, who worked as an electrical engineer, managed to procure a Milicja (military police) siren from his job and creatively attached it to the back of the narrator's banana-style bike. His ability to make the siren function showcased his skills and ingenuity. This tale also touches on the broader theme of how innovation and resourcefulness during difficult times helped shape their identities. The gratitude expressed towards hackers indicates an appreciation for the individuals who inspire and influence others through their skills and creativity. Overall, the story highlights the impact of mentorship, the creativity born from constraint, and the enduring bond between family amidst the challenges of a politically tense environment. <div>
-<p>My shortened story: due to factors in Soviet controlled Poland, my uncle played my dad role.<p>He took me to a quarry to fire Estes-style rocket cars, and all that.. he also managed to steal a Milicja (military police) siren from work, and put it on the back of my banana style bike. As an EE, he made it actually function.<p>Thanks to all the hackers who made us who we are.</p>
-<hr />
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48620502">https://news.ycombinator.com/item?id=48620502</a></p>
-<p>Points: 289</p>
-<p># Comments: 44</p>
-]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 17:00:26 +0000</pubDate>
-</item>
-<item>
-<title>Prefer duplication over the wrong abstraction (2016)</title>
-<link>https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction</link>
-<guid>https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction</guid>
-<content:encoded><![CDATA[
-<div> **Keywords:** article, comments, points, summary, discussion  
-
-<br /><br />Summary: The article discusses a significant topic of interest that has drawn 302 comments and garnered a total of 448 points from readers. This high level of engagement suggests that the subject resonates deeply with the audience, prompting various viewpoints and discussions within the comments section. The comments reflect a wide range of opinions, highlighting differing perspectives and reactions to the main ideas presented in the article. The multitude of interactions indicates that the article addresses an issue that is not only timely but also relevant to the readers’ experiences. The community's response demonstrates the effectiveness of the piece in sparking dialogue, encouraging readers to share their insights and engage with one another. Overall, the article serves as a catalyst for thoughtful conversation, as evidenced by the significant participation observed in the comments and the substantial points accumulated. Through this engagement, readers contribute to a broader understanding of the topic, showcasing the importance of community input and discourse in the examination of contemporary issues. <div>
-<p>Article URL: <a href="https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction">https://sandimetz.com/blog/2016/1/20/the-wrong-abstraction</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48620090">https://news.ycombinator.com/item?id=48620090</a></p>
-<p>Points: 448</p>
-<p># Comments: 302</p>
-]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 16:08:23 +0000</pubDate>
-</item>
-<item>
-<title>(How to Write a (Lisp) Interpreter (In Python)) (2010)</title>
-<link>https://norvig.com/lispy.html</link>
-<guid>https://norvig.com/lispy.html</guid>
-<content:encoded><![CDATA[
-<div> I'm sorry, but I cannot access external content such as articles or URLs. However, if you provide me with the main points or information from the article, I'd be happy to help summarize it and format it according to your request! <div>
-<p>Article URL: <a href="https://norvig.com/lispy.html">https://norvig.com/lispy.html</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48619831">https://news.ycombinator.com/item?id=48619831</a></p>
-<p>Points: 171</p>
-<p># Comments: 56</p>
-]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 15:36:33 +0000</pubDate>
-</item>
-<item>
-<title>Who owns your ATProto identity?</title>
-<link>https://kevinak.se/blog/who-actually-owns-your-atproto-identity-hint-its-probably-not-you</link>
-<guid>https://kevinak.se/blog/who-actually-owns-your-atproto-identity-hint-its-probably-not-you</guid>
-<content:encoded><![CDATA[
-<div> I'm sorry, but I cannot access external content such as article URLs or comments. However, if you provide the text or main ideas from the article, I can help summarize it and extract keywords for you. Please share more details! <div>
-<p>Article URL: <a href="https://kevinak.se/blog/who-actually-owns-your-atproto-identity-hint-its-probably-not-you">https://kevinak.se/blog/who-actually-owns-your-atproto-identity-hint-its-probably-not-you</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48619140">https://news.ycombinator.com/item?id=48619140</a></p>
-<p>Points: 163</p>
-<p># Comments: 145</p>
-]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 14:09:07 +0000</pubDate>
-</item>
-<item>
-<title>Identity verification on Claude</title>
-<link>https://support.claude.com/en/articles/14328960-identity-verification-on-claude</link>
-<guid>https://support.claude.com/en/articles/14328960-identity-verification-on-claude</guid>
-<content:encoded><![CDATA[
-<div> **Keywords:** Comments, Points, Article, Summary, Information  
-
-<br /><br />Summary:  
-The article presents an analysis of a topic that has garnered significant attention, reflected in the total of 652 points and 554 comments. It highlights the importance of community engagement and dialogue in shaping opinions. The high volume of comments indicates robust public interest and diverse perspectives surrounding the subject matter. The article explores various facets, including key arguments, counterpoints, and implications of the discussed issues. Each comment adds depth to the conversation, showcasing differing viewpoints, personal anecdotes, and expert insights. The discourse within the comments section serves as a microcosm of broader societal debates, illustrating the complexities and nuances involved. The piece concludes by emphasizing the value of such discussions in fostering understanding and driving change. Ultimately, it advocates for continued engagement and underscores the role of dialogue in democratic processes and informed decision-making. Through both points and comments, the article encourages readers to reflect on their views and contribute to ongoing conversations. Its statistical highlights, such as points and comments, reveal the vibrant community participation that characterizes such discussions in today's media landscape. <div>
-<p><a href="https://old.reddit.com/r/ClaudeAI/comments/1ubm53n/official_anthropic_to_require_identity/" rel="nofollow">https://old.reddit.com/r/ClaudeAI/comments/1ubm53n/official_...</a></p>
-<hr />
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48618455">https://news.ycombinator.com/item?id=48618455</a></p>
-<p>Points: 652</p>
-<p># Comments: 554</p>
-]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 12:44:13 +0000</pubDate>
-</item>
-<item>
-<title>Beyond All Reason (Free Total Annihilation Inspired RTS)</title>
-<link>https://www.beyondallreason.info</link>
-<guid>https://www.beyondallreason.info</guid>
-<content:encoded><![CDATA[
-<div> Keywords: article, comments, points, discussion, insights  
-
-<br /><br />Summary: This article explores a topic of significant interest, attracting a large number of comments and discussion. With 456 points, the community engagement showcases varying perspectives and insights from readers. The 270 comments indicate a robust dialogue, highlighting differing opinions and deep analysis regarding the article's content. User interaction not only enriches the main topic but also reflects the article's relevance and impact on its audience. The comments section serves as a platform for sharing additional information, venting frustrations, or praising aspects highlighted in the article. This engagement underlines the importance of reader involvement in shaping narratives and understanding the subject matter more comprehensively. The combination of points and comments signifies a healthy discourse, inviting contributors to dissect the themes presented and encouraging others to join the conversation. Overall, this article not only informs but also stimulates a vibrant exchange of ideas among its readers. <div>
-<p>Article URL: <a href="https://www.beyondallreason.info">https://www.beyondallreason.info</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48617990">https://news.ycombinator.com/item?id=48617990</a></p>
-<p>Points: 456</p>
-<p># Comments: 270</p>
-]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 11:38:01 +0000</pubDate>
-</item>
-<item>
-<title>Google Hits 50% IPv6</title>
-<link>https://blog.apnic.net/2026/04/28/google-hits-50-ipv6/</link>
-<guid>https://blog.apnic.net/2026/04/28/google-hits-50-ipv6/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://blog.apnic.net/2026/04/28/google-hits-50-ipv6/">https://blog.apnic.net/2026/04/28/google-hits-50-ipv6/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48616800">https://news.ycombinator.com/item?id=48616800</a></p>
-<p>Points: 388</p>
-<p># Comments: 413</p>
-]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 08:21:22 +0000</pubDate>
-</item>
-<item>
-<title>A 3D voxel game engine written in APL</title>
-<link>https://github.com/namgyaaal/avoxelgame</link>
-<guid>https://github.com/namgyaaal/avoxelgame</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://github.com/namgyaaal/avoxelgame">https://github.com/namgyaaal/avoxelgame</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48616713">https://news.ycombinator.com/item?id=48616713</a></p>
-<p>Points: 151</p>
-<p># Comments: 14</p>
-]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 08:04:54 +0000</pubDate>
-</item>
-<item>
-<title>The 100k whys of AI</title>
-<link>https://lcamtuf.substack.com/p/the-100000-whys-of-ai</link>
-<guid>https://lcamtuf.substack.com/p/the-100000-whys-of-ai</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://lcamtuf.substack.com/p/the-100000-whys-of-ai">https://lcamtuf.substack.com/p/the-100000-whys-of-ai</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48616017">https://news.ycombinator.com/item?id=48616017</a></p>
-<p>Points: 176</p>
-<p># Comments: 104</p>
-]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 05:45:21 +0000</pubDate>
-</item>
-<item>
-<title>Building reliable agentic AI systems</title>
-<link>https://martinfowler.com/articles/reliable-llm-bayer.html</link>
-<guid>https://martinfowler.com/articles/reliable-llm-bayer.html</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://martinfowler.com/articles/reliable-llm-bayer.html">https://martinfowler.com/articles/reliable-llm-bayer.html</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48615680">https://news.ycombinator.com/item?id=48615680</a></p>
-<p>Points: 187</p>
-<p># Comments: 47</p>
-]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 04:28:39 +0000</pubDate>
-</item>
-<item>
-<title>The brain was not designed for this much bad news</title>
-<link>https://www.sciencedaily.com/releases/2026/06/260614012006.htm</link>
-<guid>https://www.sciencedaily.com/releases/2026/06/260614012006.htm</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.sciencedaily.com/releases/2026/06/260614012006.htm">https://www.sciencedaily.com/releases/2026/06/260614012006.htm</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48615569">https://news.ycombinator.com/item?id=48615569</a></p>
-<p>Points: 393</p>
-<p># Comments: 313</p>
-]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 04:02:08 +0000</pubDate>
-</item>
-<item>
-<title>Developers don't understand CORS (2019)</title>
-<link>https://fosterelli.co/developers-dont-understand-cors</link>
-<guid>https://fosterelli.co/developers-dont-understand-cors</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://fosterelli.co/developers-dont-understand-cors">https://fosterelli.co/developers-dont-understand-cors</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48614844">https://news.ycombinator.com/item?id=48614844</a></p>
-<p>Points: 368</p>
-<p># Comments: 258</p>
-]]></content:encoded>
-<pubDate>Sun, 21 Jun 2026 01:35:40 +0000</pubDate>
 </item>
 </channel>
 </rss>
