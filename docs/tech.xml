@@ -3,7 +3,922 @@
 <channel>
 <title>tech</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/tech.xml</link>
-<lastBuildDate>Mon, 27 Jul 2026 03:49:23 +0000</lastBuildDate>
+<lastBuildDate>Tue, 28 Jul 2026 03:20:08 +0000</lastBuildDate>
+
+<item>
+<title>Amazon Neptune now supports tag-based access control for IAM</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-neptune-tbac/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-neptune-tbac/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: tag-based access control, IAM, Amazon Neptune, security, permissions
+
+<br><br>Summary: The introduction of tag-based access control (TBAC) for IAM in Amazon Neptune allows customers to leverage AWS resource tags and IAM principal tags as conditions in IAM policies and Service Control Policies (SCPs) to manage access to Neptune's data-plane operations. While Neptune already offers strong security through VPC isolation, TLS encryption, and IAM authentication, the need for a dynamic, attribute-based access control mechanism was identified for customers managing multiple clusters. TBAC enables administrators to control cluster access without specifying individual cluster ARNs, streamlining the access management process. By using TBAC, IAM principals are limited to executing `neptune-db:*` actions on clusters with matching tags, ensuring security and isolation across projects. This feature also reduces lateral access risks within shared VPC environments and facilitates team and environment-level isolation. Moreover, it supports federated identity workflows via SAML or OIDC session tags. Administrators can implement more granular permissions, like neptune-db:QueryLanguage, in conjunction with TBAC for enhanced control. TBAC is available in all AWS Regions supporting Amazon Neptune and requires the Neptune engine version 1.2.0.0 or higher with IAM authentication enabled. <div>
+<p><a href="https://aws.amazon.com/neptune/" target="_blank">Amazon Neptune</a> Database now supports tag-based access control (TBAC) for IAM, enabling customers to use AWS resource tags and IAM principal tags as conditions in IAM policies and Service Control Policies (SCPs) to control access to Neptune data-plane operations. Neptune already provides robust security through VPC isolation, TLS encryption, and IAM authentication, but customers managing multiple clusters at scale needed a dynamic, attribute-based mechanism to enforce organizational access boundaries. TBAC addresses this by allowing administrators to govern cluster access without enumerating specific cluster ARNs in every policy.<br /> <br /> With TBAC, IAM principals can only perform `neptune-db:*` actions against Neptune clusters whose tags match their own — for example, a principal tagged `Project=FraudDetection` is automatically restricted to clusters sharing that same tag. This eliminates lateral access risk within shared VPC environments, enforces team and environment-level isolation across projects, and supports federated identity workflows using SAML or OIDC session tags from external identity providers. Granular permissions like neptune-db:QueryLanguage can be used alongside TBAC for more fine-grained access control.<br /> <br /> This feature is available in all AWS Regions where Amazon Neptune is available and requires Neptune engine version 1.2.0.0 or later with IAM authentication enabled.<br /> <br /> To learn more about configuring tag-based access control for Amazon Neptune, including how to tag your DB clusters and IAM principals and deploy organization-wide guardrails using SCPs, visit the <a href="https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-tbac.html" target="_blank">Amazon Neptune documentation</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 22:00:00 GMT</pubDate>
+<pubDate>Mon, 27 Jul 2026 22:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Glue Data Quality now supports anomaly detection and writing results to the AWS Glue Data Catalog</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-glue-data-quality-catalog-anomaly-detection-write-results</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-glue-data-quality-catalog-anomaly-detection-write-results</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS Glue, Data Quality, anomaly detection, GDC, ETL jobs  
+
+<br><br>Summary: AWS Glue Data Quality has introduced new features that enhance data quality evaluations for Catalog-based data. This includes the ability for anomaly detection, which helps identify unexpected changes in data statistics without the need to set explicit thresholds. Utilizing machine learning-powered time-series forecasting, data engineers can automatically identify significant issues, like drops in distinct values or spikes in row counts across multiple tables in the AWS Glue Data Catalog (GDC). This is particularly useful when monitoring a large number of tables. Additionally, the evaluation results, including data quality rule outcomes, profiling metrics, and anomaly predictions with associated confidence bounds, are stored back in GDC tables. This allows for the creation of a comprehensive, queryable record of all data quality evaluations, accessible using standard SQL, regardless of whether the evaluations were performed during ETL jobs or directly on catalog tables. These capabilities are now available in all AWS commercial regions and AWS GovCloud (US) regions, streamlining the data quality management process in various workflows. To get started, users can explore the resources provided by AWS. <div>
+<p>AWS Glue Data Quality now supports anomaly detection for Catalog-based data quality evaluations and the ability to write evaluation results to AWS Glue Data Catalog (GDC) tables. These capabilities work across both ETL jobs and Catalog evaluations, giving you a consistent data quality experience regardless of workflow type.<br /> <br /> With anomaly detection support for GDC, you can identify unexpected changes in data statistics such as sudden drops in distinct values or row count spikes in your GDC tables using ML-powered time-series forecasting, without writing rules with explicit thresholds. This is especially valuable for data engineers monitoring hundreds of tables in the GDC who need to surface issues automatically.<br /> <br /> With results storage<b> </b>in GDC, Data Quality rule outcomes, profiling metrics, and anomaly predictions (with confidence bounds) are written back to GDC tables, creating a queryable record of all quality evaluations. Whether the evaluation runs in an ETL job or directly on a Catalog table, results can be queried at any time using standard SQL.<br /> <br /> AWS Glue Data Quality anomaly detection and Catalog results storage are available in all AWS commercial regions and AWS GovCloud (US) regions.<br /> <br /> To get started, visit the <a href="https://docs.aws.amazon.com/glue/latest/dg/data-quality.html">AWS Glue Data Quality documentation</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 20:45:00 GMT</pubDate>
+<pubDate>Mon, 27 Jul 2026 20:45:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Glue Data Quality now supports distribution statistics for data profiling</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-glue-data-quality-distribution-profiling</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-glue-data-quality-distribution-profiling</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS Glue, Data Quality, Distribution Analyzer, DQDL, distribution statistics
+
+<br><br>Summary: AWS Glue Data Quality has introduced a new Distribution Analyzer that generates frequency distribution profiles for data. This feature leverages Data Quality Definition Language (DQDL) to create histograms for numeric columns and value distributions for categorical, date, and boolean columns. It allows for custom bin counts, enabling users to examine their data's shapes and patterns tailored to specific use cases. Understanding data distribution is essential for building reliable data pipelines, as distribution statistics help identify skewness, outliers, and unexpected patterns without the need for custom coding. The new capability integrates seamlessly with existing DQDL rulesets, allowing users to add distribution profiling alongside current data quality checks in a single evaluation run. The distribution statistics are stored securely in Amazon S3 for future querying via services like Amazon Athena and can be accessed through APIs for easy integration with monitoring workflows and visualization tools, such as SageMaker Unified Studio. This feature is available across all AWS commercial regions and AWS GovCloud (US) regions. For further details about Glue Data Quality and to get started with the Distribution Analyzer, users are encouraged to visit the appropriate AWS resources. <div>
+<p>AWS Glue Data Quality now supports a new Distribution Analyzer that generates frequency distribution profiles for your data. Using this new Distribution Analyzer in the Data Quality Definition Language (DQDL), you can generate histograms for numeric columns and value distributions for categorical, date, and boolean columns. With support for custom bin counts, you can explore the shape and patterns of your data at the granularity that matters most to your use case.<br /> <br /> Understanding how data is distributed is foundational to building reliable data pipelines. Distribution statistics help you quickly identify skewness, outliers, and unexpected patterns across your datasets, without writing custom code. The capability integrates directly with your existing DQDL rulesets, so you can add distribution profiling alongside your current data quality checks in a single evaluation run. Distribution statistics are stored in Amazon S3 for future querying through services like Amazon Athena, and are also surfaced through APIs, making it easy to integrate distribution insights into monitoring workflows and visualization tools, including SageMaker Unified Studio.<br /> <br /> AWS Glue Data Quality distribution statistics are available in all AWS commercial regions and AWS GovCloud (US) regions.<br /> <br /> To learn more about Glue Data Quality, visit the <a href="https://docs.aws.amazon.com/glue/latest/dg/glue-data-quality.html">AWS Glue Data Quality documentation</a>. To get started with using Distribution Analyzer, visit the <a href="https://docs.aws.amazon.com/glue/latest/dg/dqdl.html#dqdl-analyzers">Analyzers documentation</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 20:23:00 GMT</pubDate>
+<pubDate>Mon, 27 Jul 2026 20:23:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon GameLift Streams now supports Custom Aspect Ratio and Dynamic Resolution</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-gamelift-streams/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-gamelift-streams/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon GameLift, Custom Aspect Ratio, Dynamic Resolution, Streaming Experience, DisplayConfiguration
+
+<br><br>Summary: Amazon GameLift Streams now offers Custom Aspect Ratio and Dynamic Resolution features, enhancing the streaming experience across various player devices and network conditions. With Custom Aspect Ratio, developers can set specific resolutions per stream session tailored to the player's device, accommodating portrait, landscape, ultra-wide, and square formats. This flexibility helps eliminate letterboxing or pillarboxing, ensuring a native full-screen experience on a range of devices, from mobile phones to non-standard displays. Users can specify resolutions from 320 to 4096 pixels per dimension (up to a total pixel budget of 1080p) utilizing the DisplayConfiguration parameter in the StartStreamSession API, or experiment with custom resolutions via the AWS Console. 
+
+Dynamic Resolution automatically adjusts the stream quality based on fluctuations in the player's network bandwidth. It reduces resolution gracefully during bandwidth drops to maintain smooth playback, avoiding issues like frame drops or disconnections, and recovers to full quality when network conditions improve. This feature is enabled by default for all new stream groups and requires no additional configuration. Customers need to download the new Web SDK to use these features. Both functionalities are available in all AWS Regions supporting Amazon GameLift Streams. For more details, refer to the Custom stream resolution section in the Amazon GameLift Streams Developer Guide. <div>
+<p>Amazon GameLift Streams now supports Custom Aspect Ratio and Dynamic Resolution, giving you greater control over the streaming experience across diverse player devices and network conditions.</p> 
+<p>With Custom Aspect Ratio, you can configure a specific resolution per stream session to match your player's device — including portrait, landscape, ultra-wide, and square aspect ratios. This eliminates letterboxing or pillarboxing, delivering native full-screen experiences on mobile phones, tablets, and non-standard displays. Specify any resolution from 320 to 4096 pixels per dimension (up to 1080p total pixel budget) using the DisplayConfiguration parameter in the StartStreamSession API. You can also try custom resolution from the AWS Console.</p> 
+<p>Dynamic Resolution automatically adapts stream quality when a player's network bandwidth fluctuates. When bandwidth drops, the stream gracefully reduces resolution to maintain smooth playback without frame drops or disconnections — and automatically recovers to full quality when conditions improve. Dynamic Resolution is enabled by default for all new stream groups with no configuration required. Customers will need to download the new Web SDK.</p> 
+<p>Both features are available in all AWS Regions where Amazon GameLift Streams is offered. To learn more, see Custom stream resolution in the Amazon GameLift Streams Developer Guide.&nbsp;<br /> &nbsp;<br /> <a href="https://docs.aws.amazon.com/gameliftstreams/latest/developerguide/custom-stream-resolution.html">https://docs.aws.amazon.com/gameliftstreams/latest/developerguide/custom-stream-resolution.html</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 18:58:00 GMT</pubDate>
+<pubDate>Mon, 27 Jul 2026 18:58:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Security Hub MCP App brings exposure findings into your AI-assisted workflow (Preview)</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-security-hub-mcp-app/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-security-hub-mcp-app/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS, Security Hub, MCP App, security investigations, local server
+
+<br><br>Summary: 
+AWS has introduced a preview of the AWS Security Hub MCP App, a local Model Context Protocol (MCP) server designed to integrate Security Hub exposure findings directly into Claude Desktop. This innovation accelerates security investigations by minimizing context switching and manual triage, enabling users to explore and act on their exposures within a seamless AI-assisted workflow. With the Security Hub MCP App, users can investigate their security posture using natural language; they can view top exposure findings, delve into a finding's attack path and expanded network path, assess correlated findings and affected resource configurations, and receive remediation recommendations. Each tool call produces a text summary for the AI agent to analyze alongside an interactive visualization for user verification, all within the same conversation. The MCP server operates locally on the user's machine utilizing existing AWS credentials, with all tools being read-only, ensuring no alterations are made to the environment. The Security Hub MCP App is available at no extra cost to Security Hub customers during its preview in all AWS commercial Regions that support Security Hub. For further details, users are directed to relevant AWS resources and the full list of supporting regions. <div>
+<p>AWS announces the preview of the AWS Security Hub MCP App, a local Model Context Protocol (MCP) server that brings your Security Hub exposure findings directly into Claude Desktop.&nbsp;&nbsp;This capability can help accelerates your security investigations by reducing context switching and manual triage, letting you explore and act on your exposures without leaving your AI-assisted workflow.</p> 
+<p>With the Security Hub MCP App, you can investigate your security posture in natural language: view your top exposure findings, drill into a finding’s attack path and expanded network path, examine correlated findings and affected resource configurations, and get remediation recommendations. Each tool call returns both a text summary for your AI agent to reason overover and an interactive visualization for you to verify in the same conversation. The MCP server runs locally on your machine using your existing AWS credentials, and every tool is read-only,-- no changes are made to your environment.</p> 
+<p>The Security Hub MCP App is available at no additional cost to Security Hub customers. This feature is available in preview in all AWS commercial Regions that support Security Hub.&nbsp;To learn more, see the <a href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-v2-mcp-app.html">AWS Security Hub User Guide</a> and the <a href="https://aws.amazon.com/security-hub/">AWS Security Hub product page</a>. For the full list of Regions, see the <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/">AWS Regional Services List</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 17:00:00 GMT</pubDate>
+<pubDate>Mon, 27 Jul 2026 17:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Elemental MediaTailor adds configurable ad timeout and concurrency controls for improved ad fill and faster startup</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/mediatail-configurable-ad-timeout-and-concurrency</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/mediatail-configurable-ad-timeout-and-concurrency</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS Elemental MediaTailor, ad decision server, timeout settings, personalization budgets, parallel requests
+
+<br><br>Summary: AWS Elemental MediaTailor now allows users to directly control ad decision server (ADS) timeout settings, which previously required AWS Support assistance. Users can configure individual HTTP ad request timeouts and total ad personalization time budgets for live, Video on Demand (VOD), and live ad prefetch workflows. This flexibility enables optimization of ad delivery performance according to specific needs. For example, increasing the personalization time budget for live events can enhance ad fill rates, while enabling parallel ADS requests in VOD workflows minimizes overall response times, resulting in quicker video startups. Additionally, the introduction of prefetch-specific timeout settings provides greater granularity for livestream ad retrieval. These new features can be configured via the AWS Elemental MediaTailor console, AWS CLI, or AWS SDKs, using the newly introduced AdsPersonalizationTimeouts and AdsPersonalizationConcurrency parameters in playback configurations. This capability is available across all AWS Regions that support AWS Elemental MediaTailor. For more detailed information on configuring ADS request timeouts, personalization time budgets, and concurrency, refer to the AWS Elemental MediaTailor User Guide. <div>
+<p>AWS Elemental MediaTailor now gives you direct control over ad decision server (ADS) timeout. Previously, changing these settings required contacting AWS Support. You can now configure individual HTTP ad request timeouts, total ad personalization time budgets for live, VOD, and live ad prefetch, and enable parallel ADS requests.</p> 
+<p>These settings allow you to optimize ad delivery performance for your specific workflows. For example, you can increase the personalization time budget for live events to improve ad fill rates or enable parallel ADS requests in VOD workflows to reduce overall response time for faster video startup. New prefetch-specific timeout settings give you additional granularity for livestream ad retrieval.</p> 
+<p>You can configure these settings through the AWS Elemental MediaTailor console, AWS CLI, or AWS SDKs using the new AdsPersonalizationTimeouts and AdsPersonalizationConcurrency parameters on your playback configurations.</p> 
+<p>This feature is available in all AWS Regions where AWS Elemental MediaTailor is available.&nbsp;</p> 
+<p>To learn more about configuring ADS request timeouts, personalization time budgets, and concurrency, see <a href="https://docs.aws.amazon.com/mediatailor/latest/ug/configurations-create.html#configurations-advanced-settings">Advanced settings</a> in the AWS Elemental MediaTailor User Guide.</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 16:09:00 GMT</pubDate>
+<pubDate>Mon, 27 Jul 2026 16:09:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon RDS for SQL Server now supports restoring TDE databases on Mult-AZ instances</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/rds-sql-server-supports-tde-for-maz/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/rds-sql-server-supports-tde-for-maz/</guid>
+<content:encoded><![CDATA[
+<div> TDE, SQL Server, Multi-AZ, backup, restore
+
+<br><br>Summary: The recent update now allows restoring Transparent Data Encryption (TDE)-enabled SQL Server databases on Multi-AZ instances and those configured with a read replica in the same region using native backup and restore functionalities. Previously, this option was restricted to Single-AZ instances, which required users to disable TDE or migrate to a Single-AZ configuration for restoring encrypted databases. Now, users can directly restore TDE-enabled database backups to Amazon RDS for SQL Server Multi-AZ instances and read replica configurations in the same region. To perform the restore, users need to back up their existing TDE certificate and store it in Amazon S3, then restore it to the RDS instance with the TDE option enabled. After that, they can restore the TDE-enabled database backup from Amazon S3 using native backup and restore. This enhancement streamlines migration and recovery workflows, ensuring both encryption at rest with TDE and high availability through Multi-AZ deployments. This feature is accessible in all AWS Regions that support Amazon RDS for SQL Server. For further details, refer to the official documentation. <div>
+<p><a href="https://aws.amazon.com/rds/sqlserver/" target="_blank">Amazon Relational Database Service (Amazon RDS) for SQL Server</a> now supports restoring Transparent Data Encryption (TDE)-enabled SQL Server databases on Multi-AZ instances and instances configured with a read replica in the same region, using native backup and restore. Previously, TDE-enabled database restore was available only for Single-AZ instances, requiring you to disable TDE or migrate to a Single-AZ configuration before restoring encrypted databases.<br /> <br /> You can restore TDE-enabled database backups directly to Amazon RDS for SQL Server Multi-AZ instances and instances configured with a read replica in the same region. Back up your existing TDE certificate, store it in Amazon S3, and restore it to your Amazon RDS instance with the TDE option enabled.&nbsp;Then, restore your TDE-enabled database backup from Amazon S3 using Amazon RDS native backup and restore. This simplifies your migration and recovery workflows when you require both encryption at rest with TDE and the high availability of Multi-AZ deployments.<br /> <br /> This feature is available in all AWS Regions where Amazon RDS for SQL Server is supported. To learn more, see the <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.SQLServer.Options.TDE.html" target="_blank">Amazon RDS for SQL Server User Guide</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 07:00:00 GMT</pubDate>
+<pubDate>Mon, 27 Jul 2026 07:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Clean Rooms supports larger worker types up to 32 vCPUs for SQL</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-clean-rooms-32-vcpu-worker-types-sql</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-clean-rooms-32-vcpu-worker-types-sql</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS Clean Rooms, vCPUs, memory, collaboration, datasets  
+
+<br><br>Summary:  
+AWS Clean Rooms has upgraded its capabilities to support 32 vCPUs with 244 GB of memory for SQL analyses, allowing users to execute more compute and memory-intensive workloads. The previous maximum worker type was 16 vCPUs with 120 GB of memory. The introduction of larger workers helps enhance performance, particularly for complex queries involving large datasets, which could lead to optimized costs for customers. For instance, an advertiser working in collaboration with a publisher can now leverage these larger workers to conduct intricate feature engineering over billions of records. This capability is vital for training their multi-touch attribution model, thereby accelerating time-to-value while reducing expenses. AWS Clean Rooms is designed to enable companies and their partners to collaboratively analyze their collective datasets without the risk of revealing or copying each other's underlying data, maintaining confidentiality. To find out more about the AWS Regions where AWS Clean Rooms is accessible, users can refer to the relevant table. Additionally, further information about how to collaborate using AWS Clean Rooms can be found on their dedicated webpage. <div>
+<p>AWS Clean Rooms now supports <a href="https://docs.aws.amazon.com/clean-rooms/latest/userguide/use-sql-editor.html" rel="noopener noreferrer" target="_blank">larger worker types</a> of 32 vCPUs with 244 GB of memory for SQL analyses, allowing you to run more compute and memory-intensive workloads. Previously, the largest worker type available was 16 vCPUs with 120 GB of memory. Larger workers can help improve performance for complex queries on large datasets, optimizing costs for customers. For example, an advertiser collaborating with a publisher can use larger workers to run complex feature engineering across billions of records to train their multi-touch attribution model, accelerating time-to-value and optimizing costs.</p> 
+<p>AWS Clean Rooms helps companies and their partners easily analyze and collaborate on their collective datasets without revealing or copying one another’s underlying data. For more information about the AWS Regions where AWS Clean Rooms is available, see the <a href="https://docs.aws.amazon.com/general/latest/gr/clean-rooms.html#clean-rooms_region" rel="noopener noreferrer" target="_blank">AWS Regions</a> table. To learn more about collaborating with AWS Clean Rooms, visit <a href="https://aws.amazon.com/clean-rooms/" rel="noopener noreferrer" target="_blank">AWS Clean Rooms</a>.</p>
+]]></content:encoded>
+<pubDate>Fri, 24 Jul 2026 12:00:00 GMT</pubDate>
+<pubDate>Fri, 24 Jul 2026 12:00:00 GMT</pubDate>
+</item>
+<item>
+<title>v16.3.0-canary.98</title>
+<link>https://github.com/vercel/next.js/releases/tag/v16.3.0-canary.98</link>
+<guid>https://github.com/vercel/next.js/releases/tag/v16.3.0-canary.98</guid>
+<content:encoded><![CDATA[
+<div> Sure! Please provide the article or the content you would like me to summarize. <div>
+<p>v16.3.0-canary.98</p>
+]]></content:encoded>
+
+<pubDate>2026-07-27T23:36:11Z</pubDate>
+</item>
+<item>
+<title>7.10.0-dev.43</title>
+<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.43</link>
+<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.43</guid>
+<content:encoded><![CDATA[
+<div> It seems like you are referencing a version number (7.10.0-dev.43), but I don't have specific access to an article or text associated with that version. If you provide the text or main points of the article, I would be happy to help you summarize it according to your instructions. Please share the content you want summarized! <div>
+<p>7.10.0-dev.43</p>
+]]></content:encoded>
+
+<pubDate>2026-07-27T13:56:19Z</pubDate>
+</item>
+<item>
+<title>7.10.0-dev.42</title>
+<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.42</link>
+<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.42</guid>
+<content:encoded><![CDATA[
+
+<p>7.10.0-dev.42</p>
+]]></content:encoded>
+
+<pubDate>2026-07-27T13:25:45Z</pubDate>
+</item>
+<item>
+<title>7.10.0-dev.41</title>
+<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.41</link>
+<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.41</guid>
+<content:encoded><![CDATA[
+
+<p>7.10.0-dev.41</p>
+]]></content:encoded>
+
+<pubDate>2026-07-27T13:08:18Z</pubDate>
+</item>
+<item>
+<title>7.10.0-dev.40</title>
+<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.40</link>
+<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.40</guid>
+<content:encoded><![CDATA[
+
+<p>7.10.0-dev.40</p>
+]]></content:encoded>
+
+<pubDate>2026-07-27T12:49:06Z</pubDate>
+</item>
+<item>
+<title>7.10.0-dev.39</title>
+<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.39</link>
+<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.39</guid>
+<content:encoded><![CDATA[
+
+<p>7.10.0-dev.39</p>
+]]></content:encoded>
+
+<pubDate>2026-07-27T12:31:07Z</pubDate>
+</item>
+<item>
+<title>7.10.0-dev.38</title>
+<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.38</link>
+<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.38</guid>
+<content:encoded><![CDATA[
+
+<p>7.10.0-dev.38</p>
+]]></content:encoded>
+
+<pubDate>2026-07-27T11:55:59Z</pubDate>
+</item>
+<item>
+<title>7.10.0-dev.37</title>
+<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.37</link>
+<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.37</guid>
+<content:encoded><![CDATA[
+
+<p>7.10.0-dev.37</p>
+]]></content:encoded>
+
+<pubDate>2026-07-27T11:38:37Z</pubDate>
+</item>
+<item>
+<title>7.10.0-dev.36</title>
+<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.36</link>
+<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.36</guid>
+<content:encoded><![CDATA[
+
+<p>7.10.0-dev.36</p>
+]]></content:encoded>
+
+<pubDate>2026-07-27T10:29:05Z</pubDate>
+</item>
+<item>
+<title>7.9.1</title>
+<link>https://github.com/prisma/prisma/releases/tag/7.9.1</link>
+<guid>https://github.com/prisma/prisma/releases/tag/7.9.1</guid>
+<content:encoded><![CDATA[
+
+<p>Today, we're issuing a patch release to resolve a security advisory in a transitive dependency of Prisma CLI (via <code>@prisma/dev</code>).</p>
+<p>This fixes <a class="issue-link js-issue-link" href="https://github.com/prisma/prisma/issues/29780">#29780</a>.</p>
+<p>It does not actually affect <code>@prisma/dev</code> or Prisma CLI so no urgent action is required, but it is recommended to upgrade nevertheless to avoid false positives from security scanners.</p>
+]]></content:encoded>
+
+<pubDate>2026-07-27T14:17:54Z</pubDate>
+</item>
+<item>
+<title>7.9.1-dev.1</title>
+<link>https://github.com/prisma/prisma/releases/tag/7.9.1-dev.1</link>
+<guid>https://github.com/prisma/prisma/releases/tag/7.9.1-dev.1</guid>
+<content:encoded><![CDATA[
+
+<p>7.9.1-dev.1</p>
+]]></content:encoded>
+
+<pubDate>2026-07-27T11:06:00Z</pubDate>
+</item>
+<item>
+<title>v1.16.0-alpha20260706</title>
+<link>https://github.com/hashicorp/terraform/releases/tag/v1.16.0-alpha20260706</link>
+<guid>https://github.com/hashicorp/terraform/releases/tag/v1.16.0-alpha20260706</guid>
+<content:encoded><![CDATA[
+
+<h2>1.16.0-alpha20260706 (July 06, 2026)</h2>
+<p>NEW FEATURES:</p>
+<ul>
+<li>
+<p>Store PlannedPrivate data for providers (<a href="https://github.com/hashicorp/terraform/issues/37986">#37986</a>)</p>
+</li>
+<li>
+<p>New store block in terraform_data that can handle ephemeral and sensitive values (<a href="https://github.com/hashicorp/terraform/issues/38298">#38298</a>)</p>
+</li>
+<li>
+<p>Providers can now use nested blocks as computed values (<a href="https://github.com/hashicorp/terraform/issues/38305">#38305</a>)</p>
+</li>
+<li>
+<p>import: add support for import blocks inside modules (<a href="https://github.com/hashicorp/terraform/issues/38352">#38352</a>)</p>
+</li>
+<li>
+<p>We now produce builds for Linux s390x (zLinux) (<a href="https://github.com/hashicorp/terraform/issues/38384">#38384</a>)</p>
+</li>
+<li>
+<p>workspace: The <code>workspace list</code> command can now produce machine-readable output when supplied with the <code>-json</code> flag (<a href="https://github.com/hashicorp/terraform/issues/38397">#38397</a>)</p>
+</li>
+<li>
+<p>Resource action triggers can now use <code>on_failure</code> modes of <code>halt</code>, <code>taint</code>, or <code>continue</code> (<a href="https://github.com/hashicorp/terraform/issues/38722">#38722</a>)</p>
+</li>
+</ul>
+<p>ENHANCEMENTS:</p>
+<ul>
+<li>
+<p>feat(cli): terraform state show accepts a -json flag (<a href="https://github.com/hashicorp/terraform/issues/23940">#23940</a>)</p>
+</li>
+<li>
+<p>Show info when resources are left behind due to skip_cleanup (<a href="https://github.com/hashicorp/terraform/issues/38449">#38449</a>)</p>
+</li>
+<li>
+<p>Action configuration now has a new <code>caller</code> symbol which contains the object value from the calling resource. (<a href="https://github.com/hashicorp/terraform/issues/38668">#38668</a>)</p>
+</li>
+<li>
+<p>Actions can now use before_destroy and after_destroy events (<a href="https://github.com/hashicorp/terraform/issues/38668">#38668</a>)</p>
+</li>
+<li>
+<p>cloud: Render a summary of Terraform policy evaluation outcomes for plan and apply runs against HCP Terraform (<a href="https://github.com/hashicorp/terraform/issues/38715">#38715</a>)</p>
+</li>
+<li>
+<p>policy: Resolve the policy plugin entitlement (host, token, organization) from the configured cloud/remote backend for init, plan, and apply, instead of the plugin reading credentials itself (<a href="https://github.com/hashicorp/terraform/issues/38716">#38716</a>)</p>
+</li>
+<li>
+<p>The 'terraform graph' command now accepts a -format flag, and can output graphs in Mermaid format (<a href="https://github.com/hashicorp/terraform/issues/38719">#38719</a>)</p>
+</li>
+<li>
+<p>child module outputs with unreferenced deprecated nested attributes no longer return deprecation warnings. (<a href="https://github.com/hashicorp/terraform/issues/38778">#38778</a>)</p>
+</li>
+<li>
+<p>contains() function can now test for null (<a href="https://github.com/hashicorp/terraform/issues/38792">#38792</a>)</p>
+</li>
+</ul>
+<p>BUG FIXES:</p>
+<ul>
+<li>
+<p>import blocks no longer ignore provider local names (<a href="https://github.com/hashicorp/terraform/issues/38338">#38338</a>)</p>
+</li>
+<li>
+<p>Fix a <code>terraform apply</code> panic when the plan contained a no-op change for a deposed object on a resource whose configuration declared a <code>lifecycle.precondition</code> or <code>lifecycle.postcondition</code> (<a href="https://github.com/hashicorp/terraform/issues/38586">#38586</a>)</p>
+</li>
+<li>
+<p>workspace: Terraform will now error if an invalid workspace name becomes selected due to actions performed out-of-band (<a href="https://github.com/hashicorp/terraform/issues/38594">#38594</a>)</p>
+</li>
+<li>
+<p>test: Terraform will now raise a warning when a file referenced via <code>-filter</code> flag does not exist. (<a href="https://github.com/hashicorp/terraform/issues/38603">#38603</a>)</p>
+</li>
+<li>
+<p>init: Stop removing locks from the dependency lock file corresponding to providers configured as a dev_override (<a href="https://github.com/hashicorp/terraform/issues/38634">#38634</a>)</p>
+</li>
+<li>
+<p>init: Add warnings when unmanaged providers are in use and will impact provider installation processes. (<a href="https://github.com/hashicorp/terraform/issues/38656">#38656</a>)</p>
+</li>
+<li>
+<p>Actions are now invoked with respect to all resource dependencies. (<a href="https://github.com/hashicorp/terraform/issues/38668">#38668</a>)</p>
+</li>
+<li>
+<p>merge no longer panics with null objects (<a href="https://github.com/hashicorp/terraform/issues/38792">#38792</a>)</p>
+</li>
+</ul>
+<p>NOTES:</p>
+<ul>
+<li>
+<p>init: Errors due to incompatible <code>-upgrade</code> and <code>-lockfile=readonly</code> flags are now raised earlier in the init process. (<a href="https://github.com/hashicorp/terraform/issues/38561">#38561</a>)</p>
+</li>
+<li>
+<p>command/init: Provider installation was changed to enable future enhancements in the area. This effectively reverses the log message changes from v1.15. <code>initializing_provider_plugin_message</code> is being re-introduced to replace the short-lived two message types <code>initializing_provider_plugin_from_config_message</code> &amp; <code>initializing_provider_plugin_from_state_message</code>. The change should not have any significant end-user impact aside from the command output. (<a href="https://github.com/hashicorp/terraform/issues/38648">#38648</a>)</p>
+</li>
+<li>
+<p>command/init: Provider installation was changed to enable future enhancements in the area. This partially reverses the init event order changes from v1.15; module installation will now occur after the backend is initialized. The change should not have any significant end-user impact aside from the command output. (<a href="https://github.com/hashicorp/terraform/issues/38699">#38699</a>)</p>
+</li>
+</ul>
+<p>UPGRADE NOTES:</p>
+<ul>
+<li>Provisioner bastion_host_key is now correctly applied. Existing usage of bastion_host_key should verify the configured key is correct. (<a href="https://github.com/hashicorp/terraform/issues/38318">#38318</a>)</li>
+</ul>
+<p>EXPERIMENTS:</p>
+<p>Experiments are only enabled in alpha releases of Terraform CLI. The following features are not yet available in stable releases.</p>
+<ul>
+<li>The experimental "deferred actions" feature, enabled by passing the <code>-allow-deferral</code> option to <code>terraform plan</code>, permits <code>count</code> and <code>for_each</code> arguments in <code>module</code>, <code>resource</code>, and <code>data</code> blocks to have unknown values and allows providers to react more flexibly to unknown values.</li>
+<li><code>terraform test cleanup</code>: The experimental <code>test cleanup</code> command. In experimental builds of Terraform, a manifest file and state files for each failed cleanup operation during test operations are saved within the <code>.terraform</code> local directory. The <code>test cleanup</code> command will attempt to clean up the local state files left behind automatically, without requiring manual intervention.</li>
+<li><code>terraform test</code>: <code>backend</code> blocks and <code>skip_cleanup</code> attributes:
+<ul>
+<li>Test authors can now specify <code>backend</code> blocks within <code>run</code> blocks in Terraform Test files. Run blocks with <code>backend</code> blocks will load state from the specified backend instead of starting from empty state on every execution. This allows test authors to keep long-running test infrastructure alive between test operations, saving time during regular test operations.</li>
+<li>Test authors can now specify <code>skip_cleanup</code> attributes within test files and within run blocks. The <code>skip_cleanup</code> attribute tells <code>terraform test</code> not to clean up state files produced by run blocks with this attribute set to true. The state files for affected run blocks will be written to disk within the <code>.terraform</code> directory, where they can then be cleaned up manually using the also experimental <code>terraform test cleanup</code> command.</li>
+</ul>
+</li>
+<li><code>terraform query</code>: The experimental <code>-policies</code> flag permits specifying one or more policy set directory paths to evaluate policies against resources discovered by list blocks during a query operation.</li>
+</ul>
+<h2>Previous Releases</h2>
+<p>For information on prior major and minor releases, refer to their changelogs:</p>
+<ul>
+<li><a href="https://github.com/hashicorp/terraform/blob/v1.15/CHANGELOG.md">v1.15</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v1.14/CHANGELOG.md">v1.14</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v1.13/CHANGELOG.md">v1.13</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v1.12/CHANGELOG.md">v1.12</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v1.11/CHANGELOG.md">v1.11</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v1.10/CHANGELOG.md">v1.10</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v1.9/CHANGELOG.md">v1.9</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v1.8/CHANGELOG.md">v1.8</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v1.7/CHANGELOG.md">v1.7</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v1.6/CHANGELOG.md">v1.6</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v1.5/CHANGELOG.md">v1.5</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v1.4/CHANGELOG.md">v1.4</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v1.3/CHANGELOG.md">v1.3</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v1.2/CHANGELOG.md">v1.2</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v1.1/CHANGELOG.md">v1.1</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v1.0/CHANGELOG.md">v1.0</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v0.15/CHANGELOG.md">v0.15</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v0.14/CHANGELOG.md">v0.14</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v0.13/CHANGELOG.md">v0.13</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v0.12/CHANGELOG.md">v0.12</a></li>
+<li><a href="https://github.com/hashicorp/terraform/blob/v0.11/CHANGELOG.md">v0.11 and earlier</a></li>
+</ul>
+]]></content:encoded>
+
+<pubDate>2026-07-06T14:49:07Z</pubDate>
+</item>
+<item>
+<title>Netflix employee fired for sharing personal details in retreat trust exercise</title>
+<link>https://nypost.com/2026/07/26/us-news/netflix-exec-goes-ballistic-after-being-fired-for-stunning-trust-exercise-confession-at-retreat-suit/</link>
+<guid>https://nypost.com/2026/07/26/us-news/netflix-exec-goes-ballistic-after-being-fired-for-stunning-trust-exercise-confession-at-retreat-suit/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://www.inc.com/amaya-nichole/netflix-company-retreat-sparked-lawsuit-experts-say-real-damage-may-be-just-beginning/91380349" rel="nofollow">https://www.inc.com/amaya-nichole/netflix-company-retreat-sp...</a></p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49076923">https://news.ycombinator.com/item?id=49076923</a></p>
+<p>Points: 192</p>
+<p># Comments: 126</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 23:21:37 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 23:21:37 +0000</pubDate>
+</item>
+<item>
+<title>Benchmarking Opus 5 on SlopCodeBench</title>
+<link>https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/benchmarking-opus-5-on-slop-code-bench.md</link>
+<guid>https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/benchmarking-opus-5-on-slop-code-bench.md</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/benchmarking-opus-5-on-slop-code-bench.md">https://github.com/humanlayer/advanced-context-engineering-for-coding-agents/blob/main/benchmarking-opus-5-on-slop-code-bench.md</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49076391">https://news.ycombinator.com/item?id=49076391</a></p>
+<p>Points: 166</p>
+<p># Comments: 40</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 22:37:52 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 22:37:52 +0000</pubDate>
+</item>
+<item>
+<title>A missing underscore sent innocent man to prison for 18 months</title>
+<link>https://arstechnica.com/tech-policy/2026/07/police-missed-one-underscore-and-sent-the-wrong-man-to-prison/</link>
+<guid>https://arstechnica.com/tech-policy/2026/07/police-missed-one-underscore-and-sent-the-wrong-man-to-prison/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://arstechnica.com/tech-policy/2026/07/police-missed-one-underscore-and-sent-the-wrong-man-to-prison/">https://arstechnica.com/tech-policy/2026/07/police-missed-one-underscore-and-sent-the-wrong-man-to-prison/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49076116">https://news.ycombinator.com/item?id=49076116</a></p>
+<p>Points: 180</p>
+<p># Comments: 91</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 22:10:15 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 22:10:15 +0000</pubDate>
+</item>
+<item>
+<title>Our position on open-weights models</title>
+<link>https://www.anthropic.com/news/position-open-weights-models</link>
+<guid>https://www.anthropic.com/news/position-open-weights-models</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.anthropic.com/news/position-open-weights-models">https://www.anthropic.com/news/position-open-weights-models</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49076057">https://news.ycombinator.com/item?id=49076057</a></p>
+<p>Points: 541</p>
+<p># Comments: 764</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 22:03:49 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 22:03:49 +0000</pubDate>
+</item>
+<item>
+<title>Judge Rejects Google's Attempt to DMCA Its Way Out of Being Scraped</title>
+<link>https://www.techdirt.com/2026/07/27/judge-rejects-googles-attempt-to-dmca-its-way-out-of-being-scraped/</link>
+<guid>https://www.techdirt.com/2026/07/27/judge-rejects-googles-attempt-to-dmca-its-way-out-of-being-scraped/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.techdirt.com/2026/07/27/judge-rejects-googles-attempt-to-dmca-its-way-out-of-being-scraped/">https://www.techdirt.com/2026/07/27/judge-rejects-googles-attempt-to-dmca-its-way-out-of-being-scraped/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49073513">https://news.ycombinator.com/item?id=49073513</a></p>
+<p>Points: 281</p>
+<p># Comments: 105</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 18:15:35 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 18:15:35 +0000</pubDate>
+</item>
+<item>
+<title>Canceling "Hey"</title>
+<link>https://chadnauseam.com/random/cancelling-my-hey</link>
+<guid>https://chadnauseam.com/random/cancelling-my-hey</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://chadnauseam.com/random/cancelling-my-hey">https://chadnauseam.com/random/cancelling-my-hey</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49073007">https://news.ycombinator.com/item?id=49073007</a></p>
+<p>Points: 239</p>
+<p># Comments: 216</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 17:37:02 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 17:37:02 +0000</pubDate>
+</item>
+<item>
+<title>MAI-Cyber-1-Flash inside MDASH</title>
+<link>https://microsoft.ai/news/introducing-mai-cyber-1-flash-inside-mdash/</link>
+<guid>https://microsoft.ai/news/introducing-mai-cyber-1-flash-inside-mdash/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://microsoft.ai/news/introducing-mai-cyber-1-flash-inside-mdash/">https://microsoft.ai/news/introducing-mai-cyber-1-flash-inside-mdash/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49072361">https://news.ycombinator.com/item?id=49072361</a></p>
+<p>Points: 221</p>
+<p># Comments: 108</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 16:52:22 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 16:52:22 +0000</pubDate>
+</item>
+<item>
+<title>Decathlon Germany adds Wero payment option to decathlon.de website</title>
+<link>https://www.sgieurope.com/e-commerce/decathlon-germany-launches-wero-payment-on-its-website/122397.article</link>
+<guid>https://www.sgieurope.com/e-commerce/decathlon-germany-launches-wero-payment-on-its-website/122397.article</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.sgieurope.com/e-commerce/decathlon-germany-launches-wero-payment-on-its-website/122397.article">https://www.sgieurope.com/e-commerce/decathlon-germany-launches-wero-payment-on-its-website/122397.article</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49072310">https://news.ycombinator.com/item?id=49072310</a></p>
+<p>Points: 305</p>
+<p># Comments: 207</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 16:49:08 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 16:49:08 +0000</pubDate>
+</item>
+<item>
+<title>Kimi-K3 Technical Report [pdf]</title>
+<link>https://github.com/MoonshotAI/Kimi-K3/blob/main/k3_tech_report.pdf</link>
+<guid>https://github.com/MoonshotAI/Kimi-K3/blob/main/k3_tech_report.pdf</guid>
+<content:encoded><![CDATA[
+
+<p>Related: <i>Kimi-K3 on HuggingFace</i> - <a href="https://news.ycombinator.com/item?id=49065752">https://news.ycombinator.com/item?id=49065752</a></p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49070985">https://news.ycombinator.com/item?id=49070985</a></p>
+<p>Points: 370</p>
+<p># Comments: 164</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 15:23:45 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 15:23:45 +0000</pubDate>
+</item>
+<item>
+<title>Apple Will 'Watch Everything Burn' When the AI Bubble Bursts</title>
+<link>https://www.macrumors.com/2026/07/27/ed-zitron-apple-watch-it-burn-ai-bubble-bursts/</link>
+<guid>https://www.macrumors.com/2026/07/27/ed-zitron-apple-watch-it-burn-ai-bubble-bursts/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.macrumors.com/2026/07/27/ed-zitron-apple-watch-it-burn-ai-bubble-bursts/">https://www.macrumors.com/2026/07/27/ed-zitron-apple-watch-it-burn-ai-bubble-bursts/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49070427">https://news.ycombinator.com/item?id=49070427</a></p>
+<p>Points: 235</p>
+<p># Comments: 312</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 14:42:41 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 14:42:41 +0000</pubDate>
+</item>
+<item>
+<title>Paged Out #9 [pdf]</title>
+<link>https://pagedout.institute/download/PagedOut_009.pdf</link>
+<guid>https://pagedout.institute/download/PagedOut_009.pdf</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://pagedout.institute/download/PagedOut_009.pdf">https://pagedout.institute/download/PagedOut_009.pdf</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49070138">https://news.ycombinator.com/item?id=49070138</a></p>
+<p>Points: 188</p>
+<p># Comments: 22</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 14:22:34 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 14:22:34 +0000</pubDate>
+</item>
+<item>
+<title>AI companies spend record sums on Washington lobbying</title>
+<link>https://www.ft.com/content/d8a5f95e-3b6d-463a-a848-c9ef8e2394db</link>
+<guid>https://www.ft.com/content/d8a5f95e-3b6d-463a-a848-c9ef8e2394db</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://archive.ph/PASMJ" rel="nofollow">https://archive.ph/PASMJ</a></p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49069939">https://news.ycombinator.com/item?id=49069939</a></p>
+<p>Points: 257</p>
+<p># Comments: 139</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 14:07:48 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 14:07:48 +0000</pubDate>
+</item>
+<item>
+<title>Should you wash your solar panels?</title>
+<link>https://incoherency.co.uk/blog/stories/should-you-wash-your-solar-panels.html</link>
+<guid>https://incoherency.co.uk/blog/stories/should-you-wash-your-solar-panels.html</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://incoherency.co.uk/blog/stories/should-you-wash-your-solar-panels.html">https://incoherency.co.uk/blog/stories/should-you-wash-your-solar-panels.html</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49069132">https://news.ycombinator.com/item?id=49069132</a></p>
+<p>Points: 228</p>
+<p># Comments: 229</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 13:04:11 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 13:04:11 +0000</pubDate>
+</item>
+<item>
+<title>AI companies are shredding rare books</title>
+<link>https://twitter.com/HedgieMarkets/status/2081534588485296565</link>
+<guid>https://twitter.com/HedgieMarkets/status/2081534588485296565</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://xcancel.com/HedgieMarkets/status/2081534588485296565" rel="nofollow">https://xcancel.com/HedgieMarkets/status/2081534588485296565</a></p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49068738">https://news.ycombinator.com/item?id=49068738</a></p>
+<p>Points: 744</p>
+<p># Comments: 471</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 12:32:12 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 12:32:12 +0000</pubDate>
+</item>
+<item>
+<title>How is the Bun rewrite in Rust going?</title>
+<link>https://lockwood.dev/ai/2026/07/27/how-is-the-bun-rewrite-in-rust-going.html</link>
+<guid>https://lockwood.dev/ai/2026/07/27/how-is-the-bun-rewrite-in-rust-going.html</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://lockwood.dev/ai/2026/07/27/how-is-the-bun-rewrite-in-rust-going.html">https://lockwood.dev/ai/2026/07/27/how-is-the-bun-rewrite-in-rust-going.html</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49067854">https://news.ycombinator.com/item?id=49067854</a></p>
+<p>Points: 457</p>
+<p># Comments: 355</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 11:12:26 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 11:12:26 +0000</pubDate>
+</item>
+<item>
+<title>Libsm64: Mario 64 as a library for use in external game engines</title>
+<link>https://github.com/libsm64/libsm64</link>
+<guid>https://github.com/libsm64/libsm64</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://github.com/libsm64/libsm64">https://github.com/libsm64/libsm64</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49067352">https://news.ycombinator.com/item?id=49067352</a></p>
+<p>Points: 186</p>
+<p># Comments: 22</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 10:04:48 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 10:04:48 +0000</pubDate>
+</item>
+<item>
+<title>Removing React.js from the codebase and adapting Htmx for UI interactivity (2023)</title>
+<link>https://misago-project.org/t/removing-reactjs-from-the-codebase-and-adapting-htmx-for-ui-interactivity/1267/</link>
+<guid>https://misago-project.org/t/removing-reactjs-from-the-codebase-and-adapting-htmx-for-ui-interactivity/1267/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://misago-project.org/t/removing-reactjs-from-the-codebase-and-adapting-htmx-for-ui-interactivity/1267/">https://misago-project.org/t/removing-reactjs-from-the-codebase-and-adapting-htmx-for-ui-interactivity/1267/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49067301">https://news.ycombinator.com/item?id=49067301</a></p>
+<p>Points: 236</p>
+<p># Comments: 169</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 09:58:50 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 09:58:50 +0000</pubDate>
+</item>
+<item>
+<title>Why I Left Google DeepMind</title>
+<link>https://www.lesswrong.com/posts/iKm2FhpWkuuBojm82/why-i-left-google-deepmind</link>
+<guid>https://www.lesswrong.com/posts/iKm2FhpWkuuBojm82/why-i-left-google-deepmind</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.lesswrong.com/posts/iKm2FhpWkuuBojm82/why-i-left-google-deepmind">https://www.lesswrong.com/posts/iKm2FhpWkuuBojm82/why-i-left-google-deepmind</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49067285">https://news.ycombinator.com/item?id=49067285</a></p>
+<p>Points: 185</p>
+<p># Comments: 52</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 09:56:37 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 09:56:37 +0000</pubDate>
+</item>
+<item>
+<title>Chinese chipmaker shares surge 470%</title>
+<link>https://www.bbc.com/news/articles/c9q9w3x9qn2o</link>
+<guid>https://www.bbc.com/news/articles/c9q9w3x9qn2o</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.bbc.com/news/articles/c9q9w3x9qn2o">https://www.bbc.com/news/articles/c9q9w3x9qn2o</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49066962">https://news.ycombinator.com/item?id=49066962</a></p>
+<p>Points: 206</p>
+<p># Comments: 176</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 09:11:59 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 09:11:59 +0000</pubDate>
+</item>
+<item>
+<title>VLC for Unity now supported on Linux</title>
+<link>https://code.videolan.org/videolan/vlc-unity</link>
+<guid>https://code.videolan.org/videolan/vlc-unity</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://code.videolan.org/videolan/vlc-unity">https://code.videolan.org/videolan/vlc-unity</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49066928">https://news.ycombinator.com/item?id=49066928</a></p>
+<p>Points: 158</p>
+<p># Comments: 48</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 09:06:34 +0000</pubDate>
+<pubDate>Mon, 27 Jul 2026 09:06:34 +0000</pubDate>
+</item>
+<item>
+<title>On AI</title>
+<link>https://jcs.org/2026/07/23/ai</link>
+<guid>https://jcs.org/2026/07/23/ai</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/zljfgp/on_ai">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 03:52:37 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 03:52:37 -0500</pubDate>
+</item>
+<item>
+<title>Blogging Can Just Be Stating The Obvious</title>
+<link>https://blog.jim-nielsen.com/2026/blogging-stating-the-obvious/</link>
+<guid>https://blog.jim-nielsen.com/2026/blogging-stating-the-obvious/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/yijxwe/blogging_can_just_be_stating_obvious">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 08:34:39 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 08:34:39 -0500</pubDate>
+</item>
+<item>
+<title>Most Googlebots are fake</title>
+<link>https://digitalseams.com/blog/most-googlebots-are-fake</link>
+<guid>https://digitalseams.com/blog/most-googlebots-are-fake</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/h9hdzg/most_googlebots_are_fake">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 05:40:48 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 05:40:48 -0500</pubDate>
+</item>
+<item>
+<title>The Productivity Mirage</title>
+<link>https://frantic.im/mirage</link>
+<guid>https://frantic.im/mirage</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/gicomw/productivity_mirage">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 05:54:37 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 05:54:37 -0500</pubDate>
+</item>
+<item>
+<title>Paged Out - Issue #9</title>
+<link>https://pagedout.institute/webview.php?issue=9&amp;page=1</link>
+<guid>https://pagedout.institute/webview.php?issue=9&amp;page=1</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/cbbit5/paged_out_issue_9">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 09:55:38 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 09:55:38 -0500</pubDate>
+</item>
+<item>
+<title>Setup a Simple, Self-Hosted Web Server with OpenBSD</title>
+<link>https://btxx.org/posts/self-hosted-openbsd/</link>
+<guid>https://btxx.org/posts/self-hosted-openbsd/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/nfcclq/setup_simple_self_hosted_web_server_with">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 17:27:54 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 17:27:54 -0500</pubDate>
+</item>
+<item>
+<title>Quick &amp; Easy Parser Combinators</title>
+<link>https://www.cyan.sh/blog/posts/tutorial-quick-easy-parser-combinators.html</link>
+<guid>https://www.cyan.sh/blog/posts/tutorial-quick-easy-parser-combinators.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/mv8t4p/quick_easy_parser_combinators">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 11:35:19 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 11:35:19 -0500</pubDate>
+</item>
+<item>
+<title>Open Source Must Be Fun (Or It Will Die)</title>
+<link>https://mikemcquaid.com/open-source-must-be-fun-or-it-will-die/</link>
+<guid>https://mikemcquaid.com/open-source-must-be-fun-or-it-will-die/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/vjwhqn/open_source_must_be_fun_it_will_die">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 10:33:26 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 10:33:26 -0500</pubDate>
+</item>
+<item>
+<title>Finding bugs in Raft implementations</title>
+<link>https://antithesis.com/blog/2026/finding-bugs-in-raft-implementations/</link>
+<guid>https://antithesis.com/blog/2026/finding-bugs-in-raft-implementations/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/3he4yj/finding_bugs_raft_implementations">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 11:40:05 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 11:40:05 -0500</pubDate>
+</item>
+<item>
+<title>What does GitHub’s security team even do?</title>
+<link>https://orchidfiles.com/github-security-team/</link>
+<guid>https://orchidfiles.com/github-security-team/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/jnhyrh/what_does_github_s_security_team_even_do">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 01:06:58 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 01:06:58 -0500</pubDate>
+</item>
+<item>
+<title>Seriously, what is the large code-model even for?</title>
+<link>https://fzakaria.com/2026/07/26/seriously-what-is-the-large-code-model-even-for</link>
+<guid>https://fzakaria.com/2026/07/26/seriously-what-is-the-large-code-model-even-for</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/snetpk/seriously_what_is_large_code_model_even">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 13:57:58 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 13:57:58 -0500</pubDate>
+</item>
+<item>
+<title>Advantages and disadvantages of Windows NT 3.1</title>
+<link>https://dfarq.homeip.net/advantages-and-disadvantages-of-windows-nt-3-1/</link>
+<guid>https://dfarq.homeip.net/advantages-and-disadvantages-of-windows-nt-3-1/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/pngdot/advantages_disadvantages_windows_nt_3_1">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 12:40:23 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 12:40:23 -0500</pubDate>
+</item>
+<item>
+<title>Exploiting Volvo/Eicher’s fleet management platform to gain control over all users and vehicles</title>
+<link>https://eaton-works.com/2026/07/27/my-eicher-hack/</link>
+<guid>https://eaton-works.com/2026/07/27/my-eicher-hack/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/pg4toy/exploiting_volvo_eicher_s_fleet">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 12:06:57 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 12:06:57 -0500</pubDate>
+</item>
+<item>
+<title>What are you doing this week?</title>
+<link>https://lobste.rs/s/r7zjlm/what_are_you_doing_this_week</link>
+<guid>https://lobste.rs/s/r7zjlm/what_are_you_doing_this_week</guid>
+<content:encoded><![CDATA[
+
+<p>What are you doing this week? Feel free to share!</p>
+<p>Keep in mind it’s OK to do nothing at all, too.</p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 05:51:46 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 05:51:46 -0500</pubDate>
+</item>
+<item>
+<title>Make Reviews Possible Again With This One Simple Trick</title>
+<link>https://silky.github.io/posts/reviews-one-simple-trick.html</link>
+<guid>https://silky.github.io/posts/reviews-one-simple-trick.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/2shapa/make_reviews_possible_again_with_this_one">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 03:37:51 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 03:37:51 -0500</pubDate>
+</item>
+<item>
+<title>Apple MIE exploitation challenge</title>
+<link>https://blog.calif.io/p/apple-mie-exploitation-challenge</link>
+<guid>https://blog.calif.io/p/apple-mie-exploitation-challenge</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/lz6eoe/apple_mie_exploitation_challenge">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 18:07:19 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 18:07:19 -0500</pubDate>
+</item>
+<item>
+<title>The Unreasonable Effectiveness of Constructive Data Modeling</title>
+<link>https://www.youtube.com/watch?v=0BXuYlNrUmE</link>
+<guid>https://www.youtube.com/watch?v=0BXuYlNrUmE</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/vptzoz/unreasonable_effectiveness">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 13:35:17 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 13:35:17 -0500</pubDate>
+</item>
+<item>
+<title>The Computer That Helped Win World War II: Colossus cracked Germany’s encrypted communications</title>
+<link>https://spectrum.ieee.org/colossus-computer-ieee-milestone</link>
+<guid>https://spectrum.ieee.org/colossus-computer-ieee-milestone</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/u821ri/computer_helped_win_world_war_ii_colossus">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 09:56:35 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 09:56:35 -0500</pubDate>
+</item>
+<item>
+<title>Framework 13 Pro review: Much better battery, much worse price</title>
+<link>https://arstechnica.com/gadgets/2026/07/framework-laptop-13-pro-review-much-better-battery-much-worse-price/</link>
+<guid>https://arstechnica.com/gadgets/2026/07/framework-laptop-13-pro-review-much-better-battery-much-worse-price/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/yo5wxp/framework_13_pro_review_much_better">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 22:15:40 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 22:15:40 -0500</pubDate>
+</item>
+<item>
+<title>N-body gravity simulation in O(N)</title>
+<link>https://www.youtube.com/watch?v=FhMftauQZqU</link>
+<guid>https://www.youtube.com/watch?v=FhMftauQZqU</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/v1ejq9/n_body_gravity_simulation_o_n">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 03:45:44 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 03:45:44 -0500</pubDate>
+</item>
+<item>
+<title>Being Linux Torvalds</title>
+<link>https://antirez.com/news/171</link>
+<guid>https://antirez.com/news/171</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/uwhqhi/being_linux_torvalds">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 00:25:16 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 00:25:16 -0500</pubDate>
+</item>
+<item>
+<title>Conformance vs Comprehension</title>
+<link>https://intertwingly.net/blog/2026/06/27/Conformance-vs-Comprehension.html</link>
+<guid>https://intertwingly.net/blog/2026/06/27/Conformance-vs-Comprehension.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/lgutwh/conformance_vs_comprehension">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 27 Jul 2026 06:34:14 -0500</pubDate>
+<pubDate>Mon, 27 Jul 2026 06:34:14 -0500</pubDate>
+</item>
 
 <item>
 <title>PGSimCity - How PostgreSQL Works</title>
@@ -16,7 +931,6 @@
 <p>Points: 206</p>
 <p># Comments: 29</p>
 ]]></content:encoded>
-<pubDate>Mon, 27 Jul 2026 00:19:04 +0000</pubDate>
 <pubDate>Mon, 27 Jul 2026 00:19:04 +0000</pubDate>
 </item>
 <item>
@@ -31,7 +945,6 @@
 <p># Comments: 204</p>
 ]]></content:encoded>
 <pubDate>Sun, 26 Jul 2026 22:21:41 +0000</pubDate>
-<pubDate>Sun, 26 Jul 2026 22:21:41 +0000</pubDate>
 </item>
 <item>
 <title>The Strongest El Niño Ever</title>
@@ -45,7 +958,6 @@
 <p># Comments: 232</p>
 ]]></content:encoded>
 <pubDate>Sun, 26 Jul 2026 18:35:36 +0000</pubDate>
-<pubDate>Sun, 26 Jul 2026 18:35:36 +0000</pubDate>
 </item>
 <item>
 <title>Decker, a platform that builds on the legacy of Hypercard and classic macOS</title>
@@ -54,13 +966,12 @@
 <content:encoded><![CDATA[
 <div> Keywords: article, comments, points, summary, news
 
-<br><br>Summary: The article discusses a recent event that has garnered significant attention, reflected through its impressive engagement metrics, including 248 points and 60 comments. These numbers indicate a high level of interest and interaction from readers. The content delves into various aspects of the topic, highlighting key issues and perspectives that are relevant to the audience. Readers have expressed their opinions and shared insights in the comments section, which contributes to a broader dialogue surrounding the subject matter. The article aims to inform and engage its readership, drawing on current trends and developments within the field. The combination of factual reporting and diverse viewpoints enriches the overall understanding of the issue at hand. By synthesizing the comments and reactions of readers, the article also serves as a platform for community engagement, illustrating the importance of conversation in addressing complex themes. As the discussion unfolds, it becomes clear that the topic resonates with many, urging further exploration and analysis in subsequent pieces. The metrics indicate that this article has successfully captured the audience's attention and stimulated a meaningful exchange of ideas. <div>
+<br /><br />Summary: The article discusses a recent event that has garnered significant attention, reflected through its impressive engagement metrics, including 248 points and 60 comments. These numbers indicate a high level of interest and interaction from readers. The content delves into various aspects of the topic, highlighting key issues and perspectives that are relevant to the audience. Readers have expressed their opinions and shared insights in the comments section, which contributes to a broader dialogue surrounding the subject matter. The article aims to inform and engage its readership, drawing on current trends and developments within the field. The combination of factual reporting and diverse viewpoints enriches the overall understanding of the issue at hand. By synthesizing the comments and reactions of readers, the article also serves as a platform for community engagement, illustrating the importance of conversation in addressing complex themes. As the discussion unfolds, it becomes clear that the topic resonates with many, urging further exploration and analysis in subsequent pieces. The metrics indicate that this article has successfully captured the audience's attention and stimulated a meaningful exchange of ideas. <div>
 <p>Article URL: <a href="https://beyondloom.com/decker/">https://beyondloom.com/decker/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49060856">https://news.ycombinator.com/item?id=49060856</a></p>
 <p>Points: 248</p>
 <p># Comments: 60</p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 18:23:06 +0000</pubDate>
 <pubDate>Sun, 26 Jul 2026 18:23:06 +0000</pubDate>
 </item>
 <item>
@@ -75,7 +986,6 @@
 <p># Comments: 108</p>
 ]]></content:encoded>
 <pubDate>Sun, 26 Jul 2026 17:58:02 +0000</pubDate>
-<pubDate>Sun, 26 Jul 2026 17:58:02 +0000</pubDate>
 </item>
 <item>
 <title>French firefighters face 'pyrocumulonimbus' for first time</title>
@@ -88,7 +998,6 @@
 <p>Points: 210</p>
 <p># Comments: 121</p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 17:49:44 +0000</pubDate>
 <pubDate>Sun, 26 Jul 2026 17:49:44 +0000</pubDate>
 </item>
 <item>
@@ -103,7 +1012,6 @@
 <p># Comments: 76</p>
 ]]></content:encoded>
 <pubDate>Sun, 26 Jul 2026 15:51:12 +0000</pubDate>
-<pubDate>Sun, 26 Jul 2026 15:51:12 +0000</pubDate>
 </item>
 <item>
 <title>The relay market powering token resellers and fraud</title>
@@ -116,7 +1024,6 @@
 <p>Points: 165</p>
 <p># Comments: 99</p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 15:17:06 +0000</pubDate>
 <pubDate>Sun, 26 Jul 2026 15:17:06 +0000</pubDate>
 </item>
 <item>
@@ -131,7 +1038,6 @@
 <p># Comments: 233</p>
 ]]></content:encoded>
 <pubDate>Sun, 26 Jul 2026 14:40:27 +0000</pubDate>
-<pubDate>Sun, 26 Jul 2026 14:40:27 +0000</pubDate>
 </item>
 <item>
 <title>The New AI Superpowers: Focus and Followthrough</title>
@@ -145,20 +1051,17 @@
 <p># Comments: 49</p>
 ]]></content:encoded>
 <pubDate>Sun, 26 Jul 2026 13:13:03 +0000</pubDate>
-<pubDate>Sun, 26 Jul 2026 13:13:03 +0000</pubDate>
 </item>
 <item>
 <title>Show HN: Reverse Minesweeper</title>
 <link>https://sunflowersgame.com/</link>
 <guid>https://sunflowersgame.com/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://sunflowersgame.com/">https://sunflowersgame.com/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49057666">https://news.ycombinator.com/item?id=49057666</a></p>
 <p>Points: 162</p>
 <p># Comments: 54</p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 12:51:03 +0000</pubDate>
 <pubDate>Sun, 26 Jul 2026 12:51:03 +0000</pubDate>
 </item>
 <item>
@@ -166,13 +1069,11 @@
 <link>https://www.wsj.com/tech/google-discloses-94-1-billion-in-spacex-stock-marking-6-stake-91655d7c</link>
 <guid>https://www.wsj.com/tech/google-discloses-94-1-billion-in-spacex-stock-marking-6-stake-91655d7c</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.wsj.com/tech/google-discloses-94-1-billion-in-spacex-stock-marking-6-stake-91655d7c">https://www.wsj.com/tech/google-discloses-94-1-billion-in-spacex-stock-marking-6-stake-91655d7c</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49057574">https://news.ycombinator.com/item?id=49057574</a></p>
 <p>Points: 313</p>
 <p># Comments: 287</p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 12:43:21 +0000</pubDate>
 <pubDate>Sun, 26 Jul 2026 12:43:21 +0000</pubDate>
 </item>
 <item>
@@ -180,13 +1081,11 @@
 <link>https://pkg.go.dev/golang.org/x/tools/go/analysis</link>
 <guid>https://pkg.go.dev/golang.org/x/tools/go/analysis</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://pkg.go.dev/golang.org/x/tools/go/analysis">https://pkg.go.dev/golang.org/x/tools/go/analysis</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49057398">https://news.ycombinator.com/item?id=49057398</a></p>
 <p>Points: 187</p>
 <p># Comments: 44</p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 12:21:26 +0000</pubDate>
 <pubDate>Sun, 26 Jul 2026 12:21:26 +0000</pubDate>
 </item>
 <item>
@@ -194,13 +1093,11 @@
 <link>https://english.mapn.ro/</link>
 <guid>https://english.mapn.ro/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://english.mapn.ro/">https://english.mapn.ro/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49057248">https://news.ycombinator.com/item?id=49057248</a></p>
 <p>Points: 222</p>
 <p># Comments: 283</p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 12:00:42 +0000</pubDate>
 <pubDate>Sun, 26 Jul 2026 12:00:42 +0000</pubDate>
 </item>
 <item>
@@ -208,13 +1105,11 @@
 <link>https://swag.htmx.org/en-cad/products/htmx-4-the-game</link>
 <guid>https://swag.htmx.org/en-cad/products/htmx-4-the-game</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://swag.htmx.org/en-cad/products/htmx-4-the-game">https://swag.htmx.org/en-cad/products/htmx-4-the-game</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49057241">https://news.ycombinator.com/item?id=49057241</a></p>
 <p>Points: 379</p>
 <p># Comments: 120</p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 12:00:11 +0000</pubDate>
 <pubDate>Sun, 26 Jul 2026 12:00:11 +0000</pubDate>
 </item>
 <item>
@@ -222,13 +1117,11 @@
 <link>https://killthecookiebanner.eu/</link>
 <guid>https://killthecookiebanner.eu/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://killthecookiebanner.eu/">https://killthecookiebanner.eu/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49057175">https://news.ycombinator.com/item?id=49057175</a></p>
 <p>Points: 860</p>
 <p># Comments: 422</p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 11:53:17 +0000</pubDate>
 <pubDate>Sun, 26 Jul 2026 11:53:17 +0000</pubDate>
 </item>
 <item>
@@ -236,13 +1129,11 @@
 <link>https://astral.sh/blog/ruff-v0.16.0</link>
 <guid>https://astral.sh/blog/ruff-v0.16.0</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://astral.sh/blog/ruff-v0.16.0">https://astral.sh/blog/ruff-v0.16.0</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49056112">https://news.ycombinator.com/item?id=49056112</a></p>
 <p>Points: 336</p>
 <p># Comments: 222</p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 09:01:39 +0000</pubDate>
 <pubDate>Sun, 26 Jul 2026 09:01:39 +0000</pubDate>
 </item>
 <item>
@@ -250,13 +1141,11 @@
 <link>https://discuss.grapheneos.org/d/40700-grapheneos-protections-against-data-extraction-from-locked-devices</link>
 <guid>https://discuss.grapheneos.org/d/40700-grapheneos-protections-against-data-extraction-from-locked-devices</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://discuss.grapheneos.org/d/40700-grapheneos-protections-against-data-extraction-from-locked-devices">https://discuss.grapheneos.org/d/40700-grapheneos-protections-against-data-extraction-from-locked-devices</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49055169">https://news.ycombinator.com/item?id=49055169</a></p>
 <p>Points: 398</p>
 <p># Comments: 223</p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 05:57:22 +0000</pubDate>
 <pubDate>Sun, 26 Jul 2026 05:57:22 +0000</pubDate>
 </item>
 <item>
@@ -264,13 +1153,11 @@
 <link>https://www.jetzero.aero</link>
 <guid>https://www.jetzero.aero</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.jetzero.aero">https://www.jetzero.aero</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49054224">https://news.ycombinator.com/item?id=49054224</a></p>
 <p>Points: 250</p>
 <p># Comments: 239</p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 02:55:50 +0000</pubDate>
 <pubDate>Sun, 26 Jul 2026 02:55:50 +0000</pubDate>
 </item>
 <item>
@@ -278,13 +1165,11 @@
 <link>https://blog.ktz.me/esp32-plane-radar/</link>
 <guid>https://blog.ktz.me/esp32-plane-radar/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://blog.ktz.me/esp32-plane-radar/">https://blog.ktz.me/esp32-plane-radar/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49054107">https://news.ycombinator.com/item?id=49054107</a></p>
 <p>Points: 260</p>
 <p># Comments: 54</p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 02:35:43 +0000</pubDate>
 <pubDate>Sun, 26 Jul 2026 02:35:43 +0000</pubDate>
 </item>
 <item>
@@ -292,10 +1177,8 @@
 <link>https://gracefulliberty.com/articles/teaching-kids-forth/</link>
 <guid>https://gracefulliberty.com/articles/teaching-kids-forth/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/n3dz7x/teaching_kids_forth">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 14:26:09 -0500</pubDate>
 <pubDate>Sun, 26 Jul 2026 14:26:09 -0500</pubDate>
 </item>
 <item>
@@ -303,10 +1186,8 @@
 <link>https://hynek.me/til/sqlite-read-only-wal-locked/</link>
 <guid>https://hynek.me/til/sqlite-read-only-wal-locked/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/uusfyj/sqlite_wal_mode_can_lock_short_lived">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 17:32:54 -0500</pubDate>
 <pubDate>Sun, 26 Jul 2026 17:32:54 -0500</pubDate>
 </item>
 <item>
@@ -314,10 +1195,8 @@
 <link>https://www.youtube.com/watch?v=9Cswiqrq6So</link>
 <guid>https://www.youtube.com/watch?v=9Cswiqrq6So</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/oviysl/xavier_leroy_on_programming_languages">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 09:59:29 -0500</pubDate>
 <pubDate>Sun, 26 Jul 2026 09:59:29 -0500</pubDate>
 </item>
 <item>
@@ -325,10 +1204,8 @@
 <link>https://www.youtube.com/watch?v=8mwKq7_JlS8</link>
 <guid>https://www.youtube.com/watch?v=8mwKq7_JlS8</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/67043h/dmitri_gaskin_on_jquery_2008">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 09:50:42 -0500</pubDate>
 <pubDate>Sun, 26 Jul 2026 09:50:42 -0500</pubDate>
 </item>
 <item>
@@ -336,10 +1213,8 @@
 <link>https://grego.site/blog/thinkphone</link>
 <guid>https://grego.site/blog/thinkphone</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/xoxury/using_thinkpad_t480_as_mobile_phone">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 18:17:55 -0500</pubDate>
 <pubDate>Sun, 26 Jul 2026 18:17:55 -0500</pubDate>
 </item>
 <item>
@@ -347,10 +1222,8 @@
 <link>https://letoverlambda.com/textmode.cl/guest/chap8.html</link>
 <guid>https://letoverlambda.com/textmode.cl/guest/chap8.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/exipox/forth_moving_lisp_moving_forth">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 12:39:27 -0500</pubDate>
 <pubDate>Sun, 26 Jul 2026 12:39:27 -0500</pubDate>
 </item>
 <item>
@@ -358,10 +1231,8 @@
 <link>https://valkey.io/blog/secret-life-of-data/</link>
 <guid>https://valkey.io/blog/secret-life-of-data/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/2vuexn/secret_life_data_valkey">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 16:28:51 -0500</pubDate>
 <pubDate>Sun, 26 Jul 2026 16:28:51 -0500</pubDate>
 </item>
 <item>
@@ -369,10 +1240,8 @@
 <link>https://kim-em.github.io/blog/2026-7-24-why-lean-is-faster-than-rust/</link>
 <guid>https://kim-em.github.io/blog/2026-7-24-why-lean-is-faster-than-rust/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/1o4ba2/fast_deflate_compression_lean">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 10:54:26 -0500</pubDate>
 <pubDate>Sun, 26 Jul 2026 10:54:26 -0500</pubDate>
 </item>
 <item>
@@ -380,10 +1249,8 @@
 <link>https://openloco.io/news/2026/07/openloco-v26.07.html</link>
 <guid>https://openloco.io/news/2026/07/openloco-v26.07.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/9fqugm/openloco_version_26_07_release">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 26 Jul 2026 12:38:00 -0500</pubDate>
 <pubDate>Sun, 26 Jul 2026 12:38:00 -0500</pubDate>
 </item>
 <item>
@@ -391,13 +1258,10 @@
 <link>https://www.youtube.com/watch?v=eXGKK8BkCkg</link>
 <guid>https://www.youtube.com/watch?v=eXGKK8BkCkg</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/jgaxxy/beginner_j_dealing_cards">Comments</a></p>
 ]]></content:encoded>
 <pubDate>Sat, 25 Jul 2026 23:53:21 -0500</pubDate>
-<pubDate>Sat, 25 Jul 2026 23:53:21 -0500</pubDate>
 </item>
-
 <item>
 <title>v16.3.0-canary.97</title>
 <link>https://github.com/vercel/next.js/releases/tag/v16.3.0-canary.97</link>
@@ -14161,472 +15025,6 @@ AWS CodePipeline is now available in the Asia Pacific (New Zealand) Region (ap-s
 <p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/Pranav18M">@Pranav18M</a>, <a class="user-mention notranslate" href="https://github.com/andrewimm">@andrewimm</a>, <a class="user-mention notranslate" href="https://github.com/mischnic">@mischnic</a>, <a class="user-mention notranslate" href="https://github.com/chippleh1392">@chippleh1392</a>, <a class="user-mention notranslate" href="https://github.com/unstubbable">@unstubbable</a>, <a class="user-mention notranslate" href="https://github.com/eps1lon">@eps1lon</a>, <a class="user-mention notranslate" href="https://github.com/vercel-release-bot">@vercel-release-bot</a>, <a class="user-mention notranslate" href="https://github.com/aurorascharff">@aurorascharff</a>, <a class="user-mention notranslate" href="https://github.com/gaojude">@gaojude</a>, and <a class="user-mention notranslate" href="https://github.com/sampoder">@sampoder</a> for helping!</p>
 ]]></content:encoded>
 <pubDate>2026-07-07T00:01:15Z</pubDate>
-</item>
-<item>
-<title>7.9.0-dev.17</title>
-<link>https://github.com/prisma/prisma/releases/tag/7.9.0-dev.17</link>
-<guid>https://github.com/prisma/prisma/releases/tag/7.9.0-dev.17</guid>
-<content:encoded><![CDATA[
-<p>7.9.0-dev.17</p>
-]]></content:encoded>
-<pubDate>2026-07-06T16:44:17Z</pubDate>
-</item>
-<item>
-<title>v1.16.0-alpha20260706</title>
-<link>https://github.com/hashicorp/terraform/releases/tag/v1.16.0-alpha20260706</link>
-<guid>https://github.com/hashicorp/terraform/releases/tag/v1.16.0-alpha20260706</guid>
-<content:encoded><![CDATA[
-<h2>1.16.0-alpha20260706 (July 06, 2026)</h2>
-<p>NEW FEATURES:</p>
-<ul>
-<li>
-<p>Store PlannedPrivate data for providers (<a href="https://github.com/hashicorp/terraform/issues/37986">#37986</a>)</p>
-</li>
-<li>
-<p>New store block in terraform_data that can handle ephemeral and sensitive values (<a href="https://github.com/hashicorp/terraform/issues/38298">#38298</a>)</p>
-</li>
-<li>
-<p>Providers can now use nested blocks as computed values (<a href="https://github.com/hashicorp/terraform/issues/38305">#38305</a>)</p>
-</li>
-<li>
-<p>import: add support for import blocks inside modules (<a href="https://github.com/hashicorp/terraform/issues/38352">#38352</a>)</p>
-</li>
-<li>
-<p>We now produce builds for Linux s390x (zLinux) (<a href="https://github.com/hashicorp/terraform/issues/38384">#38384</a>)</p>
-</li>
-<li>
-<p>workspace: The <code>workspace list</code> command can now produce machine-readable output when supplied with the <code>-json</code> flag (<a href="https://github.com/hashicorp/terraform/issues/38397">#38397</a>)</p>
-</li>
-<li>
-<p>Resource action triggers can now use <code>on_failure</code> modes of <code>halt</code>, <code>taint</code>, or <code>continue</code> (<a href="https://github.com/hashicorp/terraform/issues/38722">#38722</a>)</p>
-</li>
-</ul>
-<p>ENHANCEMENTS:</p>
-<ul>
-<li>
-<p>feat(cli): terraform state show accepts a -json flag (<a href="https://github.com/hashicorp/terraform/issues/23940">#23940</a>)</p>
-</li>
-<li>
-<p>Show info when resources are left behind due to skip_cleanup (<a href="https://github.com/hashicorp/terraform/issues/38449">#38449</a>)</p>
-</li>
-<li>
-<p>Action configuration now has a new <code>caller</code> symbol which contains the object value from the calling resource. (<a href="https://github.com/hashicorp/terraform/issues/38668">#38668</a>)</p>
-</li>
-<li>
-<p>Actions can now use before_destroy and after_destroy events (<a href="https://github.com/hashicorp/terraform/issues/38668">#38668</a>)</p>
-</li>
-<li>
-<p>cloud: Render a summary of Terraform policy evaluation outcomes for plan and apply runs against HCP Terraform (<a href="https://github.com/hashicorp/terraform/issues/38715">#38715</a>)</p>
-</li>
-<li>
-<p>policy: Resolve the policy plugin entitlement (host, token, organization) from the configured cloud/remote backend for init, plan, and apply, instead of the plugin reading credentials itself (<a href="https://github.com/hashicorp/terraform/issues/38716">#38716</a>)</p>
-</li>
-<li>
-<p>The 'terraform graph' command now accepts a -format flag, and can output graphs in Mermaid format (<a href="https://github.com/hashicorp/terraform/issues/38719">#38719</a>)</p>
-</li>
-<li>
-<p>child module outputs with unreferenced deprecated nested attributes no longer return deprecation warnings. (<a href="https://github.com/hashicorp/terraform/issues/38778">#38778</a>)</p>
-</li>
-<li>
-<p>contains() function can now test for null (<a href="https://github.com/hashicorp/terraform/issues/38792">#38792</a>)</p>
-</li>
-</ul>
-<p>BUG FIXES:</p>
-<ul>
-<li>
-<p>import blocks no longer ignore provider local names (<a href="https://github.com/hashicorp/terraform/issues/38338">#38338</a>)</p>
-</li>
-<li>
-<p>Fix a <code>terraform apply</code> panic when the plan contained a no-op change for a deposed object on a resource whose configuration declared a <code>lifecycle.precondition</code> or <code>lifecycle.postcondition</code> (<a href="https://github.com/hashicorp/terraform/issues/38586">#38586</a>)</p>
-</li>
-<li>
-<p>workspace: Terraform will now error if an invalid workspace name becomes selected due to actions performed out-of-band (<a href="https://github.com/hashicorp/terraform/issues/38594">#38594</a>)</p>
-</li>
-<li>
-<p>test: Terraform will now raise a warning when a file referenced via <code>-filter</code> flag does not exist. (<a href="https://github.com/hashicorp/terraform/issues/38603">#38603</a>)</p>
-</li>
-<li>
-<p>init: Stop removing locks from the dependency lock file corresponding to providers configured as a dev_override (<a href="https://github.com/hashicorp/terraform/issues/38634">#38634</a>)</p>
-</li>
-<li>
-<p>init: Add warnings when unmanaged providers are in use and will impact provider installation processes. (<a href="https://github.com/hashicorp/terraform/issues/38656">#38656</a>)</p>
-</li>
-<li>
-<p>Actions are now invoked with respect to all resource dependencies. (<a href="https://github.com/hashicorp/terraform/issues/38668">#38668</a>)</p>
-</li>
-<li>
-<p>merge no longer panics with null objects (<a href="https://github.com/hashicorp/terraform/issues/38792">#38792</a>)</p>
-</li>
-</ul>
-<p>NOTES:</p>
-<ul>
-<li>
-<p>init: Errors due to incompatible <code>-upgrade</code> and <code>-lockfile=readonly</code> flags are now raised earlier in the init process. (<a href="https://github.com/hashicorp/terraform/issues/38561">#38561</a>)</p>
-</li>
-<li>
-<p>command/init: Provider installation was changed to enable future enhancements in the area. This effectively reverses the log message changes from v1.15. <code>initializing_provider_plugin_message</code> is being re-introduced to replace the short-lived two message types <code>initializing_provider_plugin_from_config_message</code> &amp; <code>initializing_provider_plugin_from_state_message</code>. The change should not have any significant end-user impact aside from the command output. (<a href="https://github.com/hashicorp/terraform/issues/38648">#38648</a>)</p>
-</li>
-<li>
-<p>command/init: Provider installation was changed to enable future enhancements in the area. This partially reverses the init event order changes from v1.15; module installation will now occur after the backend is initialized. The change should not have any significant end-user impact aside from the command output. (<a href="https://github.com/hashicorp/terraform/issues/38699">#38699</a>)</p>
-</li>
-</ul>
-<p>UPGRADE NOTES:</p>
-<ul>
-<li>Provisioner bastion_host_key is now correctly applied. Existing usage of bastion_host_key should verify the configured key is correct. (<a href="https://github.com/hashicorp/terraform/issues/38318">#38318</a>)</li>
-</ul>
-<p>EXPERIMENTS:</p>
-<p>Experiments are only enabled in alpha releases of Terraform CLI. The following features are not yet available in stable releases.</p>
-<ul>
-<li>The experimental "deferred actions" feature, enabled by passing the <code>-allow-deferral</code> option to <code>terraform plan</code>, permits <code>count</code> and <code>for_each</code> arguments in <code>module</code>, <code>resource</code>, and <code>data</code> blocks to have unknown values and allows providers to react more flexibly to unknown values.</li>
-<li><code>terraform test cleanup</code>: The experimental <code>test cleanup</code> command. In experimental builds of Terraform, a manifest file and state files for each failed cleanup operation during test operations are saved within the <code>.terraform</code> local directory. The <code>test cleanup</code> command will attempt to clean up the local state files left behind automatically, without requiring manual intervention.</li>
-<li><code>terraform test</code>: <code>backend</code> blocks and <code>skip_cleanup</code> attributes:
-<ul>
-<li>Test authors can now specify <code>backend</code> blocks within <code>run</code> blocks in Terraform Test files. Run blocks with <code>backend</code> blocks will load state from the specified backend instead of starting from empty state on every execution. This allows test authors to keep long-running test infrastructure alive between test operations, saving time during regular test operations.</li>
-<li>Test authors can now specify <code>skip_cleanup</code> attributes within test files and within run blocks. The <code>skip_cleanup</code> attribute tells <code>terraform test</code> not to clean up state files produced by run blocks with this attribute set to true. The state files for affected run blocks will be written to disk within the <code>.terraform</code> directory, where they can then be cleaned up manually using the also experimental <code>terraform test cleanup</code> command.</li>
-</ul>
-</li>
-<li><code>terraform query</code>: The experimental <code>-policies</code> flag permits specifying one or more policy set directory paths to evaluate policies against resources discovered by list blocks during a query operation.</li>
-</ul>
-<h2>Previous Releases</h2>
-<p>For information on prior major and minor releases, refer to their changelogs:</p>
-<ul>
-<li><a href="https://github.com/hashicorp/terraform/blob/v1.15/CHANGELOG.md">v1.15</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v1.14/CHANGELOG.md">v1.14</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v1.13/CHANGELOG.md">v1.13</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v1.12/CHANGELOG.md">v1.12</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v1.11/CHANGELOG.md">v1.11</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v1.10/CHANGELOG.md">v1.10</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v1.9/CHANGELOG.md">v1.9</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v1.8/CHANGELOG.md">v1.8</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v1.7/CHANGELOG.md">v1.7</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v1.6/CHANGELOG.md">v1.6</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v1.5/CHANGELOG.md">v1.5</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v1.4/CHANGELOG.md">v1.4</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v1.3/CHANGELOG.md">v1.3</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v1.2/CHANGELOG.md">v1.2</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v1.1/CHANGELOG.md">v1.1</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v1.0/CHANGELOG.md">v1.0</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v0.15/CHANGELOG.md">v0.15</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v0.14/CHANGELOG.md">v0.14</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v0.13/CHANGELOG.md">v0.13</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v0.12/CHANGELOG.md">v0.12</a></li>
-<li><a href="https://github.com/hashicorp/terraform/blob/v0.11/CHANGELOG.md">v0.11 and earlier</a></li>
-</ul>
-]]></content:encoded>
-<pubDate>2026-07-06T14:49:07Z</pubDate>
-</item>
-<item>
-<title>Fable turned reMarkable into Tom Riddle's diary from Harry Potter</title>
-<link>https://github.com/MaximeRivest/Riddle</link>
-<guid>https://github.com/MaximeRivest/Riddle</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://github.com/MaximeRivest/Riddle">https://github.com/MaximeRivest/Riddle</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48811591">https://news.ycombinator.com/item?id=48811591</a></p>
-<p>Points: 217</p>
-<p># Comments: 132</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 23:00:24 +0000</pubDate>
-</item>
-<item>
-<title>GLM 5.2 and the coming AI margin collapse</title>
-<link>https://martinalderson.com/posts/the-upcoming-ai-margin-collapse-part-1-glm-5-2/</link>
-<guid>https://martinalderson.com/posts/the-upcoming-ai-margin-collapse-part-1-glm-5-2/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://martinalderson.com/posts/the-upcoming-ai-margin-collapse-part-1-glm-5-2/">https://martinalderson.com/posts/the-upcoming-ai-margin-collapse-part-1-glm-5-2/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48809877">https://news.ycombinator.com/item?id=48809877</a></p>
-<p>Points: 225</p>
-<p># Comments: 146</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 20:14:55 +0000</pubDate>
-</item>
-<item>
-<title>CoMaps – FOSS Offline Maps</title>
-<link>https://www.comaps.app/</link>
-<guid>https://www.comaps.app/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.comaps.app/">https://www.comaps.app/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48808928">https://news.ycombinator.com/item?id=48808928</a></p>
-<p>Points: 361</p>
-<p># Comments: 72</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 18:55:07 +0000</pubDate>
-</item>
-<item>
-<title>OpenWrt One – Open Hardware Router</title>
-<link>https://openwrt.org/toh/openwrt/one</link>
-<guid>https://openwrt.org/toh/openwrt/one</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://openwrt.org/toh/openwrt/one">https://openwrt.org/toh/openwrt/one</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48808482">https://news.ycombinator.com/item?id=48808482</a></p>
-<p>Points: 480</p>
-<p># Comments: 195</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 18:23:12 +0000</pubDate>
-</item>
-<item>
-<title>A global workspace in language models</title>
-<link>https://www.anthropic.com/research/global-workspace</link>
-<guid>https://www.anthropic.com/research/global-workspace</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.anthropic.com/research/global-workspace">https://www.anthropic.com/research/global-workspace</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48808002">https://news.ycombinator.com/item?id=48808002</a></p>
-<p>Points: 300</p>
-<p># Comments: 106</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 17:44:08 +0000</pubDate>
-</item>
-<item>
-<title>Should DayQuil Be Legal?</title>
-<link>https://www.theargumentmag.com/p/should-dayquil-be-legal</link>
-<guid>https://www.theargumentmag.com/p/should-dayquil-be-legal</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.theargumentmag.com/p/should-dayquil-be-legal">https://www.theargumentmag.com/p/should-dayquil-be-legal</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48806289">https://news.ycombinator.com/item?id=48806289</a></p>
-<p>Points: 204</p>
-<p># Comments: 255</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 15:44:44 +0000</pubDate>
-</item>
-<item>
-<title>AMD Ryzen AI Halo – $4k AI Dev Kit</title>
-<link>https://www.lttlabs.com/articles/2026/07/06/amd-ryzen-ai-halo</link>
-<guid>https://www.lttlabs.com/articles/2026/07/06/amd-ryzen-ai-halo</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.lttlabs.com/articles/2026/07/06/amd-ryzen-ai-halo">https://www.lttlabs.com/articles/2026/07/06/amd-ryzen-ai-halo</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48805624">https://news.ycombinator.com/item?id=48805624</a></p>
-<p>Points: 291</p>
-<p># Comments: 214</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 15:01:18 +0000</pubDate>
-</item>
-<item>
-<title>What Emily Bender meant by "stochastic parrots"</title>
-<link>https://spectrum.ieee.org/stochastic-parrot</link>
-<guid>https://spectrum.ieee.org/stochastic-parrot</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://spectrum.ieee.org/stochastic-parrot">https://spectrum.ieee.org/stochastic-parrot</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48805401">https://news.ycombinator.com/item?id=48805401</a></p>
-<p>Points: 166</p>
-<p># Comments: 220</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 14:45:31 +0000</pubDate>
-</item>
-<item>
-<title>Resetting Xbox</title>
-<link>https://news.xbox.com/en-us/2026/07/06/resetting-xbox/</link>
-<guid>https://news.xbox.com/en-us/2026/07/06/resetting-xbox/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://news.xbox.com/en-us/2026/07/06/resetting-xbox/">https://news.xbox.com/en-us/2026/07/06/resetting-xbox/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48804993">https://news.ycombinator.com/item?id=48804993</a></p>
-<p>Points: 520</p>
-<p># Comments: 514</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 14:18:23 +0000</pubDate>
-</item>
-<item>
-<title>Aluminum foil (2021)</title>
-<link>https://dernocua.github.io/notes/aluminum-foil.html</link>
-<guid>https://dernocua.github.io/notes/aluminum-foil.html</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://dernocua.github.io/notes/aluminum-foil.html">https://dernocua.github.io/notes/aluminum-foil.html</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48804297">https://news.ycombinator.com/item?id=48804297</a></p>
-<p>Points: 253</p>
-<p># Comments: 108</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 13:28:57 +0000</pubDate>
-</item>
-<item>
-<title>Nintendo announces new product revisions in Europe with replaceable batteries</title>
-<link>https://www.nintendo.com/en-gb/Support/Nintendo-Switch-2/Information-about-upcoming-battery-related-revisions-to-some-Nintendo-products-3132901.html</link>
-<guid>https://www.nintendo.com/en-gb/Support/Nintendo-Switch-2/Information-about-upcoming-battery-related-revisions-to-some-Nintendo-products-3132901.html</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.nintendo.com/en-gb/Support/Nintendo-Switch-2/Information-about-upcoming-battery-related-revisions-to-some-Nintendo-products-3132901.html">https://www.nintendo.com/en-gb/Support/Nintendo-Switch-2/Information-about-upcoming-battery-related-revisions-to-some-Nintendo-products-3132901.html</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48804193">https://news.ycombinator.com/item?id=48804193</a></p>
-<p>Points: 327</p>
-<p># Comments: 194</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 13:18:16 +0000</pubDate>
-</item>
-<item>
-<title>How Kalshi Infects the News</title>
-<link>https://www.publicnotice.co/p/kalshi-cnn-cnbc</link>
-<guid>https://www.publicnotice.co/p/kalshi-cnn-cnbc</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.publicnotice.co/p/kalshi-cnn-cnbc">https://www.publicnotice.co/p/kalshi-cnn-cnbc</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48804123">https://news.ycombinator.com/item?id=48804123</a></p>
-<p>Points: 191</p>
-<p># Comments: 184</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 13:12:52 +0000</pubDate>
-</item>
-<item>
-<title>Workers Cache</title>
-<link>https://blog.cloudflare.com/workers-cache/</link>
-<guid>https://blog.cloudflare.com/workers-cache/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://blog.cloudflare.com/workers-cache/">https://blog.cloudflare.com/workers-cache/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48804014">https://news.ycombinator.com/item?id=48804014</a></p>
-<p>Points: 191</p>
-<p># Comments: 82</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 13:02:51 +0000</pubDate>
-</item>
-<item>
-<title>Fable 5 On Vending-Bench: Misbehaving, With Plausible Deniability</title>
-<link>https://andonlabs.com/blog/fable5-vending-bench</link>
-<guid>https://andonlabs.com/blog/fable5-vending-bench</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://andonlabs.com/blog/fable5-vending-bench">https://andonlabs.com/blog/fable5-vending-bench</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48803762">https://news.ycombinator.com/item?id=48803762</a></p>
-<p>Points: 177</p>
-<p># Comments: 120</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 12:38:13 +0000</pubDate>
-</item>
-<item>
-<title>Anthropic's Method to Losing Goodwill in a Few Easy Steps</title>
-<link>https://raheeljunaid.com/blog/anthropics-method-to-losing-goodwill-in-a-few-easy-steps/</link>
-<guid>https://raheeljunaid.com/blog/anthropics-method-to-losing-goodwill-in-a-few-easy-steps/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://raheeljunaid.com/blog/anthropics-method-to-losing-goodwill-in-a-few-easy-steps/">https://raheeljunaid.com/blog/anthropics-method-to-losing-goodwill-in-a-few-easy-steps/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48803751">https://news.ycombinator.com/item?id=48803751</a></p>
-<p>Points: 242</p>
-<p># Comments: 182</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 12:37:06 +0000</pubDate>
-</item>
-<item>
-<title>Road to Elm 1.0</title>
-<link>https://elm-lang.org/news/faster-builds</link>
-<guid>https://elm-lang.org/news/faster-builds</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://elm-lang.org/news/faster-builds">https://elm-lang.org/news/faster-builds</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48803364">https://news.ycombinator.com/item?id=48803364</a></p>
-<p>Points: 309</p>
-<p># Comments: 151</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 11:47:37 +0000</pubDate>
-</item>
-<item>
-<title>Real-time map of Great Britain's rail network</title>
-<link>https://www.map.signalbox.io</link>
-<guid>https://www.map.signalbox.io</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.map.signalbox.io">https://www.map.signalbox.io</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48802535">https://news.ycombinator.com/item?id=48802535</a></p>
-<p>Points: 385</p>
-<p># Comments: 146</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 09:38:36 +0000</pubDate>
-</item>
-<item>
-<title>Building relationships with customers through support didn't turn out as hoped</title>
-<link>https://www.uncommonapps.nyc/p/castro-podcasts-things-i-got-wrong-support</link>
-<guid>https://www.uncommonapps.nyc/p/castro-podcasts-things-i-got-wrong-support</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.uncommonapps.nyc/p/castro-podcasts-things-i-got-wrong-support">https://www.uncommonapps.nyc/p/castro-podcasts-things-i-got-wrong-support</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48799929">https://news.ycombinator.com/item?id=48799929</a></p>
-<p>Points: 331</p>
-<p># Comments: 186</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 02:06:49 +0000</pubDate>
-</item>
-<item>
-<title>GPT-5.6 Sol Ultra will be in Codex</title>
-<link>https://twitter.com/thsottiaux/status/2073933490513752151</link>
-<guid>https://twitter.com/thsottiaux/status/2073933490513752151</guid>
-<content:encoded><![CDATA[
-<p><a href="https://x.com/haider1/status/2073695124220006575" rel="nofollow">https://x.com/haider1/status/2073695124220006575</a>, <a href="https://xcancel.com/haider1/status/2073695124220006575" rel="nofollow">https://xcancel.com/haider1/status/2073695124220006575</a></p>
-<hr />
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48799614">https://news.ycombinator.com/item?id=48799614</a></p>
-<p>Points: 403</p>
-<p># Comments: 384</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 01:04:03 +0000</pubDate>
-</item>
-<item>
-<title>Al Vigier: Canada's AI strategy shouldn't include secret Palantir bills</title>
-<link>https://www.readtheline.ca/p/al-vigier-canadas-ai-strategy-shouldnt</link>
-<guid>https://www.readtheline.ca/p/al-vigier-canadas-ai-strategy-shouldnt</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.readtheline.ca/p/al-vigier-canadas-ai-strategy-shouldnt">https://www.readtheline.ca/p/al-vigier-canadas-ai-strategy-shouldnt</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48799256">https://news.ycombinator.com/item?id=48799256</a></p>
-<p>Points: 163</p>
-<p># Comments: 75</p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 00:04:48 +0000</pubDate>
-</item>
-<item>
-<title>ReactOS "Open-Source Windows" Project Now Capable Of Running Half-Life 2</title>
-<link>https://www.phoronix.com/news/Half-Life-2-ReactOS</link>
-<guid>https://www.phoronix.com/news/Half-Life-2-ReactOS</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/eyojtx/reactos_open_source_windows_project_now">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 14:47:11 -0500</pubDate>
-</item>
-<item>
-<title>sneakerweb</title>
-<link>https://sneakerweb.org/</link>
-<guid>https://sneakerweb.org/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/vwni9c/sneakerweb">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 06:28:23 -0500</pubDate>
-</item>
-<item>
-<title>Jam Programming Language</title>
-<link>https://rapha.land/jam-programming-language/</link>
-<guid>https://rapha.land/jam-programming-language/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/r0xrm0/jam_programming_language">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 03:22:08 -0500</pubDate>
-</item>
-<item>
-<title>The (Petty) Reason We Didn't End Up Using jj</title>
-<link>https://blog.gradle.org/the-petty-reason-we-didnt-end-up-using-jj-at-gradle</link>
-<guid>https://blog.gradle.org/the-petty-reason-we-didnt-end-up-using-jj-at-gradle</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/27dxjg/petty_reason_we_didn_t_end_up_using_jj">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 08:44:16 -0500</pubDate>
-</item>
-<item>
-<title>PREEMPT_NONE Is Dead; Your Postgres Probably Doesn’t Care</title>
-<link>https://thebuild.com/blog/preempt_none-is-dead-your-postgres-probably-doesnt-care/</link>
-<guid>https://thebuild.com/blog/preempt_none-is-dead-your-postgres-probably-doesnt-care/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/snysfl/preempt_none_is_dead_your_postgres">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 07:31:02 -0500</pubDate>
-</item>
-<item>
-<title>Mr. Baby Paint &amp; accidentally discovering a new cellular automata</title>
-<link>https://tekstien-marginaalien-keskus.aalto.fi/residenssi/heikki/blog/004-december-2/</link>
-<guid>https://tekstien-marginaalien-keskus.aalto.fi/residenssi/heikki/blog/004-december-2/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/j5ovrm/mr_baby_paint_accidentally_discovering">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 02:48:06 -0500</pubDate>
-</item>
-<item>
-<title>Konform Browser 140.12.0-103</title>
-<link>https://codeberg.org/konform-browser/source/releases/tag/140.12.0.103</link>
-<guid>https://codeberg.org/konform-browser/source/releases/tag/140.12.0.103</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/eytr4y/konform_browser_140_12_0_103">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 04:22:35 -0500</pubDate>
-</item>
-<item>
-<title>Caught a .git/config crawler</title>
-<link>https://bruceediger.com/posts/git-config-spider/</link>
-<guid>https://bruceediger.com/posts/git-config-spider/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/heyyj9/caught_git_config_crawler">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 06 Jul 2026 07:53:15 -0500</pubDate>
 </item>
 </channel>
 </rss>
