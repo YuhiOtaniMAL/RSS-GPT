@@ -3,7 +3,867 @@
 <channel>
 <title>tech</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/tech.xml</link>
-<lastBuildDate>Mon, 10 Aug 2026 02:22:21 +0000</lastBuildDate>
+<lastBuildDate>Tue, 11 Aug 2026 02:12:44 +0000</lastBuildDate>
+
+<item>
+<title>FLUX.2-small-decoder and gemma-4-12B-it models now available on Amazon SageMaker JumpStart</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/01/flux.2-small-decoder-gemma-4-12B-it-on-sagemaker-jumpstart/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/01/flux.2-small-decoder-gemma-4-12B-it-on-sagemaker-jumpstart/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: FLUX.2-small-decoder, gemma-4-12B-it, AWS, SageMaker JumpStart, multimodal
+
+<br><br>Summary: Black Forest Labs' FLUX.2-small-decoder and Google's gemma-4-12B-it models are now accessible on Amazon SageMaker JumpStart, enhancing the available foundation models for AWS customers. The FLUX.2-small-decoder offers optimized image decoding, functioning as a distilled VAE decoder that provides approximately 1.4× faster decoding speeds and 1.4× lower VRAM consumption with minimal quality loss. This model is particularly effective for high-resolution image generation workloads at scale. On the other hand, gemma-4-12B-it specializes in unified multimodal understanding across text, image, and audio inputs. Its encoder-free architecture allows for efficient processing through a single decoder-only transformer, achieving performance close to a more extensive 26B MoE model while using less than half the memory, making it suitable for setups with only 16GB of RAM. With SageMaker JumpStart, users can swiftly deploy these models to tackle specific AI applications, offering a straightforward process via the SageMaker console or the Python SDK. For further guidance on deploying and utilizing foundation models within SageMaker JumpStart, additional information is available in the provided resources. <div>
+<p>Black Forest Labs' FLUX.2-small-decoder and Google's gemma-4-12B-it models are now available on Amazon SageMaker JumpStart, expanding the portfolio of foundation models available to AWS customers. These two models bring specialized capabilities spanning efficient image generation decoding and unified multimodal understanding, enabling customers to deploy high-performance, scalable AI solutions on AWS infrastructure.</p> 
+<p>FLUX.2-small-decoder is optimized for faster image decoding with lower VRAM usage in FLUX.2 image generation pipelines. It is a distilled VAE decoder that serves as a drop-in replacement for the standard FLUX.2 decoder, delivering approximately 1.4× faster decoding speed at 1.4× lower VRAM consumption with minimal to zero quality loss. Benefits increase at higher resolutions where the decoder processes more pixels, making it ideal for production-grade image generation workloads at scale.</p> 
+<p>gemma-4-12B-it excels in unified multimodal understanding across text, image, and audio inputs with native support for function calling and agentic workflows. It features an encoder-free architecture where all modalities flow directly into a single decoder-only transformer, delivering performance nearing Google's larger 26B MoE model at less than half the memory footprint. Compact enough to run on 16GB of RAM, it enables powerful multimodal and agentic experiences for enterprise deployments.</p> 
+<p>With SageMaker JumpStart, customers can deploy any of these models with just a few clicks to address their specific AI use cases.</p> 
+<p>To get started with these models, navigate to the SageMaker JumpStart model catalog in the SageMaker console or use the SageMaker Python SDK to deploy the models to your AWS account. For more information about deploying and using foundation models in SageMaker JumpStart, see the <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html">Amazon SageMaker JumpStart documentation</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 23:08:00 GMT</pubDate>
+<pubDate>Mon, 10 Aug 2026 23:08:00 GMT</pubDate>
+</item>
+<item>
+<title>langcache-embed-v3-small, Mellum2-12B-A2.5B-Thinking, and LightOnOCR-2-1B models now available on Amazon SageMaker JumpStart</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/01/langcache-embed-v3-small-mellum2-12B-A2.5B-thinking-lightOnOCR-2-1B-on-sagemaker-jumpstart/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/01/langcache-embed-v3-small-mellum2-12B-A2.5B-thinking-lightOnOCR-2-1B-on-sagemaker-jumpstart/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Redis, JetBrains, LightOn, SageMaker, models  
+
+<br><br>Summary:  
+Redis's langcache-embed-v3-small, JetBrains' Mellum2-12B-A2.5B-Thinking, and LightOn's LightOnOCR-2-1B have been introduced to Amazon SageMaker JumpStart, enhancing the range of foundation models for AWS customers. Langcache-embed-v3-small is tailored for semantic caching in LLM applications, efficiently mapping queries into a dense vector space to accelerate response times by minimizing redundant calls. Mellum2-12B-A2.5B-Thinking specializes in code generation and reasoning, employing a Mixture-of-Experts architecture that engages only 2.5B out of its 12B parameters per pass, making it suitable for tasks requiring high throughput. It also provides explicit reasoning trails to bolster understanding. Lastly, LightOnOCR-2-1B offers specialized document transformation capabilities, converting images and PDFs into structured text, significantly outperforming competitors while being much smaller and faster. Customers can easily deploy these models in SageMaker JumpStart with just a few clicks, allowing them to tailor solutions to their specific AI needs. To begin, users can access the SageMaker JumpStart model catalog via the SageMaker console or utilize the SageMaker Python SDK for deployment. For further guidance on usage, additional resources are available. <div>
+<p>Redis's langcache-embed-v3-small, JetBrains' Mellum2-12B-A2.5B-Thinking, and LightOn's LightOnOCR-2-1B models are now available on Amazon SageMaker JumpStart, expanding the portfolio of foundation models available to AWS customers. These three models bring specialized capabilities spanning semantic caching optimization, code-focused reasoning, and end-to-end document OCR, enabling customers to deploy high-performance, scalable AI solutions on AWS infrastructure.</p> 
+<p>langcache-embed-v3-small is optimized for semantic caching in LLM applications. It maps sentences and paragraphs into a dense vector space purpose-built for identifying semantically equivalent queries regardless of phrasing, enabling intelligent cache hits that reduce redundant LLM calls and accelerate response times in high-volume inference workloads.</p> 
+<p>Mellum2-12B-A2.5B-Thinking excels in code generation, debugging, multi-step reasoning, and agentic coding workflows. It uses a Mixture-of-Experts architecture (64 experts, 8 activated per token), activating only 2.5B of its 12B total parameters per forward pass with a 131,072-token context length. It emits explicit chain-of-thought reasoning traces before final answers, delivering high-throughput, low-latency inference ideal for routing, RAG, sub-agents, and private deployments.</p> 
+<p>LightOnOCR-2-1B provides end-to-end multilingual document-to-text conversion for PDFs, scans, and images without brittle OCR pipelines. This 1B-parameter vision-language model directly transduces page images into clean, naturally ordered text, achieving state-of-the-art performance on OlmOCR-Bench while being ~9× smaller and significantly faster than competing approaches.</p> 
+<p>With SageMaker JumpStart, customers can deploy any of these models with just a few clicks to address their specific AI use cases.<br /> <br /> To get started with these models, navigate to the SageMaker JumpStart model catalog in the SageMaker console or use the SageMaker Python SDK to deploy the models to your AWS account. For more information about deploying and using foundation models in SageMaker JumpStart, see the <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html">Amazon SageMaker JumpStart documentation</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 23:05:00 GMT</pubDate>
+<pubDate>Mon, 10 Aug 2026 23:05:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon EC2 High Memory U7i instances now available in AWS South America (São Paulo) region</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-high-memory-u7i-south-america</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-high-memory-u7i-south-america</guid>
+<content:encoded><![CDATA[
+<div> High Memory, EC2, U7in-24TB, Intel, Amazon EBS
+
+<br><br>Summary:  
+Amazon EC2 has launched the High Memory U7in-24TB instances (u7in-24tb.224xlarge) in the AWS South America (São Paulo) region. These instances belong to the AWS 7th generation and are powered by custom fourth-generation Intel Xeon Scalable processors known as Sapphire Rapids. U7in-24TB instances provide an impressive 24 TiB of DDR5 memory, allowing customers to effectively scale transaction processing throughput within rapidly expanding data environments. The instances deliver a total of 896 virtual CPUs (vCPUs) and support significant bandwidth capabilities, including up to 100 Gbps for Amazon EBS, enabling faster data loading and backup processes, along with 200 Gbps of network bandwidth and ENA Express for enhanced performance. U7i instances are particularly well-suited for mission-critical applications, such as in-memory databases including SAP HANA, Oracle, and SQL Server. These features make the U7in-24TB a robust choice for organizations looking to manage large-scale database workloads with high memory and processing demands. To learn more about U7i instances, customers can visit the official AWS website. <div>
+<p>Amazon EC2 High Memory U7in-24TB instances (u7in-24tb.224xlarge) are now available in AWS South America (São Paulo) region. U7i instances are part of the AWS 7th generation and are powered by custom fourth-generation Intel Xeon Scalable processors (Sapphire Rapids). U7in-24TB instances offer 24 TiB of DDR5 memory, enabling customers to scale transaction processing throughput in a fast-growing data environment.</p> 
+<p>U7in-24TB instances deliver 896 vCPUs and support up to 100 Gbps of Amazon EBS bandwidth for faster data loading and backups, 200 Gbps of network bandwidth, and ENA Express. U7i instances are ideal for customers running mission-critical in-memory databases like SAP HANA, Oracle, and SQL Server.</p> 
+<p>To learn more about U7i instances, visit the <a href="https://aws.amazon.com/ec2/instance-types/u7i/">High Memory instances page</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 23:02:00 GMT</pubDate>
+<pubDate>Mon, 10 Aug 2026 23:02:00 GMT</pubDate>
+</item>
+<item>
+<title>GLM-5.2 FP8, NVIDIA-Nemotron-Nano-12B-v2 and GLM-OCR models now available on Amazon SageMaker JumpStart</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/01/glm-5.2-fp8-nemotron-nano-12b-v2-glm-ocr-on-sagemaker-jumpstart/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/01/glm-5.2-fp8-nemotron-nano-12b-v2-glm-ocr-on-sagemaker-jumpstart/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: GLM-5.2, NVIDIA, SageMaker, document understanding, AI solutions  
+
+<br><br>Summary:  
+Z.ai's GLM-5.2 FP8, NVIDIA's Nemotron-Nano-12B-v2, and Z.ai's GLM-OCR models are now available on Amazon SageMaker JumpStart, enriching the foundation models for AWS customers. The GLM-5.2 FP8 is designed for long-horizon tasks, featuring a 1M-token context window for efficient project-level software development from requirements to deployment. It significantly enhances task capabilities compared to GLM-5.1. NVIDIA’s Nemotron-Nano-12B-v2 is optimized for high throughput in reasoning and non-reasoning tasks, utilizing a hybrid Mamba-2 and Transformer architecture, achieving 6x higher inference throughput than competitors while maintaining accuracy. Meanwhile, GLM-OCR excels in document understanding, capable of accurately processing diverse materials including scanned PDFs and complex tables, and can convert structures into Markdown or JSON format. With low latency, it is well-suited for real-time applications. These models can be easily deployed through the SageMaker JumpStart model catalog or the SageMaker Python SDK, allowing customers to quickly implement AI solutions tailored to their needs. For additional guidance on deploying foundation models within SageMaker, customers can refer to the provided documentation. <div>
+<p>Z.ai's GLM-5.2 FP8, NVIDIA's Nemotron-Nano-12B-v2, and Z.ai's GLM-OCR models are now available on Amazon SageMaker JumpStart, expanding the portfolio of foundation models available to AWS customers. These three models bring specialized capabilities spanning long-horizon agentic engineering, efficient hybrid reasoning, and advanced document understanding, enabling customers to deploy high-performance, scalable AI solutions on AWS infrastructure.</p> 
+<p>GLM-5.2 FP8 is optimized for long-horizon tasks and agentic engineering workflows such as full-cycle software development from requirements to deployment. It delivers a substantial leap in long-horizon task capability over its predecessor GLM-5.1 and, for the first time, provides a truly usable 1M-token context window, enabling it to handle project-level engineering context, execute long-running tasks reliably, follow engineering standards consistently, and complete full development workflows in a single task.</p> 
+<p>NVIDIA-Nemotron-Nano-12B-v2 excels in unified reasoning and non-reasoning tasks with high inference throughput, making it ideal for enterprise applications requiring both accuracy and efficiency. It uses a hybrid Mamba-2 and Transformer architecture with a 128K context length, generating reasoning traces before concluding with final responses. Its compact 12B parameter design achieves comparable or better accuracy than leading open models while delivering up to 6x higher inference throughput.</p> 
+<p>GLM-OCR provides accurate, fast, and comprehensive document understanding for complex real-world materials including scanned PDFs, handwritten notes, dense academic papers with formulas, multi-column tables, code documentation, and multilingual text. This 0.9B-parameter multimodal model reconstructs structure, tables, and formulas into clean Markdown, JSON, or LaTeX, with latency low enough for real-time services and edge devices—ideal for large-scale document processing and invoice extraction workflows.</p> 
+<p>With SageMaker JumpStart, customers can deploy any of these models with just a few clicks to address their specific AI use cases.</p> 
+<p>To get started with these models, navigate to the SageMaker JumpStart model catalog in the SageMaker console or use the SageMaker Python SDK to deploy the models to your AWS account. For more information about deploying and using foundation models in SageMaker JumpStart, see the <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html">Amazon SageMaker JumpStart documentation</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 23:02:00 GMT</pubDate>
+<pubDate>Mon, 10 Aug 2026 23:02:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon GameLift Streams Now Offers Service-managed Shader Caching</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/08/Amazon-GameLift-Streams-Shader-Caching/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/Amazon-GameLift-Streams-Shader-Caching/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon GameLift, shader cache, capture, distribution, streaming
+
+<br><br>Summary: Amazon GameLift Streams has introduced a feature for managing shader cache capture and distribution, enhancing performance for applications. The process begins when you designate a stream session to capture shader cache while your application is running. This cache is then automatically replicated to compatible stream groups and locations, ensuring that it is available for future streaming sessions without requiring application changes. The primary benefits include reduced loading times and minimized visual stuttering during sessions. Users can monitor the status and storage size of shader caches via the Amazon GameLift Streams console. The service supports multiple runtime environments, including Linux (Ubuntu 22.04), Proton, and Windows Server 2022. Charges will apply for the storage of the latest version of each shader cache, with pricing details available through the service's official site. Additionally, for information on supported regions, users can refer to the relevant documentation. Overall, this service aims to streamline shader management, improving the overall user experience in game streaming scenarios. <div>
+<p>Amazon GameLift Streams now manages shader cache capture and distribution for your applications. You capture a shader cache from a stream session, and the service automatically makes it available for future sessions across your streaming locations. No application changes are required.<br /> <br /> Capturing shader caches can help reduce loading times and visual stuttering, during the session. With service-managed shader caching, you designate a stream session for capture and run your application to generate the cache. Amazon GameLift Streams then replicates the cache to compatible stream groups and locations, and loads it automatically in future sessions.<br /> <br /> You can monitor shader cache status and storage size using the <a href="https://docs.aws.amazon.com/gameliftstreams/latest/apireference/API_ListApplicationShaderCaches.html">ListApplicationShaderCaches API</a> or the Amazon GameLift Streams console. The feature supports Linux (Ubuntu 22.04), Proton, and Windows Server 2022 runtimes.<br /> <br /> You are charged for storage of the latest version of each shader cache. For pricing details, visit the <a href="https://aws.amazon.com/gamelift/streams/pricing/">Amazon GameLift Streams pricing page</a>. For supported Regions, see the <a href="https://docs.aws.amazon.com/gameliftstreams/latest/developerguide/regions-quotas-rande.html">AWS Region table</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 21:15:00 GMT</pubDate>
+<pubDate>Mon, 10 Aug 2026 21:15:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon EC2 introduces application status checks</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-application-status-checks</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-application-status-checks</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon EC2, application status checks, monitoring, Auto Scaling groups, HTTP requests
+
+<br><br>Summary: Amazon EC2 has introduced application status checks to help customers identify and respond to application-level issues on their EC2 instances. These checks monitor applications to detect problems like non-responsive web servers, stopped Docker daemons, incorrect network configurations, and non-functional network interfaces. Previously, customers had to create their own monitoring solutions for these issues, but now, application status checks integrate with existing EC2 instance and system status checks. Users can create checks by defining the protocol, port, and path to monitor, along with the desired response codes that signify a healthy application. Once associated with instances via instance ID or tags, Amazon EC2 performs HTTP or HTTPS requests every 60 seconds to report the application's status. Furthermore, Auto Scaling groups can utilize application status checks to take action when they detect an unhealthy application, automatically replacing instances as necessary. Application status checks are available across all commercial AWS Regions and AWS GovCloud (US) Regions, providing a more streamlined way for customers to ensure their applications are functioning as intended. To get started with application status checks and review pricing, customers should refer to the official AWS documentation. <div>
+<p>Amazon EC2 introduces application status checks, a new status check that helps customers detect and respond to application-level issues on their EC2 instances. With application status checks, EC2 monitors applications to detect issues such as a web server that has stopped accepting requests, a Docker daemon that is not running, an incorrect networking configuration, or a network interface that is no longer passing traffic.</p> 
+<p>Customers rely on EC2 status checks today to receive alerts when an instance or the underlying system is unreachable. However, to monitor application issues, customers had to build and maintain their own monitoring solution. Now, with application status checks customers can monitor the status of their applications running on EC2 instances alongside existing EC2 instance and system status checks. Customers create a check by specifying the protocol, port, and path to monitor, along with the response codes that indicate a healthy application. After customers associate the check with their instances by instance ID or tag, Amazon EC2 sends HTTP or HTTPS requests to that port and path and reports on the application’s status every 60 seconds. Auto Scaling groups act on application status, initiating recovery by replacing instances when their applications report unhealthy.</p> 
+<p>Application status checks are available in all commercial AWS Regions and AWS GovCloud (US) Regions.</p> 
+<p>To get started with application status checks and review pricing, see the <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/application-status-checks.html">Amazon EC2 User Guide</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 17:47:00 GMT</pubDate>
+<pubDate>Mon, 10 Aug 2026 17:47:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon OpenSearch Serverless now supports up to 10,000 collections per collection group</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-opensearch-serverless-supports-10000-collections-per-collection-group/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-opensearch-serverless-supports-10000-collections-per-collection-group/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon, OpenSearch, Serverless, collections, capacity
+
+<br><br>Summary: The next generation of Amazon OpenSearch Serverless has increased the limit of collections within a single collection group from 1,500 to 10,000. Collection groups facilitate the organization of multiple collections that can share OpenSearch Compute Units (OCUs), even when using different AWS KMS keys for encryption. This enhancement allows customers to consolidate more collections into one collection group, streamlining management under shared capacity limits. By utilizing collection groups, customers can reduce costs by sharing compute resources across collections, rather than allocating separate OCUs for each KMS key, while still ensuring collection-level security and access controls. The previous limit constrained multi-tenant applications that often require one collection per tenant, thereby impacting scalability. With the new limit of 10,000 collections, businesses can better scale their workloads, enhance compute utilization, and lower costs associated with individual collections without the need to create additional collection groups. This increased limit applies automatically to both new and existing next-generation collection groups and is available in all supported AWS Regions. For further details, customers can refer to the Amazon OpenSearch Serverless documentation. <div>
+<p>The next generation of Amazon OpenSearch Serverless now supports up to 10,000 collections within a single collection group, increased from the previous limit of 1,500. Collection groups organize multiple collections and enable them to share OpenSearch Compute Units (OCUs), even when the collections are encrypted with different AWS KMS keys. With this higher limit, you can consolidate significantly more collections into a single collection group and manage them under a shared set of capacity limits.</p> 
+<p>Customers use collection groups to reduce costs by sharing compute across many collections rather than provisioning separate OCUs for each KMS key, while still maintaining collection-level security and access controls. As customer workloads have grown, particularly for multi-tenant applications that provision a collection per tenant, the previous limit of 1,500 collections per group constrained how many tenants could benefit from a shared compute pool. Raising the limit to 10,000 collections on the next generation of Amazon OpenSearch Serverless lets you scale these workloads further, improve compute utilization, and lower per-collection cost, without creating and operating additional collection groups. The higher limit applies automatically to new and existing nextgen collection groups.</p> 
+<p>The increased limit is available on the next generation of Amazon OpenSearch Serverless in all AWS Regions where it is <a href="https://docs.aws.amazon.com/general/latest/gr/opensearch-service.html">available</a>. To learn more, see Amazon OpenSearch Serverless&nbsp;<a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-create.html#serverless-create-nextgen-easy" rel="noopener noreferrer" target="_blank">technical documentation</a> and <a href="https://docs.aws.amazon.com/general/latest/gr/opensearch-service.html#opensearch-limits-serverless">quotas</a>.</p> 
+<p>&nbsp;</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 15:51:00 GMT</pubDate>
+<pubDate>Mon, 10 Aug 2026 15:51:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Elastic Disaster Recovery now preserves UEFI boot mode for Linux servers</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/08/aws-drs-linux-uefi</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/aws-drs-linux-uefi</guid>
+<content:encoded><![CDATA[
+<div> UEFI, boot mode, AWS DRS, Linux servers, recovery  
+
+<br><br>Summary:  
+AWS Elastic Disaster Recovery (AWS DRS) now ensures that when recovering Linux source servers that utilize UEFI firmware, the boot mode is preserved. Previously, these servers were launched in legacy BIOS mode, which often necessitated additional configuration steps post-recovery. With this improvement, recovered Linux instances now boot in the same UEFI mode as their original source servers. This seamless recovery process means that applications reliant on UEFI boot behavior will function as expected, requiring no extra steps after recovery. The preservation of boot mode happens automatically, eliminating the need for manual configuration by users. This capability is accessible in all AWS Regions that offer AWS DRS, and notably, there is no additional charge for this feature. Overall, this enhancement significantly simplifies the recovery process, allowing for a smoother transition and greater consistency between source and recovered environments. By alleviating the need for post-recovery adjustments, AWS DRS enhances operational efficiency and reliability for organizations utilizing Linux servers. For more details, please visit the AWS website. <div>
+<p>AWS Elastic Disaster Recovery (AWS DRS) now preserves UEFI boot mode when recovering Linux source servers that boot with UEFI firmware. Previously, DRS launched these Linux servers in legacy BIOS mode, which could require extra configuration after recovery. Now your recovered Linux instances launch with the same UEFI boot mode as your source servers. This means your recovery instances more closely match your source environment, so applications that depend on UEFI boot behavior come back exactly as you expect — with no additional post-recovery steps. Boot mode preservation is automatic, with nothing to configure.</p> 
+<p>This capability is available in all AWS Regions where AWS DRS is offered, at no additional cost. To learn more, visit the <a href="https://docs.aws.amazon.com/drs/latest/userguide/what-is-drs.html">AWS Elastic Disaster Recovery User Guide</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 13:00:00 GMT</pubDate>
+<pubDate>Mon, 10 Aug 2026 13:00:00 GMT</pubDate>
+</item>
+<item>
+<title>v16.3.1-canary.11</title>
+<link>https://github.com/vercel/next.js/releases/tag/v16.3.1-canary.11</link>
+<guid>https://github.com/vercel/next.js/releases/tag/v16.3.1-canary.11</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Core Changes, Misc Changes, Documentation, Bug Fixes, Improvements
+
+<br><br>Summary: 
+The recent updates include several core changes and miscellaneous improvements. Key changes involve fixing a typo in the error message within the `rm.mjs` script and enhancing the clarity and punctuation in the README documentation. Miscellaneous changes include encoding cache item names produced by `unstable_cache` and renaming `encodeCacheTag` to `encodeHeaderSafe`. Documentation fixes were made for better formatting in the Google Fonts section and correcting package names in the MDX handling section. A bug related to client component loading span timing has been addressed alongside improvements such as using emitted app entries for post-build processing and tracing development route compilation and preparation. Additional documentation adjustments involve renaming terms for consistency, improving grammar in Link prefetching, and changing "runtime prefetching" to "optimizing prefetching." Various reverts regarding Turbopack enhancements were also made to stabilize features. A clean-up of the Turbopack snapshot config and debugging logs has been implemented as well. Lastly, credits were given to numerous contributors for their support in these enhancements and fixes. <div>
+<h3>Core Changes</h3>
+<ul>
+<li>fix(scripts): correct typo in rm.mjs error message: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/87015">#87015</a></li>
+<li>docs: improve clarity and punctuation in README: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/86096">#86096</a></li>
+</ul>
+<h3>Misc Changes</h3>
+<ul>
+<li>Encode the cache item name built by <code>unstable_cache</code>: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/96937">#96937</a></li>
+<li>[refactor] Rename <code>encodeCacheTag</code> to <code>encodeHeaderSafe</code>: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/96936">#96936</a></li>
+<li>Fix formatting of Google Fonts section in documentation: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/88447">#88447</a></li>
+<li>Fixing a bug - typo issue fixed: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97141">#97141</a></li>
+<li>examples: fix Webiny API env variable name: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97134">#97134</a></li>
+<li>docs: fix Link prefetch grammar and Client Components wording: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97132">#97132</a></li>
+<li>Use emitted app entries for post-build processing: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97139">#97139</a></li>
+<li>docs(mdx): fix package name in .md handling section: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97131">#97131</a></li>
+<li>[turbopack] Reduce native React Compiler work: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/96820">#96820</a></li>
+<li>Keep the dev validation worker alive across HMR updates: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/96988">#96988</a></li>
+<li>docs: rename repo to repository for consistency: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/87849">#87849</a></li>
+<li>Fix Nav Inspector request loop on repeat captures: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97050">#97050</a></li>
+<li>Fix typo in Data Access Layer section: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/87202">#87202</a></li>
+<li>docs: runtime prefetching -&gt; optimizing prefetching: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/96934">#96934</a></li>
+<li>[CC] Track APIs that cause incompatible static/app shells: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97040">#97040</a></li>
+<li>Fix client component loading span timing: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/96455">#96455</a></li>
+<li>Trace development route compilation: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/96454">#96454</a></li>
+<li>Prefix <code>'use cache'</code> debug logs with the full directive: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97037">#97037</a></li>
+<li>Revert "[turbopack] Enable CJS tree shaking by default (<a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/96779">#96779</a>)": <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97018">#97018</a></li>
+<li>Revert "[turbopack] Follow re-exports for side-effect free async modules": <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97009">#97009</a></li>
+<li>[fragment-scroll] Rename <code>ScrollAndMaybeFocusHandler</code> to <code>ScrollHandler</code>: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/96828">#96828</a></li>
+<li>Trace development route preparation: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/96453">#96453</a></li>
+<li>test: cleanup Turbopack snapshot config: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97013">#97013</a></li>
+<li>Remove unused htmlLimitedBots from renderOpts: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/96701">#96701</a></li>
+<li>fix(turbopack): point at the glob that matched a file with no module type: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/96561">#96561</a></li>
+</ul>
+<h3>Credits</h3>
+<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/unstubbable">@unstubbable</a>, <a class="user-mention notranslate" href="https://github.com/koenpunt">@koenpunt</a>, <a class="user-mention notranslate" href="https://github.com/marcoshernanz">@marcoshernanz</a>, <a class="user-mention notranslate" href="https://github.com/gnoff">@gnoff</a>, <a class="user-mention notranslate" href="https://github.com/mayur9210">@mayur9210</a>, <a class="user-mention notranslate" href="https://github.com/Jashnavi25">@Jashnavi25</a>, <a class="user-mention notranslate" href="https://github.com/jarrensj">@jarrensj</a>, <a class="user-mention notranslate" href="https://github.com/acdlite">@acdlite</a>, <a class="user-mention notranslate" href="https://github.com/akselipalmer">@akselipalmer</a>, <a class="user-mention notranslate" href="https://github.com/icyJoseph">@icyJoseph</a>, <a class="user-mention notranslate" href="https://github.com/lubieowoce">@lubieowoce</a>, <a class="user-mention notranslate" href="https://github.com/DavidIlie">@DavidIlie</a>, <a class="user-mention notranslate" href="https://github.com/eps1lon">@eps1lon</a>, <a class="user-mention notranslate" href="https://github.com/mischnic">@mischnic</a>, and <a class="user-mention notranslate" href="https://github.com/sokra">@sokra</a> for helping!</p>
+]]></content:encoded>
+
+<pubDate>2026-08-10T23:48:31Z</pubDate>
+</item>
+<item>
+<title>v11.1.29</title>
+<link>https://github.com/nestjs/nest/releases/tag/v11.1.29</link>
+<guid>https://github.com/nestjs/nest/releases/tag/v11.1.29</guid>
+<content:encoded><![CDATA[
+<div> fix, feat, microservices, core, contributors
+
+<br><br>Summary: The update includes several core fixes and features. A change was made to stop the import lookup after the first direct export match. The `multerExceptions` constant was updated for better functionality. In the microservices section, the pub/sub client type in Redis listeners was corrected, and the g flag was dropped from the middleware overlap regexes. The file type validator received a feature enhancement with the addition of an override mimetype option. Support for server-sent events (SSE) comments was also introduced. In terms of resolving barriers, it now happens immediately when the target count is zero, and pipeline options will be excluded from validator options to avoid confusion. The SSE retry field will be serialized accurately when its value is zero. The microservices functionality was improved by nullifying the gRPC client upon closure if the try shutdown fails. In Express, a mapping was created for missing multer field nesting errors. Additionally, a number of new contributors made their first contributions to the project, reflecting a growing collaborative effort. <div>
+<h2>What's Changed</h2>
+<ul>
+<li>fix(core): stop import lookup after first direct export match by <a class="user-mention notranslate" href="https://github.com/malekelkssas">@malekelkssas</a> in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17141">#17141</a></li>
+<li>chore: update multerExceptions constant by <a class="user-mention notranslate" href="https://github.com/bo0tzz">@bo0tzz</a> in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17328">#17328</a></li>
+<li>fix(microservices): correct pub/sub client type in redis listeners by <a class="user-mention notranslate" href="https://github.com/zaewc">@zaewc</a> in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17331">#17331</a></li>
+<li>feat(common): add override mimetype option to file type validator by <a class="user-mention notranslate" href="https://github.com/Ativ3k">@Ativ3k</a> in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17333">#17333</a></li>
+<li>fix(core): drop the g flag from middleware overlap regexes by <a class="user-mention notranslate" href="https://github.com/dchaudhari7177">@dchaudhari7177</a> in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17335">#17335</a></li>
+<li>feat(core): support sse comments by <a class="user-mention notranslate" href="https://github.com/kyu4583">@kyu4583</a> in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17327">#17327</a></li>
+<li>fix(core): resolve barrier immediately when target count is zero by <a class="user-mention notranslate" href="https://github.com/ikrbasak">@ikrbasak</a> in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17393">#17393</a></li>
+<li>fix(common): exclude pipe options from validator options by <a class="user-mention notranslate" href="https://github.com/coxxny">@coxxny</a> in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17399">#17399</a></li>
+<li>fix(core): serialize SSE retry field when value is zero by <a class="user-mention notranslate" href="https://github.com/kyu4583">@kyu4583</a> in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17360">#17360</a></li>
+<li>fix(microservices): nullify grpcclient on close when tryshutdown fails by <a class="user-mention notranslate" href="https://github.com/Se3do">@Se3do</a> in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17394">#17394</a></li>
+<li>fix(express): map missing multer field nesting error by <a class="user-mention notranslate" href="https://github.com/Se3do">@Se3do</a> in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17421">#17421</a></li>
+</ul>
+<h2>New Contributors</h2>
+<ul>
+<li><a class="user-mention notranslate" href="https://github.com/malekelkssas">@malekelkssas</a> made their first contribution in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17141">#17141</a></li>
+<li><a class="user-mention notranslate" href="https://github.com/hjc0930">@hjc0930</a> made their first contribution in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17311">#17311</a></li>
+<li><a class="user-mention notranslate" href="https://github.com/bo0tzz">@bo0tzz</a> made their first contribution in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17328">#17328</a></li>
+<li><a class="user-mention notranslate" href="https://github.com/Ativ3k">@Ativ3k</a> made their first contribution in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17333">#17333</a></li>
+<li><a class="user-mention notranslate" href="https://github.com/dchaudhari7177">@dchaudhari7177</a> made their first contribution in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17335">#17335</a></li>
+<li><a class="user-mention notranslate" href="https://github.com/kyu4583">@kyu4583</a> made their first contribution in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17327">#17327</a></li>
+<li><a class="user-mention notranslate" href="https://github.com/anupamme">@anupamme</a> made their first contribution in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17378">#17378</a></li>
+<li><a class="user-mention notranslate" href="https://github.com/ikrbasak">@ikrbasak</a> made their first contribution in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17393">#17393</a></li>
+<li><a class="user-mention notranslate" href="https://github.com/beiifeng">@beiifeng</a> made their first contribution in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17404">#17404</a></li>
+<li><a class="user-mention notranslate" href="https://github.com/coxxny">@coxxny</a> made their first contribution in <a class="issue-link js-issue-link" href="https://github.com/nestjs/nest/pull/17399">#17399</a></li>
+</ul>
+<p><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/nestjs/nest/compare/v11.1.28...v11.1.29"><tt>v11.1.28...v11.1.29</tt></a></p>
+]]></content:encoded>
+
+<pubDate>2026-08-10T09:40:32Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.1-dev.13</title>
+<link>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.1-dev.13</link>
+<guid>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.1-dev.13</guid>
+<content:encoded><![CDATA[
+
+<p>TML-3192: demo the integer representations and aggregate precision (#…</p>
+]]></content:encoded>
+
+<pubDate>2026-08-10T14:37:19Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.1-dev.12</title>
+<link>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.1-dev.12</link>
+<guid>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.1-dev.12</guid>
+<content:encoded><![CDATA[
+
+<p>TML-3165: count/sum/avg return JS numbers, with lossless variants bes…</p>
+]]></content:encoded>
+
+<pubDate>2026-08-10T13:17:50Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.1-dev.11</title>
+<link>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.1-dev.11</link>
+<guid>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.1-dev.11</guid>
+<content:encoded><![CDATA[
+
+<p>TML-3164: targets and extensions contribute aggregate operations (<a class="issue-link js-issue-link" href="https://github.com/prisma/prisma/issues/29">#29</a>…</p>
+]]></content:encoded>
+
+<pubDate>2026-08-10T11:52:53Z</pubDate>
+</item>
+<item>
+<title>19.2.8 (July 21st, 2026)</title>
+<link>https://github.com/react/react/releases/tag/v19.2.8</link>
+<guid>https://github.com/react/react/releases/tag/v19.2.8</guid>
+<content:encoded><![CDATA[
+
+<h2>React Server Components</h2>
+<ul>
+<li>Performance improvements when decoding<br />
+(<a href="https://github.com/facebook/react/pull/37087">#37087</a> by <a class="user-mention notranslate" href="https://github.com/eps1lon">@eps1lon</a>)</li>
+</ul>
+]]></content:encoded>
+
+<pubDate>2026-07-21T15:49:09Z</pubDate>
+</item>
+<item>
+<title>19.1.9 (July 21st, 2026)</title>
+<link>https://github.com/react/react/releases/tag/v19.1.9</link>
+<guid>https://github.com/react/react/releases/tag/v19.1.9</guid>
+<content:encoded><![CDATA[
+
+<h2>React Server Components</h2>
+<ul>
+<li>Performance improvements when decoding<br />
+(<a href="https://github.com/facebook/react/pull/37088">#37088</a> by <a class="user-mention notranslate" href="https://github.com/eps1lon">@eps1lon</a>)</li>
+</ul>
+]]></content:encoded>
+
+<pubDate>2026-07-21T15:48:51Z</pubDate>
+</item>
+<item>
+<title>19.0.8 (July 21st, 2026)</title>
+<link>https://github.com/react/react/releases/tag/v19.0.8</link>
+<guid>https://github.com/react/react/releases/tag/v19.0.8</guid>
+<content:encoded><![CDATA[
+
+<h2>React Server Components</h2>
+<ul>
+<li>Performance improvements when decoding<br />
+(<a href="https://github.com/facebook/react/pull/37089">#37089</a> by <a class="user-mention notranslate" href="https://github.com/eps1lon">@eps1lon</a>)</li>
+</ul>
+]]></content:encoded>
+
+<pubDate>2026-07-21T15:48:28Z</pubDate>
+</item>
+<item>
+<title>v2.264.0</title>
+<link>https://github.com/aws/aws-cdk/releases/tag/v2.264.0</link>
+<guid>https://github.com/aws/aws-cdk/releases/tag/v2.264.0</guid>
+<content:encoded><![CDATA[
+
+<h3>⚠ BREAKING CHANGES</h3>
+<ul>
+<li><strong>bedrockagentcore:</strong> <code>Gateway</code> metric helpers now emit corrected CloudWatch dimensions per-gateway<br />
+metrics use <code>{ Operation, Protocol, Resource }</code> (was <code>{ Resource }</code>). Alarms/dashboards built on the<br />
+old dimensions must be updated.</li>
+<li><strong>bedrockagentcore:</strong> <code>RuntimeBase</code> metric helpers now emit corrected CloudWatch dimensions per-resource metrics use <code>{ Operation, Name, Resource }</code> (was <code>{ Resource }</code>) and aggregated metrics use <code>{ AggregateOperation }</code> (was <code>{ Resource: 'All' }</code>). Alarms/dashboards built on the old dimensions must be updated.</li>
+</ul>
+<h3>Features</h3>
+<ul>
+<li>update L1 CloudFormation resource definitions (<a href="https://github.com/aws/aws-cdk/issues/38526">#38526</a>) (<a href="https://github.com/aws/aws-cdk/commit/b5693cbaea1e54ab027d18ca09c2c154dfc1fef1">b5693cb</a>)</li>
+<li><strong>cloudwatch:</strong> support alarm mute rules (<a href="https://github.com/aws/aws-cdk/issues/37504">#37504</a>) (<a href="https://github.com/aws/aws-cdk/commit/c3540bbe3fc10467be331c82494abe46ecfd61fd">c3540bb</a>), closes <a href="https://github.com/aws/aws-cdk/issues/37502">#37502</a></li>
+<li>update L1 CloudFormation resource definitions (<a href="https://github.com/aws/aws-cdk/issues/38479">#38479</a>) (<a href="https://github.com/aws/aws-cdk/commit/279340df42d2a9e5609b2f441eb341252448ed24">279340d</a>)</li>
+</ul>
+<h3>Bug Fixes</h3>
+<ul>
+<li><strong>bedrockagentcore:</strong> gateway metrics emit correct CloudWatch dimension (<a href="https://github.com/aws/aws-cdk/issues/38487">#38487</a>) (<a href="https://github.com/aws/aws-cdk/commit/5a7d360215479b345759a0aed77e003c9d2b5cbe">5a7d360</a>)</li>
+<li><strong>bedrockagentcore:</strong> runtime metrics emit correct CloudWatch dimensions (<a href="https://github.com/aws/aws-cdk/issues/38486">#38486</a>) (<a href="https://github.com/aws/aws-cdk/commit/4e44f244f9079527923ee079f1dca9d3c5f01679">4e44f24</a>)</li>
+<li><strong>cloudfront:</strong> warn when minimumProtocolVersion is set without a certificate (<a href="https://github.com/aws/aws-cdk/issues/37250">#37250</a>) (<a href="https://github.com/aws/aws-cdk/commit/52ec5f76f1fd2cc3fa39f29a67cc32dc95074a03">52ec5f7</a>), closes <a href="https://github.com/aws/aws-cdk/issues/35404">#35404</a></li>
+<li><strong>ec2:</strong> allow EBS gp3 and io2 volumes up to 64 TiB (<a href="https://github.com/aws/aws-cdk/issues/37049">#37049</a>) (<a href="https://github.com/aws/aws-cdk/commit/10711bae19a620543d32a6f2d413815bb3f7c485">10711ba</a>), closes <a href="https://github.com/aws/aws-cdk/issues/37045">#37045</a></li>
+<li><strong>stepfunctions-tasks:</strong> call-rest-api <code>CallApiGatewayRestApiEndpoint</code> does not support <code>JsonATA</code> for api_path (<a href="https://github.com/aws/aws-cdk/issues/37738">#37738</a>) (<a href="https://github.com/aws/aws-cdk/commit/9f0afdc2ba501862c1097d7ad2938b7563b66c46">9f0afdc</a>), closes <a href="https://github.com/aws/aws-cdk/issues/37728">#37728</a> <a href="https://github.com/aws//github.com/aws/aws-cdk/blob/e207b76cc2503701b3c4e2c87023617b485b2fde/packages/aws-cdk-lib/aws-stepfunctions/lib/private/jsonata.ts/issues/L1">/github.com/aws/aws-cdk/blob/e207b76cc2503701b3c4e2c87023617b485b2fde/packages/aws-cdk-lib/aws-stepfunctions/lib/private/jsonata.ts#L1</a></li>
+</ul>
+<hr />
+<h2>Alpha modules (2.264.0-alpha.0)</h2>
+<h3>⚠ BREAKING CHANGES</h3>
+<ul>
+<li><strong>glue-alpha:</strong> <code>IDatabase.catalogArn</code> and <code>IDatabase.catalogId</code> were removed in factor of a type<br />
+safe <code>ICatalog</code>, which has  <code>catalogArn</code> and <code>catalogId</code>. Consumers and implementations were updated<br />
+accordingly.</li>
+</ul>
+<h3>Features</h3>
+<ul>
+<li><strong>glue-alpha:</strong> new <code>Catalog</code> L2 (<a href="https://github.com/aws/aws-cdk/issues/38443">#38443</a>) (<a href="https://github.com/aws/aws-cdk/commit/6a8ba8e6597dd73ab2e92ac2dbb688006bbb481b">6a8ba8e</a>)</li>
+<li><strong>glue-alpha:</strong> strengthen data encryption for <code>S3Table</code> (<a href="https://github.com/aws/aws-cdk/issues/38501">#38501</a>) (<a href="https://github.com/aws/aws-cdk/commit/eb81d5e68c429d33417a8609ddc1204e39102687">eb81d5e</a>), closes <a href="https://github.com/aws//docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html/issues/s3-5">/docs.aws.amazon.com/securityhub/latest/userguide/s3-controls.html#s3-5</a></li>
+</ul>
+<h3>Bug Fixes</h3>
+<ul>
+<li><strong>glue-alpha:</strong> enable key rotation for security configuration encryption (<a href="https://github.com/aws/aws-cdk/issues/38512">#38512</a>) (<a href="https://github.com/aws/aws-cdk/commit/18560e001cffa882ac498b363fc3edc047fea118">18560e0</a>)</li>
+<li><strong>mediaconnect-alpha:</strong> addOutput options and simplified VPC interface referencing (<a href="https://github.com/aws/aws-cdk/issues/38515">#38515</a>) (<a href="https://github.com/aws/aws-cdk/commit/3c7146693547b05e048ac93f60bf6ace845270fc">3c71466</a>), closes <a href="https://github.com/aws/aws-cdk/issues/38517">#38517</a></li>
+</ul>
+]]></content:encoded>
+
+<pubDate>2026-08-10T18:03:52Z</pubDate>
+</item>
+<item>
+<title>The UK's War on Anonymity Has Come to America</title>
+<link>https://www.effort.news/uk-lobby</link>
+<guid>https://www.effort.news/uk-lobby</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.effort.news/uk-lobby">https://www.effort.news/uk-lobby</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49251411">https://news.ycombinator.com/item?id=49251411</a></p>
+<p>Points: 206</p>
+<p># Comments: 118</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 23:45:50 +0000</pubDate>
+<pubDate>Mon, 10 Aug 2026 23:45:50 +0000</pubDate>
+</item>
+<item>
+<title>Amazon backs power plant that may become top source of US climate pollution</title>
+<link>https://arstechnica.com/tech-policy/2026/08/amazon-funds-biggest-gas-power-plant-in-us-despite-climate-pledge/</link>
+<guid>https://arstechnica.com/tech-policy/2026/08/amazon-funds-biggest-gas-power-plant-in-us-despite-climate-pledge/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://arstechnica.com/tech-policy/2026/08/amazon-funds-biggest-gas-power-plant-in-us-despite-climate-pledge/">https://arstechnica.com/tech-policy/2026/08/amazon-funds-biggest-gas-power-plant-in-us-despite-climate-pledge/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49249971">https://news.ycombinator.com/item?id=49249971</a></p>
+<p>Points: 160</p>
+<p># Comments: 126</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 21:26:16 +0000</pubDate>
+<pubDate>Mon, 10 Aug 2026 21:26:16 +0000</pubDate>
+</item>
+<item>
+<title>Stop Killing Games: It's time to sue Sony, join us</title>
+<link>https://www.massaschadeconsument.nl/collectieve-acties/playstation/</link>
+<guid>https://www.massaschadeconsument.nl/collectieve-acties/playstation/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.massaschadeconsument.nl/collectieve-acties/playstation/">https://www.massaschadeconsument.nl/collectieve-acties/playstation/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49249481">https://news.ycombinator.com/item?id=49249481</a></p>
+<p>Points: 172</p>
+<p># Comments: 78</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 20:47:13 +0000</pubDate>
+<pubDate>Mon, 10 Aug 2026 20:47:13 +0000</pubDate>
+</item>
+<item>
+<title>Illinois just passed a law that puts Linux on the hook for age verification</title>
+<link>https://linuxstans.com/illinois-hb5511-operating-system-age-verification/</link>
+<guid>https://linuxstans.com/illinois-hb5511-operating-system-age-verification/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://linuxstans.com/illinois-hb5511-operating-system-age-verification/">https://linuxstans.com/illinois-hb5511-operating-system-age-verification/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49249150">https://news.ycombinator.com/item?id=49249150</a></p>
+<p>Points: 287</p>
+<p># Comments: 390</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 20:20:06 +0000</pubDate>
+<pubDate>Mon, 10 Aug 2026 20:20:06 +0000</pubDate>
+</item>
+<item>
+<title>Learning more about Claude's mathematical capabilities</title>
+<link>https://www.anthropic.com/research/riemann-zeta</link>
+<guid>https://www.anthropic.com/research/riemann-zeta</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.anthropic.com/research/riemann-zeta">https://www.anthropic.com/research/riemann-zeta</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49247070">https://news.ycombinator.com/item?id=49247070</a></p>
+<p>Points: 165</p>
+<p># Comments: 115</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 17:41:13 +0000</pubDate>
+<pubDate>Mon, 10 Aug 2026 17:41:13 +0000</pubDate>
+</item>
+<item>
+<title>Show HN: Needle2: 14MB agentic LLM for phones, wearables, smart home and robots</title>
+<link>https://cactuscompute.com/needle</link>
+<guid>https://cactuscompute.com/needle</guid>
+<content:encoded><![CDATA[
+
+<p>Hey HN,<p>Henry from Cactus here!<p>We previously released Cactus Needle, a 14MB agentic LLM for tool call, device use, and structured extraction for phones, wearables, smart homes, small robots and microcontrollers. We got really great feedback here, and have now incorporated the suggestions to release Needle 2.<p>The whole model is a single 14MB binary that runs a full session in 28MB of RAM; 45m parameters at 2bit compression. Needle hits 500 tokens/sec decode speed on a Raspberry Pi 5, sits between 400-1,500 tokens/sec on VR devices like Meta Quest 3S and Apple Vision Pro, and ranges 300-700 on sub-$200 phones such as the Samsung A-Series.<p>On the tool call and mobile device use benchmarks, Needle 2 trades wins with closest small models like LFM2.5 230M and Apple Foundation Model, at 5x to 70x smaller, both at f16 vs Needle 2 at 2bit. Needle is based on Simple Attention Networks from our paper (<a href="https://arxiv.org/abs/2607.18363" rel="nofollow">https://arxiv.org/abs/2607.18363</a>).<p>Edge AI has lately meant Macs and PCs, but that is just 1.5 billion of over 21 billion connected IoT devices in the world today, and in emerging markets most phones ship under $200, no NPU, cheap GPUs. These include budget phones, Raspberry Pis, microcontrollers, wearables, small robots like Reachy Mini, and connected home devices.<p>A conventional transformer of Needle's width and depth spends 164 MFLOPs per token, and even one squeezed down to Needle's parameter count spends 87, Needle spends 70. Even on a high-end phone, an always-on assistant lives inside a power budget; every MFLOP is milliwatt-hours, and Needle spends 7x to 85x fewer of them per token than the smallest performant LLMs. More about the architecture in the link.<p>When we structure intelligence for consumer devices as functions with typed parameters, the only hard part is mapping a messy sentence onto them; which function, with which values. Our research found that when framed that way, the problem needs no world knowledge and no open-ended prose, which is why 45M parameters suffice.<p>Needle 2 expands to structured extraction where the schema can be passed in-place of tools and the model returns structured output. You can use Needle as a text-classification model with an enum field, as a summarization model by providing a schema that extracts key fields, everything but free-range decode.<p>Every product has its own tool vocabulary and fine-tuning needle helps it achieve frontier-level performance on custom tasks, so using the python package (<a href="https://github.com/cactus-compute/needle" rel="nofollow">https://github.com/cactus-compute/needle</a>), Needle can be fine-tuned Needle on a Mac/PC in minutes to a few hours, with automated data-generation pipeline, just pass a couple samples.<p>Nonetheless, every response carries a learned confidence score based our Cactus Hybrid technique. If above your threshold, act, below it, escalate to the cloud or bigger model. Combining Needle 2 with a private DeepSeek-v4-Flash deployment works particularly well for enterprise-level tasks at barely any cost, we can help with this setup.<p>We have put a lot of thoughts into Needle 2 but might still be missing quite a lot, please use the playground in the provided link to test Needle and share your thoughts, always appreciated!</p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49246804">https://news.ycombinator.com/item?id=49246804</a></p>
+<p>Points: 178</p>
+<p># Comments: 80</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 17:22:07 +0000</pubDate>
+<pubDate>Mon, 10 Aug 2026 17:22:07 +0000</pubDate>
+</item>
+<item>
+<title>Magnitude 7.4 Earthquake – 5 km S of San José del Palmar, Colombia</title>
+<link>https://earthquake.usgs.gov/earthquakes/eventpage/us6000tjl2/executive</link>
+<guid>https://earthquake.usgs.gov/earthquakes/eventpage/us6000tjl2/executive</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://earthquake.usgs.gov/earthquakes/eventpage/us6000tjl2/executive">https://earthquake.usgs.gov/earthquakes/eventpage/us6000tjl2/executive</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49245251">https://news.ycombinator.com/item?id=49245251</a></p>
+<p>Points: 164</p>
+<p># Comments: 65</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 15:49:48 +0000</pubDate>
+<pubDate>Mon, 10 Aug 2026 15:49:48 +0000</pubDate>
+</item>
+<item>
+<title>Mars Bar from 1991 found – and it's 20g bigger than today's</title>
+<link>https://www.bbc.com/news/articles/c1j1kjy7gewo</link>
+<guid>https://www.bbc.com/news/articles/c1j1kjy7gewo</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.bbc.com/news/articles/c1j1kjy7gewo">https://www.bbc.com/news/articles/c1j1kjy7gewo</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49245023">https://news.ycombinator.com/item?id=49245023</a></p>
+<p>Points: 304</p>
+<p># Comments: 461</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 15:32:04 +0000</pubDate>
+<pubDate>Mon, 10 Aug 2026 15:32:04 +0000</pubDate>
+</item>
+<item>
+<title>'Pervert glasses': Backlash against Meta's smart glasses grows</title>
+<link>https://www.seattletimes.com/business/technology/pervert-glasses-backlash-against-metas-smart-glasses-grows/</link>
+<guid>https://www.seattletimes.com/business/technology/pervert-glasses-backlash-against-metas-smart-glasses-grows/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.seattletimes.com/business/technology/pervert-glasses-backlash-against-metas-smart-glasses-grows/">https://www.seattletimes.com/business/technology/pervert-glasses-backlash-against-metas-smart-glasses-grows/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49244783">https://news.ycombinator.com/item?id=49244783</a></p>
+<p>Points: 162</p>
+<p># Comments: 248</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 15:13:08 +0000</pubDate>
+<pubDate>Mon, 10 Aug 2026 15:13:08 +0000</pubDate>
+</item>
+<item>
+<title>Mark Zuckerberg attacks 'closed' AI rivals as Meta returns to open models</title>
+<link>https://www.ft.com/content/4e3957f8-ea7c-4c46-a3de-cdce8e526878</link>
+<guid>https://www.ft.com/content/4e3957f8-ea7c-4c46-a3de-cdce8e526878</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://archive.is/20LOJ" rel="nofollow">https://archive.is/20LOJ</a><p><a href="https://www.meta.com/thefutureisforeveryone/" rel="nofollow">https://www.meta.com/thefutureisforeveryone/</a></p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49243880">https://news.ycombinator.com/item?id=49243880</a></p>
+<p>Points: 374</p>
+<p># Comments: 387</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 14:06:22 +0000</pubDate>
+<pubDate>Mon, 10 Aug 2026 14:06:22 +0000</pubDate>
+</item>
+<item>
+<title>Humanising LLM Outputs Is Dumb</title>
+<link>https://kuber.studio/blog/Reflections/Humanising-LLM-Outputs-is-Actually-Dumb</link>
+<guid>https://kuber.studio/blog/Reflections/Humanising-LLM-Outputs-is-Actually-Dumb</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://kuber.studio/blog/Reflections/Humanising-LLM-Outputs-is-Actually-Dumb">https://kuber.studio/blog/Reflections/Humanising-LLM-Outputs-is-Actually-Dumb</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49243474">https://news.ycombinator.com/item?id=49243474</a></p>
+<p>Points: 156</p>
+<p># Comments: 92</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 13:35:40 +0000</pubDate>
+<pubDate>Mon, 10 Aug 2026 13:35:40 +0000</pubDate>
+</item>
+<item>
+<title>Mistral Patent for “Code implemented tool calls”</title>
+<link>https://patentsgazette.uspto.gov/week26/OG/html/1547-5/US12670045-20260630.html</link>
+<guid>https://patentsgazette.uspto.gov/week26/OG/html/1547-5/US12670045-20260630.html</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://patentsgazette.uspto.gov/week26/OG/html/1547-5/US12670045-20260630.html">https://patentsgazette.uspto.gov/week26/OG/html/1547-5/US12670045-20260630.html</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49243397">https://news.ycombinator.com/item?id=49243397</a></p>
+<p>Points: 208</p>
+<p># Comments: 177</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 13:29:12 +0000</pubDate>
+<pubDate>Mon, 10 Aug 2026 13:29:12 +0000</pubDate>
+</item>
+<item>
+<title>50k Boat Names</title>
+<link>https://www.beautifulpublicdata.com/boat-names/</link>
+<guid>https://www.beautifulpublicdata.com/boat-names/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.beautifulpublicdata.com/boat-names/">https://www.beautifulpublicdata.com/boat-names/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49243029">https://news.ycombinator.com/item?id=49243029</a></p>
+<p>Points: 155</p>
+<p># Comments: 106</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 12:58:16 +0000</pubDate>
+<pubDate>Mon, 10 Aug 2026 12:58:16 +0000</pubDate>
+</item>
+<item>
+<title>Squeak 6.1</title>
+<link>https://squeak.org/release_notes/6.1/</link>
+<guid>https://squeak.org/release_notes/6.1/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://squeak.org/release_notes/6.1/">https://squeak.org/release_notes/6.1/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49242653">https://news.ycombinator.com/item?id=49242653</a></p>
+<p>Points: 223</p>
+<p># Comments: 115</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 12:15:53 +0000</pubDate>
+<pubDate>Mon, 10 Aug 2026 12:15:53 +0000</pubDate>
+</item>
+<item>
+<title>Parametron: 50s Japanese computer that uses neither transistors nor vacuum tubes</title>
+<link>https://ethw.org/Milestones:Parametron,_1954</link>
+<guid>https://ethw.org/Milestones:Parametron,_1954</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://ethw.org/Milestones:Parametron,_1954">https://ethw.org/Milestones:Parametron,_1954</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49241846">https://news.ycombinator.com/item?id=49241846</a></p>
+<p>Points: 190</p>
+<p># Comments: 48</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 10:29:14 +0000</pubDate>
+<pubDate>Mon, 10 Aug 2026 10:29:14 +0000</pubDate>
+</item>
+<item>
+<title>Muse Glimmer: 30B-parameter model optimized for always-on local agent workflows</title>
+<link>https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model</link>
+<guid>https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model">https://research.meta.ai/blog/introducing-muse-glimmer-open-agentic-model</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49241679">https://news.ycombinator.com/item?id=49241679</a></p>
+<p>Points: 1047</p>
+<p># Comments: 579</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 10:10:02 +0000</pubDate>
+<pubDate>Mon, 10 Aug 2026 10:10:02 +0000</pubDate>
+</item>
+<item>
+<title>Docker Sandboxes – Disposable, isolated sandboxes for AI agents</title>
+<link>https://www.docker.com/products/docker-sandboxes/</link>
+<guid>https://www.docker.com/products/docker-sandboxes/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.docker.com/products/docker-sandboxes/">https://www.docker.com/products/docker-sandboxes/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49239751">https://news.ycombinator.com/item?id=49239751</a></p>
+<p>Points: 628</p>
+<p># Comments: 349</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 06:02:38 +0000</pubDate>
+<pubDate>Mon, 10 Aug 2026 06:02:38 +0000</pubDate>
+</item>
+<item>
+<title>Auto mode is now the default in Claude Code</title>
+<link>https://claude.com/blog/auto-mode-default-in-claude-code</link>
+<guid>https://claude.com/blog/auto-mode-default-in-claude-code</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://claude.com/blog/auto-mode-default-in-claude-code">https://claude.com/blog/auto-mode-default-in-claude-code</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49239021">https://news.ycombinator.com/item?id=49239021</a></p>
+<p>Points: 276</p>
+<p># Comments: 303</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 03:50:00 +0000</pubDate>
+<pubDate>Mon, 10 Aug 2026 03:50:00 +0000</pubDate>
+</item>
+<item>
+<title>Show HN: Voice driven murder mystery, Interview AI suspects with your voice</title>
+<link>https://www.whodunnitai.com/</link>
+<guid>https://www.whodunnitai.com/</guid>
+<content:encoded><![CDATA[
+
+<p>Hey HN!<p>I'm excited to show off this really fun project I put together. I originally built this project 2-3 years ago, AI was already booming at the time, however voice AI agents were still very early. I loved my proof of concept at the time, but wasn't quite happy with it.<p>I recently had the desire to check out the tech again, and know many of you will be interested.<p>Interviews are speech to speech with OpenAI's gpt-realtime-2.1 over WebRTC. This model is... expensive, and because of that, I have to add some amount of restrictions, conversations are tied to a authenticated Clerk user id. I have also added a 30 minute timer because well, I really don't want to go broke while I sleep tonight.<p>Each suspect has a tool they call when you make a direct accusation. It captures who you accused and a faithful list of the evidence you actually stated.<p>A separate gpt-5-mini judge then decides which of the case's required evidence facts you genuinely presented. Paraphrasing counts, vague suspicion and fishing don't.<p>The rest is Next.js, MongoDB, and Clerk.<p>Let me know whether the suspects hold up under a real interrogation.</p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49238851">https://news.ycombinator.com/item?id=49238851</a></p>
+<p>Points: 190</p>
+<p># Comments: 81</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 03:18:40 +0000</pubDate>
+<pubDate>Mon, 10 Aug 2026 03:18:40 +0000</pubDate>
+</item>
+<item>
+<title>Toggles Considered Harmful</title>
+<link>https://ignorethecode.net/blog/2026/08/09/toggles_considered_harmful/</link>
+<guid>https://ignorethecode.net/blog/2026/08/09/toggles_considered_harmful/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/ulinck/toggles_considered_harmful">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 03:04:12 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 03:04:12 -0500</pubDate>
+</item>
+<item>
+<title>GitHub Actions needs OIDC audience constraints</title>
+<link>https://blog.yossarian.net/2026/08/10/github-actions-needs-oidc-audience-constraints</link>
+<guid>https://blog.yossarian.net/2026/08/10/github-actions-needs-oidc-audience-constraints</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/ipt1em/github_actions_needs_oidc_audience">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 08:30:18 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 08:30:18 -0500</pubDate>
+</item>
+<item>
+<title>Firefox Containers Preview</title>
+<link>https://blog.mozilla.org/en/firefox/firefox-containers-preview/</link>
+<guid>https://blog.mozilla.org/en/firefox/firefox-containers-preview/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/ja2gzr/firefox_containers_preview">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 04:37:18 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 04:37:18 -0500</pubDate>
+</item>
+<item>
+<title>A researcher bought noreply.net. Companies started sending him secrets</title>
+<link>https://arstechnica.com/security/2026/08/a-researcher-bought-noreply-net-companies-started-sending-him-secrets/</link>
+<guid>https://arstechnica.com/security/2026/08/a-researcher-bought-noreply-net-companies-started-sending-him-secrets/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/exgfc0/researcher_bought_noreply_net_companies">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 11:47:33 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 11:47:33 -0500</pubDate>
+</item>
+<item>
+<title>a pure css implementation of some sunlight streaming in through the window</title>
+<link>https://github.com/jackyzha0/sunlit</link>
+<guid>https://github.com/jackyzha0/sunlit</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/lkp7x3/pure_css_implementation_some_sunlight">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 10:29:34 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 10:29:34 -0500</pubDate>
+</item>
+<item>
+<title>Django is moving to an annual release cycle</title>
+<link>https://www.djangoproject.com/weblog/2026/aug/10/annual-release-cycle/</link>
+<guid>https://www.djangoproject.com/weblog/2026/aug/10/annual-release-cycle/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/cn7jyo/django_is_moving_annual_release_cycle">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 07:46:03 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 07:46:03 -0500</pubDate>
+</item>
+<item>
+<title>We're not done with point clouds</title>
+<link>https://claytonwramsey.com/blog/mvt/</link>
+<guid>https://claytonwramsey.com/blog/mvt/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/ctwrrt/we_re_not_done_with_point_clouds">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 13:21:20 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 13:21:20 -0500</pubDate>
+</item>
+<item>
+<title>How do programming languages impact token efficiency and correctness?</title>
+<link>https://danluu.com/pl-tokens/</link>
+<guid>https://danluu.com/pl-tokens/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/4waghh/how_do_programming_languages_impact">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 02:47:36 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 02:47:36 -0500</pubDate>
+</item>
+<item>
+<title>an ambiguity in c89 which will never be fixed</title>
+<link>https://sebsite.pw/w/20260810-c89ambiguity.html</link>
+<guid>https://sebsite.pw/w/20260810-c89ambiguity.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/p3mmqr/ambiguity_c89_which_will_never_be_fixed">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 02:56:03 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 02:56:03 -0500</pubDate>
+</item>
+<item>
+<title>What are you doing this week?</title>
+<link>https://lobste.rs/s/3qwloh/what_are_you_doing_this_week</link>
+<guid>https://lobste.rs/s/3qwloh/what_are_you_doing_this_week</guid>
+<content:encoded><![CDATA[
+
+<p>What are you doing this week? Feel free to share!</p>
+<p>Keep in mind it’s OK to do nothing at all, too.</p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 06:41:16 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 06:41:16 -0500</pubDate>
+</item>
+<item>
+<title>Chicken Scheme 6.0 released</title>
+<link>https://code.call-cc.org/releases/6.0.0/NEWS</link>
+<guid>https://code.call-cc.org/releases/6.0.0/NEWS</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/gxhfny/chicken_scheme_6_0_released">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 19:24:07 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 19:24:07 -0500</pubDate>
+</item>
+<item>
+<title>Watch out for cache read costs</title>
+<link>https://martinalderson.com/posts/watch-out-for-cache-read-costs/</link>
+<guid>https://martinalderson.com/posts/watch-out-for-cache-read-costs/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/bgvipl/watch_out_for_cache_read_costs">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 17:33:28 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 17:33:28 -0500</pubDate>
+</item>
+<item>
+<title>The mathematical beauty of hyperbezier curves</title>
+<link>https://linebender.org/blog/hyperbezier/</link>
+<guid>https://linebender.org/blog/hyperbezier/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/dd80wh/mathematical_beauty_hyperbezier_curves">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 13:31:12 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 13:31:12 -0500</pubDate>
+</item>
+<item>
+<title>Fast Haskell Scripts on GitHub Actions</title>
+<link>https://abhinavsarkar.net/posts/fast-haskell-scripts-on-github-actions/</link>
+<guid>https://abhinavsarkar.net/posts/fast-haskell-scripts-on-github-actions/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/guqk6b/fast_haskell_scripts_on_github_actions">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 06:21:36 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 06:21:36 -0500</pubDate>
+</item>
+<item>
+<title>Dark mode toggles: two states are enough</title>
+<link>https://lea.verou.me/blog/2026/dark-mode-toggles/</link>
+<guid>https://lea.verou.me/blog/2026/dark-mode-toggles/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/nkoni1/dark_mode_toggles_two_states_are_enough">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 13:09:05 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 13:09:05 -0500</pubDate>
+</item>
+<item>
+<title>Gtk+Adwaita Markdown Editor in ~600 lines</title>
+<link>https://gist.github.com/aziis98/368b40d6cae01f8d40a6e3d2cccd4c31</link>
+<guid>https://gist.github.com/aziis98/368b40d6cae01f8d40a6e3d2cccd4c31</guid>
+<content:encoded><![CDATA[
+
+<p>If you need a small self contained split view markdown editor (uses a gtk webview, requires an internet for marked.js+katex from a cdn) in GTK+Adwaita.</p>
+<p>By the way I know about <a href="https://gitlab.gnome.org/World/apostrophe" rel="ugc">Apostrophe</a> and actually it was the main inspiration for this. I am working on a larger GTK app and I want more software with decent Markdown rendering. This gist is just a small self contained prototype to show off that building this kind of app has become fairly easy today.</p>
+<p><a href="https://lobste.rs/s/fl7dcm/gtk_adwaita_markdown_editor_600_lines">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 12:31:01 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 12:31:01 -0500</pubDate>
+</item>
+<item>
+<title>Remaking Party House</title>
+<link>https://herecomesthemoon.net/2026/08/remaking-party-house/</link>
+<guid>https://herecomesthemoon.net/2026/08/remaking-party-house/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/gkuj8b/remaking_party_house">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 15:29:07 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 15:29:07 -0500</pubDate>
+</item>
+<item>
+<title>Restricting trait implementability and field mutability</title>
+<link>https://blog.rust-lang.org/inside-rust/2026/08/10/call-for-testing-impl-and-mut-restrictions/</link>
+<guid>https://blog.rust-lang.org/inside-rust/2026/08/10/call-for-testing-impl-and-mut-restrictions/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/9j3n3b/restricting_trait_implementability">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 13:39:53 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 13:39:53 -0500</pubDate>
+</item>
+<item>
+<title>Easy Sandboxing on Linux with Bubblewrap</title>
+<link>https://bxt.rs/blog/easy-sandboxing-on-linux-with-bubblewrap/</link>
+<guid>https://bxt.rs/blog/easy-sandboxing-on-linux-with-bubblewrap/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/stehhb/easy_sandboxing_on_linux_with_bubblewrap">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 05:37:20 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 05:37:20 -0500</pubDate>
+</item>
+<item>
+<title>A C++ toolchain from 357 bytes in Bazel</title>
+<link>https://fzakaria.com/2026/08/01/a-c++-toolchain-from-357-bytes-in-bazel</link>
+<guid>https://fzakaria.com/2026/08/01/a-c++-toolchain-from-357-bytes-in-bazel</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/pq7dtk/c_toolchain_from_357_bytes_bazel">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 14:18:34 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 14:18:34 -0500</pubDate>
+</item>
+<item>
+<title>Breaking up (lines) is hard to do</title>
+<link>https://www.b-list.org/weblog/2026/aug/10/newlines/</link>
+<guid>https://www.b-list.org/weblog/2026/aug/10/newlines/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/imdlp6/breaking_up_lines_is_hard_do">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 16:32:57 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 16:32:57 -0500</pubDate>
+</item>
+<item>
+<title>Making Need For Speed 2015 with Game Maker</title>
+<link>https://www.youtube.com/watch?v=ffGqjOBowIc</link>
+<guid>https://www.youtube.com/watch?v=ffGqjOBowIc</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/kwo9cn/making_need_for_speed_2015_with_game_maker">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 10 Aug 2026 16:47:24 -0500</pubDate>
+<pubDate>Mon, 10 Aug 2026 16:47:24 -0500</pubDate>
+</item>
 
 <item>
 <title>v16.3.1-canary.10</title>
@@ -13,7 +873,6 @@
 <div> Sure! Please provide the article you want me to summarize. <div>
 <p>v16.3.1-canary.10</p>
 ]]></content:encoded>
-
 <pubDate>2026-08-09T23:23:42Z</pubDate>
 </item>
 <item>
@@ -23,11 +882,10 @@
 <content:encoded><![CDATA[
 <div> Keywords: SQL, CHECK constraints, column, generated, options  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 The article discusses a new feature in SQL that allows developers to opt certain columns out of generated CHECK constraints. Traditionally, CHECK constraints are used to validate the data in a database and ensure that it meets specific criteria. However, there are scenarios where it might be beneficial to exclude specific columns from these constraints, providing greater flexibility in database design. The feature enhances the ability of developers to implement more customized validation rules and cater to diverse data requirements. It also streamlines the process of managing complex database schemas where certain attributes may not need strict validation. Additionally, this option has the potential to improve performance by reducing the overhead caused by unnecessary checks on columns that do not require them. The implementation details of the feature, including the syntax and possible use cases, are highlighted, showcasing its practical application in real-world scenarios. This enhancement represents a significant step towards improving the usability of SQL in various applications, paving the way for more efficient data management and validation strategies. Overall, the new option empowers developers to create more tailored solutions while optimizing database performance. <div>
 <p>feat(sql): <a class="user-mention notranslate" href="https://github.com/nocheck">@nocheck</a> opts a column out of generated CHECK constraints …</p>
 ]]></content:encoded>
-
 <pubDate>2026-08-09T19:12:50Z</pubDate>
 </item>
 <item>
@@ -37,10 +895,9 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <content:encoded><![CDATA[
 <div> **Keywords:** SQL, contract, JSON, schema, generation
 
-<br><br>Summary: The article discusses the process of generating a contract.json file using an SQL schema. It emphasizes the importance of defining clear contracts between services, particularly in microservices architecture. The article outlines the steps needed to extract SQL tables and their relationships to create a corresponding JSON schema. It highlights the benefits of using JSON schemas for data validation and enforcing contracts at runtime. The process includes analyzing existing SQL table definitions, converting them into a structured JSON format, and ensuring compatibility with TypeScript. The generation of the contract.json file facilitates communication between frontend and backend systems by providing a standardized data structure. Additionally, the article suggests best practices for maintaining and updating the schema as the database evolves over time. It encourages developers to integrate schema generation into their build processes to keep contracts aligned with code changes. This proactive approach aids in reducing errors and miscommunication during development. Overall, the article serves as a guide for developers looking to enhance data integrity and streamline API interactions through effective schema management. <div>
+<br /><br />Summary: The article discusses the process of generating a contract.json file using an SQL schema. It emphasizes the importance of defining clear contracts between services, particularly in microservices architecture. The article outlines the steps needed to extract SQL tables and their relationships to create a corresponding JSON schema. It highlights the benefits of using JSON schemas for data validation and enforcing contracts at runtime. The process includes analyzing existing SQL table definitions, converting them into a structured JSON format, and ensuring compatibility with TypeScript. The generation of the contract.json file facilitates communication between frontend and backend systems by providing a standardized data structure. Additionally, the article suggests best practices for maintaining and updating the schema as the database evolves over time. It encourages developers to integrate schema generation into their build processes to keep contracts aligned with code changes. This proactive approach aids in reducing errors and miscommunication during development. Overall, the article serves as a guide for developers looking to enhance data integrity and streamline API interactions through effective schema management. <div>
 <p>chore(sql-contract-ts): generate contract.json JSON schema from arkty…</p>
 ]]></content:encoded>
-
 <pubDate>2026-08-09T10:35:26Z</pubDate>
 </item>
 <item>
@@ -55,7 +912,6 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <p># Comments: 254</p>
 ]]></content:encoded>
 <pubDate>Sun, 09 Aug 2026 19:16:49 +0000</pubDate>
-<pubDate>Sun, 09 Aug 2026 19:16:49 +0000</pubDate>
 </item>
 <item>
 <title>Ask HN: What are you working on? (August 2026)</title>
@@ -64,14 +920,13 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <content:encoded><![CDATA[
 <div> **Keywords:** work, curiosity, projects, interests, insights  
 
-<br><br>Summary: This article explores the collective thoughts and insights of individuals regarding their current projects and curiosities. Many participants shared what they are working on, ranging from personal hobbies to professional endeavors. Some expressed their enthusiasm for exploring new topics, such as technology, art, and science, fostering a sense of community among those with similar interests. Others discussed specific projects they are developing, including entrepreneurship ventures and creative undertakings that reflect their passions. The conversations highlighted a diverse array of curiosities, showcasing how people are drawn to different subjects and how these interests drive their work. The significance of collaborative efforts was emphasized, with several comments pointing to the benefits of discussing ideas within a community. Participants noted that engaging with others can spark inspiration and motivate them to delve deeper into their pursuits. Overall, the article illustrates the dynamic nature of work and curiosity, as well as the connections formed through shared interests and collaborative spirit in the community. The richness of these discussions enriches personal growth and encourages continued exploration and learning among individuals. <div>
+<br /><br />Summary: This article explores the collective thoughts and insights of individuals regarding their current projects and curiosities. Many participants shared what they are working on, ranging from personal hobbies to professional endeavors. Some expressed their enthusiasm for exploring new topics, such as technology, art, and science, fostering a sense of community among those with similar interests. Others discussed specific projects they are developing, including entrepreneurship ventures and creative undertakings that reflect their passions. The conversations highlighted a diverse array of curiosities, showcasing how people are drawn to different subjects and how these interests drive their work. The significance of collaborative efforts was emphasized, with several comments pointing to the benefits of discussing ideas within a community. Participants noted that engaging with others can spark inspiration and motivate them to delve deeper into their pursuits. Overall, the article illustrates the dynamic nature of work and curiosity, as well as the connections formed through shared interests and collaborative spirit in the community. The richness of these discussions enriches personal growth and encourages continued exploration and learning among individuals. <div>
 <p>What are you working on?  What have you been curious about lately?</p>
 <hr />
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49233423">https://news.ycombinator.com/item?id=49233423</a></p>
 <p>Points: 174</p>
 <p># Comments: 660</p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 17:23:22 +0000</pubDate>
 <pubDate>Sun, 09 Aug 2026 17:23:22 +0000</pubDate>
 </item>
 <item>
@@ -86,7 +941,6 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <p># Comments: 86</p>
 ]]></content:encoded>
 <pubDate>Sun, 09 Aug 2026 15:26:45 +0000</pubDate>
-<pubDate>Sun, 09 Aug 2026 15:26:45 +0000</pubDate>
 </item>
 <item>
 <title>Taxi drivers rarely die of Alzheimer's</title>
@@ -99,7 +953,6 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <p>Points: 188</p>
 <p># Comments: 144</p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 15:21:46 +0000</pubDate>
 <pubDate>Sun, 09 Aug 2026 15:21:46 +0000</pubDate>
 </item>
 <item>
@@ -114,7 +967,6 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <p># Comments: 192</p>
 ]]></content:encoded>
 <pubDate>Sun, 09 Aug 2026 15:18:25 +0000</pubDate>
-<pubDate>Sun, 09 Aug 2026 15:18:25 +0000</pubDate>
 </item>
 <item>
 <title>Windows 11's built-in Weather app wastes more than 1 GB of RAM</title>
@@ -127,7 +979,6 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <p>Points: 378</p>
 <p># Comments: 313</p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 15:11:20 +0000</pubDate>
 <pubDate>Sun, 09 Aug 2026 15:11:20 +0000</pubDate>
 </item>
 <item>
@@ -142,20 +993,17 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <p># Comments: 72</p>
 ]]></content:encoded>
 <pubDate>Sun, 09 Aug 2026 15:08:51 +0000</pubDate>
-<pubDate>Sun, 09 Aug 2026 15:08:51 +0000</pubDate>
 </item>
 <item>
 <title>Cool URIs Don't Change (1998)</title>
 <link>https://www.w3.org/Provider/Style/URI</link>
 <guid>https://www.w3.org/Provider/Style/URI</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.w3.org/Provider/Style/URI">https://www.w3.org/Provider/Style/URI</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49231809">https://news.ycombinator.com/item?id=49231809</a></p>
 <p>Points: 188</p>
 <p># Comments: 44</p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 14:32:53 +0000</pubDate>
 <pubDate>Sun, 09 Aug 2026 14:32:53 +0000</pubDate>
 </item>
 <item>
@@ -163,13 +1011,11 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://blog.terrygodier.com/2026/08/09/mea-culpa-dark-hours.html</link>
 <guid>https://blog.terrygodier.com/2026/08/09/mea-culpa-dark-hours.html</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://blog.terrygodier.com/2026/08/09/mea-culpa-dark-hours.html">https://blog.terrygodier.com/2026/08/09/mea-culpa-dark-hours.html</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49231154">https://news.ycombinator.com/item?id=49231154</a></p>
 <p>Points: 563</p>
 <p># Comments: 256</p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 13:20:43 +0000</pubDate>
 <pubDate>Sun, 09 Aug 2026 13:20:43 +0000</pubDate>
 </item>
 <item>
@@ -177,7 +1023,6 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://www.theatlantic.com/technology/2026/05/ai-wearable-surveillance-countermeasures/687203/</link>
 <guid>https://www.theatlantic.com/technology/2026/05/ai-wearable-surveillance-countermeasures/687203/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://archive.is/JxaZ7" rel="nofollow">https://archive.is/JxaZ7</a></p>
 <hr />
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49230477">https://news.ycombinator.com/item?id=49230477</a></p>
@@ -185,20 +1030,17 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <p># Comments: 173</p>
 ]]></content:encoded>
 <pubDate>Sun, 09 Aug 2026 11:30:48 +0000</pubDate>
-<pubDate>Sun, 09 Aug 2026 11:30:48 +0000</pubDate>
 </item>
 <item>
 <title>There Are Magic Hexagons of Every Order</title>
 <link>https://gukov.dev/math/2026/08/02/new-magic-hexagons.html</link>
 <guid>https://gukov.dev/math/2026/08/02/new-magic-hexagons.html</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://gukov.dev/math/2026/08/02/new-magic-hexagons.html">https://gukov.dev/math/2026/08/02/new-magic-hexagons.html</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49229174">https://news.ycombinator.com/item?id=49229174</a></p>
 <p>Points: 184</p>
 <p># Comments: 31</p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 07:19:58 +0000</pubDate>
 <pubDate>Sun, 09 Aug 2026 07:19:58 +0000</pubDate>
 </item>
 <item>
@@ -206,13 +1048,11 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://github.com/jmarshall23/msword</link>
 <guid>https://github.com/jmarshall23/msword</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://github.com/jmarshall23/msword">https://github.com/jmarshall23/msword</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49228663">https://news.ycombinator.com/item?id=49228663</a></p>
 <p>Points: 162</p>
 <p># Comments: 68</p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 05:23:41 +0000</pubDate>
 <pubDate>Sun, 09 Aug 2026 05:23:41 +0000</pubDate>
 </item>
 <item>
@@ -220,13 +1060,11 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>http://longbets.org/601/</link>
 <guid>http://longbets.org/601/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="http://longbets.org/601/">http://longbets.org/601/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49228458">https://news.ycombinator.com/item?id=49228458</a></p>
 <p>Points: 200</p>
 <p># Comments: 97</p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 04:30:26 +0000</pubDate>
 <pubDate>Sun, 09 Aug 2026 04:30:26 +0000</pubDate>
 </item>
 <item>
@@ -234,7 +1072,6 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://daringfireball.net/2026/08/retraction_app_store_rejection_of_the_week</link>
 <guid>https://daringfireball.net/2026/08/retraction_app_store_rejection_of_the_week</guid>
 <content:encoded><![CDATA[
-
 <p>Thread for original post: <a href="https://news.ycombinator.com/item?id=49214863">https://news.ycombinator.com/item?id=49214863</a></p>
 <hr />
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49228166">https://news.ycombinator.com/item?id=49228166</a></p>
@@ -242,20 +1079,17 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <p># Comments: 64</p>
 ]]></content:encoded>
 <pubDate>Sun, 09 Aug 2026 03:26:00 +0000</pubDate>
-<pubDate>Sun, 09 Aug 2026 03:26:00 +0000</pubDate>
 </item>
 <item>
 <title>Incentives are for losers</title>
 <link>https://www.experimental-history.com/p/incentives-are-for-losers</link>
 <guid>https://www.experimental-history.com/p/incentives-are-for-losers</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.experimental-history.com/p/incentives-are-for-losers">https://www.experimental-history.com/p/incentives-are-for-losers</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49227652">https://news.ycombinator.com/item?id=49227652</a></p>
 <p>Points: 161</p>
 <p># Comments: 118</p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 01:49:48 +0000</pubDate>
 <pubDate>Sun, 09 Aug 2026 01:49:48 +0000</pubDate>
 </item>
 <item>
@@ -263,13 +1097,11 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://academic.oup.com/sleep/article/46/Supplement_1/A34/7181621</link>
 <guid>https://academic.oup.com/sleep/article/46/Supplement_1/A34/7181621</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://academic.oup.com/sleep/article/46/Supplement_1/A34/7181621">https://academic.oup.com/sleep/article/46/Supplement_1/A34/7181621</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49227365">https://news.ycombinator.com/item?id=49227365</a></p>
 <p>Points: 174</p>
 <p># Comments: 203</p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 00:59:58 +0000</pubDate>
 <pubDate>Sun, 09 Aug 2026 00:59:58 +0000</pubDate>
 </item>
 <item>
@@ -277,13 +1109,11 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://os8088.com/</link>
 <guid>https://os8088.com/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://os8088.com/">https://os8088.com/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49226923">https://news.ycombinator.com/item?id=49226923</a></p>
 <p>Points: 244</p>
 <p># Comments: 160</p>
 ]]></content:encoded>
-<pubDate>Sat, 08 Aug 2026 23:37:27 +0000</pubDate>
 <pubDate>Sat, 08 Aug 2026 23:37:27 +0000</pubDate>
 </item>
 <item>
@@ -291,13 +1121,11 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://www.andrewt.net/dithered-qr-codes/wtf/</link>
 <guid>https://www.andrewt.net/dithered-qr-codes/wtf/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.andrewt.net/dithered-qr-codes/wtf/">https://www.andrewt.net/dithered-qr-codes/wtf/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49226742">https://news.ycombinator.com/item?id=49226742</a></p>
 <p>Points: 359</p>
 <p># Comments: 41</p>
 ]]></content:encoded>
-<pubDate>Sat, 08 Aug 2026 23:05:24 +0000</pubDate>
 <pubDate>Sat, 08 Aug 2026 23:05:24 +0000</pubDate>
 </item>
 <item>
@@ -305,13 +1133,11 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://seg6.space/posts/phone-server/</link>
 <guid>https://seg6.space/posts/phone-server/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://seg6.space/posts/phone-server/">https://seg6.space/posts/phone-server/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49226636">https://news.ycombinator.com/item?id=49226636</a></p>
 <p>Points: 489</p>
 <p># Comments: 234</p>
 ]]></content:encoded>
-<pubDate>Sat, 08 Aug 2026 22:49:23 +0000</pubDate>
 <pubDate>Sat, 08 Aug 2026 22:49:23 +0000</pubDate>
 </item>
 <item>
@@ -319,13 +1145,11 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://shopify.engineering/scaling-inventory-reservations</link>
 <guid>https://shopify.engineering/scaling-inventory-reservations</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://shopify.engineering/scaling-inventory-reservations">https://shopify.engineering/scaling-inventory-reservations</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49226536">https://news.ycombinator.com/item?id=49226536</a></p>
 <p>Points: 329</p>
 <p># Comments: 245</p>
 ]]></content:encoded>
-<pubDate>Sat, 08 Aug 2026 22:32:50 +0000</pubDate>
 <pubDate>Sat, 08 Aug 2026 22:32:50 +0000</pubDate>
 </item>
 <item>
@@ -333,10 +1157,8 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://kristoff.it/blog/source-code-availability/</link>
 <guid>https://kristoff.it/blog/source-code-availability/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/rsztog/who_should_pay_for_source_code">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 08:42:39 -0500</pubDate>
 <pubDate>Sun, 09 Aug 2026 08:42:39 -0500</pubDate>
 </item>
 <item>
@@ -344,10 +1166,8 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://www.ilmarilauhakangas.fi/irc_technology_news_from_the_first_half_of_2026/</link>
 <guid>https://www.ilmarilauhakangas.fi/irc_technology_news_from_the_first_half_of_2026/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/u0ks1k/irc_technology_news_from_first_half_2026">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 12:41:59 -0500</pubDate>
 <pubDate>Sun, 09 Aug 2026 12:41:59 -0500</pubDate>
 </item>
 <item>
@@ -355,10 +1175,8 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://michael.stapelberg.ch/posts/2026-08-09-zsh-history-truncation-bug/</link>
 <guid>https://michael.stapelberg.ch/posts/2026-08-09-zsh-history-truncation-bug/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/x0jlp7/tracking_down_zsh_history_data_loss_bug">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 03:16:46 -0500</pubDate>
 <pubDate>Sun, 09 Aug 2026 03:16:46 -0500</pubDate>
 </item>
 <item>
@@ -366,10 +1184,8 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://antonz.org/relying-on-go/</link>
 <guid>https://antonz.org/relying-on-go/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/1ygxcp/relying_on_go">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 09:43:04 -0500</pubDate>
 <pubDate>Sun, 09 Aug 2026 09:43:04 -0500</pubDate>
 </item>
 <item>
@@ -377,10 +1193,8 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://fzakaria.com/2026/08/09/nixpkgs-multiverse-every-version-that-ever-existed</link>
 <guid>https://fzakaria.com/2026/08/09/nixpkgs-multiverse-every-version-that-ever-existed</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/09l5py/nixpkgs_multiverse_every_version_ever">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 18:06:03 -0500</pubDate>
 <pubDate>Sun, 09 Aug 2026 18:06:03 -0500</pubDate>
 </item>
 <item>
@@ -388,11 +1202,9 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://lobste.rs/s/he9j7y/i_think_vibecoding_tag_has_gotten_out_hand</link>
 <guid>https://lobste.rs/s/he9j7y/i_think_vibecoding_tag_has_gotten_out_hand</guid>
 <content:encoded><![CDATA[
-
 <p>I was reading <a href="https://lobste.rs/s/x0jlp7/tracking_down_zsh_history_data_loss_bug" rel="ugc">this post</a> and noticed the <code>vibecoding</code> had been applied. I’m not sure if this was applied by the lobste.rs team or by the author, but after reading the post it’s pretty clear that the only vibecoding involved  is mentioned in an appendix separate from the actual meat of the post, which was well written and the product of sole-human effort and care. This tag feels like a black mark on what are otherwise interesting posts and has the potential to filter out genuinely human content. In other words, I think the tag does not capture the nuances of actual LLM use and is perhaps being applied too broadly.</p>
 <p>edit: it now seems the tag has been removed on that post. I still feel this should be a point of discussion</p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 10:37:14 -0500</pubDate>
 <pubDate>Sun, 09 Aug 2026 10:37:14 -0500</pubDate>
 </item>
 <item>
@@ -400,10 +1212,8 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://www.seangoedecke.com/i-got-an-email-about-resistance/</link>
 <guid>https://www.seangoedecke.com/i-got-an-email-about-resistance/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/vowt4d/i_got_email_about_resistance">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 17:14:17 -0500</pubDate>
 <pubDate>Sun, 09 Aug 2026 17:14:17 -0500</pubDate>
 </item>
 <item>
@@ -411,10 +1221,8 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://lucas.dohmen.io/posts/2026/08/09/rails-is-done/</link>
 <guid>https://lucas.dohmen.io/posts/2026/08/09/rails-is-done/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/paryb7/rails_is_done">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 02:14:28 -0500</pubDate>
 <pubDate>Sun, 09 Aug 2026 02:14:28 -0500</pubDate>
 </item>
 <item>
@@ -422,10 +1230,8 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://blog.regehr.org/archives/1292</link>
 <guid>https://blog.regehr.org/archives/1292</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/ahyxwp/sqlite_with_fine_toothed_comb_2016">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 17:07:43 -0500</pubDate>
 <pubDate>Sun, 09 Aug 2026 17:07:43 -0500</pubDate>
 </item>
 <item>
@@ -433,10 +1239,8 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://blog.waleedkhan.name/commit-message-test-plans/</link>
 <guid>https://blog.waleedkhan.name/commit-message-test-plans/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/abl0xo/commit_message_test_plans">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 13:38:22 -0500</pubDate>
 <pubDate>Sun, 09 Aug 2026 13:38:22 -0500</pubDate>
 </item>
 <item>
@@ -444,10 +1248,8 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://blog.netbsd.org/tnf/entry/gsoc2026_enlightenment</link>
 <guid>https://blog.netbsd.org/tnf/entry/gsoc2026_enlightenment</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/xkdbhe/port_enlightenment_desktop_environment">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 01:50:19 -0500</pubDate>
 <pubDate>Sun, 09 Aug 2026 01:50:19 -0500</pubDate>
 </item>
 <item>
@@ -455,10 +1257,8 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://dotat.at/@/2026-08-09-rata-die.html</link>
 <guid>https://dotat.at/@/2026-08-09-rata-die.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/cqx6f6/counting_days_revisited">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sat, 08 Aug 2026 21:32:55 -0500</pubDate>
 <pubDate>Sat, 08 Aug 2026 21:32:55 -0500</pubDate>
 </item>
 <item>
@@ -466,10 +1266,8 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://nickvsnetworking.com/3g-at-last/</link>
 <guid>https://nickvsnetworking.com/3g-at-last/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/dd9poy/3g_at_last">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 09:07:55 -0500</pubDate>
 <pubDate>Sun, 09 Aug 2026 09:07:55 -0500</pubDate>
 </item>
 <item>
@@ -477,10 +1275,8 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://lemire.me/blog/2026/08/09/profile-guided-optimization-in-go/</link>
 <guid>https://lemire.me/blog/2026/08/09/profile-guided-optimization-in-go/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/noa9x5/profile_guided_optimization_go">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 19:58:44 -0500</pubDate>
 <pubDate>Sun, 09 Aug 2026 19:58:44 -0500</pubDate>
 </item>
 <item>
@@ -488,10 +1284,8 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://www.youtube.com/watch?v=vRJVw8Di-4s</link>
 <guid>https://www.youtube.com/watch?v=vRJVw8Di-4s</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/ogtybl/getting_off_modernization_treadmill">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 10:32:54 -0500</pubDate>
 <pubDate>Sun, 09 Aug 2026 10:32:54 -0500</pubDate>
 </item>
 <item>
@@ -499,11 +1293,9 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://siderea.dreamwidth.org/1219758.html</link>
 <guid>https://siderea.dreamwidth.org/1219758.html</guid>
 <content:encoded><![CDATA[
-
 <p>Try <a href="https://web.archive.org/web/20260730202909/https://siderea.dreamwidth.org/1219758.html" rel="ugc">Internet Archive mirror</a> if the website doesn't load.</p>
 <p><a href="https://lobste.rs/s/aa229o/what_software_is_made_2015">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 07:26:37 -0500</pubDate>
 <pubDate>Sun, 09 Aug 2026 07:26:37 -0500</pubDate>
 </item>
 <item>
@@ -511,10 +1303,8 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://github.com/GrammaTech/ddisasm</link>
 <guid>https://github.com/GrammaTech/ddisasm</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/m70pcl/ddisasm_fast_accurate_disassembler">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 06:28:08 -0500</pubDate>
 <pubDate>Sun, 09 Aug 2026 06:28:08 -0500</pubDate>
 </item>
 <item>
@@ -522,10 +1312,8 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://postmarketos.org/blog/2026/08/06/pmOS-update-2026-07/</link>
 <guid>https://postmarketos.org/blog/2026/08/06/pmOS-update-2026-07/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/a5pnxx/postmarketos_2026_07_libcamera_0_7_2">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 09 Aug 2026 11:16:53 -0500</pubDate>
 <pubDate>Sun, 09 Aug 2026 11:16:53 -0500</pubDate>
 </item>
 <item>
@@ -533,13 +1321,10 @@ The article discusses a new feature in SQL that allows developers to opt certain
 <link>https://blog.getutm.app/2026/introducing-triton-directx-11-driver-for-qemu/</link>
 <guid>https://blog.getutm.app/2026/introducing-triton-directx-11-driver-for-qemu/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/0gmfid/triton_directx_11_driver_for_qemu">Comments</a></p>
 ]]></content:encoded>
 <pubDate>Sat, 08 Aug 2026 21:37:10 -0500</pubDate>
-<pubDate>Sat, 08 Aug 2026 21:37:10 -0500</pubDate>
 </item>
-
 <item>
 <title>Amazon VPC IPAM now supports BGP route protection monitoring and delegated RPKI for BYOIP prefixes</title>
 <link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-vpc-ipam-bgp-rpki-byoip/</link>
@@ -16314,469 +17099,6 @@ Amazon RDS for SQL Server now supports Microsoft SQL Server 2025, including Ente
 <p>7.10.0-dev.5</p>
 ]]></content:encoded>
 <pubDate>2026-07-21T17:41:44Z</pubDate>
-</item>
-<item>
-<title>7.10.0-dev.4</title>
-<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.4</link>
-<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.4</guid>
-<content:encoded><![CDATA[
-<p>7.10.0-dev.4</p>
-]]></content:encoded>
-<pubDate>2026-07-21T16:57:59Z</pubDate>
-</item>
-<item>
-<title>7.10.0-dev.3</title>
-<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.3</link>
-<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.3</guid>
-<content:encoded><![CDATA[
-<p>7.10.0-dev.3</p>
-]]></content:encoded>
-<pubDate>2026-07-21T16:25:31Z</pubDate>
-</item>
-<item>
-<title>7.10.0-dev.2</title>
-<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.2</link>
-<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.2</guid>
-<content:encoded><![CDATA[
-<p>7.10.0-dev.2</p>
-]]></content:encoded>
-<pubDate>2026-07-21T15:54:34Z</pubDate>
-</item>
-<item>
-<title>7.10.0-dev.1</title>
-<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.1</link>
-<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.1</guid>
-<content:encoded><![CDATA[
-<p>7.10.0-dev.1</p>
-]]></content:encoded>
-<pubDate>2026-07-21T15:34:40Z</pubDate>
-</item>
-<item>
-<title>19.2.8 (July 21st, 2026)</title>
-<link>https://github.com/react/react/releases/tag/v19.2.8</link>
-<guid>https://github.com/react/react/releases/tag/v19.2.8</guid>
-<content:encoded><![CDATA[
-<h2>React Server Components</h2>
-<ul>
-<li>Performance improvements when decoding<br />
-(<a href="https://github.com/facebook/react/pull/37087">#37087</a> by <a class="user-mention notranslate" href="https://github.com/eps1lon">@eps1lon</a>)</li>
-</ul>
-]]></content:encoded>
-<pubDate>2026-07-21T15:49:09Z</pubDate>
-</item>
-<item>
-<title>19.1.9 (July 21st, 2026)</title>
-<link>https://github.com/react/react/releases/tag/v19.1.9</link>
-<guid>https://github.com/react/react/releases/tag/v19.1.9</guid>
-<content:encoded><![CDATA[
-<h2>React Server Components</h2>
-<ul>
-<li>Performance improvements when decoding<br />
-(<a href="https://github.com/facebook/react/pull/37088">#37088</a> by <a class="user-mention notranslate" href="https://github.com/eps1lon">@eps1lon</a>)</li>
-</ul>
-]]></content:encoded>
-<pubDate>2026-07-21T15:48:51Z</pubDate>
-</item>
-<item>
-<title>19.0.8 (July 21st, 2026)</title>
-<link>https://github.com/react/react/releases/tag/v19.0.8</link>
-<guid>https://github.com/react/react/releases/tag/v19.0.8</guid>
-<content:encoded><![CDATA[
-<h2>React Server Components</h2>
-<ul>
-<li>Performance improvements when decoding<br />
-(<a href="https://github.com/facebook/react/pull/37089">#37089</a> by <a class="user-mention notranslate" href="https://github.com/eps1lon">@eps1lon</a>)</li>
-</ul>
-]]></content:encoded>
-<pubDate>2026-07-21T15:48:28Z</pubDate>
-</item>
-<item>
-<title>Kimi K3 Is Competitive with Fable; Kimi K3 and Fable Is SoTA</title>
-<link>https://fireworks.ai/blog/kimik3-fable</link>
-<guid>https://fireworks.ai/blog/kimik3-fable</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://fireworks.ai/blog/kimik3-fable">https://fireworks.ai/blog/kimik3-fable</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48999291">https://news.ycombinator.com/item?id=48999291</a></p>
-<p>Points: 352</p>
-<p># Comments: 202</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 22:35:24 +0000</pubDate>
-</item>
-<item>
-<title>A digestion of the Jacobian conjecture counterexample</title>
-<link>https://terrytao.wordpress.com/2026/07/21/a-digestion-of-the-jacobian-conjecture-counterexample/</link>
-<guid>https://terrytao.wordpress.com/2026/07/21/a-digestion-of-the-jacobian-conjecture-counterexample/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://terrytao.wordpress.com/2026/07/21/a-digestion-of-the-jacobian-conjecture-counterexample/">https://terrytao.wordpress.com/2026/07/21/a-digestion-of-the-jacobian-conjecture-counterexample/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48998362">https://news.ycombinator.com/item?id=48998362</a></p>
-<p>Points: 195</p>
-<p># Comments: 66</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 21:09:25 +0000</pubDate>
-</item>
-<item>
-<title>OpenAI and Hugging Face address security incident during model evaluation</title>
-<link>https://openai.com/index/hugging-face-model-evaluation-security-incident/</link>
-<guid>https://openai.com/index/hugging-face-model-evaluation-security-incident/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://www.axios.com/2026/07/21/openai-says-hugging-face-breach-caused-by-one-its-models" rel="nofollow">https://www.axios.com/2026/07/21/openai-says-hugging-face-br...</a><p>See also <i>Security incident disclosure – July 2026</i> - <a href="https://news.ycombinator.com/item?id=48956248">https://news.ycombinator.com/item?id=48956248</a> (9 comments)</p>
-<hr />
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48997548">https://news.ycombinator.com/item?id=48997548</a></p>
-<p>Points: 785</p>
-<p># Comments: 546</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 20:09:52 +0000</pubDate>
-</item>
-<item>
-<title>'VPNs are lawful technical tools,' says EU Court in landmark copyright ruling</title>
-<link>https://www.techradar.com/vpn/vpn-privacy-security/vpns-are-lawful-technical-tools-says-eu-court-in-landmark-anne-frank-copyright-ruling</link>
-<guid>https://www.techradar.com/vpn/vpn-privacy-security/vpns-are-lawful-technical-tools-says-eu-court-in-landmark-anne-frank-copyright-ruling</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.techradar.com/vpn/vpn-privacy-security/vpns-are-lawful-technical-tools-says-eu-court-in-landmark-anne-frank-copyright-ruling">https://www.techradar.com/vpn/vpn-privacy-security/vpns-are-lawful-technical-tools-says-eu-court-in-landmark-anne-frank-copyright-ruling</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48997221">https://news.ycombinator.com/item?id=48997221</a></p>
-<p>Points: 408</p>
-<p># Comments: 71</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 19:43:59 +0000</pubDate>
-</item>
-<item>
-<title>Judge approves $1.5B Anthropic settlement for pirated books used to train Claude</title>
-<link>https://apnews.com/article/ai-anthropic-copyright-settlement-claude-books-bartz-74b140444023898aeba8579b6e9f0d63</link>
-<guid>https://apnews.com/article/ai-anthropic-copyright-settlement-claude-books-bartz-74b140444023898aeba8579b6e9f0d63</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://apnews.com/article/ai-anthropic-copyright-settlement-claude-books-bartz-74b140444023898aeba8579b6e9f0d63">https://apnews.com/article/ai-anthropic-copyright-settlement-claude-books-bartz-74b140444023898aeba8579b6e9f0d63</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48996652">https://news.ycombinator.com/item?id=48996652</a></p>
-<p>Points: 158</p>
-<p># Comments: 116</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 19:04:39 +0000</pubDate>
-</item>
-<item>
-<title>Advertise in ChatGPT</title>
-<link>https://ads.openai.com/</link>
-<guid>https://ads.openai.com/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://ads.openai.com/">https://ads.openai.com/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48996571">https://news.ycombinator.com/item?id=48996571</a></p>
-<p>Points: 393</p>
-<p># Comments: 358</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 18:58:44 +0000</pubDate>
-</item>
-<item>
-<title>FreeInk: Open ecosystem for e-readers</title>
-<link>https://freeink.org/</link>
-<guid>https://freeink.org/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://freeink.org/">https://freeink.org/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48996318">https://news.ycombinator.com/item?id=48996318</a></p>
-<p>Points: 439</p>
-<p># Comments: 108</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 18:39:06 +0000</pubDate>
-</item>
-<item>
-<title>Laguna S 2.1</title>
-<link>https://poolside.ai/blog/introducing-laguna-s-2-1</link>
-<guid>https://poolside.ai/blog/introducing-laguna-s-2-1</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://poolside.ai/blog/introducing-laguna-s-2-1">https://poolside.ai/blog/introducing-laguna-s-2-1</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48995261">https://news.ycombinator.com/item?id=48995261</a></p>
-<p>Points: 250</p>
-<p># Comments: 46</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 17:17:06 +0000</pubDate>
-</item>
-<item>
-<title>Jack Dorsey launches Buzz to combine team chat, AI agents and Git hosting</title>
-<link>https://runtimewire.com/article/jack-dorsey-block-buzz-team-chat-ai-agents-git</link>
-<guid>https://runtimewire.com/article/jack-dorsey-block-buzz-team-chat-ai-agents-git</guid>
-<content:encoded><![CDATA[
-<p><a href="https://x.com/jack/status/2079605800998146171" rel="nofollow">https://x.com/jack/status/2079605800998146171</a>, <a href="https://xcancel.com/jack/status/2079605800998146171" rel="nofollow">https://xcancel.com/jack/status/2079605800998146171</a><p><a href="https://buzz.xyz/" rel="nofollow">https://buzz.xyz/</a></p>
-<hr />
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48995213">https://news.ycombinator.com/item?id=48995213</a></p>
-<p>Points: 259</p>
-<p># Comments: 226</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 17:14:06 +0000</pubDate>
-</item>
-<item>
-<title>Map of the world's great castles and fortresses</title>
-<link>https://thecastlemap.com/</link>
-<guid>https://thecastlemap.com/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://thecastlemap.com/">https://thecastlemap.com/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48994178">https://news.ycombinator.com/item?id=48994178</a></p>
-<p>Points: 194</p>
-<p># Comments: 141</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 16:05:58 +0000</pubDate>
-</item>
-<item>
-<title>Long presumed dead, a thriving coral reef is discovered in West Africa</title>
-<link>https://e360.yale.edu/digest/benin-coral-reef</link>
-<guid>https://e360.yale.edu/digest/benin-coral-reef</guid>
-<content:encoded><![CDATA[
-<p><a href="https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2026.1848226/full" rel="nofollow">https://www.frontiersin.org/journals/marine-science/articles...</a></p>
-<hr />
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48993816">https://news.ycombinator.com/item?id=48993816</a></p>
-<p>Points: 314</p>
-<p># Comments: 59</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 15:41:51 +0000</pubDate>
-</item>
-<item>
-<title>ICE to Pay Thomson Reuters $125M to Find Voter Fraud</title>
-<link>https://www.404media.co/ice-to-pay-thomson-reuters-125-million-to-find-voter-fraud/</link>
-<guid>https://www.404media.co/ice-to-pay-thomson-reuters-125-million-to-find-voter-fraud/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.404media.co/ice-to-pay-thomson-reuters-125-million-to-find-voter-fraud/">https://www.404media.co/ice-to-pay-thomson-reuters-125-million-to-find-voter-fraud/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48993448">https://news.ycombinator.com/item?id=48993448</a></p>
-<p>Points: 224</p>
-<p># Comments: 138</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 15:19:44 +0000</pubDate>
-</item>
-<item>
-<title>Gemini 3.6 Flash, 3.5 Flash-Lite, and 3.5 Flash Cyber</title>
-<link>https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/</link>
-<guid>https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-3-6-flash-3-5-flash-lite-3-5-flash-cyber/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://console.cloud.google.com/agent-platform/publishers/google/model-garden/gemini-3.6-flash" rel="nofollow">https://console.cloud.google.com/agent-platform/publishers/g...</a></p>
-<hr />
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48993414">https://news.ycombinator.com/item?id=48993414</a></p>
-<p>Points: 629</p>
-<p># Comments: 505</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 15:17:16 +0000</pubDate>
-</item>
-<item>
-<title>Apple defeats liability for not scanning iCloud for CSAM</title>
-<link>https://blog.ericgoldman.org/archives/2026/07/apple-defeats-liability-for-not-scanning-icloud-for-csam-but-the-judge-was-not-pleased-amy-v-apple.htm</link>
-<guid>https://blog.ericgoldman.org/archives/2026/07/apple-defeats-liability-for-not-scanning-icloud-for-csam-but-the-judge-was-not-pleased-amy-v-apple.htm</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://blog.ericgoldman.org/archives/2026/07/apple-defeats-liability-for-not-scanning-icloud-for-csam-but-the-judge-was-not-pleased-amy-v-apple.htm">https://blog.ericgoldman.org/archives/2026/07/apple-defeats-liability-for-not-scanning-icloud-for-csam-but-the-judge-was-not-pleased-amy-v-apple.htm</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48992870">https://news.ycombinator.com/item?id=48992870</a></p>
-<p>Points: 364</p>
-<p># Comments: 341</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 14:31:41 +0000</pubDate>
-</item>
-<item>
-<title>PCjs Machines</title>
-<link>https://www.pcjs.org/</link>
-<guid>https://www.pcjs.org/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.pcjs.org/">https://www.pcjs.org/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48992323">https://news.ycombinator.com/item?id=48992323</a></p>
-<p>Points: 196</p>
-<p># Comments: 26</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 13:48:35 +0000</pubDate>
-</item>
-<item>
-<title>New US homeownership measure puts people first</title>
-<link>https://www.minneapolisfed.org/article/2026/new-homeownership-measure-puts-people-first</link>
-<guid>https://www.minneapolisfed.org/article/2026/new-homeownership-measure-puts-people-first</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.minneapolisfed.org/article/2026/new-homeownership-measure-puts-people-first">https://www.minneapolisfed.org/article/2026/new-homeownership-measure-puts-people-first</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48991139">https://news.ycombinator.com/item?id=48991139</a></p>
-<p>Points: 205</p>
-<p># Comments: 340</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 12:03:14 +0000</pubDate>
-</item>
-<item>
-<title>Qwen-Image-3.0: Rich Content, Authentic Details, Deep Knowledge</title>
-<link>https://qwen.ai/blog?id=qwen-image-3.0</link>
-<guid>https://qwen.ai/blog?id=qwen-image-3.0</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://qwen.ai/blog?id=qwen-image-3.0">https://qwen.ai/blog?id=qwen-image-3.0</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48989701">https://news.ycombinator.com/item?id=48989701</a></p>
-<p>Points: 548</p>
-<p># Comments: 212</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 08:44:23 +0000</pubDate>
-</item>
-<item>
-<title>Five US tech giants' hidden debts soar to $1.65T on opaque AI funding</title>
-<link>https://asia.nikkei.com/business/technology/five-us-tech-giants-hidden-debts-soar-to-1.65tn-on-opaque-ai-funding</link>
-<guid>https://asia.nikkei.com/business/technology/five-us-tech-giants-hidden-debts-soar-to-1.65tn-on-opaque-ai-funding</guid>
-<content:encoded><![CDATA[
-<p><a href="https://archive.ph/20260720174223/https://asia.nikkei.com/business/technology/five-us-tech-giants-hidden-debts-soar-to-1.65tn-on-opaque-ai-funding" rel="nofollow">https://archive.ph/20260720174223/https://asia.nikkei.com/bu...</a></p>
-<hr />
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48987863">https://news.ycombinator.com/item?id=48987863</a></p>
-<p>Points: 355</p>
-<p># Comments: 247</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 03:56:03 +0000</pubDate>
-</item>
-<item>
-<title>Incremental – A library for incremental computations</title>
-<link>https://github.com/janestreet/incremental</link>
-<guid>https://github.com/janestreet/incremental</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://github.com/janestreet/incremental">https://github.com/janestreet/incremental</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=48987822">https://news.ycombinator.com/item?id=48987822</a></p>
-<p>Points: 329</p>
-<p># Comments: 65</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 03:50:53 +0000</pubDate>
-</item>
-<item>
-<title>GitHub suddenly rejected my SSH key (the fix was a .pub file?!)</title>
-<link>https://thorsell.io/2026/07/21/github-ssh-keys.html</link>
-<guid>https://thorsell.io/2026/07/21/github-ssh-keys.html</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/twqtlo/github_suddenly_rejected_my_ssh_key_fix">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 05:11:59 -0500</pubDate>
-</item>
-<item>
-<title>git --end-of-options</title>
-<link>https://nesbitt.io/2026/07/21/end-of-options.html</link>
-<guid>https://nesbitt.io/2026/07/21/end-of-options.html</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/cxz7vd/git_end_options">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 07:31:15 -0500</pubDate>
-</item>
-<item>
-<title>Bringing the modern web to the original iPad mini</title>
-<link>https://seg6.space/posts/resurrecting-ipad-mini</link>
-<guid>https://seg6.space/posts/resurrecting-ipad-mini</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/rkj3j4/bringing_modern_web_original_ipad_mini">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 17:47:54 -0500</pubDate>
-</item>
-<item>
-<title>“No AI” Statements Are Much More Than Mere Statements</title>
-<link>https://journal.james-zhan.com/no-ai-statements/</link>
-<guid>https://journal.james-zhan.com/no-ai-statements/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/qozazh/no_ai_statements_are_much_more_than_mere">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 13:02:26 -0500</pubDate>
-</item>
-<item>
-<title>Linux kernel will support $ORIGIN, sort of</title>
-<link>https://fzakaria.com/2026/07/20/linux-kernel-will-support-origin-sort-of</link>
-<guid>https://fzakaria.com/2026/07/20/linux-kernel-will-support-origin-sort-of</guid>
-<content:encoded><![CDATA[
-<p>HN discussions: <a href="https://news.ycombinator.com/item?id=48988793" rel="ugc">https://news.ycombinator.com/item?id=48988793</a></p>
-<p><a href="https://lobste.rs/s/msg39b/linux_kernel_will_support_origin_sort">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 05:02:46 -0500</pubDate>
-</item>
-<item>
-<title>COSMIC DE’s First Seven Months</title>
-<link>https://system76.com/blog/post/cosmic-de-first-seven-months</link>
-<guid>https://system76.com/blog/post/cosmic-de-first-seven-months</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/nv7xhn/cosmic_de_s_first_seven_months">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 14:57:49 -0500</pubDate>
-</item>
-<item>
-<title>Thoughts On Integers (2023)</title>
-<link>https://blog.xoria.org/integers/</link>
-<guid>https://blog.xoria.org/integers/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/s4gljc/thoughts_on_integers_2023">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 07:16:08 -0500</pubDate>
-</item>
-<item>
-<title>432 Linux kernel CVEs published in the last 24 hours</title>
-<link>https://lore.kernel.org/linux-cve-announce/</link>
-<guid>https://lore.kernel.org/linux-cve-announce/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/t2jxyu/432_linux_kernel_cves_published_last_24">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 20 Jul 2026 22:50:28 -0500</pubDate>
-</item>
-<item>
-<title>Web-based Jujutsu revset explorer &amp; debugger</title>
-<link>https://juju.bi/tools/revset</link>
-<guid>https://juju.bi/tools/revset</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/xroult/web_based_jujutsu_revset_explorer">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 12:50:36 -0500</pubDate>
-</item>
-<item>
-<title>Cosy Language</title>
-<link>https://cosy.com/y26/NL202603.html</link>
-<guid>https://cosy.com/y26/NL202603.html</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/7v1k7i/cosy_language">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 14:02:41 -0500</pubDate>
-</item>
-<item>
-<title>GGG – Declarative SVG badge generation using Guile Scheme and SXML</title>
-<link>https://codeberg.org/jjba23/ggg</link>
-<guid>https://codeberg.org/jjba23/ggg</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/jpq033/ggg_declarative_svg_badge_generation">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 04:59:57 -0500</pubDate>
-</item>
-<item>
-<title>Parallelizing Compilation: In-Process vs Multi-Process</title>
-<link>https://lobste.rs/s/lzgtkz/parallelizing_compilation_process_vs</link>
-<guid>https://lobste.rs/s/lzgtkz/parallelizing_compilation_process_vs</guid>
-<content:encoded><![CDATA[
-<p>I'm not sure if there are already good names for this, but I can't find anything useful when I look online.</p>
-<p>Obviously, when compiling programs, parallelizing the work is crucial. There seem to be two main approaches:</p>
-<ul>
-<li>Compiler is single-threaded, build system spawns N compilers (C, C++, others I'm sure)</li>
-<li>Compiler is multi-threaded (Rust, Zig)</li>
-</ul>
-<p>I'm looking into this because I'm looking at designing a programming language, and I have fast compilation as an explicit goal. Zig and Rust obviously have some of the same ideas but wildly different compilation speeds. C is known to be quite fast to compile, while C++ templates are slow(?).</p>
-<p>In terms of parallelization, why is it that a parallel compiler seems to be the choice for newer languages? Is this a coincidence or explicitly required because of e.g. circular imports?</p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 16:59:43 -0500</pubDate>
-</item>
-<item>
-<title>KDE for Enterprise Needs a Strong PIM Infrastructure</title>
-<link>https://ervin.ipsquad.net/blog/2026/07/21/kde-for-entreprise-needs-a-strong-pim-infrastructure/</link>
-<guid>https://ervin.ipsquad.net/blog/2026/07/21/kde-for-entreprise-needs-a-strong-pim-infrastructure/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/qlg8xj/kde_for_enterprise_needs_strong_pim">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 02:20:43 -0500</pubDate>
-</item>
-<item>
-<title>Five moments in snapping history</title>
-<link>https://unsung.aresluna.org/five-moments-in-snapping-history/</link>
-<guid>https://unsung.aresluna.org/five-moments-in-snapping-history/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/e7x0ha/five_moments_snapping_history">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 04:57:39 -0500</pubDate>
-</item>
-<item>
-<title>Using Nagios for small business infrastructure monitoring</title>
-<link>https://tech.chrishardie.com/2026/nagios-small-business-infrastructure-monitoring/</link>
-<guid>https://tech.chrishardie.com/2026/nagios-small-business-infrastructure-monitoring/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/wub9oc/using_nagios_for_small_business">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 13:35:19 -0500</pubDate>
-</item>
-<item>
-<title>lazy-tmux: restore tmux sessions lazily, with scrollback</title>
-<link>https://lazy-tmux.xyz</link>
-<guid>https://lazy-tmux.xyz</guid>
-<content:encoded><![CDATA[
-<p>A tmux session manager in Go. It lists all saved sessions as a tree, but only restores one — its processes and scrollback — when you actually open it, instead of bringing everything back eagerly like resurrect/continuum.</p>
-<p>The part I'd most like feedback on is the restore model: what gets re-run is controlled by an allow/denylist matched as regexes over the full command, so servers relaunch but destructive commands don't.</p>
-<p>Works with tmux 2.9–3.7b, one-line install.</p>
-<p><a href="https://lobste.rs/s/z1alry/lazy_tmux_restore_tmux_sessions_lazily">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 21 Jul 2026 10:14:38 -0500</pubDate>
 </item>
 </channel>
 </rss>
