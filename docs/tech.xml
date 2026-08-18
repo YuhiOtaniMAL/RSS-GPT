@@ -3,7 +3,907 @@
 <channel>
 <title>tech</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/tech.xml</link>
-<lastBuildDate>Mon, 17 Aug 2026 01:46:00 +0000</lastBuildDate>
+<lastBuildDate>Tue, 18 Aug 2026 01:41:20 +0000</lastBuildDate>
+
+<item>
+<title>Amazon Bedrock expands API support and introduces Cross Region Inferencing for OpenAI models</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-bedrock-cross-region-openai-v2/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-bedrock-cross-region-openai-v2/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon Bedrock, OpenAI GPT-5.6, Cross-Region inference, APIs, AWS  
+
+<br><br>Summary:  
+Amazon Bedrock has introduced support for OpenAI GPT-5.6 models (Sol, Terra, and Luna) on the bedrock-runtime endpoint. This update includes APIs for Responses, Converse, and Chat Completions, enhancing interaction capabilities. A significant new feature is cross-Region inference, which allows automatic routing of inference requests across multiple AWS Regions, improving throughput without users needing to manage regional capacity. Geo cross-Region inference ensures data processing remains within a specified geography, with newly added support for US CRIS. Global cross-Region inference enables requests to be served from any commercial AWS Region where the model exists, offering broad access and lower costs per token compared to in-Region and Geo inference. The launch also updates API support, allowing OpenAI GPT models to be used with native APIs seamlessly. These models integrate with existing account-level controls in Bedrock, where usage tracking is available through invocation logging, Amazon CloudWatch metrics, and AWS Cost Explorer for better expense management. Cross-Region inference for OpenAI models is now available in all AWS Regions supporting these models, encouraging users to explore the model cards for further insights. <div>
+<p>Amazon Bedrock now supports the OpenAI GPT-5.6 models (Sol, Terra, and Luna) on the bedrock-runtime endpoint, with support for the Responses, Converse, and Chat Completions APIs. It also adds support for cross-Region inference, allowing customers to use Global and Geo cross-Region inference to access higher throughput and lower inference costs.&nbsp;&nbsp;</p> 
+<p>Cross-Region inference automatically routes inference requests across multiple AWS Regions to give you higher throughput, without you needing to manage capacity across multiple Regions. Geo cross region inference routes requests within a predefined geography—including new US Geo (US CRIS) support with this launch—so you can scale while keeping data processed within that geography, while Global cross region inference serve requests from any commercial AWS Region where the model is available, giving you the broadest access to Bedrock capacity and the highest throughput during demand spikes. With Global cross-Region inference you also get lower costs as Global inferencing is priced lower per token for OpenAI models than in-Region and Geo inferencing. This launch also expands API support—you can also use OpenAI GPT models with the Responses API, Chat Completions API, and the Converse API on the bedrock-runtime endpoint. Because these native OpenAI APIs now run on bedrock-runtime, the models work with the same account-level controls you already use for other models on Bedrock: usage appears in Bedrock model invocation logging (deliverable to Amazon S3 or Amazon CloudWatch Logs) and in Amazon CloudWatch metrics covering invocation counts, token counts, latency, throttles, and errors, and it is itemized in AWS Cost Explorer and the AWS Cost and Usage Report so you can attribute spend by model.</p> 
+<p>Cross-Region inference for OpenAI models is available in all AWS Regions where OpenAI models on Amazon Bedrock are offered. To get started, review the model cards for GPT 5.6 (Sol, Tera and Luna) in the <a href="https://docs.aws.amazon.com/bedrock/">Amazon Bedrock User Guide.</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 20:29:00 GMT</pubDate>
+<pubDate>Mon, 17 Aug 2026 20:29:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon ECR now supports 25 replication rules per registry</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ecr-increased-replication-rules-limit</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ecr-increased-replication-rules-limit</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon ECR, replication rules, multi-region, multi-account, service limit increase
+
+<br><br>Summary: Amazon Elastic Container Registry (Amazon ECR) has raised the maximum number of replication rules per registry from 10 to 25. This change addresses the needs of customers with complex multi-region or multi-account architectures, who previously had to consolidate replication configurations due to the 10-rule limit. With the new capacity of 25 replication rules, customers can implement more detailed replication strategies for various scenarios. These include efficiently distributing images across numerous regions for low-latency pulls and enabling replication to several production and staging accounts. The increase in service limits allows for greater flexibility and efficiency in managing container images across diverse infrastructures. This update is applicable in all AWS Regions where Amazon ECR is available. For further information, customers are encouraged to visit the relevant AWS documentation. This enhancement is a significant improvement for users who need robust strategies for managing their container images across multiple environments. Overall, the increase in replication rules empowers users to optimize their workflows and ensure better performance in their container deployment strategies. <div>
+<p>Amazon Elastic Container Registry (Amazon ECR) has increased the maximum number of replication rules per registry from 10 to 25.</p> 
+<p>Previously, customers with complex multi-region or multi-account architectures were constrained to 10 replication rules per registry, requiring them to consolidate replication configurations to work within that constraint. With this update, customers can define up to 25 replication rules per registry, enabling more precise replication strategies for use cases like distributing images across many regions for low-latency pulls, or replicating to multiple production and staging accounts.</p> 
+<p>This service limit increase is available in all AWS Regions where Amazon ECR is supported. To learn more, visit the <a href="https://aws.amazon.com/ecr/">Amazon ECR product page</a> and refer to the <a href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/">Amazon ECR User Guide</a>.&nbsp;</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 19:01:00 GMT</pubDate>
+<pubDate>Mon, 17 Aug 2026 19:01:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon EC2 Auto Scaling now supports batch instance termination</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-auto-scaling-batch-termination</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-auto-scaling-batch-termination</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon EC2, Auto Scaling, batch termination, API call, workloads  
+
+<br><br>Summary:  
+Amazon EC2 Auto Scaling has introduced batch instance termination, allowing users to terminate up to 100 instance IDs with a single API call through the TerminateInstanceInAutoScalingGroup API. This feature significantly reduces the number of API calls needed for scaling down Auto Scaling groups, which is particularly beneficial for workloads requiring rapid scale-down, such as AI/ML training jobs, container orchestrators, and event-driven architectures that temporarily deploy large fleets. Upon initiating a batch termination, all instances are validated atomically before the actual termination process starts. Furthermore, existing Auto Scaling functionalities, such as lifecycle hooks and load balancer connection draining, are maintained for each instance within the batch, ensuring a seamless transition during scaling operations. Importantly, this batch termination feature is available across all AWS Regions without incurring additional costs. By simplifying the termination process, it enhances operational efficiency, making it easier for users to manage their resources dynamically while supporting various demanding workloads. For more detailed information, users can visit the AWS documentation. <div>
+<p>Amazon EC2 Auto Scaling now supports batch instance termination in a single API call. You can now pass up to 100 instance IDs to the TerminateInstanceInAutoScalingGroup API to terminate them as a batch, reducing the number of API calls needed to scale down your Auto Scaling groups.</p> 
+<p>Batch termination is designed for workloads that need to rapidly scale down, such as AI/ML training jobs, container orchestrators, or event-driven architectures that spin up large fleets temporarily. All instances in a batch are validated atomically before termination begins, and existing Auto Scaling behaviors such as lifecycle hooks and load balancer connection draining are preserved for each instance in the batch.</p> 
+<p>This feature is available in all AWS Regions at no additional cost.</p> 
+<p>To learn more, visit <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scaling-manually.html">Amazon EC2 Auto Scaling User Guide</a> and <a href="https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_TerminateInstanceInAutoScalingGroup.html">Amazon EC2 Auto Scaling API Reference Guide</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 18:11:00 GMT</pubDate>
+<pubDate>Mon, 17 Aug 2026 18:11:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon MSK now supports configuring custom domain names for MSK Provisioned clusters</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/17/amazon-msk-custom-domain-names/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/17/amazon-msk-custom-domain-names/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Custom domain names, Amazon MSK, clusters, metadata management, KRaft mode
+
+<br><br>Summary: Customers can now easily configure custom domain names at the cluster level for both ZooKeeper and KRaft modes in Amazon MSK. This feature simplifies the management of connection endpoints for client applications during cluster migrations, disaster recovery, and scaling operations by eliminating the need for manual configuration on each broker. Previously, custom domain names had to be set up individually for each broker, and KRaft-based clusters did not support this feature. With the new capability, users can define a custom domain once, and it is automatically applied to all brokers in the cluster. This configuration is retained during scaling operations and functions consistently across both cluster modes. This is particularly advantageous for customers who utilize Network Load Balancers, need persistent endpoints, or must conform to specific naming conventions for compliance and security purposes. The custom domain configuration can be applied to both new and existing MSK Provisioned clusters in all available AWS Regions at no extra charge. For more details, resources are available to assist customers in implementing this feature effectively. <div>
+<p>You can now easily configure custom domain names on <a href="https://aws.amazon.com/msk/">Amazon MSK Provisioned </a>clusters, on either ZooKeeper or KRaft mode for metadata management. This capability helps client applications maintain the same connection endpoints, simplifying cluster migrations, disaster recovery failovers, and scaling operations without reconfiguration.</p> 
+<p>Previously, customers configured custom domain names manually on each broker. Additionally, on KRaft-based clusters, customers could not configure custom domain names. With this launch, you can now easily define a custom domain once at the cluster level, and Amazon MSK automatically applies it to every broker in the cluster, eliminating the need to configure each broker individually. The configuration persists through scaling operations and works identically on both ZooKeeper and KRaft-based clusters. This is particularly useful for customers who route traffic through Network Load Balancers, require persistent endpoints across cluster operations, or must adhere to organizational naming conventions for security and compliance.</p> 
+<p>You can configure custom domain names on all new and existing MSK Provisioned clusters, in all AWS Regions where Amazon MSK Provisioned is available, at no additional cost. To learn more, see the <a href="https://docs.aws.amazon.com/msk/latest/developerguide/what-is-msk.html">Amazon MSK Developer Guide</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 18:01:00 GMT</pubDate>
+<pubDate>Mon, 17 Aug 2026 18:01:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon EC2 R8i and R8i-Flex instances are now available in Canada West (Calgary) region</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-r8i-r8i-flex-calgary/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ec2-r8i-r8i-flex-calgary/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon EC2, R8i instances, Intel Xeon, performance, Calgary
+
+<br><br>Summary:  
+Amazon Elastic Compute Cloud (Amazon EC2) has launched R8i and R8i-flex instances in the Canada West (Calgary) region. These instances are powered by custom Intel Xeon 6 processors, providing the highest performance and fast memory bandwidth among cloud-based Intel processors. R8i and R8i-flex instances offer up to 15% improved price-performance and 2.5x more memory bandwidth compared to prior Intel-based instances. They demonstrate 20% higher performance over R7i instances, with significant gains for specific applications, being up to 30% faster for PostgreSQL databases, 60% faster for NGINX web applications, and 40% faster for AI deep learning recommendation models compared to R7i. R8i-flex instances are designed for memory-intensive workloads, available in common sizes from large to 16xlarge, ideal for applications that do not fully utilize compute resources. R8i instances cater to memory-intensive needs requiring large instance sizes and continuous high CPU performance, offering 13 sizes alongside two bare metal options and a new 96xlarge size, boasting 142,100 aSAPS for mission-critical SAP workloads. Customers can purchase these instances through Savings Plans, On-Demand, and Spot instances. More details are available on the AWS News website. <div>
+<p>Starting today, Amazon Elastic Compute Cloud (Amazon EC2) R8i and R8i-flex instances are available in the Canada West (Calgary) region. These instances are powered by custom Intel Xeon 6 processors, available only on AWS, delivering the highest performance and fastest memory bandwidth among comparable Intel processors in the cloud. The R8i and R8i-flex instances offer up to 15% better price-performance, and 2.5x more memory bandwidth compared to previous generation Intel-based instances. They deliver 20% higher performance than R7i instances, with even higher gains for specific workloads. They are up to 30% faster for PostgreSQL databases, up to 60% faster for NGINX web applications, and up to 40% faster for AI deep learning recommendation models compared to R7i.</p> 
+<p>R8i-flex, our first memory-optimized Flex instances, are the easiest way to get price performance benefits for a majority of memory-intensive workloads. They offer the most common sizes, from large to 16xlarge, and are a great first choice for applications that don't fully utilize all compute resources.</p> 
+<p>R8i instances are a great choice for all memory-intensive workloads, especially for workloads that need the largest instance sizes or continuous high CPU usage. R8i instances offer 13 sizes including 2 bare metal sizes and the new 96xlarge size for the largest applications. <a href="https://docs.aws.amazon.com/sap/latest/general/sap-hana-aws-ec2.html" target="_blank">R8i instances are SAP-certified </a>and deliver 142,100 aSAPS, the highest among all comparable machines in on-premises and cloud environments, delivering exceptional performance for mission-critical SAP workloads.</p> 
+<p>To get started, sign in to the <a href="https://aws.amazon.com/console/" target="_blank">AWS Management Console</a>. Customers can purchase these instances via Savings Plans, On-Demand instances, and Spot instances. For more information about the new <a href="https://aws.amazon.com/ec2/instance-types/r8i" target="_blank">R8i and R8i-flex </a>instances visit the AWS News <a href="https://aws.amazon.com/blogs/aws/best-performance-and-fastest-memory-with-the-new-amazon-ec2-r8i-and-r8i-flex-instances/" target="_blank">blog</a>.&nbsp;</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 17:28:00 GMT</pubDate>
+<pubDate>Mon, 17 Aug 2026 17:28:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Connect Customer dashboards now support reporting on routing steps and agent proficiencies</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-connect-routing-steps/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-connect-routing-steps/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon Connect, dashboards, agent proficiencies, routing steps, analytics  
+
+<br><br>Summary:  
+Amazon Connect Customer dashboards have introduced enhanced reporting capabilities focusing on routing steps and agent proficiencies. This update allows supervisors to better monitor and optimize how contacts are matched to agents based on their specific skills. Managers now have the ability to filter agents according to their assigned proficiencies and group performance metrics by routing steps. Additionally, new metrics have been introduced, such as tracking the number of contacts queued at various routing stages. For instance, if a supervisor observes an increase in queued contacts at a step requiring highly skilled agents, they can adjust the routing criteria to broaden the pool of available agents, subsequently reducing wait times for customers. This improved reporting functionality is available in all AWS commercial and AWS GovCloud (US-West) regions where Amazon Connect Customer operates. To learn more about the enhanced analytics dashboards and the Amazon Connect Customer cloud-based contact center, interested users can visit the relevant AWS resources. <div>
+<p>Amazon Connect Customer dashboards now support reporting on routing steps and agent proficiencies enabling supervisors to monitor and optimize how contacts are matched to agents based on agent proficiencies. Managers can filter agents by their assigned proficiencies, group metrics by routing steps, and track new metrics including number of contacts queued in a routing step. For example, a supervisor notices a spike in queued contacts at a routing step requiring highly skilled agents, then relaxes the routing criteria to expand the agent pool and reduce wait times.<br /> <br /> Routing steps and agent proficiencies reporting on analytics dashboards is available in all AWS commercial and AWS GovCloud (US-West) <a href="https://docs.aws.amazon.com/connect/latest/adminguide/regions.html#amazonconnect_region">regions</a> where Amazon Connect Customer is offered. To learn more about Amazon Connect Customer analytics dashboards, see the <a href="https://docs.aws.amazon.com/connect/latest/adminguide/dashboards.html">Amazon Connect Customer Administrator Guide</a>. To learn more about Amazon Connect Customer, the AWS cloud-based contact center, please visit the <a href="https://aws.amazon.com/connect/">Amazon Connect Customer website</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 17:23:00 GMT</pubDate>
+<pubDate>Mon, 17 Aug 2026 17:23:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Network Firewall Now Supports Stateful Rule Hit Counts</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/08/aws-network-firewall-stateful-rule-hit-counts/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/aws-network-firewall-stateful-rule-hit-counts/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS Network Firewall, rule hit counts, visibility, network traffic, policy changes  
+
+<br><br>Summary:  
+AWS Network Firewall has introduced rule hit counts for stateful rules, enhancing visibility for network administrators and security engineers regarding how frequently each rule in the firewall policy matches network traffic. This managed network firewall service offers vital insights into VPC traffic inspection and monitoring. With rule hit counts, users can gain actionable intelligence, speeding up incident response through the detection of triggered rules and identifying policy blind spots, such as shadow, redundant, and obsolete rules. This feature also aids in validating policy changes by confirming that newly deployed rules are effectively matching the intended traffic. Rule hit counts are automatically enabled for both custom and managed rule groups, with metrics being refreshed at configurable intervals as low as five minutes. Importantly, this capability is provided at no additional cost as part of AWS Network Firewall, though standard charges apply for storing and querying log data. The feature is available in all AWS Regions where AWS Network Firewall operates, excluding the Middle East (UAE) and Middle East (Bahrain) Regions. For additional information, one can refer to the AWS documentation. <div>
+<div class="OutlineElement Ltr SCXW86699367 BCX2" style="direction: ltr;">
+ <p class="Paragraph SCXW86699367 BCX2" style="font-weight: normal; font-style: normal; vertical-align: baseline; background-color: transparent; color: windowtext; text-align: left; padding-left: 0.0px; padding-right: 0.0px; text-indent: 0.0px;"><span class="TextRun SCXW86699367 BCX2"><span class="NormalTextRun SCXW86699367 BCX2">AWS Network Firewall now provides rule hit counts for stateful rules, giving network administrators and security engineers visibility into how often each stateful rule in the firewall policy matches network traffic. AWS Network Firewall is a managed network firewall service that provides inspection and visibility into your VPC traffic.</span></span><span class="EOP Selected SCXW86699367 BCX2"></span></p> 
+</div> 
+<div class="OutlineElement Ltr SCXW86699367 BCX2" style="direction: ltr;">
+ <p class="Paragraph SCXW86699367 BCX2" style="font-weight: normal; font-style: normal; vertical-align: baseline; background-color: transparent; color: windowtext; text-align: left; padding-left: 0.0px; padding-right: 0.0px; text-indent: 0.0px;"><span class="TextRun SCXW86699367 BCX2"><span class="NormalTextRun SCXW86699367 BCX2">With rule hit counts, you can turn firewall rule activity into actionable intelligence. You can accelerate incident response by detecting the rules that triggered, identify policy blind spots such as shadow, redundant, and obsolete rules, and validate policy changes by confirming newly deployed rules are matching the intended traffic. Rule hit counts are enabled by default across both custom and managed rule groups, with metrics refreshing at configurable intervals as low as 5 minutes.</span></span><span class="EOP Selected SCXW86699367 BCX2"></span></p> 
+</div> 
+<div class="OutlineElement Ltr SCXW86699367 BCX2" style="direction: ltr;">
+ <p class="Paragraph SCXW86699367 BCX2" style="font-weight: normal; font-style: normal; vertical-align: baseline; background-color: transparent; color: windowtext; text-align: left; padding-left: 0.0px; padding-right: 0.0px; text-indent: 0.0px;"><span class="TextRun SCXW86699367 BCX2"><span class="NormalTextRun SCXW86699367 BCX2">This capability is available at no additional charge as part of AWS Network Firewall. Standard charges apply for storing and querying log data. This feature is available in all AWS Regions where AWS Network Firewall is supported,&nbsp;except the Middle East (UAE) and Middle East (Bahrain) Regions.<br /> <br /> To learn more, see the <a href="https://aws.amazon.com/network-firewall/">AWS Network Firewall product page</a> and <a href="https://docs.aws.amazon.com/network-firewall/latest/developerguide/what-is-aws-network-firewall.html">AWS Network Firewall documentation</a>.</span></span></p> 
+</div>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 16:30:00 GMT</pubDate>
+<pubDate>Mon, 17 Aug 2026 16:30:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Quick Microsoft 365 extensions are now generally available</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-quick-microsoft-365-extensions-generally-available</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-quick-microsoft-365-extensions-generally-available</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon Quick, Microsoft 365 extensions, Excel, PowerPoint, Outlook  
+  
+<br><br>Summary:  
+Amazon Quick has launched its Microsoft 365 extensions for Excel, PowerPoint, Word, and Outlook, now available for general use. These extensions leverage AI technology to facilitate complex tasks directly within users' Microsoft 365 environments. The Excel extension specializes in advanced spreadsheet analysis, including pivot tables and data management. The PowerPoint extension assists in creating and refining presentations using organization-specific templates. In Word, users can generate formatted documents, implement sweeping edits, and contribute to comment reviews. The Outlook extension enhances email management by prioritizing messages, organizing inboxes, scheduling meetings, and drafting responses using the user's Quick data and inbox context. These tools are designed to transform team workflows—finance teams can develop intricate financial models, sales teams can easily draft proposals from CRM data, marketing teams can create consistent presentations, legal teams can streamline contract reviews, operations teams can optimize email management, and IT teams can automate routine data tasks. The extensions are available in several regions, including the US, Europe, and Asia Pacific. To explore and download the extensions, further information is provided on the Amazon Quick platform. <div>
+<p>Amazon Quick announces the general availability of Microsoft 365 extensions for Excel, PowerPoint, Word, and Outlook. These extensions enable Quick to perform tasks directly within users' M365 environments, using AI to handle complex local tasks such as redlining documents, building financial models, creating presentation-ready decks, and managing Outlook inboxes.</p> 
+<p>The Excel extension helps with complex spreadsheet analysis, creating pivot tables and charts, and importing and cleaning data. The PowerPoint extension helps you create and refine presentations from Quick data using organization-defined templates. The Word extension generates formatted documents with Word primitives, makes sweeping edits with track changes enabled, and participates as a reviewer in comments. The Outlook extension performs inbox and calendaring tasks such as prioritizing emails, organizing your inbox, scheduling meetings, and drafting replies using your Quick data and entire inbox context.</p> 
+<p>These extensions transform daily work across teams. Finance teams can build complex models by describing what they need. Sales teams can draft proposals that automatically pull from CRM data. Marketing teams can create branded presentations without manual formatting. Legal teams can streamline contract reviews. Operations teams can manage email workflows and schedule meetings intelligently, and IT teams can automate routine data analysis that previously required manual effort.</p> 
+<p>Amazon Quick Microsoft 365 extensions are available in US East (N. Virginia), US West (Oregon), Asia Pacific (Sydney), Europe (Ireland), Asia Pacific (Tokyo), and Europe (Frankfurt). To learn more, see <a href="https://aws.amazon.com/blogs/machine-learning/amazon-quick-for-microsoft-365-agentic-ai-where-you-work/">Amazon Quick for Microsoft 365: Agentic AI where you work</a>, and download extensions on the <a href="https://aws.amazon.com/quick/download/" target="_blank">Quick download page.</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 15:41:00 GMT</pubDate>
+<pubDate>Mon, 17 Aug 2026 15:41:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon OpenSearch Service now supports automatic semantic enrichment for VPC domains</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-opensearch-service-vpc/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-opensearch-service-vpc/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon OpenSearch, automatic semantic enrichment, VPC-enabled domains, AI-powered semantic search, network security  
+
+<br><br>Summary: Amazon OpenSearch Service now supports automatic semantic enrichment for VPC-enabled domains, allowing customers with private network configurations to utilize AI-driven semantic search without exposing their domains to the public internet. This feature transforms traditional keyword-based search into context-aware retrieval, understanding the meaning behind queries. For instance, searching for "lightweight laptop for travel" can yield results related to "ultrabooks" or "portable notebooks under 3 lbs," even if those specific terms aren't mentioned. The automatic semantic enrichment process is fully managed by the service, removing the need for customers to self-manage machine learning models or integration processes. Previously limited to non-VPC domains, this capability now caters to customers with stringent network security needs while enhancing search relevance. Importantly, no changes to existing VPC configurations are required. The feature is available in 11 global regions: US East (N. Virginia, Ohio), US West (Oregon), Asia Pacific (Mumbai, Singapore, Sydney, Tokyo), and Europe (Frankfurt, Ireland, Spain, Stockholm). To implement this, users must have a VPC-enabled domain running OpenSearch version 2.19 or later and may need to update the service software version for compatibility. <div>
+<p>Amazon OpenSearch Service now extends automatic semantic enrichment to VPC-enabled domains, allowing customers with private network configurations to leverage AI-powered semantic search without exposing their domains to the public internet.</p> 
+<p>&nbsp;<br /> Automatic semantic enrichment transforms traditional keyword-only search into context-aware retrieval by understanding the meaning behind queries. For example, a search for "lightweight laptop for travel" returns results about "ultrabooks" and "portable notebooks under 3 lbs" even when these exact terms aren't in the query. The feature handles all semantic processing automatically, eliminating the need to self-manage machine learning models and integration overhead. Previously, automatic semantic enrichment was available only on domains that are not VPC-enabled. This capability is now supported within VPCs (Virtual Private Clouds), enabling customers with stricter network security requirements to improve search relevance while maintaining their existing security posture. No changes to existing VPC configurations are required. To learn more about automatic semantic enrichment, see our <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/opensearch-semantic-enrichment.html">documentation</a>.</p> 
+<p>&nbsp;<br /> Automatic semantic enrichment for VPC domains is available across 11 Regions globally: US East (N. Virginia, Ohio), US West (Oregon), Asia Pacific (Mumbai, Singapore, Sydney, Tokyo), and Europe (Frankfurt, Ireland, Spain, Stockholm). To get started, on your VPC-enabled OpenSearch Service domain running OpenSearch version 2.19 or later, create an index with automatic semantic enrichment fields configured. Note that you may need to update your domain to the latest service software version, see <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html">updating service software</a> for more information. </p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 15:39:00 GMT</pubDate>
+<pubDate>Mon, 17 Aug 2026 15:39:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS CloudShell now includes a built-in visual file editor</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/08/aws-cloudshell-visual-file-editor/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/aws-cloudshell-visual-file-editor/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS CloudShell, visual file editor, browser-based shell, editing files, seamless experience
+
+<br><br>Summary: AWS CloudShell now includes a built-in visual file editor that developers can access with a single 'edit' command, requiring no setup. This browser-based shell environment allows users to leverage their existing AWS Management Console credentials, making it particularly useful for developers, DevOps engineers, and cloud administrators who manage scripts, infrastructure-as-code, and AWS workflows. The new visual editor enhances CloudShell's capabilities by providing a GUI-based editing experience directly within the console session. Previously, file editing necessitated using terminal-based editors like Vim or Emacs or involved downloading and re-uploading files, which was cumbersome. The built-in visual editor simplifies this by offering features such as syntax highlighting, find-and-replace functionality, multi-line selection, copy-pasting, and undo-redo—all within the same browser session. This allows users to edit deployment scripts, AWS CloudFormation templates, and AWS Lambda functions efficiently. The feature is available in all AWS Regions where AWS CloudShell operates. For more details on the visual file editor and to get started, please visit the AWS documentation. <div>
+<p>AWS CloudShell now includes a built-in visual file editor that you can launch directly from your shell session using a single 'edit' command, no setup required. CloudShell provides a browser-based shell environment that uses your existing AWS Management Console credentials, making it a popular choice for developers, DevOps engineers, and cloud administrators managing scripts, infrastructure-as-code, agentic workflows, and AWS Lambda workflows. This new capability extends CloudShell's utility by bringing a familiar, GUI-based editing experience directly into your console session.</p> 
+<p>Previously, editing files in CloudShell required using terminal-based editors such as Vim or Emacs, or downloading files locally and re-uploading them after making changes. This added friction to common workflows.&nbsp;The built-in visual editor eliminates this by supporting syntax highlighting, find-and-replace, multi-line selection, copy-paste, and undo-redo in a single browser session. Whether you are updating a deployment script, modifying an agent steering file, editing an AWS CloudFormation template, or fixing an AWS Lambda function, the editor enables a seamless edit-and-run experience.</p> 
+<p>This feature is available in all AWS Regions where AWS CloudShell is available.</p> 
+<p>To learn more about the built-in visual file editor and how to get started, visit the&nbsp;<a href="https://docs.aws.amazon.com/cloudshell/latest/userguide/getting-started.html#edit-run" rel="noopener noreferrer" target="_blank">AWS CloudShell documentation.</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 13:00:00 GMT</pubDate>
+<pubDate>Mon, 17 Aug 2026 13:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Quick now supports per-user resource limits</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-quick-per-user-resource-limits/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-quick-per-user-resource-limits/</guid>
+<content:encoded><![CDATA[
+
+<p>Amazon Quick now enables administrators to set per-user limits on index storage and agent hours, giving them direct control over subscription costs. With limits management, administrators can create limit profiles that cap per-user consumption, helping prevent unexpected overage charges and ensuring subscription entitlements are used efficiently across their organization.</p> 
+<p>For example, an organization deploying Quick enterprise-wide to thousands of users can set account-level limit profiles to establish cost-predictable baselines, then assign higher limits to specific roles that require more agent hours. Administrators can create and assign limit profiles at the user, role, or account level, with a priority hierarchy that ensures the right users get the right capacity. When a user reaches their limit, new consumption is blocked while existing content is preserved.</p> 
+<p>This feature is available for Professional and Enterprise plans, in all AWS Regions where Amazon Quick agentic capabilities are supported. For more information, see the <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/">AWS Region table</a>.</p> 
+<p>Learn more about Amazon Quick by visiting the <a href="https://aws.amazon.com/quick">Quick website</a>. To learn more about limit profiles, see Limits management in the <a href="https://docs.aws.amazon.com/quick/latest/userguide/limit-profiles.html">Amazon Quick User Guide</a>.&nbsp;</p>
+]]></content:encoded>
+<pubDate>Fri, 14 Aug 2026 21:07:00 GMT</pubDate>
+<pubDate>Fri, 14 Aug 2026 21:07:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Quick now supports data loss prevention with Microsoft Purview</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-quick-dlp-purview/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-quick-dlp-purview/</guid>
+<content:encoded><![CDATA[
+
+<p>Amazon Quick now integrates with Microsoft Purview to enforce data loss prevention (DLP) policies across your Quick environment. Organizations need to ensure that sensitive files aren't shared outside approved channels. With this integration, IT administrators and security teams can apply their existing Purview sensitivity labels to automatically control how files are handled in Quick capabilities such as chat, spaces, and knowledge bases.</p> 
+<p>Administrators can configure enforcement actions (block, warn, or allow) for each sensitivity label, giving organizations granular control over sensitive file sharing across Quick. For example, a financial services company can block files labeled "Highly Confidential" from being uploaded to shared spaces while allowing "Internal" files with a warning notification. With this integration, customers can extend their existing Microsoft Purview governance policies into Quick without additional tools.</p> 
+<p>This feature is available in <a href="https://docs.aws.amazon.com/quick/latest/userguide/regions.html">all AWS Regions where Amazon Quick agentic capabilities are supported</a>. For more information, see the <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/">AWS Region table</a>. To learn more, see <a href="https://docs.aws.amazon.com/quick/latest/userguide/data-loss-prevention.html">Data loss prevention</a> in the <i>Amazon Quick User Guide</i>.&nbsp;</p>
+]]></content:encoded>
+<pubDate>Fri, 14 Aug 2026 21:04:00 GMT</pubDate>
+<pubDate>Fri, 14 Aug 2026 21:04:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Quick now supports approval policies for sharing</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-quick-approval-policies-sharing/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-quick-approval-policies-sharing/</guid>
+<content:encoded><![CDATA[
+
+<p>Amazon Quick now offers approval policies, giving administrators governance controls over how assets are shared within their organization. With approval policies, administrators can require designated approvers to review and approve share requests before access is granted, helping organizations ensure that sharing of sensitive assets is deliberate, compliant, and auditable.</p> 
+<p>Administrators can create approval policies scoped to specific asset types, including knowledge bases, spaces, and custom chat agents. When a user submits a share request for an asset covered by a policy, it is routed to the assigned approver group for review. Approvers can evaluate the asset directly before approving or denying the request, and all workflow events are captured in AWS CloudTrail for full auditability. For custom chat agents, approvers can review and act on the entire dependency package in a single request.</p> 
+<p>This feature is available for Professional and Enterprise plans, in all AWS Regions where Amazon Quick agentic capabilities are supported. For more information, see the <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/">AWS Region table</a>.</p> 
+<p>Learn more about Amazon Quick by visiting the <a href="https://aws.amazon.com/quick">Quick website</a>. To learn more about approval policies, see Approval policies in the <a href="https://docs.aws.amazon.com/quick/latest/userguide/data-loss-prevention.html">Amazon Quick User Guide</a>.&nbsp;</p>
+]]></content:encoded>
+<pubDate>Fri, 14 Aug 2026 21:00:00 GMT</pubDate>
+<pubDate>Fri, 14 Aug 2026 21:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Quick now supports customizable no data messages for visuals</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2025/08/amazon-quick-custom-no-data-message/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2025/08/amazon-quick-custom-no-data-message/</guid>
+<content:encoded><![CDATA[
+
+<p>Amazon Quick announces support for no data message customization, enabling authors to replace the default "No data to display" message with a tailored message when a visual returns no data. Authors can configure a custom title, subtitle, and hyperlink that give readers immediate context about why no data is shown and what steps to take next.</p> 
+<p>All text fields support parameters, so the message can dynamically reflect the reader's current filter selections. The hyperlink supports http://, https://, and mailto: URL schemas, and both the title and subtitle can be toggled on or off independently.</p> 
+<p>This feature is available now in all <a href="https://docs.aws.amazon.com/quick/latest/userguide/regions.html" rel="noopener noreferrer" target="_blank">AWS Regions where Amazon Quick is offered</a>. To learn more, visit <a href="https://docs.aws.amazon.com/quick/latest/userguide/analysis-settings.html" rel="noopener noreferrer" target="_blank">Analysis Settings</a> in the Amazon Quick User Guide.</p>
+]]></content:encoded>
+<pubDate>Fri, 14 Aug 2026 15:00:00 GMT</pubDate>
+<pubDate>Fri, 14 Aug 2026 15:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Deadline Cloud Now Supports EBS Persistent Volume Cost Tracking</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/08/aws-deadline-cloud-now-supports-ebs-persistent-volume-cost-tracking/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/aws-deadline-cloud-now-supports-ebs-persistent-volume-cost-tracking/</guid>
+<content:encoded><![CDATA[
+
+<p>AWS Deadline Cloud now surfaces costs related to Amazon Elastic Block Store (Amazon EBS) persistent volumes in the Usage Explorer in the Deadline Cloud Monitor app. AWS Deadline Cloud is a fully managed service that helps teams run compute-intensive workloads in the cloud for visual effects, animation, product design, simulation, and gaming.</p> 
+<p>Customers have historically been able to see compute and license costs related to Deadline Cloud. With the recent release of support for persistent EBS volumes, customers needed a way to see storage costs as well. Now, Deadline Cloud tracks the cost for each EBS volume from creation until deletion, independent of any job or session. These costs appear as a new persistent volume usage type in Usage Explorer and the statistics APIs. These are attributed to the fleet that owns the volume so customers can aggregate spend by fleet, farm, or time period. This helps customers spot idle volumes and decide whether to adjust a time-to-live or let it expire. Cost tracking is enabled automatically, so no action is required.</p> 
+<p>Persistent volume cost tracking is available in all AWS Regions where Deadline Cloud is offered. Cost tracking introduces no additional charges. To learn more, visit the <a href="https://aws.amazon.com/deadline-cloud/">AWS Deadline Cloud product page</a> or our <a href="https://docs.aws.amazon.com/deadline-cloud/latest/userguide/">user guide</a>.</p>
+]]></content:encoded>
+<pubDate>Wed, 12 Aug 2026 16:00:00 GMT</pubDate>
+<pubDate>Wed, 12 Aug 2026 16:00:00 GMT</pubDate>
+</item>
+<item>
+<title>v16.3.1-canary.22</title>
+<link>https://github.com/vercel/next.js/releases/tag/v16.3.1-canary.22</link>
+<guid>https://github.com/vercel/next.js/releases/tag/v16.3.1-canary.22</guid>
+<content:encoded><![CDATA[
+
+<h3>Misc Changes</h3>
+<ul>
+<li>fix(turbo-persistence): allow 32-bit usize conversion: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97288">#97288</a></li>
+<li>test: restore missing NFT <code>exports*</code> unit fixtures: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97459">#97459</a></li>
+<li>[ci] Fix backport canary release dispatch: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97383">#97383</a></li>
+<li>turbo-tasks-backend: Enforce that tasks exist when accessing them: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/96043">#96043</a></li>
+<li>turbo-tasks-backend: add persistence delete/tombstone plumbing for GC: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95975">#95975</a></li>
+<li>turbo-persistence: add key-value tombstones for MultiValue families: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/96929">#96929</a></li>
+</ul>
+<h3>Credits</h3>
+<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/hardfist">@hardfist</a>, <a class="user-mention notranslate" href="https://github.com/mischnic">@mischnic</a>, <a class="user-mention notranslate" href="https://github.com/ztanner">@ztanner</a>, and <a class="user-mention notranslate" href="https://github.com/lukesandberg">@lukesandberg</a> for helping!</p>
+]]></content:encoded>
+
+<pubDate>2026-08-17T23:45:39Z</pubDate>
+</item>
+<item>
+<title>7.10.0-integration-fix-prisma-publish-token.1</title>
+<link>https://github.com/prisma/prisma/releases/tag/7.10.0-integration-fix-prisma-publish-token.1</link>
+<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-integration-fix-prisma-publish-token.1</guid>
+<content:encoded><![CDATA[
+
+<p>7.10.0-integration-fix-prisma-publish-token.1</p>
+]]></content:encoded>
+
+<pubDate>2026-08-17T09:50:25Z</pubDate>
+</item>
+<item>
+<title>7.10.0-dev.58</title>
+<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.58</link>
+<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.58</guid>
+<content:encoded><![CDATA[
+
+<p>7.10.0-dev.58</p>
+]]></content:encoded>
+
+<pubDate>2026-08-17T10:17:04Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.2</title>
+<link>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.2</link>
+<guid>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.2</guid>
+<content:encoded><![CDATA[
+
+<h1>v8.0.0-rc.2</h1>
+<p>This release retires the <code>prisma-next</code> binary in favour of the unified <code>prisma</code> CLI, returns the default aggregates to plain JavaScript numbers with lossless variants beside them, makes CHECK constraints a declared part of the contract, and splits runtime row queries from non-returning writes. Almost every application will need to re-emit its contract and rename its config file, so read the breaking changes before upgrading.</p>
+<p>Two upgrade recipes carry the mechanical translations for this hop: the <a href="https://github.com/prisma/prisma/blob/v8.0.0-rc.2/skills/prisma-next-upgrade/upgrades/8.0.0-rc.1-to-8.0.0-rc.2/">user recipe</a> and the <a href="https://github.com/prisma/prisma/blob/v8.0.0-rc.2/skills/prisma-8-extension-upgrade/upgrades/8.0.0-rc.1-to-8.0.0-rc.2/">extension-author recipe</a>.</p>
+<h2>Breaking changes</h2>
+<ul>
+<li>
+<p><strong>This repository no longer publishes a CLI; the unified <code>prisma</code> CLI replaces it</strong> — nothing published ships a <code>prisma-next</code> bin anymore. <code>@prisma/orm-toolchain</code> exposes the <code>orm</code> command family at <code>@prisma/orm-toolchain/cli</code> and no binary, and the database facades forward no launcher. Install <code>@prisma/cli</code> (the prisma-cli distribution, published under <code>next</code> for the v8 line) and replace <code>prisma-next &lt;command&gt;</code> in package scripts and CI with the unified CLI. The config file moves with it: <code>prisma-next.config.ts</code> is deprecated in favour of <code>prisma.config.ts</code>, and the config value is now engine-shaped, with your existing ORM config nested under an <code>orm</code> section. Both the old filename and the flat shape still load, each printing a deprecation warning on stderr, so the rename and the rewrap can land separately. See the <a href="https://github.com/prisma/prisma/blob/v8.0.0-rc.2/skills/prisma-next-upgrade/upgrades/8.0.0-rc.1-to-8.0.0-rc.2/">user recipe</a>. (<a href="https://github.com/prisma/prisma/pull/30005">#30005</a>)</p>
+<p>Before:</p>
+<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-c">// prisma-next.config.ts</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">defineConfig</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'@prisma/orm-postgres/config'</span><span class="pl-kos">;</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-en">defineConfig</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">contract</span>: <span class="pl-s">'./contract.ts'</span><span class="pl-kos">,</span> <span class="pl-c1">output</span>: <span class="pl-s">'./generated'</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p>After:</p>
+<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-c">// prisma.config.ts</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">defineConfig</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'@prisma/cli-engine'</span><span class="pl-kos">;</span>
+<span class="pl-k">import</span> <span class="pl-kos">{</span> <span class="pl-s1">defineConfig</span> <span class="pl-k">as</span> <span class="pl-s1">ormConfig</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'@prisma/orm-postgres/config'</span><span class="pl-kos">;</span>
+
+<span class="pl-k">export</span> <span class="pl-k">default</span> <span class="pl-en">defineConfig</span><span class="pl-kos">(</span><span class="pl-kos">{</span>
+  <span class="pl-c1">orm</span>: <span class="pl-en">ormConfig</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">contract</span>: <span class="pl-s">'./contract.ts'</span><span class="pl-kos">,</span> <span class="pl-c1">output</span>: <span class="pl-s">'./generated'</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+</li>
+<li>
+<p><strong>The default aggregates are JavaScript numbers again, with lossless variants beside them</strong> — <code>count()</code>, <code>sum()</code> over an integer column, and <code>avg()</code> over an integer column all return <code>number</code>. In <code>8.0.0-rc.1</code> they returned a <code>bigint</code>, a <code>bigint</code> or decimal string depending on the column's width, and a decimal string respectively. The lossless results moved to three new operations: <code>countBigInt()</code> returns a <code>bigint</code>, <code>sumBigInt()</code> returns a <code>bigint</code>, and <code>avgDecimal()</code> returns an exact decimal string (PostgreSQL only — SQLite has no decimal type and contributes none). A <code>count()</code> or integer <code>sum()</code> whose value passes ±(2^53 − 1) now raises <code>RUNTIME.DECODE_FAILED</code> rather than returning a rounded number, so move those calls to the <code>BigInt</code> variants where the magnitude is real. Unchanged: <code>min</code>/<code>max</code>, <code>sum</code>/<code>avg</code> over a float column, <code>sum</code> over <code>Decimal</code>, <code>sum</code> over <code>UnboundedInt</code>, and the ORM's <code>having(...)</code> operands. The SQL builder's comparison operands do move, because <code>fns.gt(a, b)</code> types both sides from one codec. The same PR also makes the wide-integer codecs refuse the wrong JavaScript type: a <code>BigInt</code> or <code>UnboundedInt</code> column rejects a <code>number</code> and a <code>BigIntNumber</code> column rejects a <code>bigint</code>, with <code>RUNTIME.ENCODE_FAILED</code> naming the type that arrived, where previously a number was accepted and stringified — which let a fractional value reach an integer column unremarked. See the <a href="https://github.com/prisma/prisma/blob/v8.0.0-rc.2/skills/prisma-next-upgrade/upgrades/8.0.0-rc.1-to-8.0.0-rc.2/">user recipe</a>. (<a href="https://github.com/prisma/prisma/pull/29930">#29930</a>)</p>
+<p>Before:</p>
+<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-k">const</span> <span class="pl-kos">{</span> total <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-s1">db</span><span class="pl-kos">.</span><span class="pl-c1">User</span><span class="pl-kos">.</span><span class="pl-en">aggregate</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">total</span>: <span class="pl-s1">a</span><span class="pl-kos">.</span><span class="pl-en">count</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">total</span> <span class="pl-c1">===</span> <span class="pl-c1">2n</span><span class="pl-kos">;</span> <span class="pl-c">// bigint</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">busy</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-s1">db</span><span class="pl-kos">.</span><span class="pl-c1">sql</span><span class="pl-kos">.</span><span class="pl-c1">public</span><span class="pl-kos">.</span><span class="pl-c1">user</span>
+  <span class="pl-kos">.</span><span class="pl-en">groupBy</span><span class="pl-kos">(</span><span class="pl-s">'kind'</span><span class="pl-kos">)</span>
+  <span class="pl-kos">.</span><span class="pl-en">having</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">_f</span><span class="pl-kos">,</span> <span class="pl-s1">fns</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">fns</span><span class="pl-kos">.</span><span class="pl-en">gt</span><span class="pl-kos">(</span><span class="pl-s1">fns</span><span class="pl-kos">.</span><span class="pl-en">count</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-c1">1n</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// bigint literal</span></pre></div>
+<p>After:</p>
+<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-k">const</span> <span class="pl-kos">{</span> total <span class="pl-kos">}</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-s1">db</span><span class="pl-kos">.</span><span class="pl-c1">User</span><span class="pl-kos">.</span><span class="pl-en">aggregate</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">a</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">total</span>: <span class="pl-s1">a</span><span class="pl-kos">.</span><span class="pl-en">count</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-s1">total</span> <span class="pl-c1">===</span> <span class="pl-c1">2</span><span class="pl-kos">;</span> <span class="pl-c">// number — countBigInt() returns the bigint</span>
+
+<span class="pl-k">const</span> <span class="pl-s1">busy</span> <span class="pl-c1">=</span> <span class="pl-k">await</span> <span class="pl-s1">db</span><span class="pl-kos">.</span><span class="pl-c1">sql</span><span class="pl-kos">.</span><span class="pl-c1">public</span><span class="pl-kos">.</span><span class="pl-c1">user</span>
+  <span class="pl-kos">.</span><span class="pl-en">groupBy</span><span class="pl-kos">(</span><span class="pl-s">'kind'</span><span class="pl-kos">)</span>
+  <span class="pl-kos">.</span><span class="pl-en">having</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-s1">_f</span><span class="pl-kos">,</span> <span class="pl-s1">fns</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-s1">fns</span><span class="pl-kos">.</span><span class="pl-en">gt</span><span class="pl-kos">(</span><span class="pl-s1">fns</span><span class="pl-kos">.</span><span class="pl-en">count</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span> <span class="pl-c">// plain number literal</span></pre></div>
+</li>
+<li>
+<p><strong>Which aggregate methods exist is now the contract's answer</strong> — the aggregate methods are no longer declared on the ORM and SQL-builder surfaces outright. Each surface is derived from the operation names in the emitted <code>contract.d.ts</code>'s <code>AggregateTypes</code> block, so a target or extension can contribute an operation and it appears under its own name with no client change. PostgreSQL now contributes eight operations and SQLite seven. <strong>Re-emit your contract</strong> with the CLI's <code>contract emit</code>: against a contract with no <code>AggregateTypes</code> block — one authored in code with <code>defineContract(...)</code> and handed straight to the client, or emitted before <code>8.0.0-rc.1</code> — every aggregate surface resolves to <code>AggregateOperationsUnavailable</code>, an empty type, and each call becomes a compile error. What this release changes is compile-time only — the separate runtime guard introduced in <code>8.0.0-rc.1</code> still stands, rejecting an aggregate whose operation and input codec the composed target does not declare with <code>ORM.AGGREGATE_UNSUPPORTED</code> before the query runs. Separately, <code>count(field)</code> now renders <code>COUNT(&lt;column&gt;)</code> instead of accepting the argument and discarding it, so a call that got past the types — a <code>@ts-expect-error</code>, a <code>count(x as never)</code>, or dynamic dispatch — now counts that field's non-null values rather than rows. See the <a href="https://github.com/prisma/prisma/blob/v8.0.0-rc.2/skills/prisma-next-upgrade/upgrades/8.0.0-rc.1-to-8.0.0-rc.2/">user recipe</a> and the <a href="https://github.com/prisma/prisma/blob/v8.0.0-rc.2/skills/prisma-8-extension-upgrade/upgrades/8.0.0-rc.1-to-8.0.0-rc.2/">extension-author recipe</a>. (<a href="https://github.com/prisma/prisma/pull/29922">#29922</a>)</p>
+</li>
+<li>
+<p><strong>CHECK constraints are declared in the contract, and introspection now sees all of them</strong> — the CHECK shape in <code>contract.json</code> changed from <code>{ name, column, valueSet }</code> to <code>{ name, prefix, expression }</code>, where <code>expression</code> is the raw SQL predicate and <code>name</code> is a content-addressed wire name (<code>&lt;prefix&gt;_&lt;8hex&gt;</code>, the convention indexes and RLS policies already use). An old-shape contract is rejected on read, so re-emitting is not optional. Three consequences to plan for. Your first migration plan after upgrading drops each old unsuffixed enum constraint and adds the wire-named one, which needs <code>destructive</code> to converge. Every list (<code>many</code>) column gains a declared element-non-null CHECK the planner previously created without declaring. And introspection stopped parsing predicates, so hand-written constraints earlier versions could not see are now visible — and an undeclared check is an extra that <code>db verify --strict</code> reports and a destructive-capable plan drops, so read the first plan for <code>dropCheckConstraint</code> operations naming constraints you wrote yourself, and declare each one you want to keep with <code>@@check(expression: "…", map: "&lt;physical name&gt;")</code>. Two API changes ride along: <code>addCheckConstraint</code> in committed migration files takes an <code>expression</code> instead of a <code>column</code>/<code>values</code> pair, and the <code>typescriptContract</code> options bag now requires <code>createNamespace</code> whenever it passes <code>defaultControlPolicy</code>. An <code>enumType()</code> whose codec is numeric now throws <code>CONTRACT.ENUM_INVALID</code> while the contract is being built rather than failing later at migrate time. See the <a href="https://github.com/prisma/prisma/blob/v8.0.0-rc.2/skills/prisma-next-upgrade/upgrades/8.0.0-rc.1-to-8.0.0-rc.2/">user recipe</a> and the <a href="https://github.com/prisma/prisma/blob/v8.0.0-rc.2/skills/prisma-8-extension-upgrade/upgrades/8.0.0-rc.1-to-8.0.0-rc.2/">extension-author recipe</a>. (<a href="https://github.com/prisma/prisma/pull/29892">#29892</a>)</p>
+<p>Before:</p>
+<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">addCheckConstraint</span><span class="pl-kos">(</span><span class="pl-kos">{</span> schema<span class="pl-kos">,</span> table<span class="pl-kos">,</span> constraint<span class="pl-kos">,</span> <span class="pl-c1">column</span>: <span class="pl-s">'kind'</span><span class="pl-kos">,</span> <span class="pl-c1">values</span>: <span class="pl-kos">[</span><span class="pl-s">'admin'</span><span class="pl-kos">,</span> <span class="pl-s">'user'</span><span class="pl-kos">]</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p>After:</p>
+<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-smi">this</span><span class="pl-kos">.</span><span class="pl-en">addCheckConstraint</span><span class="pl-kos">(</span><span class="pl-kos">{</span> schema<span class="pl-kos">,</span> table<span class="pl-kos">,</span> constraint<span class="pl-kos">,</span> <span class="pl-c1">expression</span>: <span class="pl-s">`"kind" IN ('admin', 'user')`</span> <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+</li>
+<li>
+<p><strong>Runtime row queries and non-returning writes are separate calls</strong> — <code>query()</code> streams rows and <code>execute()</code> resolves <code>{ affectedRows }</code>, which is how a write now reports its affected count without a preceding <code>SELECT</code>. Classify each call site by the result it consumes rather than replacing every <code>execute</code>: a select, a returning write, or any plan whose rows are iterated, indexed, or decoded moves to <code>query</code>, while an insert, update, or delete that returns nothing stays on <code>execute</code> and reads <code>affectedRows</code>. Prepared row consumption moves from <code>target.queryPrepared(prepared, params)</code> to <code>prepared.query(target, params)</code>. Runtime middleware splits the same way, into <code>beforeQuery</code> / <code>interceptQuery</code> / <code>afterQuery</code> and <code>beforeExecute</code> / <code>interceptExecute</code> / <code>afterExecute</code> with a shared <code>beforeCompile</code>; query interception returns <code>{ rows }</code> and execute interception returns <code>{ stats }</code>. There is no operation discriminator, compatibility alias, or generic fallback hook. On Mongo, <code>db.query</code> stays the static builder and the row-executing <code>db.execute</code> facade method is gone — build with <code>db.query</code>, then execute through <code>(await db.runtime()).query(plan)</code>. See the <a href="https://github.com/prisma/prisma/blob/v8.0.0-rc.2/skills/prisma-next-upgrade/upgrades/8.0.0-rc.1-to-8.0.0-rc.2/">user recipe</a>. (<a href="https://github.com/prisma/prisma/pull/29921">#29921</a>)</p>
+</li>
+<li>
+<p><strong><code>raw</code> is a reserved storage namespace</strong> — the SQL surface exposes the whole-query raw statement tag as <code>db.sql.raw</code>, so a storage namespace of that name would be unreachable through the builder while the emitted types still promised its tables. Building the client now raises <code>ORM.NAMESPACE_RESERVED</code> naming the namespace. Rename it in your schema, re-emit the contract, and plan the rename against the database as you would any other namespace rename. Only <code>raw</code> is reserved. (<a href="https://github.com/prisma/prisma/pull/29997">#29997</a>)</p>
+<p>Before:</p>
+<div class="highlight highlight-source-prisma notranslate position-relative overflow-auto"><pre><span class="pl-s1"><span class="pl-k">model</span> <span class="pl-en">Event</span> {</span>
+<span class="pl-s1">  <span class="pl-smi">id</span> <span class="pl-c1">String</span> <span class="pl-s1"><span class="pl-en">@id</span></span></span>
+<span class="pl-s1">  <span class="pl-s1"><span class="pl-en">@@schema</span>(<span class="pl-s">"</span><span class="pl-s">raw</span><span class="pl-s">"</span>)</span></span>
+<span class="pl-s1">}</span></pre></div>
+<p>After:</p>
+<div class="highlight highlight-source-prisma notranslate position-relative overflow-auto"><pre><span class="pl-s1"><span class="pl-k">model</span> <span class="pl-en">Event</span> {</span>
+<span class="pl-s1">  <span class="pl-smi">id</span> <span class="pl-c1">String</span> <span class="pl-s1"><span class="pl-en">@id</span></span></span>
+<span class="pl-s1">  <span class="pl-s1"><span class="pl-en">@@schema</span>(<span class="pl-s">"</span><span class="pl-s">ingest</span><span class="pl-s">"</span>)</span></span>
+<span class="pl-s1">}</span></pre></div>
+</li>
+<li>
+<p><strong>Codec ids are checked where you write them</strong> — a codec id in a prepared declaration or in a contract-bound raw fragment is now checked against your contract's codec map, so an id the contract does not carry is a compile error instead of an execution-time <code>RUNTIME.PARAM_REF_MISSING_CODEC</code>. The usual cause is an unversioned id. Read the correct spelling off your emitted <code>contract.d.ts</code> — every id it carries now completes at both positions. A raw fragment built through a contract-free lane is unaffected, since it has no map to check against. (<a href="https://github.com/prisma/prisma/pull/30011">#30011</a>)</p>
+<p>Before:</p>
+<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-k">await</span> <span class="pl-s1">db</span><span class="pl-kos">.</span><span class="pl-en">prepare</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">id</span>: <span class="pl-s">'pg/int4'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">sql</span><span class="pl-kos">,</span> <span class="pl-s1">params</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-c">/* … */</span><span class="pl-s1"></span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">const</span> <span class="pl-s1">upper</span> <span class="pl-c1">=</span> <span class="pl-s1">fns</span><span class="pl-kos">.</span><span class="pl-en">raw</span><span class="pl-s">`UPPER(<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">f</span><span class="pl-kos">.</span><span class="pl-c1">email</span><span class="pl-kos">}</span></span>)`</span><span class="pl-kos">.</span><span class="pl-en">returns</span><span class="pl-kos">(</span><span class="pl-s">'pg/text'</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p>After:</p>
+<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-k">await</span> <span class="pl-s1">db</span><span class="pl-kos">.</span><span class="pl-en">prepare</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">id</span>: <span class="pl-s">'pg/int4@1'</span> <span class="pl-kos">}</span><span class="pl-kos">,</span> <span class="pl-kos">(</span><span class="pl-s1">sql</span><span class="pl-kos">,</span> <span class="pl-s1">params</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-c">/* … */</span><span class="pl-s1"></span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">const</span> <span class="pl-s1">upper</span> <span class="pl-c1">=</span> <span class="pl-s1">fns</span><span class="pl-kos">.</span><span class="pl-en">raw</span><span class="pl-s">`UPPER(<span class="pl-s1"><span class="pl-kos">${</span><span class="pl-s1">f</span><span class="pl-kos">.</span><span class="pl-c1">email</span><span class="pl-kos">}</span></span>)`</span><span class="pl-kos">.</span><span class="pl-en">returns</span><span class="pl-kos">(</span><span class="pl-s">'pg/text@1'</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+</li>
+<li>
+<p><strong><code>db update</code> takes consent by database name, and <code>--yes</code> no longer grants it</strong> — a plan that would destroy data is refused until you type the name of the connected database, and the consent binds to that exact plan by hash. <code>--yes</code> never grants it; the CLI style guide has always said a blanket confirmation flag must not stand in for a destructive confirmation. Non-interactive runs grant with <code>--confirm &lt;database&gt;</code>. A dry run, or a plan with nothing destructive in it, never asks. Update any CI invocation that relied on <code>-y</code> to apply a destructive plan. (<a href="https://github.com/prisma/prisma/pull/29986">#29986</a>)</p>
+</li>
+<li>
+<p><strong>The diagnostic commands exit 4 on findings and 2 on errors</strong> — <code>db verify</code>, <code>db sign</code>, and <code>migration check</code> now distinguish "I ran and found problems" (exit 4) from "I could not run" (exit 2). Exit 1 is reserved for a bug in the CLI itself, and exit 0 still means the check ran and found nothing. <code>db verify</code> and <code>db sign</code> previously exited 1 on findings, and <code>migration check</code> exited 2. Scripts that test for any non-zero exit are unaffected; scripts that match a specific code must be updated. (<a href="https://github.com/prisma/prisma/pull/29984">#29984</a>)</p>
+</li>
+<li>
+<p><strong>Four <code>migration status</code> flags are retired</strong> — <code>--graph</code>, <code>--all</code>, <code>--limit</code>, and <code>--ref</code> moved to their own commands. An old invocation now gets a typed <code>CLI.COMMAND_MOVED</code> error naming the replacement rather than failing as an unknown flag. (<a href="https://github.com/prisma/prisma/pull/29982">#29982</a>)</p>
+</li>
+<li>
+<p><strong>Prepared statements split by their declared result</strong> — <code>runtime.prepare()</code> returns one of two handles chosen from the plan the callback builds: a rows plan gives the <code>PreparedStatement</code> you already have, consumed with <code>.query(target, params)</code>, while a plan whose declared result is an affected-row count gives a <code>PreparedExecution</code>, consumed with <code>.execute(target, params)</code>. This matters to extension authors: a facade that redeclares <code>prepare()</code> changes its return type to <code>PreparedFor</code> with no logic change, and a scope that installs the prepared-query bridge must also install the execute bridge or <code>prepared.execute</code> throws on the bridge invariant. See the <a href="https://github.com/prisma/prisma/blob/v8.0.0-rc.2/skills/prisma-8-extension-upgrade/upgrades/8.0.0-rc.1-to-8.0.0-rc.2/">extension-author recipe</a>. (<a href="https://github.com/prisma/prisma/pull/30006">#30006</a>)</p>
+</li>
+</ul>
+<h2>Features</h2>
+<ul>
+<li>Whole-query raw SQL replaces the classic <code>$queryRaw</code> / <code>$executeRaw</code> use case. A whole statement is authored with the same tagged template the fragment mechanism already used, terminated with <code>.returnsRow(rowSpec)</code> for decoded, typed rows or <code>.affectedCount()</code> for a mutation count, and built into an ordinary query plan that flows through the existing lowering, codec, guardrail, and execution machinery — no new query lane and no new execution surface. Row-returning raw queries interpolate into other raw templates as subqueries, which gives CTEs, including data-modifying ones, for free. (<a href="https://github.com/prisma/prisma/pull/29997">#29997</a>)</li>
+<li><code>@@check(expression: "…")</code> declares a CHECK constraint in the schema, and <code>contract infer</code> adopts the ones your database already has. Use <code>name:</code> for a wire-name prefix, so the physical constraint is <code>name_&lt;8hex&gt;</code> hashed over the predicate and compared by name — which means Postgres reprinting the expression never causes drift. Use <code>map:</code> to adopt a constraint under its existing physical name, comparing the predicate byte-for-byte. Pulling a database now emits <code>@@check</code> for every live check Prisma Next did not derive, so a hand-written constraint is declared from the first pull instead of reading as an undeclared extra. (<a href="https://github.com/prisma/prisma/pull/29972">#29972</a>)</li>
+<li><code>@noCheck</code> opts a column out of the CHECK constraints Prisma Next derives for it, per kind: <code>@noCheck</code> suppresses all of them, <code>@noCheck(membership)</code> keeps the element-non-null check on a list column while dropping the membership check, and <code>@noCheck(elementNotNull)</code> does the reverse. The TypeScript builder equivalent is <code>.noCheck(...)</code>. <code>contract infer</code> emits the attribute too, so a pulled schema passes <code>db verify --schema-only</code> immediately instead of needing one migration first. (<a href="https://github.com/prisma/prisma/pull/29928">#29928</a>)</li>
+<li>Two new column types make integer representation a per-column choice without changing the lossless <code>BigInt</code> default. <code>BigIntNumber</code> reads and writes as a JavaScript <code>number</code>, throwing outside ±(2^53 − 1) instead of rounding. <code>UnboundedInt</code> uses PostgreSQL unconstrained <code>numeric</code> storage and round-trips integral values as exact <code>bigint</code> values at arbitrary magnitude. PostgreSQL contributes both; SQLite contributes <code>BigIntNumber</code>. (<a href="https://github.com/prisma/prisma/pull/29902">#29902</a>)</li>
+<li>The minimum supported PostgreSQL version drops from 17 to 15, the oldest version CI has been exercising all along. <code>init</code> scaffolds and the <code>--probe-db</code> warning threshold follow the new floor. The reasoning is recorded in ADR 244. (<a href="https://github.com/prisma/prisma/pull/29971">#29971</a>)</li>
+<li>Renaming a model or column whose CHECK constraint content is unchanged now plans a single <code>ALTER TABLE … RENAME CONSTRAINT</code>, classed <code>widening</code>, instead of a drop plus an add. A cosmetic rename no longer needs a destructive-capable plan or a full table revalidation. (<a href="https://github.com/prisma/prisma/pull/29894">#29894</a>)</li>
+<li>Errors carry typed next actions. A failure that has a remedy now ships it as structured data — <code>nextActions</code>, each naming a command to run — raised at the site that holds the arguments rather than spelled out in English prose a caller would have to parse. The binary name is templated at the raise site and substituted when rendered, so the suggestion stays correct as the CLI is renamed. (<a href="https://github.com/prisma/prisma/pull/29977">#29977</a>)</li>
+<li>CLI failures report their real error code. <code>envelope.code</code> is the stable surface consumers branch on, and a dozen failures previously reported <code>CONTRACT.VERIFY_FAILED</code> while hiding the true code in metadata. Every construction site now declares its code explicitly, fourteen new codes were added for the failures that had none, and the generic error path gained <code>cause</code> support. (<a href="https://github.com/prisma/prisma/pull/29919">#29919</a>)</li>
+<li>Config loading reports diagnostics per section instead of throwing on the first problem it finds. A command fails only when a section it actually reads is broken, so a malformed <code>formatter</code> section no longer blocks <code>db init</code>. Each diagnostic is tagged with the config section and field it concerns. (<a href="https://github.com/prisma/prisma/pull/29936">#29936</a>)</li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li><code>init</code> no longer fails at its contract-emit step against the published packages. The step now runs the scaffolded project's own CLI binary as a subprocess rather than loading the new config in-process with the running CLI's bundled loader, and its failure message carries the child's stderr so a real cause is visible. The schema-path prompt also shows its default as placeholder text instead of looking blank until a keypress. (<a href="https://github.com/prisma/prisma/pull/30018">#30018</a>)</li>
+<li><code>contract emit</code> picks the import specifier for the emitted <code>contract.d.ts</code> by reading the nearest <code>package.json</code> above the file it is writing, rather than falling back to the process working directory. Running the command from the wrong directory previously wrote an unresolvable internal specifier into the generated file. (<a href="https://github.com/prisma/prisma/pull/29981">#29981</a>)</li>
+<li>Synthesized foreign-key-backing index name prefixes are truncated to fit PostgreSQL's 63-byte identifier limit, so a mapped explicit join table no longer fails <code>contract emit</code> before the content hash can be appended. User-authored over-budget index prefixes still fail loudly. (<a href="https://github.com/prisma/prisma/pull/30025">#30025</a>)</li>
+<li>A raw row spec column named <code>__proto__</code> is now refused loudly instead of silently vanishing — bracket assignment onto an object literal hit the inherited setter, so the key never became an own property and the record was quietly re-parented. <code>constructor</code> and <code>prototype</code> create ordinary own properties and round-trip faithfully. (<a href="https://github.com/prisma/prisma/pull/30014">#30014</a>)</li>
+<li>The PostgreSQL direct driver no longer ends a caller's transaction. A driver-level read issued while its connection held an open transaction reported no transaction in progress, took the cursor portal-protection path, and wrapped itself in <code>BEGIN</code>/<code>COMMIT</code> — and that <code>COMMIT</code> ended the caller's transaction, so later statements ran autocommit and <code>ROLLBACK</code> undid nothing. The driver and its connection now share the transaction-open flag. (<a href="https://github.com/prisma/prisma/pull/29920">#29920</a>)</li>
+<li>ORM mutation reloads encode <code>Bytes</code> identities through the column codec, so a repeated upsert keyed on a <code>Bytes</code> column no longer raises <code>ORM.MUTATION_ROW_MISSING</code>. Every unbound literal entering a select through raw collection state now becomes a typed parameter. (<a href="https://github.com/prisma/prisma/pull/29910">#29910</a>)</li>
+</ul>
+<h2>New contributors</h2>
+<ul>
+<li><a href="https://github.com/EmaToplek">@EmaToplek</a> made their first contribution in <a href="https://github.com/prisma/prisma/pull/29903">#29903</a></li>
+</ul>
+]]></content:encoded>
+
+<pubDate>2026-08-17T13:31:08Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.2-dev.1</title>
+<link>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.2-dev.1</link>
+<guid>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.2-dev.1</guid>
+<content:encoded><![CDATA[
+
+<p>chore(deps-dev)(deps-dev): bump the dev-deps group across 1 directory…</p>
+]]></content:encoded>
+
+<pubDate>2026-08-17T14:59:29Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.1-dev.46</title>
+<link>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.1-dev.46</link>
+<guid>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.1-dev.46</guid>
+<content:encoded><![CDATA[
+
+<p>The engine becomes an exact peer of the toolchain, and a bin-less pac…</p>
+]]></content:encoded>
+
+<pubDate>2026-08-17T08:04:18Z</pubDate>
+</item>
+<item>
+<title>How Bluesky draws its logo on screenshots</title>
+<link>https://timmarinin.net/2026/bluesky-screenshots/</link>
+<guid>https://timmarinin.net/2026/bluesky-screenshots/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://timmarinin.net/2026/bluesky-screenshots/">https://timmarinin.net/2026/bluesky-screenshots/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49338459">https://news.ycombinator.com/item?id=49338459</a></p>
+<p>Points: 208</p>
+<p># Comments: 153</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 22:20:40 +0000</pubDate>
+<pubDate>Mon, 17 Aug 2026 22:20:40 +0000</pubDate>
+</item>
+<item>
+<title>AI;DR (AI; Didn't Read)</title>
+<link>https://www.rickmanelius.com/p/aidr-ai-didnt-read</link>
+<guid>https://www.rickmanelius.com/p/aidr-ai-didnt-read</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.rickmanelius.com/p/aidr-ai-didnt-read">https://www.rickmanelius.com/p/aidr-ai-didnt-read</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49336573">https://news.ycombinator.com/item?id=49336573</a></p>
+<p>Points: 581</p>
+<p># Comments: 366</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 19:47:15 +0000</pubDate>
+<pubDate>Mon, 17 Aug 2026 19:47:15 +0000</pubDate>
+</item>
+<item>
+<title>GPU Offload in Rust: Portable, Safe, and Fast</title>
+<link>https://arxiv.org/abs/2608.13759</link>
+<guid>https://arxiv.org/abs/2608.13759</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://arxiv.org/abs/2608.13759">https://arxiv.org/abs/2608.13759</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49334991">https://news.ycombinator.com/item?id=49334991</a></p>
+<p>Points: 157</p>
+<p># Comments: 36</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 17:54:59 +0000</pubDate>
+<pubDate>Mon, 17 Aug 2026 17:54:59 +0000</pubDate>
+</item>
+<item>
+<title>Qwen3.8 27B scores 52 on Artificial Analysis</title>
+<link>https://artificialanalysis.ai/models/qwen3-8-27b</link>
+<guid>https://artificialanalysis.ai/models/qwen3-8-27b</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://artificialanalysis.ai/models/qwen3-8-27b">https://artificialanalysis.ai/models/qwen3-8-27b</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49334544">https://news.ycombinator.com/item?id=49334544</a></p>
+<p>Points: 305</p>
+<p># Comments: 134</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 17:25:17 +0000</pubDate>
+<pubDate>Mon, 17 Aug 2026 17:25:17 +0000</pubDate>
+</item>
+<item>
+<title>Sun Clock</title>
+<link>https://sunclock.net/</link>
+<guid>https://sunclock.net/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://sunclock.net/">https://sunclock.net/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49333824">https://news.ycombinator.com/item?id=49333824</a></p>
+<p>Points: 170</p>
+<p># Comments: 56</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 16:37:54 +0000</pubDate>
+<pubDate>Mon, 17 Aug 2026 16:37:54 +0000</pubDate>
+</item>
+<item>
+<title>Universal Health Coverage Could Save $1T and 114k Lives a Year, Yale Study</title>
+<link>https://ysph.yale.edu/news-article/universal-health-coverage-could-save-one-trillion-dollars-and-114000-lives-every-year/</link>
+<guid>https://ysph.yale.edu/news-article/universal-health-coverage-could-save-one-trillion-dollars-and-114000-lives-every-year/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://ysph.yale.edu/news-article/universal-health-coverage-could-save-one-trillion-dollars-and-114000-lives-every-year/">https://ysph.yale.edu/news-article/universal-health-coverage-could-save-one-trillion-dollars-and-114000-lives-every-year/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49332981">https://news.ycombinator.com/item?id=49332981</a></p>
+<p>Points: 384</p>
+<p># Comments: 517</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 15:49:57 +0000</pubDate>
+<pubDate>Mon, 17 Aug 2026 15:49:57 +0000</pubDate>
+</item>
+<item>
+<title>AI-Generated GitHub Copilot “Autofix” Allowed Compromise of Snowflake's Jira</title>
+<link>https://www.wiz.io/blog/red-agent-snowflake-copilot-cicd-bug</link>
+<guid>https://www.wiz.io/blog/red-agent-snowflake-copilot-cicd-bug</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.wiz.io/blog/red-agent-snowflake-copilot-cicd-bug">https://www.wiz.io/blog/red-agent-snowflake-copilot-cicd-bug</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49331423">https://news.ycombinator.com/item?id=49331423</a></p>
+<p>Points: 316</p>
+<p># Comments: 125</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 14:18:38 +0000</pubDate>
+<pubDate>Mon, 17 Aug 2026 14:18:38 +0000</pubDate>
+</item>
+<item>
+<title>Apple's App Tracking Transparency treated its own apps better than rivals</title>
+<link>https://www.bundeskartellamt.de/SharedDocs/Meldung/EN/Pressemitteilungen/2026/08_17_2026_Apple_ATTF.html</link>
+<guid>https://www.bundeskartellamt.de/SharedDocs/Meldung/EN/Pressemitteilungen/2026/08_17_2026_Apple_ATTF.html</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.bundeskartellamt.de/SharedDocs/Meldung/EN/Pressemitteilungen/2026/08_17_2026_Apple_ATTF.html">https://www.bundeskartellamt.de/SharedDocs/Meldung/EN/Pressemitteilungen/2026/08_17_2026_Apple_ATTF.html</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49331222">https://news.ycombinator.com/item?id=49331222</a></p>
+<p>Points: 238</p>
+<p># Comments: 93</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 14:07:59 +0000</pubDate>
+<pubDate>Mon, 17 Aug 2026 14:07:59 +0000</pubDate>
+</item>
+<item>
+<title>How to disable or avoid intrusive AI</title>
+<link>https://www.librarian.net/notoai/</link>
+<guid>https://www.librarian.net/notoai/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.librarian.net/notoai/">https://www.librarian.net/notoai/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49331220">https://news.ycombinator.com/item?id=49331220</a></p>
+<p>Points: 253</p>
+<p># Comments: 155</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 14:07:56 +0000</pubDate>
+<pubDate>Mon, 17 Aug 2026 14:07:56 +0000</pubDate>
+</item>
+<item>
+<title>Ask HN: Alternatives to GitHub</title>
+<link>https://news.ycombinator.com/item?id=49331033</link>
+<guid>https://news.ycombinator.com/item?id=49331033</guid>
+<content:encoded><![CDATA[
+
+<p>Github has been down consistently over the last few months - does it make sense to switch to alternatives?</p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49331033">https://news.ycombinator.com/item?id=49331033</a></p>
+<p>Points: 493</p>
+<p># Comments: 315</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 13:59:17 +0000</pubDate>
+<pubDate>Mon, 17 Aug 2026 13:59:17 +0000</pubDate>
+</item>
+<item>
+<title>A Preview of DuckDB v2.0</title>
+<link>https://duckdb.org/2026/08/17/duckdb-20-highlights</link>
+<guid>https://duckdb.org/2026/08/17/duckdb-20-highlights</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://duckdb.org/2026/08/17/duckdb-20-highlights">https://duckdb.org/2026/08/17/duckdb-20-highlights</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49330781">https://news.ycombinator.com/item?id=49330781</a></p>
+<p>Points: 533</p>
+<p># Comments: 95</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 13:46:27 +0000</pubDate>
+<pubDate>Mon, 17 Aug 2026 13:46:27 +0000</pubDate>
+</item>
+<item>
+<title>Incident with Github.com</title>
+<link>https://www.githubstatus.com/incidents/zkxwbgr0cnmx</link>
+<guid>https://www.githubstatus.com/incidents/zkxwbgr0cnmx</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.githubstatus.com/incidents/zkxwbgr0cnmx">https://www.githubstatus.com/incidents/zkxwbgr0cnmx</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49330684">https://news.ycombinator.com/item?id=49330684</a></p>
+<p>Points: 694</p>
+<p># Comments: 2</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 13:40:55 +0000</pubDate>
+<pubDate>Mon, 17 Aug 2026 13:40:55 +0000</pubDate>
+</item>
+<item>
+<title>GitHub down again? no PR access</title>
+<link>https://news.ycombinator.com/item?id=49330632</link>
+<guid>https://news.ycombinator.com/item?id=49330632</guid>
+<content:encoded><![CDATA[
+
+<p>Githubstatus.com currently says everything is working, but it isn't</p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49330632">https://news.ycombinator.com/item?id=49330632</a></p>
+<p>Points: 288</p>
+<p># Comments: 2</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 13:37:28 +0000</pubDate>
+<pubDate>Mon, 17 Aug 2026 13:37:28 +0000</pubDate>
+</item>
+<item>
+<title>GPT 5.6 Sol is the best "vision" model OpenAI ever released</title>
+<link>https://blog.roboflow.com/openai-gpt-5-6/</link>
+<guid>https://blog.roboflow.com/openai-gpt-5-6/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://blog.roboflow.com/openai-gpt-5-6/">https://blog.roboflow.com/openai-gpt-5-6/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49329575">https://news.ycombinator.com/item?id=49329575</a></p>
+<p>Points: 300</p>
+<p># Comments: 152</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 12:09:42 +0000</pubDate>
+<pubDate>Mon, 17 Aug 2026 12:09:42 +0000</pubDate>
+</item>
+<item>
+<title>Linear algebra done right</title>
+<link>https://linear.axler.net/</link>
+<guid>https://linear.axler.net/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://linear.axler.net/">https://linear.axler.net/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49326816">https://news.ycombinator.com/item?id=49326816</a></p>
+<p>Points: 254</p>
+<p># Comments: 97</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 05:21:34 +0000</pubDate>
+<pubDate>Mon, 17 Aug 2026 05:21:34 +0000</pubDate>
+</item>
+<item>
+<title>GIMP Development Update</title>
+<link>https://www.gimp.org/news/2026/08/16/dev-update-august-2026/</link>
+<guid>https://www.gimp.org/news/2026/08/16/dev-update-august-2026/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.gimp.org/news/2026/08/16/dev-update-august-2026/">https://www.gimp.org/news/2026/08/16/dev-update-august-2026/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49326156">https://news.ycombinator.com/item?id=49326156</a></p>
+<p>Points: 253</p>
+<p># Comments: 233</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 03:08:47 +0000</pubDate>
+<pubDate>Mon, 17 Aug 2026 03:08:47 +0000</pubDate>
+</item>
+<item>
+<title>On AI regulation and messaging</title>
+<link>https://twitter.com/DarioAmodei/status/2088758816376807762</link>
+<guid>https://twitter.com/DarioAmodei/status/2088758816376807762</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://xcancel.com/DarioAmodei/status/2088758816376807762" rel="nofollow">https://xcancel.com/DarioAmodei/status/2088758816376807762</a></p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49325789">https://news.ycombinator.com/item?id=49325789</a></p>
+<p>Points: 234</p>
+<p># Comments: 498</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 01:59:56 +0000</pubDate>
+<pubDate>Mon, 17 Aug 2026 01:59:56 +0000</pubDate>
+</item>
+<item>
+<title>The Life and Death of Direct File [pdf]</title>
+<link>https://www.ischool.berkeley.edu/sites/default/files/vinton_report_5.pdf</link>
+<guid>https://www.ischool.berkeley.edu/sites/default/files/vinton_report_5.pdf</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.ischool.berkeley.edu/sites/default/files/vinton_report_5.pdf">https://www.ischool.berkeley.edu/sites/default/files/vinton_report_5.pdf</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49325185">https://news.ycombinator.com/item?id=49325185</a></p>
+<p>Points: 211</p>
+<p># Comments: 112</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 00:17:57 +0000</pubDate>
+<pubDate>Mon, 17 Aug 2026 00:17:57 +0000</pubDate>
+</item>
+<item>
+<title>The federal keyword lists that canceled billions in research funding</title>
+<link>https://www.highereddive.com/news/inside-the-federal-keyword-lists-that-canceled-billions-in-research-funding/826203/</link>
+<guid>https://www.highereddive.com/news/inside-the-federal-keyword-lists-that-canceled-billions-in-research-funding/826203/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.highereddive.com/news/inside-the-federal-keyword-lists-that-canceled-billions-in-research-funding/826203/">https://www.highereddive.com/news/inside-the-federal-keyword-lists-that-canceled-billions-in-research-funding/826203/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49325159">https://news.ycombinator.com/item?id=49325159</a></p>
+<p>Points: 277</p>
+<p># Comments: 178</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 00:14:10 +0000</pubDate>
+<pubDate>Mon, 17 Aug 2026 00:14:10 +0000</pubDate>
+</item>
+<item>
+<title>GitHub has alternatives, but no replacement</title>
+<link>https://lalitm.com/post/github-alternatives/</link>
+<guid>https://lalitm.com/post/github-alternatives/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/izrwdc/github_has_alternatives_no_replacement">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 12:12:44 -0500</pubDate>
+<pubDate>Mon, 17 Aug 2026 12:12:44 -0500</pubDate>
+</item>
+<item>
+<title>Does it make sense to switch to a Github Alternative ?</title>
+<link>https://lobste.rs/s/0zdh32/does_it_make_sense_switch_github</link>
+<guid>https://lobste.rs/s/0zdh32/does_it_make_sense_switch_github</guid>
+<content:encoded><![CDATA[
+
+<p>Github has been down consistently over the last few months - does it make sense to switch to alternatives now?</p>
+<p>When do you think majority will switch?</p>
+<p>Edit : My thoughts on this - <a href="https://dhruv2038.bearblog.dev/github-has-an-availability-problem-is-it-time-to-look-elsewhere/" rel="ugc">https://dhruv2038.bearblog.dev/github-has-an-availability-problem-is-it-time-to-look-elsewhere/</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 09:03:05 -0500</pubDate>
+<pubDate>Mon, 17 Aug 2026 09:03:05 -0500</pubDate>
+</item>
+<item>
+<title>Vetted AI code is hard to justify</title>
+<link>https://amoffat.github.io/blog/vetting-burnout.html</link>
+<guid>https://amoffat.github.io/blog/vetting-burnout.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/os20fa/vetted_ai_code_is_hard_justify">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 06:11:39 -0500</pubDate>
+<pubDate>Mon, 17 Aug 2026 06:11:39 -0500</pubDate>
+</item>
+<item>
+<title>A Preview of DuckDB v2.0</title>
+<link>https://duckdb.org/2026/08/17/duckdb-20-highlights.html</link>
+<guid>https://duckdb.org/2026/08/17/duckdb-20-highlights.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/wya4zt/preview_duckdb_v2_0">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 11:13:25 -0500</pubDate>
+<pubDate>Mon, 17 Aug 2026 11:13:25 -0500</pubDate>
+</item>
+<item>
+<title>When the Down Arrow is not an Upside-Down Up Arrow (2022)</title>
+<link>https://thefloatingcontinent.com/blog/upside-down-arrow-unicode/</link>
+<guid>https://thefloatingcontinent.com/blog/upside-down-arrow-unicode/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/gwc2me/when_down_arrow_is_not_upside_down_up_arrow">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 08:33:00 -0500</pubDate>
+<pubDate>Mon, 17 Aug 2026 08:33:00 -0500</pubDate>
+</item>
+<item>
+<title>Writing a Fast Compiler</title>
+<link>https://tibleiz.net/blog/2024-02-04-writing-a-fast-compiler.html</link>
+<guid>https://tibleiz.net/blog/2024-02-04-writing-a-fast-compiler.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/6i1at9/writing_fast_compiler">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 06:13:33 -0500</pubDate>
+<pubDate>Mon, 17 Aug 2026 06:13:33 -0500</pubDate>
+</item>
+<item>
+<title>Passphrase-less reboots using kexec under NixOS</title>
+<link>https://www.bevuta.com/en/blog/passphraseless-reboots-using-kexec/</link>
+<guid>https://www.bevuta.com/en/blog/passphraseless-reboots-using-kexec/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/nrnwc6/passphrase_less_reboots_using_kexec">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 04:53:54 -0500</pubDate>
+<pubDate>Mon, 17 Aug 2026 04:53:54 -0500</pubDate>
+</item>
+<item>
+<title>Quake Shareware, a CD-ROM just a little too full</title>
+<link>https://fabiensanglard.net/quake_shareware_cd/index.html</link>
+<guid>https://fabiensanglard.net/quake_shareware_cd/index.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/j5xjf2/quake_shareware_cd_rom_just_little_too">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 17:58:03 -0500</pubDate>
+<pubDate>Mon, 17 Aug 2026 17:58:03 -0500</pubDate>
+</item>
+<item>
+<title>Thinking about tests: assertions and matchers</title>
+<link>https://zverok.space/blog/2026-08-16-assertions-and-matchers.html</link>
+<guid>https://zverok.space/blog/2026-08-16-assertions-and-matchers.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/usr2t2/thinking_about_tests_assertions">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 05:35:27 -0500</pubDate>
+<pubDate>Mon, 17 Aug 2026 05:35:27 -0500</pubDate>
+</item>
+<item>
+<title>Qwen 3.8 27B is excellent, but it defaults to wildly overthinking things</title>
+<link>https://simonwillison.net/2026/Aug/16/qwen-38-27b/</link>
+<guid>https://simonwillison.net/2026/Aug/16/qwen-38-27b/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/k7myyp/qwen_3_8_27b_is_excellent_it_defaults">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 09:39:34 -0500</pubDate>
+<pubDate>Mon, 17 Aug 2026 09:39:34 -0500</pubDate>
+</item>
+<item>
+<title>We Tracked a Shipment of Rare Books. It Ended at an Amazon AI Training Facility</title>
+<link>https://simonwillison.net/2026/Aug/17/we-tracked-a-shipment-of-rare-books-it-ended-at-an-amazon-ai-tra/</link>
+<guid>https://simonwillison.net/2026/Aug/17/we-tracked-a-shipment-of-rare-books-it-ended-at-an-amazon-ai-tra/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/flcpeu/we_tracked_shipment_rare_books_it_ended_at">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 12:54:19 -0500</pubDate>
+<pubDate>Mon, 17 Aug 2026 12:54:19 -0500</pubDate>
+</item>
+<item>
+<title>Four levels of in-place initialization</title>
+<link>https://blog.yoshuawuyts.com/four-levels-of-in-place-initialization/</link>
+<guid>https://blog.yoshuawuyts.com/four-levels-of-in-place-initialization/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/snhfrq/four_levels_place_initialization">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 02:50:22 -0500</pubDate>
+<pubDate>Mon, 17 Aug 2026 02:50:22 -0500</pubDate>
+</item>
+<item>
+<title>MuQSS CPU scheduler for Linux 7.2 by Con Kolivas</title>
+<link>https://lore.kernel.org/lkml/CABqErrH=oQ3povVuSPhRON97v63=mB85jQmZjf443ofdYAuxxw@mail.gmail.com/</link>
+<guid>https://lore.kernel.org/lkml/CABqErrH=oQ3povVuSPhRON97v63=mB85jQmZjf443ofdYAuxxw@mail.gmail.com/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/o5vcbw/muqss_cpu_scheduler_for_linux_7_2_by_con">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 07:24:02 -0500</pubDate>
+<pubDate>Mon, 17 Aug 2026 07:24:02 -0500</pubDate>
+</item>
+<item>
+<title>What are you doing this week?</title>
+<link>https://lobste.rs/s/5p0kgt/what_are_you_doing_this_week</link>
+<guid>https://lobste.rs/s/5p0kgt/what_are_you_doing_this_week</guid>
+<content:encoded><![CDATA[
+
+<p>What are you doing this week? Feel free to share!</p>
+<p>Keep in mind it’s OK to do nothing at all, too.</p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 02:30:46 -0500</pubDate>
+<pubDate>Mon, 17 Aug 2026 02:30:46 -0500</pubDate>
+</item>
+<item>
+<title>Retrofitting a build system into a compiler</title>
+<link>https://www.dra27.uk/blog/platform/2025/09/25/building-with-effects.html</link>
+<guid>https://www.dra27.uk/blog/platform/2025/09/25/building-with-effects.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/izkimy/retrofitting_build_system_into_compiler">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 17:42:21 -0500</pubDate>
+<pubDate>Mon, 17 Aug 2026 17:42:21 -0500</pubDate>
+</item>
+<item>
+<title>Beyond WASI: Running any Rust application in the browser with BrowserPod 3.0</title>
+<link>https://labs.leaningtech.com/blog/browserpod-rust.html</link>
+<guid>https://labs.leaningtech.com/blog/browserpod-rust.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/fxv1u9/beyond_wasi_running_any_rust_application">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 08:49:54 -0500</pubDate>
+<pubDate>Mon, 17 Aug 2026 08:49:54 -0500</pubDate>
+</item>
+<item>
+<title>AppleWorks on the Apple II</title>
+<link>https://stonetools.ghost.io/appleworks-apple2/</link>
+<guid>https://stonetools.ghost.io/appleworks-apple2/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/gk7fpf/appleworks_on_apple_ii">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 07:41:57 -0500</pubDate>
+<pubDate>Mon, 17 Aug 2026 07:41:57 -0500</pubDate>
+</item>
+<item>
+<title>Why BQN Wins</title>
+<link>https://github.com/codereport/max-odd-binary/blob/main/WHY_BQN_WINS.md</link>
+<guid>https://github.com/codereport/max-odd-binary/blob/main/WHY_BQN_WINS.md</guid>
+<content:encoded><![CDATA[
+
+<p>All BQN solutions outperformed everything else in this <a href="https://www.youtube.com/watch?v=7n262KKvHj8" rel="ugc">perf wars</a> video, this file explains the optimizations BQN has which led it there.</p>
+<p><a href="https://lobste.rs/s/lqelb1/why_bqn_wins">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 19:57:16 -0500</pubDate>
+<pubDate>Mon, 17 Aug 2026 19:57:16 -0500</pubDate>
+</item>
+<item>
+<title>The benchmarkpocalypse</title>
+<link>https://danluu.com/benchpocalypse/</link>
+<guid>https://danluu.com/benchpocalypse/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/wlofzl/benchmarkpocalypse">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 17 Aug 2026 19:47:13 -0500</pubDate>
+<pubDate>Mon, 17 Aug 2026 19:47:13 -0500</pubDate>
+</item>
 
 <item>
 <title>v16.3.1-canary.21</title>
@@ -12,7 +912,7 @@
 <content:encoded><![CDATA[
 <div> **Keywords:** async local storage, warm reload, concurrentRouterQueue, client router, credits  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 The recent changes involve anchoring instances of async local storage to global symbols, ensuring more stable and consistent access. This enhancement aims to improve the overall robustness of storage mechanisms used across various modules. Additionally, the project addresses a deflaking issue related to caching when the size is zero upon warm reload, enhancing performance and reliability during application restarts or updates. Furthermore, there's a scaffolding for the concurrentRouterQueue flag, which likely contributes to performance improvements in routing processes as it enables concurrent handling. The organization of client router modules has been restructured to promote better maintainability and extendibility, allowing for a more modular approach to routing and navigation in the application. Finally, a special note of gratitude is expressed to contributors who assisted in these enhancements, highlighting the collaborative spirit of the project. Their combined efforts have made significant contributions to the advancement of the application’s architecture and functionality. <div>
 <h3>Misc Changes</h3>
 <ul>
@@ -24,7 +924,6 @@ The recent changes involve anchoring instances of async local storage to global 
 <h3>Credits</h3>
 <p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/unstubbable">@unstubbable</a>, <a class="user-mention notranslate" href="https://github.com/gnoff">@gnoff</a>, and <a class="user-mention notranslate" href="https://github.com/acdlite">@acdlite</a> for helping!</p>
 ]]></content:encoded>
-
 <pubDate>2026-08-16T23:55:38Z</pubDate>
 </item>
 <item>
@@ -34,7 +933,7 @@ The recent changes involve anchoring instances of async local storage to global 
 <content:encoded><![CDATA[
 <div> Keywords: Terraform, features, enhancements, bug fixes, upgrade
 
-<br><br>Summary: 
+<br /><br />Summary: 
 The 1.16.0-alpha20260706 release of Terraform introduces several new features, including the storage of PlannedPrivate data for providers and a new store block in terraform_data for handling ephemeral and sensitive values. Providers can utilize nested blocks as computed values, and import blocks now support modules. Additionally, builds are now available for Linux s390x, and the workspace list command can produce machine-readable output with the -json flag. Resource action triggers can employ on_failure modes of halt, taint, or continue.
 
 Enhancements for this version include the acceptance of the -json flag by the terraform state show command, informative messages for resources left behind, and the introduction of a caller symbol in action configuration. Other enhancements involve summarizing Terraform policy evaluation outcomes, resolving policy plugin entitlements from the configured cloud backend, and improvements to the 'terraform graph' command.
@@ -177,7 +1076,6 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <li><a href="https://github.com/hashicorp/terraform/blob/v0.11/CHANGELOG.md">v0.11 and earlier</a></li>
 </ul>
 ]]></content:encoded>
-
 <pubDate>2026-07-06T14:49:07Z</pubDate>
 </item>
 <item>
@@ -192,7 +1090,6 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <p># Comments: 141</p>
 ]]></content:encoded>
 <pubDate>Sun, 16 Aug 2026 20:31:16 +0000</pubDate>
-<pubDate>Sun, 16 Aug 2026 20:31:16 +0000</pubDate>
 </item>
 <item>
 <title>Models Are Getting Dumber on Purpose</title>
@@ -206,7 +1103,6 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <p># Comments: 148</p>
 ]]></content:encoded>
 <pubDate>Sun, 16 Aug 2026 19:04:26 +0000</pubDate>
-<pubDate>Sun, 16 Aug 2026 19:04:26 +0000</pubDate>
 </item>
 <item>
 <title>Tell HN: Cloudflare silently injects its analytics when you switch nameservers</title>
@@ -215,14 +1111,13 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <content:encoded><![CDATA[
 <div> Keywords: Cloudflare, nameservers, analytics, opt-in, subdomain  
 
-<br><br>Summary: Recently, a user switched their nameservers to Cloudflare to enable R2 bucket serving through their subdomain, textlog.cc. Upon making this change, they discovered that Cloudflare had automatically injected a JavaScript analytics snippet into their HTML-only, JavaScript-free site. This action was taken without the user's consent or prior notification, leading to concerns about Cloudflare's approach to feature activation. The user found it necessary to access the Analytics dashboard manually to add their site to the analytics and subsequently disable the snippet. This experience raised alarms about the invasive nature of such features. The user emphasized that they would prefer to opt-in for additional functionalities rather than being required to opt-out after discovering unwanted modifications. This can serve as an important warning for others who might not be aware of Cloudflare's practices regarding automatic feature implementations. It's vital for users to monitor changes that external services make to their websites, ensuring that they retain control over the integrations and features that are applied to their domains. This incident highlights the importance of transparency in service modifications and user consent. <div>
+<br /><br />Summary: Recently, a user switched their nameservers to Cloudflare to enable R2 bucket serving through their subdomain, textlog.cc. Upon making this change, they discovered that Cloudflare had automatically injected a JavaScript analytics snippet into their HTML-only, JavaScript-free site. This action was taken without the user's consent or prior notification, leading to concerns about Cloudflare's approach to feature activation. The user found it necessary to access the Analytics dashboard manually to add their site to the analytics and subsequently disable the snippet. This experience raised alarms about the invasive nature of such features. The user emphasized that they would prefer to opt-in for additional functionalities rather than being required to opt-out after discovering unwanted modifications. This can serve as an important warning for others who might not be aware of Cloudflare's practices regarding automatic feature implementations. It's vital for users to monitor changes that external services make to their websites, ensuring that they retain control over the integrations and features that are applied to their domains. This incident highlights the importance of transparency in service modifications and user consent. <div>
 <p>A few hours ago I switched my nameservers to Cloudflare in order to enable R2 bucket serving through my own subdomain, and I found out that it silently had injected a JS analytics snippet in my HTML-only JS-free site textlog.cc — I had to go to the Analytics dashboard, Add the site to the analytics and <i>then</i> disable the snippet. I find this approach entirely invasive, you should opt-in to features like that not have to opt-out. Just a warning out there to folks who might not be aware of this.</p>
 <hr />
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49322107">https://news.ycombinator.com/item?id=49322107</a></p>
 <p>Points: 281</p>
 <p># Comments: 68</p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 17:49:46 +0000</pubDate>
 <pubDate>Sun, 16 Aug 2026 17:49:46 +0000</pubDate>
 </item>
 <item>
@@ -232,13 +1127,12 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <content:encoded><![CDATA[
 <div> **Keywords:** article, comments, points, discussions, insights
 
-<br><br>Summary: The article presents a comprehensive overview of a significant topic, engaging readers with a series of well-researched points and insights. It explores various perspectives, inviting 196 comments that reflect a robust discussion among readers. With a total of 371 points attributed to the article, it indicates a high level of engagement and interest from the audience. The comments section serves as a platform for lively debate, showcasing diverse opinions and analysis related to the article's main themes. Furthermore, the structure of the article facilitates a smooth reading experience, allowing readers to navigate through complex ideas effortlessly. The interaction through comments not only enhances the understanding of the subject matter but also contributes to an ongoing dialogue that could influence future discussions. Overall, the combination of the article's content and the active participation of readers exemplifies the dynamic nature of contemporary discourse on the topic. The insights gained from both the article and the comments provide valuable takeaways for anyone interested in deepening their understanding of the subject. <div>
+<br /><br />Summary: The article presents a comprehensive overview of a significant topic, engaging readers with a series of well-researched points and insights. It explores various perspectives, inviting 196 comments that reflect a robust discussion among readers. With a total of 371 points attributed to the article, it indicates a high level of engagement and interest from the audience. The comments section serves as a platform for lively debate, showcasing diverse opinions and analysis related to the article's main themes. Furthermore, the structure of the article facilitates a smooth reading experience, allowing readers to navigate through complex ideas effortlessly. The interaction through comments not only enhances the understanding of the subject matter but also contributes to an ongoing dialogue that could influence future discussions. Overall, the combination of the article's content and the active participation of readers exemplifies the dynamic nature of contemporary discourse on the topic. The insights gained from both the article and the comments provide valuable takeaways for anyone interested in deepening their understanding of the subject. <div>
 <p>Article URL: <a href="https://rvembedded.com/blog_post/12/">https://rvembedded.com/blog_post/12/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49321717">https://news.ycombinator.com/item?id=49321717</a></p>
 <p>Points: 371</p>
 <p># Comments: 196</p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 17:01:07 +0000</pubDate>
 <pubDate>Sun, 16 Aug 2026 17:01:07 +0000</pubDate>
 </item>
 <item>
@@ -253,7 +1147,6 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <p># Comments: 119</p>
 ]]></content:encoded>
 <pubDate>Sun, 16 Aug 2026 15:30:15 +0000</pubDate>
-<pubDate>Sun, 16 Aug 2026 15:30:15 +0000</pubDate>
 </item>
 <item>
 <title>St Lucie Nuclear Reactor Unit 1 manually shutdown, 3 control rods drop into core</title>
@@ -266,7 +1159,6 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <p>Points: 158</p>
 <p># Comments: 121</p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 15:16:06 +0000</pubDate>
 <pubDate>Sun, 16 Aug 2026 15:16:06 +0000</pubDate>
 </item>
 <item>
@@ -281,7 +1173,6 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <p># Comments: 88</p>
 ]]></content:encoded>
 <pubDate>Sun, 16 Aug 2026 14:44:55 +0000</pubDate>
-<pubDate>Sun, 16 Aug 2026 14:44:55 +0000</pubDate>
 </item>
 <item>
 <title>Firefox for iOS now has a native adblocker</title>
@@ -295,20 +1186,17 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <p># Comments: 218</p>
 ]]></content:encoded>
 <pubDate>Sun, 16 Aug 2026 12:58:10 +0000</pubDate>
-<pubDate>Sun, 16 Aug 2026 12:58:10 +0000</pubDate>
 </item>
 <item>
 <title>Claude: System Prompts</title>
 <link>https://platform.claude.com/docs/en/release-notes/system-prompts</link>
 <guid>https://platform.claude.com/docs/en/release-notes/system-prompts</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://platform.claude.com/docs/en/release-notes/system-prompts">https://platform.claude.com/docs/en/release-notes/system-prompts</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49319556">https://news.ycombinator.com/item?id=49319556</a></p>
 <p>Points: 539</p>
 <p># Comments: 227</p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 12:48:21 +0000</pubDate>
 <pubDate>Sun, 16 Aug 2026 12:48:21 +0000</pubDate>
 </item>
 <item>
@@ -316,13 +1204,11 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://scholar.google.com/scholar?q=%22kidney+disappointment%22</link>
 <guid>https://scholar.google.com/scholar?q=%22kidney+disappointment%22</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://scholar.google.com/scholar?q=%22kidney+disappointment%22">https://scholar.google.com/scholar?q=%22kidney+disappointment%22</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49319389">https://news.ycombinator.com/item?id=49319389</a></p>
 <p>Points: 358</p>
 <p># Comments: 130</p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 12:22:20 +0000</pubDate>
 <pubDate>Sun, 16 Aug 2026 12:22:20 +0000</pubDate>
 </item>
 <item>
@@ -330,13 +1216,11 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://littlelearner-ll.github.io/</link>
 <guid>https://littlelearner-ll.github.io/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://littlelearner-ll.github.io/">https://littlelearner-ll.github.io/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49317760">https://news.ycombinator.com/item?id=49317760</a></p>
 <p>Points: 234</p>
 <p># Comments: 205</p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 07:37:53 +0000</pubDate>
 <pubDate>Sun, 16 Aug 2026 07:37:53 +0000</pubDate>
 </item>
 <item>
@@ -344,13 +1228,11 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://www.anthropic.com/research/multiagent-systems</link>
 <guid>https://www.anthropic.com/research/multiagent-systems</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.anthropic.com/research/multiagent-systems">https://www.anthropic.com/research/multiagent-systems</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49316271">https://news.ycombinator.com/item?id=49316271</a></p>
 <p>Points: 180</p>
 <p># Comments: 130</p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 02:12:53 +0000</pubDate>
 <pubDate>Sun, 16 Aug 2026 02:12:53 +0000</pubDate>
 </item>
 <item>
@@ -358,13 +1240,11 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://rhonabwy.com/2026/08/15/software-engineering-fundamentals-matter-more-than-ever/</link>
 <guid>https://rhonabwy.com/2026/08/15/software-engineering-fundamentals-matter-more-than-ever/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://rhonabwy.com/2026/08/15/software-engineering-fundamentals-matter-more-than-ever/">https://rhonabwy.com/2026/08/15/software-engineering-fundamentals-matter-more-than-ever/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49314902">https://news.ycombinator.com/item?id=49314902</a></p>
 <p>Points: 292</p>
 <p># Comments: 213</p>
 ]]></content:encoded>
-<pubDate>Sat, 15 Aug 2026 22:31:09 +0000</pubDate>
 <pubDate>Sat, 15 Aug 2026 22:31:09 +0000</pubDate>
 </item>
 <item>
@@ -372,13 +1252,11 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://horn.gg/blog/engineers-will-do-anything-to-avoid-learning-from-history/</link>
 <guid>https://horn.gg/blog/engineers-will-do-anything-to-avoid-learning-from-history/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://horn.gg/blog/engineers-will-do-anything-to-avoid-learning-from-history/">https://horn.gg/blog/engineers-will-do-anything-to-avoid-learning-from-history/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49314744">https://news.ycombinator.com/item?id=49314744</a></p>
 <p>Points: 170</p>
 <p># Comments: 112</p>
 ]]></content:encoded>
-<pubDate>Sat, 15 Aug 2026 22:08:22 +0000</pubDate>
 <pubDate>Sat, 15 Aug 2026 22:08:22 +0000</pubDate>
 </item>
 <item>
@@ -386,13 +1264,11 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://www.henrikkarlsson.xyz/p/good-ideas</link>
 <guid>https://www.henrikkarlsson.xyz/p/good-ideas</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.henrikkarlsson.xyz/p/good-ideas">https://www.henrikkarlsson.xyz/p/good-ideas</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49314235">https://news.ycombinator.com/item?id=49314235</a></p>
 <p>Points: 263</p>
 <p># Comments: 62</p>
 ]]></content:encoded>
-<pubDate>Sat, 15 Aug 2026 20:54:11 +0000</pubDate>
 <pubDate>Sat, 15 Aug 2026 20:54:11 +0000</pubDate>
 </item>
 <item>
@@ -400,13 +1276,11 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://www.severe-weather.eu/long-range-2/super-el-nino-growth-accelerating-to-record-strength-fall-winter-2026-2027-forecast-impact-united-states-canada-europe-fa/</link>
 <guid>https://www.severe-weather.eu/long-range-2/super-el-nino-growth-accelerating-to-record-strength-fall-winter-2026-2027-forecast-impact-united-states-canada-europe-fa/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.severe-weather.eu/long-range-2/super-el-nino-growth-accelerating-to-record-strength-fall-winter-2026-2027-forecast-impact-united-states-canada-europe-fa/">https://www.severe-weather.eu/long-range-2/super-el-nino-growth-accelerating-to-record-strength-fall-winter-2026-2027-forecast-impact-united-states-canada-europe-fa/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49313428">https://news.ycombinator.com/item?id=49313428</a></p>
 <p>Points: 413</p>
 <p># Comments: 317</p>
 ]]></content:encoded>
-<pubDate>Sat, 15 Aug 2026 19:20:51 +0000</pubDate>
 <pubDate>Sat, 15 Aug 2026 19:20:51 +0000</pubDate>
 </item>
 <item>
@@ -414,7 +1288,6 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://www.science.org/content/blog-post/so-how-ai-drug-discovery-doing-really</link>
 <guid>https://www.science.org/content/blog-post/so-how-ai-drug-discovery-doing-really</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://www.nature.com/articles/s41573-026-01496-2" rel="nofollow">https://www.nature.com/articles/s41573-026-01496-2</a></p>
 <hr />
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49313367">https://news.ycombinator.com/item?id=49313367</a></p>
@@ -422,17 +1295,14 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <p># Comments: 90</p>
 ]]></content:encoded>
 <pubDate>Sat, 15 Aug 2026 19:12:53 +0000</pubDate>
-<pubDate>Sat, 15 Aug 2026 19:12:53 +0000</pubDate>
 </item>
 <item>
 <title>I thought I was building a C replacement. I was wrong</title>
 <link>https://c3-lang.org/blog/i_thought_i_was_building_a_c_replacement/</link>
 <guid>https://c3-lang.org/blog/i_thought_i_was_building_a_c_replacement/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/wpyhdh/i_thought_i_was_building_c_replacement_i">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 09:05:05 -0500</pubDate>
 <pubDate>Sun, 16 Aug 2026 09:05:05 -0500</pubDate>
 </item>
 <item>
@@ -440,10 +1310,8 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://op.tngl.io/every-fucking-website/</link>
 <guid>https://op.tngl.io/every-fucking-website/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/ii5tun/every_fucking_website">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 11:26:05 -0500</pubDate>
 <pubDate>Sun, 16 Aug 2026 11:26:05 -0500</pubDate>
 </item>
 <item>
@@ -451,10 +1319,8 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://www.benjoffe.com/fast-day-of-week</link>
 <guid>https://www.benjoffe.com/fast-day-of-week</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/ln3dao/faster_way_calculate_day_week">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 15:52:12 -0500</pubDate>
 <pubDate>Sun, 16 Aug 2026 15:52:12 -0500</pubDate>
 </item>
 <item>
@@ -462,10 +1328,8 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://predr.ag/blog/protecting-the-rust-stdlib-from-breakage/</link>
 <guid>https://predr.ag/blog/protecting-the-rust-stdlib-from-breakage/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/hnx6id/protecting_rust_standard_library_from">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 08:59:09 -0500</pubDate>
 <pubDate>Sun, 16 Aug 2026 08:59:09 -0500</pubDate>
 </item>
 <item>
@@ -473,10 +1337,8 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://nolanlawson.com/2026/08/16/you-can-just-choose-how-many-bugs-you-want-now/</link>
 <guid>https://nolanlawson.com/2026/08/16/you-can-just-choose-how-many-bugs-you-want-now/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/8izobt/you_can_just_choose_how_many_bugs_you_want">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 13:18:51 -0500</pubDate>
 <pubDate>Sun, 16 Aug 2026 13:18:51 -0500</pubDate>
 </item>
 <item>
@@ -484,10 +1346,8 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://www.acm.org/articles/people-of-acm/2026/russ-cox</link>
 <guid>https://www.acm.org/articles/people-of-acm/2026/russ-cox</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/wqkycj/people_acm_russ_cox">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 11:23:20 -0500</pubDate>
 <pubDate>Sun, 16 Aug 2026 11:23:20 -0500</pubDate>
 </item>
 <item>
@@ -495,10 +1355,8 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://heiwiper.com/posts/magit-status-tour/</link>
 <guid>https://heiwiper.com/posts/magit-status-tour/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/bhhcf3/tour_magit_s_status_interface">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 05:30:43 -0500</pubDate>
 <pubDate>Sun, 16 Aug 2026 05:30:43 -0500</pubDate>
 </item>
 <item>
@@ -506,10 +1364,8 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://www.ponylang.io/blog/2026/08/ponys-arena-allocator/</link>
 <guid>https://www.ponylang.io/blog/2026/08/ponys-arena-allocator/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/vnpw9j/pony_s_arena_allocator">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 18:48:45 -0500</pubDate>
 <pubDate>Sun, 16 Aug 2026 18:48:45 -0500</pubDate>
 </item>
 <item>
@@ -517,10 +1373,8 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://unsung.aresluna.org/i-think-theres-a-lot-of-value-in-these/</link>
 <guid>https://unsung.aresluna.org/i-think-theres-a-lot-of-value-in-these/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/xhliz8/human_interface_guidelines_from_various">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 14:56:03 -0500</pubDate>
 <pubDate>Sun, 16 Aug 2026 14:56:03 -0500</pubDate>
 </item>
 <item>
@@ -528,10 +1382,8 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://christianheilmann.com/2026/08/11/anti-social-media/</link>
 <guid>https://christianheilmann.com/2026/08/11/anti-social-media/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/zjg7ux/anti_social_media">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 12:05:15 -0500</pubDate>
 <pubDate>Sun, 16 Aug 2026 12:05:15 -0500</pubDate>
 </item>
 <item>
@@ -539,10 +1391,8 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://codemanship.wordpress.com/2026/08/12/ai-software-development-what-does-the-data-say/</link>
 <guid>https://codemanship.wordpress.com/2026/08/12/ai-software-development-what-does-the-data-say/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/joyawz/ai_software_development_what_does_data">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 19:08:04 -0500</pubDate>
 <pubDate>Sun, 16 Aug 2026 19:08:04 -0500</pubDate>
 </item>
 <item>
@@ -550,10 +1400,8 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://passbe.com/2022/healthchecks-io-systemd-checks/</link>
 <guid>https://passbe.com/2022/healthchecks-io-systemd-checks/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/dxfl0r/monitoring_systemd_services_with">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 06:54:11 -0500</pubDate>
 <pubDate>Sun, 16 Aug 2026 06:54:11 -0500</pubDate>
 </item>
 <item>
@@ -561,10 +1409,8 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://snarky.ca/whats-missing-to-have-reproducible-builds-on-pypi/</link>
 <guid>https://snarky.ca/whats-missing-to-have-reproducible-builds-on-pypi/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/rexoqj/what_s_missing_have_reproducible_builds">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sat, 15 Aug 2026 22:41:17 -0500</pubDate>
 <pubDate>Sat, 15 Aug 2026 22:41:17 -0500</pubDate>
 </item>
 <item>
@@ -572,10 +1418,8 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://www.youtube.com/watch?v=ePsQksj99LM</link>
 <guid>https://www.youtube.com/watch?v=ePsQksj99LM</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/xculjp/limits_ai_hubert_dreyfus_1985">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 19:20:07 -0500</pubDate>
 <pubDate>Sun, 16 Aug 2026 19:20:07 -0500</pubDate>
 </item>
 <item>
@@ -583,10 +1427,8 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://www.youtube.com/watch?v=MQeIerDsReA&amp;t=673s</link>
 <guid>https://www.youtube.com/watch?v=MQeIerDsReA&amp;t=673s</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/5rh6fs/haskell_origins_evolution_future">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 02:17:26 -0500</pubDate>
 <pubDate>Sun, 16 Aug 2026 02:17:26 -0500</pubDate>
 </item>
 <item>
@@ -594,10 +1436,8 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://brennan.day/webmaster-a-manifesto-for-everyone/</link>
 <guid>https://brennan.day/webmaster-a-manifesto-for-everyone/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/g1rpmg/webmaster_manifesto_for_everyone">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 16 Aug 2026 19:20:30 -0500</pubDate>
 <pubDate>Sun, 16 Aug 2026 19:20:30 -0500</pubDate>
 </item>
 <item>
@@ -605,13 +1445,10 @@ Bug fixes address issues with import blocks and Terraform errors during apply. T
 <link>https://github.com/djr-747/nokia-dct3-emulator</link>
 <guid>https://github.com/djr-747/nokia-dct3-emulator</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/pb8wvr/nokia_dct3_emulator_open_source_emulator">Comments</a></p>
 ]]></content:encoded>
 <pubDate>Sun, 16 Aug 2026 11:38:26 -0500</pubDate>
-<pubDate>Sun, 16 Aug 2026 11:38:26 -0500</pubDate>
 </item>
-
 <item>
 <title>v16.3.1-canary.20</title>
 <link>https://github.com/vercel/next.js/releases/tag/v16.3.1-canary.20</link>
@@ -18632,371 +19469,6 @@ The latest updates include unifying allow-runtime with partial prefetching to en
 <p># Comments: 123</p>
 ]]></content:encoded>
 <pubDate>Tue, 28 Jul 2026 10:52:30 +0000</pubDate>
-</item>
-<item>
-<title>I Designed A Custom PCB To Avoid Pressing A Button Three Times</title>
-<link>https://blog.tymscar.com/posts/opensourcedimmer/</link>
-<guid>https://blog.tymscar.com/posts/opensourcedimmer/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/49nob7/i_designed_custom_pcb_avoid_pressing">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 28 Jul 2026 08:33:00 -0500</pubDate>
-</item>
-<item>
-<title>Why Rocq is better than Lean for program verification</title>
-<link>https://joomy.korkutblech.com/posts/2026-07-28-why-rocq-is-better.html</link>
-<guid>https://joomy.korkutblech.com/posts/2026-07-28-why-rocq-is-better.html</guid>
-<content:encoded><![CDATA[
-<p>A write-up on why I don't give in to the hype and switch to Lean for formal verification of programs.</p>
-<p><a href="https://lobste.rs/s/vnh6b2/why_rocq_is_better_than_lean_for_program">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 28 Jul 2026 16:16:29 -0500</pubDate>
-</item>
-<item>
-<title>Develop Cross-Platform CLI and GUI Tools With Tcl/Tk</title>
-<link>https://cgicoffee.com/blog/2026/04/tcl-tk-develop-cross-platform-cli-gui-tools-tutorial-guide</link>
-<guid>https://cgicoffee.com/blog/2026/04/tcl-tk-develop-cross-platform-cli-gui-tools-tutorial-guide</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/jrq2d9/develop_cross_platform_cli_gui_tools_with">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 28 Jul 2026 05:32:54 -0500</pubDate>
-</item>
-<item>
-<title>The mean means nothing</title>
-<link>https://fzakaria.com/2026/07/27/the-mean-means-nothing</link>
-<guid>https://fzakaria.com/2026/07/27/the-mean-means-nothing</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/p0fdmk/mean_means_nothing">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 28 Jul 2026 13:53:28 -0500</pubDate>
-</item>
-<item>
-<title>State of multi-player Wayland</title>
-<link>https://blinry.org/multi-seat-wayland/</link>
-<guid>https://blinry.org/multi-seat-wayland/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/anvtjk/state_multi_player_wayland">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 28 Jul 2026 16:14:59 -0500</pubDate>
-</item>
-<item>
-<title>What even are microservices?</title>
-<link>https://var0.xyz/posts/what-even-are-microservices.html</link>
-<guid>https://var0.xyz/posts/what-even-are-microservices.html</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/7qtdhk/what_even_are_microservices">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 28 Jul 2026 07:14:24 -0500</pubDate>
-</item>
-<item>
-<title>Building (systems) software with Nix</title>
-<link>https://hondu.co/blog/building-systems-software</link>
-<guid>https://hondu.co/blog/building-systems-software</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/wdopf8/building_systems_software_with_nix">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 28 Jul 2026 08:10:24 -0500</pubDate>
-</item>
-<item>
-<title>Dependency Cultures - Richard Feldman (Software Should Work Conf 2026)</title>
-<link>https://www.youtube.com/watch?v=E82ly38YEEQ</link>
-<guid>https://www.youtube.com/watch?v=E82ly38YEEQ</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/cxbtfq/dependency_cultures_richard_feldman">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 28 Jul 2026 10:18:40 -0500</pubDate>
-</item>
-<item>
-<title>Parallel JSON parsing on the GPU with compute shaders</title>
-<link>https://github.com/friendlymatthew/slurpjson</link>
-<guid>https://github.com/friendlymatthew/slurpjson</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/nhixqy/parallel_json_parsing_on_gpu_with_compute">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 28 Jul 2026 09:39:46 -0500</pubDate>
-</item>
-<item>
-<title>Where are the third places for learners?</title>
-<link>https://kernelkennel.com/blog/where-is-the-middle-space/</link>
-<guid>https://kernelkennel.com/blog/where-is-the-middle-space/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/jyiecw/where_are_third_places_for_learners">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 28 Jul 2026 09:38:19 -0500</pubDate>
-</item>
-<item>
-<title>Try the New Firefox Design in Nightly</title>
-<link>https://blog.nightly.mozilla.org/2026/07/27/new-firefox-design/</link>
-<guid>https://blog.nightly.mozilla.org/2026/07/27/new-firefox-design/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/pzsmzv/try_new_firefox_design_nightly">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 27 Jul 2026 19:43:29 -0500</pubDate>
-</item>
-<item>
-<title>Making KIO copy many files fast</title>
-<link>https://blogs.kde.org/2026/07/28/making-kio-copy-many-files-fast/</link>
-<guid>https://blogs.kde.org/2026/07/28/making-kio-copy-many-files-fast/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/ewifzf/making_kio_copy_many_files_fast">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 28 Jul 2026 05:11:18 -0500</pubDate>
-</item>
-<item>
-<title>Proof types in Dart: Using final classes as computational witnesses</title>
-<link>https://modulovalue.com/blog/proof-types-in-dart/</link>
-<guid>https://modulovalue.com/blog/proof-types-in-dart/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/wdo7aj/proof_types_dart_using_final_classes_as">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 28 Jul 2026 17:30:05 -0500</pubDate>
-</item>
-<item>
-<title>Anatomy of a Frontier Lab Agent Intrusion: A Technical Timeline of the July 2026 Incident</title>
-<link>https://huggingface.co/blog/agent-intrusion-technical-timeline</link>
-<guid>https://huggingface.co/blog/agent-intrusion-technical-timeline</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/pxczeo/anatomy_frontier_lab_agent_intrusion">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 28 Jul 2026 16:03:27 -0500</pubDate>
-</item>
-<item>
-<title>Starling, a Linux Desktop written from scratch</title>
-<link>https://starling.build</link>
-<guid>https://starling.build</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/tahynj/starling_linux_desktop_written_from">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 28 Jul 2026 11:56:05 -0500</pubDate>
-</item>
-<item>
-<title>Improving Heuristics (2015)</title>
-<link>https://www.redblobgames.com/pathfinding/heuristics/differential.html</link>
-<guid>https://www.redblobgames.com/pathfinding/heuristics/differential.html</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/ngcurk/improving_heuristics_2015">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 28 Jul 2026 06:51:29 -0500</pubDate>
-</item>
-<item>
-<title>The Cipher Behind QSYRUPWD: Reconstructing IBM i Password Hashes</title>
-<link>https://blog.silentsignal.eu/2026/07/28/the-cipher-behind-qsyrupwd-reconstructing-ibm-i-password-hashes/</link>
-<guid>https://blog.silentsignal.eu/2026/07/28/the-cipher-behind-qsyrupwd-reconstructing-ibm-i-password-hashes/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/2dc0gb/cipher_behind_qsyrupwd_reconstructing">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 28 Jul 2026 14:13:36 -0500</pubDate>
-</item>
-<item>
-<title>One Ring to Rule Them All: Wiring Radios to Laptops the Hard Way</title>
-<link>https://www.lysk.ai/post/wiring-radios-to-laptops-the-hard-way</link>
-<guid>https://www.lysk.ai/post/wiring-radios-to-laptops-the-hard-way</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/db0m6j/one_ring_rule_them_all_wiring_radios">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 28 Jul 2026 03:57:54 -0500</pubDate>
-</item>
-<item>
-<title>Design flaws in issetugid() (2017)</title>
-<link>https://gist.github.com/nicowilliams/4daf74a3a0c86848d3cbd9d0cdb5e26e</link>
-<guid>https://gist.github.com/nicowilliams/4daf74a3a0c86848d3cbd9d0cdb5e26e</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/6gx5vy/design_flaws_issetugid_2017">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 28 Jul 2026 08:25:24 -0500</pubDate>
-</item>
-<item>
-<title>Amazon Neptune now supports tag-based access control for IAM</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-neptune-tbac/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-neptune-tbac/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: tag-based access control, IAM, Amazon Neptune, security, permissions
-
-<br /><br />Summary: The introduction of tag-based access control (TBAC) for IAM in Amazon Neptune allows customers to leverage AWS resource tags and IAM principal tags as conditions in IAM policies and Service Control Policies (SCPs) to manage access to Neptune's data-plane operations. While Neptune already offers strong security through VPC isolation, TLS encryption, and IAM authentication, the need for a dynamic, attribute-based access control mechanism was identified for customers managing multiple clusters. TBAC enables administrators to control cluster access without specifying individual cluster ARNs, streamlining the access management process. By using TBAC, IAM principals are limited to executing `neptune-db:*` actions on clusters with matching tags, ensuring security and isolation across projects. This feature also reduces lateral access risks within shared VPC environments and facilitates team and environment-level isolation. Moreover, it supports federated identity workflows via SAML or OIDC session tags. Administrators can implement more granular permissions, like neptune-db:QueryLanguage, in conjunction with TBAC for enhanced control. TBAC is available in all AWS Regions supporting Amazon Neptune and requires the Neptune engine version 1.2.0.0 or higher with IAM authentication enabled. <div>
-<p><a href="https://aws.amazon.com/neptune/" target="_blank">Amazon Neptune</a> Database now supports tag-based access control (TBAC) for IAM, enabling customers to use AWS resource tags and IAM principal tags as conditions in IAM policies and Service Control Policies (SCPs) to control access to Neptune data-plane operations. Neptune already provides robust security through VPC isolation, TLS encryption, and IAM authentication, but customers managing multiple clusters at scale needed a dynamic, attribute-based mechanism to enforce organizational access boundaries. TBAC addresses this by allowing administrators to govern cluster access without enumerating specific cluster ARNs in every policy.<br /> <br /> With TBAC, IAM principals can only perform `neptune-db:*` actions against Neptune clusters whose tags match their own — for example, a principal tagged `Project=FraudDetection` is automatically restricted to clusters sharing that same tag. This eliminates lateral access risk within shared VPC environments, enforces team and environment-level isolation across projects, and supports federated identity workflows using SAML or OIDC session tags from external identity providers. Granular permissions like neptune-db:QueryLanguage can be used alongside TBAC for more fine-grained access control.<br /> <br /> This feature is available in all AWS Regions where Amazon Neptune is available and requires Neptune engine version 1.2.0.0 or later with IAM authentication enabled.<br /> <br /> To learn more about configuring tag-based access control for Amazon Neptune, including how to tag your DB clusters and IAM principals and deploy organization-wide guardrails using SCPs, visit the <a href="https://docs.aws.amazon.com/neptune/latest/userguide/iam-data-tbac.html" target="_blank">Amazon Neptune documentation</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 27 Jul 2026 22:00:00 GMT</pubDate>
-</item>
-<item>
-<title>AWS Glue Data Quality now supports anomaly detection and writing results to the AWS Glue Data Catalog</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-glue-data-quality-catalog-anomaly-detection-write-results</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-glue-data-quality-catalog-anomaly-detection-write-results</guid>
-<content:encoded><![CDATA[
-<div> Keywords: AWS Glue, Data Quality, anomaly detection, GDC, ETL jobs  
-
-<br /><br />Summary: AWS Glue Data Quality has introduced new features that enhance data quality evaluations for Catalog-based data. This includes the ability for anomaly detection, which helps identify unexpected changes in data statistics without the need to set explicit thresholds. Utilizing machine learning-powered time-series forecasting, data engineers can automatically identify significant issues, like drops in distinct values or spikes in row counts across multiple tables in the AWS Glue Data Catalog (GDC). This is particularly useful when monitoring a large number of tables. Additionally, the evaluation results, including data quality rule outcomes, profiling metrics, and anomaly predictions with associated confidence bounds, are stored back in GDC tables. This allows for the creation of a comprehensive, queryable record of all data quality evaluations, accessible using standard SQL, regardless of whether the evaluations were performed during ETL jobs or directly on catalog tables. These capabilities are now available in all AWS commercial regions and AWS GovCloud (US) regions, streamlining the data quality management process in various workflows. To get started, users can explore the resources provided by AWS. <div>
-<p>AWS Glue Data Quality now supports anomaly detection for Catalog-based data quality evaluations and the ability to write evaluation results to AWS Glue Data Catalog (GDC) tables. These capabilities work across both ETL jobs and Catalog evaluations, giving you a consistent data quality experience regardless of workflow type.<br /> <br /> With anomaly detection support for GDC, you can identify unexpected changes in data statistics such as sudden drops in distinct values or row count spikes in your GDC tables using ML-powered time-series forecasting, without writing rules with explicit thresholds. This is especially valuable for data engineers monitoring hundreds of tables in the GDC who need to surface issues automatically.<br /> <br /> With results storage<b> </b>in GDC, Data Quality rule outcomes, profiling metrics, and anomaly predictions (with confidence bounds) are written back to GDC tables, creating a queryable record of all quality evaluations. Whether the evaluation runs in an ETL job or directly on a Catalog table, results can be queried at any time using standard SQL.<br /> <br /> AWS Glue Data Quality anomaly detection and Catalog results storage are available in all AWS commercial regions and AWS GovCloud (US) regions.<br /> <br /> To get started, visit the <a href="https://docs.aws.amazon.com/glue/latest/dg/data-quality.html">AWS Glue Data Quality documentation</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 27 Jul 2026 20:45:00 GMT</pubDate>
-</item>
-<item>
-<title>AWS Glue Data Quality now supports distribution statistics for data profiling</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-glue-data-quality-distribution-profiling</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-glue-data-quality-distribution-profiling</guid>
-<content:encoded><![CDATA[
-<div> Keywords: AWS Glue, Data Quality, Distribution Analyzer, DQDL, distribution statistics
-
-<br /><br />Summary: AWS Glue Data Quality has introduced a new Distribution Analyzer that generates frequency distribution profiles for data. This feature leverages Data Quality Definition Language (DQDL) to create histograms for numeric columns and value distributions for categorical, date, and boolean columns. It allows for custom bin counts, enabling users to examine their data's shapes and patterns tailored to specific use cases. Understanding data distribution is essential for building reliable data pipelines, as distribution statistics help identify skewness, outliers, and unexpected patterns without the need for custom coding. The new capability integrates seamlessly with existing DQDL rulesets, allowing users to add distribution profiling alongside current data quality checks in a single evaluation run. The distribution statistics are stored securely in Amazon S3 for future querying via services like Amazon Athena and can be accessed through APIs for easy integration with monitoring workflows and visualization tools, such as SageMaker Unified Studio. This feature is available across all AWS commercial regions and AWS GovCloud (US) regions. For further details about Glue Data Quality and to get started with the Distribution Analyzer, users are encouraged to visit the appropriate AWS resources. <div>
-<p>AWS Glue Data Quality now supports a new Distribution Analyzer that generates frequency distribution profiles for your data. Using this new Distribution Analyzer in the Data Quality Definition Language (DQDL), you can generate histograms for numeric columns and value distributions for categorical, date, and boolean columns. With support for custom bin counts, you can explore the shape and patterns of your data at the granularity that matters most to your use case.<br /> <br /> Understanding how data is distributed is foundational to building reliable data pipelines. Distribution statistics help you quickly identify skewness, outliers, and unexpected patterns across your datasets, without writing custom code. The capability integrates directly with your existing DQDL rulesets, so you can add distribution profiling alongside your current data quality checks in a single evaluation run. Distribution statistics are stored in Amazon S3 for future querying through services like Amazon Athena, and are also surfaced through APIs, making it easy to integrate distribution insights into monitoring workflows and visualization tools, including SageMaker Unified Studio.<br /> <br /> AWS Glue Data Quality distribution statistics are available in all AWS commercial regions and AWS GovCloud (US) regions.<br /> <br /> To learn more about Glue Data Quality, visit the <a href="https://docs.aws.amazon.com/glue/latest/dg/glue-data-quality.html">AWS Glue Data Quality documentation</a>. To get started with using Distribution Analyzer, visit the <a href="https://docs.aws.amazon.com/glue/latest/dg/dqdl.html#dqdl-analyzers">Analyzers documentation</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 27 Jul 2026 20:23:00 GMT</pubDate>
-</item>
-<item>
-<title>Amazon GameLift Streams now supports Custom Aspect Ratio and Dynamic Resolution</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-gamelift-streams/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/amazon-gamelift-streams/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Amazon GameLift, Custom Aspect Ratio, Dynamic Resolution, Streaming Experience, DisplayConfiguration
-
-<br /><br />Summary: Amazon GameLift Streams now offers Custom Aspect Ratio and Dynamic Resolution features, enhancing the streaming experience across various player devices and network conditions. With Custom Aspect Ratio, developers can set specific resolutions per stream session tailored to the player's device, accommodating portrait, landscape, ultra-wide, and square formats. This flexibility helps eliminate letterboxing or pillarboxing, ensuring a native full-screen experience on a range of devices, from mobile phones to non-standard displays. Users can specify resolutions from 320 to 4096 pixels per dimension (up to a total pixel budget of 1080p) utilizing the DisplayConfiguration parameter in the StartStreamSession API, or experiment with custom resolutions via the AWS Console. 
-
-Dynamic Resolution automatically adjusts the stream quality based on fluctuations in the player's network bandwidth. It reduces resolution gracefully during bandwidth drops to maintain smooth playback, avoiding issues like frame drops or disconnections, and recovers to full quality when network conditions improve. This feature is enabled by default for all new stream groups and requires no additional configuration. Customers need to download the new Web SDK to use these features. Both functionalities are available in all AWS Regions supporting Amazon GameLift Streams. For more details, refer to the Custom stream resolution section in the Amazon GameLift Streams Developer Guide. <div>
-<p>Amazon GameLift Streams now supports Custom Aspect Ratio and Dynamic Resolution, giving you greater control over the streaming experience across diverse player devices and network conditions.</p> 
-<p>With Custom Aspect Ratio, you can configure a specific resolution per stream session to match your player's device — including portrait, landscape, ultra-wide, and square aspect ratios. This eliminates letterboxing or pillarboxing, delivering native full-screen experiences on mobile phones, tablets, and non-standard displays. Specify any resolution from 320 to 4096 pixels per dimension (up to 1080p total pixel budget) using the DisplayConfiguration parameter in the StartStreamSession API. You can also try custom resolution from the AWS Console.</p> 
-<p>Dynamic Resolution automatically adapts stream quality when a player's network bandwidth fluctuates. When bandwidth drops, the stream gracefully reduces resolution to maintain smooth playback without frame drops or disconnections — and automatically recovers to full quality when conditions improve. Dynamic Resolution is enabled by default for all new stream groups with no configuration required. Customers will need to download the new Web SDK.</p> 
-<p>Both features are available in all AWS Regions where Amazon GameLift Streams is offered. To learn more, see Custom stream resolution in the Amazon GameLift Streams Developer Guide.&nbsp;<br /> &nbsp;<br /> <a href="https://docs.aws.amazon.com/gameliftstreams/latest/developerguide/custom-stream-resolution.html">https://docs.aws.amazon.com/gameliftstreams/latest/developerguide/custom-stream-resolution.html</a></p>
-]]></content:encoded>
-<pubDate>Mon, 27 Jul 2026 18:58:00 GMT</pubDate>
-</item>
-<item>
-<title>AWS Security Hub MCP App brings exposure findings into your AI-assisted workflow (Preview)</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-security-hub-mcp-app/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-security-hub-mcp-app/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: AWS, Security Hub, MCP App, security investigations, local server
-
-<br /><br />Summary: 
-AWS has introduced a preview of the AWS Security Hub MCP App, a local Model Context Protocol (MCP) server designed to integrate Security Hub exposure findings directly into Claude Desktop. This innovation accelerates security investigations by minimizing context switching and manual triage, enabling users to explore and act on their exposures within a seamless AI-assisted workflow. With the Security Hub MCP App, users can investigate their security posture using natural language; they can view top exposure findings, delve into a finding's attack path and expanded network path, assess correlated findings and affected resource configurations, and receive remediation recommendations. Each tool call produces a text summary for the AI agent to analyze alongside an interactive visualization for user verification, all within the same conversation. The MCP server operates locally on the user's machine utilizing existing AWS credentials, with all tools being read-only, ensuring no alterations are made to the environment. The Security Hub MCP App is available at no extra cost to Security Hub customers during its preview in all AWS commercial Regions that support Security Hub. For further details, users are directed to relevant AWS resources and the full list of supporting regions. <div>
-<p>AWS announces the preview of the AWS Security Hub MCP App, a local Model Context Protocol (MCP) server that brings your Security Hub exposure findings directly into Claude Desktop.&nbsp;&nbsp;This capability can help accelerates your security investigations by reducing context switching and manual triage, letting you explore and act on your exposures without leaving your AI-assisted workflow.</p> 
-<p>With the Security Hub MCP App, you can investigate your security posture in natural language: view your top exposure findings, drill into a finding’s attack path and expanded network path, examine correlated findings and affected resource configurations, and get remediation recommendations. Each tool call returns both a text summary for your AI agent to reason overover and an interactive visualization for you to verify in the same conversation. The MCP server runs locally on your machine using your existing AWS credentials, and every tool is read-only,-- no changes are made to your environment.</p> 
-<p>The Security Hub MCP App is available at no additional cost to Security Hub customers. This feature is available in preview in all AWS commercial Regions that support Security Hub.&nbsp;To learn more, see the <a href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-v2-mcp-app.html">AWS Security Hub User Guide</a> and the <a href="https://aws.amazon.com/security-hub/">AWS Security Hub product page</a>. For the full list of Regions, see the <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/">AWS Regional Services List</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 27 Jul 2026 17:00:00 GMT</pubDate>
-</item>
-<item>
-<title>AWS Elemental MediaTailor adds configurable ad timeout and concurrency controls for improved ad fill and faster startup</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/07/mediatail-configurable-ad-timeout-and-concurrency</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/mediatail-configurable-ad-timeout-and-concurrency</guid>
-<content:encoded><![CDATA[
-<div> Keywords: AWS Elemental MediaTailor, ad decision server, timeout settings, personalization budgets, parallel requests
-
-<br /><br />Summary: AWS Elemental MediaTailor now allows users to directly control ad decision server (ADS) timeout settings, which previously required AWS Support assistance. Users can configure individual HTTP ad request timeouts and total ad personalization time budgets for live, Video on Demand (VOD), and live ad prefetch workflows. This flexibility enables optimization of ad delivery performance according to specific needs. For example, increasing the personalization time budget for live events can enhance ad fill rates, while enabling parallel ADS requests in VOD workflows minimizes overall response times, resulting in quicker video startups. Additionally, the introduction of prefetch-specific timeout settings provides greater granularity for livestream ad retrieval. These new features can be configured via the AWS Elemental MediaTailor console, AWS CLI, or AWS SDKs, using the newly introduced AdsPersonalizationTimeouts and AdsPersonalizationConcurrency parameters in playback configurations. This capability is available across all AWS Regions that support AWS Elemental MediaTailor. For more detailed information on configuring ADS request timeouts, personalization time budgets, and concurrency, refer to the AWS Elemental MediaTailor User Guide. <div>
-<p>AWS Elemental MediaTailor now gives you direct control over ad decision server (ADS) timeout. Previously, changing these settings required contacting AWS Support. You can now configure individual HTTP ad request timeouts, total ad personalization time budgets for live, VOD, and live ad prefetch, and enable parallel ADS requests.</p> 
-<p>These settings allow you to optimize ad delivery performance for your specific workflows. For example, you can increase the personalization time budget for live events to improve ad fill rates or enable parallel ADS requests in VOD workflows to reduce overall response time for faster video startup. New prefetch-specific timeout settings give you additional granularity for livestream ad retrieval.</p> 
-<p>You can configure these settings through the AWS Elemental MediaTailor console, AWS CLI, or AWS SDKs using the new AdsPersonalizationTimeouts and AdsPersonalizationConcurrency parameters on your playback configurations.</p> 
-<p>This feature is available in all AWS Regions where AWS Elemental MediaTailor is available.&nbsp;</p> 
-<p>To learn more about configuring ADS request timeouts, personalization time budgets, and concurrency, see <a href="https://docs.aws.amazon.com/mediatailor/latest/ug/configurations-create.html#configurations-advanced-settings">Advanced settings</a> in the AWS Elemental MediaTailor User Guide.</p>
-]]></content:encoded>
-<pubDate>Mon, 27 Jul 2026 16:09:00 GMT</pubDate>
-</item>
-<item>
-<title>Amazon RDS for SQL Server now supports restoring TDE databases on Mult-AZ instances</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/07/rds-sql-server-supports-tde-for-maz/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/rds-sql-server-supports-tde-for-maz/</guid>
-<content:encoded><![CDATA[
-<div> TDE, SQL Server, Multi-AZ, backup, restore
-
-<br /><br />Summary: The recent update now allows restoring Transparent Data Encryption (TDE)-enabled SQL Server databases on Multi-AZ instances and those configured with a read replica in the same region using native backup and restore functionalities. Previously, this option was restricted to Single-AZ instances, which required users to disable TDE or migrate to a Single-AZ configuration for restoring encrypted databases. Now, users can directly restore TDE-enabled database backups to Amazon RDS for SQL Server Multi-AZ instances and read replica configurations in the same region. To perform the restore, users need to back up their existing TDE certificate and store it in Amazon S3, then restore it to the RDS instance with the TDE option enabled. After that, they can restore the TDE-enabled database backup from Amazon S3 using native backup and restore. This enhancement streamlines migration and recovery workflows, ensuring both encryption at rest with TDE and high availability through Multi-AZ deployments. This feature is accessible in all AWS Regions that support Amazon RDS for SQL Server. For further details, refer to the official documentation. <div>
-<p><a href="https://aws.amazon.com/rds/sqlserver/" target="_blank">Amazon Relational Database Service (Amazon RDS) for SQL Server</a> now supports restoring Transparent Data Encryption (TDE)-enabled SQL Server databases on Multi-AZ instances and instances configured with a read replica in the same region, using native backup and restore. Previously, TDE-enabled database restore was available only for Single-AZ instances, requiring you to disable TDE or migrate to a Single-AZ configuration before restoring encrypted databases.<br /> <br /> You can restore TDE-enabled database backups directly to Amazon RDS for SQL Server Multi-AZ instances and instances configured with a read replica in the same region. Back up your existing TDE certificate, store it in Amazon S3, and restore it to your Amazon RDS instance with the TDE option enabled.&nbsp;Then, restore your TDE-enabled database backup from Amazon S3 using Amazon RDS native backup and restore. This simplifies your migration and recovery workflows when you require both encryption at rest with TDE and the high availability of Multi-AZ deployments.<br /> <br /> This feature is available in all AWS Regions where Amazon RDS for SQL Server is supported. To learn more, see the <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Appendix.SQLServer.Options.TDE.html" target="_blank">Amazon RDS for SQL Server User Guide</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 27 Jul 2026 07:00:00 GMT</pubDate>
-</item>
-<item>
-<title>AWS Clean Rooms supports larger worker types up to 32 vCPUs for SQL</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-clean-rooms-32-vcpu-worker-types-sql</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/07/aws-clean-rooms-32-vcpu-worker-types-sql</guid>
-<content:encoded><![CDATA[
-<div> Keywords: AWS Clean Rooms, vCPUs, memory, collaboration, datasets  
-
-<br /><br />Summary:  
-AWS Clean Rooms has upgraded its capabilities to support 32 vCPUs with 244 GB of memory for SQL analyses, allowing users to execute more compute and memory-intensive workloads. The previous maximum worker type was 16 vCPUs with 120 GB of memory. The introduction of larger workers helps enhance performance, particularly for complex queries involving large datasets, which could lead to optimized costs for customers. For instance, an advertiser working in collaboration with a publisher can now leverage these larger workers to conduct intricate feature engineering over billions of records. This capability is vital for training their multi-touch attribution model, thereby accelerating time-to-value while reducing expenses. AWS Clean Rooms is designed to enable companies and their partners to collaboratively analyze their collective datasets without the risk of revealing or copying each other's underlying data, maintaining confidentiality. To find out more about the AWS Regions where AWS Clean Rooms is accessible, users can refer to the relevant table. Additionally, further information about how to collaborate using AWS Clean Rooms can be found on their dedicated webpage. <div>
-<p>AWS Clean Rooms now supports <a href="https://docs.aws.amazon.com/clean-rooms/latest/userguide/use-sql-editor.html" rel="noopener noreferrer" target="_blank">larger worker types</a> of 32 vCPUs with 244 GB of memory for SQL analyses, allowing you to run more compute and memory-intensive workloads. Previously, the largest worker type available was 16 vCPUs with 120 GB of memory. Larger workers can help improve performance for complex queries on large datasets, optimizing costs for customers. For example, an advertiser collaborating with a publisher can use larger workers to run complex feature engineering across billions of records to train their multi-touch attribution model, accelerating time-to-value and optimizing costs.</p> 
-<p>AWS Clean Rooms helps companies and their partners easily analyze and collaborate on their collective datasets without revealing or copying one another’s underlying data. For more information about the AWS Regions where AWS Clean Rooms is available, see the <a href="https://docs.aws.amazon.com/general/latest/gr/clean-rooms.html#clean-rooms_region" rel="noopener noreferrer" target="_blank">AWS Regions</a> table. To learn more about collaborating with AWS Clean Rooms, visit <a href="https://aws.amazon.com/clean-rooms/" rel="noopener noreferrer" target="_blank">AWS Clean Rooms</a>.</p>
-]]></content:encoded>
-<pubDate>Fri, 24 Jul 2026 12:00:00 GMT</pubDate>
-</item>
-<item>
-<title>v16.3.0-canary.98</title>
-<link>https://github.com/vercel/next.js/releases/tag/v16.3.0-canary.98</link>
-<guid>https://github.com/vercel/next.js/releases/tag/v16.3.0-canary.98</guid>
-<content:encoded><![CDATA[
-<div> Sure! Please provide the article or the content you would like me to summarize. <div>
-<p>v16.3.0-canary.98</p>
-]]></content:encoded>
-<pubDate>2026-07-27T23:36:11Z</pubDate>
-</item>
-<item>
-<title>7.10.0-dev.43</title>
-<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.43</link>
-<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.43</guid>
-<content:encoded><![CDATA[
-<div> It seems like you are referencing a version number (7.10.0-dev.43), but I don't have specific access to an article or text associated with that version. If you provide the text or main points of the article, I would be happy to help you summarize it according to your instructions. Please share the content you want summarized! <div>
-<p>7.10.0-dev.43</p>
-]]></content:encoded>
-<pubDate>2026-07-27T13:56:19Z</pubDate>
-</item>
-<item>
-<title>7.10.0-dev.42</title>
-<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.42</link>
-<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.42</guid>
-<content:encoded><![CDATA[
-<p>7.10.0-dev.42</p>
-]]></content:encoded>
-<pubDate>2026-07-27T13:25:45Z</pubDate>
-</item>
-<item>
-<title>7.10.0-dev.41</title>
-<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.41</link>
-<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.41</guid>
-<content:encoded><![CDATA[
-<p>7.10.0-dev.41</p>
-]]></content:encoded>
-<pubDate>2026-07-27T13:08:18Z</pubDate>
-</item>
-<item>
-<title>7.10.0-dev.40</title>
-<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.40</link>
-<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.40</guid>
-<content:encoded><![CDATA[
-<p>7.10.0-dev.40</p>
-]]></content:encoded>
-<pubDate>2026-07-27T12:49:06Z</pubDate>
-</item>
-<item>
-<title>7.10.0-dev.39</title>
-<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.39</link>
-<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.39</guid>
-<content:encoded><![CDATA[
-<p>7.10.0-dev.39</p>
-]]></content:encoded>
-<pubDate>2026-07-27T12:31:07Z</pubDate>
-</item>
-<item>
-<title>7.10.0-dev.38</title>
-<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.38</link>
-<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.38</guid>
-<content:encoded><![CDATA[
-<p>7.10.0-dev.38</p>
-]]></content:encoded>
-<pubDate>2026-07-27T11:55:59Z</pubDate>
-</item>
-<item>
-<title>7.10.0-dev.37</title>
-<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.37</link>
-<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.37</guid>
-<content:encoded><![CDATA[
-<p>7.10.0-dev.37</p>
-]]></content:encoded>
-<pubDate>2026-07-27T11:38:37Z</pubDate>
-</item>
-<item>
-<title>7.10.0-dev.36</title>
-<link>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.36</link>
-<guid>https://github.com/prisma/prisma/releases/tag/7.10.0-dev.36</guid>
-<content:encoded><![CDATA[
-<p>7.10.0-dev.36</p>
-]]></content:encoded>
-<pubDate>2026-07-27T10:29:05Z</pubDate>
 </item>
 </channel>
 </rss>
