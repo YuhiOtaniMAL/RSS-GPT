@@ -3,7 +3,318 @@
 <channel>
 <title>ai</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/ai.xml</link>
-<lastBuildDate>Sun, 30 Aug 2026 05:03:17 +0000</lastBuildDate>
+<lastBuildDate>Mon, 31 Aug 2026 05:10:31 +0000</lastBuildDate>
+
+<item>
+<title>Understanding ChatGPT Work</title>
+<link>https://simonwillison.net/2026/Aug/30/understanding-chatgpt-work/</link>
+<guid>https://simonwillison.net/2026/Aug/30/understanding-chatgpt-work/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: ChatGPT Work, features, Work Cloud, model selection, code execution
+
+<br><br>Summary:  
+ChatGPT Work consists of two products: Work Cloud, accessible via the web and mobile apps, and Work Local, available through the desktop app. Currently, Work is exclusive to paid subscribers ($20/month+). It boasts features not found in the regular ChatGPT, such as model selection with various reasoning levels and code execution with internet access. The ability to run a full Chrome browser instance allows users to interact with websites, fill forms, and execute JavaScript. Additionally, Work offers a persistent shared filesystem that retains previous session files. Users can build and deploy websites using Cloudflare Workers and run scheduled tasks or prompt automations. Another advantage of Work is the capability to utilize sub-agents for complex projects, enhancing multitasking. However, concerns remain about the security of these features, particularly regarding the combination of private data access and exposure to untrusted content. Overall, while powerful, the documentation and explanations from OpenAI are seen as inadequate, leading to confusion about the functionalities of ChatGPT Work. <div>
+<p>OpenAI <a href="https://openai.com/index/chatgpt-for-your-most-ambitious-work/">announced ChatGPT Work</a> on July 9th, and have been furiously iterating on it ever since. It is an extraordinarily confusing and very powerful product. Here's what I've figured out about it so far.</p>
+<h4 id="two-products">ChatGPT Work is actually two products</h4>
+<p>The more interesting version of ChatGPT Work is the one that runs in the cloud. This can be accessed via <a href="https://www.chatgpt.com/">chatgpt.com</a> or through the ChatGPT mobile apps. Let's call it <strong>Work Cloud</strong>.</p>
+<p>If you install the ChatGPT desktop app - the app that used to be called Codex - you gain access to a thing called ChatGPT Work that can access files and run programs directly on your computer. Let's call that one <strong>Work Local</strong>. This one feels more like regular Codex re-skinned to be less intimidating to non-software-developers.</p>
+<p>For the rest of this article I'm going to talk exclusively about Work Cloud.</p>
+<h4 id="work-is-for-paid-subscribers-only">Work is for paid subscribers only</h4>
+<p>Right now, ChatGPT Work (in both flavors) is available only to $20/month and up subscribers. Free users and $8/month Go users do not have access.</p>
+<h4 id="work-has-features-that-aren-t-available-in-chat">Work has features that aren't available in Chat</h4>
+<p>The interface for accessing Work is a tab selector, which presents it as an alternative to Chat:</p>
+<p><img alt="ChatGPT app header with a Chat and a Work tab" src="https://static.simonwillison.net/static/2026-08-30/IMG_7741.jpeg" /></p>
+<p>The obvious question is <em>when should I use Chat, and when should I use Work?</em></p>
+<p>OpenAI's <a href="https://learn.chatgpt.com/docs/get-started-with-work">official answer</a> to that question is:</p>
+<blockquote>
+<p>Use Chat when you want an answer, explanation, brainstorm, or short draft. Use ChatGPT Work when you want ChatGPT to complete a task with a clear outcome, such as a brief, deck, analysis, recurring update, workflow, or file you can review and use.</p>
+</blockquote>
+<p>I find that almost entirely useless, because I've been using regular ChatGPT Chat for all of those task categories for years!</p>
+<p>The better question then is <em>what features does Work have that are missing from Chat?</em></p>
+<p>After extensive experimentation I think I've mostly figured that out:</p>
+<ul>
+<li><a href="#model-selection">Options to use Luna and Terra in place of Sol</a></li>
+<li><a href="#code-execution-with-internet-access-">A code execution environment with Internet access</a></li>
+<li><a href="#a-full-headless-chrome-browser">A headless Chrome browser</a></li>
+<li><a href="#a-persistent-shared-filesystem">A persistent filesystem shared between sessions</a></li>
+<li><a href="#chatgpt-sites">The ability to publish ChatGPT Sites</a></li>
+<li><a href="#sub-agents-with-sol-luna-and-terra">The ability to run sub-agent sessions with Sol, Luna, and Terra</a></li>
+<li><a href="#scheduled-prompt-automations">Scheduled prompt automations</a> (may be in ChatGPT Chat too)</li>
+</ul>
+<h4 id="model-selection">Model selection</h4>
+<p>In Work, you get the option to pick GPT-5.6 Sol, Luna, or Terra, each with Light, Medium, High, Extra High, Max, or Ultra reasoning levels. You can also pick GPT-5.5 at Light, Medium, High, or Extra High.</p>
+<p>These look to be the same models that are available through the OpenAI API.</p>
+<p>Chat offers a different selection: 5.6 Instant, Medium, High, Extra High, and Pro (actually Extra High and Pro are only available for $100/month+ subscribers - $20/month subscribers cap out at High). It doesn't explain if those are Luna or Terra or Sol (I'm assuming Sol?). 5.6 Pro appears to be exclusive to Chat, with no equivalent in Work.</p>
+<p>My current understanding from using Codex is that Ultra is a special mode that more eagerly delegates to sub-agents.</p>
+<p>I believe ChatGPT Work sessions are billed against your Codex allowance, while ChatGPT Chat Sessions get their own, separate allowance. This may help explain the model availability differences.</p>
+<h4 id="code-execution-with-internet-access-">Code execution with Internet access!</h4>
+<p>As a long-time fan of the <a href="https://simonwillison.net/tags/code-interpreter/">Code Interpreter pattern</a> - pioneered by OpenAI in 2023 - this is by far the most exciting feature of ChatGPT Work (Cloud) for me.</p>
+<p>The code execution environment can now talk to the rest of the internet!</p>
+<p>ChatGPT Chat can't do this - if you ask it to install additional software packages or interact with websites or APIs that access will be blocked by the container proxy.</p>
+<p>(Weirdly, back in January it <a href="https://simonwillison.net/2026/Jan/26/chatgpt-containers/">grew the ability to install packages</a>, but that doesn't seem to work any more. I wish they had better changelogs!)</p>
+<p>Claude's equivalent container has allowed restricted internet access since it launched <a href="https://simonwillison.net/2025/Sep/9/claude-code-interpreter/">last September</a>. Claude can install packages from PYPI and NPM and clone repositories from GitHub. But that is about it: the allowlist of domains is very short.</p>
+<p>ChatGPT Work allows a whole lot more than that. It can be configured with a specific list of allowed domains, but the default appears to be open to all.</p>
+<p>This makes Work an incredibly useful tool. You can have it clone GitHub repositories, install their dependencies, then use them to interact with the rest of the web!</p>
+<h4 id="a-full-headless-chrome-browser">A full, headless Chrome browser</h4>
+<p>Another killer feature of ChatGPT Work is <a href="https://learn.chatgpt.com/docs/browser?surface=web">the browser tool</a>. ChatGPT Work can launch a full Chrome instance, load websites, fill out forms, and take screenshots.</p>
+
+<p><img alt="Screenshot of a ChatGPT conversation. A user message in a black rounded bubble reads: Visit https://london-pelicans-in-her-piety.simonw.chatgpt.site/ and take a screenshot with you browser. Below it a collapsed status line reads &quot;Worked for 1m 18s &gt;&quot;, followed by the reply &quot;Here's the screenshot of the live site:&quot; and an embedded screenshot of a website." src="https://static.simonwillison.net/static/2026/chatgpt-work-card.jpg" /></p>
+
+<p>If a site requires sign in the browser can prompt you to take over and enter both passwords and 2FA codes, without round-tripping those credentials through the model itself.</p>
+
+<p>It can even run JavaScript against the DOM of loaded pages. I prompted:</p>
+<blockquote>
+<p><code>Load simonwillison.net in your browser and extract the headings using JavaScript</code></p>
+</blockquote>
+<p>ChatGPT Work fired up a browser instance and ran the code:</p>
+<div class="highlight highlight-source-js"><pre><span class="pl-k">await</span> <span class="pl-s1">tab</span><span class="pl-kos">.</span><span class="pl-c1">playwright</span><span class="pl-kos">.</span><span class="pl-en">evaluate</span><span class="pl-kos">(</span><span class="pl-kos">(</span><span class="pl-kos">)</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">{</span>
+  <span class="pl-k">return</span> <span class="pl-v">Array</span><span class="pl-kos">.</span><span class="pl-en">from</span><span class="pl-kos">(</span><span class="pl-smi">document</span><span class="pl-kos">.</span><span class="pl-en">querySelectorAll</span><span class="pl-kos">(</span><span class="pl-s">"h1,h2,h3,h4,h5,h6"</span><span class="pl-kos">)</span><span class="pl-kos">,</span> <span class="pl-s1">heading</span> <span class="pl-c1">=&gt;</span> <span class="pl-kos">(</span><span class="pl-kos">{</span>
+    <span class="pl-c1">level</span>: <span class="pl-s1">heading</span><span class="pl-kos">.</span><span class="pl-c1">tagName</span><span class="pl-kos">.</span><span class="pl-en">toLowerCase</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-c1">text</span>: <span class="pl-s1">heading</span><span class="pl-kos">.</span><span class="pl-c1">innerText</span><span class="pl-kos">.</span><span class="pl-en">trim</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">replace</span><span class="pl-kos">(</span><span class="pl-pds"><span class="pl-c1">/</span><span class="pl-cce">\s</span><span class="pl-c1">+</span><span class="pl-c1">/</span>g</span><span class="pl-kos">,</span> <span class="pl-s">" "</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+    <span class="pl-c1">id</span>: <span class="pl-s1">heading</span><span class="pl-kos">.</span><span class="pl-c1">id</span> <span class="pl-c1">||</span> <span class="pl-c1">null</span>
+  <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span></pre></div>
+<p>This feels a lot like my <a href="https://shot-scraper.datasette.io/en/stable/javascript.html">shot-scraper javascript</a> tool, only now I can access it on my phone!</p>
+<h4 id="a-persistent-shared-filesystem">A persistent, shared filesystem</h4>
+<p>ChatGPT Chat gets a fresh filesystem for each chat session. These cannot be accessed from any other session.</p>
+<p>In ChatGPT Work each session gets its own scratch folder - named something like <code>/workspace/scratch/e00a0a017944</code> - but each of those are persisted across sessions, so you can access files from previous chats. I have 171 folders in <code>/workspace/scratch</code> right now!</p>
+<p>As far as I can tell that <code>/workspace</code> volume is mounted to all Work sessions that are currently running - file edits from one can be instantly seen by the others. They don't seem to share the same process space though, and localhost servers running in one can't be accessed from another.</p>
+<h4 id="chatgpt-sites">ChatGPT Sites</h4>
+<p>ChatGPT Work has the ability to build <em>and deploy</em> entire websites, using Cloudflare Workers. These can have HTML and JavaScript and can run server-side features too, including stateful features on top of Cloudflare D1 and R2.</p>
+<p>Here's a simple site I built with this feature:</p>
+<p><a href="https://london-pelicans-in-her-piety.simonw.chatgpt.site/">london-pelicans-in-her-piety.simonw.chatgpt.site</a></p>
+<p><img alt="Screenshot of a website homepage on a cream background. Top navigation bar: a circular logo reading &quot;P/P&quot; on the left, the links &quot;THE CENSUS&quot;, &quot;COLLECTIONS&quot; and &quot;METHOD&quot; in the center, and &quot;JSON ↓&quot; on the right. The left half is a hero section with small red capitals reading &quot;AN ICONOGRAPHIC CENSUS · GREATER LONDON&quot; above a large serif heading &quot;Pelicans in her piety&quot;, with &quot;piety&quot; set in red italics. Below it: &quot;Across London, an impossible bird bleeds for her young—in limewood, marble, mosaic, metal and glass. This is an evidence-backed census of where to find her.&quot; Two buttons follow: a solid black &quot;EXPLORE ALL 28&quot; and an outlined &quot;DOWNLOAD THE DATA&quot;. The right half is a photograph of an ornate dark carved wooden reredos in a church, with gilded urns and a crest on top, Corinthian columns, a gilded pelican with outspread wings at its center above inscribed panels, an altar with a brass cross and red flowers, embroidered banners on either side, and a black-and-white checkerboard floor with red carpet. Vertical text along the photo's right edge reads &quot;ST MARY ABCHURCH&quot; and a caption at its bottom reads &quot;Grinling Gibbons's reredos, St Mary Abchurch. Photograph: Diliff, CC BY-SA 3.0, via SPAB ↗&quot;. A statistics strip along the bottom shows &quot;28 FIXED SITES&quot;, &quot;4 COLLECTIONS&quot;, &quot;3 OPEN LEADS&quot; and &quot;2 KNOWN LOSSES&quot;." src="https://static.simonwillison.net/static/2026/pelicans-in-her-piety.webp" /></p>
+<p>My prompt was:</p>
+<blockquote>
+<p><code>Figure out all of the places in London with a pelican in her piety, then turn that into a JSON file and build a ChatGPT sites site about them</code></p>
+</blockquote>
+<p>(A pelican in her piety is a fascinating piece of <a href="https://devonchurchland.co.uk/blog/pelican-in-her-piety/#What-is-a-Pelican-In-Her-Piety">medieval Christian imagery</a> - once you know about them you'll find them all over the place.)</p>
+<p>These sites default to being private to the user that created them, but you can make them public and (on team plans) share them with other specific individuals.</p>
+<h4 id="sub-agents-with-sol-luna-and-terra">Sub-agents with Sol, Luna, and Terra</h4>
+<p>There's not much to say about this one. ChatGPT Chat can't run sub-agents. ChatGPT Work can. This is very much a power-user feature: if you are running a complex project that can benefit from multiple parallel agents working together, Work can do that.</p>
+<h4 id="scheduled-prompt-automations">Scheduled prompt automations</h4>
+<p>Another feature that seems to have migrated from regular ChatGPT to ChatGPT Work at some point. You can prompt ChatGPT Work like this:</p>
+<blockquote>
+<p><code>run a search to see if Waymo have announced a launch date for Half Moon Bay every day at 8am</code></p>
+</blockquote>
+<p>This will schedule a prompt to run on that frequency. These prompts can decide that nothing interesting has happened, or they can decide to notify you of some new information.</p>
+<p><strong>Update</strong>: Actually this seems to work in ChatGPT Chat as well.</p>
+<p>It's still worth noting here though, as it can be used in conjunction with other ChatGPT Work exclusive features. You can set a scheduled task to update a ChatGPT Site on an hourly basis, for example.</p>
+<h4 id="is-this-safe-">Is this safe?</h4>
+<p>An open question for me right now is how <em>safe</em> all of this stuff is.</p>
+<p>My <a href="https://simonwillison.net/2025/Jun/16/the-lethal-trifecta/">lethal trifecta model</a> warns about the risks inherent in any agent system that combines access to private data with exposure to untrusted content and a way to communicate stolen information back to an attacker.</p>
+<p>ChatGPT Work combines all three!</p>
+<p>I'd love to hear more from OpenAI about how they protect ChatGPT Work sessions against prompt injection attacks. I expect their answer is the same <a href="https://learn.chatgpt.com/docs/sandboxing/auto-review">auto-review mechanism</a> as Codex.</p>
+<h4 id="openai-could-make-this-a-lot-less-confusing">OpenAI could make this a lot less confusing</h4>
+<p>Figuring this all out took way more work than it should have.</p>
+<p>I think there are two key problems here:</p>
+<ol>
+<li>OpenAI explain Work in terms of what it's for, not what it actually does</li>
+<li>OpenAI still insist on hiding their system prompts and tools descriptions</li>
+</ol>
+<p>If the ChatGPT Work documentation included the exact system prompt and tool descriptions used by the agent I wouldn't have needed to write this post.</p>
+<h4 id="all-the-tools">A list of all the tools</h4>
+<p>Shortly after publishing this article I had an idea. I started a fresh Work session and prompted:</p>
+<blockquote><p><code>Build a site that lists every one of your tools - nearly grouped into categories - and for each one explain what it does. Try to exactly duplicate arguments and tool descriptions where possible. Design aesthetic should be technical docs, minimal flare</code></p></blockquote>
+<p><a href="https://codex-tool-reference.simonw.chatgpt.site/">Here's the site it built</a>, which includes details of 223 registered tools - though 6 of those are from my own personal MCPs served via <a href="https://simonwillison.net/2026/Jul/31/stateless-mcp/#datasette-mcp">datasette-mcp</a>.</p>
+
+<h4 id="and-a-whole-lot-of-skills">And a whole lot of Skills</h4>
+<p>I noticed that the only browser-related tool in the list was <a href="https://codex-tool-reference.simonw.chatgpt.site/#tool-web-run">web.run</a>, which has methods for running searches, opening URLs, and clicking links, but didn't look like the full story in regards to headless browser automation.</p>
+<p>This made me suspicious that something was missing, so I told the ChatGPT Work session that built that tools reference site:</p>
+<blockquote>
+<p><code>Add full copies of every skill to the website (separate pages linked to from the homepage)</code></p>
+</blockquote>
+<p>It turns out ChatGPT Work uses <a href="https://codex-tool-reference.simonw.chatgpt.site/#skills">a lot of skills</a> - 44 in fact!</p>
+<p>The <a href="https://codex-tool-reference.simonw.chatgpt.site/skills/control-browser">control-browser skill</a> explains how the browser works:</p>
+<blockquote>
+<p>Run browser setup code through the Node REPL <code>js</code> tool. In this environment the callable tool id typically appears as <code>mcp__node_repl__js</code>. [...]</p>
+<p>The ability to interact directly with the browser is exposed through the <code>browser-client</code> runtime via the <code>agent.browsers.*</code> API. Before trying to interact with it, you MUST emit and read the complete documentation returned by <code>await browser.documentation()</code> in one go.</p>
+</blockquote>
+<p>So I told Work:</p>
+<blockquote>
+<p>Add the full output of await browser.documentation() to the bottom of the /skills/control-browser page</p>
+</blockquote>
+<p>And now you can read that <a href="https://codex-tool-reference.simonw.chatgpt.site/skills/control-browser#browser-documentation">on /skills/control-browser</a> as well.</p>
+<p>A few more interesting Skills:</p>
+<ul>
+<li>
+<a href="https://codex-tool-reference.simonw.chatgpt.site/skills/documents">documents</a> for creating <code>.docx</code> files</li>
+<li>
+<a href="https://codex-tool-reference.simonw.chatgpt.site/skills/imagegen">imagegen</a> with tips on creating images with the <code>image_gen</code> tool</li>
+<li>
+<a href="https://codex-tool-reference.simonw.chatgpt.site/skills/pdf">pdf</a> for both reading and rendering PDFs</li>
+<li>
+<a href="https://codex-tool-reference.simonw.chatgpt.site/skills/spreadsheets">Spreadsheets</a> for manipulating <code>.xlsx</code>, <code>.xls</code>, <code>.csv</code>, <code>.tsv</code>
+</li>
+<li>
+<a href="https://codex-tool-reference.simonw.chatgpt.site/skills/sites-sites-building">sites:sites-building</a> for creating ChatGPT Sites</li>
+<li>
+<a href="https://codex-tool-reference.simonw.chatgpt.site/skills/openai-docs">openai-docs</a> for answering questions about itself</li>
+<li>
+<a href="https://codex-tool-reference.simonw.chatgpt.site/skills/data-analytics-build-dashboard">data-analytics:build-dashboard</a> for building data dashboards</li>
+</ul>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/code-interpreter">code-interpreter</a>, <a href="https://simonwillison.net/tags/lethal-trifecta">lethal-trifecta</a>, <a href="https://simonwillison.net/tags/general-agents">general-agents</a></p>
+]]></content:encoded>
+<pubDate>2026-08-30T23:59:47+00:00</pubDate>
+<pubDate>2026-08-30T23:59:47+00:00</pubDate>
+</item>
+<item>
+<title>Texas Governor Abbott blocks funding for more Flock cameras</title>
+<link>https://www.theverge.com/ai-artificial-intelligence/986541/texas-governor-abbott-flock-cameras</link>
+<guid>https://www.theverge.com/ai-artificial-intelligence/986541/texas-governor-abbott-flock-cameras</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Flock, AI surveillance, Texas, privacy concerns, misuse  
+
+<br><br>Summary: As backlash grows over Flock's AI surveillance cameras, Texas Governor Greg Abbott has taken action on them. This decision came just before the publication of a report revealing that the state had spent over $30 million on Flock cameras, funds primarily raised by implementing a $1 fee on insurance policies intended to combat catalyst converter theft. Flock cameras have generated considerable anger among the public due to rising privacy concerns associated with their use. Additionally, there have been multiple incidents where law enforcement officers were either placed on leave or faced disciplinary actions for misusing Flock systems. These issues have amplified the discourse surrounding the implications of AI surveillance technology in public spaces and raised questions about accountability and oversight. Critics argue that such surveillance practices infringe upon civil liberties and contribute to a culture of constant monitoring without adequate checks on misuse. As a result, the controversy over Flock's AI cameras highlights the complex balance between enhancing public safety and protecting individual privacy rights in an increasingly surveilled society. <div>
+<figure>
+
+<img alt="Illustration of hands holding instruments to destroy a Flock camera" src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/08/268713_Americans_seem_to_agree_that_destroy_Flock_cameras_is_good_CVirginia.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption>
+		</figcaption>
+</figure>
+<p class="wp-block-paragraph">As backlash grows over Flock's AI surveillance cameras, Texas Governor Greg Abbott has <a href="https://www.texastribune.org/2026/08/28/texas-greg-abbott-flock-cameras-order-state-money/">frozen state spending</a> on them. The move came just ahead of the publication of a <a href="https://www.texastribune.org/2026/08/28/texas-flock-cameras-auto-insurance-fee-mvcpa-grants/"><em>Texas Tribune</em> investigation</a> that revealed the state spent over $30 million on Flock cameras. That money was primarily raised by tacking a $1 fee onto insurance policies, allegedly to help fight catalytic converter theft.</p>
+<p class="wp-block-paragraph">Flock cameras have increasingly drawn ire from <a href="https://www.washingtonpost.com/politics/2026/08/29/flock-cameras-stir-bipartisan-fury-gov-greg-abbott-blocks-them-texas/">across the political spectrum</a> as they've become the subject of privacy concerns. There have been multiple incidents of officers being placed on leave or <a href="https://www.404media.co/cops-keep-getting-arrested-for-using-flock-to-stalk-people/">criminally charged</a> for misusing Flock systems, including at  …</p>
+<p><a href="https://www.theverge.com/ai-artificial-intelligence/986541/texas-governor-abbott-flock-cameras">Read the full story at The Verge.</a></p>
+]]></content:encoded>
+<pubDate>2026-08-30T11:35:10-04:00</pubDate>
+<pubDate>2026-08-30T12:14:46-04:00</pubDate>
+</item>
+<item>
+<title>Inside Meta’s push to put robots to work in data centers</title>
+<link>https://arstechnica.com/ai/2026/08/inside-metas-push-to-put-robots-to-work-in-data-centers/</link>
+<guid>https://arstechnica.com/ai/2026/08/inside-metas-push-to-put-robots-to-work-in-data-centers/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Meta, robots, data centers, automation, Kinova  
+
+<br><br>Summary: Meta is testing robotic technology in its data centers to automate tasks such as plugging in cables and resetting servers, a move that may reduce reliance on human labor amid rising operational costs. The initiative, which has not been reported previously, aims to streamline operations across its expanding data center network. Various vendors like Watney Robotics, Kinova, and ABB are supplying the robotic hardware for these tests. One specific experiment involves assessing the effectiveness of a Kinova Gen3 robotic arm for power cycling servers and possibly cutting off electricity. In another trial, a different robot is being evaluated for swapping networking cables. A Meta data center worker estimates that successfully implementing this technology could potentially replace up to 80 percent of certain roles, leading to anxiety among employees tasked with physical duties. The worker expressed concern about the increasing threat of automation in their job sector, indicating a wider trend towards automation that may impact a larger workforce within the company. This effort reflects Meta's push towards efficiency while managing labor costs amid its expansive growth in data center operations. <div>
+<p>Meta is testing robots that can plug in cables, reset servers, and handle other tasks inside its <a href="https://www.wired.com/story/how-data-centers-broke-american-politics/">data centers</a>, according to several current and former workers familiar with the projects. The ongoing effort, which has not been previously reported, may eventually allow <a href="https://www.wired.com/tag/meta/">Meta</a> to operate its rapidly expanding data center footprint with fewer humans, keeping labor costs in check as its spending on <a href="https://www.wired.com/story/microsoft-google-meta-2025-earnings/">AI infrastructure soars</a>.</p>
+<p>Meta is using robots and related hardware from several different vendors, including Watney Robotics, Kinova, and ABB, according to the same workers, who asked to remain anonymous because they weren’t authorized to speak to the media. Kinova and ABB declined to comment. Watney didn’t respond to requests for comment.</p>
+<p>In one experiment, Meta is evaluating whether a Kinova Gen3 robotic arm could be used for power cycling or cutting off electricity to servers. The company is also testing a different robot to swap networking cables. One Meta data center worker estimates that if it’s successful, the bot could replace up to 80 percent of some people’s workloads. “We thought those of us performing the physical tasks were safe for a while, but not anymore,” says the worker. “It’s coming for us all, unfortunately.”</p><p><a href="https://arstechnica.com/ai/2026/08/inside-metas-push-to-put-robots-to-work-in-data-centers/">Read full article</a></p>
+<p><a href="https://arstechnica.com/ai/2026/08/inside-metas-push-to-put-robots-to-work-in-data-centers/#comments">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 30 Aug 2026 11:03:47 +0000</pubDate>
+<pubDate>Sun, 30 Aug 2026 11:03:47 +0000</pubDate>
+</item>
+<item>
+<title>Murfy AI</title>
+<link>https://www.producthunt.com/products/murfy</link>
+<guid>https://www.producthunt.com/products/murfy</guid>
+<content:encoded><![CDATA[
+<div> **Keywords:** writing, publishing, arXiv, speed, efficiency
+
+<br><br>Summary:  
+In today's fast-paced academic environment, researchers face the challenge of publishing their work quickly without compromising quality. To achieve this, several strategies can be adopted to enhance efficiency. Firstly, utilizing templates and predefined structures when writing papers allows for a more organized approach, streamlining the process. Secondly, employing collaborative tools can facilitate teamwork, enabling multiple authors to contribute simultaneously and share feedback in real time. Thirdly, leveraging automated citation management software helps in organizing references, saving time on formatting and ensuring accuracy. Additionally, setting clear deadlines and milestones can keep projects on track, ensuring timely completion. Furthermore, engaging with peer review networks can provide quick feedback, accelerating the revision process. Finally, maintaining a consistent routine dedicated to writing and publishing can enhance productivity and reduce procrastination. By implementing these strategies, researchers can significantly expedite their writing and publishing processes on platforms like arXiv, allowing them to disseminate their findings to the scientific community more rapidly. In a world where information is abundant, the ability to publish swiftly can make a significant difference in a researcher's visibility and impact. <div>
+<p>
+            Write, review, and publish to arXiv 10x faster
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/murfy?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1219033?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-08-09T19:38:59-07:00</pubDate>
+<pubDate>2026-08-30T22:09:37-07:00</pubDate>
+</item>
+<item>
+<title>Topview Motion Studio</title>
+<link>https://www.producthunt.com/products/topview-ai</link>
+<guid>https://www.producthunt.com/products/topview-ai</guid>
+<content:encoded><![CDATA[
+<div> Keywords: launch videos, After Effects, alternatives, tools, animation
+
+<br><br>Summary: Creating launch videos traditionally involves complex software like After Effects, which can be intimidating for new users. Fortunately, there are various alternatives and tools designed to simplify the video creation process without requiring any advanced skills. Online platforms allow users to access pre-made templates and customizable features to craft engaging videos quickly. Many such tools provide a user-friendly interface, making it easy for anyone to drag and drop elements, add text, choose animations, and incorporate music. This eliminates the need for technical expertise while still delivering professional-quality results. Furthermore, many services offer integrated stock libraries, enabling creators to source videos, images, and soundtracks effortlessly. Collaboration features in these tools also allow teams to work together in real time, streamlining the production process. With these advancements, businesses and individuals can produce effective launch videos that help convey their message and captivate their audience, all without the steep learning curve associated with traditional software. By utilizing these innovative platforms, creators can not only save time but also achieve a polished final product ready for sharing and promotion. <div>
+<p>
+            Create launch videos without touching After Effects
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/topview-ai?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1233737?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-08-26T23:32:36-07:00</pubDate>
+<pubDate>2026-08-30T22:09:22-07:00</pubDate>
+</item>
+<item>
+<title>oMLX</title>
+<link>https://www.producthunt.com/products/omlx</link>
+<guid>https://www.producthunt.com/products/omlx</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Mac, LLM server, agent, wait times, efficiency
+
+<br><br>Summary: The introduction of a new Mac LLM server technology represents a significant shift in efficiency for handling agent inquiries. This server has successfully reduced agent wait times from an average of 90 seconds to just 5 seconds. By leveraging advanced algorithms, the server optimizes the processing of requests, enabling faster responses and improved customer satisfaction. The low latency of the system ensures that agents can address issues promptly, enhancing overall productivity. This technological advancement not only streamlines operations but also allows businesses to manage higher volumes of requests without compromising service quality. As organizations increasingly seek to improve their customer service interactions, the deployment of the Mac LLM server could become a standard practice in the industry, setting a new benchmark for response times. Ultimately, this improvement is likely to benefit both end-users and companies alike, fostering better communication and relationships through quicker resolution times. <div>
+<p>
+            Mac LLM server that cuts agent wait times from 90s to 5s
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/omlx?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1236055?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-08-29T13:17:05-07:00</pubDate>
+<pubDate>2026-08-30T22:03:16-07:00</pubDate>
+</item>
+<item>
+<title>Superagent</title>
+<link>https://www.producthunt.com/products/superagent-a-home-for-your-ai-agents</link>
+<guid>https://www.producthunt.com/products/superagent-a-home-for-your-ai-agents</guid>
+<content:encoded><![CDATA[
+<div> It seems you've referenced an article titled "Claude Code for the rest of us," but you didn't provide the actual content of the article. If you can share the main points or details from the article, I can certainly help to extract keywords and summarize the content as specified. Please provide the text or key points from the article so we can proceed! <div>
+<p>
+            Claude Code for the rest of us
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/superagent-a-home-for-your-ai-agents?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1236134?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-08-29T15:27:58-07:00</pubDate>
+<pubDate>2026-08-30T22:07:28-07:00</pubDate>
+</item>
+<item>
+<title>Sayscroll</title>
+<link>https://www.producthunt.com/products/sayscroll-ai-teleprompter</link>
+<guid>https://www.producthunt.com/products/sayscroll-ai-teleprompter</guid>
+<content:encoded><![CDATA[
+<div> **Keywords:** AI, teleprompter, speech, technology, scrolling
+
+<br><br>Summary: The AI teleprompter is an innovative tool designed to assist speakers by scrolling text in real time as they talk. This technology uses advanced algorithms to detect speech patterns, ensuring that the text moves at the optimal speed for the speaker. It helps reduce anxiety by allowing individuals to focus on their delivery rather than memorizing lines. The AI teleprompter is particularly beneficial for public speakers, educators, and content creators, providing a seamless experience during presentations. Additionally, the device can be integrated with various platforms, making it versatile for different applications, such as live streaming or video recording. Users appreciate its capacity to create a more natural flow, maintaining eye contact with the audience while following the script. Furthermore, features like customizable font sizes and backgrounds enhance visibility, catering to different environments and preferences. As AI continues to evolve, the teleprompter's capabilities are expected to improve, offering even more support for effective communication. Overall, this technology represents a significant advancement in assisting speakers in delivering engaging and confident presentations. <div>
+<p>
+            The AI Teleprompter that scrolls as you speak
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/sayscroll-ai-teleprompter?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1226965?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-08-19T09:49:36-07:00</pubDate>
+<pubDate>2026-08-30T20:04:27-07:00</pubDate>
+</item>
+<item>
+<title>Olostep</title>
+<link>https://www.producthunt.com/products/olostep</link>
+<guid>https://www.producthunt.com/products/olostep</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Web, Clean Data, AI, Processing, Extraction  
+
+<br><br>Summary: The internet is a vast repository of information, but much of this data is unstructured and messy, making it unsuitable for AI applications. To effectively harness this data, it is crucial to implement processes that convert web content into clean and organized formats. This involves techniques like web scraping, where bots extract information from websites, as well as data cleaning protocols that remove duplicates, errors, and irrelevant information. Additionally, natural language processing (NLP) can be employed to understand and categorize text data, enhancing its usability for machine learning models. Metadata extraction helps in enriching the data by providing contextual information. Ensuring data integrity is also vital, which can be achieved through validation techniques and continuous monitoring. Tools and frameworks specifically designed for data processing can streamline these efforts, making the task more efficient. Ultimately, a well-structured dataset improves the accuracy of AI models, enabling better insights and decision-making. As AI technologies continue to evolve, the need for clean, structured data from the web will become increasingly critical in driving advancements across various industries. <div>
+<p>
+            Turn the Web into Clean Data for AI
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/olostep?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1199418?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-07-17T14:04:28-07:00</pubDate>
+<pubDate>2026-08-30T21:55:27-07:00</pubDate>
+</item>
 
 <item>
 <title>Introducing Hy4 Preview</title>
@@ -12,7 +323,7 @@
 <content:encoded><![CDATA[
 <div> Keywords: Tencent, LLM, parameters, reasoning effort, SVG
 
-<br><br>Summary: Tencent launched a new open weight text input LLM, featuring an impressive total of 770 billion parameters and 49 billion active parameters. This marks a significant increase from their previous model released in July, which had 295 billion total parameters, 21 billion active parameters, and a context window of 256,000 tokens. The new model boasts a substantial 1 million token context window and a memory size of 598GB. To explore the model’s capabilities, users can utilize chat templates available on platforms like Hugging Face. A key aspect of these templates is the reasoning effort configuration, which can be set to either "high" (the default) or "no_think" (for disabled reasoning). In an example with the high reasoning setting, the model’s internal reasoning traced the process of generating an SVG of a pelican riding a bicycle, contemplating various accessories such as helmets and sunglasses, and deciding on their appropriateness. The discussion reflects a focus on efficient communication, utilizing slightly truncated English for internal reasoning, underscoring the model's token efficiency while engaging with user prompts. <div>
+<br /><br />Summary: Tencent launched a new open weight text input LLM, featuring an impressive total of 770 billion parameters and 49 billion active parameters. This marks a significant increase from their previous model released in July, which had 295 billion total parameters, 21 billion active parameters, and a context window of 256,000 tokens. The new model boasts a substantial 1 million token context window and a memory size of 598GB. To explore the model’s capabilities, users can utilize chat templates available on platforms like Hugging Face. A key aspect of these templates is the reasoning effort configuration, which can be set to either "high" (the default) or "no_think" (for disabled reasoning). In an example with the high reasoning setting, the model’s internal reasoning traced the process of generating an SVG of a pelican riding a bicycle, contemplating various accessories such as helmets and sunglasses, and deciding on their appropriateness. The discussion reflects a focus on efficient communication, utilizing slightly truncated English for internal reasoning, underscoring the model's token efficiency while engaging with user prompts. <div>
 <p><strong><a href="https://hy.tencent.ai/research/hy4-preview">Introducing Hy4 Preview</a></strong></p>
 New open weight text input (no vision)  LLM from Chinese company Tencent today: 770B total parameters, 49B active parameters, 1M token context window, <a href="https://huggingface.co/tencent/Hy4-preview">1.56TB on Hugging Face</a>.</p>
 <p>This is a big size increase from their previous <a href="https://huggingface.co/tencent/Hy3">Hy3</a> in July, which was 295B, 21B active, 256,000 context, 598GB.</p>
@@ -41,7 +352,6 @@ New open weight text input (no vision)  LLM from Chinese company Tencent today: 
     <p>Tags: <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/llm-reasoning">llm-reasoning</a>, <a href="https://simonwillison.net/tags/llm-release">llm-release</a>, <a href="https://simonwillison.net/tags/ai-in-china">ai-in-china</a></p>
 ]]></content:encoded>
 <pubDate>2026-08-29T23:53:13+00:00</pubDate>
-<pubDate>2026-08-29T23:53:13+00:00</pubDate>
 </item>
 <item>
 <title>Sony Music and Warner Chappell are suing Anthropic</title>
@@ -50,7 +360,7 @@ New open weight text input (no vision)  LLM from Chinese company Tencent today: 
 <content:encoded><![CDATA[
 <div> Keywords: Sony Music, Warner Chappell, copyright infringement, damages, Anthropic
 
-<br><br>Summary: Sony Music and Warner Chappell have filed a lawsuit in the U.S. District Court for the Northern District of California, targeting violations related to "tens of thousands" of copyrighted works. The two companies are seeking substantial damages, potentially amounting to $150,000 for each work infringed upon, in addition to up to $25,000 for each instance where identifiable copyright data has been removed. If the court rules in favor of Sony and Warner, the total damages could reach into the billions. This case adds to a series of legal challenges facing Anthropic, a company that has recently settled a previous lawsuit related to copyright issues. The ongoing legal disputes highlight increasing tensions in the music industry over copyright enforcement and the protections of creative works in the face of evolving technology and digital distribution. The outcome of this lawsuit could have a significant impact on how copyright infringements are pursued and the penalties associated with them in the future. <div>
+<br /><br />Summary: Sony Music and Warner Chappell have filed a lawsuit in the U.S. District Court for the Northern District of California, targeting violations related to "tens of thousands" of copyrighted works. The two companies are seeking substantial damages, potentially amounting to $150,000 for each work infringed upon, in addition to up to $25,000 for each instance where identifiable copyright data has been removed. If the court rules in favor of Sony and Warner, the total damages could reach into the billions. This case adds to a series of legal challenges facing Anthropic, a company that has recently settled a previous lawsuit related to copyright issues. The ongoing legal disputes highlight increasing tensions in the music industry over copyright enforcement and the protections of creative works in the face of evolving technology and digital distribution. The outcome of this lawsuit could have a significant impact on how copyright infringements are pursued and the penalties associated with them in the future. <div>
 <figure>
 
 <img alt="Anthropic logo on an orange and grey background." src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/01/STK269_ANTHROPIC_2_A.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
@@ -61,7 +371,6 @@ New open weight text input (no vision)  LLM from Chinese company Tencent today: 
 <p class="wp-block-paragraph">This is just the latest high-profile suit against Anthropic, which recently settled a suit <a href="https://www.theverge.com/2024/8/20/24224450/anthropic-copyright-lawsuit-pirated-books-ai">brought by the publishing industry</a> for <a href="https://www.theverge.com/anthropic/773087/anthropic-to-pay-1-5-billion-to-authors-in-landmark-ai-settlement">$1.5 billion</a>. It's also <a href="https://www.theverge.com/2025/1/3/24334866/anthropic-claude-music-publishers-lyric-copyright-lawsuit-deal">faced</a> <a href="https://www.theverge.com/2023/10/19/23924100/universal-music-sue-anthropic-lyrics-copyright-katy-perry">multiple</a> <a href="https://www.musicbusinessworldwide.com/umg-concord-and-abkco-sue-anthropic-for-3bn-in-what-could-be-single-largest-non-class-action-copyright-case-in-us-history/">lawsuits</a> from …</p>
 <p><a href="https://www.theverge.com/ai-artificial-intelligence/986438/sony-music-warner-chappell-anthropic-lawsuit-copyright">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
-<pubDate>2026-08-29T14:19:53-04:00</pubDate>
 <pubDate>2026-08-29T14:20:15-04:00</pubDate>
 </item>
 <item>
@@ -71,7 +380,7 @@ New open weight text input (no vision)  LLM from Chinese company Tencent today: 
 <content:encoded><![CDATA[
 <div> Keywords: internet, algorithmically, scrutiny, musicians, electronic dance music  
 
-<br><br>Summary: The rise of digital platforms has filled the internet with music that is algorithmically generated, often mimicking human artists' melodies and vocals. This trend raises concerns within the music community, as some creators embrace the technology while others express apprehension regarding its implications. The situation has gained attention, leading to increasing public scrutiny of the content and its origins. For musicians, particularly those in technologically-oriented genres like electronic dance music, the line between "real" artistry and algorithm-driven creation becomes increasingly blurred. This intersection of technology and creativity is critical as artists grapple with questions about authenticity, originality, and the value of their work in an environment where AI-generated content is prevalent. The ongoing discourse highlights the urgency for artists to define their identity and the essence of their creativity in a landscape that is rapidly evolving due to technological advancements. As public interest and concern grow, the conversation around the ethics and impact of such algorithmic music becomes more crucial for sustaining the art form. <div>
+<br /><br />Summary: The rise of digital platforms has filled the internet with music that is algorithmically generated, often mimicking human artists' melodies and vocals. This trend raises concerns within the music community, as some creators embrace the technology while others express apprehension regarding its implications. The situation has gained attention, leading to increasing public scrutiny of the content and its origins. For musicians, particularly those in technologically-oriented genres like electronic dance music, the line between "real" artistry and algorithm-driven creation becomes increasingly blurred. This intersection of technology and creativity is critical as artists grapple with questions about authenticity, originality, and the value of their work in an environment where AI-generated content is prevalent. The ongoing discourse highlights the urgency for artists to define their identity and the essence of their creativity in a landscape that is rapidly evolving due to technological advancements. As public interest and concern grow, the conversation around the ethics and impact of such algorithmic music becomes more crucial for sustaining the art form. <div>
 <figure>
 
 <img alt="A digital illustration depicting Nihil Young and Max “H4RRIS” Harris." src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/08/268714_finding_and_shaming_AI_grifters_CVirginia.jpg?quality=90&#038;strip=all&#038;crop=0,0,85.33125,89.314310632479" />
@@ -82,7 +391,6 @@ New open weight text input (no vision)  LLM from Chinese company Tencent today: 
 <p class="wp-block-paragraph">For musicians - especially those creating art in technologically-focused spaces like electronic dance music - the increasingly complicated question of what is "real" and what isn't feels particularly urgent and personal …</p>
 <p><a href="https://www.theverge.com/entertainment/985866/h4rris-nihil-young-edm-suno-ai">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
-<pubDate>2026-08-29T08:00:00-04:00</pubDate>
 <pubDate>2026-08-28T15:10:32-04:00</pubDate>
 </item>
 <item>
@@ -92,7 +400,7 @@ New open weight text input (no vision)  LLM from Chinese company Tencent today: 
 <content:encoded><![CDATA[
 <div> Keywords: investors, communication, feedback, preparation, strategy
 
-<br><br>Summary: Before reaching out to investors, it is essential to anticipate their reactions and questions. Preparation is key; understanding their priorities and concerns can significantly improve the effectiveness of your communication. Investors typically focus on the viability and scalability of a business model, so presenting a robust strategy is crucial. Crafting a clear and concise pitch that addresses potential risks and outlines growth opportunities will help in gaining their trust. Additionally, being open to feedback and demonstrating a willingness to adapt can create a positive impression. Building a rapport with investors by articulating your vision and passion for the project also plays an integral role. Researching their investment history and preferences can further tailor your pitch to align with their interests. Moreover, anticipating objections and preparing thoughtful responses can showcase your foresight and readiness. Ultimately, a proactive approach in understanding an investor's mindset before hitting send can lead to more productive conversations and potentially secure funding for your venture. <div>
+<br /><br />Summary: Before reaching out to investors, it is essential to anticipate their reactions and questions. Preparation is key; understanding their priorities and concerns can significantly improve the effectiveness of your communication. Investors typically focus on the viability and scalability of a business model, so presenting a robust strategy is crucial. Crafting a clear and concise pitch that addresses potential risks and outlines growth opportunities will help in gaining their trust. Additionally, being open to feedback and demonstrating a willingness to adapt can create a positive impression. Building a rapport with investors by articulating your vision and passion for the project also plays an integral role. Researching their investment history and preferences can further tailor your pitch to align with their interests. Moreover, anticipating objections and preparing thoughtful responses can showcase your foresight and readiness. Ultimately, a proactive approach in understanding an investor's mindset before hitting send can lead to more productive conversations and potentially secure funding for your venture. <div>
 <p>
             Know what investors will say before you ever hit send.
           </p>
@@ -102,7 +410,6 @@ New open weight text input (no vision)  LLM from Chinese company Tencent today: 
             <a href="https://www.producthunt.com/r/p/1195558?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-07-13T12:45:23-07:00</pubDate>
 <pubDate>2026-08-29T21:50:20-07:00</pubDate>
 </item>
 <item>
@@ -120,7 +427,6 @@ New open weight text input (no vision)  LLM from Chinese company Tencent today: 
             <a href="https://www.producthunt.com/r/p/1234656?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-08-28T00:12:12-07:00</pubDate>
 <pubDate>2026-08-29T21:07:06-07:00</pubDate>
 </item>
 <item>
@@ -130,7 +436,7 @@ New open weight text input (no vision)  LLM from Chinese company Tencent today: 
 <content:encoded><![CDATA[
 <div> **Keywords:** AI, data extraction, documents, tables, images  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 Converting complex documents, tables, and images into AI-ready data involves understanding the structure of each element and using appropriate tools for extraction. First, it’s essential to identify and analyze the content type—text, numerical data, or visual representations. The next step is utilizing technologies like Optical Character Recognition (OCR) for text extraction from images and PDF files. Additionally, employing Natural Language Processing (NLP) can help in interpreting and organizing textual data. For tables, specific programming libraries or software can facilitate the conversion into structured formats like CSV or JSON, which are compatible with AI models. Furthermore, handling images requires implementing image recognition algorithms to enable data retrieval from visual content. Throughout the process, maintaining data accuracy and ensuring that the extracted content retains its original context is vital. This means checking the consistency and reliability of the data and possibly cleaning it for better usability in AI applications. By following these steps, stakeholders can efficiently convert previously unstructured or semi-structured data into formats that are ready for AI analysis and modeling, ultimately enhancing decision-making processes. <div>
 <p>
             Turn complex docs, tables & images into AI-ready data
@@ -141,7 +447,6 @@ Converting complex documents, tables, and images into AI-ready data involves und
             <a href="https://www.producthunt.com/r/p/1235085?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-08-28T08:59:34-07:00</pubDate>
 <pubDate>2026-08-29T21:57:09-07:00</pubDate>
 </item>
 <item>
@@ -151,7 +456,7 @@ Converting complex documents, tables, and images into AI-ready data involves und
 <content:encoded><![CDATA[
 <div> Keywords: Tencent, model, long-horizon, open-source, AI
 
-<br><br>Summary: Tencent has unveiled its latest AI development, a 770 billion parameter open model designed specifically for long-horizon tasks. This model represents a significant advancement in artificial intelligence, as it aims to tackle complex challenges over extended periods. The company emphasizes the importance of collaboration and community involvement in improving the model's capabilities. Tencent's open model will allow researchers and developers to build upon its foundations, fostering innovation within the AI ecosystem. Additionally, the model is expected to enhance various applications, including natural language processing and strategic decision-making, by providing more accurate and context-aware responses. The announcement reflects Tencent's commitment to leading the AI landscape through openness and accessibility. By releasing this robust model to the public, Tencent aims to democratize access to advanced AI tools, facilitating wider use and exploration across different industries. The initiative aligns with the growing demand for AI solutions that can operate effectively over long durations, making it a timely contribution to the field. Overall, Tencent's 770 billion parameter model sets a new benchmark in AI research and presents exciting opportunities for future developments and applications. <div>
+<br /><br />Summary: Tencent has unveiled its latest AI development, a 770 billion parameter open model designed specifically for long-horizon tasks. This model represents a significant advancement in artificial intelligence, as it aims to tackle complex challenges over extended periods. The company emphasizes the importance of collaboration and community involvement in improving the model's capabilities. Tencent's open model will allow researchers and developers to build upon its foundations, fostering innovation within the AI ecosystem. Additionally, the model is expected to enhance various applications, including natural language processing and strategic decision-making, by providing more accurate and context-aware responses. The announcement reflects Tencent's commitment to leading the AI landscape through openness and accessibility. By releasing this robust model to the public, Tencent aims to democratize access to advanced AI tools, facilitating wider use and exploration across different industries. The initiative aligns with the growing demand for AI solutions that can operate effectively over long durations, making it a timely contribution to the field. Overall, Tencent's 770 billion parameter model sets a new benchmark in AI research and presents exciting opportunities for future developments and applications. <div>
 <p>
             Tencent’s 770B open model for long-horizon work
           </p>
@@ -161,10 +466,8 @@ Converting complex documents, tables, and images into AI-ready data involves und
             <a href="https://www.producthunt.com/r/p/1235140?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-08-28T09:57:52-07:00</pubDate>
 <pubDate>2026-08-29T21:56:42-07:00</pubDate>
 </item>
-
 <item>
 <title>Just a rumour of a bug is enough to find a security exploit these days</title>
 <link>https://simonwillison.net/2026/Aug/28/just-a-rumour-of-a-bug/</link>
@@ -24285,117 +24588,6 @@ The article discusses how users can leverage AI to create their own Chrome Exten
           </p>
 ]]></content:encoded>
 <pubDate>2026-07-10T20:27:46-07:00</pubDate>
-</item>
-<item>
-<title>Mispher</title>
-<link>https://www.producthunt.com/products/mispher-agentic-transcription-for-mac</link>
-<guid>https://www.producthunt.com/products/mispher-agentic-transcription-for-mac</guid>
-<content:encoded><![CDATA[
-<p>
-            Dictate, rewrite, translate, and an agent in a single device
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/mispher-agentic-transcription-for-mac?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1191918?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-07-10T19:03:08-07:00</pubDate>
-</item>
-<item>
-<title>StoryChief Connect</title>
-<link>https://www.producthunt.com/products/storychief-io</link>
-<guid>https://www.producthunt.com/products/storychief-io</guid>
-<content:encoded><![CDATA[
-<p>
-            Publish content from Claude to your website and socials
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/storychief-io?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1191975?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-07-10T19:55:23-07:00</pubDate>
-</item>
-<item>
-<title>Muse Spark 1.1 by Meta AI</title>
-<link>https://www.producthunt.com/products/muse-spark-1-1-by-meta</link>
-<guid>https://www.producthunt.com/products/muse-spark-1-1-by-meta</guid>
-<content:encoded><![CDATA[
-<p>
-            Multimodal reasoning model built for agentic tasks
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/muse-spark-1-1-by-meta?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1192175?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-07-10T19:42:39-07:00</pubDate>
-</item>
-<item>
-<title>ConnectMachine 2.0</title>
-<link>https://www.producthunt.com/products/connectmachine-2</link>
-<guid>https://www.producthunt.com/products/connectmachine-2</guid>
-<content:encoded><![CDATA[
-<p>
-            AI digital business card that remembers everyone you meet
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/connectmachine-2?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1180569?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-07-10T20:10:06-07:00</pubDate>
-</item>
-<item>
-<title>Scarlett.</title>
-<link>https://www.producthunt.com/products/tryscarlett</link>
-<guid>https://www.producthunt.com/products/tryscarlett</guid>
-<content:encoded><![CDATA[
-<p>
-            Your AI Co-Worker in Slack & iMessage
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/tryscarlett?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1187857?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-07-10T20:23:48-07:00</pubDate>
-</item>
-<item>
-<title>Ship OS by Notion</title>
-<link>https://www.producthunt.com/products/notion</link>
-<guid>https://www.producthunt.com/products/notion</guid>
-<content:encoded><![CDATA[
-<p>
-            The agent-native way to ship software
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/notion?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1192317?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-07-10T19:54:49-07:00</pubDate>
-</item>
-<item>
-<title>Quoting OpenAI</title>
-<link>https://simonwillison.net/2026/Jul/10/openai/</link>
-<guid>https://simonwillison.net/2026/Jul/10/openai/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: cloud, desktop, local files, conversations, threads
-
-<br /><br />Summary: The platform offers functionality for both web and mobile that operates in the cloud, enabling users to access their work from anywhere with internet connectivity. In contrast, the desktop application allows interaction with local files and other desktop apps, provided the user grants permission. This duality enhances user flexibility, as they can choose to work entirely online or utilize their local resources. It's important to note that at the time of launch, conversations held in cloud Work are not visible in the desktop version of the application, which can be a point of confusion for users transitioning between platforms. While users engage in discussions through cloud Work, desktop Work retains its own separate threads, and any local files created or accessed remain confined to the specific machine being used. This separation between cloud and desktop Work ensures that users maintain a clear distinction between their online and offline work environments, but awareness of this limitation is critical for effective use. Ultimately, understanding this structure can help users navigate their workflows more efficiently across the different modes of the application. <div>
-<blockquote cite="https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex"><p>[...] Work on web and mobile runs in the cloud. Work in the desktop app can also use local files and desktop apps with your permission. At launch, cloud Work conversations do not appear in desktop Work; desktop Work threads and local files remain on that computer.</p></blockquote>
-<p class="cite">&mdash; <a href="https://help.openai.com/en/articles/20001275-chatgpt-work-and-codex">OpenAI</a>, trying (unsuccessfully) to clarify ChatGPT Work</p>
-
-    <p>Tags: <a href="https://simonwillison.net/tags/openai">openai</a>, <a href="https://simonwillison.net/tags/chatgpt">chatgpt</a>, <a href="https://simonwillison.net/tags/ai">ai</a></p>
-]]></content:encoded>
-<pubDate>2026-07-10T01:05:57+00:00</pubDate>
 </item>
 </channel>
 </rss>
