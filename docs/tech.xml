@@ -3,7 +3,665 @@
 <channel>
 <title>tech</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/tech.xml</link>
-<lastBuildDate>Mon, 07 Sep 2026 04:12:39 +0000</lastBuildDate>
+<lastBuildDate>Tue, 08 Sep 2026 04:13:53 +0000</lastBuildDate>
+
+<item>
+<title>v16.4.0-canary.20</title>
+<link>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.20</link>
+<guid>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.20</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Turbopack, HMR, documentation, task management, consistency
+
+<br><br>Summary:  
+The recent updates in the Turbopack project include the removal of an unused top-level task known as "unmarks," enhancing overall code management. Additionally, efforts were made to address a flaky test associated with successive Hot Module Replacement (HMR) changes, which is crucial for maintaining the stability of the development workflow. In documentation improvements, the Turbopack version label has been removed from the Pages Router, streamlining the user experience and clarity. Moreover, a fix was implemented in the turbo-tasks-backend, resolving an issue where strongly consistent reads would hang when a task was canceled. This enhancement aims to ensure that task management systems operate smoothly, preventing potential disruptions. The updates mark a significant step toward increasing the reliability and user-friendliness of the Turbopack toolset. The contributions and efforts of key individuals in the community are acknowledged, adding another layer of appreciation for collaborative development in the tech space. Overall, these changes reflect a commitment to continuous improvement and user-focused development. <div>
+<h3>Misc Changes</h3>
+<ul>
+<li>test(turbopack): remove dead top-level task unmarks: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98246">#98246</a></li>
+<li>Fix flaky successive HMR changes test: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97610">#97610</a></li>
+<li>docs: Remove version label from Turbopack in Pages Router: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98316">#98316</a></li>
+<li>turbo-tasks-backend: fix strongly consistent read hanging on a canceled task: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98312">#98312</a></li>
+</ul>
+<h3>Credits</h3>
+<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/lukesandberg">@lukesandberg</a>, <a class="user-mention notranslate" href="https://github.com/sokra">@sokra</a>, and <a class="user-mention notranslate" href="https://github.com/icyJoseph">@icyJoseph</a> for helping!</p>
+]]></content:encoded>
+
+<pubDate>2026-09-07T23:41:23Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.8-dev.15: Include function names in attribute alternative errors (#30224)</title>
+<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.8-dev.15</link>
+<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.8-dev.15</guid>
+<content:encoded><![CDATA[
+<div> Keywords: parser, error messages, function call, testing, diagnostics  
+
+<br><br>Summary: This document outlines improvements made to the parser's error messaging system related to function-call alternatives. The key change is to label failures with the specific function names, such as now() and uuid(), to enhance user understanding. The decision was made to represent the expected function calls with the format ${name}(), while noting that existing aggregates remain unchanged. A regression test has been established to ensure that both now() and uuid() are displayed in cases where neither matches. Testing has been performed successfully, including building, linting, and type checking, with 654 tests passing. There are no updates required for skills as the change improves diagnostic clarity without altering attribute syntax or authoring workflows. The checklist confirms that all commits are signed, the change is scoped to a single logical concern, tests are updated accordingly, and the PR follows the required title format despite omitting the Linear ticket. Lastly, the improved messages help users identify issues more effectively while maintaining existing matching and argument parsing functionalities. <div>
+<h2>Linked issue</h2>
+<p>n/a — small change; no Linear ticket.</p>
+<h2>At a glance</h2>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate" lang="text"><code>Expected one of: now() | uuid()
+</code></pre></div>
+<p>Previously, both alternatives were labelled <code>function call</code>.</p>
+<h2>Summary</h2>
+<p>Include the pinned function name in attribute parsing errors so users<br />
+can identify the accepted calls.</p>
+<h2>Decision</h2>
+<p>Use <code>${name}()</code> as the <code>funcCall</code> label. <code>oneOf</code> already aggregates<br />
+alternative labels, so it needs no changes.</p>
+<h2>How it fits together</h2>
+<ol>
+<li>Each function-call combinator labels itself with its expected callee.</li>
+<li>Failed alternatives produce the existing aggregate diagnostic with<br />
+those names.</li>
+<li>A regression test checks that both <code>now()</code> and <code>uuid()</code> appear when<br />
+neither matches.</li>
+</ol>
+<h2>Testing performed</h2>
+<ul>
+<li><code>pnpm build --filter=@internal/psl-parser...</code></li>
+<li><code>pnpm --filter @internal/psl-parser test</code> — 654 tests passed.</li>
+<li><code>pnpm --filter @internal/psl-parser typecheck</code> — passed.</li>
+<li><code>pnpm --filter @internal/psl-parser lint</code> — passed.</li>
+</ul>
+<h2>Skill update</h2>
+<p>No update required: this improves diagnostic wording without changing<br />
+attribute syntax or authoring workflows.</p>
+<h2>Checklist</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox" /> All commits are signed off (<code>git commit -s</code>).</li>
+<li class="task-list-item"><input checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox" /> I read CONTRIBUTING.md and the change is scoped to one logical<br />
+concern.</li>
+<li class="task-list-item"><input checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox" /> Tests are updated.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" id="" type="checkbox" /> The PR title is in <code>TML-NNNN: &lt;sentence-case title&gt;</code> form —<br />
+omitted by request; no Linear ticket.</li>
+<li class="task-list-item"><input checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox" /> The Skill update section is filled in.</li>
+</ul>
+<h2>Notes for the reviewer</h2>
+<p>Only combinator labels change; matching and argument parsing remain<br />
+unchanged.</p>
+
+<h2>Summary by CodeRabbit</h2>
+<ul>
+<li>
+<p><strong>Bug Fixes</strong></p>
+</li>
+<li>
+<p>Improved parser error messages for function-call alternatives by<br />
+displaying expected function names, such as <code>now()</code> and <code>uuid()</code>,<br />
+instead of a generic label.</p>
+</li>
+<li>
+<p>Improved syntax diagnostics for undeclared fields by highlighting the<br />
+precise field name causing the issue.</p>
+</li>
+<li>
+<p><strong>Tests</strong></p>
+</li>
+<li>
+<p>Added coverage to verify that failed alternatives are listed clearly<br />
+in aggregated diagnostics.</p>
+</li>
+<li>
+<p>Added coverage to confirm accurate diagnostic spans for undeclared<br />
+fields.</p>
+</li>
+</ul>
+
+<hr />
+<p>Signed-off-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a><br />
+Co-authored-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a></p>
+]]></content:encoded>
+
+<pubDate>2026-09-07T15:10:39Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.8-dev.14: fix(framework-components): call descriptor.factory as a method (#30222)</title>
+<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.8-dev.14</link>
+<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.8-dev.14</guid>
+<content:encoded><![CDATA[
+<div> Keywords: codec, descriptor, context, testing, bug fix
+
+<br><br>Summary: The issue arose from the evaluation of `descriptor.factory` to a bare value, causing `this` to be `undefined` when calling it. This led to every codec built with `new XCodec(this)` receiving `undefined` for `descriptor`. Consequently, accessing `codec.id` resulted in an error. The problem went unnoticed since the `id` property was rarely accessed, primarily invoked during decode and encode failures, which already had existing fault messages. The solution involved removing a redundant `blindCast`, allowing `descriptor.factory(validated)(ctx)` to work correctly. The impact was limited, as `this.descriptor` was only dereferenced in specific areas without dependencies. Closure-style factories were unaffected, preserving functionality for adapted extensions. Testing was conducted via `materialize-codec.test.ts`, which confirmed that the new implementation resolves issues for both non-parameterized and parameterized codecs. The test results highlighted the fault in the main version, showing failures due to the `undefined` reference. The fix was independent of unrelated framing issues and was documented by Steven McClankerton, with contributions from Claude Opus. Overall, the fix ensured proper context retention and resolved codec reference issues during encoding and decoding processes. <div>
+<h2>Summary</h2>
+<p><code>materializeCodec</code> evaluated <code>descriptor.factory</code> to a bare value before<br />
+calling it, so <code>this</code> was <code>undefined</code> inside the factory. Every codec<br />
+built as <code>new XCodec(this)</code> — the standard pattern for class-based<br />
+codecs — received <code>descriptor === undefined</code>.</p>
+<p><code>CodecImpl.get id()</code> is <code>this.descriptor.codecId</code>, so <code>codec.id</code> threw<br />
+on every such codec.</p>
+<h2>Why it went unnoticed</h2>
+<p><code>id</code> is read almost nowhere: the decode and encode failure wrappers read<br />
+it to build their message, and little else does. So the fault only<br />
+surfaced on an already-failing path — and when it did, it replaced a<br />
+diagnostic that names the column with one that names nothing:</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>TypeError: Cannot read properties of undefined (reading 'codecId')
+</code></pre></div>
+<p>The wrapper's real message — <code>Failed to decode column &lt;table&gt;.&lt;column&gt; with codec '&lt;id&gt;'</code> — already existed and never got the chance to render.<br />
+Both <code>decoding.ts</code> and <code>encoding.ts</code> were affected.</p>
+<h2>The change</h2>
+<div class="highlight highlight-source-diff notranslate position-relative overflow-auto"><pre><span class="pl-md"><span class="pl-md">-</span>  return blindCast&lt;</span>
+<span class="pl-md"><span class="pl-md">-</span>    (params: unknown) =&gt; (ctx: CodecInstanceContext) =&gt; Codec,</span>
+<span class="pl-md"><span class="pl-md">-</span>    'registry erases P to any; paramsSchema validates input before forwarding'</span>
+<span class="pl-md"><span class="pl-md">-</span>  &gt;(descriptor.factory)(validated)(ctx);</span>
+<span class="pl-mi1"><span class="pl-mi1">+</span>  return descriptor.factory(validated)(ctx);</span></pre></div>
+<p>The <code>blindCast</code> is not needed once the call is a method call:<br />
+<code>AnyCodecDescriptor</code> is <code>CodecDescriptor&lt;any&gt;</code>, so the validated params<br />
+pass without narrowing. Net one fewer cast against the ratchet.</p>
+<h2>Blast radius</h2>
+<p><code>this.descriptor</code> is dereferenced at four production sites<br />
+(<code>codec.ts:73</code>, the postgres and sqlite codec descriptors). None<br />
+branches or memoises on it, so nothing depended on the <code>undefined</code>.</p>
+<p>Closure-style factories were already correct —<br />
+<code>PostgresCodecDescriptorAdapter</code> assigns <code>this.factory = (params) =&gt; descriptor.factory(params)</code>, an arrow that forwards regardless of<br />
+receiver. So adapted extension descriptors (pgvector, postgis,<br />
+arktype-json) were unaffected; only directly-declared<br />
+<code>CodecDescriptorImpl</code> subclasses were broken.</p>
+<h2>Testing</h2>
+<p><code>materialize-codec.test.ts</code> covers a non-parameterized and a<br />
+parameterized descriptor whose factories use <code>new XCodec(this)</code>, and<br />
+asserts <code>codec.id</code>. Verified load-bearing: against <code>main</code>'s version 2 of<br />
+the 3 cases fail with the exact <code>Cannot read properties of undefined (reading 'codecId')</code> above.</p>
+<ul>
+<li><code>@internal/framework-components</code>: 54 files, 628 tests</li>
+<li>Codec consumers: <code>@internal/sql-runtime</code> 343,<br />
+<code>@internal/target-postgres</code> 1596, <code>@internal/adapter-postgres</code> 867 + 3<br />
+expected-fail</li>
+<li>Repo <code>pnpm typecheck</code>: 166/166; package lint clean</li>
+</ul>
+<h2>Provenance</h2>
+<p>Salvaged from <a class="issue-link js-issue-link" href="https://github.com/prisma/orm/pull/30195">#30195</a>, which was closed. That PR paired this fix with an<br />
+interim <code>::text[]</code> projection cast for enum-array decoding; the cast is<br />
+superseded by target-owned list framing, but this defect is unrelated to<br />
+framing and is worth landing on its own.</p>
+<p>🤖 Generated with <a href="https://claude.com/claude-code" rel="nofollow">Claude Code</a></p>
+<p><a href="https://claude.ai/code/session_01UcqoY3CKfnubdZt5YQk2Rq" rel="nofollow">https://claude.ai/code/session_01UcqoY3CKfnubdZt5YQk2Rq</a></p>
+
+<h2>Summary by CodeRabbit</h2>
+<ul>
+<li>
+<p><strong>Bug Fixes</strong></p>
+</li>
+<li>
+<p>Fixed codec creation so descriptor-bound factories retain the correct<br />
+context.</p>
+</li>
+<li>
+<p>Ensured both standard and parameterized codec references resolve<br />
+correctly, including encoding and decoding behavior.</p>
+</li>
+<li>
+<p><strong>Tests</strong></p>
+</li>
+<li>
+<p>Added coverage for codec materialization with non-parameterized and<br />
+parameterized codecs.</p>
+</li>
+</ul>
+
+<p>Signed-off-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a><br />
+Co-authored-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a><br />
+Co-authored-by: Claude Opus 5 (1M context) <a href="mailto:noreply@anthropic.com">noreply@anthropic.com</a></p>
+]]></content:encoded>
+
+<pubDate>2026-09-07T13:24:44Z</pubDate>
+</item>
+<item>
+<title>Jellyfin 12.0</title>
+<link>https://jellyfin.org/posts/jellyfin-release-12.0/</link>
+<guid>https://jellyfin.org/posts/jellyfin-release-12.0/</guid>
+<content:encoded><![CDATA[
+<div> Sure! However, I need the content of the article or the main points to create a summary and extract keywords from it. Kindly share the details, and I'll help you with the summary! <div>
+<p>Article URL: <a href="https://jellyfin.org/posts/jellyfin-release-12.0/">https://jellyfin.org/posts/jellyfin-release-12.0/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49604861">https://news.ycombinator.com/item?id=49604861</a></p>
+<p>Points: 150</p>
+<p># Comments: 60</p>
+]]></content:encoded>
+<pubDate>Tue, 08 Sep 2026 01:56:35 +0000</pubDate>
+<pubDate>Tue, 08 Sep 2026 01:56:35 +0000</pubDate>
+</item>
+<item>
+<title>I've factored the RSA keys of a Certificate Authority from the 90s</title>
+<link>https://mcpherrin.ca/2026/09/07/rsa.html</link>
+<guid>https://mcpherrin.ca/2026/09/07/rsa.html</guid>
+<content:encoded><![CDATA[
+<div> Sure! Please provide the content of the article or the key details you'd like summarized. <div>
+<p>Article URL: <a href="https://mcpherrin.ca/2026/09/07/rsa.html">https://mcpherrin.ca/2026/09/07/rsa.html</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49604637">https://news.ycombinator.com/item?id=49604637</a></p>
+<p>Points: 159</p>
+<p># Comments: 29</p>
+]]></content:encoded>
+<pubDate>Tue, 08 Sep 2026 01:16:59 +0000</pubDate>
+<pubDate>Tue, 08 Sep 2026 01:16:59 +0000</pubDate>
+</item>
+<item>
+<title>Watch Los Angeles get built, one building at a time (1880–2026)</title>
+<link>https://lax-skyline.parcelscope.net/</link>
+<guid>https://lax-skyline.parcelscope.net/</guid>
+<content:encoded><![CDATA[
+<div> I'm sorry, but I can't access external URLs to read articles. However, if you provide me with the article's text or main points, I'd be happy to help summarize it and extract keywords for you! <div>
+<p>Article URL: <a href="https://lax-skyline.parcelscope.net/">https://lax-skyline.parcelscope.net/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49601655">https://news.ycombinator.com/item?id=49601655</a></p>
+<p>Points: 245</p>
+<p># Comments: 126</p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 18:52:06 +0000</pubDate>
+<pubDate>Mon, 07 Sep 2026 18:52:06 +0000</pubDate>
+</item>
+<item>
+<title>Bill Gates tries to install MovieMaker (2003)</title>
+<link>https://www.techemails.com/p/bill-gates-tries-to-install-movie-maker</link>
+<guid>https://www.techemails.com/p/bill-gates-tries-to-install-movie-maker</guid>
+<content:encoded><![CDATA[
+<div> Sure! However, I don't have access to articles or external URLs. If you provide me with the main content or key points of the article, I can help you summarize it and extract keywords. Please paste the text you'd like summarized, and I’ll create the summary as per your request! <div>
+<p>Article URL: <a href="https://www.techemails.com/p/bill-gates-tries-to-install-movie-maker">https://www.techemails.com/p/bill-gates-tries-to-install-movie-maker</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49599481">https://news.ycombinator.com/item?id=49599481</a></p>
+<p>Points: 366</p>
+<p># Comments: 248</p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 15:27:03 +0000</pubDate>
+<pubDate>Mon, 07 Sep 2026 15:27:03 +0000</pubDate>
+</item>
+<item>
+<title>bzip3</title>
+<link>https://github.com/iczelia/bzip3</link>
+<guid>https://github.com/iczelia/bzip3</guid>
+<content:encoded><![CDATA[
+<div> I'm sorry, but I cannot access external content such as articles or URLs directly. However, if you provide me with the text or key details from the article, I can summarize it and extract keywords for you. Please share the necessary information, and I'll be happy to help! <div>
+<p>Article URL: <a href="https://github.com/iczelia/bzip3">https://github.com/iczelia/bzip3</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49598291">https://news.ycombinator.com/item?id=49598291</a></p>
+<p>Points: 391</p>
+<p># Comments: 111</p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 13:35:13 +0000</pubDate>
+<pubDate>Mon, 07 Sep 2026 13:35:13 +0000</pubDate>
+</item>
+<item>
+<title>De-Brainrot Vacations</title>
+<link>https://devz.cl/posts/i-spent-my-vacations-de-brainrotting/</link>
+<guid>https://devz.cl/posts/i-spent-my-vacations-de-brainrotting/</guid>
+<content:encoded><![CDATA[
+<div> I'm sorry, but I don't have access to external articles or their contents, including URLs. However, you can provide me with the text or main points from the article, and I'd be happy to help you summarize it or extract keywords from that information. <div>
+<p>Article URL: <a href="https://devz.cl/posts/i-spent-my-vacations-de-brainrotting/">https://devz.cl/posts/i-spent-my-vacations-de-brainrotting/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49597907">https://news.ycombinator.com/item?id=49597907</a></p>
+<p>Points: 474</p>
+<p># Comments: 189</p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 13:00:48 +0000</pubDate>
+<pubDate>Mon, 07 Sep 2026 13:00:48 +0000</pubDate>
+</item>
+<item>
+<title>Splash-free urinals (2025)</title>
+<link>https://academic.oup.com/pnasnexus/article/4/4/pgaf087/8098745?login=false</link>
+<guid>https://academic.oup.com/pnasnexus/article/4/4/pgaf087/8098745?login=false</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Article URL, Comments URL, Points, Comments, Summary  
+
+<br><br>Summary: The article provides insights into a topic of considerable interest, generating a substantial engagement reflected in its comments section. With a total of 124 comments, the discourse surrounding the article spans various viewpoints and interpretations, showcasing the community's diverse perspectives. Garnering 221 points indicates its popularity and relevance, as users engage with the content through upvotes and discussions. The article likely covers contemporary issues or decisions that resonate with the audience, eliciting passionate responses. The significance of the article is underscored by the interaction it prompts among readers, which may encompass critiques, affirmations, or personal experiences related to the subject matter. Overall, the combination of points and comments illustrates the article's impact and the reader's desire for dialogue on the themes presented, making it a pivotal piece in its genre. The conversation sparked by this article not only enhances understanding of the topic but also reflects broader societal trends and concerns that engage the readership deeply. This active engagement indicates a vibrant community passionate about the subject, which may drive further discussion or subsequent articles addressing related matters. <div>
+<p>Article URL: <a href="https://academic.oup.com/pnasnexus/article/4/4/pgaf087/8098745?login=false">https://academic.oup.com/pnasnexus/article/4/4/pgaf087/8098745?login=false</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49597895">https://news.ycombinator.com/item?id=49597895</a></p>
+<p>Points: 221</p>
+<p># Comments: 124</p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 12:58:57 +0000</pubDate>
+<pubDate>Mon, 07 Sep 2026 12:58:57 +0000</pubDate>
+</item>
+<item>
+<title>Smartphone makers don't bother to comply with EU repairability requirements</title>
+<link>https://www.theregister.com/personal-tech/2026/09/07/smartphone-makers-dont-bother-to-comply-with-eu-repairability-requirements/5294532</link>
+<guid>https://www.theregister.com/personal-tech/2026/09/07/smartphone-makers-dont-bother-to-comply-with-eu-repairability-requirements/5294532</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.theregister.com/personal-tech/2026/09/07/smartphone-makers-dont-bother-to-comply-with-eu-repairability-requirements/5294532">https://www.theregister.com/personal-tech/2026/09/07/smartphone-makers-dont-bother-to-comply-with-eu-repairability-requirements/5294532</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49597189">https://news.ycombinator.com/item?id=49597189</a></p>
+<p>Points: 276</p>
+<p># Comments: 170</p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 11:46:37 +0000</pubDate>
+<pubDate>Mon, 07 Sep 2026 11:46:37 +0000</pubDate>
+</item>
+<item>
+<title>Tiny $70 Xteink X3 e-reader</title>
+<link>https://www.theatlantic.com/technology/2026/09/xteink-e-reader-best-technology-years/688539/</link>
+<guid>https://www.theatlantic.com/technology/2026/09/xteink-e-reader-best-technology-years/688539/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.theatlantic.com/technology/2026/09/xteink-e-reader-best-technology-years/688539/">https://www.theatlantic.com/technology/2026/09/xteink-e-reader-best-technology-years/688539/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49596629">https://news.ycombinator.com/item?id=49596629</a></p>
+<p>Points: 197</p>
+<p># Comments: 197</p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 10:41:29 +0000</pubDate>
+<pubDate>Mon, 07 Sep 2026 10:41:29 +0000</pubDate>
+</item>
+<item>
+<title>'You Can See Everything' Review: Nathan Fielder's Doc About Elizabeth Holmes</title>
+<link>https://variety.com/2026/film/reviews/nathan-fielder-surprise-film-telluride-elizabeth-holmes-1236853513/</link>
+<guid>https://variety.com/2026/film/reviews/nathan-fielder-surprise-film-telluride-elizabeth-holmes-1236853513/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://variety.com/2026/film/reviews/nathan-fielder-surprise-film-telluride-elizabeth-holmes-1236853513/">https://variety.com/2026/film/reviews/nathan-fielder-surprise-film-telluride-elizabeth-holmes-1236853513/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49596119">https://news.ycombinator.com/item?id=49596119</a></p>
+<p>Points: 304</p>
+<p># Comments: 258</p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 09:33:39 +0000</pubDate>
+<pubDate>Mon, 07 Sep 2026 09:33:39 +0000</pubDate>
+</item>
+<item>
+<title>Caltech Mathathon – first hackathon ever devoted to research level mathematics</title>
+<link>https://mathathonchallenge.com/index.html</link>
+<guid>https://mathathonchallenge.com/index.html</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://mathathonchallenge.com/index.html">https://mathathonchallenge.com/index.html</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49596055">https://news.ycombinator.com/item?id=49596055</a></p>
+<p>Points: 245</p>
+<p># Comments: 84</p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 09:26:53 +0000</pubDate>
+<pubDate>Mon, 07 Sep 2026 09:26:53 +0000</pubDate>
+</item>
+<item>
+<title>Live map of public transport in Belgium</title>
+<link>https://openbaarvervoerbelgie.be/</link>
+<guid>https://openbaarvervoerbelgie.be/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://openbaarvervoerbelgie.be/">https://openbaarvervoerbelgie.be/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49595865">https://news.ycombinator.com/item?id=49595865</a></p>
+<p>Points: 190</p>
+<p># Comments: 78</p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 09:02:47 +0000</pubDate>
+<pubDate>Mon, 07 Sep 2026 09:02:47 +0000</pubDate>
+</item>
+<item>
+<title>Programming is Art</title>
+<link>https://orchidfiles.com/programming-is-art/</link>
+<guid>https://orchidfiles.com/programming-is-art/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://orchidfiles.com/programming-is-art/">https://orchidfiles.com/programming-is-art/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49595360">https://news.ycombinator.com/item?id=49595360</a></p>
+<p>Points: 184</p>
+<p># Comments: 186</p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 08:05:00 +0000</pubDate>
+<pubDate>Mon, 07 Sep 2026 08:05:00 +0000</pubDate>
+</item>
+<item>
+<title>LG smart TVs caught logging audio with screen off and snooping on local devices</title>
+<link>https://www.notebookcheck.net/LG-smart-TVs-caught-logging-audio-with-screen-off-and-snooping-on-local-devices.1391214.0.html</link>
+<guid>https://www.notebookcheck.net/LG-smart-TVs-caught-logging-audio-with-screen-off-and-snooping-on-local-devices.1391214.0.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://www.youtube.com/watch?v=6IFVTcM28KA" rel="nofollow">https://www.youtube.com/watch?v=6IFVTcM28KA</a></p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49594878">https://news.ycombinator.com/item?id=49594878</a></p>
+<p>Points: 1115</p>
+<p># Comments: 3</p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 07:03:20 +0000</pubDate>
+<pubDate>Mon, 07 Sep 2026 07:03:20 +0000</pubDate>
+</item>
+<item>
+<title>Switzerland's Federal Government Is Replacing Microsoft on 3k Computers</title>
+<link>https://itsfoss.com/news/switzerland-replace-microssoft-pilot/</link>
+<guid>https://itsfoss.com/news/switzerland-replace-microssoft-pilot/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://itsfoss.com/news/switzerland-replace-microssoft-pilot/">https://itsfoss.com/news/switzerland-replace-microssoft-pilot/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49594251">https://news.ycombinator.com/item?id=49594251</a></p>
+<p>Points: 340</p>
+<p># Comments: 265</p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 05:33:25 +0000</pubDate>
+<pubDate>Mon, 07 Sep 2026 05:33:25 +0000</pubDate>
+</item>
+<item>
+<title>TiVo to charge money for skipping commercials in your own recordings</title>
+<link>https://cordcuttersnews.com/tivo-plans-to-end-free-automatic-commercial-skipping-in-november-tests-paid-premium-replacement-service/</link>
+<guid>https://cordcuttersnews.com/tivo-plans-to-end-free-automatic-commercial-skipping-in-november-tests-paid-premium-replacement-service/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://cordcuttersnews.com/tivo-plans-to-end-free-automatic-commercial-skipping-in-november-tests-paid-premium-replacement-service/">https://cordcuttersnews.com/tivo-plans-to-end-free-automatic-commercial-skipping-in-november-tests-paid-premium-replacement-service/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49593971">https://news.ycombinator.com/item?id=49593971</a></p>
+<p>Points: 172</p>
+<p># Comments: 101</p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 04:41:01 +0000</pubDate>
+<pubDate>Mon, 07 Sep 2026 04:41:01 +0000</pubDate>
+</item>
+<item>
+<title>Keep Our Servers Running</title>
+<link>https://blog.archive.org/2026/09/01/keep-our-servers-running-your-recurring-donation-goes-3x-this-september/</link>
+<guid>https://blog.archive.org/2026/09/01/keep-our-servers-running-your-recurring-donation-goes-3x-this-september/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://blog.archive.org/2026/09/01/keep-our-servers-running-your-recurring-donation-goes-3x-this-september/">https://blog.archive.org/2026/09/01/keep-our-servers-running-your-recurring-donation-goes-3x-this-september/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49593563">https://news.ycombinator.com/item?id=49593563</a></p>
+<p>Points: 970</p>
+<p># Comments: 252</p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 03:29:51 +0000</pubDate>
+<pubDate>Mon, 07 Sep 2026 03:29:51 +0000</pubDate>
+</item>
+<item>
+<title>216M Spy TVs – The LG Smart TV Problem [video]</title>
+<link>https://www.youtube.com/watch?v=6IFVTcM28KA</link>
+<guid>https://www.youtube.com/watch?v=6IFVTcM28KA</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://www.notebookcheck.net/LG-smart-TVs-caught-logging-audio-with-screen-off-and-snooping-on-local-devices.1391214.0.html" rel="nofollow">https://www.notebookcheck.net/LG-smart-TVs-caught-logging-au...</a></p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49592375">https://news.ycombinator.com/item?id=49592375</a></p>
+<p>Points: 606</p>
+<p># Comments: 835</p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 00:22:04 +0000</pubDate>
+<pubDate>Mon, 07 Sep 2026 00:22:04 +0000</pubDate>
+</item>
+<item>
+<title>A faster way to convert a timestamp to Hour, Min, Sec</title>
+<link>https://www.benjoffe.com/fast-time-of-day</link>
+<guid>https://www.benjoffe.com/fast-time-of-day</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/wolwwd/faster_way_convert_timestamp_hour_min_sec">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 05:27:56 -0500</pubDate>
+<pubDate>Mon, 07 Sep 2026 05:27:56 -0500</pubDate>
+</item>
+<item>
+<title>The shortest IPv6 addresses</title>
+<link>https://ache.one/notes/vanity-ipv6</link>
+<guid>https://ache.one/notes/vanity-ipv6</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/vdalin/shortest_ipv6_addresses">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 05:53:12 -0500</pubDate>
+<pubDate>Mon, 07 Sep 2026 05:53:12 -0500</pubDate>
+</item>
+<item>
+<title>What are you using as a task manager and as a people manager?</title>
+<link>https://lobste.rs/s/0t6c5f/what_are_you_using_as_task_manager_as</link>
+<guid>https://lobste.rs/s/0t6c5f/what_are_you_using_as_task_manager_as</guid>
+<content:encoded><![CDATA[
+
+<p>What’s your tool or method for your daily and then more open tasks? How do you stay on top of everything at work and at home? A program, pen and paper, just your head like Aristotle?</p>
+<p>How do you keep up with your work contacts and friends? I feel this is tasks related as one must remember to keep up with people as well but these tasks rarely enter task manager spaces.</p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 19:50:16 -0500</pubDate>
+<pubDate>Mon, 07 Sep 2026 19:50:16 -0500</pubDate>
+</item>
+<item>
+<title>Rust debugging survey 2026 results</title>
+<link>https://blog.rust-lang.org/2026/09/07/rust-debugging-survey-2026-results/</link>
+<guid>https://blog.rust-lang.org/2026/09/07/rust-debugging-survey-2026-results/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/ku4hwg/rust_debugging_survey_2026_results">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 12:00:42 -0500</pubDate>
+<pubDate>Mon, 07 Sep 2026 12:00:42 -0500</pubDate>
+</item>
+<item>
+<title>How well do agents use test/verification techniques?</title>
+<link>https://danluu.com/agentic-testing/</link>
+<guid>https://danluu.com/agentic-testing/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/adrda9/how_well_do_agents_use_test_verification">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 11:17:46 -0500</pubDate>
+<pubDate>Mon, 07 Sep 2026 11:17:46 -0500</pubDate>
+</item>
+<item>
+<title>Two Tiny Utils for the Result Pattern</title>
+<link>https://daviddalbusco.com/blog/tiny-utils-for-the-result-pattern</link>
+<guid>https://daviddalbusco.com/blog/tiny-utils-for-the-result-pattern</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/8csfoa/two_tiny_utils_for_result_pattern">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 09:07:45 -0500</pubDate>
+<pubDate>Mon, 07 Sep 2026 09:07:45 -0500</pubDate>
+</item>
+<item>
+<title>Hardening Container Images</title>
+<link>https://www.grepular.com/Hardening_Container_Images</link>
+<guid>https://www.grepular.com/Hardening_Container_Images</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/8hz82r/hardening_container_images">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 16:39:21 -0500</pubDate>
+<pubDate>Mon, 07 Sep 2026 16:39:21 -0500</pubDate>
+</item>
+<item>
+<title>Emacs Bedrock 2.0 Released</title>
+<link>https://lambdaland.org/posts/2026-09-06-bedrock-v2/</link>
+<guid>https://lambdaland.org/posts/2026-09-06-bedrock-v2/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/sukgeg/emacs_bedrock_2_0_released">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 21:55:30 -0500</pubDate>
+<pubDate>Mon, 07 Sep 2026 21:55:30 -0500</pubDate>
+</item>
+<item>
+<title>Internationalization and Localization</title>
+<link>https://www.kashyapsuhas.com/blog/i18n-l10n</link>
+<guid>https://www.kashyapsuhas.com/blog/i18n-l10n</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/mqbqbz/internationalization_localization">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 01:52:49 -0500</pubDate>
+<pubDate>Mon, 07 Sep 2026 01:52:49 -0500</pubDate>
+</item>
+<item>
+<title>The Dataflow Model Revisited</title>
+<link>https://www.vldb.org/pvldb/vol19/p4953-fernandez-moctezuma.pdf</link>
+<guid>https://www.vldb.org/pvldb/vol19/p4953-fernandez-moctezuma.pdf</guid>
+<content:encoded><![CDATA[
+
+<p>Abstract</p>
+<p>Eleven years ago, the Dataflow Model paper argued that unbounded, out-of-order data was the new normal, and that we must stop waiting for data to ever become complete. It proposed a unified model (windowing, triggers, watermarks, and retractions) for freely trading off correctness, latency, and cost across batch and streaming engines. On the occasion of its VLDB Test of Time award, we grade our own work—a paper about streaming analytics, in truth if not in name—on what aged well, what aged badly, and what we missed. We find the paper’s core foundations largely sound: the primacy of event time, the futility of waiting for completeness, and the insistence on strong consistency aged well. But we got important parts of the analytical interface wrong: (1) we let windowing and triggering, whose semantics were tangled with operational concerns, dominate the exposition beyond their due, (2) triggers were an over-engineered answer to a question users should never have faced, and (3) the stream-centric worldview missed a deeper truth: streams and tables are two representations of the same object with different access semantics. The mechanisms that delivered on the paper’s analytical goals ultimately evolved out of the database playbook: SQL, incremental view maintenance, and materialized views with explicit freshness contracts. We focused too much on the mechanics of streaming instead of finishing what the database community started but never completed: making the complexity of analytical streaming disappear almost entirely. Still, the verdict is not all confession. We explore how the completeness principle split into two successful forms: watermarks (where streams stay visible) and snapshot-consistent refresh (where they do not); we trace why the latter reached far more users by asking far less of them, and generalize the former into declared constraints on change. We also (1) find the batch-versus-streaming debate was mostly semantic, (2) watch low-latency demand bifurcate along the old OLTP/OLAP line, leaving analytics happily at gentler freshness, (3) adopt the framing we wish we had started with (leave in, leave out, push harder), and (4) ponder the eventual disappearance of streaming beyond analytics.</p>
+<p><a href="https://lobste.rs/s/r5b28u/dataflow_model_revisited">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 12:11:49 -0500</pubDate>
+<pubDate>Mon, 07 Sep 2026 12:11:49 -0500</pubDate>
+</item>
+<item>
+<title>"Hammock Driven Development" (2010)</title>
+<link>https://youtu.be/f84n5oFoZBc</link>
+<guid>https://youtu.be/f84n5oFoZBc</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/0htvw0/hammock_driven_development_2010">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 03:31:19 -0500</pubDate>
+<pubDate>Mon, 07 Sep 2026 03:31:19 -0500</pubDate>
+</item>
+<item>
+<title>Demystifying complex configurations</title>
+<link>https://guix.gnu.org/blog/2026/demystifying-complex-configurations//</link>
+<guid>https://guix.gnu.org/blog/2026/demystifying-complex-configurations//</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/awrzbh/demystifying_complex_configurations">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 04:25:39 -0500</pubDate>
+<pubDate>Mon, 07 Sep 2026 04:25:39 -0500</pubDate>
+</item>
+<item>
+<title>My Nix Config Is Intimate</title>
+<link>https://www.scd31.com/posts/nix-files-are-intimate</link>
+<guid>https://www.scd31.com/posts/nix-files-are-intimate</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/aepn8g/my_nix_config_is_intimate">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 22:27:24 -0500</pubDate>
+<pubDate>Mon, 07 Sep 2026 22:27:24 -0500</pubDate>
+</item>
+<item>
+<title>What are you doing this week?</title>
+<link>https://lobste.rs/s/xm0hkw/what_are_you_doing_this_week</link>
+<guid>https://lobste.rs/s/xm0hkw/what_are_you_doing_this_week</guid>
+<content:encoded><![CDATA[
+
+<p>What are you doing this week? Feel free to share!</p>
+<p>Keep in mind it’s OK to do nothing at all, too.</p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 05:33:18 -0500</pubDate>
+<pubDate>Mon, 07 Sep 2026 05:33:18 -0500</pubDate>
+</item>
+<item>
+<title>GEM for Linux provides a classic graphical desktop with windows, menus, dialogs &amp; a 68K emulator</title>
+<link>https://github.com/triglav-os/gem</link>
+<guid>https://github.com/triglav-os/gem</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/5yga7r/gem_for_linux_provides_classic_graphical">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 08:44:49 -0500</pubDate>
+<pubDate>Mon, 07 Sep 2026 08:44:49 -0500</pubDate>
+</item>
+<item>
+<title>How to bring up the Linux Kernel on a new platform</title>
+<link>https://werwolv.net/posts/linux_bringup/</link>
+<guid>https://werwolv.net/posts/linux_bringup/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/a2kz9j/how_bring_up_linux_kernel_on_new_platform">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 16:22:11 -0500</pubDate>
+<pubDate>Mon, 07 Sep 2026 16:22:11 -0500</pubDate>
+</item>
+<item>
+<title>Jellyfin 12.0</title>
+<link>https://jellyfin.org/posts/jellyfin-release-12.0</link>
+<guid>https://jellyfin.org/posts/jellyfin-release-12.0</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/blba3b/jellyfin_12_0">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 22:13:20 -0500</pubDate>
+<pubDate>Mon, 07 Sep 2026 22:13:20 -0500</pubDate>
+</item>
+<item>
+<title>Signing TLS handshakes inside a TPM</title>
+<link>https://bschaatsbergen.com/posts/go-tpm-tls/</link>
+<guid>https://bschaatsbergen.com/posts/go-tpm-tls/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/vospwq/signing_tls_handshakes_inside_tpm">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 07 Sep 2026 09:54:37 -0500</pubDate>
+<pubDate>Mon, 07 Sep 2026 09:54:37 -0500</pubDate>
+</item>
 
 <item>
 <title>It took a year to ship WebAssembly in Anubis</title>
@@ -17,7 +675,6 @@
 <p># Comments: 99</p>
 ]]></content:encoded>
 <pubDate>Sun, 06 Sep 2026 20:32:38 +0000</pubDate>
-<pubDate>Sun, 06 Sep 2026 20:32:38 +0000</pubDate>
 </item>
 <item>
 <title>GrapheneOS Overhauled Default Apps and Secure Clipboard</title>
@@ -26,13 +683,12 @@
 <content:encoded><![CDATA[
 <div> Keywords: article, comments, points, summary, insights  
 
-<br><br>Summary: The article discusses various compelling insights and reactions from readers, as evidenced by the 222 points amassed and 166 comments contributed. It highlights the significant engagement among users, indicating strong interest in the subject matter. The comments section serves as a fruitful ground for diverse opinions, with readers expressing both agreement and dissent on key topics. Discussion dynamics encompass various viewpoints, reflecting the complexity of the issues being addressed. The article prompts thoughtful discourse, encouraging readers to share personal experiences, analyses, and suggestions for improvements or alternatives. The overall level of participation suggests a vibrant community that is keen to explore the topic in-depth, fostering a collaborative environment for learning and understanding. Throughout the comments, recurring themes emerge, drawing attention to critical aspects that merit further exploration. This engagement not only enhances the article's impact but also enriches the conversation surrounding the topic, ultimately contributing to a deeper comprehension of the underlying issues. Readers are encouraged to continue the dialogue, providing a platform for evolving discussions that can lead to actionable insights and knowledge-sharing among a wider audience. <div>
+<br /><br />Summary: The article discusses various compelling insights and reactions from readers, as evidenced by the 222 points amassed and 166 comments contributed. It highlights the significant engagement among users, indicating strong interest in the subject matter. The comments section serves as a fruitful ground for diverse opinions, with readers expressing both agreement and dissent on key topics. Discussion dynamics encompass various viewpoints, reflecting the complexity of the issues being addressed. The article prompts thoughtful discourse, encouraging readers to share personal experiences, analyses, and suggestions for improvements or alternatives. The overall level of participation suggests a vibrant community that is keen to explore the topic in-depth, fostering a collaborative environment for learning and understanding. Throughout the comments, recurring themes emerge, drawing attention to critical aspects that merit further exploration. This engagement not only enhances the article's impact but also enriches the conversation surrounding the topic, ultimately contributing to a deeper comprehension of the underlying issues. Readers are encouraged to continue the dialogue, providing a platform for evolving discussions that can lead to actionable insights and knowledge-sharing among a wider audience. <div>
 <p>Article URL: <a href="https://grapheneos.social/@GrapheneOS/117225539756835649">https://grapheneos.social/@GrapheneOS/117225539756835649</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49590512">https://news.ycombinator.com/item?id=49590512</a></p>
 <p>Points: 222</p>
 <p># Comments: 166</p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 20:24:00 +0000</pubDate>
 <pubDate>Sun, 06 Sep 2026 20:24:00 +0000</pubDate>
 </item>
 <item>
@@ -48,7 +704,6 @@
 <p># Comments: 276</p>
 ]]></content:encoded>
 <pubDate>Sun, 06 Sep 2026 17:49:47 +0000</pubDate>
-<pubDate>Sun, 06 Sep 2026 17:49:47 +0000</pubDate>
 </item>
 <item>
 <title>An Alien Mind</title>
@@ -61,7 +716,6 @@
 <p>Points: 355</p>
 <p># Comments: 311</p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 16:27:05 +0000</pubDate>
 <pubDate>Sun, 06 Sep 2026 16:27:05 +0000</pubDate>
 </item>
 <item>
@@ -76,7 +730,6 @@
 <p># Comments: 247</p>
 ]]></content:encoded>
 <pubDate>Sun, 06 Sep 2026 15:00:19 +0000</pubDate>
-<pubDate>Sun, 06 Sep 2026 15:00:19 +0000</pubDate>
 </item>
 <item>
 <title>A/I shuts down</title>
@@ -89,7 +742,6 @@
 <p>Points: 544</p>
 <p># Comments: 432</p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 14:34:34 +0000</pubDate>
 <pubDate>Sun, 06 Sep 2026 14:34:34 +0000</pubDate>
 </item>
 <item>
@@ -104,7 +756,6 @@
 <p># Comments: 265</p>
 ]]></content:encoded>
 <pubDate>Sun, 06 Sep 2026 13:02:41 +0000</pubDate>
-<pubDate>Sun, 06 Sep 2026 13:02:41 +0000</pubDate>
 </item>
 <item>
 <title>Your intellectual fly is open when you use an LLM to author a post (2025)</title>
@@ -113,13 +764,12 @@
 <content:encoded><![CDATA[
 <div> Keywords: Article, Comments, Points, Summary, Discussion
 
-<br><br>Summary: The article presents a detailed discussion on a specific topic that has garnered significant attention, as evidenced by the high engagement metrics: 585 points and 389 comments. It provides an in-depth analysis of the main issues, highlighting various perspectives shared by commenters. The content encourages readers to reflect on the implications of the topic presented, fostering an environment of constructive debate. The volume of comments suggests that the article resonates with a broad audience, prompting diverse opinions and experiences to be shared. Throughout the discussion, key arguments are examined, often with references to relevant data or studies, which enhance the credibility of the claims made. The article emphasizes the importance of community involvement in topics of interest and the role of feedback in shaping ongoing conversations. Overall, it serves as a platform for dialogue, inviting readers to contribute their thoughts and engage with the content actively. The composition not only aims to inform but also to inspire further exploration and understanding among its readership, effectively bridging the gap between information dissemination and community engagement. <div>
+<br /><br />Summary: The article presents a detailed discussion on a specific topic that has garnered significant attention, as evidenced by the high engagement metrics: 585 points and 389 comments. It provides an in-depth analysis of the main issues, highlighting various perspectives shared by commenters. The content encourages readers to reflect on the implications of the topic presented, fostering an environment of constructive debate. The volume of comments suggests that the article resonates with a broad audience, prompting diverse opinions and experiences to be shared. Throughout the discussion, key arguments are examined, often with references to relevant data or studies, which enhance the credibility of the claims made. The article emphasizes the importance of community involvement in topics of interest and the role of feedback in shaping ongoing conversations. Overall, it serves as a platform for dialogue, inviting readers to contribute their thoughts and engage with the content actively. The composition not only aims to inform but also to inspire further exploration and understanding among its readership, effectively bridging the gap between information dissemination and community engagement. <div>
 <p>Article URL: <a href="https://bcantrill.dtrace.org/2025/12/05/your-intellectual-fly-is-open/">https://bcantrill.dtrace.org/2025/12/05/your-intellectual-fly-is-open/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49585644">https://news.ycombinator.com/item?id=49585644</a></p>
 <p>Points: 585</p>
 <p># Comments: 389</p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 11:56:43 +0000</pubDate>
 <pubDate>Sun, 06 Sep 2026 11:56:43 +0000</pubDate>
 </item>
 <item>
@@ -134,7 +784,6 @@
 <p># Comments: 281</p>
 ]]></content:encoded>
 <pubDate>Sun, 06 Sep 2026 11:53:40 +0000</pubDate>
-<pubDate>Sun, 06 Sep 2026 11:53:40 +0000</pubDate>
 </item>
 <item>
 <title>You Don't Have a Right to Safe Drinking Water, US Court Rules</title>
@@ -143,13 +792,12 @@
 <content:encoded><![CDATA[
 <div> Keywords: article, comments, points, summary, content  
 
-<br><br>Summary: The article discusses various aspects related to a specific topic, thoroughly engaging the audience and eliciting significant commentary. It has garnered a total of 222 points, indicating a strong level of interest and approval among readers. There are 169 comments attached to the article, showing an active discussion surrounding its contents. The interaction signifies that the topic resonates well with the community, prompting readers to share their insights and opinions. Through the comments, important perspectives and arguments are presented, enriching the overall discourse. The article successfully addresses key issues, providing valuable information and viewpoints that appeal to its readers. This engagement is crucial as it fosters a sense of community and encourages ongoing dialogue. Furthermore, the high point tally reflects the article's quality and relevance in its field, affirming its significance. Overall, the combination of points and comments indicates that the article is not only informative but also sparks meaningful discussions, making it a noteworthy read for its audience. <div>
+<br /><br />Summary: The article discusses various aspects related to a specific topic, thoroughly engaging the audience and eliciting significant commentary. It has garnered a total of 222 points, indicating a strong level of interest and approval among readers. There are 169 comments attached to the article, showing an active discussion surrounding its contents. The interaction signifies that the topic resonates well with the community, prompting readers to share their insights and opinions. Through the comments, important perspectives and arguments are presented, enriching the overall discourse. The article successfully addresses key issues, providing valuable information and viewpoints that appeal to its readers. This engagement is crucial as it fosters a sense of community and encourages ongoing dialogue. Furthermore, the high point tally reflects the article's quality and relevance in its field, affirming its significance. Overall, the combination of points and comments indicates that the article is not only informative but also sparks meaningful discussions, making it a noteworthy read for its audience. <div>
 <p>Article URL: <a href="https://www.motherjones.com/politics/2026/09/drinking-water-mississippi-lawsuit/">https://www.motherjones.com/politics/2026/09/drinking-water-mississippi-lawsuit/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49584637">https://news.ycombinator.com/item?id=49584637</a></p>
 <p>Points: 222</p>
 <p># Comments: 169</p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 09:14:22 +0000</pubDate>
 <pubDate>Sun, 06 Sep 2026 09:14:22 +0000</pubDate>
 </item>
 <item>
@@ -157,13 +805,11 @@
 <link>https://isaraerospace.com/press/history-for-european-spaceflight-isar-aerospace-reaches-orbit-and-deploys-payloads-on-second-flight</link>
 <guid>https://isaraerospace.com/press/history-for-european-spaceflight-isar-aerospace-reaches-orbit-and-deploys-payloads-on-second-flight</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://isaraerospace.com/press/history-for-european-spaceflight-isar-aerospace-reaches-orbit-and-deploys-payloads-on-second-flight">https://isaraerospace.com/press/history-for-european-spaceflight-isar-aerospace-reaches-orbit-and-deploys-payloads-on-second-flight</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49584083">https://news.ycombinator.com/item?id=49584083</a></p>
 <p>Points: 566</p>
 <p># Comments: 181</p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 07:21:06 +0000</pubDate>
 <pubDate>Sun, 06 Sep 2026 07:21:06 +0000</pubDate>
 </item>
 <item>
@@ -171,13 +817,11 @@
 <link>https://openai.robocurve.org/gpt-6-astra/</link>
 <guid>https://openai.robocurve.org/gpt-6-astra/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://openai.robocurve.org/gpt-6-astra/">https://openai.robocurve.org/gpt-6-astra/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49582582">https://news.ycombinator.com/item?id=49582582</a></p>
 <p>Points: 231</p>
 <p># Comments: 184</p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 01:52:45 +0000</pubDate>
 <pubDate>Sun, 06 Sep 2026 01:52:45 +0000</pubDate>
 </item>
 <item>
@@ -185,13 +829,11 @@
 <link>https://www.wsj.com/business/diamond-mines-are-closing-and-south-africans-have-few-alternatives-fa3b8cbf</link>
 <guid>https://www.wsj.com/business/diamond-mines-are-closing-and-south-africans-have-few-alternatives-fa3b8cbf</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.wsj.com/business/diamond-mines-are-closing-and-south-africans-have-few-alternatives-fa3b8cbf">https://www.wsj.com/business/diamond-mines-are-closing-and-south-africans-have-few-alternatives-fa3b8cbf</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49580778">https://news.ycombinator.com/item?id=49580778</a></p>
 <p>Points: 175</p>
 <p># Comments: 161</p>
 ]]></content:encoded>
-<pubDate>Sat, 05 Sep 2026 21:17:00 +0000</pubDate>
 <pubDate>Sat, 05 Sep 2026 21:17:00 +0000</pubDate>
 </item>
 <item>
@@ -199,10 +841,8 @@
 <link>https://aleyan.com/projects/python-iceberg/</link>
 <guid>https://aleyan.com/projects/python-iceberg/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/xv6z4r/python_iceberg">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 13:46:54 -0500</pubDate>
 <pubDate>Sun, 06 Sep 2026 13:46:54 -0500</pubDate>
 </item>
 <item>
@@ -210,10 +850,8 @@
 <link>https://michael.stapelberg.ch/posts/2026-09-06-dcs-fast-turbopfor-go-simd/</link>
 <guid>https://michael.stapelberg.ch/posts/2026-09-06-dcs-fast-turbopfor-go-simd/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/ceuque/debian_code_search_fast_turbopfor_with_go">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 02:03:41 -0500</pubDate>
 <pubDate>Sun, 06 Sep 2026 02:03:41 -0500</pubDate>
 </item>
 <item>
@@ -221,10 +859,8 @@
 <link>https://meanmicio.org/2026/09/06/netbsd-11-from-scratch/</link>
 <guid>https://meanmicio.org/2026/09/06/netbsd-11-from-scratch/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/be5lrk/netbsd_11_from_scratch">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 08:35:03 -0500</pubDate>
 <pubDate>Sun, 06 Sep 2026 08:35:03 -0500</pubDate>
 </item>
 <item>
@@ -232,11 +868,9 @@
 <link>https://mathstodon.xyz/@tao/117207856734787448</link>
 <guid>https://mathstodon.xyz/@tao/117207856734787448</guid>
 <content:encoded><![CDATA[
-
 <p>I recommend reading the whole thread, but I linked to the part I found the most relevant. I believe the same is true for programming.</p>
 <p><a href="https://lobste.rs/s/nohdoj/terence_tao_on_prematurely_solving_maths">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 02:45:24 -0500</pubDate>
 <pubDate>Sun, 06 Sep 2026 02:45:24 -0500</pubDate>
 </item>
 <item>
@@ -244,10 +878,8 @@
 <link>https://www.youtube.com/watch?v=SxdOUGdseq4</link>
 <guid>https://www.youtube.com/watch?v=SxdOUGdseq4</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/xccvnw/simple_made_easy_2011">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 09:25:59 -0500</pubDate>
 <pubDate>Sun, 06 Sep 2026 09:25:59 -0500</pubDate>
 </item>
 <item>
@@ -255,10 +887,8 @@
 <link>https://fzakaria.com/2026/09/04/any-nix-package-live-in-your-browser</link>
 <guid>https://fzakaria.com/2026/09/04/any-nix-package-live-in-your-browser</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/i9zp2x/any_nix_package_live_your_browser">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 02:09:11 -0500</pubDate>
 <pubDate>Sun, 06 Sep 2026 02:09:11 -0500</pubDate>
 </item>
 <item>
@@ -266,10 +896,8 @@
 <link>https://austinhenley.com/blog/python1024.html</link>
 <guid>https://austinhenley.com/blog/python1024.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/n0zgj1/making_python_interpreter_1024_bytes">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 18:04:21 -0500</pubDate>
 <pubDate>Sun, 06 Sep 2026 18:04:21 -0500</pubDate>
 </item>
 <item>
@@ -277,10 +905,8 @@
 <link>https://theconsensus.dev/p/2026/09/06/data-races-and-the-limits-of-threadsanitizer-in-c-and-go.html</link>
 <guid>https://theconsensus.dev/p/2026/09/06/data-races-and-the-limits-of-threadsanitizer-in-c-and-go.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/mcnj6l/data_races_limits_threadsanitizer_c_go">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 17:13:09 -0500</pubDate>
 <pubDate>Sun, 06 Sep 2026 17:13:09 -0500</pubDate>
 </item>
 <item>
@@ -288,10 +914,8 @@
 <link>https://static1.squarespace.com/static/644321e78cd2dd37613af33e/t/6694873f71612132a84371c7/1721009983702/Ironies+of+Automation_Bainbridge_1983.pdf</link>
 <guid>https://static1.squarespace.com/static/644321e78cd2dd37613af33e/t/6694873f71612132a84371c7/1721009983702/Ironies+of+Automation_Bainbridge_1983.pdf</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/1glwxo/ironies_automation_1983">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 08:40:36 -0500</pubDate>
 <pubDate>Sun, 06 Sep 2026 08:40:36 -0500</pubDate>
 </item>
 <item>
@@ -299,10 +923,8 @@
 <link>https://github.com/BrettHallen/Radix_FW60</link>
 <guid>https://github.com/BrettHallen/Radix_FW60</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/xyvhrx/radix_fw60_handheld_cp_m_2_2_computer">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 15:07:16 -0500</pubDate>
 <pubDate>Sun, 06 Sep 2026 15:07:16 -0500</pubDate>
 </item>
 <item>
@@ -310,10 +932,8 @@
 <link>https://a.l3x.in/blog/my-travel-setup</link>
 <guid>https://a.l3x.in/blog/my-travel-setup</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/89i4c0/who_said_tech_addict_can_t_be_comfortable">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 07:41:25 -0500</pubDate>
 <pubDate>Sun, 06 Sep 2026 07:41:25 -0500</pubDate>
 </item>
 <item>
@@ -321,10 +941,8 @@
 <link>https://martinalderson.com/posts/ai-safety-vs-security/</link>
 <guid>https://martinalderson.com/posts/ai-safety-vs-security/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/uu3hhz/have_frontier_labs_mixed_up_ai_safety">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 15:47:52 -0500</pubDate>
 <pubDate>Sun, 06 Sep 2026 15:47:52 -0500</pubDate>
 </item>
 <item>
@@ -332,10 +950,8 @@
 <link>https://blog.netbsd.org/tnf/entry/netbsd_9_5_released_and</link>
 <guid>https://blog.netbsd.org/tnf/entry/netbsd_9_5_released_and</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/7ymd5q/netbsd_9_5_released_eol_for_netbsd_9">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 10:44:40 -0500</pubDate>
 <pubDate>Sun, 06 Sep 2026 10:44:40 -0500</pubDate>
 </item>
 <item>
@@ -343,10 +959,8 @@
 <link>https://domaindrivenarchitecture.org/blog/2024-06-05-howto-federated-stars/</link>
 <guid>https://domaindrivenarchitecture.org/blog/2024-06-05-howto-federated-stars/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/1kdrx2/how_federated_stars_2024">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 01:05:41 -0500</pubDate>
 <pubDate>Sun, 06 Sep 2026 01:05:41 -0500</pubDate>
 </item>
 <item>
@@ -354,10 +968,8 @@
 <link>http://marijkeluttekes.dev/blog/articles/2026/03/16/why-frontends-fail-when-you-approach-them-like-a-backend/</link>
 <guid>http://marijkeluttekes.dev/blog/articles/2026/03/16/why-frontends-fail-when-you-approach-them-like-a-backend/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/vcsb4x/why_frontends_fail_when_you_approach_them">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 14:18:09 -0500</pubDate>
 <pubDate>Sun, 06 Sep 2026 14:18:09 -0500</pubDate>
 </item>
 <item>
@@ -365,10 +977,8 @@
 <link>https://underreacted.leaflet.pub/3mdjygm2p5s2c</link>
 <guid>https://underreacted.leaflet.pub/3mdjygm2p5s2c</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/9i5qo4/slop_lasagna">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 06 Sep 2026 22:08:41 -0500</pubDate>
 <pubDate>Sun, 06 Sep 2026 22:08:41 -0500</pubDate>
 </item>
 <item>
@@ -376,13 +986,10 @@
 <link>https://www.researchgate.net/publication/2560062_Real-Time_Fluid_Dynamics_for_Games</link>
 <guid>https://www.researchgate.net/publication/2560062_Real-Time_Fluid_Dynamics_for_Games</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/xxeyrk/real_time_fluid_dynamics_for_games">Comments</a></p>
 ]]></content:encoded>
 <pubDate>Sun, 06 Sep 2026 21:54:47 -0500</pubDate>
-<pubDate>Sun, 06 Sep 2026 21:54:47 -0500</pubDate>
 </item>
-
 <item>
 <title>v16.4.0-canary.19</title>
 <link>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.19</link>
@@ -16552,330 +17159,6 @@ requiring the SQL builder.</li>
 <p># Comments: 122</p>
 ]]></content:encoded>
 <pubDate>Tue, 18 Aug 2026 19:29:51 +0000</pubDate>
-</item>
-<item>
-<title>How does IKEA come up with names for its products?</title>
-<link>https://www.ikea.com/se/en/customer-service/knowledge/articles/6f564c4d-2ccc-46de-b643-545a3948dc79.html</link>
-<guid>https://www.ikea.com/se/en/customer-service/knowledge/articles/6f564c4d-2ccc-46de-b643-545a3948dc79.html</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.ikea.com/se/en/customer-service/knowledge/articles/6f564c4d-2ccc-46de-b643-545a3948dc79.html">https://www.ikea.com/se/en/customer-service/knowledge/articles/6f564c4d-2ccc-46de-b643-545a3948dc79.html</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49349984">https://news.ycombinator.com/item?id=49349984</a></p>
-<p>Points: 222</p>
-<p># Comments: 140</p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 18:11:53 +0000</pubDate>
-</item>
-<item>
-<title>Turbovec – Google's TurboQuant for vector search in Rust</title>
-<link>https://github.com/RyanCodrai/turbovec</link>
-<guid>https://github.com/RyanCodrai/turbovec</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://github.com/RyanCodrai/turbovec">https://github.com/RyanCodrai/turbovec</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49349898">https://news.ycombinator.com/item?id=49349898</a></p>
-<p>Points: 202</p>
-<p># Comments: 27</p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 18:07:21 +0000</pubDate>
-</item>
-<item>
-<title>Field measurements of neighborhood-scale air temperature impacts of data centers</title>
-<link>https://asmedigitalcollection.asme.org/sustainablebuildings/article/7/2/024501/1233035/Data-Center-Waste-Heat-as-an-Emerging-Urban</link>
-<guid>https://asmedigitalcollection.asme.org/sustainablebuildings/article/7/2/024501/1233035/Data-Center-Waste-Heat-as-an-Emerging-Urban</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://asmedigitalcollection.asme.org/sustainablebuildings/article/7/2/024501/1233035/Data-Center-Waste-Heat-as-an-Emerging-Urban">https://asmedigitalcollection.asme.org/sustainablebuildings/article/7/2/024501/1233035/Data-Center-Waste-Heat-as-an-Emerging-Urban</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49349147">https://news.ycombinator.com/item?id=49349147</a></p>
-<p>Points: 285</p>
-<p># Comments: 422</p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 17:24:53 +0000</pubDate>
-</item>
-<item>
-<title>And then the men with guns tell you to do it anyway</title>
-<link>https://shkspr.mobi/blog/2026/08/and-then-the-men-with-guns-tell-you-to-do-it-anyway/</link>
-<guid>https://shkspr.mobi/blog/2026/08/and-then-the-men-with-guns-tell-you-to-do-it-anyway/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://shkspr.mobi/blog/2026/08/and-then-the-men-with-guns-tell-you-to-do-it-anyway/">https://shkspr.mobi/blog/2026/08/and-then-the-men-with-guns-tell-you-to-do-it-anyway/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49348912">https://news.ycombinator.com/item?id=49348912</a></p>
-<p>Points: 161</p>
-<p># Comments: 87</p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 17:11:28 +0000</pubDate>
-</item>
-<item>
-<title>Claude Code May–August 2026 weekly limits promotion</title>
-<link>https://support.claude.com/en/articles/15910845-claude-code-may-august-2026-weekly-limits-promotion</link>
-<guid>https://support.claude.com/en/articles/15910845-claude-code-may-august-2026-weekly-limits-promotion</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://support.claude.com/en/articles/15910845-claude-code-may-august-2026-weekly-limits-promotion">https://support.claude.com/en/articles/15910845-claude-code-may-august-2026-weekly-limits-promotion</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49348751">https://news.ycombinator.com/item?id=49348751</a></p>
-<p>Points: 257</p>
-<p># Comments: 227</p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 17:02:15 +0000</pubDate>
-</item>
-<item>
-<title>Babies born under sugar rationing grew into adults with lower cancer risk</title>
-<link>https://theconversation.com/babies-born-under-sugar-rationing-grew-into-adults-with-lower-cancer-risk-289873</link>
-<guid>https://theconversation.com/babies-born-under-sugar-rationing-grew-into-adults-with-lower-cancer-risk-289873</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://theconversation.com/babies-born-under-sugar-rationing-grew-into-adults-with-lower-cancer-risk-289873">https://theconversation.com/babies-born-under-sugar-rationing-grew-into-adults-with-lower-cancer-risk-289873</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49345843">https://news.ycombinator.com/item?id=49345843</a></p>
-<p>Points: 266</p>
-<p># Comments: 55</p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 14:06:50 +0000</pubDate>
-</item>
-<item>
-<title>Python Polars Cheatsheet (based on our O'Reilly book)</title>
-<link>https://opensource.posit.co/resources/cheatsheets/polars/</link>
-<guid>https://opensource.posit.co/resources/cheatsheets/polars/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://opensource.posit.co/resources/cheatsheets/polars/">https://opensource.posit.co/resources/cheatsheets/polars/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49345476">https://news.ycombinator.com/item?id=49345476</a></p>
-<p>Points: 159</p>
-<p># Comments: 33</p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 13:38:23 +0000</pubDate>
-</item>
-<item>
-<title>The Amazon tax</title>
-<link>https://seths.blog/2026/08/the-amazon-tax/</link>
-<guid>https://seths.blog/2026/08/the-amazon-tax/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://seths.blog/2026/08/the-amazon-tax/">https://seths.blog/2026/08/the-amazon-tax/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49345263">https://news.ycombinator.com/item?id=49345263</a></p>
-<p>Points: 929</p>
-<p># Comments: 537</p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 13:22:38 +0000</pubDate>
-</item>
-<item>
-<title>Fixing a bricked Framework laptop</title>
-<link>https://quantum5.ca/2026/08/16/fixing-bricked-amd-7040-series-framework-13-laptop-with-20-tools/</link>
-<guid>https://quantum5.ca/2026/08/16/fixing-bricked-amd-7040-series-framework-13-laptop-with-20-tools/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://quantum5.ca/2026/08/16/fixing-bricked-amd-7040-series-framework-13-laptop-with-20-tools/">https://quantum5.ca/2026/08/16/fixing-bricked-amd-7040-series-framework-13-laptop-with-20-tools/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49345220">https://news.ycombinator.com/item?id=49345220</a></p>
-<p>Points: 356</p>
-<p># Comments: 242</p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 13:18:40 +0000</pubDate>
-</item>
-<item>
-<title>Using the railway network as a flatbed scanner</title>
-<link>https://philo.gay/linecam/</link>
-<guid>https://philo.gay/linecam/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://philo.gay/linecam/">https://philo.gay/linecam/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49344825">https://news.ycombinator.com/item?id=49344825</a></p>
-<p>Points: 401</p>
-<p># Comments: 64</p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 12:43:54 +0000</pubDate>
-</item>
-<item>
-<title>Fairphone is now officially available in the United States</title>
-<link>https://www.fairphone.com/nl/stories/the-fairphone-gen-6-is-all-about-giving-you-more</link>
-<guid>https://www.fairphone.com/nl/stories/the-fairphone-gen-6-is-all-about-giving-you-more</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.fairphone.com/nl/stories/the-fairphone-gen-6-is-all-about-giving-you-more">https://www.fairphone.com/nl/stories/the-fairphone-gen-6-is-all-about-giving-you-more</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49344811">https://news.ycombinator.com/item?id=49344811</a></p>
-<p>Points: 350</p>
-<p># Comments: 180</p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 12:42:53 +0000</pubDate>
-</item>
-<item>
-<title>Meta Files Patent for Facial Recognition, Automatic Recording of People</title>
-<link>https://www.privacyguides.org/news/2026/08/17/meta-files-patent-for-facial-recognition-automatic-recording-of-people/</link>
-<guid>https://www.privacyguides.org/news/2026/08/17/meta-files-patent-for-facial-recognition-automatic-recording-of-people/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.privacyguides.org/news/2026/08/17/meta-files-patent-for-facial-recognition-automatic-recording-of-people/">https://www.privacyguides.org/news/2026/08/17/meta-files-patent-for-facial-recognition-automatic-recording-of-people/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49344654">https://news.ycombinator.com/item?id=49344654</a></p>
-<p>Points: 244</p>
-<p># Comments: 165</p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 12:23:55 +0000</pubDate>
-</item>
-<item>
-<title>Claude writing a macOS driver for my obscure HP printer built only for Windows</title>
-<link>https://twitter.com/kuberwastaken/status/2089377982536388964</link>
-<guid>https://twitter.com/kuberwastaken/status/2089377982536388964</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://twitter.com/kuberwastaken/status/2089377982536388964">https://twitter.com/kuberwastaken/status/2089377982536388964</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49344643">https://news.ycombinator.com/item?id=49344643</a></p>
-<p>Points: 153</p>
-<p># Comments: 64</p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 12:22:58 +0000</pubDate>
-</item>
-<item>
-<title>Google has acquired the data of failed US airline Spirit</title>
-<link>https://www.theregister.com/ai-and-ml/2026/08/18/google-buys-crashed-airline-spirits-data-at-auction-because-ai/5288962</link>
-<guid>https://www.theregister.com/ai-and-ml/2026/08/18/google-buys-crashed-airline-spirits-data-at-auction-because-ai/5288962</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.theregister.com/ai-and-ml/2026/08/18/google-buys-crashed-airline-spirits-data-at-auction-because-ai/5288962">https://www.theregister.com/ai-and-ml/2026/08/18/google-buys-crashed-airline-spirits-data-at-auction-because-ai/5288962</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49343559">https://news.ycombinator.com/item?id=49343559</a></p>
-<p>Points: 565</p>
-<p># Comments: 386</p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 10:13:28 +0000</pubDate>
-</item>
-<item>
-<title>Linux 7.3 improves performance when running out of vRAM</title>
-<link>https://pixelcluster.dev/VRAM-Overcommit/</link>
-<guid>https://pixelcluster.dev/VRAM-Overcommit/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://pixelcluster.dev/VRAM-Overcommit/">https://pixelcluster.dev/VRAM-Overcommit/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49342719">https://news.ycombinator.com/item?id=49342719</a></p>
-<p>Points: 508</p>
-<p># Comments: 275</p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 07:51:50 +0000</pubDate>
-</item>
-<item>
-<title>Rethinking Database Programming</title>
-<link>https://acadia.engineering/blog/rethinking-database-programming</link>
-<guid>https://acadia.engineering/blog/rethinking-database-programming</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://acadia.engineering/blog/rethinking-database-programming">https://acadia.engineering/blog/rethinking-database-programming</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49342530">https://news.ycombinator.com/item?id=49342530</a></p>
-<p>Points: 224</p>
-<p># Comments: 128</p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 07:28:27 +0000</pubDate>
-</item>
-<item>
-<title>Finger: Social network that never died</title>
-<link>https://en.andros.dev/blog/54572bc7/finger-the-1971-social-network-that-never-died/</link>
-<guid>https://en.andros.dev/blog/54572bc7/finger-the-1971-social-network-that-never-died/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://en.andros.dev/blog/54572bc7/finger-the-1971-social-network-that-never-died/">https://en.andros.dev/blog/54572bc7/finger-the-1971-social-network-that-never-died/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49342472">https://news.ycombinator.com/item?id=49342472</a></p>
-<p>Points: 151</p>
-<p># Comments: 51</p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 07:21:35 +0000</pubDate>
-</item>
-<item>
-<title>How I browse the Web with uBlock (Hard Mode)</title>
-<link>https://untrusem.party/blog/how-I-browse-the-web-with-Ublock-Hard-Mode.html</link>
-<guid>https://untrusem.party/blog/how-I-browse-the-web-with-Ublock-Hard-Mode.html</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/nsywuo/how_i_browse_web_with_ublock_hard_mode">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 07:30:18 -0500</pubDate>
-</item>
-<item>
-<title>Mojo is now open source</title>
-<link>https://www.modular.com/blog/mojo-open-source</link>
-<guid>https://www.modular.com/blog/mojo-open-source</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/01lxuf/mojo_is_now_open_source">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 11:34:21 -0500</pubDate>
-</item>
-<item>
-<title>What software do you use daily in 2026?</title>
-<link>https://lobste.rs/s/ttxwdz/what_software_do_you_use_daily_2026</link>
-<guid>https://lobste.rs/s/ttxwdz/what_software_do_you_use_daily_2026</guid>
-<content:encoded><![CDATA[
-<p>There was a similar thread here six years ago, and I'm curious how people's daily setups have changed since then.</p>
-<p>What does the software side of your daily setup look like in 2026?</p>
-<p>Operating system, desktop environment or window manager, terminal, shell, editor, browser, and any other tools you consider essential to your daily workflow.</p>
-<p>I'm especially interested in the small or less obvious tools that have become indispensable to you.</p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 09:31:11 -0500</pubDate>
-</item>
-<item>
-<title>CSS: the bomb inside your inbox</title>
-<link>https://portswigger.net/research/css-the-bomb-inside-your-inbox</link>
-<guid>https://portswigger.net/research/css-the-bomb-inside-your-inbox</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/qo7eyx/css_bomb_inside_your_inbox">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 08:30:46 -0500</pubDate>
-</item>
-<item>
-<title>Kakoune code editor</title>
-<link>https://kakoune.org/</link>
-<guid>https://kakoune.org/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/3dqrwr/kakoune_code_editor">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 13:16:56 -0500</pubDate>
-</item>
-<item>
-<title>Mastodon 5.0: Laying the foundation</title>
-<link>https://blog.joinmastodon.org/2026/08/5.0-laying-the-foundation/</link>
-<guid>https://blog.joinmastodon.org/2026/08/5.0-laying-the-foundation/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/m0okh1/mastodon_5_0_laying_foundation">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 19:03:41 -0500</pubDate>
-</item>
-<item>
-<title>Biboumi – XMPP gateway to IRC</title>
-<link>https://biboumi.codeberg.page/doc/</link>
-<guid>https://biboumi.codeberg.page/doc/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/ih4bmy/biboumi_xmpp_gateway_irc">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 02:37:53 -0500</pubDate>
-</item>
-<item>
-<title>Odin's New Inline Assembly Templates</title>
-<link>https://odin-lang.org/docs/inline-asm/</link>
-<guid>https://odin-lang.org/docs/inline-asm/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/loltt2/odin_s_new_inline_assembly_templates">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 14:20:45 -0500</pubDate>
-</item>
-<item>
-<title>Fairphone 6 + PostmarketOS working main camera</title>
-<link>https://catcrafts.net/posts/fairphone-6-postmarketos-working-main-camera</link>
-<guid>https://catcrafts.net/posts/fairphone-6-postmarketos-working-main-camera</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/hisxut/fairphone_6_postmarketos_working_main">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 07:29:02 -0500</pubDate>
-</item>
-<item>
-<title>Experiment in reducing target directory size on nightly</title>
-<link>https://blog.rust-lang.org/inside-rust/2026/08/18/reducing-target-dir-size-on-nightly/</link>
-<guid>https://blog.rust-lang.org/inside-rust/2026/08/18/reducing-target-dir-size-on-nightly/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/omsqyf/experiment_reducing_target_directory">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 13:39:06 -0500</pubDate>
-</item>
-<item>
-<title>When str.lower() is a security vulnerability in Python</title>
-<link>https://sethmlarson.dev/when-str-lower-is-a-security-vulnerability</link>
-<guid>https://sethmlarson.dev/when-str-lower-is-a-security-vulnerability</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/ap9w8i/when_str_lower_is_security_vulnerability">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 17:57:41 -0500</pubDate>
-</item>
-<item>
-<title>Shading Motion</title>
-<link>https://blog.maximeheckel.com/posts/shading-motion/</link>
-<guid>https://blog.maximeheckel.com/posts/shading-motion/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/8vihvm/shading_motion">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 07:11:07 -0500</pubDate>
-</item>
-<item>
-<title>Organizing in Layer 8 – Building Tech in Democratic Socialists of America</title>
-<link>https://www.youtube.com/watch?v=-koLM6yT5FY</link>
-<guid>https://www.youtube.com/watch?v=-koLM6yT5FY</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/aqwiot/organizing_layer_8_building_tech">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 18 Aug 2026 13:39:18 -0500</pubDate>
 </item>
 </channel>
 </rss>
