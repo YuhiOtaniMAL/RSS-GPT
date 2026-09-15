@@ -3,7 +3,931 @@
 <channel>
 <title>tech</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/tech.xml</link>
-<lastBuildDate>Mon, 14 Sep 2026 04:34:28 +0000</lastBuildDate>
+<lastBuildDate>Tue, 15 Sep 2026 04:34:47 +0000</lastBuildDate>
+
+<item>
+<title>Qwen3.6-35B-A3B-NVFP4 and Wan2.1-T2V-1.3B-Diffusers models now available on Amazon SageMaker JumpStart</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/01/qwen3.6-35b-a3b-nvfp4-wan2.1-t2v-1.3B-diffusers-jumpstart/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/01/qwen3.6-35b-a3b-nvfp4-wan2.1-t2v-1.3B-diffusers-jumpstart/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: NVIDIA, Alibaba, SageMaker, AI models, text-to-video
+
+<br><br>Summary: NVIDIA's Qwen3.6-35B-A3B-NVFP4 and Alibaba's Wan2.1-T2V-1.3B-Diffusers models have been added to Amazon SageMaker JumpStart, enhancing the selection of foundation models available to AWS users. Qwen3.6-35B-A3B is tailored for agentic coding, multimodal reasoning, and long-context comprehension, featuring 35 billion parameters with a mixture-of-experts architecture, activating only a fraction at a time to optimize performance. It supports a long context window that can be extended significantly using YaRN scaling and is quantized for improved efficiency while maintaining cognitive capabilities across multiple interactions. On the other hand, Wan2.1-T2V-1.3B-Diffusers focuses on text-to-video generation, utilizing a diffusion transformer and Video Variational Autoencoder (VAE) to create high-quality videos from text with modest hardware requirements. Notably, it can generate a 5-second 480p video in around 4 minutes on consumer-grade GPUs. Both models are designed to tackle different enterprise AI challenges, and with SageMaker JumpStart, customers can easily deploy them for tailored AI applications. Users can access the models through the SageMaker console or Python SDK for seamless integration into their AWS workflows. <div>
+<p>NVIDIA's Qwen3.6-35B-A3B-NVFP4 and Alibaba's Wan2.1-T2V-1.3B-Diffusers models are now available on Amazon SageMaker JumpStart, expanding the portfolio of foundation models available to AWS customers. These two models bring specialized capabilities spanning agentic coding with long-context reasoning and lightweight text-to-video generation, enabling customers to deploy high-performance, scalable AI solutions on AWS infrastructure.</p> 
+<p>These models address different enterprise AI challenges with specialized capabilities:</p> 
+<p><b>Qwen3.6-35B-A3B-NVFP4</b> is optimized for <b>agentic coding, multimodal reasoning, and long-context understanding</b> as the NVIDIA-quantized variant of Alibaba's Qwen3.6-35B-A3B. This Mixture-of-Experts model contains 35B total parameters with only 3B activated per token (8 of 256 experts), supporting a 262K-token context window extendable to ~1M via YaRN scaling. Quantized to NVFP4 using NVIDIA's ModelOpt framework, it preserves thinking across conversation turns, multi-token prediction, and tool calling for multi-step agent pipelines—all at a significantly reduced memory footprint.</p> 
+<p><b>Wan2.1-T2V-1.3B-Diffusers</b> excels in <b>text-to-video generation on consumer-grade hardware</b>. Built on the diffusion transformer paradigm with a novel Video Variational Autoencoder (VAE), this 1.3B-parameter model generates high-quality, physics-consistent video clips from text prompts while requiring only 8.19 GB of VRAM. It can produce a 5-second 480p video on an RTX 4090 in approximately 4 minutes, making it one of the most accessible open-source video generation models available.</p> 
+<p>With SageMaker JumpStart, customers can deploy any of these models with just a few clicks to address their specific AI use cases.</p> 
+<p>To get started with these models, navigate to the SageMaker JumpStart model catalog in the SageMaker console or use the SageMaker Python SDK to deploy the models to your AWS account. For more information about deploying and using foundation models in SageMaker JumpStart, see the <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html">Amazon SageMaker JumpStart documentation</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 17:39:00 GMT</pubDate>
+<pubDate>Mon, 14 Sep 2026 17:39:00 GMT</pubDate>
+</item>
+<item>
+<title>Ministral-3-3B-Instruct-2512 and Ministral-3-8B-Instruct-2512 models now available on Amazon SageMaker JumpStart</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/01/ministral-3-3b-instruct-2512-ministral-3-8B-Instruct-2512-jumpstart/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/01/ministral-3-3b-instruct-2512-ministral-3-8B-Instruct-2512-jumpstart/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Mistral AI, SageMaker, models, AI solutions, deployment  
+
+<br><br>Summary:  
+Mistral AI's Ministral-3-3B-Instruct-2512 and Ministral-3-8B-Instruct-2512 models are now available on Amazon SageMaker JumpStart, enhancing the variety of foundation models for AWS customers. These two models are specifically designed for edge deployment and resource-constrained environments. The Ministral-3-3B-Instruct-2512 is optimized for ultra-lightweight deployment and multimodal understanding, consisting of a 3.4B language model and a 0.4B vision encoder, requiring just 8GB of VRAM in FP8. This model supports a 256K-token context window and offers features like vision analysis and multilingual instruction following in multiple languages. In contrast, the Ministral-3-8B-Instruct-2512 provides advanced capabilities in a compact 8B form factor, including an 8.4B language model and a 0.4B vision encoder, fitting into 12GB of VRAM. It utilizes an interleaved sliding-window attention pattern for enhanced inference efficiency. Both models allow for easy deployment via SageMaker JumpStart. Users can access the model catalog in the SageMaker console or utilize the SageMaker Python SDK for deployment, ensuring a streamlined setup for various AI use cases. <div>
+<p>Mistral AI's Ministral-3-3B-Instruct-2512 and Ministral-3-8B-Instruct-2512 models are now available on Amazon SageMaker JumpStart, expanding the portfolio of foundation models available to AWS customers. These two models from the Ministral 3 family bring compact, vision-capable language models purpose-built for edge deployment and resource-constrained environments, enabling customers to deploy high-performance, scalable AI solutions on AWS infrastructure.</p> 
+<p>These models address different enterprise AI challenges with specialized capabilities:</p> 
+<p><b>Ministral-3-3B-Instruct-2512</b> is engineered for <b>ultra-lightweight edge deployment with multimodal understanding</b>. Comprising a 3.4B language model and a 0.4B vision encoder, it fits in just 8GB of VRAM in FP8 while supporting a 256K-token context window. It offers vision analysis, multilingual instruction following across dozens of languages (including English, French, Spanish, German, Chinese, Japanese, Korean, and Arabic), strong system-prompt adherence, and native function calling with structured JSON output—all under the Apache 2.0 license.</p> 
+<p><b>Ministral-3-8B-Instruct-2512</b> delivers <b>frontier-class capabilities comparable to its larger Mistral Small 3.2 24B counterpart</b> in a compact 8B form factor. Built with an 8.4B language model and a 0.4B vision encoder, it fits in 12GB of VRAM in FP8 and features an interleaved sliding-window attention pattern for faster, memory-efficient inference. It shares the same vision, multilingual, agentic, and function-calling capabilities as its 3B sibling while offering stronger reasoning and generation performance.</p> 
+<p>With SageMaker JumpStart, customers can deploy any of these models with just a few clicks to address their specific AI use cases.</p> 
+<p>To get started with these models, navigate to the SageMaker JumpStart model catalog in the SageMaker console or use the SageMaker Python SDK to deploy the models to your AWS account. For more information about deploying and using foundation models in SageMaker JumpStart, see the <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html">Amazon SageMaker JumpStart documentation</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 17:35:00 GMT</pubDate>
+<pubDate>Mon, 14 Sep 2026 17:35:00 GMT</pubDate>
+</item>
+<item>
+<title>Gemma-4-31B-it-assistant and Gemma-4-31B-IT-NVFP4 models now available on Amazon SageMaker JumpStart</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/01/gemma-4-31b-it-assistant-gemma-4-31b-it-nvfp4-jumpstart/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/01/gemma-4-31b-it-assistant-gemma-4-31b-it-nvfp4-jumpstart/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Gemma-4-31B, AWS, models, quantized, SageMaker  
+
+<br><br>Summary:  
+Google DeepMind's Gemma-4-31B-it-assistant and NVIDIA's Gemma-4-31B-IT-NVFP4 models are now available on Amazon SageMaker JumpStart, enhancing the foundation model offerings for AWS customers. These models utilize the Gemma 4 31B dense architecture tailored for enterprise workloads with both full-precision and optimized quantized versions for high-performance solutions on AWS. The Gemma-4-31B-it-assistant excels in multimodal reasoning and coding, supporting text and image inputs with a significant 256K-token context window and multilingual capabilities. It ranks #3 on the Arena AI text leaderboard, showcasing competitiveness against larger models with innovative hybrid attention mechanisms. The Gemma-4-31B-IT-NVFP4, meanwhile, employs NVIDIA’s ModelOpt framework to achieve a memory-efficient 4-bit FP4 quantization, minimizing the memory footprint to approximately 18.5 GB while maintaining nearly full quality and enhancing inference speed by 2.5x. Customers can effortlessly deploy these models via SageMaker JumpStart, streamlining their enterprise AI use cases. For further information on deployment and usage, guidance is available in the SageMaker documentation. <div>
+<p>Google DeepMind's Gemma-4-31B-it-assistant and NVIDIA's Gemma-4-31B-IT-NVFP4 models are now available on Amazon SageMaker JumpStart, expanding the portfolio of foundation models available to AWS customers. These two models bring the flagship Gemma 4 31B dense architecture to enterprise workloads in both full-precision and optimized quantized variants, enabling customers to deploy high-performance, scalable AI solutions on AWS infrastructure.</p> 
+<p>These models address different enterprise AI challenges with specialized capabilities:</p> 
+<p><b>Gemma-4-31B-it-assistant</b> is built for <b>multimodal reasoning, coding, and agentic workflows</b> as the assistant-tuned variant of Google's flagship 31B dense model. It handles text and image inputs (including video as frame sequences) and generates text output, with a 256K-token context window and support for over 140 languages. Ranked #3 among open models on the Arena AI text leaderboard—outcompeting models 20x its size—it features a hybrid attention mechanism interleaving local sliding-window and full global attention with native function calling for building autonomous agents.</p> 
+<p><b>Gemma-4-31B-IT-NVFP4</b> delivers the <b>same Gemma 4 31B capabilities at a fraction of the memory footprint</b>. Quantized with NVIDIA's ModelOpt framework to 4-bit FP4 precision, it reduces memory usage to ~18.5 GB (68% smaller than the base model) and achieves approximately 2.5x faster inference while retaining 97–99% of the original model's quality. Ideal for cost-efficient, high-throughput production deployments on NVIDIA RTX, DGX Spark, and data center GPUs.</p> 
+<p>With SageMaker JumpStart, customers can deploy any of these models with just a few clicks to address their specific AI use cases.</p> 
+<p>To get started with these models, navigate to the SageMaker JumpStart model catalog in the SageMaker console or use the SageMaker Python SDK to deploy the models to your AWS account. For more information about deploying and using foundation models in SageMaker JumpStart, see the <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html">Amazon SageMaker JumpStart documentation</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 17:32:00 GMT</pubDate>
+<pubDate>Mon, 14 Sep 2026 17:32:00 GMT</pubDate>
+</item>
+<item>
+<title>granite-speech-4.1-2b, kanana-2-30b-a3b-instruct, and OpenFold3 models now available on Amazon SageMaker JumpStart</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/01/granite-speech-4.1-2b-edge-kanana-2-30b-a3b-instruct-openfold3-jumpstart/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/01/granite-speech-4.1-2b-edge-kanana-2-30b-a3b-instruct-openfold3-jumpstart/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS, SageMaker, foundation models, speech recognition, biomolecular prediction
+
+<br><br>Summary: Three new foundation models—granite-speech-4.1-2b, kanana-2-30b-a3b-instruct, and OpenFold3—are now available on Amazon SageMaker JumpStart, enhancing the offerings for AWS customers. The granite-speech-4.1-2b model is tailored for multilingual automatic speech recognition (ASR) and bidirectional speech translation (AST) across several languages, featuring a compact size of 2 billion parameters and achieving a 5.33% word error rate. Kakao’s kanana-2-30b-a3b-instruct model specializes in bilingual Korean-English instruction and agentic AI workflows, using a sophisticated Multi-head Latent Attention architecture and Mixture-of-Experts technique. It effectively manages 30 billion parameters while maintaining high throughput. Lastly, OpenFold3 is designed for comprehensive biomolecular structure prediction, accommodating proteins and complex biomolecular interactions, beneficial for drug design in academic and pharmaceutical sectors. These models provide specialized solutions for various enterprise AI challenges. Users can deploy these models effortlessly via SageMaker JumpStart, either through the model catalog in the console or using the SageMaker Python SDK. For more details on deploying and utilizing these foundation models, further resources are available within SageMaker JumpStart documentation. <div>
+<p>BM's granite-speech-4.1-2b, Kakao's kanana-2-30b-a3b-instruct, and the OpenFold Consortium's OpenFold3 models are now available on Amazon SageMaker JumpStart, expanding the portfolio of foundation models available to AWS customers. These three models bring specialized capabilities spanning multilingual speech recognition, bilingual agentic AI, and biomolecular structure prediction, enabling customers to deploy high-performance, scalable AI solutions on AWS infrastructure.</p> 
+<p>These models address different enterprise AI challenges with specialized capabilities:</p> 
+<p><b>granite-speech-4.1-2b</b> is purpose-built for <b>multilingual automatic speech recognition (ASR) and bidirectional speech translation (AST)</b> across English, French, German, Spanish, Portuguese, and Japanese. This compact 2B-parameter speech-language model delivers a word error rate of 5.33% with a real-time factor of ~231, making it one of the most efficient ASR models in its class. Released under Apache 2.0, it integrates seamlessly into enterprise voice workflows for transcription, translation, and audio processing at scale.</p> 
+<p><b>kanana-2-30b-a3b-instruct</b> excels in <b>bilingual Korean-English instruction following and agentic AI workflows</b>. Developed by Kakao, it adopts a cutting-edge architecture featuring Multi-head Latent Attention (MLA) and Mixture-of-Experts (MoE), activating only 3B of its 30B total parameters per forward pass for superior throughput. Post-trained with supervised fine-tuning and reinforcement learning, it supports up to 128K tokens via YaRN scaling and is designed to function as an AI collaborator that understands context and acts proactively.</p> 
+<p><b>OpenFold3</b> provides <b>all-atom biomolecular complex structure prediction</b> for proteins, DNA, RNA, and small-molecule ligands. Developed by the OpenFold Consortium and the AlQuraishi Lab at Columbia University, this diffusion-based model extends structure prediction beyond single proteins to model multi-chain complexes and heterogeneous biomolecular interactions. It supports computer-aided drug design and is applicable across academic and pharmaceutical research labs.</p> 
+<p>With SageMaker JumpStart, customers can deploy any of these models with just a few clicks to address their specific AI use cases.</p> 
+<p>To get started with these models, navigate to the SageMaker JumpStart model catalog in the SageMaker console or use the SageMaker Python SDK to deploy the models to your AWS account. For more information about deploying and using foundation models in SageMaker JumpStart, see the <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/studio-jumpstart.html">Amazon SageMaker JumpStart documentation</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 17:30:00 GMT</pubDate>
+<pubDate>Mon, 14 Sep 2026 17:30:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Glue zero-ETL adds target table property ownership and conflict detection</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/09/glue-zero-etl-ownership-conflicts/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/glue-zero-etl-ownership-conflicts/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS Glue, zero-ETL, table properties, integration ownership, S3 Tables  
+
+<br><br>Summary: AWS Glue's new zero-ETL integrations feature simplifies data management by detecting table property conflicts and tracking integration ownership. When configuring a source table and target catalog, Glue associates the table properties with the responsible integration, preventing multiple integrations from pointing to the same target table without notification. This enhancement applies across both Amazon S3 Tables and SageMaker Lakehouse catalogs, providing data teams with predictable control over data placement. In the event of an attempt to create or modify an integration that conflicts with another's table properties, Glue will identify the owning integration and guide users to select a different target or update the existing one. This ensures that data pipelines remain isolated and that data is directed accurately according to team intentions. This feature is available in all AWS Commercial and AWS GovCloud (US) Regions supporting AWS Glue zero-ETL integrations. For further details, users are encouraged to refer to the documentation and begin utilizing the enhancements effectively. <div>
+<p>AWS Glue zero-ETL integrations now detect table property conflicts and track integration ownership. When you configure a source table and target catalog, Glue associates the resulting table properties with the owning integration, so two integrations can no longer be pointed at the same target table without your knowledge. This works across Amazon S3 Tables and SageMaker Lakehouse catalogs.</p> 
+<p>Data teams running multiple zero-ETL integrations gain predictable control over where each source table lands. If you attempt to create or modify an integration whose table properties are owned by another integration, Glue identifies the owning integration and guides you to choose a different target or update the existing one, so your pipelines stay isolated and your data lands exactly where you intend.</p> 
+<p>This feature is available in all AWS Commercial and AWS GovCloud (US) Regions where AWS Glue zero-ETL integrations are supported.</p> 
+<p>To learn more, refer to the <a href="https://docs.aws.amazon.com/glue/latest/dg/zero-etl-target.html">AWS Glue Developer Guide</a> and get started in the <a href="https://console.aws.amazon.com/glue/">AWS Glue console</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 08:00:00 GMT</pubDate>
+<pubDate>Mon, 14 Sep 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS End User Messaging now supports Dynamic Flows in WhatsApp</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/09/aws-end-user-messaging-whatsapp-dynamic-flows</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/aws-end-user-messaging-whatsapp-dynamic-flows</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS, WhatsApp, dynamic flows, interactive experiences, End User Messaging  
+
+<br><br>Summary: AWS End User Messaging has introduced dynamic WhatsApp flows, enabling users to create rich, interactive experiences directly within WhatsApp without redirecting to external websites. These flows cater to various use cases such as appointment bookings, lead generation, surveys, and transactions, allowing a seamless chat experience. Users can initiate building these flows starting from Meta's starter templates, which include familiar components like text inputs, date pickers, dropdowns, and buttons, or customize their flows from scratch. Dynamic flows can call your HTTPS endpoint in real-time, facilitating live availability updates and personalized user experiences at each stage of the flow. Users can easily manage and build their flows using the AWS End User Messaging Social console or APIs. Flows are defined using a JSON schema and can be delivered via message templates to effectively reach customers on the platform. The WhatsApp flows feature is available in all regions where AWS End User Messaging Social is supported, making it accessible for businesses aiming to enhance user interaction through WhatsApp. To get started, further resources and guides can be found in the AWS documentation. <div>
+<p>AWS End User Messaging now supports dynamic WhatsApp flows so you can turn WhatsApp conversations into rich, interactive experiences that end-users complete directly in WhatsApp.<br /> <br /> Instead of pushing end-users to a website or a separate form to complete an interactive experience, you can instead guide them through an appointment booking, lead generation, sign-up, survey or a transaction directly in the chat. Customers can start building a flow using one of Meta's stater templates with familiar building blocks like text inputs, date pickers, drop downs, and buttons, or customize the flow from scratch. With dynamic flows, each screen can call your own HTTPS endpoint in real time, so you can show live availability, and personalize each step in the flow for your end-users.<br /> <br /> You build and manage flows entirely in AWS End User Messaging Social, through the console or APIs. Define a flow with a JSON schema, then deliver it with a message template to reach customers where they are.<br /> <br /> WhatsApp flows are available in all regions where End User Messaging Social is available. To get started, see the <a href="https://docs.aws.amazon.com/social-messaging/latest/userguide/what-is-service.html">User Guide.</a></p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 07:00:00 GMT</pubDate>
+<pubDate>Mon, 14 Sep 2026 07:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS End User Messaging strengthens SMS deliverability with automatic failover</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/09/aws-end-user-messaging-improves-deliverability</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/aws-end-user-messaging-improves-deliverability</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS, End User Messaging, SMS, deliverability, phone pools  
+
+<br><br>Summary:  
+AWS End User Messaging has enhanced its SMS deliverability capabilities through phone pools, providing automatic failover to the next best performing number in the pool when delivery issues arise. This is crucial for ensuring that essential messages such as delivery notifications, one-time passcodes, and reminders reach recipients without significant delays. The service continually monitors for delivery delays, message failures, or drops in conversion rates, intelligently rerouting messages to optimize delivery paths when disturbances occur. Customers who already utilize phone pools will automatically benefit from this feature with no additional action required on their part. For those not currently using phone pools, the process to create one is easily accessible. This advanced capability is available across all AWS Regions where the End User Messaging service is offered, ensuring a broad reach and reliability for various SMS communication needs. To explore further details about the AWS End User Messaging SMS service and its features, users can refer to comprehensive documentation provided by AWS. <div>
+<p>AWS End User Messaging is advancing its deliverability capabilities in phone pools. Now, customers sending through phone pools automatically benefit from automatic failover to the next best performing number in the pool when SMS delivery is impacted from downstream disruptions.<br /> <br /> SMS deliverability can be affected by drops or delays when trying to reach the end recipient while it's being routed from AWS to messaging providers and eventually mobile carriers. These disruptions can hit the most important parts of your messaging program, including delivery notifications, one-time passcodes, reminders, and other time-sensitive messages. AWS End User Messaging watches for delivery delays, message failures, or drops in conversion and reroutes traffic to a more optimized delivery path.<br /> <br /> Customers do not need to take any action to receive this benefit for phone pools. If you are not sending through phone pools today, you can create one by following these <a href="https://docs.aws.amazon.com/sms-voice/latest/userguide/phone-pool-create.html">instructions</a>. This capability is available in all AWS Regions where AWS End User Messaging is available.<br /> <br /> To learn more, see the AWS End User Messaging SMS <a href="https://docs.aws.amazon.com/sms-voice/latest/userguide/what-is-sms-mms.html">User Guide</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 07:00:00 GMT</pubDate>
+<pubDate>Mon, 14 Sep 2026 07:00:00 GMT</pubDate>
+</item>
+<item>
+<title>v16.4.0-canary.31</title>
+<link>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.31</link>
+<guid>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.31</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Turbopack, proxy.ts, tree shaking, test operations, default extensions
+
+<br><br>Summary:  
+The recent updates include a fix for correctly detecting the `proxy.ts` file, which is essential when using compound page extensions in Next.js. Additionally, test operations related to Turbopack have been significantly enhanced to ensure greater reliability. A new feature has been introduced to allow the `next dev` command to wait for Turbopack to shut down properly, improving the development workflow. Documentation has been updated to clarify the default settings for `turbopack.resolveExtensions`. 
+
+Moreover, there has been a migration of package CSS side-effects coverage tests, ensuring better integration and performance. The improvements also focus on enhancing tree shaking capabilities through Next.js module wrappers, which helps in optimizing the final output bundle by excluding unused code. Lastly, efforts have been made to trace export usage through client component proxies, which aids in understanding component dependencies and impacts on performance. A special acknowledgment is made to contributors who provided assistance throughout this update process, highlighting the collaborative effort involved. <div>
+<h3>Core Changes</h3>
+<ul>
+<li>fix: detect proxy.ts correctly with compound pageExtensions: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/93246">#93246</a></li>
+</ul>
+<h3>Misc Changes</h3>
+<ul>
+<li>test(turbopack): strongly read test operations: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98247">#98247</a></li>
+<li>Add <code>next dev</code> wait for Turbopack shutdown: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98646">#98646</a></li>
+<li>docs: document default turbopack.resolveExtensions: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98627">#98627</a></li>
+<li>test: migrate package CSS side-effects coverage: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98635">#98635</a></li>
+<li>Improve tree shaking through Next.js module wrappers: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98638">#98638</a></li>
+<li>Trace export usage through client component proxies: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98621">#98621</a></li>
+</ul>
+<h3>Credits</h3>
+<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/lukesandberg">@lukesandberg</a>, <a class="user-mention notranslate" href="https://github.com/wbinnssmith">@wbinnssmith</a>, <a class="user-mention notranslate" href="https://github.com/icyJoseph">@icyJoseph</a>, <a class="user-mention notranslate" href="https://github.com/sokra">@sokra</a>, and <a class="user-mention notranslate" href="https://github.com/bmorros94">@bmorros94</a> for helping!</p>
+]]></content:encoded>
+
+<pubDate>2026-09-14T23:44:56Z</pubDate>
+</item>
+<item>
+<title>v16.4.0-canary.30</title>
+<link>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.30</link>
+<guid>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.30</guid>
+<content:encoded><![CDATA[
+<div> Keywords: App Router, HMR, OpenTelemetry, codemods, chunk optimization
+
+<br><br>Summary: 
+Recent changes have been made to improve the development experience when using the App Router. One significant update is the exposure of runtime errors during Hot Module Replacement (HMR), which will allow developers to debug issues more effectively. Additionally, there is a fix that avoids socket reuse by the OpenTelemetry collector, enhancing performance and stability. 
+
+In another improvement, the vendored version of @mswjs/interceptors has been bumped from 0.42.0 to 0.42.5, bringing in the latest fixes and features. The documentation has been updated to address codemod errors and to outline any intentional migration exceptions that developers should be aware of. Furthermore, TODO markers in codemods have been unified for consistency, and adoption-only codemods for upgrades have been skipped to streamline the migration process. 
+
+To enhance module efficiency, strict module factory chunks have been optimized. Finally, batched chunk items are now sorted globally by path, improving the overall organization and load performance of modules. This release notes special thanks to contributors who supported these enhancements. <div>
+<h3>Misc Changes</h3>
+<ul>
+<li>Expose App Router runtime errors over HMR: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98438">#98438</a></li>
+<li>test: avoid OpenTelemetry collector socket reuse: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98632">#98632</a></li>
+<li>fix: Bump vendored @mswjs/interceptors from 0.42.0 to 0.42.5: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98607">#98607</a></li>
+<li>Document codemod errors and intentional migration exceptions: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98565">#98565</a></li>
+<li>Unify TODO markers for codemods and skip adoption-only codemods for upgrade: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98560">#98560</a></li>
+<li>Optimize strict module factory chunks: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98421">#98421</a></li>
+<li>Sort batched chunk items globally by path: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98433">#98433</a></li>
+</ul>
+<h3>Credits</h3>
+<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/devjiwonchoi">@devjiwonchoi</a>, <a class="user-mention notranslate" href="https://github.com/sokra">@sokra</a>, and <a class="user-mention notranslate" href="https://github.com/ranger-ross">@ranger-ross</a> for helping!</p>
+]]></content:encoded>
+
+<pubDate>2026-09-14T14:59:35Z</pubDate>
+</item>
+<item>
+<title>v16.4.0-canary.29</title>
+<link>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.29</link>
+<guid>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.29</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Durable, runtime, refactor, turbo-tasks, trybuild
+
+<br><br>Summary:   
+The recent updates include a fix for the durable use cache that addresses the issue of runtime environment variable mutation. This enhancement ensures that the performance and reliability of the cache are not compromised by unintended changes in the runtime variables. Additionally, there has been a refactor in the Turbopack component where the generic on `new_atom` has been dropped. This change simplifies the codebase and improves efficiency by eliminating the need to copy an owned string, leading to better performance in managing atomic states. Furthermore, there's been progress in serializing turbo-tasks for trybuild tests. This serialization enhances the capability to manage and test build tasks more effectively, ensuring that the system can validate builds with increased accuracy and reliability. Collectively, these changes aim to improve the overall functionality and efficiency of the development environment, facilitating smoother workflows and more robust testing processes. These enhancements reflect the ongoing commitment to refining the codebase and optimizing performance in various aspects of the project. Huge thanks to the contributors who offered their assistance during these updates. <div>
+<h3>Misc Changes</h3>
+<ul>
+<li>Durable use cache: fix runtime env var mutation: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98558">#98558</a></li>
+<li>refactor(turbopack): drop the generic on <code>new_atom</code>, and stop it copying an owned string: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98520">#98520</a></li>
+<li>Serialize turbo-tasks trybuild tests: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98415">#98415</a></li>
+</ul>
+<h3>Credits</h3>
+<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/mischnic">@mischnic</a> and <a class="user-mention notranslate" href="https://github.com/sokra">@sokra</a> for helping!</p>
+]]></content:encoded>
+
+<pubDate>2026-09-14T10:40:23Z</pubDate>
+</item>
+<item>
+<title>v12.0.2</title>
+<link>https://github.com/nestjs/nest/releases/tag/v12.0.2</link>
+<guid>https://github.com/nestjs/nest/releases/tag/v12.0.2</guid>
+<content:encoded><![CDATA[
+
+<h2>v12.0.2 (2026-09-14)</h2>
+<h4>Bug fixes</h4>
+<ul>
+<li><code>platform-socket.io</code>, <code>platform-ws</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17666">#17666</a> fix(socket.io): keep the message stream alive when a handler throws (<a href="https://github.com/hktitof">@hktitof</a>)</li>
+</ul>
+</li>
+<li><code>microservices</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17728">#17728</a> fix(microservices): detach signal listeners of connected microservices (<a href="https://github.com/kamilmysliwiec">@kamilmysliwiec</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17671">#17671</a> fix(microservices): fail requests whose reply subscription is rejected (<a href="https://github.com/samuelmbabhazi">@samuelmbabhazi</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17670">#17670</a> fix(microservices): do not treat foreign JSON as an RPC envelope (<a href="https://github.com/xia-chao">@xia-chao</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17644">#17644</a> fix(microservices): don't flatten plain handler results with pre-request hooks (<a href="https://github.com/iamolegga">@iamolegga</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17641">#17641</a> fix(microservices): run the mqtt listen callback once (<a href="https://github.com/johnnyhuirilef">@johnnyhuirilef</a>)</li>
+</ul>
+</li>
+<li><code>common</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17710">#17710</a> fix(common): collapse duplicate internal slashes in <code>normalizePath</code> (<a href="https://github.com/Asadshah7950">@Asadshah7950</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17655">#17655</a> fix(common): validate UUID v3 variant (<a href="https://github.com/gwagjiug">@gwagjiug</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17702">#17702</a> fix(common): treat empty string as array input in ParseArrayPipe (<a href="https://github.com/xia-chao">@xia-chao</a>)</li>
+</ul>
+</li>
+<li><code>core</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17667">#17667</a> fix(core): discover factory providers with discovery decorators (<a href="https://github.com/hktitof">@hktitof</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17709">#17709</a> fix(core): avoid treating error instances with <code>statusCode</code> as http errors (<a href="https://github.com/Asadshah7950">@Asadshah7950</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17625">#17625</a> fix(core): clean up repeated shutdown signal listeners (<a href="https://github.com/Raj4478">@Raj4478</a>)</li>
+</ul>
+</li>
+<li><code>platform-fastify</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17705">#17705</a> fix(fastify): derive neutral version when accept header is absent (<a href="https://github.com/Gaurav1112">@Gaurav1112</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17699">#17699</a> fix(fastify): send responses for exceptions thrown from middleware (<a href="https://github.com/micalevisk">@micalevisk</a>)</li>
+</ul>
+</li>
+</ul>
+<h4>Enhancements</h4>
+<ul>
+<li><code>microservices</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17734">#17734</a> feat(microservices): add maxConnectionAttempts to ServerMqtt (<a href="https://github.com/kamilmysliwiec">@kamilmysliwiec</a>)</li>
+</ul>
+</li>
+</ul>
+<h4>Dependencies</h4>
+<ul>
+<li><code>platform-fastify</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17729">#17729</a> fix(deps): update dependency fastify to v5.12.4 (<a href="https://github.com/apps/renovate">@renovate[bot]</a>)</li>
+</ul>
+</li>
+</ul>
+<h4>Committers: 16</h4>
+<ul>
+<li>Abdellatif Anaflous (<a href="https://github.com/hktitof">@hktitof</a>)</li>
+<li>Alexey Solovyov (<a href="https://github.com/lyohaplotinka">@lyohaplotinka</a>)</li>
+<li>Asad Ali Shah (<a href="https://github.com/Asadshah7950">@Asadshah7950</a>)</li>
+<li>Gyeonghun Park (<a href="https://github.com/Gyeonghun-Park">@Gyeonghun-Park</a>)</li>
+<li>Johnny J. Huirilef Millán (<a href="https://github.com/johnnyhuirilef">@johnnyhuirilef</a>)</li>
+<li>Kamil Mysliwiec (<a href="https://github.com/kamilmysliwiec">@kamilmysliwiec</a>)</li>
+<li>Kumar Gaurav (<a href="https://github.com/Gaurav1112">@Gaurav1112</a>)</li>
+<li>Micael Levi L. Cavalcante (<a href="https://github.com/micalevisk">@micalevisk</a>)</li>
+<li>Ming (<a href="https://github.com/MingLin1995">@MingLin1995</a>)</li>
+<li>Mohammed Said (<a href="https://github.com/Se3do">@Se3do</a>)</li>
+<li>Rajeshwar Singh  (<a href="https://github.com/Raj4478">@Raj4478</a>)</li>
+<li>Xia Chao (<a href="https://github.com/xia-chao">@xia-chao</a>)</li>
+<li><a href="https://github.com/iamolegga">@iamolegga</a></li>
+<li>cui fliter (<a href="https://github.com/cuishuang">@cuishuang</a>)</li>
+<li>samuel mbabhazi (<a href="https://github.com/samuelmbabhazi">@samuelmbabhazi</a>)</li>
+<li>곽지욱 (<a href="https://github.com/gwagjiug">@gwagjiug</a>)</li>
+</ul>
+]]></content:encoded>
+
+<pubDate>2026-09-14T13:53:20Z</pubDate>
+</item>
+<item>
+<title>v11.2.4</title>
+<link>https://github.com/nestjs/nest/releases/tag/v11.2.4</link>
+<guid>https://github.com/nestjs/nest/releases/tag/v11.2.4</guid>
+<content:encoded><![CDATA[
+
+<h3>What's changed</h3>
+<ul>
+<li>fix(microservices): handle unserializable patterns without crashing</li>
+<li>fix(platform-fastify): absolute-form request target middleware bypass</li>
+</ul>
+]]></content:encoded>
+
+<pubDate>2026-09-14T18:15:40Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.11-dev.6</title>
+<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.11-dev.6</link>
+<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.11-dev.6</guid>
+<content:encoded><![CDATA[
+
+<p>docs(skills): upgrade references name the published <a class="team-mention js-team-mention notranslate" href="https://github.com/orgs/prisma/teams/orm">@prisma/orm</a>-* pac…</p>
+]]></content:encoded>
+
+<pubDate>2026-09-14T15:16:27Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.11-dev.5</title>
+<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.11-dev.5</link>
+<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.11-dev.5</guid>
+<content:encoded><![CDATA[
+
+<p>chore(release): the version bump restamps extension versions in emitt…</p>
+]]></content:encoded>
+
+<pubDate>2026-09-14T14:51:53Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.11-dev.4</title>
+<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.11-dev.4</link>
+<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.11-dev.4</guid>
+<content:encoded><![CDATA[
+
+<p>chore(release): the version bump restamps extension versions in emitt…</p>
+]]></content:encoded>
+
+<pubDate>2026-09-14T14:51:53Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.11-dev.3: Reduce included-result decoding overhead (#30284)</title>
+<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.11-dev.3</link>
+<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.11-dev.3</guid>
+<content:encoded><![CDATA[
+
+<h2>Linked issue</h2>
+<p>Follow-up to <a class="issue-link js-issue-link" href="https://github.com/prisma/orm/pull/30259">#30259</a> (merged). No separate Linear ticket was supplied or<br />
+identified; the title was approved without a ticket prefix.</p>
+<h2>At a glance</h2>
+<p>Included cells reuse their execution-local column binding:</p>
+<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-k">let</span> <span class="pl-s1">binding</span> <span class="pl-c1">=</span> <span class="pl-s1">bindings</span><span class="pl-kos">.</span><span class="pl-en">get</span><span class="pl-kos">(</span><span class="pl-s1">key</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">if</span> <span class="pl-kos">(</span><span class="pl-s1">binding</span> <span class="pl-c1">===</span> <span class="pl-c1">undefined</span><span class="pl-kos">)</span> <span class="pl-kos">{</span>
+  <span class="pl-s1">binding</span> <span class="pl-c1">=</span> <span class="pl-en">resolveIncludedColumnBinding</span><span class="pl-kos">(</span><span class="pl-s1">contract</span><span class="pl-kos">,</span> <span class="pl-s1">context</span><span class="pl-kos">,</span> <span class="pl-s1">include</span><span class="pl-kos">,</span> <span class="pl-s1">key</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+  <span class="pl-s1">bindings</span><span class="pl-kos">.</span><span class="pl-en">set</span><span class="pl-kos">(</span><span class="pl-s1">key</span><span class="pl-kos">,</span> <span class="pl-s1">binding</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-kos">}</span>
+<span class="pl-s1">decoded</span><span class="pl-kos">[</span><span class="pl-s1">key</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s1">binding</span>
+  ? <span class="pl-en">decodeIncludedColumnValue</span><span class="pl-kos">(</span><span class="pl-s1">binding</span><span class="pl-kos">.</span><span class="pl-c1">ref</span><span class="pl-kos">,</span> <span class="pl-s1">binding</span><span class="pl-kos">.</span><span class="pl-c1">codecId</span><span class="pl-kos">,</span> <span class="pl-s1">binding</span><span class="pl-kos">.</span><span class="pl-c1">codec</span><span class="pl-kos">,</span> <span class="pl-s1">value</span><span class="pl-kos">)</span>
+  : <span class="pl-s1">value</span><span class="pl-kos">;</span></pre></div>
+<p>Only metadata is cached; every non-null cell still goes through its<br />
+codec.</p>
+<h2>Summary</h2>
+<p>Reduce post-SQL work for included results by reusing column bindings and<br />
+removing unnecessary Promise boundaries around synchronous JSON<br />
+decoding. Preserve result ownership, codec calls, error details and<br />
+query semantics.</p>
+<h2>Decision</h2>
+<p>Retain lazy per-execution include-column binding reuse, synchronous<br />
+per-cell/per-child JSON decoding, and row-mapper preparation once per<br />
+include payload. The diff contains four implementation/test files plus<br />
+the required five-line no-op upgrade declaration. No benchmark reports,<br />
+README changes or research harness are included.</p>
+<h2>Notes for the reviewer</h2>
+<ul>
+<li>Rebased onto current <code>main</code>. The connection-release and redundant<br />
+include-scope fixes from <a class="issue-link js-issue-link" href="https://github.com/prisma/orm/pull/30259">#30259</a> are already upstream and no longer<br />
+appear in this diff. The remaining code changes are confined to four ORM<br />
+implementation/test files.</li>
+<li>No public API, codec implementation, SQL or selection changes. Cursor<br />
+and caller-owned connection/transaction lifetimes remain unchanged.</li>
+<li>The mapper's incremental performance benefit was not separately<br />
+established.</li>
+</ul>
+<h2>How it fits together</h2>
+<ol>
+<li>Allocate a <code>WeakMap</code> inside each include execution. Resolve a field's<br />
+column/codec binding on its first non-null value and reuse it for that<br />
+include descriptor. Nothing persists across executions.</li>
+<li>Invoke synchronous JSON decoding without a Promise wrapper for every<br />
+cell and child row. Wire decoding and asynchronous include-tree<br />
+traversal remain asynchronous.</li>
+<li>Prepare storage-to-model mapping once per payload while preserving<br />
+snapshots, aliases, varying row keys and polymorphic mapping.</li>
+</ol>
+<h2>Testing performed</h2>
+<p>On the retained implementation before finalization:</p>
+<ul>
+<li><code>pnpm --filter @internal/sql-orm-client test</code></li>
+<li><code>pnpm --filter @internal/sql-orm-client typecheck</code></li>
+<li>Native-Temporal integration coverage for include codecs, canonical<br />
+JSON, nested includes, polymorphism and connection release.</li>
+<li>Biome checks for changed ORM production/test files.</li>
+</ul>
+<p>Regression tests cover execution-local reuse, codec call counts, later<br />
+non-null values, failure details and mapper ownership. Finalization<br />
+passed lint-staged and focused dependency checks. After rebasing, all<br />
+four remaining ORM implementation/test files were verified byte-for-byte<br />
+identical to the pre-rebase versions, and <code>git diff --check</code> passed.<br />
+Suites were not rerun for the documentation removal or rebase;<br />
+connection-cleanup regressions are now upstream via <a class="issue-link js-issue-link" href="https://github.com/prisma/orm/pull/30259">#30259</a>.</p>
+<h2>Skill update</h2>
+<p>Adds<br />
+<code>skills/prisma-8/upgrading/extension/upgrades/8.0.0-rc.11-to-8.0.0-rc.12/instructions.md</code><br />
+with <code>changes: []</code>. The coverage gate requires this declaration for<br />
+changes under <code>packages/3-extensions/</code>; these internal optimisations<br />
+require no consumer migration. Reproduced the CI failure locally, added<br />
+the declaration, and verified <code>pnpm check:upgrade-coverage --mode pr --prev origin/main</code> passes on the committed fix.</p>
+<h2>Checklist</h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox" /> All commits are signed off per the DCO.</li>
+<li class="task-list-item"><input checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox" /> CONTRIBUTING.md read; changes concern connection/result-processing<br />
+overhead.</li>
+<li class="task-list-item"><input checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox" /> Tests updated.</li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" id="" type="checkbox" /> Linear-prefixed title — no ticket identified; using the<br />
+user-approved title without fabricating one.</li>
+<li class="task-list-item"><input checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox" /> Skill update section completed.</li>
+</ul>
+<h2>Alternatives considered</h2>
+<ul>
+<li>Broader include-tree async removal, leaf decode/map fusion and<br />
+additional caching were not retained because they lacked convincing<br />
+repeatable gains.</li>
+<li>Caching results or skipping codec validation would change semantics<br />
+and was excluded.</li>
+</ul>
+
+<h2>Summary by CodeRabbit</h2>
+<ul>
+<li>
+<p><strong>Bug Fixes</strong></p>
+</li>
+<li>
+<p>Improved reliability when loading included records, including<br />
+consistent value decoding across related results.</p>
+</li>
+<li>
+<p>Preserved caller-provided connection and transaction scopes during<br />
+related-data queries.</p>
+</li>
+<li>
+<p>Prevented internal connection scopes from being held while query<br />
+results are consumed.</p>
+<ul>
+<li>Preserved detailed errors from synchronous JSON decoding failures.</li>
+</ul>
+</li>
+<li>
+<p>Improved handling of empty query results and mapped or nullable<br />
+fields.</p>
+</li>
+<li>
+<p><strong>Refactor</strong></p>
+</li>
+<li>
+<p>Added reusable row mapping behavior for more consistent handling of<br />
+aliased and unmapped fields.</p>
+</li>
+</ul>
+
+<hr />
+<p>Signed-off-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a><br />
+Co-authored-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a></p>
+]]></content:encoded>
+
+<pubDate>2026-09-14T09:39:36Z</pubDate>
+</item>
+<item>
+<title>Amazon vs. Perplexity – U.S. Court of Appeals for the Ninth Circuit</title>
+<link>https://law.justia.com/cases/federal/appellate-courts/ca9/26-1444/26-1444-2026-08-04.html</link>
+<guid>https://law.justia.com/cases/federal/appellate-courts/ca9/26-1444/26-1444-2026-08-04.html</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://law.justia.com/cases/federal/appellate-courts/ca9/26-1444/26-1444-2026-08-04.html">https://law.justia.com/cases/federal/appellate-courts/ca9/26-1444/26-1444-2026-08-04.html</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49704008">https://news.ycombinator.com/item?id=49704008</a></p>
+<p>Points: 187</p>
+<p># Comments: 192</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 21:05:22 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 21:05:22 +0000</pubDate>
+</item>
+<item>
+<title>Oracle’s 6am layoff emails hit staff amid new wave of cuts</title>
+<link>https://www.techtimes.co.uk/oracle-new-layoffs-restructuring-costs-2-8-billion-1808676</link>
+<guid>https://www.techtimes.co.uk/oracle-new-layoffs-restructuring-costs-2-8-billion-1808676</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.techtimes.co.uk/oracle-new-layoffs-restructuring-costs-2-8-billion-1808676">https://www.techtimes.co.uk/oracle-new-layoffs-restructuring-costs-2-8-billion-1808676</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49702239">https://news.ycombinator.com/item?id=49702239</a></p>
+<p>Points: 165</p>
+<p># Comments: 146</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 19:05:15 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 19:05:15 +0000</pubDate>
+</item>
+<item>
+<title>iOS 27, iPadOS 27, and macOS 27</title>
+<link>https://www.apple.com/newsroom/2026/09/major-updates-for-apples-software-platforms-are-now-available/</link>
+<guid>https://www.apple.com/newsroom/2026/09/major-updates-for-apples-software-platforms-are-now-available/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.apple.com/newsroom/2026/09/major-updates-for-apples-software-platforms-are-now-available/">https://www.apple.com/newsroom/2026/09/major-updates-for-apples-software-platforms-are-now-available/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49701004">https://news.ycombinator.com/item?id=49701004</a></p>
+<p>Points: 465</p>
+<p># Comments: 505</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 17:50:29 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 17:50:29 +0000</pubDate>
+</item>
+<item>
+<title>Steam Frame starts at $1059</title>
+<link>https://store.steampowered.com/hardware/steamframe</link>
+<guid>https://store.steampowered.com/hardware/steamframe</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://store.steampowered.com/hardware/steamframe">https://store.steampowered.com/hardware/steamframe</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49700661">https://news.ycombinator.com/item?id=49700661</a></p>
+<p>Points: 569</p>
+<p># Comments: 434</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 17:27:55 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 17:27:55 +0000</pubDate>
+</item>
+<item>
+<title>Pion, an agent designed to run any company autonomously</title>
+<link>https://andonlabs.com/blog/why-we-built-pion</link>
+<guid>https://andonlabs.com/blog/why-we-built-pion</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://andonlabs.com/blog/why-we-built-pion">https://andonlabs.com/blog/why-we-built-pion</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49700477">https://news.ycombinator.com/item?id=49700477</a></p>
+<p>Points: 325</p>
+<p># Comments: 361</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 17:16:06 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 17:16:06 +0000</pubDate>
+</item>
+<item>
+<title>How my e-reader lost its stripes</title>
+<link>https://www.serpentine.com/posts/2026/x3-stripes/</link>
+<guid>https://www.serpentine.com/posts/2026/x3-stripes/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.serpentine.com/posts/2026/x3-stripes/">https://www.serpentine.com/posts/2026/x3-stripes/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49699489">https://news.ycombinator.com/item?id=49699489</a></p>
+<p>Points: 167</p>
+<p># Comments: 28</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 16:23:16 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 16:23:16 +0000</pubDate>
+</item>
+<item>
+<title>Microsoft patches Windows and Excel – breaks audio, remote access, and paste</title>
+<link>https://www.theregister.com/os-platforms/2026/09/14/microsoft-patches-windows-and-excel-breaks-audio-remote-access-and-paste/5296085</link>
+<guid>https://www.theregister.com/os-platforms/2026/09/14/microsoft-patches-windows-and-excel-breaks-audio-remote-access-and-paste/5296085</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.theregister.com/os-platforms/2026/09/14/microsoft-patches-windows-and-excel-breaks-audio-remote-access-and-paste/5296085">https://www.theregister.com/os-platforms/2026/09/14/microsoft-patches-windows-and-excel-breaks-audio-remote-access-and-paste/5296085</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49699297">https://news.ycombinator.com/item?id=49699297</a></p>
+<p>Points: 218</p>
+<p># Comments: 139</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 16:09:45 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 16:09:45 +0000</pubDate>
+</item>
+<item>
+<title>Distributed Systems Classics (2017)</title>
+<link>https://nvartolomei.com/dist-sys-classics/</link>
+<guid>https://nvartolomei.com/dist-sys-classics/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://nvartolomei.com/dist-sys-classics/">https://nvartolomei.com/dist-sys-classics/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49699158">https://news.ycombinator.com/item?id=49699158</a></p>
+<p>Points: 251</p>
+<p># Comments: 58</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 16:02:01 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 16:02:01 +0000</pubDate>
+</item>
+<item>
+<title>A Beginning for Mathematics</title>
+<link>https://www.daniellitt.com/blog/2026/9/13/a-beginning-for-mathematics/</link>
+<guid>https://www.daniellitt.com/blog/2026/9/13/a-beginning-for-mathematics/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.daniellitt.com/blog/2026/9/13/a-beginning-for-mathematics/">https://www.daniellitt.com/blog/2026/9/13/a-beginning-for-mathematics/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49698699">https://news.ycombinator.com/item?id=49698699</a></p>
+<p>Points: 182</p>
+<p># Comments: 106</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 15:33:07 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 15:33:07 +0000</pubDate>
+</item>
+<item>
+<title>Principles for Fast Tokio Applications</title>
+<link>https://dial9-rs.github.io/blog/principles-for-fast-tokio-applications/</link>
+<guid>https://dial9-rs.github.io/blog/principles-for-fast-tokio-applications/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://dial9-rs.github.io/blog/principles-for-fast-tokio-applications/">https://dial9-rs.github.io/blog/principles-for-fast-tokio-applications/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49698607">https://news.ycombinator.com/item?id=49698607</a></p>
+<p>Points: 178</p>
+<p># Comments: 45</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 15:27:56 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 15:27:56 +0000</pubDate>
+</item>
+<item>
+<title>Dario, Please</title>
+<link>https://pop.rdi.sh/dario-please/</link>
+<guid>https://pop.rdi.sh/dario-please/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://pop.rdi.sh/dario-please/">https://pop.rdi.sh/dario-please/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49697893">https://news.ycombinator.com/item?id=49697893</a></p>
+<p>Points: 351</p>
+<p># Comments: 169</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 14:50:32 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 14:50:32 +0000</pubDate>
+</item>
+<item>
+<title>New $100k H-1B visa fee pushes tech jobs offshore</title>
+<link>https://spectrum.ieee.org/h-1b-visa-us-government</link>
+<guid>https://spectrum.ieee.org/h-1b-visa-us-government</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://spectrum.ieee.org/h-1b-visa-us-government">https://spectrum.ieee.org/h-1b-visa-us-government</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49697171">https://news.ycombinator.com/item?id=49697171</a></p>
+<p>Points: 158</p>
+<p># Comments: 348</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 14:09:10 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 14:09:10 +0000</pubDate>
+</item>
+<item>
+<title>How to write an effective software design document</title>
+<link>https://refactoringenglish.com/excerpts/write-an-effective-design-doc/</link>
+<guid>https://refactoringenglish.com/excerpts/write-an-effective-design-doc/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://refactoringenglish.com/excerpts/write-an-effective-design-doc/">https://refactoringenglish.com/excerpts/write-an-effective-design-doc/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49696125">https://news.ycombinator.com/item?id=49696125</a></p>
+<p>Points: 314</p>
+<p># Comments: 131</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 13:00:46 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 13:00:46 +0000</pubDate>
+</item>
+<item>
+<title>OpenAI bots knew about the RubyGems caching vulnerability</title>
+<link>https://tenderlovemaking.com/2026/09/11/what-a-time-to-be-alive/</link>
+<guid>https://tenderlovemaking.com/2026/09/11/what-a-time-to-be-alive/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://tenderlovemaking.com/2026/09/11/what-a-time-to-be-alive/">https://tenderlovemaking.com/2026/09/11/what-a-time-to-be-alive/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49695876">https://news.ycombinator.com/item?id=49695876</a></p>
+<p>Points: 405</p>
+<p># Comments: 333</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 12:40:57 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 12:40:57 +0000</pubDate>
+</item>
+<item>
+<title>Texas judge rules TikTok misled users on child safety feature</title>
+<link>https://www.reuters.com/legal/litigation/texas-judge-rules-tiktok-misled-users-child-safety-feature-2026-09-11/</link>
+<guid>https://www.reuters.com/legal/litigation/texas-judge-rules-tiktok-misled-users-child-safety-feature-2026-09-11/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.reuters.com/legal/litigation/texas-judge-rules-tiktok-misled-users-child-safety-feature-2026-09-11/">https://www.reuters.com/legal/litigation/texas-judge-rules-tiktok-misled-users-child-safety-feature-2026-09-11/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49695829">https://news.ycombinator.com/item?id=49695829</a></p>
+<p>Points: 152</p>
+<p># Comments: 85</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 12:37:42 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 12:37:42 +0000</pubDate>
+</item>
+<item>
+<title>XCancel suspended "due to a new development in the ongoing legal proceedings"</title>
+<link>https://xcancel.com/twitter</link>
+<guid>https://xcancel.com/twitter</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://xcancel.com/twitter">https://xcancel.com/twitter</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49695459">https://news.ycombinator.com/item?id=49695459</a></p>
+<p>Points: 271</p>
+<p># Comments: 1</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 12:05:52 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 12:05:52 +0000</pubDate>
+</item>
+<item>
+<title>Apple's Siri AI Can Be Swapped Out for Claude, ChatGPT, Code Shows</title>
+<link>https://www.macrumors.com/2026/09/14/siri-can-be-swapped-out-for-chatgpt-claude/</link>
+<guid>https://www.macrumors.com/2026/09/14/siri-can-be-swapped-out-for-chatgpt-claude/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.macrumors.com/2026/09/14/siri-can-be-swapped-out-for-chatgpt-claude/">https://www.macrumors.com/2026/09/14/siri-can-be-swapped-out-for-chatgpt-claude/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49695409">https://news.ycombinator.com/item?id=49695409</a></p>
+<p>Points: 219</p>
+<p># Comments: 155</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 12:01:32 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 12:01:32 +0000</pubDate>
+</item>
+<item>
+<title>XCancel service is suspended until further notice</title>
+<link>https://xcancel.com/</link>
+<guid>https://xcancel.com/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://xcancel.com/#">https://xcancel.com/#</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49694296">https://news.ycombinator.com/item?id=49694296</a></p>
+<p>Points: 520</p>
+<p># Comments: 811</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 09:51:50 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 09:51:50 +0000</pubDate>
+</item>
+<item>
+<title>A 386 PC for Your RP2350</title>
+<link>https://github.com/rh1tech/frank-386</link>
+<guid>https://github.com/rh1tech/frank-386</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://github.com/rh1tech/frank-386">https://github.com/rh1tech/frank-386</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49693613">https://news.ycombinator.com/item?id=49693613</a></p>
+<p>Points: 207</p>
+<p># Comments: 79</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 08:25:57 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 08:25:57 +0000</pubDate>
+</item>
+<item>
+<title>EuroBirdPortal – Live bird movements across Europe</title>
+<link>https://www.eurobirdportal.org/ebp/en/</link>
+<guid>https://www.eurobirdportal.org/ebp/en/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.eurobirdportal.org/ebp/en/">https://www.eurobirdportal.org/ebp/en/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49693610">https://news.ycombinator.com/item?id=49693610</a></p>
+<p>Points: 218</p>
+<p># Comments: 63</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 08:25:47 +0000</pubDate>
+<pubDate>Mon, 14 Sep 2026 08:25:47 +0000</pubDate>
+</item>
+<item>
+<title>What blog posts influenced your thinking the most?</title>
+<link>https://lobste.rs/s/lbavmm/what_blog_posts_influenced_your_thinking</link>
+<guid>https://lobste.rs/s/lbavmm/what_blog_posts_influenced_your_thinking</guid>
+<content:encoded><![CDATA[
+
+<p>Interested in hearing your opinions, I usually learn a lot from it.</p>
+<p>For me it has to be Parse, Don’t Validate and early joelonsoftware.</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 10:27:32 -0500</pubDate>
+<pubDate>Mon, 14 Sep 2026 10:27:32 -0500</pubDate>
+</item>
+<item>
+<title>"Do You Still Read the Code?"</title>
+<link>https://zanlib.dev/blog/do-you-still-read-the-code/</link>
+<guid>https://zanlib.dev/blog/do-you-still-read-the-code/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/qiwlzz/do_you_still_read_code">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 15:16:07 -0500</pubDate>
+<pubDate>Mon, 14 Sep 2026 15:16:07 -0500</pubDate>
+</item>
+<item>
+<title>How can you not be romantic about UNIX domain sockets?</title>
+<link>https://yuvalino.com/how-can-you-not-be-romantic-about-unix-domain-sockets</link>
+<guid>https://yuvalino.com/how-can-you-not-be-romantic-about-unix-domain-sockets</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/uauns9/how_can_you_not_be_romantic_about_unix">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 11:27:12 -0500</pubDate>
+<pubDate>Mon, 14 Sep 2026 11:27:12 -0500</pubDate>
+</item>
+<item>
+<title>Mergiraf: A syntax-aware git merge driver for a growing collection of programming languages and file formats</title>
+<link>https://codeberg.org/mergiraf/mergiraf</link>
+<guid>https://codeberg.org/mergiraf/mergiraf</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/gslcz7/mergiraf_syntax_aware_git_merge_driver">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 06:16:14 -0500</pubDate>
+<pubDate>Mon, 14 Sep 2026 06:16:14 -0500</pubDate>
+</item>
+<item>
+<title>Why Am I Still Programming</title>
+<link>https://www.youtube.com/watch?v=pOAj3mor8y8</link>
+<guid>https://www.youtube.com/watch?v=pOAj3mor8y8</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/gud12o/why_am_i_still_programming">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 08:28:42 -0500</pubDate>
+<pubDate>Mon, 14 Sep 2026 08:28:42 -0500</pubDate>
+</item>
+<item>
+<title>A New Equal-Area Map for Interactive Computer Use (natively zooms to Mercator)</title>
+<link>https://www.benjoffe.com/map</link>
+<guid>https://www.benjoffe.com/map</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/zttri6/new_equal_area_map_for_interactive">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 17:37:17 -0500</pubDate>
+<pubDate>Mon, 14 Sep 2026 17:37:17 -0500</pubDate>
+</item>
+<item>
+<title>I wish you the best in the Offline</title>
+<link>https://daverupert.com/2026/09/i-wish-you-the-best-in-the-offline/</link>
+<guid>https://daverupert.com/2026/09/i-wish-you-the-best-in-the-offline/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/ede4z0/i_wish_you_best_offline">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 11:39:55 -0500</pubDate>
+<pubDate>Mon, 14 Sep 2026 11:39:55 -0500</pubDate>
+</item>
+<item>
+<title>We are all Product Engineers now</title>
+<link>https://seldo.com/posts/we-are-all-product-engineers-now/</link>
+<guid>https://seldo.com/posts/we-are-all-product-engineers-now/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/agbpkq/we_are_all_product_engineers_now">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 05:52:45 -0500</pubDate>
+<pubDate>Mon, 14 Sep 2026 05:52:45 -0500</pubDate>
+</item>
+<item>
+<title>Finished aerial maps in under 30 minutes</title>
+<link>https://blog.zm.is/finished-aerial-maps-within-30-minutes/</link>
+<guid>https://blog.zm.is/finished-aerial-maps-within-30-minutes/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/da7fcv/finished_aerial_maps_under_30_minutes">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 08:37:36 -0500</pubDate>
+<pubDate>Mon, 14 Sep 2026 08:37:36 -0500</pubDate>
+</item>
+<item>
+<title>A Letter from a Machine Learning Engineer</title>
+<link>https://nemin.hu/llm-letter/index.html</link>
+<guid>https://nemin.hu/llm-letter/index.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/ta2ojd/letter_from_machine_learning_engineer">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 12:58:22 -0500</pubDate>
+<pubDate>Mon, 14 Sep 2026 12:58:22 -0500</pubDate>
+</item>
+<item>
+<title>GDScript: The Good, Bad, and Ugly Parts</title>
+<link>https://azhdarchid.com/gdscript-good-bad-ugly/</link>
+<guid>https://azhdarchid.com/gdscript-good-bad-ugly/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/q5dgu6/gdscript_good_bad_ugly_parts">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 19:29:04 -0500</pubDate>
+<pubDate>Mon, 14 Sep 2026 19:29:04 -0500</pubDate>
+</item>
+<item>
+<title>There are only twelve 4x4 sudokus - and a cool trick for finding minimal subsets</title>
+<link>https://baldino.dev/blog/there-are-only-twelve-4x4-sudokus/</link>
+<guid>https://baldino.dev/blog/there-are-only-twelve-4x4-sudokus/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/ccnirb/there_are_only_twelve_4x4_sudokus_cool">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 10:00:16 -0500</pubDate>
+<pubDate>Mon, 14 Sep 2026 10:00:16 -0500</pubDate>
+</item>
+<item>
+<title>Kythe, a pluggable, language-agnostic ecosystem for building tools that work with code</title>
+<link>https://kythe.io</link>
+<guid>https://kythe.io</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/uqezny/kythe_pluggable_language_agnostic">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 17:30:24 -0500</pubDate>
+<pubDate>Mon, 14 Sep 2026 17:30:24 -0500</pubDate>
+</item>
+<item>
+<title>What are you doing this week?</title>
+<link>https://lobste.rs/s/0inlyw/what_are_you_doing_this_week</link>
+<guid>https://lobste.rs/s/0inlyw/what_are_you_doing_this_week</guid>
+<content:encoded><![CDATA[
+
+<p>What are you doing this week? Feel free to share!</p>
+<p>Keep in mind it’s OK to do nothing at all, too.</p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 02:47:47 -0500</pubDate>
+<pubDate>Mon, 14 Sep 2026 02:47:47 -0500</pubDate>
+</item>
+<item>
+<title>Dropping eBPF CPU Cost by About 90% With Memoization</title>
+<link>https://nathannaveen.dev/posts/dropping-ebpf-cpu-cost-by-90/</link>
+<guid>https://nathannaveen.dev/posts/dropping-ebpf-cpu-cost-by-90/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/a66b7j/dropping_ebpf_cpu_cost_by_about_90_with">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 20:28:30 -0500</pubDate>
+<pubDate>Mon, 14 Sep 2026 20:28:30 -0500</pubDate>
+</item>
+<item>
+<title>Push-based vs Pull-based Customization</title>
+<link>https://brevzin.github.io/c++/2026/09/14/push-vs-pull/</link>
+<guid>https://brevzin.github.io/c++/2026/09/14/push-vs-pull/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/deh4ax/push_based_vs_pull_based_customization">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 14 Sep 2026 23:23:21 -0500</pubDate>
+<pubDate>Mon, 14 Sep 2026 23:23:21 -0500</pubDate>
+</item>
 
 <item>
 <title>v8.0.0-rc.11</title>
@@ -12,7 +936,7 @@
 <content:encoded><![CDATA[
 <div> Keywords: v8.0.0-rc.11, @prisma/cli-engine, Markdown output, breaking changes, engine peer
 
-<br><br>Summary:  
+<br /><br />Summary:  
 The release v8.0.0-rc.11 updates the toolchain to use @prisma/cli-engine@0.4.0, which introduces a new Markdown output format for all CLI commands. Apart from this new feature, there are no changes since the previous release, rc.10. Notably, projects that specify an exact version of the engine will need to update their configurations to reflect this new version. The engine now exclusively peers at version 0.4.0 instead of 0.3.0, thus requiring any projects that have pinned the engine to revise their settings accordingly. The added Markdown format allows for command outputs to be rendered as Markdown, enhancing the versatility of output options, as the Format type now supports "human", "json", and "markdown". It is important to mention that no other parts of the public API have been altered in this release. For projects created using the Prisma CLI, the engine will automatically be resolved, but those that pin @prisma/cli-engine directly must ensure their pin is updated to the latest version of 0.4.0 to maintain compatibility. <div>
 <h1>v8.0.0-rc.11</h1>
 <p>This release moves the toolchain onto <code>@prisma/cli-engine@0.4.0</code>, which adds a Markdown output format to every CLI command. Nothing else changed since rc.10.</p>
@@ -22,7 +946,6 @@ The release v8.0.0-rc.11 updates the toolchain to use @prisma/cli-engine@0.4.0, 
 <li><strong>The engine peer moves to <code>@prisma/cli-engine@0.4.0</code></strong> — <code>@prisma/orm-toolchain</code> declares the unified CLI's engine as an exact peer, and this release peers 0.4.0 (up from 0.3.0), so a project that pins the engine itself must change its pin. Under a host CLI running on that engine, every command supports <code>--format markdown</code>, which prints the command's output as Markdown; the engine's <code>Format</code> type widens from <code>"human" | "json"</code> to <code>"human" | "json" | "markdown"</code>. No other public API changed. Projects assembled by the <code>prisma</code> CLI resolve the engine automatically; a project that pins <code>@prisma/cli-engine</code> itself must move the pin to <code>0.4.0</code>. (<a href="https://github.com/prisma/prisma-cli/pull/260">prisma/prisma-cli#260</a>)</li>
 </ul>
 ]]></content:encoded>
-
 <pubDate>2026-09-13T07:41:41Z</pubDate>
 </item>
 <item>
@@ -32,11 +955,10 @@ The release v8.0.0-rc.11 updates the toolchain to use @prisma/cli-engine@0.4.0, 
 <content:encoded><![CDATA[
 <div> Keywords: release, prisma/web, docs, PR, preparation  
 
-<br><br>Summary: 
+<br /><br />Summary: 
 The recent release cut has initiated the preparation process for the upcoming PR for the prisma/web documentation. This move ensures that all changes and updates are aligned and thoroughly integrated into the documentation. The PR is structured to enhance clarity and accessibility for users, making it easier for them to navigate the resources available. Additionally, the documentation aims to provide comprehensive information about the latest features, improvements, and best practices related to prisma/web. A critical focus is on maintaining up-to-date content that reflects the current capabilities of the platform. The team is also prioritizing user feedback to further refine the documentation. Collaboration among team members is essential during this phase to ensure that all necessary information is captured and accurately represented. Overall, this proactive approach to documentation aims to support both new and existing users, fostering a better understanding of the prisma/web tools available to them. The careful preparation of the PR signifies the team’s commitment to quality and user satisfaction within the development community. <div>
 <p>docs(skills): the release cut also prepares the prisma/web docs PR an…</p>
 ]]></content:encoded>
-
 <pubDate>2026-09-13T07:25:35Z</pubDate>
 </item>
 <item>
@@ -46,7 +968,7 @@ The recent release cut has initiated the preparation process for the upcoming PR
 <content:encoded><![CDATA[
 <div> Keywords: release, Prisma, CLI, Markdown, upgrade  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 The release from 8.0.0-rc.10 to 8.0.0-rc.11 is routine and involves bumping every workspace package to the new version while updating @prisma/cli-engine from 0.3.0 to 0.4.0. This release includes no other changes aside from the engine upgrade, which introduces a new --format markdown output option. The CLI engine's output types have expanded to include "human," "json," and "markdown," but no other public API has been altered. Given that @prisma/orm-toolchain strictly peers the engine version, it needs a republish to function with the updated CLI. The lockfile alteration reflects this exact engine resolution bump while incorporating workspace specifier updates. The release notes file will form the body of the GitHub Release, coupled with a corresponding CHANGELOG.md entry and upgrade recipes. Verification of the release locally includes successful checks on release notes, upgrade coverage, and testing scripts, with all tests passing against engine 0.4.0. Merging the PR will effectively push the changes to main, allowing the npm publishing workflows to act on the latest version and generate the necessary GitHub release.   <div>
 <h2>Release: 8.0.0-rc.10 → 8.0.0-rc.11</h2>
 <p>This is the routine release PR per<br />
@@ -119,7 +1041,6 @@ extensions, including refreshed generated contract metadata.</p>
 Signed-off-by: Will Madden <a href="mailto:madden@prisma.io">madden@prisma.io</a><br />
 Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@anthropic.com</a></p>
 ]]></content:encoded>
-
 <pubDate>2026-09-13T07:25:08Z</pubDate>
 </item>
 <item>
@@ -134,7 +1055,6 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <p># Comments: 136</p>
 ]]></content:encoded>
 <pubDate>Sun, 13 Sep 2026 22:38:18 +0000</pubDate>
-<pubDate>Sun, 13 Sep 2026 22:38:18 +0000</pubDate>
 </item>
 <item>
 <title>Fable 5.1 Solves the Cyphral Distich, a 370-year-old cipher</title>
@@ -147,7 +1067,6 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <p>Points: 615</p>
 <p># Comments: 270</p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 21:06:13 +0000</pubDate>
 <pubDate>Sun, 13 Sep 2026 21:06:13 +0000</pubDate>
 </item>
 <item>
@@ -162,7 +1081,6 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <p># Comments: 125</p>
 ]]></content:encoded>
 <pubDate>Sun, 13 Sep 2026 20:08:45 +0000</pubDate>
-<pubDate>Sun, 13 Sep 2026 20:08:45 +0000</pubDate>
 </item>
 <item>
 <title>I'm being cyberattacked by Tesla, Inc</title>
@@ -171,13 +1089,12 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <content:encoded><![CDATA[
 <div> Keywords: article, comments, points, summary, topics
 
-<br><br>Summary: The article discusses a particular topic that has garnered significant attention, leading to a high number of comments (113) and a notable engagement metric with 416 points. It highlights various viewpoints expressed in the comments, illustrating the diverse perspectives of the readership. The discussion delves into pertinent issues raised, showcasing the relevance of the article in contemporary discourse. Insights gleaned from the comments reveal the audience's interests and concerns, prompting further exploration of the subject matter. The article serves as a catalyst for conversation, encouraging readers to reflect on their opinions and contribute to the ongoing dialogue. Overall, the piece reflects a current trend or theme, and the active participation in the comments section underscores the importance of community engagement in understanding complex issues. The high point count indicates the article's impact and resonance with its audience, suggesting that it effectively stimulates thought and discussion. Through a combination of informative content and reader interaction, the article successfully fosters a collaborative atmosphere for sharing ideas and opinions on the discussed topics. <div>
+<br /><br />Summary: The article discusses a particular topic that has garnered significant attention, leading to a high number of comments (113) and a notable engagement metric with 416 points. It highlights various viewpoints expressed in the comments, illustrating the diverse perspectives of the readership. The discussion delves into pertinent issues raised, showcasing the relevance of the article in contemporary discourse. Insights gleaned from the comments reveal the audience's interests and concerns, prompting further exploration of the subject matter. The article serves as a catalyst for conversation, encouraging readers to reflect on their opinions and contribute to the ongoing dialogue. Overall, the piece reflects a current trend or theme, and the active participation in the comments section underscores the importance of community engagement in understanding complex issues. The high point count indicates the article's impact and resonance with its audience, suggesting that it effectively stimulates thought and discussion. Through a combination of informative content and reader interaction, the article successfully fosters a collaborative atmosphere for sharing ideas and opinions on the discussed topics. <div>
 <p>Article URL: <a href="https://dreamstation.systems/personal/tesla.html">https://dreamstation.systems/personal/tesla.html</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49686766">https://news.ycombinator.com/item?id=49686766</a></p>
 <p>Points: 416</p>
 <p># Comments: 113</p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 18:03:09 +0000</pubDate>
 <pubDate>Sun, 13 Sep 2026 18:03:09 +0000</pubDate>
 </item>
 <item>
@@ -187,13 +1104,12 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <content:encoded><![CDATA[
 <div> **Keywords:** article, comments, points, summary, discussion
 
-<br><br>Summary: This article presents a comprehensive discussion on a specific topic, garnering considerable attention with 203 points and 175 comments from readers. The high engagement reflects the article's relevance and the readers' interest in the subject matter. The comments section serves as a platform for diverse opinions, allowing users to share their insights and perspectives. Many readers appear motivated to express their views, indicating a strong connection to the content. The variety of comments ranges from agreement and support of the article's ideas to critical analysis and alternative viewpoints. This dynamic interaction highlights the importance of dialogue within the community, fostering a richer understanding of the topic discussed. The article not only informs but also encourages readers to engage in meaningful conversations, showcasing the power of collaborative discourse. Overall, the article's popularity is evident through its received points and comments, demonstrating its impact on the audience and its ability to provoke thoughtful discussions among readers. Despite the differing opinions, the article successfully unites a community around a shared interest, exemplifying the role of digital platforms in facilitating conversation and knowledge sharing. <div>
+<br /><br />Summary: This article presents a comprehensive discussion on a specific topic, garnering considerable attention with 203 points and 175 comments from readers. The high engagement reflects the article's relevance and the readers' interest in the subject matter. The comments section serves as a platform for diverse opinions, allowing users to share their insights and perspectives. Many readers appear motivated to express their views, indicating a strong connection to the content. The variety of comments ranges from agreement and support of the article's ideas to critical analysis and alternative viewpoints. This dynamic interaction highlights the importance of dialogue within the community, fostering a richer understanding of the topic discussed. The article not only informs but also encourages readers to engage in meaningful conversations, showcasing the power of collaborative discourse. Overall, the article's popularity is evident through its received points and comments, demonstrating its impact on the audience and its ability to provoke thoughtful discussions among readers. Despite the differing opinions, the article successfully unites a community around a shared interest, exemplifying the role of digital platforms in facilitating conversation and knowledge sharing. <div>
 <p>Article URL: <a href="https://guessingheadlights.com/global-shortage-has-led-to-motor-oil-rationing-at-costco/">https://guessingheadlights.com/global-shortage-has-led-to-motor-oil-rationing-at-costco/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49686697">https://news.ycombinator.com/item?id=49686697</a></p>
 <p>Points: 203</p>
 <p># Comments: 175</p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 17:57:59 +0000</pubDate>
 <pubDate>Sun, 13 Sep 2026 17:57:59 +0000</pubDate>
 </item>
 <item>
@@ -208,7 +1124,6 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <p># Comments: 316</p>
 ]]></content:encoded>
 <pubDate>Sun, 13 Sep 2026 17:37:44 +0000</pubDate>
-<pubDate>Sun, 13 Sep 2026 17:37:44 +0000</pubDate>
 </item>
 <item>
 <title>David Sacks: OpenAI and Anthropic Don't Need Regulations to Pace Frontier Models</title>
@@ -222,20 +1137,17 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <p># Comments: 209</p>
 ]]></content:encoded>
 <pubDate>Sun, 13 Sep 2026 16:52:33 +0000</pubDate>
-<pubDate>Sun, 13 Sep 2026 16:52:33 +0000</pubDate>
 </item>
 <item>
 <title>Garry Tan wants US open-weight AI labs to 'distill' frontier models, too</title>
 <link>https://techcrunch.com/2026/09/11/y-combinators-garry-tan-wants-u-s-open-weight-ai-labs-to-distill-frontier-models-too/</link>
 <guid>https://techcrunch.com/2026/09/11/y-combinators-garry-tan-wants-u-s-open-weight-ai-labs-to-distill-frontier-models-too/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://techcrunch.com/2026/09/11/y-combinators-garry-tan-wants-u-s-open-weight-ai-labs-to-distill-frontier-models-too/">https://techcrunch.com/2026/09/11/y-combinators-garry-tan-wants-u-s-open-weight-ai-labs-to-distill-frontier-models-too/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49685253">https://news.ycombinator.com/item?id=49685253</a></p>
 <p>Points: 372</p>
 <p># Comments: 208</p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 15:44:38 +0000</pubDate>
 <pubDate>Sun, 13 Sep 2026 15:44:38 +0000</pubDate>
 </item>
 <item>
@@ -243,13 +1155,11 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://www.lesswrong.com/posts/munJKF7iWMsWJLAH2/astra-and-fable-still-hack-on-simple-variants-of-alignment</link>
 <guid>https://www.lesswrong.com/posts/munJKF7iWMsWJLAH2/astra-and-fable-still-hack-on-simple-variants-of-alignment</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.lesswrong.com/posts/munJKF7iWMsWJLAH2/astra-and-fable-still-hack-on-simple-variants-of-alignment">https://www.lesswrong.com/posts/munJKF7iWMsWJLAH2/astra-and-fable-still-hack-on-simple-variants-of-alignment</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49684393">https://news.ycombinator.com/item?id=49684393</a></p>
 <p>Points: 403</p>
 <p># Comments: 181</p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 14:28:36 +0000</pubDate>
 <pubDate>Sun, 13 Sep 2026 14:28:36 +0000</pubDate>
 </item>
 <item>
@@ -257,13 +1167,11 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://paulgraham.com/powerful.html</link>
 <guid>https://paulgraham.com/powerful.html</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://paulgraham.com/powerful.html">https://paulgraham.com/powerful.html</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49684196">https://news.ycombinator.com/item?id=49684196</a></p>
 <p>Points: 182</p>
 <p># Comments: 80</p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 14:09:53 +0000</pubDate>
 <pubDate>Sun, 13 Sep 2026 14:09:53 +0000</pubDate>
 </item>
 <item>
@@ -271,7 +1179,6 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://www.theverge.com/column/994172/your-car-is-selling-your-data</link>
 <guid>https://www.theverge.com/column/994172/your-car-is-selling-your-data</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://web.archive.org/web/20260913134705/https://www.theverge.com/column/994172/your-car-is-selling-your-data" rel="nofollow">https://web.archive.org/web/20260913134705/https://www.theve...</a><p><a href="https://archive.ph/TWEVZ" rel="nofollow">https://archive.ph/TWEVZ</a></p>
 <hr />
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49683953">https://news.ycombinator.com/item?id=49683953</a></p>
@@ -279,20 +1186,17 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <p># Comments: 182</p>
 ]]></content:encoded>
 <pubDate>Sun, 13 Sep 2026 13:45:08 +0000</pubDate>
-<pubDate>Sun, 13 Sep 2026 13:45:08 +0000</pubDate>
 </item>
 <item>
 <title>Flock worker calls police on reporter filming public camera installation</title>
 <link>https://www.investigatetv.com/2026/09/08/flock-worker-calls-police-investigatetv-reporter-filming-public-camera-installation/</link>
 <guid>https://www.investigatetv.com/2026/09/08/flock-worker-calls-police-investigatetv-reporter-filming-public-camera-installation/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.investigatetv.com/2026/09/08/flock-worker-calls-police-investigatetv-reporter-filming-public-camera-installation/">https://www.investigatetv.com/2026/09/08/flock-worker-calls-police-investigatetv-reporter-filming-public-camera-installation/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49683853">https://news.ycombinator.com/item?id=49683853</a></p>
 <p>Points: 343</p>
 <p># Comments: 252</p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 13:35:31 +0000</pubDate>
 <pubDate>Sun, 13 Sep 2026 13:35:31 +0000</pubDate>
 </item>
 <item>
@@ -300,13 +1204,11 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://devblogs.microsoft.com/oldnewthing/20260910-00/?p=112689</link>
 <guid>https://devblogs.microsoft.com/oldnewthing/20260910-00/?p=112689</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://devblogs.microsoft.com/oldnewthing/20260910-00/?p=112689">https://devblogs.microsoft.com/oldnewthing/20260910-00/?p=112689</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49683262">https://news.ycombinator.com/item?id=49683262</a></p>
 <p>Points: 227</p>
 <p># Comments: 52</p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 12:30:15 +0000</pubDate>
 <pubDate>Sun, 13 Sep 2026 12:30:15 +0000</pubDate>
 </item>
 <item>
@@ -314,13 +1216,11 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://techcrunch.com/2026/09/12/revolut-confirms-customer-data-breach-through-fake-government-requests/</link>
 <guid>https://techcrunch.com/2026/09/12/revolut-confirms-customer-data-breach-through-fake-government-requests/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://techcrunch.com/2026/09/12/revolut-confirms-customer-data-breach-through-fake-government-requests/">https://techcrunch.com/2026/09/12/revolut-confirms-customer-data-breach-through-fake-government-requests/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49682087">https://news.ycombinator.com/item?id=49682087</a></p>
 <p>Points: 170</p>
 <p># Comments: 117</p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 09:59:58 +0000</pubDate>
 <pubDate>Sun, 13 Sep 2026 09:59:58 +0000</pubDate>
 </item>
 <item>
@@ -328,13 +1228,11 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://brew.sh/2026/09/13/homebrew-7.0.0/</link>
 <guid>https://brew.sh/2026/09/13/homebrew-7.0.0/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://brew.sh/2026/09/13/homebrew-7.0.0/">https://brew.sh/2026/09/13/homebrew-7.0.0/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49681545">https://news.ycombinator.com/item?id=49681545</a></p>
 <p>Points: 573</p>
 <p># Comments: 230</p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 08:41:17 +0000</pubDate>
 <pubDate>Sun, 13 Sep 2026 08:41:17 +0000</pubDate>
 </item>
 <item>
@@ -342,13 +1240,11 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://jetkvm.com/blog/introducing-jetkvm-mini</link>
 <guid>https://jetkvm.com/blog/introducing-jetkvm-mini</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://jetkvm.com/blog/introducing-jetkvm-mini">https://jetkvm.com/blog/introducing-jetkvm-mini</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49681152">https://news.ycombinator.com/item?id=49681152</a></p>
 <p>Points: 533</p>
 <p># Comments: 221</p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 07:49:46 +0000</pubDate>
 <pubDate>Sun, 13 Sep 2026 07:49:46 +0000</pubDate>
 </item>
 <item>
@@ -356,13 +1252,11 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://hyperbo.la/w/aligned-to-whom/</link>
 <guid>https://hyperbo.la/w/aligned-to-whom/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://hyperbo.la/w/aligned-to-whom/">https://hyperbo.la/w/aligned-to-whom/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49679643">https://news.ycombinator.com/item?id=49679643</a></p>
 <p>Points: 174</p>
 <p># Comments: 113</p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 03:17:18 +0000</pubDate>
 <pubDate>Sun, 13 Sep 2026 03:17:18 +0000</pubDate>
 </item>
 <item>
@@ -370,13 +1264,11 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://icm.museum/</link>
 <guid>https://icm.museum/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://icm.museum/">https://icm.museum/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49679459">https://news.ycombinator.com/item?id=49679459</a></p>
 <p>Points: 161</p>
 <p># Comments: 24</p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 02:43:57 +0000</pubDate>
 <pubDate>Sun, 13 Sep 2026 02:43:57 +0000</pubDate>
 </item>
 <item>
@@ -384,13 +1276,11 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://yoshuabengio.org/en/publication/why-are-ai-agents-lying-cheating-and-coordinating</link>
 <guid>https://yoshuabengio.org/en/publication/why-are-ai-agents-lying-cheating-and-coordinating</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://yoshuabengio.org/en/publication/why-are-ai-agents-lying-cheating-and-coordinating">https://yoshuabengio.org/en/publication/why-are-ai-agents-lying-cheating-and-coordinating</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49678969">https://news.ycombinator.com/item?id=49678969</a></p>
 <p>Points: 605</p>
 <p># Comments: 661</p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 01:22:31 +0000</pubDate>
 <pubDate>Sun, 13 Sep 2026 01:22:31 +0000</pubDate>
 </item>
 <item>
@@ -398,10 +1288,8 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://this.weekinsecurity.com/watch-what-you-say-apple-opens-the-door-to-a-nightmare-world-of-always-listening-tech/</link>
 <guid>https://this.weekinsecurity.com/watch-what-you-say-apple-opens-the-door-to-a-nightmare-world-of-always-listening-tech/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/yaax1z/watch_what_you_say_apple_opens_door">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 07:10:30 -0500</pubDate>
 <pubDate>Sun, 13 Sep 2026 07:10:30 -0500</pubDate>
 </item>
 <item>
@@ -409,10 +1297,8 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://evanhahn.com/posts/2026-09-13-programmers-dislike-reduce/</link>
 <guid>https://evanhahn.com/posts/2026-09-13-programmers-dislike-reduce/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/dhn991/anecdotally_programmers_dislike_reduce">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 18:59:05 -0500</pubDate>
 <pubDate>Sun, 13 Sep 2026 18:59:05 -0500</pubDate>
 </item>
 <item>
@@ -420,10 +1306,8 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://char.lt/blog/2026/09/sorcery-repo-viewer/</link>
 <guid>https://char.lt/blog/2026/09/sorcery-repo-viewer/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/6syfar/what_if_my_git_host_were_static_site">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 11:10:06 -0500</pubDate>
 <pubDate>Sun, 13 Sep 2026 11:10:06 -0500</pubDate>
 </item>
 <item>
@@ -431,10 +1315,8 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://whhone.com/posts/switching-to-gnu-guix/</link>
 <guid>https://whhone.com/posts/switching-to-gnu-guix/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/loapzc/switching_gnu_guix_beginner_s">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 11:19:47 -0500</pubDate>
 <pubDate>Sun, 13 Sep 2026 11:19:47 -0500</pubDate>
 </item>
 <item>
@@ -442,10 +1324,8 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://aloysberger.com/posts/writing-a-guix-service-from-scratch-as-a-beginner.html</link>
 <guid>https://aloysberger.com/posts/writing-a-guix-service-from-scratch-as-a-beginner.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/f4arrs/writing_guix_service_from_scratch_as">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 18:24:10 -0500</pubDate>
 <pubDate>Sun, 13 Sep 2026 18:24:10 -0500</pubDate>
 </item>
 <item>
@@ -453,10 +1333,8 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://rm4n0s.github.io/posts/2-go-devs-should-learn-odin/</link>
 <guid>https://rm4n0s.github.io/posts/2-go-devs-should-learn-odin/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/ytc27d/golang_developers_should_try_odin">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 10:23:41 -0500</pubDate>
 <pubDate>Sun, 13 Sep 2026 10:23:41 -0500</pubDate>
 </item>
 <item>
@@ -464,10 +1342,8 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://giannirosato.com/blog/post/case-against-jxl</link>
 <guid>https://giannirosato.com/blog/post/case-against-jxl</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/e1lcnf/case_against_jpeg_xl">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 20:18:11 -0500</pubDate>
 <pubDate>Sun, 13 Sep 2026 20:18:11 -0500</pubDate>
 </item>
 <item>
@@ -475,10 +1351,8 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://lucio.albenga.es/web-en/posts/2025/from-git-to-fossil.html</link>
 <guid>https://lucio.albenga.es/web-en/posts/2025/from-git-to-fossil.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/pomjkm/from_git_fossil_2025">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 02:51:19 -0500</pubDate>
 <pubDate>Sun, 13 Sep 2026 02:51:19 -0500</pubDate>
 </item>
 <item>
@@ -486,10 +1360,8 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://wiki.xxiivv.com/site/heol.html</link>
 <guid>https://wiki.xxiivv.com/site/heol.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/pr1po9/heol">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 00:59:41 -0500</pubDate>
 <pubDate>Sun, 13 Sep 2026 00:59:41 -0500</pubDate>
 </item>
 <item>
@@ -497,10 +1369,8 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://abstractnonsense.xyz/blog/2025-08-31-can-a-regex-match-valid-card-numbers/</link>
 <guid>https://abstractnonsense.xyz/blog/2025-08-31-can-a-regex-match-valid-card-numbers/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/8fqdvr/can_regex_match_valid_card_numbers">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 08:39:15 -0500</pubDate>
 <pubDate>Sun, 13 Sep 2026 08:39:15 -0500</pubDate>
 </item>
 <item>
@@ -508,10 +1378,8 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://lwn.net/SubscriberLink/1091015/d9e48318ed242b41/</link>
 <guid>https://lwn.net/SubscriberLink/1091015/d9e48318ed242b41/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/felv2m/stabilizing_rust_s_never_type">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 09:00:18 -0500</pubDate>
 <pubDate>Sun, 13 Sep 2026 09:00:18 -0500</pubDate>
 </item>
 <item>
@@ -519,10 +1387,8 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://terrytao.wordpress.com/2026/09/12/after-math/</link>
 <guid>https://terrytao.wordpress.com/2026/09/12/after-math/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/ojls0p/after_math">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 07:59:09 -0500</pubDate>
 <pubDate>Sun, 13 Sep 2026 07:59:09 -0500</pubDate>
 </item>
 <item>
@@ -530,10 +1396,8 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://eighty-twenty.org/2022/06/23/henderson-functional-operating-systems-1982</link>
 <guid>https://eighty-twenty.org/2022/06/23/henderson-functional-operating-systems-1982</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/jlmeib/purely_functional_operating_systems">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 19:03:38 -0500</pubDate>
 <pubDate>Sun, 13 Sep 2026 19:03:38 -0500</pubDate>
 </item>
 <item>
@@ -541,10 +1405,8 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://a6mzero.com/posts/this-pcb-is-brought-to-you-by-fable-5/</link>
 <guid>https://a6mzero.com/posts/this-pcb-is-brought-to-you-by-fable-5/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/yedfbj/this_pcb_is_brought_you_by_fable_5">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 13:00:25 -0500</pubDate>
 <pubDate>Sun, 13 Sep 2026 13:00:25 -0500</pubDate>
 </item>
 <item>
@@ -552,10 +1414,8 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://cpp-rendering.io/being-lazy-in-c/</link>
 <guid>https://cpp-rendering.io/being-lazy-in-c/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/mdvpm4/being_lazy_c">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 07:50:15 -0500</pubDate>
 <pubDate>Sun, 13 Sep 2026 07:50:15 -0500</pubDate>
 </item>
 <item>
@@ -563,10 +1423,8 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://www.youtube.com/watch?v=DjhRRj6WYcs</link>
 <guid>https://www.youtube.com/watch?v=DjhRRj6WYcs</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/m6rdhi/edsac_film_1951_1976">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 08:20:01 -0500</pubDate>
 <pubDate>Sun, 13 Sep 2026 08:20:01 -0500</pubDate>
 </item>
 <item>
@@ -574,10 +1432,8 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://blog.jchw.dev/wrong-number/</link>
 <guid>https://blog.jchw.dev/wrong-number/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/sr1qmw/sorry_wrong_number_debugging_crash_under">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 15:31:16 -0500</pubDate>
 <pubDate>Sun, 13 Sep 2026 15:31:16 -0500</pubDate>
 </item>
 <item>
@@ -585,10 +1441,8 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://exquisite.tube/w/3QQimMdswWJxrsPaJtak2u</link>
 <guid>https://exquisite.tube/w/3QQimMdswWJxrsPaJtak2u</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/vxkb8z/gefs_file_shredder_future">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 13 Sep 2026 11:30:23 -0500</pubDate>
 <pubDate>Sun, 13 Sep 2026 11:30:23 -0500</pubDate>
 </item>
 <item>
@@ -596,13 +1450,10 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <link>https://sessioncontext.org</link>
 <guid>https://sessioncontext.org</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/evl6wg/session_context_what_web_page_knows_about">Comments</a></p>
 ]]></content:encoded>
 <pubDate>Sun, 13 Sep 2026 08:36:10 -0500</pubDate>
-<pubDate>Sun, 13 Sep 2026 08:36:10 -0500</pubDate>
 </item>
-
 <item>
 <title>AWS Elemental MediaLive enables frame-accurate pipeline locking for streams without timecode</title>
 <link>https://aws.amazon.com/about-aws/whats-new/2026/09/medialive-pipeline-locking/</link>
@@ -16163,670 +17014,6 @@ Thank you for the trust you have put in these two years of XCancel."<p><a href="
 <p><a href="https://lobste.rs/s/jjspxh/mnt_station_modular_open_hardware">Comments</a></p>
 ]]></content:encoded>
 <pubDate>Tue, 25 Aug 2026 06:16:01 -0500</pubDate>
-</item>
-<item>
-<title>Migrating from Codeberg Pages to an OpenBSD VPS</title>
-<link>https://nemin.hu/vps/index.html</link>
-<guid>https://nemin.hu/vps/index.html</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/4wh5ng/migrating_from_codeberg_pages_openbsd">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 25 Aug 2026 05:42:16 -0500</pubDate>
-</item>
-<item>
-<title>An interactive introduction to the spanning tree protocol</title>
-<link>https://vincent.bernat.ch/en/blog/2026-spanning-tree</link>
-<guid>https://vincent.bernat.ch/en/blog/2026-spanning-tree</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/ivr1bw/interactive_introduction_spanning_tree">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 25 Aug 2026 07:06:16 -0500</pubDate>
-</item>
-<item>
-<title>Adding CPU affinity in a 24-core build machine made builds take longer</title>
-<link>https://infosec.exchange/@david_chisnall/117156204452541109</link>
-<guid>https://infosec.exchange/@david_chisnall/117156204452541109</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/ozkoqo/adding_cpu_affinity_24_core_build_machine">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 25 Aug 2026 08:29:53 -0500</pubDate>
-</item>
-<item>
-<title>Run OpenBSD on DigitalOcean for $4/month</title>
-<link>https://nil.wallyjones.com/run-openbsd-on-digitalocean-for-4month/</link>
-<guid>https://nil.wallyjones.com/run-openbsd-on-digitalocean-for-4month/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/za8vwp/run_openbsd_on_digitalocean_for_4_month">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 25 Aug 2026 11:44:37 -0500</pubDate>
-</item>
-<item>
-<title>Hunting Down a Go Runtime Bug on 32-bit Embedded Systems</title>
-<link>https://sigma-star.at/blog/2026/08/go-runtime-netpoll-bug/</link>
-<guid>https://sigma-star.at/blog/2026/08/go-runtime-netpoll-bug/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/apjhyj/hunting_down_go_runtime_bug_on_32_bit">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 25 Aug 2026 07:26:40 -0500</pubDate>
-</item>
-<item>
-<title>Solving the 1+N query problem</title>
-<link>https://acadia.engineering/blog/solving-the-1-plus-N-query-problem</link>
-<guid>https://acadia.engineering/blog/solving-the-1-plus-N-query-problem</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/k5feqe/solving_1_n_query_problem">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 25 Aug 2026 03:25:23 -0500</pubDate>
-</item>
-<item>
-<title>AI Review Loops Don't Always Stabilise</title>
-<link>https://kevinmahoney.co.uk/articles/ai-review-loops/</link>
-<guid>https://kevinmahoney.co.uk/articles/ai-review-loops/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/52povq/ai_review_loops_don_t_always_stabilise">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 25 Aug 2026 12:42:15 -0500</pubDate>
-</item>
-<item>
-<title>Replacing a Rust Enum with a 64-bit Word Made My Interpreter 17% Faster</title>
-<link>https://pointersgonewild.com/2026-08-25-replacing-a-rust-enum-with-a-64-bit-word/</link>
-<guid>https://pointersgonewild.com/2026-08-25-replacing-a-rust-enum-with-a-64-bit-word/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/gyi8v8/replacing_rust_enum_with_64_bit_word_made">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 25 Aug 2026 09:40:28 -0500</pubDate>
-</item>
-<item>
-<title>maiao: Gerrit-style stacked diffs for GitHub, Cursor Origin, GitLab, Codeberg and more</title>
-<link>https://github.com/runetes/maiao</link>
-<guid>https://github.com/runetes/maiao</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/2hsncr/maiao_gerrit_style_stacked_diffs_for">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 25 Aug 2026 16:03:05 -0500</pubDate>
-</item>
-<item>
-<title>Fuzzing The Gleam Compiler</title>
-<link>https://www.kurz.net/posts/fuzzing-gleam-compiler</link>
-<guid>https://www.kurz.net/posts/fuzzing-gleam-compiler</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/vddo8h/fuzzing_gleam_compiler">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 25 Aug 2026 16:39:37 -0500</pubDate>
-</item>
-<item>
-<title>AI At Home Part 2: Multi GPU Drifting</title>
-<link>https://jdagostino.github.io/ai-pt2-multi-gpu-drifting/index.html</link>
-<guid>https://jdagostino.github.io/ai-pt2-multi-gpu-drifting/index.html</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/qc6pjd/ai_at_home_part_2_multi_gpu_drifting">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 25 Aug 2026 13:20:38 -0500</pubDate>
-</item>
-<item>
-<title>The XY Problem</title>
-<link>https://xyproblem.info/</link>
-<guid>https://xyproblem.info/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/useg7x/xy_problem">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 25 Aug 2026 08:54:28 -0500</pubDate>
-</item>
-<item>
-<title>Porffor goes alpha August 11th</title>
-<link>https://honk.foo/porffor-alpha/</link>
-<guid>https://honk.foo/porffor-alpha/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/9w5eos/porffor_goes_alpha_august_11th">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 25 Aug 2026 05:01:40 -0500</pubDate>
-</item>
-<item>
-<title>Feature comparison of ack, ag, git-grep, grep and ripgrep</title>
-<link>https://beyondgrep.com/feature-comparison/</link>
-<guid>https://beyondgrep.com/feature-comparison/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/vr7u5k/feature_comparison_ack_ag_git_grep_grep">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 25 Aug 2026 09:49:30 -0500</pubDate>
-</item>
-<item>
-<title>Galaxium, a WebGPU universe explorer</title>
-<link>https://galaxium.app</link>
-<guid>https://galaxium.app</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/gxcqxj/galaxium_webgpu_universe_explorer">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 25 Aug 2026 04:33:23 -0500</pubDate>
-</item>
-<item>
-<title>Lively Merge | Collaborative programming kernels</title>
-<link>https://www.inkandswitch.com/livelymerge/notebook/</link>
-<guid>https://www.inkandswitch.com/livelymerge/notebook/</guid>
-<content:encoded><![CDATA[
-<p>This aims to emulate projects like <a href="https://www.lively-kernel.org/" rel="ugc">lively kernel</a> or <a href="https://squeak.org/" rel="ugc">Squeak/Smalltalk</a></p>
-<p><a href="https://lobste.rs/s/kp1khy/lively_merge_collaborative_programming">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 25 Aug 2026 17:32:49 -0500</pubDate>
-</item>
-<item>
-<title>Amazon ECS now automatically detects and repairs container instances with impaired agent connectivity</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ecs-agent-connectivity-health</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-ecs-agent-connectivity-health</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Amazon ECS, container instances, AGENT_CONNECTIVITY, automatic recovery, application availability  
-
-<br /><br />Summary:  
-Amazon ECS has introduced a new feature that automatically detects and repairs container instances, significantly reducing undetected workload failures and enhancing application availability without manual intervention. This system continuously monitors agent connectivity across container instances, addressing issues related to infrastructure events like EBS volume degradation, thermal events, or network failures that can interrupt the ECS agent's connection to the control plane. A new health change event type, AGENT_CONNECTIVITY, is now available for all compute options—AWS Fargate, Amazon ECS Managed Instances, and Amazon ECS on EC2. For ECS Managed Instances and AWS Fargate, the service performs automatic recovery by draining running tasks, launching replacement capacity, and deregistering impaired instances. Customers utilizing Amazon ECS on EC2 can leverage the AGENT_CONNECTIVITY event to facilitate instance replacement workflows. This valuable capability is offered at no additional cost and is accessible to all AWS Commercial and AWS GovCloud (US) customers. For more information, customers are encouraged to refer to the relevant documentation. <div>
-<p><a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html">Amazon Elastic Container Service</a> (Amazon ECS) now&nbsp;automatically detects and repairs container instances, enabling customers to reduce undetected workload failures and improve application availability without manual intervention.</p> 
-<p>With this launch, Amazon ECS continuously monitors agent connectivity across container instances. Infrastructure events such as EBS volume degradation, host thermal events, or network connectivity failures can sever the ECS agent's connection to the ECS control plane. Amazon ECS now surfaces a new type of container instance health change event (AGENT_CONNECTIVITY) for all compute options: AWS Fargate, Amazon ECS Managed Instances, and Amazon ECS on EC2. For ECS Managed Instances and AWS Fargate, ECS automatically performs recovery - automatically draining running tasks and launching replacement capacity while deregistering impaired instances. Customers running workloads on Amazon ECS on EC2, can use this health change event to drive instance replacement workflows.</p> 
-<p>This capability is available at no additional cost in all AWS Commercial and AWS GovCloud (US) <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/">Regions</a>. To learn more, see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-health.html">Monitor Amazon ECS Container Instance Health</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 24 Aug 2026 22:42:00 GMT</pubDate>
-</item>
-<item>
-<title>SageMaker MLflow now supports customer managed keys</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/08/sagemaker-mlflow-custom-keys</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/sagemaker-mlflow-custom-keys</guid>
-<content:encoded><![CDATA[
-<div> Keywords: SageMaker, MLflow, encryption, customer-managed keys, AWS KMS
-
-<br /><br />Summary:  
-SageMaker MLflow now offers the ability for customers to encrypt their data using customer-managed keys (CMK) via AWS Key Management Service (KMS). This enhancement is particularly beneficial for organizations that have stringent security and compliance mandates as it allows them to take control of their encryption keys. By utilizing customer-managed keys, users gain improved security oversight and comprehensive audit capabilities, thanks to integration with AWS CloudTrail. This integration allows organizations to encrypt their data using their own KMS keys and monitor all data access for security auditing purposes. It is important to note that customer-managed keys must be created within the same AWS account and region that hosts the MLflow application, and only symmetric AWS KMS keys are supported for this feature. This capability is now available across all AWS regions, enabling a broader application of these enhanced security measures. For more information about this feature, interested parties should visit the official documentation or AWS resources. <div>
-<p>SageMaker MLflow now enables customers to encrypt their data using customer-managed keys (CMK) through AWS Key Management Service (KMS).</p> 
-<p>This enhancement allows organizations with strict security and compliance requirements to manage their own encryption keys. With customer-managed keys, you gain enhanced security control and comprehensive audit capabilities through AWS CloudTrail integration. You can encrypt your data with your own KMS keys, trace all data access for security auditing.</p> 
-<p>Customer-managed keys must be created in the same AWS account and region as your MLflow App, and only symmetric AWS KMS keys are supported.</p> 
-<p>This feature is generally available in all AWS Regions&nbsp;<a href="https://docs.aws.amazon.com/sagemaker/latest/dg/mlflow.html#mlflow-regions">where MLflow App is available</a>. To learn more, visit the&nbsp;<a href="https://docs.aws.amazon.com/sagemaker/latest/dg/mlflow-kms.html">SageMaker MLflow detail page</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 24 Aug 2026 19:26:00 GMT</pubDate>
-</item>
-<item>
-<title>Amazon EKS now supports multiple external OIDC identity providers per cluster</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-eks-multiple-oidc-providers</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-eks-multiple-oidc-providers</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Amazon EKS, OIDC, identity providers, authentication, clusters  
-
-<br /><br />Summary: Amazon Elastic Kubernetes Service (Amazon EKS) has introduced support for multiple external OpenID Connect (OIDC) identity providers per cluster. Users can now associate up to 10 OIDC identity providers with a single EKS cluster, enhancing authentication flexibility for various user groups such as employees, contractors, and CI/CD systems. Each identity provider is configured and managed independently, allowing distinct user populations to authenticate through their own provider without needing to consolidate users or rely on an intermediary identity broker. The existing IAM authentication method continues to function alongside the newly configured OIDC providers. Administrators can add these identity providers easily using the AWS Management Console or the AssociateIdentityProviderConfig API with AWS CLI and SDKs. This capability is available at no extra charge in all AWS Regions where Amazon EKS operates. For further details, users are encouraged to refer to the Amazon EKS User Guide. <div>
-<p>Amazon Elastic Kubernetes Service (Amazon EKS) now supports multiple external OpenID Connect (OIDC) identity providers per cluster. You can associate up to 10 OIDC identity providers with a single cluster, giving you more flexibility in how you authenticate users and workloads to your Kubernetes clusters.<br /> <br /> Many organizations use different identity providers for different user populations, such as employees, contractors, and CI/CD systems. You can now associate each of these providers directly with your cluster, without consolidating users into a single provider or running an intermediary identity broker. Each provider is configured and managed independently, so each population authenticates through its own provider and identity mapping. Your existing IAM authentication continues to work alongside every configured provider. You add each provider the same way as before, using the AWS Management Console or the AssociateIdentityProviderConfig API through the AWS CLI and AWS SDKs.<br /> <br /> This capability is available at no additional cost in all AWS Regions where Amazon EKS is available. To learn more, see <a href="https://docs.aws.amazon.com/eks/latest/userguide/authenticate-oidc-identity-provider.html">Grant users access to Kubernetes with an external OIDC provider</a> in the Amazon EKS User Guide.</p>
-]]></content:encoded>
-<pubDate>Mon, 24 Aug 2026 18:29:00 GMT</pubDate>
-</item>
-<item>
-<title>Amazon Aurora now supports PostgreSQL 18.4, 17.10, 16.14, 15.18, and 14.23</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-aurora-postgresql-18-4-17-10-16-14-15-18-14-23/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-aurora-postgresql-18-4-17-10-16-14-15-18-14-23/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Amazon Aurora, PostgreSQL, upgrades, vulnerabilities, performance  
-
-<br /><br />Summary:  
-Amazon Aurora PostgreSQL-Compatible Edition now supports PostgreSQL versions 18.4, 17.10, 16.14, 15.18, and 14.23. These updates include important bug fixes from the PostgreSQL community along with specific enhancements for Aurora. It is recommended to upgrade to the latest minor versions to address known Common Vulnerabilities and Exposures (CVEs) and to take full advantage of the improvements offered. Upgrades can be performed during scheduled maintenance windows, and users can enable automatic minor version upgrades for ease of management. Additionally, AWS Organizations can be utilized to orchestrate phased upgrades across multiple databases, allowing validation in lower-priority environments prior to upgrading critical databases. Amazon Aurora is engineered for high performance and availability on a global scale while being fully compatible with PostgreSQL. The platform also features scale-to-zero serverless compute, Aurora Global Database for multi-Region resilience, and Aurora I/O-Optimized for better cost efficiency on I/O-intensive tasks. Furthermore, it incorporates built-in security measures and continuous backup capabilities. For getting started, additional resources are available. <div>
-<p>Amazon Aurora PostgreSQL-Compatible Edition now supports PostgreSQL versions 18.4, 17.10, 16.14, 15.18, and 14.23 which include bug fixes from the PostgreSQL community and Aurora-specific enhancements. We recommend upgrading to the latest minor versions to address known Common Vulnerabilities and Exposures (CVEs) and benefit from these improvements, as detailed in the <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraPostgreSQLReleaseNotes/AuroraPostgreSQL.Updates.html" rel="noopener noreferrer" target="_blank">release notes</a>.&nbsp;</p> 
-<p>You can upgrade your databases during scheduled maintenance windows using automatic minor version upgrades. To simplify operations at scale, enable automatic minor version upgrades and use the AWS Organizations <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Maintenance.AMVU.UpgradeRollout.html" rel="noopener noreferrer" target="_blank">Upgrade Rollout Policy</a> to orchestrate multiple upgrades in phases, validating on lower-priority environments before upgrading your most critical ones. For more information, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.PostgreSQL.html" rel="noopener noreferrer" target="_blank">Upgrading Amazon Aurora PostgreSQL DB clusters</a>.</p> 
-<p>Amazon Aurora is designed for high performance and availability at global scale with full PostgreSQL compatibility. It provides scale-to-zero serverless compute, Aurora Global Database for multi-Region resilience, Aurora I/O-Optimized for improved price performance on I/O-intensive workloads, and built-in security and continuous backups. To get started, take a look at our <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_GettingStartedAurora.html" rel="noopener noreferrer" target="_blank">getting started page</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 24 Aug 2026 16:00:00 GMT</pubDate>
-</item>
-<item>
-<title>Amazon SageMaker HyperPod enhances support for Ray</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-sagemaker-hyperpod-ray</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-sagemaker-hyperpod-ray</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Amazon SageMaker, HyperPod, Ray, observability, GPU utilization
-
-<br /><br />Summary: Amazon SageMaker HyperPod enhances Ray support with built-in observability, resilient training, and accelerated inference. Ray is an open-source framework that simplifies the scaling of AI workloads across various tasks. Running Ray on Kubernetes can be complex due to issues like job hangs and low GPU utilization. HyperPod addresses these challenges, enabling data scientists to manage Ray clusters easily through a web-based interface in Amazon SageMaker Studio. They can attach JupyterLab, Code Editor, or local IDEs for interactive development, eliminating the need for constant job submissions. HyperPod also offers observability features, including Grafana dashboards integrated with Amazon Managed Service for Prometheus and a one-click access to the Ray Dashboard, ensuring transparency of workloads from the start. For resilient training, it includes features like node auto recovery, hung job detection, and tiered checkpointing to maintain training progress. In terms of inference, HyperPod introduces a tiered KV cache to optimize speed and allows the direct deployment of Amazon SageMaker JumpStart models. Ray support is available for HyperPod clusters on Amazon EKS in qualifying AWS Regions, making it easier to leverage Ray's capabilities within SageMaker or integrate them into custom ML platforms. <div>
-<p>Amazon SageMaker HyperPod now enhances support for Ray with built-in observability, resilient training, accelerated inference and managed development environments. Ray is a popular open-source framework for scaling AI workloads on a unified compute layer, from data processing and distributed training to reinforcement learning and model serving. Running Ray on Kubernetes at production scale can be an operational burden: job hangs, low GPU utilization from static team allocations, and multi-step observability setup. Also, lack of interactive development environment means every code change needs another job submission and familiarity with kubectl.</p> 
-<p>HyperPod now brings easier development, resilient training, and accelerated inference to Ray. Data scientists create, edit, monitor, and delete Ray clusters from a web-based interface in Amazon SageMaker Studio, then attach JupyterLab, Code Editor, or a local IDE to a running Ray cluster and iterate interactively against cluster-scale compute. A multi-node Ray cluster behaves like a local development environment, so you test each change immediately, without waiting for a new job to queue and start. For Observability, HyperPod provisions Grafana dashboards with metrics in Amazon Managed Service for Prometheus and allows one-click access to the Ray Dashboard through a secure browser link, giving you visibility into your workloads from the first run. For training at scale, HyperPod node auto recovery and hung job detection handle GPU faults, job hangs, loss spikes, and degraded throughput. Tiered checkpointing restores state from cluster memory to maximize goodput, and task governance improves compute utilization through quotas, priorities, and preemption. Together, these keep your long training runs progressing through failures and maximize the useful work done per GPU-hour. For inference with Ray Serve, a tiered KV cache reuses cached prefixes to reduce time to first token, and you can deploy Amazon SageMaker JumpStart models directly.</p> 
-<p>Open-source Ray code runs unchanged and you can either adopt the purpose-built experience in SageMaker Studio or take individual capabilities to integrate into your own ML platform.</p> 
-<p>Ray support is available for HyperPod clusters orchestrated by Amazon EKS, in AWS Regions where SageMaker HyperPod is supported. To learn more, see the <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-hyperpod-ray.html" rel="noopener noreferrer" target="_blank">SageMaker HyperPod documentation</a>, and explore the&nbsp;<a href="https://d1dpyy0tl92esj.cloudfront.net/overview" rel="noopener noreferrer" target="_blank">interactive demo</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 24 Aug 2026 15:00:00 GMT</pubDate>
-</item>
-<item>
-<title>Amazon Connect Customer now supports information extraction for agent voice and chat conversations</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-connect-customer-information/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-connect-customer-information/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Amazon Connect, information extraction, conversational analytics, automation, productivity  
-
-<br /><br />Summary: Amazon Connect now features information extraction capabilities that help capture essential data from voice and chat interactions. This innovation reduces manual data entry and enhances productivity for agents and supervisors. The extraction process captures verbatim values, such as account numbers and product names, along with inferred insights like reasons for contact and resolutions provided. Users can define specific conversational analytics rules to determine what to extract and when. The extraction occurs on raw contact content prior to redaction, ensuring sensitive information is protected while still allowing for important data points to be captured. Agents can view extracted values during After Contact Work, while supervisors can utilize them for contact reviews. Developers can access this data through APIs, Kinesis Data Streams, and S3 output files. Additionally, extracted data can trigger automated actions like email notifications and task creation, thus streamlining processes. For example, a travel company can automatically pull details like "Hotel Name" and "Reservation ID" from interactions, directly populating outbound emails and follow-up tasks, ultimately reducing handle time and eliminating the need for manual entry. For further information, refer to the Amazon Connect Customer Administrator Guide. <div>
-<p>Amazon Connect Customer now supports information extraction, which automatically captures key data from voice and chat interactions, reducing manual data capture and improving agent and supervisor productivity. Information extraction captures verbatim values like account numbers, reservation IDs, and product names, as well as derived insights inferred from the conversation such as reason for contact, resolution provided, and next steps promised.</p> 
-<p>You define conversational analytics rules for what to extract and when. Extraction operates on raw contact content before redaction, so you can capture specific data points while still redacting sensitive values from recordings and transcripts. Agents see extracted values during After Contact Work, supervisors use them to search and review contacts, and developers access them programmatically through APIs, Kinesis Data Streams, and S3 output files. You can also feed extracted values directly into rule actions like email notifications, task creation, and case creation, turning unstructured conversations into automated experiences. For example, a travel company can automatically extract "Hotel Name," "Reservation ID," and "Reason for call" from interactions, then populate outbound emails and create follow-up tasks, eliminating manual data entry and reducing handle time.<br /> <br /> To learn more, see <a href="https://docs.aws.amazon.com/connect/latest/adminguide/information-extraction.html">Information extraction</a> in the Amazon Connect Customer Administrator Guide, or visit the <a href="https://aws.amazon.com/connect/">Amazon Connect Customer website</a>. For a complete list of conversational analytics capabilities available by AWS Region, refer to <a href="https://docs.aws.amazon.com/connect/latest/adminguide/regions.html#contactlens_region">Availability of Connect Customer features by Region</a>.&nbsp;</p>
-]]></content:encoded>
-<pubDate>Mon, 24 Aug 2026 14:46:00 GMT</pubDate>
-</item>
-<item>
-<title>AWS ParallelCluster 3.16 adds an on-node diagnostics tool</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/08/aws-parallelcluster/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/aws-parallelcluster/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: AWS, ParallelCluster, diagnostics, HPC, software stack
-
-<br /><br />Summary:  
-AWS ParallelCluster 3.16 is now generally available, introducing a new on-node diagnostics tool called pcluster-diag, which allows users to run diagnostic checks on any cluster node with a single command and receive a structured report to identify issues easily. This release features enhanced cluster stability through improvements in cluster creation, updates, and image builds, making the lifecycle more resilient. Additionally, the updated software stack includes enhanced versions of the NVIDIA driver, CUDA, EFA installer, and Slurm. AWS ParallelCluster is an open-source tool designed for R&amp;D customers and IT administrators, enabling them to manage high-performance computing (HPC) clusters on AWS securely and automatically. The tool facilitates the provisioning of elastic HPC clusters capable of executing large-scale scientific and engineering workloads. ParallelCluster is available at no extra charge in specified AWS Regions, with users only paying for the necessary AWS resources to run their applications. To learn more about launching HPC clusters on AWS and the installation instructions for ParallelCluster, visit the relevant AWS resources. <div>
-<p>AWS ParallelCluster 3.16 is now generally available with a new on-node diagnostics tool, cluster stability improvements, and an updated HPC and AI/ML software stack.</p> 
-<p><b>pcluster-diag</b> is a diagnostics tool built into the ParallelCluster AMIs that lets you run diagnostic checks on any cluster node with a single command, and get a structured report that makes it easier to identify issues. This release also hardens the cluster lifecycle with more resilient cluster creation, updates, and image builds. The software stack is refreshed, with updated NVIDIA driver, CUDA, EFA installer, and Slurm versions. To get started with pcluster-diag, see <a href="https://docs.aws.amazon.com/parallelcluster/latest/ug/troubleshooting-v3-pcluster-diag.html">Troubleshooting with pcluster-diag</a>. For more details, review the AWS ParallelCluster 3.16.0 <a href="https://github.com/aws/aws-parallelcluster/releases/tag/v3.16.0">release notes</a>.</p> 
-<p>AWS ParallelCluster is an open-source cluster management tool that makes it possible for R&amp;D customers and IT administrators to operate high-performance computing (HPC) clusters on AWS. ParallelCluster is designed to automatically and securely provision cloud resources into elastically-scaling HPC clusters capable of running scientific and engineering workloads at scale on AWS. ParallelCluster is available at no additional charge in the AWS Regions listed <a href="https://docs.aws.amazon.com/parallelcluster/latest/ug/supported-regions.html">here</a>, and you pay only for the AWS resources needed to run your applications.<br /> <br /> To learn more about launching HPC clusters on AWS, visit the ParallelCluster <a href="https://docs.aws.amazon.com/parallelcluster/latest/ug/tutorials-v3.html">User Guide</a>. To start using ParallelCluster, see the installation instructions for ParallelCluster <a href="https://docs.aws.amazon.com/parallelcluster/latest/ug/install-pcui-v3.html">UI</a> and <a href="https://docs.aws.amazon.com/parallelcluster/latest/ug/install-v3-parallelcluster.html">CLI</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 24 Aug 2026 14:00:00 GMT</pubDate>
-</item>
-<item>
-<title>OpenAI GPT-5.6 Terra and Luna now available on Amazon Bedrock in AWS GovCloud (US)</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/08/openai-gpt-terra-luna-govcloud/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/openai-gpt-terra-luna-govcloud/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: GPT-5.6, Terra, Luna, Amazon Bedrock, token context
-
-<br /><br />Summary: GPT-5.6 Terra and Luna are now available on Amazon Bedrock in AWS GovCloud (US-West and US-East), representing OpenAI's most advanced models yet, built for high-performance, security, and reliability. GPT-5.6 establishes a new standard for intelligence, enabling users to tackle complex problems more efficiently and intelligently per token. The Terra model offers balanced performance similar to GPT-5.5 at half the cost, while Luna provides fast and cost-effective inference at the lowest price point. These models can facilitate the development of autonomous coding agents, long-horizon biological analyses, and advanced cybersecurity research. Notably, GPT-5.6 introduces prompt caching with explicit cache breakpoints, significantly reducing costs for repeated context in workflows. With support for 1 million token context windows, these models can process extensive codebases, lengthy documents, and multi-turn agent histories in a single request, leading to more coherent and accurate responses without the issues of chunking or information loss. Users can start leveraging Terra and Luna through the Responses API on the bedrock-mantle endpoint, with regional availability details accessible on the Amazon Bedrock website. <div>
-<p>GPT-5.6 Terra and Luna are now generally available on Amazon Bedrock in AWS GovCloud (US-West) and AWS GovCloud (US-East), bringing the smartest family of models from OpenAI yet to Bedrock's next-generation inference engine built for high-performance, security and reliability. GPT-5.6 sets a new standard for intelligence and efficiency, allowing you to solve harder problems in less time and with more intelligence per token. The two models span capability tiers from balanced performance (Terra) to fast, cost-efficient inference (Luna).</p> 
-<p>With GPT-5.6, you can build autonomous coding agents, run long-horizon genomics and biology analyses, and perform advanced cybersecurity research. Terra provides GPT-5.5-level performance at half the cost and Luna brings fast, affordable inference at the lowest price point. GPT-5.6 also supports prompt caching with explicit cache breakpoints, so repeated context across agentic workflows is billed at a 90% discount and doesn't compound cost as you scale.&nbsp;</p> 
-<p>GPT-5.6 Terra and Luna support 1 million token context windows on Amazon Bedrock, enabling you to process full codebases, lengthy documents, and multi-turn agent histories in a single request. Models reason over broader context and return more accurate, coherent responses without chunking or information loss.</p> 
-<p>For regional availability, please see the Amazon Bedrock <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html#model-regions-openai">regional availability page</a>.&nbsp; Get started with Terra and Luna using the <a href="https://console.amazonaws-us-gov.com/bedrock/">Amazon Bedrock Console</a> or the Responses API on the bedrock-mantle endpoint. To learn more, see the <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-openai.html">Amazon Bedrock documentation</a> and read the <a href="https://aws.amazon.com/blogs/machine-learning/openai-gpt-5-6-sol-terra-and-luna-are-now-generally-available-on-amazon-bedrock/">launch blog post</a>.&nbsp;</p>
-]]></content:encoded>
-<pubDate>Mon, 24 Aug 2026 13:00:00 GMT</pubDate>
-</item>
-<item>
-<title>Amazon RDS for MySQL now supports new minor version 8.4.11</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-rds-mysql-8411-available/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/amazon-rds-mysql-8411-available/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: MySQL, 8.4.11, PQ-TLS, upgrades, Amazon RDS  
-
-<br /><br />Summary: Starting today, MySQL minor version 8.4.11 is supported, introducing key operational improvements. A significant feature of this release is the support for post-quantum TLS (PQ-TLS) key exchange, enhancing the options available for encrypting data in transit with post-quantum cryptography. Upgrading to newer minor versions is highly recommended in order to benefit from critical fixes for CVEs in previous MySQL versions, along with various bug fixes, performance enhancements, and new functionalities introduced by the MySQL community. Detailed enhancements are documented in the release notes. Users are encouraged to leverage automatic minor version upgrades which can facilitate the upgrading process during scheduled maintenance windows. Additionally, users can utilize Blue/Green Deployments for safer and simpler updates to MySQL instances. Amazon RDS for MySQL simplifies the setup, operation, and scaling of MySQL databases in the cloud, offering various pricing options and regional availability. To create or update a fully managed Amazon RDS for MySQL database, users can follow the established guidelines. <div>
-<p>Starting today, <a href="https://aws.amazon.com/rds/mysql/" rel="noopener noreferrer" target="_blank">Amazon Relational Database Service (Amazon RDS) for MySQL</a> supports MySQL minor version 8.4.11, the latest minor released by community MySQL. In addition to operational improvements, MySQL 8.4.11 introduces support for post-quantum TLS (PQ-TLS) key exchange, providing you with post-quantum cryptography options for encrypting your data in-transit. We recommend upgrading to the newer minor versions to accept fixes for CVEs in prior versions of MySQL and to benefit from bug fixes, performance improvements, and new functionality added by the MySQL community. Learn more about the enhancements in RDS for MySQL 8.4.11 in the <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Concepts.VersionMgmt.html" rel="noopener noreferrer" target="_blank">Amazon RDS user guide</a> and <a href="https://dev.mysql.com/doc/relnotes/mysql/8.4/en/news-8-4-11.html" rel="noopener noreferrer" target="_blank">MySQL 8.4.11</a> release notes.<br /> <br /> You can leverage automatic minor version upgrades to automatically upgrade your databases to more recent minor versions during scheduled maintenance windows. You can also use <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/blue-green-deployments.html" rel="noopener noreferrer" target="_blank">Amazon RDS Managed Blue/Green deployments</a> for safer and simpler updates to your MySQL instances. Learn more about upgrading your database instances, including automatic minor version upgrades and Blue/Green Deployments, in the <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.MySQL.html" rel="noopener noreferrer" target="_blank">Amazon RDS User Guide.</a><br /> <br /> Amazon RDS for MySQL makes it simple to set up, operate, and scale MySQL deployments in the cloud. Learn more about pricing details and regional availability at <a href="https://aws.amazon.com/rds/mysql/pricing/" rel="noopener noreferrer" target="_blank">Amazon RDS for MySQL</a>. Create or update a fully managed Amazon RDS for MySQL database in the <a href="https://console.aws.amazon.com/rds/home" rel="noopener noreferrer" target="_blank">Amazon RDS Management Console</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 24 Aug 2026 08:41:00 GMT</pubDate>
-</item>
-<item>
-<title>AWS Neuron 2.32 introduces expanded NKI programming, MXFP8 training kernels, and variable-size collectives for Trn2 and Trn</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/08/aws-announce-neuron-2-32-0</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/aws-announce-neuron-2-32-0</guid>
-<content:encoded><![CDATA[
-<div> AWS Neuron, NKI 0.6.0, Mixture of Experts, sparse attention, variable-size collectives  
-
-<br /><br />Summary:  
-AWS Neuron 2.32.0 introduces NKI 0.6.0, which includes an on-device top-K instruction and a variable-length `all-gather` for kernels with differently sized tensors. New loop constructs for data-dependent iteration are also featured. This release adds 13 new NKI Library kernels specifically designed for Mixture of Experts (MoE) training and sparse attention. Notable enhancements include context encoding for DeepSeek-V3.2 sparse multi-head latent attention and an MXFP8 attention decoder step. There is also support for a matched MXFP8 forward and backward pass, facilitating end-to-end training of blockwise MoE layers in MXFP8, accompanied by PyTorch reference implementations for 22 additional kernels. The Neuron Runtime now supports variable-size all-gather, reduce-scatter, and all-to-all collectives on Trn2 and Trn3. The vLLM Neuron plugin has been updated to vLLM 0.24.0 and is included in all Neuron Deep Learning AMIs and Containers. Additionally, the Neuron Compiler offers explicit control over 64-bit integer compilation, while the Neuron Explorer introduces per-core host CPU utilization in the System Trace Viewer. AWS Neuron is available in all AWS Regions with the designated EC2 instances. <div>
-<p>AWS Neuron 2.32.0 is now available, introducing NKI 0.6.0 with an on-device top-K instruction, a variable-length `all-gather `for kernels whose ranks hold differently sized tensors, and new loop constructs for data-dependent iteration. &nbsp;</p> 
-<p>This release also introduces 13 new NKI Library kernels for Mixture of Experts (MoE) training and sparse attention, and a new Neuron Agentic Development skill that ports transformer models to the vLLM Neuron plugin. The NKI Library kernels cover context encoding for DeepSeek-V3.2 sparse multi-head latent attention, MXFP8 attention for the decode step, and a matched MXFP8 forward and backward pass that lets blockwise MoE layers train end to end in MXFP8, with PyTorch reference implementations for 22 additional kernels. &nbsp;</p> 
-<p>The Neuron Runtime adds variable-size all-gather, reduce-scatter, and all-to-all collectives on Trn2 and Trn3, letting each rank contribute or receive a different number of elements. The vLLM Neuron plugin moves to vLLM 0.24.0 and is included in all Neuron Deep Learning AMIs and Deep Learning Containers. The Neuron Compiler adds explicit control over 64-bit integer compilation, and Neuron Explorer adds per-core host CPU utilization to the System Trace Viewer.</p> 
-<p>AWS Neuron is available in all AWS Regions where Amazon EC2 Trn1, Trn2, Trn3, Inf2, and Inf1 instances are available. For more information about Regional availability, see the <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/">AWS Region table</a>.</p> 
-<p>To get started, see the following resources:</p> 
-<ul> 
- <li><p><a href="https://awsdocs-neuron.readthedocs-hosted.com/en/latest/release-notes/index.html">AWS Neuron 2.32.0 Release Notes</a></p> </li> 
-</ul> 
-<ul> 
- <li><p><a href="https://awsdocs-neuron.readthedocs-hosted.com/en/latest/nki/index.html">Neuron Kernel Interface (NKI) Documentation</a></p> </li> 
-</ul> 
-<ul> 
- <li><p><a href="https://awsdocs-neuron.readthedocs-hosted.com/en/latest/tools/neuron-agentic-development/index.html">Neuron Agentic Development</a></p> </li> 
-</ul> 
-<ul> 
- <li><p><a href="https://aws.amazon.com/ai/machine-learning/neuron/">AWS Neuron</a></p> </li> 
-</ul>
-]]></content:encoded>
-<pubDate>Fri, 21 Aug 2026 21:11:00 GMT</pubDate>
-</item>
-<item>
-<title>Amazon Redshift now supports concurrency scaling of streaming ingestion workloads from Amazon Kinesis data streams</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/08/redshift-concurrencyscaling-for-kds-streams/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/redshift-concurrencyscaling-for-kds-streams/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://aws.amazon.com/redshift/">Amazon Redshift</a>, starting with <a href="https://docs.aws.amazon.com/redshift/latest/mgmt/cluster-versions.html#cluster-version-203">patch P203</a>, supports concurrency scaling for refreshes of Amazon Kinesis Data Streams (KDS)-connected streaming materialized views (MVs).<br /> <br /> Amazon Web Services (AWS) Redshift Streaming Ingestion enables low-latency, high-speed data ingestion from Amazon KDS to Amazon Redshift data warehouses. The data lands in a Redshift streaming materialized view, providing fast access to external data, lowering data-access time, and reducing storage costs. Users can configure streaming ingestion for their Amazon Redshift cluster or Redshift Serverless workgroup using SQL commands. Once set up, each streaming materialized-view refresh can ingest hundreds of megabytes of data per second. If you have concurrency scaling enabled, your streaming workloads will now automatically scale by freeing-up your main Amazon Redshift cluster or workgroup to run other higher priority workloads.<br /> <br /> You can start using this new capability immediately in all AWS regions where Amazon Redshift is available to scale your workload and build resilient analytics applications with predictable Service Level Agreements. To get started, refer to the <a href="https://docs.aws.amazon.com/redshift/latest/dg/concurrency-scaling.html">Concurrency Scaling</a>, <a href="https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html">Materialized Views</a> and <a href="https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-streaming-ingestion.html">streaming ingestion</a> sections of the Amazon Redshift <a href="https://docs.aws.amazon.com/redshift/latest/dg/materialized-view-overview.html">documentation</a>.</p>
-]]></content:encoded>
-<pubDate>Thu, 20 Aug 2026 20:00:00 GMT</pubDate>
-</item>
-<item>
-<title>Amazon Bedrock AgentCore Memory now supports extracting memories from non-conversational JSON payloads</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/08/agentcore-memory-json-payloads</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/08/agentcore-memory-json-payloads</guid>
-<content:encoded><![CDATA[
-<p>Amazon Bedrock AgentCore memory now accepts a JSON payload type on the CreateEvent API, so agents can extract and consolidate long-term memories from structured data as well as from multi-turn conversations. Developers can pass behavioral events, activity logs, system events, and other JSON data (up to 100 KB per payload) straight into the extraction pipeline. There is no need to reshape it into synthetic conversation messages first.<br /> <br /> The extraction pipeline treats a JSON payload the same way it treats a conversation, generating long-term memories across all four extraction strategies: semantic, user preference, summarization, and episodic.</p> 
-<p>Non-conversational JSON payload ingestion is available today in all regions where AgentCore Memory is supported. It is fully compatible with existing features. To get started, just add json payloads to your <a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/short-term-create-event.html">events</a>.</p>
-]]></content:encoded>
-<pubDate>Thu, 20 Aug 2026 20:00:00 GMT</pubDate>
-</item>
-<item>
-<title>v16.4.0-canary.6</title>
-<link>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.6</link>
-<guid>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.6</guid>
-<content:encoded><![CDATA[
-<h3>Misc Changes</h3>
-<ul>
-<li>turbo-tasks: execute scheduled tasks inline when they are read: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/96808">#96808</a></li>
-<li>Revert "Record fallback cache lifetime for blocking PPR routes (<a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97821">#97821</a>)": <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97835">#97835</a></li>
-<li>Sweep stale Turbopack output from distDir on dev startup: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97591">#97591</a></li>
-<li>Fix metadata prefetch cache key for search params: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97729">#97729</a></li>
-<li>Turbopack: Improve file existence error handling in realpath_with_links and in module resolution: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97717">#97717</a></li>
-<li>Write traces with buffered synchronous IO: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/96874">#96874</a></li>
-</ul>
-<h3>Credits</h3>
-<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/sokra">@sokra</a>, <a class="user-mention notranslate" href="https://github.com/acdlite">@acdlite</a>, <a class="user-mention notranslate" href="https://github.com/wbinnssmith">@wbinnssmith</a>, <a class="user-mention notranslate" href="https://github.com/marcoshernanz">@marcoshernanz</a>, <a class="user-mention notranslate" href="https://github.com/bgw">@bgw</a>, and <a class="user-mention notranslate" href="https://github.com/lukesandberg">@lukesandberg</a> for helping!</p>
-]]></content:encoded>
-<pubDate>2026-08-24T23:45:20Z</pubDate>
-</item>
-<item>
-<title>v16.4.0-canary.5</title>
-<link>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.5</link>
-<guid>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.5</guid>
-<content:encoded><![CDATA[
-<h3>Misc Changes</h3>
-<ul>
-<li>Record fallback cache lifetime for blocking PPR routes: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97821">#97821</a></li>
-<li>Document catchError for the Pages Router: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97748">#97748</a></li>
-<li>clippy: allow needless late init where it makes sense: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/96410">#96410</a></li>
-<li>Turbopack: emit/collect: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/96631">#96631</a></li>
-<li>docs: note that response headers must be set before calling handle() in a custom server: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97693">#97693</a></li>
-<li>Deduplicate the regress, wat/wasmparser and base64 dependencies: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97762">#97762</a></li>
-<li>perf: split cold TurboMalloc accounting paths: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97767">#97767</a></li>
-</ul>
-<h3>Credits</h3>
-<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/acdlite">@acdlite</a>, <a class="user-mention notranslate" href="https://github.com/devjiwonchoi">@devjiwonchoi</a>, <a class="user-mention notranslate" href="https://github.com/wbinnssmith">@wbinnssmith</a>, <a class="user-mention notranslate" href="https://github.com/mischnic">@mischnic</a>, <a class="user-mention notranslate" href="https://github.com/icyJoseph">@icyJoseph</a>, <a class="user-mention notranslate" href="https://github.com/lukesandberg">@lukesandberg</a>, and <a class="user-mention notranslate" href="https://github.com/sokra">@sokra</a> for helping!</p>
-]]></content:encoded>
-<pubDate>2026-08-24T19:47:50Z</pubDate>
-</item>
-<item>
-<title>v16.4.0-canary.4</title>
-<link>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.4</link>
-<guid>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.4</guid>
-<content:encoded><![CDATA[
-<h3>Misc Changes</h3>
-<ul>
-<li>Add next/cache-handlers types entrypoint: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97592">#97592</a></li>
-<li>Remove unused return values from getPageStaticInfo: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97661">#97661</a></li>
-<li>[turbopack] defer NFT module content hashes: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97773">#97773</a></li>
-<li>test: deflake basePath external navigation: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97611">#97611</a></li>
-<li>docs(adapters): document assetsHashes and routing.middlewareMatchers: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/96536">#96536</a></li>
-<li>Migrate remaining async blocks to async closures: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97701">#97701</a></li>
-<li>Turn off the adapter route collapses by default: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97774">#97774</a></li>
-<li>Serve a run of fallback shells from one route entry: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97738">#97738</a></li>
-<li>[test] Capture the route table for apps with several param shapes: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97728">#97728</a></li>
-<li>Stop emitting a separate route entry for a dynamic route's RSC form: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97726">#97726</a></li>
-<li>Stop emitting a redundant route per prefetch segment: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97720">#97720</a></li>
-<li>[test] Capture the dynamic routes a build passes to an adapter: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97719">#97719</a></li>
-<li>turbo-tasks: compile conditional cell updates once, not per cell type: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97763">#97763</a></li>
-<li>Turbopack: add unit test coverage for FileSystemPath::hash_file: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97743">#97743</a></li>
-</ul>
-<h3>Credits</h3>
-<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/marceloboeira">@marceloboeira</a>, <a class="user-mention notranslate" href="https://github.com/mischnic">@mischnic</a>, <a class="user-mention notranslate" href="https://github.com/sokra">@sokra</a>, <a class="user-mention notranslate" href="https://github.com/leejpsd">@leejpsd</a>, <a class="user-mention notranslate" href="https://github.com/unstubbable">@unstubbable</a>, and <a class="user-mention notranslate" href="https://github.com/lukesandberg">@lukesandberg</a> for helping!</p>
-]]></content:encoded>
-<pubDate>2026-08-24T12:02:56Z</pubDate>
-</item>
-<item>
-<title>v8.0.0-rc.5-dev.4: chore: close out the postgres-temporal-codecs project (#30113)</title>
-<link>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.5-dev.4</link>
-<guid>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.5-dev.4</guid>
-<content:encoded><![CDATA[
-<p>Stacked on <a class="issue-link js-issue-link" href="https://github.com/prisma/prisma/pull/30073">#30073</a> — merge that first. This removes the transient project<br />
-directory the temporal work coordinated through.</p>
-<h2>Project DoD</h2>
-<p>Verified against <code>projects/postgres-temporal-codecs/spec.md</code> before<br />
-deletion. All 17 acceptance criteria met, evidenced in <a class="issue-link js-issue-link" href="https://github.com/prisma/prisma/pull/30073">#30073</a>'s review<br />
-record:</p>
-<ul>
-<li>Eight representation-explicit codecs; contracts select either<br />
-representation; no public <code>Date</code> on a temporal surface</li>
-<li>Introspection emits the Temporal-backed PSL spellings with native<br />
-precision; the <code>*String</code> names claim no mapping</li>
-<li>Buffered, cursor, array, flat and nested reads preserve server text<br />
-without microsecond loss</li>
-<li>Temporal coverage spans nanosecond rounding, offsets, ISO-calendar<br />
-enforcement, BC and expanded years, infinity, out-of-range, and non-ISO<br />
-<code>DateStyle</code> output</li>
-<li>Missing Temporal fails lazily as <code>RUNTIME.TEMPORAL_UNAVAILABLE</code>; a<br />
-<code>*String</code>-only contract runs with no Temporal anywhere</li>
-<li><code>sql/timestamp@1</code>, <code>field.timestamp()</code> and the four old PostgreSQL<br />
-codec ids are gone, with no compatibility shim</li>
-<li><code>timetz</code> and <code>interval</code> unchanged; no Temporal vocabulary in the<br />
-generic SQL runtime</li>
-</ul>
-<p>Two DoD items were amended during delivery and the spec recorded both<br />
-before it was deleted: the documentation requirement now ships as<br />
-upgrade-instruction entries rather than a reference document, and no ADR<br />
-was written — the change lands inside ADR 030 and ADR 202's existing<br />
-boundaries.</p>
-<h2>Classification</h2>
-<p>Every tracked file under <code>projects/postgres-temporal-codecs/</code> classified<br />
-<strong>transient</strong>:</p>
-<table>
-<thead>
-<tr>
-<th>File</th>
-<th>Why</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>spec.md</code>, <code>plan.md</code></td>
-<td>project shaping and coordination</td>
-</tr>
-<tr>
-<td><code>slices/atomic-temporal-cutover/{spec,plan}.md</code></td>
-<td>slice shaping and</td>
-</tr>
-<tr>
-<td>coordination</td>
-<td></td>
-</tr>
-<tr>
-<td><code>slices/*/dispatches/*.md</code> (6)</td>
-<td>dispatch briefs</td>
-</tr>
-<tr>
-<td><code>slices/*/d6-prediction.md</code></td>
-<td>consumer enumeration written to make the</td>
-</tr>
-<tr>
-<td>deletion dispatch falsifiable</td>
-<td></td>
-</tr>
-<tr>
-<td><code>trace.jsonl</code></td>
-<td>run diagnostics</td>
-</tr>
-</tbody>
-</table>
-<p>No <code>principles/</code>, <code>model.md</code>, <code>adrs/</code> or <code>calibration/</code> subtree existed,<br />
-so <strong>nothing migrated to <code>docs/</code></strong> and the prose audit had no<br />
-candidates.</p>
-<h2>Reference strip</h2>
-<p>No-op. The external-reference scan returned empty both before and after<br />
-deletion — nothing outside the directory ever pointed into it.</p>
-<h2>Not included</h2>
-<p>The mandatory final retro was <strong>waived by the operator</strong>. One theme<br />
-would have been worth landing in <code>drive/calibration/</code>: eight distinct<br />
-instances during this project of <em>a gate that could not observe what it<br />
-claimed</em> — <code>lint:casts</code> as a separate CI job while biome stayed green,<br />
-<code>--passWithNoTests</code> reporting green on an emptied suite,<br />
-<code>check:error-reference</code> and <code>check:upgrade-coverage</code> on nobody's list, a<br />
-file red on typecheck and green at runtime, and a CI monitor whose "all<br />
-checks non-pending" condition went vacuously true on a partial list.<br />
-Available if you want it recorded.</p>
-<p>Linear: N/A — waived for this project at planning time.</p>
-<p>Signed-off-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a><br />
-Co-authored-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a></p>
-]]></content:encoded>
-<pubDate>2026-08-24T18:36:15Z</pubDate>
-</item>
-<item>
-<title>v8.0.0-rc.5-dev.3</title>
-<link>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.5-dev.3</link>
-<guid>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.5-dev.3</guid>
-<content:encoded><![CDATA[
-<p>TML: PostgreSQL temporal codecs — Temporal or raw text, chosen in the…</p>
-]]></content:encoded>
-<pubDate>2026-08-24T15:29:22Z</pubDate>
-</item>
-<item>
-<title>v8.0.0-rc.5-dev.2</title>
-<link>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.5-dev.2</link>
-<guid>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.5-dev.2</guid>
-<content:encoded><![CDATA[
-<p>Init stops touching agent skills; the family-level prisma init owns s…</p>
-]]></content:encoded>
-<pubDate>2026-08-24T10:20:35Z</pubDate>
-</item>
-<item>
-<title>v8.0.0-rc.5-dev.1: Ship the prisma-8 skill inside the three ORM target tarballs (#30096)</title>
-<link>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.5-dev.1</link>
-<guid>https://github.com/prisma/prisma/releases/tag/v8.0.0-rc.5-dev.1</guid>
-<content:encoded><![CDATA[
-<p>The prisma-8 skill now ships inside the npm tarballs users actually<br />
-install, instead of being fetched from GitHub by <code>npx skills add</code> at<br />
-init time.</p>
-<h2>What changed</h2>
-<ul>
-<li><strong>The two upgrade skills fold into the <code>prisma-8</code> router.</strong><br />
-<code>prisma-next-upgrade</code> and <code>prisma-8-extension-upgrade</code> become an<br />
-"upgrading" branch of <code>skills/prisma-8/</code> (per-transition<br />
-<code>upgrades/&lt;from&gt;-to-&lt;to&gt;/</code> layout kept), their trigger phrases move into<br />
-the router's <code>description</code>, and the router opens with a preamble telling<br />
-the agent the installed version's skill is the source of truth. Three<br />
-registered skills become one.</li>
-<li><strong>Version stamp under <code>metadata</code>.</strong> The skill frontmatter carries<br />
-<code>metadata.library</code> (the npm package name) and<br />
-<code>metadata.library_version</code>, stamped by the version pipeline<br />
-(<code>scripts/set-version.ts</code>) so the stamp and the package version cannot<br />
-diverge. The keys live under the Agent Skills spec's <code>metadata</code> map — a<br />
-string→string extension point — rather than as undefined top-level keys.</li>
-<li><strong>The skill travels in three tarballs.</strong> <code>skills/prisma-8/</code> is staged<br />
-into <code>@prisma/orm-postgres</code>, <code>@prisma/orm-sqlite</code>, and<br />
-<code>@prisma/orm-mongo</code> at <code>prepack</code> time, with <code>"skills"</code> in each package's<br />
-<code>files</code>. Each copy's <code>metadata.library</code> names the package it ships in.</li>
-<li><strong>The packaging is proved from the artifact, not the working tree.</strong><br />
-The publish-surface test deletes the staged tree, runs <code>pnpm pack</code> the<br />
-way the publish workflow does, reads the stamped <code>SKILL.md</code> back out of<br />
-the tarball, and byte-compares every file against the tracked source. It<br />
-fails if the <code>files</code> entry or the <code>prepack</code> script is removed.</li>
-<li><strong>The upgrade-coverage check follows the fold.</strong> <code>USER_SKILL_PKG</code> /<br />
-<code>EXT_SKILL_PKG</code> point at the folded directories and the path regex is<br />
-derived from them.</li>
-<li>Docs updated: <code>skills/README.md</code> (authoring rules for the stamp, the<br />
-GitHub route demoted to a manual fallback), <code>docs/oss/versioning.md</code>,<br />
-<code>docs/reference/error-reference.md</code>.</li>
-</ul>
-<h2>What consumes this</h2>
-<p><code>prisma skills sync</code> in prisma/prisma-cli<br />
-(<a href="https://github.com/prisma/prisma-cli/pull/219">prisma/prisma-cli#219</a>)<br />
-copies these skills from the installed packages into the agent harness<br />
-directories and reads the <code>metadata</code> stamp to detect staleness. The init<br />
-wiring that runs sync lands separately, stacked on this branch.</p>
-<p>Merge order: <a class="issue-link js-issue-link" href="https://github.com/prisma/prisma-cli/pull/219">prisma/prisma-cli#219</a> ships first (it owns the <code>prisma skills</code> command), then this, then the init wiring.</p>
-<p>🤖 Generated with <a href="https://claude.com/claude-code" rel="nofollow">Claude Code</a></p>
-
-<h2>Summary by CodeRabbit</h2>
-<ul>
-<li>
-<p><strong>New Features</strong></p>
-</li>
-<li>
-<p>Prisma ORM packages now bundle a version-matched <code>prisma-8</code> skill for<br />
-application and extension upgrades.</p>
-</li>
-<li>
-<p>Added upgrade guidance and migration tools covering historical Prisma<br />
-version transitions.</p>
-</li>
-<li>
-<p>Skills now synchronize automatically during package initialization and<br />
-packaging.</p>
-</li>
-<li>
-<p><strong>Documentation</strong></p>
-</li>
-<li>
-<p>Updated installation, synchronization, versioning, error-handling, and<br />
-authoring guidance.</p>
-</li>
-<li>
-<p><strong>Bug Fixes</strong></p>
-<ul>
-<li>Improved skill metadata validation and version stamping.</li>
-</ul>
-</li>
-<li>
-<p>Retired legacy standalone upgrade skill references and installation<br />
-paths.</p>
-</li>
-</ul>
-
-<hr />
-<p>Signed-off-by: willbot <a href="mailto:w.a.madden+machine@gmail.com">w.a.madden+machine@gmail.com</a><br />
-Signed-off-by: Will Madden <a href="mailto:madden@prisma.io">madden@prisma.io</a></p>
-]]></content:encoded>
-<pubDate>2026-08-24T09:42:11Z</pubDate>
-</item>
-<item>
-<title>iCloud+ Hide My Email addresses will remain on icloud.com</title>
-<link>https://developer.apple.com/news/?id=1ptvdtcm</link>
-<guid>https://developer.apple.com/news/?id=1ptvdtcm</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://developer.apple.com/news/?id=1ptvdtcm">https://developer.apple.com/news/?id=1ptvdtcm</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49426564">https://news.ycombinator.com/item?id=49426564</a></p>
-<p>Points: 212</p>
-<p># Comments: 47</p>
-]]></content:encoded>
-<pubDate>Mon, 24 Aug 2026 22:13:40 +0000</pubDate>
-</item>
-<item>
-<title>Oceans hit highest temperature on record</title>
-<link>https://www.bbc.com/news/articles/c62m4gpnp78o</link>
-<guid>https://www.bbc.com/news/articles/c62m4gpnp78o</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.bbc.com/news/articles/c62m4gpnp78o">https://www.bbc.com/news/articles/c62m4gpnp78o</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49424606">https://news.ycombinator.com/item?id=49424606</a></p>
-<p>Points: 390</p>
-<p># Comments: 284</p>
-]]></content:encoded>
-<pubDate>Mon, 24 Aug 2026 19:19:08 +0000</pubDate>
-</item>
-<item>
-<title>Where did all the public bathrooms go?</title>
-<link>https://daily.jstor.org/where-did-all-the-public-bathrooms-go/</link>
-<guid>https://daily.jstor.org/where-did-all-the-public-bathrooms-go/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://daily.jstor.org/where-did-all-the-public-bathrooms-go/">https://daily.jstor.org/where-did-all-the-public-bathrooms-go/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49422800">https://news.ycombinator.com/item?id=49422800</a></p>
-<p>Points: 153</p>
-<p># Comments: 302</p>
-]]></content:encoded>
-<pubDate>Mon, 24 Aug 2026 17:07:01 +0000</pubDate>
-</item>
-<item>
-<title>The entire city of San Francisco as a video game</title>
-<link>https://sf.thijs.gg/</link>
-<guid>https://sf.thijs.gg/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://twitter.com/cdngdev/status/2091909073038082139" rel="nofollow">https://twitter.com/cdngdev/status/2091909073038082139</a>, <a href="https://xcancel.com/cdngdev/status/2091909073038082139" rel="nofollow">https://xcancel.com/cdngdev/status/2091909073038082139</a></p>
-<hr />
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49422784">https://news.ycombinator.com/item?id=49422784</a></p>
-<p>Points: 338</p>
-<p># Comments: 119</p>
-]]></content:encoded>
-<pubDate>Mon, 24 Aug 2026 17:05:38 +0000</pubDate>
-</item>
-<item>
-<title>Coding expertise is going to collapse from AI reliance</title>
-<link>https://larsfaye.com/articles/ai-coding-will-prevent-expertise</link>
-<guid>https://larsfaye.com/articles/ai-coding-will-prevent-expertise</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://larsfaye.com/articles/ai-coding-will-prevent-expertise">https://larsfaye.com/articles/ai-coding-will-prevent-expertise</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49421554">https://news.ycombinator.com/item?id=49421554</a></p>
-<p>Points: 456</p>
-<p># Comments: 457</p>
-]]></content:encoded>
-<pubDate>Mon, 24 Aug 2026 15:52:33 +0000</pubDate>
-</item>
-<item>
-<title>Jabber/XMPP: 25 Years of Digital Independence</title>
-<link>https://gultsch.de/posts/25-years-of-digital-independence/</link>
-<guid>https://gultsch.de/posts/25-years-of-digital-independence/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://gultsch.de/posts/25-years-of-digital-independence/">https://gultsch.de/posts/25-years-of-digital-independence/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49421536">https://news.ycombinator.com/item?id=49421536</a></p>
-<p>Points: 168</p>
-<p># Comments: 64</p>
-]]></content:encoded>
-<pubDate>Mon, 24 Aug 2026 15:51:31 +0000</pubDate>
 </item>
 </channel>
 </rss>
