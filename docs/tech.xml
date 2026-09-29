@@ -3,7 +3,1129 @@
 <channel>
 <title>tech</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/tech.xml</link>
-<lastBuildDate>Mon, 28 Sep 2026 05:00:57 +0000</lastBuildDate>
+<lastBuildDate>Tue, 29 Sep 2026 05:26:07 +0000</lastBuildDate>
+
+<item>
+<title>Amazon EC2 Future-dated Capacity Reservations Now Supports Postponing Start Dates</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/09/ec2-fcr-postpone-start-date/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/ec2-fcr-postpone-start-date/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon EC2, Future-dated Capacity Reservations, postpone, commitment duration, regional availability
+
+<br><br>Summary: Amazon EC2 offers Future-dated Capacity Reservations that enable users to secure capacity up to 120 days in advance. Customers can specify the required capacity, a chosen start date, and a commitment duration for their reservation. If plans change before the scheduled delivery, users now have the option to postpone the start date to better align with their revised timeline. When customers decide to postpone, EC2 generates a quote which includes the new start date and may also highlight adjustments to the required commitment duration, which can increase depending on how far the start date is postponed. After reviewing the quote, customers have the opportunity to accept it, leading to an update of their reservation with the new start date. This feature is available to all users of Future-dated Capacity Reservations and is subject to regional availability, which can be checked on the official website. For additional details regarding this feature, users are encouraged to refer to the official Amazon documentation. <div>
+<p>Amazon EC2 Future-dated Capacity Reservations let you secure capacity up to 120 days in advance by specifying the capacity you need, the start date, and a commitment duration. If your plans change before delivery, you can now postpone your start date to match your new timeline.</p>
+<p>When you postpone your start date, EC2 presents a quote that shows the new start date and the required commitment duration. The commitment duration can increase, depending on when you postpone the start date. After you review and accept the quote, EC2 updates your reservation with the new start date.</p>
+<p>This feature is available to all Future-dated Capacity Reservation customers. Refer to the <a href="https://builder.aws.com/build/capabilities/explore">AWS Capabilities by Region</a> website for the feature's regional availability. For more details, refer to the <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/capacity-reservations-modify.html">Capacity Reservation user guide</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 21:17:00 GMT</pubDate>
+<pubDate>Mon, 28 Sep 2026 21:17:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Rekognition Face Liveness now returns Feedback Codes</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/09/rekognition-liveness-feedback-codes/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/rekognition-liveness-feedback-codes/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon Rekognition, Face Liveness, Feedback Codes, identity verification, confidence score
+
+<br><br>Summary: 
+Amazon Rekognition Face Liveness feature now provides Feedback Codes, which offer insights into why a liveness check may receive a low score. These codes, returned in the GetFaceLivenessSessionResults API response, identify specific issues such as poor lighting, face obstruction, closed eyes, or low video quality that led to the low score. This allows users to make targeted corrections, retrying the liveness check with greater confidence. A single session can yield multiple Feedback Codes, enabling users to address all contributing factors in one attempt. This feature is particularly beneficial for identity verification during onboarding processes, re-authentication flows, and accessibility scenarios. The Face Liveness service verifies the individual in front of the camera as a real, live human being instead of a photograph, video replay, mask, or deepfake through a brief guided selfie-video session. It provides a confidence score, a reference image for face matching, and session audit images. Amazon Rekognition Face Liveness is available in several regions, including US East and West, Europe, Asia Pacific, and South America. For more information, interested users can visit the Amazon Rekognition website. <div>
+<p>Amazon Rekognition Face Liveness now returns Feedback Codes that help customers understand why a liveness check&nbsp;received a low score and how users could retry successfully. The codes are returned in the GetFaceLivenessSessionResults API response, and they identify the specific conditions that contributed to the low score, such as poor lighting, face obstruction, closed eyes, or low video quality. Customers can surface these codes to their end users who can then make targeted corrections and retry with confidence. A single session can return multiple Feedback Codes at once, allowing users to resolve all contributing issues in one retry.&nbsp;This feature is especially useful in identity verification onboarding, re-authentication flows, and accessibility scenarios.</p>
+<p>Amazon Rekognition Face Liveness verifies that the person in front of the camera is a real, live human (instead of a photo, video replay, mask, or deepfake) through a short, guided selfie-video check. It returns a confidence score, a reference image for face matching, and session audit images.&nbsp;
+ <br />
+ <br />
+ Rekognition Face Liveness is available in US East (N. Virginia), US West (Oregon), Europe (Ireland), Asia Pacific (Tokyo, Mumbai, Malaysia, Thailand), and South America (São Paulo). To learn more, visit the <a href="https://docs.aws.amazon.com/rekognition/latest/dg/face-liveness-programming-api.html">Amazon Rekognition Face Liveness API documentation</a> and <a href="https://docs.aws.amazon.com/rekognition/latest/dg/face-liveness-faq.html">Face Liveness FAQ</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 20:41:00 GMT</pubDate>
+<pubDate>Mon, 28 Sep 2026 20:41:00 GMT</pubDate>
+</item>
+<item>
+<title>Grok 4.7 is now available on Amazon Bedrock</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-bedrock-grok-4-7/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-bedrock-grok-4-7/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon Bedrock, SpaceXAI, Grok 4.7, coding, inference
+
+<br><br>Summary: Amazon Bedrock has introduced support for SpaceXAI Grok 4.7, an advanced model designed for coding, agentic tasks, and knowledge work. This model showcases US Geo and Global cross-Region inference capabilities. Grok 4.7 builds upon its predecessor, Grok 4.6, with significant improvements in mixed-document handling, making it more adept at processing diverse types of content. It also enhances repository-scale coding processes by incorporating better planning and error recovery features, contributing to greater reliability in coding tasks. Additionally, Grok 4.7 includes enhanced browser-use agents, which are designed to facilitate form filling and portal navigation, thus streamlining user interactions with various online platforms. Users can get started with Grok 4.7 either via the Amazon Bedrock interface or programmatically through supported APIs. For those interested in exploring the model further, detailed information is available regarding supported endpoints, APIs, features, inference profiles, and pricing. To learn more about the new launch and its capabilities, users can refer to the specific documentation provided. <div>
+<p>Amazon Bedrock now supports SpaceXAI Grok 4.7, a frontier model built for coding, agentic tasks, and knowledge work, with US Geo and Global cross-Region inference. &nbsp;</p>
+<p>Grok 4.7 builds on Grok 4.6 with better mixed-document handling, more dependable repo-scale coding with planning and error recovery, and enhanced browser-use agents for form fills and portal navigation. &nbsp;</p>
+<p>Get started with Grok 4.7 in the<a href="https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/"> Amazon Bedrock console</a> or programmatically through supported Amazon Bedrock APIs. For information about supported<a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html"> AWS Regions</a>, endpoints, APIs, features, inference profiles and pricing, see the&nbsp;<a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-xai-grok-4-7.html">Amazon Bedrock documentation</a>. To learn more, read the launch <a href="https://aws.amazon.com/blogs/machine-learning/grok-4-7-is-now-available-on-amazon-bedrock/">blog post</a>.</p>
+<p>&nbsp;</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 18:29:00 GMT</pubDate>
+<pubDate>Mon, 28 Sep 2026 18:29:00 GMT</pubDate>
+</item>
+<item>
+<title>Claude Sonnet 5.5 now available on AWS</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/09/claude-sonnet-5-5-aws/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/claude-sonnet-5-5-aws/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS, Claude Sonnet 5.5, coding, Amazon Bedrock, automation  
+
+<br><br>Summary:  
+AWS has launched Claude Sonnet 5.5, an advanced version that enhances coding and knowledge work efficiencies at a lower cost and faster speed. This upgrade is ideal for teams already using Sonnet 5, as it offers improved capabilities for coding tasks, enabling users to complete well-defined tasks and verify outputs against requirements seamlessly. It also excels in producing quality knowledge work, such as one-pagers, diagrams, summary slides, document edits, and spreadsheet cleanup. Customers can access Claude Sonnet 5.5 through two main options: Amazon Bedrock and the Claude Platform on AWS. Amazon Bedrock provides Sonnet's functionalities while ensuring data resides within AWS infrastructure, complemented by AWS-managed features like Guardrails and Knowledge Bases for better data security and management. On the other hand, the Claude Platform on AWS offers direct access to Anthropic's native capabilities via the AWS Console, allowing users to build, test, and deploy applications utilizing the same APIs and console experience available directly from Anthropic, alongside unified AWS billing and authentication. This integration enhances workflow and productivity for developers and teams leveraging these advanced AI tools. <div>
+<p>AWS now offers Claude Sonnet 5.5, a smarter and more efficient Sonnet that delivers a clear leap forward on coding and knowledge work with at a lower cost per task for most work at faster speed.</p>
+<p>Claude Sonnet 5.5 is a smarter, more efficient Sonnet and a step up from Sonnet 5, making it a natural upgrade for teams already building on Sonnet. It's stronger for coding, completing well-scoped tasks as part of a larger coding strategy such as building and fixing features with Claude in the same session or verifying output against requirements. And it produces ready-to-share knowledge work, from 1-pagers, diagrams, and summary slides to document edits and spreadsheet cleanup.</p>
+<p>Customers have two ways to access Claude Sonnet 5.5: Amazon Bedrock and Claude Platform on AWS.</p>
+<p>Amazon Bedrock gives you Sonnet's capabilities while keeping your data within AWS infrastructure with regional data residency and provides access through a unified service with AWS-managed features like Guardrails and Knowledge Bases. To learn more, see the Amazon Bedrock <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-sonnet-5-5.html" rel="noopener noreferrer" target="_blank">documentation</a> and <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html?refid=7ecf60df-6136-414c-a7c3-6aa4d2d6019f#model-regions-anthropic" rel="noopener noreferrer" target="_blank">regional availability</a>.&nbsp;</p>
+<p>Claude Platform on AWS gives you direct access to Anthropic's native platform experience and capabilities via the AWS Console. Build, test, and deploy with the same APIs, features, and console experience you'd get working with Anthropic directly, unified with AWS billing and authentication. To get started, see the Claude Platform on AWS <a href="https://docs.aws.amazon.com/claude-platform/latest/userguide/setup.html?refid=7ecf60df-6136-414c-a7c3-6aa4d2d6019f" rel="noopener noreferrer" target="_blank">documentation</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 15:00:00 GMT</pubDate>
+<pubDate>Mon, 28 Sep 2026 15:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Claude Sonnet 5.5 now available on AWS GovCloud (US)</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/09/claude-sonnet-5-5-aws-govcloud-us/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/claude-sonnet-5-5-aws-govcloud-us/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS GovCloud, Claude Sonnet 5.5, coding, knowledge work, Amazon Bedrock
+
+<br><br>Summary: AWS GovCloud (US) has introduced Claude Sonnet 5.5, an upgraded version of Sonnet 5 that enhances efficiency and performance in coding and knowledge work while reducing costs per task for users. It is designed as a natural upgrade for teams that have already adopted Sonnet, offering improved strength in coding tasks, including feature building and fixing, and ensuring output aligns with requirements. The new version excels in producing various forms of knowledge work, such as 1-pagers, diagrams, summary slides, document edits, and spreadsheet cleanup, making it a versatile tool for many applications. Additionally, Amazon Bedrock enables users to leverage Sonnet's capabilities while ensuring data remains within the secure AWS infrastructure and maintaining regional data residency. Users can access these features through a unified service that includes AWS-managed capabilities, such as Guardrails and Knowledge Bases, facilitating a comprehensive and secure coding and knowledge work environment. For more information, users are encouraged to explore Amazon Bedrock further to discover the full array of features and capabilities available within this platform. <div>
+<p>AWS GovCloud (US) now offers Claude Sonnet 5.5, a smarter and more efficient Sonnet that delivers a clear leap forward on coding and knowledge work with at a lower cost per task for most work ag faster speed.</p>
+<p>Claude Sonnet 5.5 is a smarter, more efficient Sonnet and a step up from Sonnet 5, making it a natural upgrade for teams already building on Sonnet. It's stronger for coding, completing well-scoped tasks as part of a larger coding strategy such as building and fixing features with Claude in the same session or verifying output against requirements. And it produces ready-to-share knowledge work, from 1-pagers, diagrams, and summary slides to document edits and spreadsheet cleanup.</p>
+<p>Amazon Bedrock gives you Sonnet's capabilities while keeping your data within AWS infrastructure with regional data residency and provides access through a unified service with AWS-managed features like Guardrails and Knowledge Bases. To learn more, see the Amazon Bedrock <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-sonnet-5-5.html">documentation</a> and <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html?refid=7ecf60df-6136-414c-a7c3-6aa4d2d6019f#model-regions-anthropic">regional availability</a>.&nbsp;</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 15:00:00 GMT</pubDate>
+<pubDate>Mon, 28 Sep 2026 15:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Corretto September 2026 Patch Updates</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-corretto-sept-2026-updates/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-corretto-sept-2026-updates/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon Corretto, patch update, OpenJDK, tzdata, Long-Term Support
+
+<br><br>Summary: On September 25, 2026, Amazon announced a patch update for several versions of Amazon Corretto, which is a no-cost, multi-platform distribution of OpenJDK. The versions updated include Corretto 25.0.4.10.1, 21.0.12.11.1, 17.0.20.12.1, and 11.0.32.12.1. This patch integrates the latest tzdata 2026d updates to ensure improved functionality and time zone accuracy across applications. Users can visit the official Corretto website to download various versions of Corretto, specifically Corretto 27, Corretto 25, Corretto 21, Corretto 17, Corretto 11, and Corretto 8. Additionally, users running Linux systems can acquire these updates by configuring their systems accordingly. The announcement emphasizes Amazon's commitment to providing ongoing support for its Java distributions and highlights the importance of keeping software up to date for optimal performance and security. Feedback mechanisms are available for users wishing to share their thoughts regarding the update and its impact on their deployments. Overall, this update reflects Amazon's dedication to maintaining a robust and secure Java environment for its users. <div>
+<p>On September 25, 2026, Amazon announced a patch update for the following Amazon Corretto Long-Term Support (LTS) and Feature Release (FR) versions of OpenJDK: Corretto 25.0.4.10.1, 21.0.12.11.1, 17.0.20.12.1, and 11.0.32.12.1 are now available for <a href="https://aws.amazon.com/corretto/">download</a>. Amazon Corretto is a no-cost, multi-platform, production-ready distribution of OpenJDK. This patch includes the latest&nbsp;tzdata 2026d updates.</p>
+<p>Visit Corretto <a href="https://aws.amazon.com/corretto">home page</a> to download Corretto 27, Corretto 25, Corretto 21, Corretto 17, Corretto 11, or Corretto 8. You can also get the updates on your Linux system by configuring a <a href="https://docs.aws.amazon.com/corretto/latest/corretto-26-ug/generic-linux-install.html">Corretto Apt, Yum, or Apk repo</a>.</p>
+<p>Feedback is <a href="https://github.com/corretto">welcomed</a>!</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 14:00:00 GMT</pubDate>
+<pubDate>Mon, 28 Sep 2026 14:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon DocumentDB (with MongoDB compatibility) adds support for 5 MongoDB aggregation stages and change stream capabilities in version 8.0.2</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-documentdb-8-0-2/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-documentdb-8-0-2/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon DocumentDB, MongoDB compatibility, retryable writes, aggregation stages, change stream enhancements.
+
+<br><br>Summary: Amazon DocumentDB (with MongoDB compatibility) has introduced version 8.0.2, enhancing its features to better support MongoDB workloads. Notable additions include retryable writes, which ensure that insert, update, and delete operations are automatically retried during transient network errors, thereby improving application resilience during failovers. The update also adds five new aggregation stages: $setWindowFields, $bucketAuto, $facet, $graphLookup, and correlated $lookup, which facilitate advanced analytics and hierarchical querying. Furthermore, change streams have been enhanced to include the $changeStreamSplitLargeEvent stage, allowing for the fragmentation of change events exceeding the 16 MB limit and the emission of events for collection and index creation. Query performance has seen significant improvements, including index-only scans for find and aggregation queries, index scans on $expr predicates, incremental sorting, and faster count operations. Additionally, index management is improved with support for the reIndex command on partial indexes. These new capabilities aim to expand API compatibility and optimize query performance, making migration to Amazon DocumentDB smoother without any necessary changes to application code. <div>
+<p>Amazon DocumentDB (with MongoDB compatibility) now supports&nbsp;retryable writes, 5 new aggregation stages, and change stream enhancements starting from minor version 8.0.2. This release expands MongoDB API compatibility and improves query performance, making it easier to migrate MongoDB workloads to Amazon DocumentDB without application code changes.</p>
+<p>Key new capabilities in version 8.0.2 include:</p>
+<p>- Retryable Writes — insert, update, and delete operations automatically retry on transient network errors, improving application resilience during failovers.
+ <br />
+ - New aggregation stages — $setWindowFields (with its full set of window operators), $bucketAuto, $facet, $graphLookup, and correlated $lookup, enabling advanced analytics, faceted search, and hierarchical queries.
+ <br />
+ - Change stream enhancements — the $changeStreamSplitLargeEvent stage splits change events larger than the 16 MB limit into fragments, and change streams now emit events for createCollection and createIndex operations.
+ <br />
+ - Query performance improvements — enhancements to the query planner add index-only scans for find and aggregation queries, index scans on $expr predicates, incremental sort, and faster count and countDocuments() operations.
+ <br />
+ - Index management — support for the reIndex command on partial indexes.</p>
+<p>These capabilities are available starting from Amazon DocumentDB 8.0.2 in all regions where Amazon DocumentDB is available. To learn more, see <a href="https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html">Supported MongoDB APIs, operations, and data types</a> and <a href="https://docs.aws.amazon.com/documentdb/latest/developerguide/release-notes.html">Amazon DocumentDB release notes</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 08:00:00 GMT</pubDate>
+<pubDate>Mon, 28 Sep 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon DocumentDB (with MongoDB compatibility) now supports retryable writes</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-documentdb-retryable-writes/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-documentdb-retryable-writes/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon DocumentDB, retryable writes, MongoDB compatibility, transient errors, engine version 8.0.2
+
+<br><br>Summary: Amazon DocumentDB has introduced support for retryable writes starting with engine version 8.0.2, which enhances the resilience of applications against transient errors like network interruptions or primary failovers. This feature allows the MongoDB driver to automatically retry specific write operations once in the event of errors, reducing the need for additional coding adjustments when enabling retryable writes. Most existing MongoDB-compatible drivers have this feature enabled by default, simplifying user experience. With this update, applications connecting to Amazon DocumentDB 8.0.2 do not need to specify retryWrites=false in their connection strings to prevent errors. However, it’s important to note that retryable writes apply to all write commands except for updateMany, deleteMany, and transaction commit or abort commands. For versions earlier than 8.0.2, support for retryable writes is not available and must be disabled in the connection settings. This feature works across both instance-based and serverless clusters in all regions where Amazon DocumentDB version 8.0 is offered, providing developers with a reliable option for handling transient errors smoothly. To learn more about implementing retryable writes, further documentation is available.
+ <div>
+<p>For developers building MongoDB-compatible applications, retryable writes improve application resilience during transient errors such as network interruptions or primary failovers. Amazon DocumentDB (with MongoDB compatibility) now supports retryable writes starting with engine version 8.0.2, eliminating the need for additional code changes when enabling this capability.</p>
+<p>With retryable writes, the MongoDB driver automatically retries certain write operations one time if a transient error occurs. Most current MongoDB-compatible drivers enable retryable writes by default. With this release, applications connecting to Amazon DocumentDB 8.0.2 no longer need to set retryWrites=false in the connection string to avoid errors. Retryable writes are supported for all write commands except updateMany and deleteMany, as well as transaction commit and abort commands. On engine versions earlier than 8.0.2, retryable writes remain unsupported and must be disabled.</p>
+<p>Retryable writes are available on Amazon DocumentDB 8.0.2 instance-based and serverless clusters in all regions where Amazon DocumentDB 8.0 is available. To get started with retryable writes, see the <a href="https://docs.aws.amazon.com/documentdb/latest/developerguide/retryable-writes.html">Amazon DocumentDB developer guide</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 08:00:00 GMT</pubDate>
+<pubDate>Mon, 28 Sep 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Backup adds logically air-gapped vault support for Amazon FSx for NetApp ONTAP</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/09/aws-backup-air-gapped-vault-fsx-ontap/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/aws-backup-air-gapped-vault-fsx-ontap/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS Backup, logically air-gapped vault, Amazon FSx, immutable backups, disaster recovery
+
+<br><br>Summary: AWS Backup has introduced support for Amazon FSx for NetApp ONTAP volumes in logically air-gapped vaults. These vaults provide a secure way to share backups across AWS accounts and organizations while enabling direct restore capabilities to minimize recovery time from data loss. Logically air-gapped vaults store immutable backups, which are locked by default and secured with encryption using AWS-owned or customer-managed keys. Users can store backups in these vaults within the same account or across different accounts and regions, enhancing business continuity and meeting compliance and disaster recovery needs. To get started, users can utilize the AWS Backup console, AWS CLI, or AWS SDKs. In backup plans, specify the logically air-gapped vault as the primary target or copy destination for FSx for NetApp ONTAP backups. Additionally, leverage AWS Resource Access Manager (RAM) to share the vault with other accounts for recovery or testing purposes. Safeguard access to the vault during potential account compromises and initiate direct restore jobs from connected accounts, bypassing the need to copy backups first. This feature is available in all AWS Regions where both services are supported. <div>
+<p>AWS Backup logically air-gapped vault now supports Amazon FSx for NetApp ONTAP. Logically air-gapped vaults are a type of AWS Backup vault that allows secure sharing of backups across accounts and AWS Organizations, supporting direct restore to reduce recovery time from a data loss event.</p>
+<p>You can now protect your Amazon FSx for NetApp ONTAP volumes in logically air-gapped vaults. A logically air-gapped vault stores immutable backups that are locked by default, and isolated with encryption using AWS owned keys or customer-managed keys. You can store your FSx for NetApp ONTAP backups in a logically air-gapped vault in the same account or across other accounts and Regions. This helps reduce the risk of downtime, ensure business continuity, and meet compliance and disaster recovery requirements.</p>
+<p>You can get started using the AWS Backup console, AWS Command Line Interface (CLI), or AWS SDKs. Target FSx for NetApp ONTAP backups to a logically air-gapped vault by specifying it as the primary target or copy destination in your backup plan. Share the vault for recovery or restore testing with other accounts using AWS Resource Access Manager (RAM), or safeguard vault access during account compromise using <a href="https://docs.aws.amazon.com/aws-backup/latest/devguide/multipartyapproval.html" rel="noopener noreferrer" target="_blank">Multi-party approval</a>. Once available, you can initiate direct restore jobs from that account, eliminating the overhead of copying backups first.</p>
+<p>This support is available in all AWS Regions where both logically air-gapped vault and Amazon FSx for NetApp ONTAP are available. For more information and detailed regional availability, visit the <a href="https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-feature-availability.html#features-by-region" rel="noopener noreferrer" target="_blank">AWS Backup documentation</a>. To learn more about logically air-gapped vaults, visit the <a href="https://docs.aws.amazon.com/aws-backup/latest/devguide/logicallyairgappedvault.html">feature documentation</a> and <a href="https://aws.amazon.com/backup/pricing/" rel="noopener noreferrer" target="_blank">pricing page</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 08:00:00 GMT</pubDate>
+<pubDate>Mon, 28 Sep 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+<title>v16.4.0-canary.52</title>
+<link>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.52</link>
+<guid>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.52</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Turbopack, middleware, cache, tests, documentation
+
+<br><br>Summary:  
+The recent changes include stabilizing middleware revalidation tests and responsive development overlay header layout tests. There has been an update to the scope loader build dependency in Turbopack. The symlinks for CLAUDE.md have been removed in favor of AGENTS.md, and task accessor names in ExecuteContext have been aligned. Turbopack advancements include skipping trimmed side-effect imports in SideEffectsModule, preserving imports with clauses during direct-binding, and correcting split_module functionality for the app-router. Additionally, issues with empty tree-shake chunks leading to desyncing part IDs have been fixed. Custom cache handlers will now be present on initial requests, and Draft Mode can be allowed on unlisted closed routes in adapter deployments. Improvements to the bundle analyzer include corrected source table delta sorting and virtualization. The unstable_ prefix has been removed from functions like navigation() and prefetch(), and lazy dynamic imports for server-side rendering (SSR) have been implemented. Documentation has been updated to include typo fixes and specifics on using prefetch={true} for links to ISR pages with Cache Components. Lastly, there are enhancements to the AI upgrade process, prompting user interactions for permissions, model selection, and upgrade initiation. <div>
+<h3>Misc Changes</h3>
+<ul>
+<li>[test] Stabilize middleware revalidation test: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99378">#99378</a></li>
+<li>test: scope loader build dependency update to Turbopack: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99380">#99380</a></li>
+<li>Remove CLAUDE.md symlinks in favor of AGENTS.md: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98910">#98910</a></li>
+<li>Align ExecuteContext task accessor names: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99258">#99258</a></li>
+<li>[test] Stabilize responsive dev overlay header layout test: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99376">#99376</a></li>
+<li>Turbopack: skip trimmed side-effect imports in SideEffectsModule: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95781">#95781</a></li>
+<li>Turbopack: preserve import <code>with</code> clauses when direct-binding: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95529">#95529</a></li>
+<li>Turbopack: fix split_module correctness for app-router: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95522">#95522</a></li>
+<li>Turbopack: fix empty tree-shake chunks desyncing part ids (<a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/issues/93424">#93424</a>): <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95516">#95516</a></li>
+<li>Fix custom cache handlers missing on initial requests: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99372">#99372</a></li>
+<li>Allow Draft Mode on unlisted closed routes in adapter deployments: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99370">#99370</a></li>
+<li>Fix bundle analyzer source table delta sorting: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99369">#99369</a></li>
+<li>test: fix stale snapshots after <code>unstable_{prefetch,navigation}</code> rename: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99371">#99371</a></li>
+<li>Virtualize bundle analyzer source table: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98539">#98539</a></li>
+<li>[PPF] Remove leftover debug log in router: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99365">#99365</a></li>
+<li>Remove unstable_ prefix from navigation() and prefetch(): <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99241">#99241</a></li>
+<li>Lazy dynamic imports for ssr: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98836">#98836</a></li>
+<li>Refine the Security Insight upgrade prompt: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99354">#99354</a></li>
+<li>[PPF] <code>ensureStatic = "navigation"</code>: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99171">#99171</a></li>
+<li>docs: use prefetch={true} for links to ISR pages with Cache Components: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99261">#99261</a></li>
+<li>Add agent feedback to create-next-app defaults: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99119">#99119</a></li>
+<li>Make next-dev-loop browser headless by default: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98318">#98318</a></li>
+<li>[test] Extend timeout for tests barely below it: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99305">#99305</a></li>
+<li>docs: typo fixes: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99350">#99350</a></li>
+<li>[ai-upgrade] ESC to move back during prompt: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99319">#99319</a></li>
+<li>[ai-upgrade] Ask user to choose permission: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99291">#99291</a></li>
+<li>[ai-upgrade] Ask user to choose model and effort: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99235">#99235</a></li>
+<li>[ai-upgrade] Ask user whether to start upgrade in worktree: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99232">#99232</a></li>
+</ul>
+<h3>Credits</h3>
+<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/unstubbable">@unstubbable</a>, <a class="user-mention notranslate" href="https://github.com/jimmyhmiller">@jimmyhmiller</a>, <a class="user-mention notranslate" href="https://github.com/jarrensj">@jarrensj</a>, <a class="user-mention notranslate" href="https://github.com/lukesandberg">@lukesandberg</a>, <a class="user-mention notranslate" href="https://github.com/wbinnssmith">@wbinnssmith</a>, <a class="user-mention notranslate" href="https://github.com/lubieowoce">@lubieowoce</a>, <a class="user-mention notranslate" href="https://github.com/icyJoseph">@icyJoseph</a>, <a class="user-mention notranslate" href="https://github.com/aurorascharff">@aurorascharff</a>, <a class="user-mention notranslate" href="https://github.com/eps1lon">@eps1lon</a>, and <a class="user-mention notranslate" href="https://github.com/devjiwonchoi">@devjiwonchoi</a> for helping!</p>
+]]></content:encoded>
+
+<pubDate>2026-09-28T23:47:18Z</pubDate>
+</item>
+<item>
+<title>v12.1.1</title>
+<link>https://github.com/nestjs/nest/releases/tag/v12.1.1</link>
+<guid>https://github.com/nestjs/nest/releases/tag/v12.1.1</guid>
+<content:encoded><![CDATA[
+
+<h2>v12.1.1 (2026-09-28)</h2>
+<h4>Bug fixes</h4>
+<ul>
+<li><code>common</code>, <code>core</code>, <code>microservices</code>, <code>testing</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17893">#17893</a> fix(common): logger bugs in json output, level changes, fatal and buffered logs (<a href="https://github.com/kamilmysliwiec">@kamilmysliwiec</a>)</li>
+</ul>
+</li>
+<li><code>microservices</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17891">#17891</a> fix(microservices): let the mqtt client retry after a failed connect (<a href="https://github.com/hktitof">@hktitof</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17888">#17888</a> fix(microservices): keep tcp event listeners across reconnects (<a href="https://github.com/KAPUIST">@KAPUIST</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17887">#17887</a> fix(microservices): ignore events from a replaced tcp client socket (<a href="https://github.com/KAPUIST">@KAPUIST</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17878">#17878</a> fix(microservices): keep a newer nats connection when a stale one fails (<a href="https://github.com/hktitof">@hktitof</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17869">#17869</a> fix(microservices): keep a newer kafka connection when a stale one fails (<a href="https://github.com/kamilmysliwiec">@kamilmysliwiec</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17865">#17865</a> fix(microservices): let the rmq client retry after a failed connect (<a href="https://github.com/hktitof">@hktitof</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17866">#17866</a> fix(microservices): reply on the request channel when redis wildcards are enabled (<a href="https://github.com/fadiroot">@fadiroot</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17861">#17861</a> fix(microservices): recover the nats client after it gives up reconnecting (<a href="https://github.com/xia-chao">@xia-chao</a>)</li>
+</ul>
+</li>
+<li><code>common</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17884">#17884</a> fix(common): preserve string enum values matching numeric member names (<a href="https://github.com/KAPUIST">@KAPUIST</a>)</li>
+</ul>
+</li>
+<li><code>core</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17871">#17871</a> fix(core): detect circular dependencies across more than two providers (<a href="https://github.com/erezcor">@erezcor</a>)</li>
+</ul>
+</li>
+<li><code>platform-fastify</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17867">#17867</a> fix(fastify): treat a JSON content type with parameters as JSON in reply() (<a href="https://github.com/fadiroot">@fadiroot</a>)</li>
+</ul>
+</li>
+<li><code>core</code>, <code>testing</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17860">#17860</a> fix(core): honor class and factory overrides of value providers (<a href="https://github.com/lehafari">@lehafari</a>)</li>
+</ul>
+</li>
+</ul>
+<h4>Enhancements</h4>
+<ul>
+<li><code>common</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17876">#17876</a> fix(common): reject non-numeric items in ParseArrayPipe with items Number (<a href="https://github.com/SulimanAbdulrazzaq">@SulimanAbdulrazzaq</a>)</li>
+</ul>
+</li>
+<li><code>microservices</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17863">#17863</a> feat(microservices): export deserializers from the package root (<a href="https://github.com/lazerg">@lazerg</a>)</li>
+</ul>
+</li>
+</ul>
+<h4>Committers: 13</h4>
+<ul>
+<li>Abdellatif Anaflous (<a href="https://github.com/hktitof">@hktitof</a>)</li>
+<li>Alejandro (<a href="https://github.com/lehafari">@lehafari</a>)</li>
+<li>Daniel Pinto (<a href="https://github.com/Cayan">@Cayan</a>)</li>
+<li>Dharmik Sondagar (<a href="https://github.com/DharmikSondagar">@DharmikSondagar</a>)</li>
+<li>Kamil Mysliwiec (<a href="https://github.com/kamilmysliwiec">@kamilmysliwiec</a>)</li>
+<li>Lazizbek Ergashev (<a href="https://github.com/lazerg">@lazerg</a>)</li>
+<li>Luke Son (<a href="https://github.com/KAPUIST">@KAPUIST</a>)</li>
+<li>Micael Levi L. Cavalcante (<a href="https://github.com/micalevisk">@micalevisk</a>)</li>
+<li>Roman Khegay (<a href="https://github.com/thekhegay">@thekhegay</a>)</li>
+<li>Suliman Abdulrazzaq (<a href="https://github.com/SulimanAbdulrazzaq">@SulimanAbdulrazzaq</a>)</li>
+<li>Xia Chao (<a href="https://github.com/xia-chao">@xia-chao</a>)</li>
+<li><a href="https://github.com/erezcor">@erezcor</a></li>
+<li>fadi romdhan (<a href="https://github.com/fadiroot">@fadiroot</a>)</li>
+</ul>
+]]></content:encoded>
+
+<pubDate>2026-09-28T09:06:52Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.13</title>
+<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.13</link>
+<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.13</guid>
+<content:encoded><![CDATA[
+
+<h1>v8.0.0-rc.13</h1>
+<p>This release brings MongoDB closer to Postgres: a Mongo schema can declare <code>Int64</code>, <code>Decimal128</code>, <code>Binary</code>, <code>Json</code> and <code>Bson</code> fields and automatic timestamps, and a Prisma 6 MongoDB project can use its existing <code>schema.prisma</code> as the contract source. The ORM client can order by a related row's column, by a relation count, and with explicit null placement. The new <code>prisma contract print</code> command writes any configured contract as Prisma 8 PSL. A TypeScript contract now encodes every literal default through the column's codec, and the generated defaults in <code>contract.json</code> name their target with new keys, so re-emit your contract after upgrading.</p>
+<p>The upgrade recipes for this hop: the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">app recipe</a> and the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/extension/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">extension recipe</a>. Each breaking change below names the change id to look for in them.</p>
+<h2>Breaking changes</h2>
+<ul>
+<li>
+<p><strong>Generated defaults in the contract name an <code>entry</code> and a <code>field</code>.</strong> Each entry under <code>execution.mutations.defaults</code> in <code>contract.json</code> used to name its target as <code>ref: { namespace, table, column }</code>. It now uses <code>ref: { namespace, entry, field }</code> with the same values. Run <code>prisma contract emit</code> after upgrading; the runtime refuses a contract that still has the old keys. Contract snapshots under <code>migrations/snapshots/</code> need the same rename by hand. The <code>executionHash</code> changes, but no migration or <code>db sign</code> is needed. See <code>execution-ref-entry-field</code> in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">app recipe</a>. (<a href="https://github.com/prisma/orm/pull/30399">#30399</a>)</p>
+<p>Before:</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto"><pre>{ <span class="pl-ent">"ref"</span>: { <span class="pl-ent">"namespace"</span>: <span class="pl-s"><span class="pl-pds">"</span>public<span class="pl-pds">"</span></span>, <span class="pl-ent">"table"</span>: <span class="pl-s"><span class="pl-pds">"</span>user<span class="pl-pds">"</span></span>, <span class="pl-ent">"column"</span>: <span class="pl-s"><span class="pl-pds">"</span>updated_at<span class="pl-pds">"</span></span> }, <span class="pl-ent">"onUpdate"</span>: { <span class="pl-ent">"kind"</span>: <span class="pl-s"><span class="pl-pds">"</span>generator<span class="pl-pds">"</span></span>, <span class="pl-ent">"id"</span>: <span class="pl-s"><span class="pl-pds">"</span>timestampNow<span class="pl-pds">"</span></span> } }</pre></div>
+<p>After:</p>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto"><pre>{ <span class="pl-ent">"ref"</span>: { <span class="pl-ent">"entry"</span>: <span class="pl-s"><span class="pl-pds">"</span>user<span class="pl-pds">"</span></span>, <span class="pl-ent">"field"</span>: <span class="pl-s"><span class="pl-pds">"</span>updated_at<span class="pl-pds">"</span></span>, <span class="pl-ent">"namespace"</span>: <span class="pl-s"><span class="pl-pds">"</span>public<span class="pl-pds">"</span></span> }, <span class="pl-ent">"onUpdate"</span>: { <span class="pl-ent">"kind"</span>: <span class="pl-s"><span class="pl-pds">"</span>generator<span class="pl-pds">"</span></span>, <span class="pl-ent">"id"</span>: <span class="pl-s"><span class="pl-pds">"</span>timestampNow<span class="pl-pds">"</span></span> } }</pre></div>
+</li>
+<li>
+<p><strong>A literal <code>.default(value)</code> in a TypeScript contract must be the codec's input type.</strong> <code>defineContract</code> from the Postgres and SQLite packages now encodes every literal default through the column's codec. A value of the wrong type is a type error for fields built inside the <code>defineContract</code> factory, and a value the codec refuses fails the build with <code>CONTRACT.DEFAULT_INVALID</code>. Pass a value of the codec's input type, or choose the field preset whose codec takes the value you have. <code>bigint</code> and bytes defaults are stored in a different form, which changes the storage hash of a contract that has one. PSL contracts, <code>now()</code>, <code>autoincrement()</code> and <code>sql</code> tagged defaults are not affected. See <code>ts-defaults-encoded-by-codec</code> in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">app recipe</a>. (<a href="https://github.com/prisma/orm/pull/30433">#30433</a>)</p>
+<p>Before:</p>
+<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-s1">createdAt</span>: <span class="pl-s1">field</span><span class="pl-kos">.</span><span class="pl-en">dateTime</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">default</span><span class="pl-kos">(</span><span class="pl-s">'2024-01-01T00:00:00Z'</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+<span class="pl-s1">views</span>: <span class="pl-s1">field</span><span class="pl-kos">.</span><span class="pl-en">bigint</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">default</span><span class="pl-kos">(</span><span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">,</span></pre></div>
+<p>After:</p>
+<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-s1">createdAt</span>: <span class="pl-s1">field</span><span class="pl-kos">.</span><span class="pl-c1">temporal</span><span class="pl-kos">.</span><span class="pl-en">timestamptzString</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">default</span><span class="pl-kos">(</span><span class="pl-s">'2024-01-01T00:00:00Z'</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
+<span class="pl-s1">views</span>: <span class="pl-s1">field</span><span class="pl-kos">.</span><span class="pl-en">bigint</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">default</span><span class="pl-kos">(</span><span class="pl-c1">1n</span><span class="pl-kos">)</span><span class="pl-kos">,</span></pre></div>
+</li>
+<li>
+<p><strong><code>cursor()</code> refuses an order that is not a plain column.</strong> <code>cursor()</code> throws <code>ORM.ARGUMENT_INVALID</code> when an active <code>orderBy</code> item is an extension-operation result (such as a vector distance), a relation field, a relation count, or an order with null placement. Before, an extension-operation order was left out of the keyset without an error, which returned wrong pages. Paginate such queries with <code>limit()</code> and <code>offset()</code>, or order by plain columns only. <code>distinctOn()</code> throws the same error when one of its leading orders is not a plain column. See <code>cursor-rejects-expression-orders</code> in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">app recipe</a>. (<a href="https://github.com/prisma/orm/pull/30402">#30402</a>)</p>
+</li>
+<li>
+<p><strong>A hand-written contract source in <code>prisma.config.ts</code> must declare its <code>format</code>.</strong> A config that builds <code>contract.source</code> itself, as an object with a <code>load</code> function, must give it <code>format: 'psl'</code> or <code>format: 'typescript'</code>. Without it, every command that reads the config fails with <code>CONFIG.VALIDATION_FAILED</code>. Sources made by <code>defineConfig</code>, <code>prisma7Schema()</code>, <code>prismaContract()</code> and the TypeScript contract helpers already declare one. See <code>config-contract-source-requires-format</code> in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">app recipe</a>. (<a href="https://github.com/prisma/orm/pull/30315">#30315</a>)</p>
+</li>
+<li>
+<p><strong><code>prisma contract format</code> formats a Prisma 7 schema, and policy expressions decode every JSON escape.</strong> A project whose contract is <code>prisma7Schema(...)</code> used to be skipped by <code>prisma contract format</code>; the command now formats that file with the Prisma 8 formatter. Do not run it on a schema that must keep Prisma 7's formatting. A <code>using</code> or <code>withCheck</code> expression in a PSL <code>policy_*</code> block now also decodes <code>\t</code>, <code>\b</code>, <code>\f</code>, <code>\/</code> and <code>\uXXXX</code>; write the backslash twice if you mean the backslash and the letter. See <code>contract-format-formats-prisma7-schema</code> and <code>policy-expression-json-escapes</code> in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">app recipe</a>. (<a href="https://github.com/prisma/orm/pull/30315">#30315</a>)</p>
+</li>
+<li>
+<p><strong>The Mongo codec subpaths moved from the adapter to the target.</strong> The <code>adapter/codec-types</code>, <code>adapter/codecs</code>, <code>adapter/codec-ids</code> and <code>adapter/data-types</code> subpaths of <code>@prisma/orm-mongo</code> and <code>@prisma/orm-target-mongo</code> are now <code>target/...</code>. An emitted Mongo <code>contract.d.ts</code> imports <code>adapter/codec-types</code>, so re-emit the contract and rewrite the import in each <code>contract.d.ts</code> under <code>migrations/snapshots/</code>. <code>createMongoRunnerDeps(...)</code> is removed, <code>MongoRunnerDependencies</code> and <code>MarkerOperations</code> moved to <code>@prisma/orm-mongo/family/control-adapter</code>, and a Mongo family instance must be created from a control stack that includes the adapter. The contract JSON and every hash stay the same. See the <code>mongo-*</code> entries in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">app recipe</a> and the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/extension/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">extension recipe</a>. (<a href="https://github.com/prisma/orm/pull/30396">#30396</a>)</p>
+<p>Before:</p>
+<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-k">import</span> <span class="pl-k">type</span> <span class="pl-kos">{</span> <span class="pl-v">CodecTypes</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'@prisma/orm-mongo/adapter/codec-types'</span><span class="pl-kos">;</span></pre></div>
+<p>After:</p>
+<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-k">import</span> <span class="pl-k">type</span> <span class="pl-kos">{</span> <span class="pl-v">CodecTypes</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'@prisma/orm-mongo/target/codec-types'</span><span class="pl-kos">;</span></pre></div>
+</li>
+<li>
+<p><strong>A Mongo <code>Json</code> field holds only JSON values, and fields of a variant model go through their codecs.</strong> A <code>Json</code> field now refuses a <code>Date</code>, an <code>ObjectId</code>, a <code>Decimal128</code>, a <code>Binary</code> or any other value that is not JSON, at any depth: a read fails with <code>RUNTIME.DECODE_FAILED</code> and a write fails with <code>RUNTIME.ENCODE_FAILED</code>. Change the type of a field that holds such values to <code>Bson</code>. A Mongo contract written in PSL with a <code>Json</code> field gets a new collection validator and a new storage hash, so run <code>prisma contract emit</code> and then <code>prisma db update</code>, or plan a migration. Through <code>.variant(...)</code>, a field declared only on the variant model is now written and read through its codec, so remove any code that converted such values by hand. See <code>mongo-json-field-semantics</code> and <code>mongo-variant-field-codecs</code> in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">app recipe</a>, and <code>mongo-bson-codec-added</code> in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/extension/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">extension recipe</a>. (<a href="https://github.com/prisma/orm/pull/30439">#30439</a>)</p>
+<p>Before:</p>
+<div class="highlight highlight-source-prisma notranslate position-relative overflow-auto"><pre><span class="pl-s1"><span class="pl-k">model</span> <span class="pl-en">Event</span> {</span>
+<span class="pl-s1">  <span class="pl-smi">id</span>      <span class="pl-c1">ObjectId</span> <span class="pl-s1"><span class="pl-en">@id</span></span> <span class="pl-s1"><span class="pl-en">@map</span>(<span class="pl-s">"</span><span class="pl-s">_id</span><span class="pl-s">"</span>)</span></span>
+<span class="pl-s1">  <span class="pl-smi">payload</span> <span class="pl-c1">Json</span></span>
+<span class="pl-s1">}</span></pre></div>
+<p>After, when <code>payload</code> holds values that are not JSON:</p>
+<div class="highlight highlight-source-prisma notranslate position-relative overflow-auto"><pre><span class="pl-s1"><span class="pl-k">model</span> <span class="pl-en">Event</span> {</span>
+<span class="pl-s1">  <span class="pl-smi">id</span>      <span class="pl-c1">ObjectId</span> <span class="pl-s1"><span class="pl-en">@id</span></span> <span class="pl-s1"><span class="pl-en">@map</span>(<span class="pl-s">"</span><span class="pl-s">_id</span><span class="pl-s">"</span>)</span></span>
+<span class="pl-s1">  <span class="pl-smi">payload</span> <span class="pl-c1">Bson</span></span>
+<span class="pl-s1">}</span></pre></div>
+</li>
+<li>
+<p><strong>Four Mongo PSL scalar names are deprecated.</strong> A Mongo schema now names each scalar after the BSON type it stores: <code>Int</code> becomes <code>Int32</code>, <code>Float</code> becomes <code>Double</code>, <code>Boolean</code> becomes <code>Bool</code> and <code>DateTime</code> becomes <code>Date</code>. The old names still work and produce the same contract, but each use reports a <code>PSL_DEPRECATED_SCALAR_NAME</code> warning, and a later release removes them. Postgres and SQLite schemas do not change. See <code>mongo-psl-scalar-names</code> in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">app recipe</a>. (<a href="https://github.com/prisma/orm/pull/30396">#30396</a>)</p>
+<p>Before:</p>
+<div class="highlight highlight-source-prisma notranslate position-relative overflow-auto"><pre><span class="pl-s1"><span class="pl-k">model</span> <span class="pl-en">Post</span> {</span>
+<span class="pl-s1">  <span class="pl-smi">id</span>        <span class="pl-c1">ObjectId</span> <span class="pl-s1"><span class="pl-en">@id</span></span> <span class="pl-s1"><span class="pl-en">@map</span>(<span class="pl-s">"</span><span class="pl-s">_id</span><span class="pl-s">"</span>)</span></span>
+<span class="pl-s1">  <span class="pl-smi">views</span>     <span class="pl-c1">Int</span></span>
+<span class="pl-s1">  <span class="pl-smi">rating</span>    <span class="pl-c1">Float</span><span class="pl-k">?</span></span>
+<span class="pl-s1">  <span class="pl-smi">published</span> <span class="pl-c1">Boolean</span></span>
+<span class="pl-s1">  <span class="pl-smi">createdAt</span> <span class="pl-c1">DateTime</span></span>
+<span class="pl-s1">}</span></pre></div>
+<p>After:</p>
+<div class="highlight highlight-source-prisma notranslate position-relative overflow-auto"><pre><span class="pl-s1"><span class="pl-k">model</span> <span class="pl-en">Post</span> {</span>
+<span class="pl-s1">  <span class="pl-smi">id</span>        <span class="pl-c1">ObjectId</span> <span class="pl-s1"><span class="pl-en">@id</span></span> <span class="pl-s1"><span class="pl-en">@map</span>(<span class="pl-s">"</span><span class="pl-s">_id</span><span class="pl-s">"</span>)</span></span>
+<span class="pl-s1">  <span class="pl-smi">views</span>     <span class="pl-c1">Int32</span></span>
+<span class="pl-s1">  <span class="pl-smi">rating</span>    <span class="pl-c1">Double</span><span class="pl-k">?</span></span>
+<span class="pl-s1">  <span class="pl-smi">published</span> <span class="pl-c1">Bool</span></span>
+<span class="pl-s1">  <span class="pl-smi">createdAt</span> <span class="pl-c1">Date</span></span>
+<span class="pl-s1">}</span></pre></div>
+</li>
+<li>
+<p><strong>Extension authors: mutation defaults and temporal presets moved to the framework.</strong> <code>GeneratorStability</code>, <code>RuntimeMutationDefaultGenerator</code>, <code>MutationDefaultsOptions</code>, <code>AppliedMutationDefault</code> and <code>MutationDefaultsOp</code> are now exported from <code>@prisma/orm-framework/components/runtime</code>. <code>applyMutationDefaults</code> takes <code>entry</code> instead of <code>table</code>, and each applied default names its <code>field</code> instead of its <code>column</code>. <code>TIMESTAMP_NOW_GENERATOR_ID</code>, <code>temporalAuthoringPresets</code> and <code>temporalCodecPreset</code> moved to <code>@prisma/orm-framework/components/authoring</code>, and <code>timestampNowControlDescriptor</code> moved to <code>@prisma/orm-framework/components/control</code>. <code>MongoExecutionContext</code> has a new required <code>applyMutationDefaults</code> method. See the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/extension/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">extension recipe</a>. (<a href="https://github.com/prisma/orm/pull/30406">#30406</a>, <a href="https://github.com/prisma/orm/pull/30403">#30403</a>)</p>
+<p>Before:</p>
+<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-k">const</span> <span class="pl-s1">applied</span> <span class="pl-c1">=</span> <span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-en">applyMutationDefaults</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">op</span>: <span class="pl-s">'create'</span><span class="pl-kos">,</span> <span class="pl-c1">table</span>: <span class="pl-s1">tableName</span><span class="pl-kos">,</span> namespace<span class="pl-kos">,</span> values <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">const</span> <span class="pl-s1">def</span> <span class="pl-k">of</span> <span class="pl-s1">applied</span><span class="pl-kos">)</span> <span class="pl-s1">row</span><span class="pl-kos">[</span><span class="pl-s1">def</span><span class="pl-kos">.</span><span class="pl-c1">column</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s1">def</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">;</span></pre></div>
+<p>After:</p>
+<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-k">const</span> <span class="pl-s1">applied</span> <span class="pl-c1">=</span> <span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-en">applyMutationDefaults</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">op</span>: <span class="pl-s">'create'</span><span class="pl-kos">,</span> <span class="pl-c1">entry</span>: <span class="pl-s1">tableName</span><span class="pl-kos">,</span> namespace<span class="pl-kos">,</span> values <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
+<span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">const</span> <span class="pl-s1">def</span> <span class="pl-k">of</span> <span class="pl-s1">applied</span><span class="pl-kos">)</span> <span class="pl-s1">row</span><span class="pl-kos">[</span><span class="pl-s1">def</span><span class="pl-kos">.</span><span class="pl-c1">field</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s1">def</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">;</span></pre></div>
+</li>
+<li>
+<p><strong>Extension authors: <code>OrderByItem</code> carries a null placement, and <code>IncludeExpr</code> carries key column lists.</strong> The <code>OrderByItem</code> constructor takes a required third argument, <code>nulls</code>, and a renderer that writes <code>ORDER BY</code> itself must write <code>NULLS FIRST</code> or <code>NULLS LAST</code> after the direction. <code>IncludeExpr.localColumn</code> and <code>IncludeExpr.targetColumn</code> are now the arrays <code>localColumns</code> and <code>targetColumns</code>, paired by index. See <code>order-by-item-nulls</code> and <code>include-expr-join-column-lists</code> in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/extension/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">extension recipe</a>. (<a href="https://github.com/prisma/orm/pull/30402">#30402</a>, <a href="https://github.com/prisma/orm/pull/30107">#30107</a>)</p>
+</li>
+</ul>
+<h2>Features</h2>
+<ul>
+<li><strong>Order by a related row's column, a relation count, and null placement.</strong> Inside <code>orderBy</code>, a to-one relation offers the related model's columns (<code>post.author.name.asc()</code>), a to-many relation offers <code>count()</code> with an optional filter (<code>user.posts.count().desc()</code>), and every <code>asc()</code> and <code>desc()</code> accepts <code>{ nulls: 'first' | 'last' }</code>. (<a href="https://github.com/prisma/orm/pull/30402">#30402</a>)</li>
+<li><strong><code>prisma contract print</code> writes the configured contract as Prisma 8 PSL.</strong> The command loads whatever <code>contract</code> names in the config (a Prisma 7 schema, a TypeScript contract or a PSL contract) and prints it as a Prisma 8 PSL file that emits the same contract, including its hashes. It refuses, by name, any part of the contract that PSL cannot express. Use <code>--output &lt;path&gt;</code> to write a file. (<a href="https://github.com/prisma/orm/pull/30315">#30315</a>)</li>
+<li><strong>A Prisma 6 MongoDB project can use its existing <code>schema.prisma</code> as the contract source.</strong> Set <code>contract: prisma6Schema('prisma/schema.prisma')</code> with <code>prisma6Schema</code> from <code>@prisma/orm-mongo/config</code>. Anything the reader cannot express is reported as an error with a <code>PSL.PRISMA6_MONGO_*</code> code. (<a href="https://github.com/prisma/orm/pull/30405">#30405</a>)</li>
+<li><strong>Mongo schemas can declare <code>Int64</code>, <code>Decimal128</code>, <code>Binary</code>, <code>Json</code> and <code>Bson</code> fields.</strong> The ORM reads the first four as <code>bigint</code>, decimal text, <code>Uint8Array</code> and a JSON value. A <code>Bson</code> field holds any BSON value. The TypeScript helpers are <code>field.int64()</code>, <code>field.decimal128()</code>, <code>field.binary()</code>, <code>field.json()</code> and <code>field.bson()</code>. (<a href="https://github.com/prisma/orm/pull/30396">#30396</a>, <a href="https://github.com/prisma/orm/pull/30439">#30439</a>)</li>
+<li><strong>Mongo schemas can declare automatic timestamps.</strong> <code>temporal.createdAt()</code> and <code>temporal.updatedAt()</code> fill the field on create, and <code>temporal.updatedAt()</code> advances it on every update that writes something. (<a href="https://github.com/prisma/orm/pull/30403">#30403</a>)</li>
+<li><strong><code>prisma contract infer</code> prints Postgres array defaults as literal lists.</strong> A default such as <code>'{a,b}'::text[]</code> on a text, varchar, enum, date or boolean array column now prints as <code>@default(["a", "b"])</code> instead of a raw <code>sql</code> expression. (<a href="https://github.com/prisma/orm/pull/30436">#30436</a>)</li>
+</ul>
+<h2>Fixes</h2>
+<ul>
+<li>An ORM <code>include()</code> across a composite foreign key matches on every key column. It used to match on the first column only, which returned related rows that belonged to other parents. Nested writes and multi-table variants use the whole key too. (<a href="https://github.com/prisma/orm/pull/30107">#30107</a>)</li>
+<li>A Mongo ORM query that combines <code>select()</code> with <code>include()</code> returns the included relations. (<a href="https://github.com/prisma/orm/pull/30170">#30170</a>)</li>
+<li><code>mongo()</code> accepts a connection string that lists several hosts, and the CLI masks the credentials of such a string in its output. (<a href="https://github.com/prisma/orm/pull/30354">#30354</a>)</li>
+<li>A Postgres migration that removes a column and a row-level security policy that references it drops the policy first, so the migration applies. (<a href="https://github.com/prisma/orm/pull/30232">#30232</a>)</li>
+<li><code>limit()</code> and <code>offset()</code> refuse a value that is not a non-negative integer, such as <code>NaN</code>, with <code>RUNTIME.AST_INVALID</code>, instead of writing it into the SQL. (<a href="https://github.com/prisma/orm/pull/30133">#30133</a>)</li>
+<li>The Postgres warning for an identifier that is too long measures the name in bytes, as Postgres does, so it now fires for a long name written in non-ASCII characters. (<a href="https://github.com/prisma/orm/pull/30127">#30127</a>)</li>
+<li>A number inside a <code>json[]</code> or <code>jsonb[]</code> array default, such as <code>'{1,true}'::jsonb[]</code>, is read as a JSON number, not as text. (<a href="https://github.com/prisma/orm/pull/30455">#30455</a>)</li>
+<li><code>createAll(rows, { onConflict: 'skip' })</code> on a variant stored in its own table reports an error that names the unsupported option, and the help for <code>prisma migration new --from</code> names the correct default, the <code>db</code> ref. (<a href="https://github.com/prisma/orm/pull/30427">#30427</a>)</li>
+</ul>
+<h2>New contributors</h2>
+<ul>
+<li><a href="https://github.com/rajat12826">@rajat12826</a> made their first contribution in <a href="https://github.com/prisma/orm/pull/30170">#30170</a></li>
+<li><a href="https://github.com/xia-chao">@xia-chao</a> made their first contribution in <a href="https://github.com/prisma/orm/pull/30133">#30133</a></li>
+<li><a href="https://github.com/MahathirMohammadShuvo">@MahathirMohammadShuvo</a> made their first contribution in <a href="https://github.com/prisma/orm/pull/30127">#30127</a></li>
+<li><a href="https://github.com/Punisheroot">@Punisheroot</a> made their first contribution in <a href="https://github.com/prisma/orm/pull/30232">#30232</a></li>
+</ul>
+]]></content:encoded>
+
+<pubDate>2026-09-28T10:58:56Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.13-dev.2: Generic block values bind the shared typed expression grammar (#30381)</title>
+<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.13-dev.2</link>
+<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.13-dev.2</guid>
+<content:encoded><![CDATA[
+
+<h2>What this PR does</h2>
+<p>Generic-block values now bind the same typed expression grammar<br />
+attributes use, and the legacy <code>PslBlockParam</code> DSL is retired in the<br />
+same change that migrates every consumer. Block authors declare values<br />
+with <code>fixedBlock({ parameters })</code> or <code>entriesBlock({ value, allowBare })</code>, get inferred outputs through <code>InferBlock</code>, and lowering receives a<br />
+typed envelope (<code>ParsedPslExtensionBlock&lt;Values&gt;</code>) — never raw parameter<br />
+text.</p>
+<h2>The design in five decisions</h2>
+<ul>
+<li><strong>Source and semantics are separate products.</strong> The print block keeps<br />
+ordered source entries <code>{ expression?, span }</code> strictly for rendering;<br />
+validated values live only in the typed envelope. The printer renders<br />
+provenance verbatim and never executes spec or reference factories;<br />
+lowering never reads print text.</li>
+<li><strong>Collect everything, then interpret.</strong> <code>buildSymbolTable</code> collects<br />
+all declarations first, then binds each registered block's spec factory<br />
+against the complete table and publishes only successful envelopes in a<br />
+symbol-keyed <code>parsedBlocks</code> map. Forward references work, invalid blocks<br />
+keep their syntax for recovery/tooling but never lower, and every<br />
+value/attribute failure is reported exactly once at its original span.</li>
+<li><strong>Core stays parser-blind.</strong> <code>AuthoringPslBlockDescriptor</code> carries one<br />
+erased callable <code>spec</code> field; a single parser-owned boundary<br />
+(<code>blockSpecFactoryOf</code>) restores the type, mirroring the existing<br />
+attribute-factory erasure.</li>
+<li><strong>Policies file at their selected target.</strong> SQL core gains an optional<br />
+<code>pslPlacement</code> hook (<code>SqlPslEntityPlacementOutput</code>); PostgreSQL<br />
+registers it on policies so a policy whose target resolves through<br />
+top-level fallback lands in the target's physical namespace, with<br />
+destination-keyed collision checks. Other entities keep lexical<br />
+placement.</li>
+<li><strong>Family and native enums keep their distinct contracts.</strong> Family<br />
+enums accept bare members and native JSON through the new shared<br />
+<code>jsonValue()</code> rule with codecs deciding meaning (decode, post-decode<br />
+uniqueness, empty/unknown-codec checks unchanged); native enums remain<br />
+explicit strings. Prisma 7 constructs trusted envelopes directly and<br />
+owns duplicate-key reporting for its dialect.</li>
+</ul>
+<p>Supported policy predicates are <code>optional(str())</code> — previously accepted<br />
+omissions and inferred documents stay valid; unsupported predicate keys<br />
+are rejected as unknown fixed keys at parse time.</p>
+<h2>What was removed</h2>
+<p><code>PslBlockParam*</code>, the five-way <code>PslExtensionBlockParam*</code> union,<br />
+<code>variadicParameters</code>, both legacy validators<br />
+(<code>psl-extension-block-validator.ts</code>,<br />
+<code>validateExtensionBlockFromSymbol</code>), the printer's descriptor-kind<br />
+rendering and codec reparse, and Postgres's raw-reading helpers<br />
+(<code>readValueParam</code>, <code>readListRefParams</code>, <code>unwrapQuotedString</code>,<br />
+native-enum <code>JSON.parse</code>). A tests-inclusive inventory (grep evidence in<br />
+the branch history) shows zero survivals and no compatibility exports.</p>
+<h2>Editor behavior</h2>
+<p>Block-key completion and attribute signatures read the same bound specs<br />
+validation uses, via metadata only (spies pin that inspection never<br />
+parses or resolves). Registered block value/reference errors now surface<br />
+in the parse-plus-symbol pipeline; family semantics (codecs, <code>@@rls</code>,<br />
+placement, collection uniqueness) keep their owners. One deliberate<br />
+regression: declaration snippets no longer pre-fill key lines (no symbol<br />
+exists to bind a spec before the block is authored); keys complete<br />
+inside the block immediately after insertion.</p>
+<h2>Docs</h2>
+<p>ADR 255 records the shipped design; ADR 126's block-parameter sections<br />
+carry supersession notes; ADRs 231/249/246 got minimal factual<br />
+corrections; extension upgrade instructions live under<br />
+<code>upgrade-instructions/pending/typed-block-value-specs/</code>.</p>
+<h2>Verification</h2>
+<p>Full workspace build, root typecheck 169/169, <code>lint:deps</code>,<br />
+<code>test:packages</code> (1334 files / 18001 tests), <code>test:integration</code> (4254<br />
+tests), <code>test:e2e</code> (123 tests), and <code>pnpm fixtures:check</code> with zero<br />
+churn — emitted contracts and generated types are byte-equivalent.<br />
+Inference round-trips parse their own output through the real pipeline<br />
+to equal IR. Manual QA covered extension-author ergonomics,<br />
+schema-author diagnostics, and the new-block editor flow.</p>
+<p>Two pre-existing issues surfaced during the aggregate gates and are<br />
+reported separately, not addressed here: a missing turbo edge between<br />
+<code>integration-tests#typecheck</code> and <code>@prisma/orm-postgres:build</code><br />
+(nested-manifest dependency invisible to the graph), and a parallel-run<br />
+flake in the CLI migration-snapshot suite.</p>
+<p>🤖 Generated with <a href="https://claude.com/claude-code" rel="nofollow">Claude Code</a></p>
+
+<h2>Summary by CodeRabbit</h2>
+<ul>
+<li>
+<p><strong>New Features</strong></p>
+</li>
+<li>
+<p>Added typed specifications for top-level PSL blocks, supporting fixed<br />
+keys and arbitrary entries.</p>
+</li>
+<li>
+<p>Added support for native JSON literals, including nested arrays and<br />
+objects.</p>
+<ul>
+<li>Added namespace-aware placement for generated extension entities.</li>
+</ul>
+</li>
+<li>
+<p>Improved block-key completion based on each block’s specification;<br />
+arbitrary-entry blocks do not offer fixed-key suggestions.</p>
+<ul>
+<li>Enum members can now use bare names or JSON values.</li>
+</ul>
+</li>
+<li>
+<p><strong>Bug Fixes</strong></p>
+</li>
+<li>
+<p>Improved diagnostics for invalid, duplicate, missing, and unknown<br />
+block entries and attributes.</p>
+</li>
+<li>
+<p>Preserved authored entry order and expressions when printing PSL<br />
+blocks.</p>
+</li>
+<li>
+<p><strong>Documentation</strong></p>
+</li>
+<li>
+<p>Added architecture and upgrade guidance for typed block<br />
+specifications.</p>
+</li>
+</ul>
+
+<hr />
+<p>Signed-off-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a><br />
+Co-authored-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a><br />
+Co-authored-by: Claude Fable 5 <a href="mailto:noreply@anthropic.com">noreply@anthropic.com</a></p>
+]]></content:encoded>
+
+<pubDate>2026-09-28T17:06:44Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.13-dev.1: chore(release): bump to 8.0.0-rc.13 (#30457)</title>
+<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.13-dev.1</link>
+<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.13-dev.1</guid>
+<content:encoded><![CDATA[
+
+<h2>Release</h2>
+<p><code>8.0.0-rc.12</code> → <code>8.0.0-rc.13</code></p>
+<p>See<br />
+<a href="https://github.com/prisma/orm/blob/main/docs/oss/versioning.md"><code>docs/oss/versioning.md</code></a><br />
+for the versioning policy and the release procedure.</p>
+<h2>What to review</h2>
+<ul>
+<li><strong>Release notes:</strong><br />
+<a href="https://github.com/prisma/orm/blob/release/8.0.0-rc.13/docs/releases/v8.0.0-rc.13.md"><code>docs/releases/v8.0.0-rc.13.md</code></a>.<br />
+This file becomes the body of the GitHub Release. <code>CHANGELOG.md</code> carries<br />
+the same text.</li>
+<li><strong>Upgrade guides:</strong> the <a href="https://github.com/prisma/orm/blob/release/8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/instructions.md">app<br />
+guide</a><br />
+and the <a href="https://github.com/prisma/orm/blob/release/8.0.0-rc.13/skills/prisma-8/upgrading/extension/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/instructions.md">extension<br />
+guide</a>.<br />
+They are assembled from the 13 pending fragments, which moved unchanged<br />
+to <code>upgrade-instructions/releases/8.0.0-rc.12-to-8.0.0-rc.13/sources/</code>.</li>
+</ul>
+<h2>What changed</h2>
+<ul>
+<li>The <code>version</code> of every workspace <code>package.json</code>, and the <code>workspace:</code><br />
+specifiers that name it, in the package files and in <code>pnpm-lock.yaml</code>.</li>
+<li>The <code>library_version</code> stamp in <code>skills/prisma-8/SKILL.md</code>.</li>
+<li>The extension version stamp in the Supabase <code>contract.json</code> and<br />
+<code>contract.d.ts</code> artefacts.</li>
+<li>The upgrade guides, the archived fragments, the release notes and the<br />
+changelog.</li>
+</ul>
+<h2>How the guides were assembled</h2>
+<ul>
+<li>The fragments had no scripts or assets, so the guides have none.</li>
+<li>The <code>contract-print</code> fragments used plain headings. The guides give<br />
+each of their changes a heading that names its change id, as every other<br />
+entry has.</li>
+<li>The app guide ends with the <code>contract-artifacts-restamp</code> entry, as the<br />
+two previous app guides do.</li>
+<li>Fragments that declared <code>changes: []</code> add nothing to the guides.</li>
+</ul>
+<h2>Checks run locally</h2>
+<ul>
+<li><code>pnpm check:upgrade-coverage --mode publish --prev v8.0.0-rc.12 --head HEAD</code> passes.</li>
+<li><code>pnpm check:release-notes --mode pr</code> passes.</li>
+<li><code>pnpm fixtures:check</code> did not complete on my machine: the<br />
+<code>apps/telemetry-backend</code> emit step failed with <code>prisma: command not found</code>. It changed no tracked file. CI decides this one.</li>
+</ul>
+<h2>Merging this pull request ships the release</h2>
+<p>The push to <code>main</code> carries the new root <code>version</code>. The <code>Publish to npm</code><br />
+workflow detects the change, publishes <code>8.0.0-rc.13</code> under the dist-tag<br />
+<code>latest</code>, and creates a matching GitHub Release, marked as a<br />
+pre-release.</p>
+<h2>Docs site</h2>
+<p>The matching docs-site pull request is <a class="issue-link js-issue-link" href="https://github.com/prisma/web/pull/8336">prisma/web#8336</a>. It merges after<br />
+this release is published.</p>
+<p>🤖 Generated with <a href="https://claude.com/claude-code" rel="nofollow">Claude Code</a></p>
+
+<h2>Summary by CodeRabbit</h2>
+<ul>
+<li><strong>New Features</strong></li>
+<li>Added relation-based ordering, configurable null placement, contract<br />
+printing, Prisma 6 MongoDB schema support, MongoDB scalar types and<br />
+timestamps, and PostgreSQL array-default inference.</li>
+<li><strong>Bug Fixes</strong></li>
+<li>Improved handling of composite-key includes, MongoDB queries and<br />
+connections, migrations, argument validation, identifier-length<br />
+warnings, JSON-array defaults, variant conflicts, and CLI help.</li>
+<li><strong>Breaking Changes</strong></li>
+<li>Updated contract defaults, TypeScript default encoding, ordering and<br />
+cursor restrictions, configuration and formatting requirements, MongoDB<br />
+APIs and codecs, and extension APIs. Migration guidance is available for<br />
+upgrading to v8.0.0-rc.13.</li>
+</ul>
+
+<hr />
+<p>Signed-off-by: willbot <a href="mailto:w.a.madden+machine@gmail.com">w.a.madden+machine@gmail.com</a><br />
+Signed-off-by: Will Madden <a href="mailto:madden@prisma.io">madden@prisma.io</a><br />
+Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@anthropic.com</a></p>
+]]></content:encoded>
+
+<pubDate>2026-09-28T10:40:09Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.12-dev.22</title>
+<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.12-dev.22</link>
+<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.12-dev.22</guid>
+<content:encoded><![CDATA[
+
+<p>feat(mongo): Json means JSON; new Bson scalar carries any BSON value …</p>
+]]></content:encoded>
+
+<pubDate>2026-09-28T09:55:34Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.12-dev.21</title>
+<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.12-dev.21</link>
+<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.12-dev.21</guid>
+<content:encoded><![CDATA[
+
+<p>TML-3321: default-normalizer tests split into four files under the 50…</p>
+]]></content:encoded>
+
+<pubDate>2026-09-28T09:40:38Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.12-dev.20</title>
+<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.12-dev.20</link>
+<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.12-dev.20</guid>
+<content:encoded><![CDATA[
+
+<p>TML-3320: pnpm test:journeys loads the Temporal polyfill like pnpm te…</p>
+]]></content:encoded>
+
+<pubDate>2026-09-28T09:12:13Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.12-dev.19</title>
+<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.12-dev.19</link>
+<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.12-dev.19</guid>
+<content:encoded><![CDATA[
+
+<p>TML-3252: brace-form Postgres array defaults infer as literal lists (…</p>
+]]></content:encoded>
+
+<pubDate>2026-09-28T08:36:27Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.12-dev.18</title>
+<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.12-dev.18</link>
+<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.12-dev.18</guid>
+<content:encoded><![CDATA[
+
+<p>Calibration: reviewers of SQL lowering run probes, they do not only r…</p>
+]]></content:encoded>
+
+<pubDate>2026-09-28T07:36:37Z</pubDate>
+</item>
+<item>
+<title>v8.0.0-rc.12-dev.17</title>
+<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.12-dev.17</link>
+<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.12-dev.17</guid>
+<content:encoded><![CDATA[
+
+<p>fix(contract-ts): .default() takes the codec input type and is encode…</p>
+]]></content:encoded>
+
+<pubDate>2026-09-28T06:38:14Z</pubDate>
+</item>
+<item>
+<title>Flock Wants the Most Detailed Map of Its Surveillance Cameras Taken Offline</title>
+<link>https://theintercept.com/2026/09/24/how-many-flock-devices-in-united-states-300000/</link>
+<guid>https://theintercept.com/2026/09/24/how-many-flock-devices-in-united-states-300000/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://theintercept.com/2026/09/24/how-many-flock-devices-in-united-states-300000/">https://theintercept.com/2026/09/24/how-many-flock-devices-in-united-states-300000/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49884363">https://news.ycombinator.com/item?id=49884363</a></p>
+<p>Points: 179</p>
+<p># Comments: 87</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 21:08:10 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 21:08:10 +0000</pubDate>
+</item>
+<item>
+<title>Jeff – Jev-compatible 0.8B decision models, trained at home, ~30 ms</title>
+<link>https://github.com/firelex/jeff</link>
+<guid>https://github.com/firelex/jeff</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://github.com/firelex/jeff">https://github.com/firelex/jeff</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49883844">https://news.ycombinator.com/item?id=49883844</a></p>
+<p>Points: 406</p>
+<p># Comments: 154</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 20:23:36 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 20:23:36 +0000</pubDate>
+</item>
+<item>
+<title>World Labs Is Joining AMD</title>
+<link>https://www.worldlabs.ai/blog/amd-announcement</link>
+<guid>https://www.worldlabs.ai/blog/amd-announcement</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.worldlabs.ai/blog/amd-announcement">https://www.worldlabs.ai/blog/amd-announcement</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49883760">https://news.ycombinator.com/item?id=49883760</a></p>
+<p>Points: 241</p>
+<p># Comments: 99</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 20:18:05 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 20:18:05 +0000</pubDate>
+</item>
+<item>
+<title>It's Time to Investigate the AI Labs</title>
+<link>https://calnewport.com/its-time-to-investigate-the-ai-labs/</link>
+<guid>https://calnewport.com/its-time-to-investigate-the-ai-labs/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://calnewport.com/its-time-to-investigate-the-ai-labs/">https://calnewport.com/its-time-to-investigate-the-ai-labs/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49883471">https://news.ycombinator.com/item?id=49883471</a></p>
+<p>Points: 388</p>
+<p># Comments: 140</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 19:53:35 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 19:53:35 +0000</pubDate>
+</item>
+<item>
+<title>MicroLLM Lab – Try 7 tiny LLM's in the browser</title>
+<link>https://stateofutopia.com/experiments/microllmlab/</link>
+<guid>https://stateofutopia.com/experiments/microllmlab/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://stateofutopia.com/experiments/microllmlab/">https://stateofutopia.com/experiments/microllmlab/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49882781">https://news.ycombinator.com/item?id=49882781</a></p>
+<p>Points: 189</p>
+<p># Comments: 70</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 18:58:53 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 18:58:53 +0000</pubDate>
+</item>
+<item>
+<title>So long Google, and thanks for all the nudes</title>
+<link>https://lecaro.me/20260921-google-less.html</link>
+<guid>https://lecaro.me/20260921-google-less.html</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://lecaro.me/20260921-google-less.html">https://lecaro.me/20260921-google-less.html</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49881951">https://news.ycombinator.com/item?id=49881951</a></p>
+<p>Points: 223</p>
+<p># Comments: 87</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 18:04:47 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 18:04:47 +0000</pubDate>
+</item>
+<item>
+<title>Sonnet 5.5</title>
+<link>https://www.anthropic.com/claude-sonnet-5-5</link>
+<guid>https://www.anthropic.com/claude-sonnet-5-5</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.anthropic.com/claude-sonnet-5-5">https://www.anthropic.com/claude-sonnet-5-5</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49881850">https://news.ycombinator.com/item?id=49881850</a></p>
+<p>Points: 691</p>
+<p># Comments: 458</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 17:58:11 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 17:58:11 +0000</pubDate>
+</item>
+<item>
+<title>Windows 11½</title>
+<link>https://definitelynotwindows.com/</link>
+<guid>https://definitelynotwindows.com/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://definitelynotwindows.com/">https://definitelynotwindows.com/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49881747">https://news.ycombinator.com/item?id=49881747</a></p>
+<p>Points: 453</p>
+<p># Comments: 142</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 17:51:24 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 17:51:24 +0000</pubDate>
+</item>
+<item>
+<title>The problem is not AI code, but not knowing about system architecture or intent</title>
+<link>https://www.ssp.sh/brain/the-problem-is-not-the-ai-code-but-nobody-knows-anything-anymore/</link>
+<guid>https://www.ssp.sh/brain/the-problem-is-not-the-ai-code-but-nobody-knows-anything-anymore/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.ssp.sh/brain/the-problem-is-not-the-ai-code-but-nobody-knows-anything-anymore/">https://www.ssp.sh/brain/the-problem-is-not-the-ai-code-but-nobody-knows-anything-anymore/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49880312">https://news.ycombinator.com/item?id=49880312</a></p>
+<p>Points: 356</p>
+<p># Comments: 227</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 16:11:42 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 16:11:42 +0000</pubDate>
+</item>
+<item>
+<title>Pirating the Pirates</title>
+<link>https://mubi.com/en/notebook/posts/pirating-the-pirates</link>
+<guid>https://mubi.com/en/notebook/posts/pirating-the-pirates</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://mubi.com/en/notebook/posts/pirating-the-pirates">https://mubi.com/en/notebook/posts/pirating-the-pirates</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49880036">https://news.ycombinator.com/item?id=49880036</a></p>
+<p>Points: 483</p>
+<p># Comments: 243</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 15:54:15 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 15:54:15 +0000</pubDate>
+</item>
+<item>
+<title>Hijacking the PS5's RTMP stream</title>
+<link>https://yashgarg.dev/posts/hijacking-ps5-rtmp-stream/</link>
+<guid>https://yashgarg.dev/posts/hijacking-ps5-rtmp-stream/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://yashgarg.dev/posts/hijacking-ps5-rtmp-stream/">https://yashgarg.dev/posts/hijacking-ps5-rtmp-stream/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49879702">https://news.ycombinator.com/item?id=49879702</a></p>
+<p>Points: 228</p>
+<p># Comments: 72</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 15:35:23 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 15:35:23 +0000</pubDate>
+</item>
+<item>
+<title>Kids turned low-traffic NPR Spotify comments into a secret group chat</title>
+<link>https://www.thisamericanlife.org/897/transcript</link>
+<guid>https://www.thisamericanlife.org/897/transcript</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.thisamericanlife.org/897/transcript">https://www.thisamericanlife.org/897/transcript</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49879697">https://news.ycombinator.com/item?id=49879697</a></p>
+<p>Points: 346</p>
+<p># Comments: 199</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 15:35:09 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 15:35:09 +0000</pubDate>
+</item>
+<item>
+<title>Updated Google Maps shows destruction of the city of Rafah</title>
+<link>https://twitter.com/AliAbunimah/status/2103890594137309425</link>
+<guid>https://twitter.com/AliAbunimah/status/2103890594137309425</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://twitter.com/AliAbunimah/status/2103890594137309425">https://twitter.com/AliAbunimah/status/2103890594137309425</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49879645">https://news.ycombinator.com/item?id=49879645</a></p>
+<p>Points: 351</p>
+<p># Comments: 190</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 15:32:18 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 15:32:18 +0000</pubDate>
+</item>
+<item>
+<title>MongoDB CEO resigns to join Meta</title>
+<link>https://www.reuters.com/technology/mongodb-ceo-desai-steps-down-lead-metas-enterprise-platform-2026-09-28/</link>
+<guid>https://www.reuters.com/technology/mongodb-ceo-desai-steps-down-lead-metas-enterprise-platform-2026-09-28/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.reuters.com/technology/mongodb-ceo-desai-steps-down-lead-metas-enterprise-platform-2026-09-28/">https://www.reuters.com/technology/mongodb-ceo-desai-steps-down-lead-metas-enterprise-platform-2026-09-28/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49879000">https://news.ycombinator.com/item?id=49879000</a></p>
+<p>Points: 338</p>
+<p># Comments: 273</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 14:54:21 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 14:54:21 +0000</pubDate>
+</item>
+<item>
+<title>Coding is not solved</title>
+<link>https://blog.alexewerlof.com/p/coding-is-not-solved</link>
+<guid>https://blog.alexewerlof.com/p/coding-is-not-solved</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://blog.alexewerlof.com/p/coding-is-not-solved">https://blog.alexewerlof.com/p/coding-is-not-solved</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49877988">https://news.ycombinator.com/item?id=49877988</a></p>
+<p>Points: 465</p>
+<p># Comments: 471</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 13:52:57 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 13:52:57 +0000</pubDate>
+</item>
+<item>
+<title>Does Reddit have an astroturfing problem? What the data suggests</title>
+<link>https://www.petervijeh.com/projects/reddit-astroturf</link>
+<guid>https://www.petervijeh.com/projects/reddit-astroturf</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.petervijeh.com/projects/reddit-astroturf">https://www.petervijeh.com/projects/reddit-astroturf</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49877678">https://news.ycombinator.com/item?id=49877678</a></p>
+<p>Points: 167</p>
+<p># Comments: 206</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 13:30:54 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 13:30:54 +0000</pubDate>
+</item>
+<item>
+<title>Parley: Federated, decentralised chat that speaks plain IRC</title>
+<link>https://git.mills.io/prologic/parley</link>
+<guid>https://git.mills.io/prologic/parley</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://git.mills.io/prologic/parley">https://git.mills.io/prologic/parley</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49875913">https://news.ycombinator.com/item?id=49875913</a></p>
+<p>Points: 312</p>
+<p># Comments: 173</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 10:30:54 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 10:30:54 +0000</pubDate>
+</item>
+<item>
+<title>SpaceX's Starship launching to orbit for first time ever today</title>
+<link>https://www.space.com/space-exploration/launches-spacecraft/spacexs-starship-megarocket-launching-to-orbit-for-1st-time-ever-on-sept-28-watch-it-live</link>
+<guid>https://www.space.com/space-exploration/launches-spacecraft/spacexs-starship-megarocket-launching-to-orbit-for-1st-time-ever-on-sept-28-watch-it-live</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.space.com/space-exploration/launches-spacecraft/spacexs-starship-megarocket-launching-to-orbit-for-1st-time-ever-on-sept-28-watch-it-live">https://www.space.com/space-exploration/launches-spacecraft/spacexs-starship-megarocket-launching-to-orbit-for-1st-time-ever-on-sept-28-watch-it-live</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49875411">https://news.ycombinator.com/item?id=49875411</a></p>
+<p>Points: 295</p>
+<p># Comments: 338</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 09:15:04 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 09:15:04 +0000</pubDate>
+</item>
+<item>
+<title>AI companies in race to demonstrate their model most threatening to humanity</title>
+<link>https://thecivilian.co.nz/2026/09/27/ai-companies-in-fierce-arms-race-to-demonstrate-their-model-is-the-most-existentially-threatening-to-humanity/</link>
+<guid>https://thecivilian.co.nz/2026/09/27/ai-companies-in-fierce-arms-race-to-demonstrate-their-model-is-the-most-existentially-threatening-to-humanity/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://thecivilian.co.nz/2026/09/27/ai-companies-in-fierce-arms-race-to-demonstrate-their-model-is-the-most-existentially-threatening-to-humanity/">https://thecivilian.co.nz/2026/09/27/ai-companies-in-fierce-arms-race-to-demonstrate-their-model-is-the-most-existentially-threatening-to-humanity/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49875148">https://news.ycombinator.com/item?id=49875148</a></p>
+<p>Points: 427</p>
+<p># Comments: 385</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 08:35:40 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 08:35:40 +0000</pubDate>
+</item>
+<item>
+<title>37,500 border drawings: a map of the world as people remember it</title>
+<link>https://www.habibicode.org/thedrawnworld</link>
+<guid>https://www.habibicode.org/thedrawnworld</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.habibicode.org/thedrawnworld">https://www.habibicode.org/thedrawnworld</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49875142">https://news.ycombinator.com/item?id=49875142</a></p>
+<p>Points: 169</p>
+<p># Comments: 31</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 08:35:10 +0000</pubDate>
+<pubDate>Mon, 28 Sep 2026 08:35:10 +0000</pubDate>
+</item>
+<item>
+<title>Bill Gates tries to install Movie Maker</title>
+<link>https://www.techemails.com/p/bill-gates-tries-to-install-movie-maker</link>
+<guid>https://www.techemails.com/p/bill-gates-tries-to-install-movie-maker</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/lfqtgh/bill_gates_tries_install_movie_maker">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 11:18:16 -0500</pubDate>
+<pubDate>Mon, 28 Sep 2026 11:18:16 -0500</pubDate>
+</item>
+<item>
+<title>Yes, no AI is now a feature</title>
+<link>https://blog.documentfoundation.org/blog/2026/09/03/yes-no-ai-is-now-a-feature/</link>
+<guid>https://blog.documentfoundation.org/blog/2026/09/03/yes-no-ai-is-now-a-feature/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/sxcz4v/yes_no_ai_is_now_feature">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 04:58:26 -0500</pubDate>
+<pubDate>Mon, 28 Sep 2026 04:58:26 -0500</pubDate>
+</item>
+<item>
+<title>What Would A Serious AI Product Look Like?</title>
+<link>https://blog.glyph.im/2026/09/serious-ai-product.html</link>
+<guid>https://blog.glyph.im/2026/09/serious-ai-product.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/q2rymh/what_would_serious_ai_product_look_like">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 12:01:01 -0500</pubDate>
+<pubDate>Mon, 28 Sep 2026 12:01:01 -0500</pubDate>
+</item>
+<item>
+<title>Leaving them behind</title>
+<link>https://dbushell.com/2026/09/28/leaving-them-behind/</link>
+<guid>https://dbushell.com/2026/09/28/leaving-them-behind/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/h3igdh/leaving_them_behind">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 04:44:05 -0500</pubDate>
+<pubDate>Mon, 28 Sep 2026 04:44:05 -0500</pubDate>
+</item>
+<item>
+<title>HardenedBSD August / September 2026 Status Report</title>
+<link>https://hardenedbsd.org/article/shawn-webb/2026-09-27/hardenedbsd-august-september-2026-status-report</link>
+<guid>https://hardenedbsd.org/article/shawn-webb/2026-09-27/hardenedbsd-august-september-2026-status-report</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/roo5hm/hardenedbsd_august_september_2026">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 11:14:23 -0500</pubDate>
+<pubDate>Mon, 28 Sep 2026 11:14:23 -0500</pubDate>
+</item>
+<item>
+<title>State of the (Tagged) Union Address by Andrew Kelley</title>
+<link>https://www.youtube.com/watch?v=zwi5b5xSsKA</link>
+<guid>https://www.youtube.com/watch?v=zwi5b5xSsKA</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/okds3e/state_tagged_union_address_by_andrew">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 15:35:51 -0500</pubDate>
+<pubDate>Mon, 28 Sep 2026 15:35:51 -0500</pubDate>
+</item>
+<item>
+<title>Rickrolling with a Pharmacy cross</title>
+<link>https://hugoarnal.com/blog/rickroll-pharmacy-cross/</link>
+<guid>https://hugoarnal.com/blog/rickroll-pharmacy-cross/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/6p91by/rickrolling_with_pharmacy_cross">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 02:52:23 -0500</pubDate>
+<pubDate>Mon, 28 Sep 2026 02:52:23 -0500</pubDate>
+</item>
+<item>
+<title>How to Solve Hallucination (with RLCD)</title>
+<link>https://www.robw.fyi/2026/09/28/how-to-solve-hallucination/</link>
+<guid>https://www.robw.fyi/2026/09/28/how-to-solve-hallucination/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/kolgwk/how_solve_hallucination_with_rlcd">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 10:04:58 -0500</pubDate>
+<pubDate>Mon, 28 Sep 2026 10:04:58 -0500</pubDate>
+</item>
+<item>
+<title>What are you doing this week?</title>
+<link>https://lobste.rs/s/hgmgp2/what_are_you_doing_this_week</link>
+<guid>https://lobste.rs/s/hgmgp2/what_are_you_doing_this_week</guid>
+<content:encoded><![CDATA[
+
+<p>What are you doing this week? Feel free to share!</p>
+<p>Keep in mind it’s OK to do nothing at all, too.</p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 07:42:17 -0500</pubDate>
+<pubDate>Mon, 28 Sep 2026 07:42:17 -0500</pubDate>
+</item>
+<item>
+<title>Output-to-seed mappings for CPython's PRNG</title>
+<link>https://github.com/frazerpearce/TimeLord</link>
+<guid>https://github.com/frazerpearce/TimeLord</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/v6bbts/output_seed_mappings_for_cpython_s_prng">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 10:23:03 -0500</pubDate>
+<pubDate>Mon, 28 Sep 2026 10:23:03 -0500</pubDate>
+</item>
+<item>
+<title>Switching To Emacs as a Neovim User</title>
+<link>https://eliasebner.com/blog/thoughts/switching-to-emacs-as-a-neovim-user/</link>
+<guid>https://eliasebner.com/blog/thoughts/switching-to-emacs-as-a-neovim-user/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/bctr1m/switching_emacs_as_neovim_user">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 22:41:34 -0500</pubDate>
+<pubDate>Mon, 28 Sep 2026 22:41:34 -0500</pubDate>
+</item>
+<item>
+<title>Thoughts on Flash (2010)</title>
+<link>https://web.archive.org/web/20100501010616/http://www.apple.com/hotnews/thoughts-on-flash/</link>
+<guid>https://web.archive.org/web/20100501010616/http://www.apple.com/hotnews/thoughts-on-flash/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/t8bsws/thoughts_on_flash_2010">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 16:43:15 -0500</pubDate>
+<pubDate>Mon, 28 Sep 2026 16:43:15 -0500</pubDate>
+</item>
+<item>
+<title>Intuitive equals familiar</title>
+<link>https://dl.acm.org/doi/10.1145/182987.584629</link>
+<guid>https://dl.acm.org/doi/10.1145/182987.584629</guid>
+<content:encoded><![CDATA[
+
+<p>pdf: <a href="https://dl.acm.org/doi/pdf/10.1145/182987.584629" rel="ugc">https://dl.acm.org/doi/pdf/10.1145/182987.584629</a></p>
+<p><a href="https://lobste.rs/s/kmlhg1/intuitive_equals_familiar">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 11:12:11 -0500</pubDate>
+<pubDate>Mon, 28 Sep 2026 11:12:11 -0500</pubDate>
+</item>
+<item>
+<title>Optimising for fast builds with GHC</title>
+<link>https://www.youtube.com/watch?v=nmE6aa_I5TU</link>
+<guid>https://www.youtube.com/watch?v=nmE6aa_I5TU</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/3ww0wy/optimising_for_fast_builds_with_ghc">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 28 Sep 2026 23:45:28 -0500</pubDate>
+<pubDate>Mon, 28 Sep 2026 23:45:28 -0500</pubDate>
+</item>
 
 <item>
 <title>v16.4.0-canary.51</title>
@@ -12,7 +1134,7 @@
 <content:encoded><![CDATA[
 <div> Keywords: security upgrades, DevTools, npm advisories, ready upgrades, insights
 
-<br><br>Summary:  
+<br /><br />Summary:  
 The article discusses the implementation of new features in DevTools aimed at improving security upgrade insights for developers. One of the key enhancements is the integration of focused npm advisories, which provide relevant information on potential vulnerabilities and necessary upgrades. This feature allows developers to identify and address security issues more efficiently. Additionally, the article emphasizes the importance of nudging developers only for upgrades that are ready for implementation, thereby streamlining the upgrade process and reducing unnecessary interruptions during development. This targeted approach not only improves the developer experience but also enhances the overall security posture of applications by ensuring that critical vulnerabilities are addressed in a timely manner. The article concludes with an acknowledgment of the invaluable assistance provided by contributors who helped enhance these features, highlighting the collaborative effort involved in improving DevTools and supporting developers in maintaining secure code. With these changes, the aim is to create a more intuitive and effective environment for managing security upgrades within applications. <div>
 <h3>Misc Changes</h3>
 <ul>
@@ -22,7 +1144,6 @@ The article discusses the implementation of new features in DevTools aimed at im
 <h3>Credits</h3>
 <p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/devjiwonchoi">@devjiwonchoi</a> for helping!</p>
 ]]></content:encoded>
-
 <pubDate>2026-09-27T23:49:30Z</pubDate>
 </item>
 <item>
@@ -32,11 +1153,10 @@ The article discusses the implementation of new features in DevTools aimed at im
 <content:encoded><![CDATA[
 <div> **Keywords:** mutation-default, generators, runtime, optimization, performance  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 The article discusses the optimization of mutation-default generators within a runtime framework. It emphasizes the importance of running these generators only once per frame to enhance overall performance. This approach minimizes redundant computations, leading to improved efficiency and faster execution times. By centralizing the mutation process, the framework can allocate resources more effectively, ultimately benefiting the application’s responsiveness. The refactor also considers compatibility with existing codebases, ensuring that integration is seamless and does not disrupt current functionalities. Furthermore, it highlights potential scenarios where this optimization can yield significant performance gains, particularly in complex applications that rely heavily on real-time data processing. The article advocates for a careful implementation of these changes, suggesting developers test for unintended side effects during the transition. Finally, it encourages continuous evaluation of runtime performance, aiming for an adaptable framework that can accommodate future enhancements and optimizations. This structured approach promises to refine the developer experience while enhancing user satisfaction through smoother interactions. <div>
 <p>refactor(runtime): mutation-default generators run once, in the frame…</p>
 ]]></content:encoded>
-
 <pubDate>2026-09-27T16:29:37Z</pubDate>
 </item>
 <item>
@@ -46,10 +1166,9 @@ The article discusses the optimization of mutation-default generators within a r
 <content:encoded><![CDATA[
 <div> Keywords: prisma, contract, print, configured, writes
 
-<br><br>Summary: The new feature in the CLI for Prisma allows users to print contracts directly from the command line. This enhancement contributes to streamlining the development process by enabling developers to visualize the configured contract in a simple and accessible format. The feature ensures that the printed contract reflects the current configurations accurately, minimizing discrepancies that could arise from manual documentation. By integrating this functionality, Prisma enhances usability, making it easier for users to manage and review their database schemas and relationships. The command is straightforward to use, and it facilitates better collaboration among team members as they can easily share the printed contracts. Overall, this update marks a significant improvement in the Prisma CLI, providing more robust tools for developers in their workflow. Users are encouraged to explore this new capability to maximize efficiency in managing their projects and improving the clarity of their database structure. <div>
+<br /><br />Summary: The new feature in the CLI for Prisma allows users to print contracts directly from the command line. This enhancement contributes to streamlining the development process by enabling developers to visualize the configured contract in a simple and accessible format. The feature ensures that the printed contract reflects the current configurations accurately, minimizing discrepancies that could arise from manual documentation. By integrating this functionality, Prisma enhances usability, making it easier for users to manage and review their database schemas and relationships. The command is straightforward to use, and it facilitates better collaboration among team members as they can easily share the printed contracts. Overall, this update marks a significant improvement in the Prisma CLI, providing more robust tools for developers in their workflow. Users are encouraged to explore this new capability to maximize efficiency in managing their projects and improving the clarity of their database structure. <div>
 <p>feat(cli): <code>prisma contract print</code> writes the configured contract as …</p>
 ]]></content:encoded>
-
 <pubDate>2026-09-27T15:23:41Z</pubDate>
 </item>
 <item>
@@ -59,7 +1178,7 @@ The article discusses the optimization of mutation-default generators within a r
 <content:encoded><![CDATA[
 <div> Keywords: CLI, timeout, dev database, afterAll, test helpers  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 The change involves the `useDevDatabase` function in the CLI journey test helpers, specifically regarding its `afterAll` teardown registration. This function was previously set to use Vitest's default 5-second hook timeout, while its `beforeAll` counterpart utilized a different timeout, `timeouts.spinUpPpgDev`. During full-suite loads, the dev database's close operation took longer than 5 seconds on two occasions, resulting in failures in tests even when all individual test cases had passed; these tests succeeded when run alone. To address this inconsistency, a similar timeout used in a sibling helper located in `test/integration/test/sql-orm-client/integration-helpers.ts` was applied to `afterAll` in the current helper. The scope of the change is limited to a single line in `test/integration/test/utils/journey-test-helpers.ts`, and it does not alter any other files or test logic. Testing has been performed to ensure functionality, including successful runs on specific test files and checks for type and linting. The change is aligned with the project's maintenance processes, and all necessary sign-offs are in place. <div>
 <h2>Linked issue</h2>
 <p>n/a — small change.</p>
@@ -115,7 +1234,6 @@ user-facing features.</li>
 Signed-off-by: Will Madden <a href="mailto:madden@prisma.io">madden@prisma.io</a><br />
 Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@anthropic.com</a></p>
 ]]></content:encoded>
-
 <pubDate>2026-09-27T15:17:51Z</pubDate>
 </item>
 <item>
@@ -125,11 +1243,10 @@ Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@
 <content:encoded><![CDATA[
 <div> Keywords: Prisma, MongoDB, schema, feature, development
 
-<br><br>Summary:  
+<br /><br />Summary:  
 The article introduces a new feature in Prisma, allowing it to read a schema.prisma that is compatible with Prisma version 6 specifically for MongoDB. This enhancement aims to streamline the integration between Prisma and MongoDB by allowing developers who are using an older version of Prisma to upgrade their schemas with ease. The transition benefits from improved schema reading capabilities, which enhances data modeling efficiency. Additionally, the feature ensures better alignment with modern development practices, facilitating smoother migrations and updates. It offers simplified configuration management, reducing friction for developers adapting to newer versions or migrating to a more robust database solution. The article highlights the implications of this feature for existing projects utilizing MongoDB, and how it represents a step towards more versatile and user-friendly database management with Prisma, easing the development workflow. Through this update, developers gain access to enhanced functionality while maintaining compatibility with previous schemas, thus fostering a more cohesive development experience in their MongoDB projects. This development marks a significant improvement in Prisma's capabilities, particularly in managing data structures across different database technologies. <div>
 <p>feat(mongo): prisma6Schema reads a Prisma 6 MongoDB schema.prisma as …</p>
 ]]></content:encoded>
-
 <pubDate>2026-09-27T07:21:56Z</pubDate>
 </item>
 <item>
@@ -139,10 +1256,9 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <content:encoded><![CDATA[
 <div> **Keywords:** integration tests, packages, build, published, fix
 
-<br><br>Summary: The focus of this article is on improving integration tests within a software project, specifically addressing the process of building the published packages. There is a need to fix issues associated with the packaging of these components to ensure they are correctly tested before deployment. The document outlines the current challenges faced in the integration testing framework, which may include inconsistent package versions and post-build verification failures. Emphasis is placed on the importance of automating the build process for the published packages to enhance reliability and efficiency. Furthermore, it discusses the necessity of better documentation and guidelines on how to execute these tests effectively. The article suggests utilizing continuous integration tools to streamline the testing workflow and facilitate timely feedback. This will not only aid developers in identifying issues early on but also improve overall software quality. A collaborative effort is encouraged among team members to share insights and solutions related to the integration testing phase, ultimately leading to a more robust software deployment strategy. Enhanced integration tests will contribute to minimizing post-release bugs and ensuring a smoother software development lifecycle. <div>
+<br /><br />Summary: The focus of this article is on improving integration tests within a software project, specifically addressing the process of building the published packages. There is a need to fix issues associated with the packaging of these components to ensure they are correctly tested before deployment. The document outlines the current challenges faced in the integration testing framework, which may include inconsistent package versions and post-build verification failures. Emphasis is placed on the importance of automating the build process for the published packages to enhance reliability and efficiency. Furthermore, it discusses the necessity of better documentation and guidelines on how to execute these tests effectively. The article suggests utilizing continuous integration tools to streamline the testing workflow and facilitate timely feedback. This will not only aid developers in identifying issues early on but also improve overall software quality. A collaborative effort is encouraged among team members to share insights and solutions related to the integration testing phase, ultimately leading to a more robust software deployment strategy. Enhanced integration tests will contribute to minimizing post-release bugs and ensuring a smoother software development lifecycle. <div>
 <p>fix(integration-tests): build the published <a class="team-mention js-team-mention notranslate" href="https://github.com/orgs/prisma/teams/orm">@prisma/orm</a>-* packages be…</p>
 ]]></content:encoded>
-
 <pubDate>2026-09-27T07:16:12Z</pubDate>
 </item>
 <item>
@@ -157,7 +1273,6 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <p># Comments: 150</p>
 ]]></content:encoded>
 <pubDate>Mon, 28 Sep 2026 02:05:13 +0000</pubDate>
-<pubDate>Mon, 28 Sep 2026 02:05:13 +0000</pubDate>
 </item>
 <item>
 <title>When did Google get so weird?</title>
@@ -170,7 +1285,6 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <p>Points: 971</p>
 <p># Comments: 526</p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 20:12:54 +0000</pubDate>
 <pubDate>Sun, 27 Sep 2026 20:12:54 +0000</pubDate>
 </item>
 <item>
@@ -185,7 +1299,6 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <p># Comments: 88</p>
 ]]></content:encoded>
 <pubDate>Sun, 27 Sep 2026 18:44:30 +0000</pubDate>
-<pubDate>Sun, 27 Sep 2026 18:44:30 +0000</pubDate>
 </item>
 <item>
 <title>SNL Weekend Update: Anthropic CEO Dario Amodei on A.I.'S Threat to Humanity [video]</title>
@@ -199,20 +1312,17 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <p># Comments: 91</p>
 ]]></content:encoded>
 <pubDate>Sun, 27 Sep 2026 17:32:02 +0000</pubDate>
-<pubDate>Sun, 27 Sep 2026 17:32:02 +0000</pubDate>
 </item>
 <item>
 <title>Ember-1</title>
 <link>https://fireworks.ai/blog/ember-1</link>
 <guid>https://fireworks.ai/blog/ember-1</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://fireworks.ai/blog/ember-1">https://fireworks.ai/blog/ember-1</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49868830">https://news.ycombinator.com/item?id=49868830</a></p>
 <p>Points: 395</p>
 <p># Comments: 197</p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 17:31:53 +0000</pubDate>
 <pubDate>Sun, 27 Sep 2026 17:31:53 +0000</pubDate>
 </item>
 <item>
@@ -220,13 +1330,11 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://iain.rocks/blog/dont-couple-your-go-code-to-github</link>
 <guid>https://iain.rocks/blog/dont-couple-your-go-code-to-github</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://iain.rocks/blog/dont-couple-your-go-code-to-github">https://iain.rocks/blog/dont-couple-your-go-code-to-github</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49868404">https://news.ycombinator.com/item?id=49868404</a></p>
 <p>Points: 181</p>
 <p># Comments: 90</p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 16:50:58 +0000</pubDate>
 <pubDate>Sun, 27 Sep 2026 16:50:58 +0000</pubDate>
 </item>
 <item>
@@ -234,13 +1342,11 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://eoinhiggins.substack.com/p/there-are-no-rogue-ai-agents</link>
 <guid>https://eoinhiggins.substack.com/p/there-are-no-rogue-ai-agents</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://eoinhiggins.substack.com/p/there-are-no-rogue-ai-agents">https://eoinhiggins.substack.com/p/there-are-no-rogue-ai-agents</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49868083">https://news.ycombinator.com/item?id=49868083</a></p>
 <p>Points: 345</p>
 <p># Comments: 248</p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 16:19:46 +0000</pubDate>
 <pubDate>Sun, 27 Sep 2026 16:19:46 +0000</pubDate>
 </item>
 <item>
@@ -248,13 +1354,11 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://nura.eco/blog/2026/09/27/nura-rename/</link>
 <guid>https://nura.eco/blog/2026/09/27/nura-rename/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://nura.eco/blog/2026/09/27/nura-rename/">https://nura.eco/blog/2026/09/27/nura-rename/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49867553">https://news.ycombinator.com/item?id=49867553</a></p>
 <p>Points: 166</p>
 <p># Comments: 52</p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 15:31:15 +0000</pubDate>
 <pubDate>Sun, 27 Sep 2026 15:31:15 +0000</pubDate>
 </item>
 <item>
@@ -262,13 +1366,11 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://www.ihatethefuture.com/2026/09/the-normalization-of-inexplicable.html</link>
 <guid>https://www.ihatethefuture.com/2026/09/the-normalization-of-inexplicable.html</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.ihatethefuture.com/2026/09/the-normalization-of-inexplicable.html">https://www.ihatethefuture.com/2026/09/the-normalization-of-inexplicable.html</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49867486">https://news.ycombinator.com/item?id=49867486</a></p>
 <p>Points: 257</p>
 <p># Comments: 103</p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 15:26:40 +0000</pubDate>
 <pubDate>Sun, 27 Sep 2026 15:26:40 +0000</pubDate>
 </item>
 <item>
@@ -276,13 +1378,11 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://unsung.aresluna.org/they-had-no-concept-of-a-duty-of-care-to-their-users/</link>
 <guid>https://unsung.aresluna.org/they-had-no-concept-of-a-duty-of-care-to-their-users/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://unsung.aresluna.org/they-had-no-concept-of-a-duty-of-care-to-their-users/">https://unsung.aresluna.org/they-had-no-concept-of-a-duty-of-care-to-their-users/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49867067">https://news.ycombinator.com/item?id=49867067</a></p>
 <p>Points: 358</p>
 <p># Comments: 317</p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 14:45:07 +0000</pubDate>
 <pubDate>Sun, 27 Sep 2026 14:45:07 +0000</pubDate>
 </item>
 <item>
@@ -290,13 +1390,11 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://hereticpleb.vercel.app/blog/10-tells-of-slop</link>
 <guid>https://hereticpleb.vercel.app/blog/10-tells-of-slop</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://hereticpleb.vercel.app/blog/10-tells-of-slop">https://hereticpleb.vercel.app/blog/10-tells-of-slop</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49867038">https://news.ycombinator.com/item?id=49867038</a></p>
 <p>Points: 346</p>
 <p># Comments: 225</p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 14:41:26 +0000</pubDate>
 <pubDate>Sun, 27 Sep 2026 14:41:26 +0000</pubDate>
 </item>
 <item>
@@ -304,13 +1402,11 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://www.nytimes.com/2026/09/26/science/motel-science-discovery.html</link>
 <guid>https://www.nytimes.com/2026/09/26/science/motel-science-discovery.html</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.nytimes.com/2026/09/26/science/motel-science-discovery.html">https://www.nytimes.com/2026/09/26/science/motel-science-discovery.html</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49866951">https://news.ycombinator.com/item?id=49866951</a></p>
 <p>Points: 225</p>
 <p># Comments: 83</p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 14:30:55 +0000</pubDate>
 <pubDate>Sun, 27 Sep 2026 14:30:55 +0000</pubDate>
 </item>
 <item>
@@ -318,13 +1414,11 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://www.reddit.com/r/worldnews/comments/1wr3id3/meta_blocks_president_lulas_facebook_page_and/</link>
 <guid>https://www.reddit.com/r/worldnews/comments/1wr3id3/meta_blocks_president_lulas_facebook_page_and/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.reddit.com/r/worldnews/comments/1wr3id3/meta_blocks_president_lulas_facebook_page_and/">https://www.reddit.com/r/worldnews/comments/1wr3id3/meta_blocks_president_lulas_facebook_page_and/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49864642">https://news.ycombinator.com/item?id=49864642</a></p>
 <p>Points: 432</p>
 <p># Comments: 288</p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 08:44:04 +0000</pubDate>
 <pubDate>Sun, 27 Sep 2026 08:44:04 +0000</pubDate>
 </item>
 <item>
@@ -332,13 +1426,11 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://authorsguild.org/news/ag-v-openai-top-execs-knew-mass-book-piracy-was-illegal/</link>
 <guid>https://authorsguild.org/news/ag-v-openai-top-execs-knew-mass-book-piracy-was-illegal/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://authorsguild.org/news/ag-v-openai-top-execs-knew-mass-book-piracy-was-illegal/">https://authorsguild.org/news/ag-v-openai-top-execs-knew-mass-book-piracy-was-illegal/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49863864">https://news.ycombinator.com/item?id=49863864</a></p>
 <p>Points: 610</p>
 <p># Comments: 599</p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 06:19:33 +0000</pubDate>
 <pubDate>Sun, 27 Sep 2026 06:19:33 +0000</pubDate>
 </item>
 <item>
@@ -346,13 +1438,11 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://theborys.substack.com/p/what-is-the-size-of-yemen</link>
 <guid>https://theborys.substack.com/p/what-is-the-size-of-yemen</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://theborys.substack.com/p/what-is-the-size-of-yemen">https://theborys.substack.com/p/what-is-the-size-of-yemen</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49862809">https://news.ycombinator.com/item?id=49862809</a></p>
 <p>Points: 248</p>
 <p># Comments: 80</p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 02:40:26 +0000</pubDate>
 <pubDate>Sun, 27 Sep 2026 02:40:26 +0000</pubDate>
 </item>
 <item>
@@ -360,13 +1450,11 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://www.aljazeera.com/economy/2026/9/25/japan-moves-to-tighten-rules-for-foreigners-throwing-futures-into-doubt</link>
 <guid>https://www.aljazeera.com/economy/2026/9/25/japan-moves-to-tighten-rules-for-foreigners-throwing-futures-into-doubt</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.aljazeera.com/economy/2026/9/25/japan-moves-to-tighten-rules-for-foreigners-throwing-futures-into-doubt">https://www.aljazeera.com/economy/2026/9/25/japan-moves-to-tighten-rules-for-foreigners-throwing-futures-into-doubt</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=49858810">https://news.ycombinator.com/item?id=49858810</a></p>
 <p>Points: 202</p>
 <p># Comments: 581</p>
 ]]></content:encoded>
-<pubDate>Sat, 26 Sep 2026 17:43:11 +0000</pubDate>
 <pubDate>Sat, 26 Sep 2026 17:43:11 +0000</pubDate>
 </item>
 <item>
@@ -374,10 +1462,8 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://pixelambacht.nl/2026/ten-lines-of-code/</link>
 <guid>https://pixelambacht.nl/2026/ten-lines-of-code/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/fpk9gq/ten_lines_code_changed_my_world">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 08:05:28 -0500</pubDate>
 <pubDate>Sun, 27 Sep 2026 08:05:28 -0500</pubDate>
 </item>
 <item>
@@ -385,10 +1471,8 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://luarocks.org/security-incident-september-2026</link>
 <guid>https://luarocks.org/security-incident-september-2026</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/apoyxs/luarocks_security_incident_september">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 08:58:57 -0500</pubDate>
 <pubDate>Sun, 27 Sep 2026 08:58:57 -0500</pubDate>
 </item>
 <item>
@@ -396,10 +1480,8 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://terminalbytes.com/reverse-engineering-ipod-classic-mikey-chip/</link>
 <guid>https://terminalbytes.com/reverse-engineering-ipod-classic-mikey-chip/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/czoeax/reverse_engineering_ipod_classic_s">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 14:58:31 -0500</pubDate>
 <pubDate>Sun, 27 Sep 2026 14:58:31 -0500</pubDate>
 </item>
 <item>
@@ -407,10 +1489,8 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://rustunit.com/blog/2026/09-04-bevy-ios-crates-objc2/</link>
 <guid>https://rustunit.com/blog/2026/09-04-bevy-ios-crates-objc2/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/nmksyw/dropping_swift_entirely_from_our_bevy_ios">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 18:22:45 -0500</pubDate>
 <pubDate>Sun, 27 Sep 2026 18:22:45 -0500</pubDate>
 </item>
 <item>
@@ -418,11 +1498,9 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://dl.acm.org/doi/pdf/10.1145/3540250.3558940</link>
 <guid>https://dl.acm.org/doi/pdf/10.1145/3540250.3558940</guid>
 <content:encoded><![CDATA[
-
 <p>Abstract: Understanding what affects software developer productivity can help organizations choose wise investments in their technical and social environment. But the research literature either focuses on what correlates with developer productivity in ecologically valid settings or focuses on what causes developer productivity in highly constrained settings. In this paper, we bridge the gap by studying software developers at Google through two analyses. In the first analysis, we use panel data with 39 productivity factors, finding that code quality, technical debt, infrastructure tools and support, team communication, goals and priorities, and organizational change and process are all causally linked to self-reported developer productivity. In the second analysis, we use a lagged panel analysis to strengthen our causal claims. We find that increases in perceived code quality tend to be followed by increased perceived developer productivity, but not vice versa, providing the strongest evidence to date that code quality affects individual developer productivity.</p>
 <p><a href="https://lobste.rs/s/mwc2fu/what_improves_developer_productivity_at">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 07:52:57 -0500</pubDate>
 <pubDate>Sun, 27 Sep 2026 07:52:57 -0500</pubDate>
 </item>
 <item>
@@ -430,10 +1508,8 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://blog.guillaume-gomez.fr/articles/2026-09-22+Syncing+Rust+GCC+backend+or+how+to+test+Murphy%27s+law</link>
 <guid>https://blog.guillaume-gomez.fr/articles/2026-09-22+Syncing+Rust+GCC+backend+or+how+to+test+Murphy%27s+law</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/hy7ckt/syncing_rust_gcc_backend_how_test_murphy_s">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 19:10:55 -0500</pubDate>
 <pubDate>Sun, 27 Sep 2026 19:10:55 -0500</pubDate>
 </item>
 <item>
@@ -441,10 +1517,8 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://fabricati-diem.inform.social/post/deshittification-as-a-service-part2-bypassing-the-app-store-gatekeeper/</link>
 <guid>https://fabricati-diem.inform.social/post/deshittification-as-a-service-part2-bypassing-the-app-store-gatekeeper/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/fcj31p/deshittification_part_2_bypassing_app">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 09:47:13 -0500</pubDate>
 <pubDate>Sun, 27 Sep 2026 09:47:13 -0500</pubDate>
 </item>
 <item>
@@ -452,10 +1526,8 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://asawicki.info/articles/writing_efficient_cpp_code.php</link>
 <guid>https://asawicki.info/articles/writing_efficient_cpp_code.php</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/exda3k/writing_efficient_c_code">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 13:03:12 -0500</pubDate>
 <pubDate>Sun, 27 Sep 2026 13:03:12 -0500</pubDate>
 </item>
 <item>
@@ -463,10 +1535,8 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://bcantrill.dtrace.org/2026/09/27/fools-expertise/</link>
 <guid>https://bcantrill.dtrace.org/2026/09/27/fools-expertise/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/hjkktn/fool_s_expertise">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 22:50:52 -0500</pubDate>
 <pubDate>Sun, 27 Sep 2026 22:50:52 -0500</pubDate>
 </item>
 <item>
@@ -474,10 +1544,8 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://jvns.ca/blog/2026/09/27/replacing-the-old-battery-on-rechargeable-bike-lights/</link>
 <guid>https://jvns.ca/blog/2026/09/27/replacing-the-old-battery-on-rechargeable-bike-lights/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/pfzhxp/replacing_old_battery_on_rechargeable">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 22:27:24 -0500</pubDate>
 <pubDate>Sun, 27 Sep 2026 22:27:24 -0500</pubDate>
 </item>
 <item>
@@ -485,10 +1553,8 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://nedbatchelder.com/blog/202609/expert_asterisks</link>
 <guid>https://nedbatchelder.com/blog/202609/expert_asterisks</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/0knxvq/expert_asterisks">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 22:48:21 -0500</pubDate>
 <pubDate>Sun, 27 Sep 2026 22:48:21 -0500</pubDate>
 </item>
 <item>
@@ -496,10 +1562,8 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://paultm.nl/paren-thesis</link>
 <guid>https://paultm.nl/paren-thesis</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/fqype1/what_makes_lisp_difficult_read">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 23:44:02 -0500</pubDate>
 <pubDate>Sun, 27 Sep 2026 23:44:02 -0500</pubDate>
 </item>
 <item>
@@ -507,10 +1571,8 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://aws.amazon.com/blogs/opensource/introducing-dogwood-runtime-verification-for-ai-agents/</link>
 <guid>https://aws.amazon.com/blogs/opensource/introducing-dogwood-runtime-verification-for-ai-agents/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/69mmo0/dogwood_monitoring_policies_using_first">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Sun, 27 Sep 2026 23:36:20 -0500</pubDate>
 <pubDate>Sun, 27 Sep 2026 23:36:20 -0500</pubDate>
 </item>
 <item>
@@ -518,13 +1580,10 @@ The article introduces a new feature in Prisma, allowing it to read a schema.pri
 <link>https://thorstenball.com/blog/2026/09/19/what-i-believe-about-the-future-of-software-development/</link>
 <guid>https://thorstenball.com/blog/2026/09/19/what-i-believe-about-the-future-of-software-development/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/edx1gf/what_i_believe_about_future_software">Comments</a></p>
 ]]></content:encoded>
 <pubDate>Sun, 27 Sep 2026 18:37:33 -0500</pubDate>
-<pubDate>Sun, 27 Sep 2026 18:37:33 -0500</pubDate>
 </item>
-
 <item>
 <title>v16.4.0-canary.50</title>
 <link>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.50</link>
@@ -16954,550 +18013,6 @@ Co-authored-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatar
 <p># Comments: 117</p>
 ]]></content:encoded>
 <pubDate>Tue, 08 Sep 2026 14:33:52 +0000</pubDate>
-</item>
-<item>
-<title>I-have-ADHD: A skill to stop coding agents from burying the answer</title>
-<link>https://github.com/ayghri/i-have-adhd</link>
-<guid>https://github.com/ayghri/i-have-adhd</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://github.com/ayghri/i-have-adhd">https://github.com/ayghri/i-have-adhd</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49610631">https://news.ycombinator.com/item?id=49610631</a></p>
-<p>Points: 354</p>
-<p># Comments: 267</p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 14:13:26 +0000</pubDate>
-</item>
-<item>
-<title>LibreOffice breaks download records after declaring it has no AI features</title>
-<link>https://manualdousuario.net/en/libreoffice-download-record-no-ai/</link>
-<guid>https://manualdousuario.net/en/libreoffice-download-record-no-ai/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://manualdousuario.net/en/libreoffice-download-record-no-ai/">https://manualdousuario.net/en/libreoffice-download-record-no-ai/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49610538">https://news.ycombinator.com/item?id=49610538</a></p>
-<p>Points: 656</p>
-<p># Comments: 217</p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 14:05:57 +0000</pubDate>
-</item>
-<item>
-<title>We Must Return to the Office to Use AI in Person</title>
-<link>https://www.mcsweeneys.net/articles/why-we-must-return-to-the-office-to-use-ai-in-person</link>
-<guid>https://www.mcsweeneys.net/articles/why-we-must-return-to-the-office-to-use-ai-in-person</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.mcsweeneys.net/articles/why-we-must-return-to-the-office-to-use-ai-in-person">https://www.mcsweeneys.net/articles/why-we-must-return-to-the-office-to-use-ai-in-person</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49610229">https://news.ycombinator.com/item?id=49610229</a></p>
-<p>Points: 371</p>
-<p># Comments: 62</p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 13:41:25 +0000</pubDate>
-</item>
-<item>
-<title>DaVinci Resolve 21.1</title>
-<link>https://www.blackmagicdesign.com/media/release/20260908-03</link>
-<guid>https://www.blackmagicdesign.com/media/release/20260908-03</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.blackmagicdesign.com/media/release/20260908-03">https://www.blackmagicdesign.com/media/release/20260908-03</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49610181">https://news.ycombinator.com/item?id=49610181</a></p>
-<p>Points: 370</p>
-<p># Comments: 165</p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 13:36:53 +0000</pubDate>
-</item>
-<item>
-<title>Show HN: Copperhead – Cursor for circuit boards</title>
-<link>https://copperhead.sh/</link>
-<guid>https://copperhead.sh/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://copperhead.sh/">https://copperhead.sh/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49610059">https://news.ycombinator.com/item?id=49610059</a></p>
-<p>Points: 213</p>
-<p># Comments: 87</p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 13:26:45 +0000</pubDate>
-</item>
-<item>
-<title>Switching Password Managers in 2026</title>
-<link>https://rmondello.com/2026/09/07/switching-password-managers-2026/</link>
-<guid>https://rmondello.com/2026/09/07/switching-password-managers-2026/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/ikzvtv/switching_password_managers_2026">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 08:55:09 -0500</pubDate>
-</item>
-<item>
-<title>What makes $BigTechCompany's products bad, anyway?</title>
-<link>https://herecomesthemoon.net/2026/09/why-is-big-tech-bad/</link>
-<guid>https://herecomesthemoon.net/2026/09/why-is-big-tech-bad/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/wlcg5w/what_makes_bigtechcompany_s_products_bad">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 16:05:31 -0500</pubDate>
-</item>
-<item>
-<title>I changed my license to EUPL</title>
-<link>https://bergie.iki.fi/blog/eupl/</link>
-<guid>https://bergie.iki.fi/blog/eupl/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/4ntizu/i_changed_my_license_eupl">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 07 Sep 2026 23:17:11 -0500</pubDate>
-</item>
-<item>
-<title>The state of European cloud providers in 2026</title>
-<link>https://crescentro.se/posts/euro-cloud-providers-2026/</link>
-<guid>https://crescentro.se/posts/euro-cloud-providers-2026/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/6licoy/state_european_cloud_providers_2026">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 02:20:16 -0500</pubDate>
-</item>
-<item>
-<title>Extreme Server Side Rendering</title>
-<link>https://www.scd31.com/posts/extreme-server-side-rendering</link>
-<guid>https://www.scd31.com/posts/extreme-server-side-rendering</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/tprfej/extreme_server_side_rendering">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 05:54:57 -0500</pubDate>
-</item>
-<item>
-<title>Rust: When Empty Isn't Bottom</title>
-<link>https://ettolrach.com/blog/rust_when_empty_isnt_bottom.html</link>
-<guid>https://ettolrach.com/blog/rust_when_empty_isnt_bottom.html</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/lf3est/rust_when_empty_isn_t_bottom">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 16:23:18 -0500</pubDate>
-</item>
-<item>
-<title>How to get a free .arpa domain</title>
-<link>https://hawksley.dev/blog/get-free-arpa-domain</link>
-<guid>https://hawksley.dev/blog/get-free-arpa-domain</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/eu78rh/how_get_free_arpa_domain">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 04:24:16 -0500</pubDate>
-</item>
-<item>
-<title>Bitap: my favorite string matching algorithm</title>
-<link>https://jo3-l.dev/posts/bitap/</link>
-<guid>https://jo3-l.dev/posts/bitap/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/aguhup/bitap_my_favorite_string_matching">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 01:37:38 -0500</pubDate>
-</item>
-<item>
-<title>CERN's migration path from CentOS Linux to Debian</title>
-<link>https://lwn.net/SubscriberLink/1092512/0772b817c369632b/</link>
-<guid>https://lwn.net/SubscriberLink/1092512/0772b817c369632b/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/3cfr3a/cern_s_migration_path_from_centos_linux">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 08:07:26 -0500</pubDate>
-</item>
-<item>
-<title>Finite-time blowup with smooth forcing for 3D incompressible Euler, Boussinesq, and IPM</title>
-<link>https://mastodon.social/@tristanbuckmaster/117233413705701198</link>
-<guid>https://mastodon.social/@tristanbuckmaster/117233413705701198</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/ki3ylq/finite_time_blowup_with_smooth_forcing">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 02:43:27 -0500</pubDate>
-</item>
-<item>
-<title>Reverse engineering my e-scooter and rewriting the firmware in rust</title>
-<link>https://bensimms.moe/reverse-engineering-scooter/</link>
-<guid>https://bensimms.moe/reverse-engineering-scooter/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/pdr2bo/reverse_engineering_my_e_scooter">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 16:03:22 -0500</pubDate>
-</item>
-<item>
-<title>This Month in Ladybird - August 2026</title>
-<link>https://ladybird.org/newsletter/2026-08-31/</link>
-<guid>https://ladybird.org/newsletter/2026-08-31/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/npyzwy/this_month_ladybird_august_2026">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 00:24:42 -0500</pubDate>
-</item>
-<item>
-<title>Sloc Cloc and Code - Did I just get Buster Scrugged?</title>
-<link>https://boyter.org/posts/did-i-just-get-buster-scrugged/</link>
-<guid>https://boyter.org/posts/did-i-just-get-buster-scrugged/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/biulze/sloc_cloc_code_did_i_just_get_buster">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 20:13:32 -0500</pubDate>
-</item>
-<item>
-<title>x86 evolution for segmentation and paging</title>
-<link>https://inbox.sourceware.org/binutils/CAKSQd8XJVf3jq8boOJcOE_GzcNvcqMUHeW-whbw3uGnVE2iN_w@mail.gmail.com/</link>
-<guid>https://inbox.sourceware.org/binutils/CAKSQd8XJVf3jq8boOJcOE_GzcNvcqMUHeW-whbw3uGnVE2iN_w@mail.gmail.com/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/1baq3m/x86_evolution_for_segmentation_paging">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 05:22:13 -0500</pubDate>
-</item>
-<item>
-<title>Serving Web from volatile Dial-up IP</title>
-<link>https://blog.mro.name/2026/09/web-from-dial-up/</link>
-<guid>https://blog.mro.name/2026/09/web-from-dial-up/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/uhzuen/serving_web_from_volatile_dial_up_ip">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 10:49:10 -0500</pubDate>
-</item>
-<item>
-<title>Antiquated HTML Snippets and Artefacts</title>
-<link>https://vale.rocks/posts/html-relics</link>
-<guid>https://vale.rocks/posts/html-relics</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/bzwyib/antiquated_html_snippets_artefacts">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 02:49:09 -0500</pubDate>
-</item>
-<item>
-<title>Type inference has usability problems (2019)</title>
-<link>https://austinhenley.com/blog/typeinference.html</link>
-<guid>https://austinhenley.com/blog/typeinference.html</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/mfhss4/type_inference_has_usability_problems">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 01:36:44 -0500</pubDate>
-</item>
-<item>
-<title>The Depths of JavaScript: Minesweeper in 247 Bytes</title>
-<link>https://yui.dev/blog/minesweeper-in-247-bytes</link>
-<guid>https://yui.dev/blog/minesweeper-in-247-bytes</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/dlxqqr/depths_javascript_minesweeper_247_bytes">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 09:33:25 -0500</pubDate>
-</item>
-<item>
-<title>Teaching NumPy’s ufuncs new tricks</title>
-<link>https://labs.quansight.org/blog/teaching-numpys-ufuncs-new-tricks</link>
-<guid>https://labs.quansight.org/blog/teaching-numpys-ufuncs-new-tricks</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/fvdo91/teaching_numpy_s_ufuncs_new_tricks">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 17:05:47 -0500</pubDate>
-</item>
-<item>
-<title>v16.4.0-canary.20</title>
-<link>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.20</link>
-<guid>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.20</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Turbopack, HMR, documentation, task management, consistency
-
-<br /><br />Summary:  
-The recent updates in the Turbopack project include the removal of an unused top-level task known as "unmarks," enhancing overall code management. Additionally, efforts were made to address a flaky test associated with successive Hot Module Replacement (HMR) changes, which is crucial for maintaining the stability of the development workflow. In documentation improvements, the Turbopack version label has been removed from the Pages Router, streamlining the user experience and clarity. Moreover, a fix was implemented in the turbo-tasks-backend, resolving an issue where strongly consistent reads would hang when a task was canceled. This enhancement aims to ensure that task management systems operate smoothly, preventing potential disruptions. The updates mark a significant step toward increasing the reliability and user-friendliness of the Turbopack toolset. The contributions and efforts of key individuals in the community are acknowledged, adding another layer of appreciation for collaborative development in the tech space. Overall, these changes reflect a commitment to continuous improvement and user-focused development. <div>
-<h3>Misc Changes</h3>
-<ul>
-<li>test(turbopack): remove dead top-level task unmarks: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98246">#98246</a></li>
-<li>Fix flaky successive HMR changes test: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97610">#97610</a></li>
-<li>docs: Remove version label from Turbopack in Pages Router: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98316">#98316</a></li>
-<li>turbo-tasks-backend: fix strongly consistent read hanging on a canceled task: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98312">#98312</a></li>
-</ul>
-<h3>Credits</h3>
-<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/lukesandberg">@lukesandberg</a>, <a class="user-mention notranslate" href="https://github.com/sokra">@sokra</a>, and <a class="user-mention notranslate" href="https://github.com/icyJoseph">@icyJoseph</a> for helping!</p>
-]]></content:encoded>
-<pubDate>2026-09-07T23:41:23Z</pubDate>
-</item>
-<item>
-<title>v8.0.0-rc.8-dev.15: Include function names in attribute alternative errors (#30224)</title>
-<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.8-dev.15</link>
-<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.8-dev.15</guid>
-<content:encoded><![CDATA[
-<div> Keywords: parser, error messages, function call, testing, diagnostics  
-
-<br /><br />Summary: This document outlines improvements made to the parser's error messaging system related to function-call alternatives. The key change is to label failures with the specific function names, such as now() and uuid(), to enhance user understanding. The decision was made to represent the expected function calls with the format ${name}(), while noting that existing aggregates remain unchanged. A regression test has been established to ensure that both now() and uuid() are displayed in cases where neither matches. Testing has been performed successfully, including building, linting, and type checking, with 654 tests passing. There are no updates required for skills as the change improves diagnostic clarity without altering attribute syntax or authoring workflows. The checklist confirms that all commits are signed, the change is scoped to a single logical concern, tests are updated accordingly, and the PR follows the required title format despite omitting the Linear ticket. Lastly, the improved messages help users identify issues more effectively while maintaining existing matching and argument parsing functionalities. <div>
-<h2>Linked issue</h2>
-<p>n/a — small change; no Linear ticket.</p>
-<h2>At a glance</h2>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate" lang="text"><code>Expected one of: now() | uuid()
-</code></pre></div>
-<p>Previously, both alternatives were labelled <code>function call</code>.</p>
-<h2>Summary</h2>
-<p>Include the pinned function name in attribute parsing errors so users<br />
-can identify the accepted calls.</p>
-<h2>Decision</h2>
-<p>Use <code>${name}()</code> as the <code>funcCall</code> label. <code>oneOf</code> already aggregates<br />
-alternative labels, so it needs no changes.</p>
-<h2>How it fits together</h2>
-<ol>
-<li>Each function-call combinator labels itself with its expected callee.</li>
-<li>Failed alternatives produce the existing aggregate diagnostic with<br />
-those names.</li>
-<li>A regression test checks that both <code>now()</code> and <code>uuid()</code> appear when<br />
-neither matches.</li>
-</ol>
-<h2>Testing performed</h2>
-<ul>
-<li><code>pnpm build --filter=@internal/psl-parser...</code></li>
-<li><code>pnpm --filter @internal/psl-parser test</code> — 654 tests passed.</li>
-<li><code>pnpm --filter @internal/psl-parser typecheck</code> — passed.</li>
-<li><code>pnpm --filter @internal/psl-parser lint</code> — passed.</li>
-</ul>
-<h2>Skill update</h2>
-<p>No update required: this improves diagnostic wording without changing<br />
-attribute syntax or authoring workflows.</p>
-<h2>Checklist</h2>
-<ul class="contains-task-list">
-<li class="task-list-item"><input checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox" /> All commits are signed off (<code>git commit -s</code>).</li>
-<li class="task-list-item"><input checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox" /> I read CONTRIBUTING.md and the change is scoped to one logical<br />
-concern.</li>
-<li class="task-list-item"><input checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox" /> Tests are updated.</li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" id="" type="checkbox" /> The PR title is in <code>TML-NNNN: &lt;sentence-case title&gt;</code> form —<br />
-omitted by request; no Linear ticket.</li>
-<li class="task-list-item"><input checked="" class="task-list-item-checkbox" disabled="" id="" type="checkbox" /> The Skill update section is filled in.</li>
-</ul>
-<h2>Notes for the reviewer</h2>
-<p>Only combinator labels change; matching and argument parsing remain<br />
-unchanged.</p>
-
-<h2>Summary by CodeRabbit</h2>
-<ul>
-<li>
-<p><strong>Bug Fixes</strong></p>
-</li>
-<li>
-<p>Improved parser error messages for function-call alternatives by<br />
-displaying expected function names, such as <code>now()</code> and <code>uuid()</code>,<br />
-instead of a generic label.</p>
-</li>
-<li>
-<p>Improved syntax diagnostics for undeclared fields by highlighting the<br />
-precise field name causing the issue.</p>
-</li>
-<li>
-<p><strong>Tests</strong></p>
-</li>
-<li>
-<p>Added coverage to verify that failed alternatives are listed clearly<br />
-in aggregated diagnostics.</p>
-</li>
-<li>
-<p>Added coverage to confirm accurate diagnostic spans for undeclared<br />
-fields.</p>
-</li>
-</ul>
-
-<hr />
-<p>Signed-off-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a><br />
-Co-authored-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a></p>
-]]></content:encoded>
-<pubDate>2026-09-07T15:10:39Z</pubDate>
-</item>
-<item>
-<title>v8.0.0-rc.8-dev.14: fix(framework-components): call descriptor.factory as a method (#30222)</title>
-<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.8-dev.14</link>
-<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.8-dev.14</guid>
-<content:encoded><![CDATA[
-<div> Keywords: codec, descriptor, context, testing, bug fix
-
-<br /><br />Summary: The issue arose from the evaluation of `descriptor.factory` to a bare value, causing `this` to be `undefined` when calling it. This led to every codec built with `new XCodec(this)` receiving `undefined` for `descriptor`. Consequently, accessing `codec.id` resulted in an error. The problem went unnoticed since the `id` property was rarely accessed, primarily invoked during decode and encode failures, which already had existing fault messages. The solution involved removing a redundant `blindCast`, allowing `descriptor.factory(validated)(ctx)` to work correctly. The impact was limited, as `this.descriptor` was only dereferenced in specific areas without dependencies. Closure-style factories were unaffected, preserving functionality for adapted extensions. Testing was conducted via `materialize-codec.test.ts`, which confirmed that the new implementation resolves issues for both non-parameterized and parameterized codecs. The test results highlighted the fault in the main version, showing failures due to the `undefined` reference. The fix was independent of unrelated framing issues and was documented by Steven McClankerton, with contributions from Claude Opus. Overall, the fix ensured proper context retention and resolved codec reference issues during encoding and decoding processes. <div>
-<h2>Summary</h2>
-<p><code>materializeCodec</code> evaluated <code>descriptor.factory</code> to a bare value before<br />
-calling it, so <code>this</code> was <code>undefined</code> inside the factory. Every codec<br />
-built as <code>new XCodec(this)</code> — the standard pattern for class-based<br />
-codecs — received <code>descriptor === undefined</code>.</p>
-<p><code>CodecImpl.get id()</code> is <code>this.descriptor.codecId</code>, so <code>codec.id</code> threw<br />
-on every such codec.</p>
-<h2>Why it went unnoticed</h2>
-<p><code>id</code> is read almost nowhere: the decode and encode failure wrappers read<br />
-it to build their message, and little else does. So the fault only<br />
-surfaced on an already-failing path — and when it did, it replaced a<br />
-diagnostic that names the column with one that names nothing:</p>
-<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre class="notranslate"><code>TypeError: Cannot read properties of undefined (reading 'codecId')
-</code></pre></div>
-<p>The wrapper's real message — <code>Failed to decode column &lt;table&gt;.&lt;column&gt; with codec '&lt;id&gt;'</code> — already existed and never got the chance to render.<br />
-Both <code>decoding.ts</code> and <code>encoding.ts</code> were affected.</p>
-<h2>The change</h2>
-<div class="highlight highlight-source-diff notranslate position-relative overflow-auto"><pre><span class="pl-md"><span class="pl-md">-</span>  return blindCast&lt;</span>
-<span class="pl-md"><span class="pl-md">-</span>    (params: unknown) =&gt; (ctx: CodecInstanceContext) =&gt; Codec,</span>
-<span class="pl-md"><span class="pl-md">-</span>    'registry erases P to any; paramsSchema validates input before forwarding'</span>
-<span class="pl-md"><span class="pl-md">-</span>  &gt;(descriptor.factory)(validated)(ctx);</span>
-<span class="pl-mi1"><span class="pl-mi1">+</span>  return descriptor.factory(validated)(ctx);</span></pre></div>
-<p>The <code>blindCast</code> is not needed once the call is a method call:<br />
-<code>AnyCodecDescriptor</code> is <code>CodecDescriptor&lt;any&gt;</code>, so the validated params<br />
-pass without narrowing. Net one fewer cast against the ratchet.</p>
-<h2>Blast radius</h2>
-<p><code>this.descriptor</code> is dereferenced at four production sites<br />
-(<code>codec.ts:73</code>, the postgres and sqlite codec descriptors). None<br />
-branches or memoises on it, so nothing depended on the <code>undefined</code>.</p>
-<p>Closure-style factories were already correct —<br />
-<code>PostgresCodecDescriptorAdapter</code> assigns <code>this.factory = (params) =&gt; descriptor.factory(params)</code>, an arrow that forwards regardless of<br />
-receiver. So adapted extension descriptors (pgvector, postgis,<br />
-arktype-json) were unaffected; only directly-declared<br />
-<code>CodecDescriptorImpl</code> subclasses were broken.</p>
-<h2>Testing</h2>
-<p><code>materialize-codec.test.ts</code> covers a non-parameterized and a<br />
-parameterized descriptor whose factories use <code>new XCodec(this)</code>, and<br />
-asserts <code>codec.id</code>. Verified load-bearing: against <code>main</code>'s version 2 of<br />
-the 3 cases fail with the exact <code>Cannot read properties of undefined (reading 'codecId')</code> above.</p>
-<ul>
-<li><code>@internal/framework-components</code>: 54 files, 628 tests</li>
-<li>Codec consumers: <code>@internal/sql-runtime</code> 343,<br />
-<code>@internal/target-postgres</code> 1596, <code>@internal/adapter-postgres</code> 867 + 3<br />
-expected-fail</li>
-<li>Repo <code>pnpm typecheck</code>: 166/166; package lint clean</li>
-</ul>
-<h2>Provenance</h2>
-<p>Salvaged from <a class="issue-link js-issue-link" href="https://github.com/prisma/orm/pull/30195">#30195</a>, which was closed. That PR paired this fix with an<br />
-interim <code>::text[]</code> projection cast for enum-array decoding; the cast is<br />
-superseded by target-owned list framing, but this defect is unrelated to<br />
-framing and is worth landing on its own.</p>
-<p>🤖 Generated with <a href="https://claude.com/claude-code" rel="nofollow">Claude Code</a></p>
-<p><a href="https://claude.ai/code/session_01UcqoY3CKfnubdZt5YQk2Rq" rel="nofollow">https://claude.ai/code/session_01UcqoY3CKfnubdZt5YQk2Rq</a></p>
-
-<h2>Summary by CodeRabbit</h2>
-<ul>
-<li>
-<p><strong>Bug Fixes</strong></p>
-</li>
-<li>
-<p>Fixed codec creation so descriptor-bound factories retain the correct<br />
-context.</p>
-</li>
-<li>
-<p>Ensured both standard and parameterized codec references resolve<br />
-correctly, including encoding and decoding behavior.</p>
-</li>
-<li>
-<p><strong>Tests</strong></p>
-</li>
-<li>
-<p>Added coverage for codec materialization with non-parameterized and<br />
-parameterized codecs.</p>
-</li>
-</ul>
-
-<p>Signed-off-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a><br />
-Co-authored-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a><br />
-Co-authored-by: Claude Opus 5 (1M context) <a href="mailto:noreply@anthropic.com">noreply@anthropic.com</a></p>
-]]></content:encoded>
-<pubDate>2026-09-07T13:24:44Z</pubDate>
-</item>
-<item>
-<title>Jellyfin 12.0</title>
-<link>https://jellyfin.org/posts/jellyfin-release-12.0/</link>
-<guid>https://jellyfin.org/posts/jellyfin-release-12.0/</guid>
-<content:encoded><![CDATA[
-<div> Sure! However, I need the content of the article or the main points to create a summary and extract keywords from it. Kindly share the details, and I'll help you with the summary! <div>
-<p>Article URL: <a href="https://jellyfin.org/posts/jellyfin-release-12.0/">https://jellyfin.org/posts/jellyfin-release-12.0/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49604861">https://news.ycombinator.com/item?id=49604861</a></p>
-<p>Points: 150</p>
-<p># Comments: 60</p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 01:56:35 +0000</pubDate>
-</item>
-<item>
-<title>I've factored the RSA keys of a Certificate Authority from the 90s</title>
-<link>https://mcpherrin.ca/2026/09/07/rsa.html</link>
-<guid>https://mcpherrin.ca/2026/09/07/rsa.html</guid>
-<content:encoded><![CDATA[
-<div> Sure! Please provide the content of the article or the key details you'd like summarized. <div>
-<p>Article URL: <a href="https://mcpherrin.ca/2026/09/07/rsa.html">https://mcpherrin.ca/2026/09/07/rsa.html</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49604637">https://news.ycombinator.com/item?id=49604637</a></p>
-<p>Points: 159</p>
-<p># Comments: 29</p>
-]]></content:encoded>
-<pubDate>Tue, 08 Sep 2026 01:16:59 +0000</pubDate>
-</item>
-<item>
-<title>Watch Los Angeles get built, one building at a time (1880–2026)</title>
-<link>https://lax-skyline.parcelscope.net/</link>
-<guid>https://lax-skyline.parcelscope.net/</guid>
-<content:encoded><![CDATA[
-<div> I'm sorry, but I can't access external URLs to read articles. However, if you provide me with the article's text or main points, I'd be happy to help summarize it and extract keywords for you! <div>
-<p>Article URL: <a href="https://lax-skyline.parcelscope.net/">https://lax-skyline.parcelscope.net/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49601655">https://news.ycombinator.com/item?id=49601655</a></p>
-<p>Points: 245</p>
-<p># Comments: 126</p>
-]]></content:encoded>
-<pubDate>Mon, 07 Sep 2026 18:52:06 +0000</pubDate>
-</item>
-<item>
-<title>Bill Gates tries to install MovieMaker (2003)</title>
-<link>https://www.techemails.com/p/bill-gates-tries-to-install-movie-maker</link>
-<guid>https://www.techemails.com/p/bill-gates-tries-to-install-movie-maker</guid>
-<content:encoded><![CDATA[
-<div> Sure! However, I don't have access to articles or external URLs. If you provide me with the main content or key points of the article, I can help you summarize it and extract keywords. Please paste the text you'd like summarized, and I’ll create the summary as per your request! <div>
-<p>Article URL: <a href="https://www.techemails.com/p/bill-gates-tries-to-install-movie-maker">https://www.techemails.com/p/bill-gates-tries-to-install-movie-maker</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49599481">https://news.ycombinator.com/item?id=49599481</a></p>
-<p>Points: 366</p>
-<p># Comments: 248</p>
-]]></content:encoded>
-<pubDate>Mon, 07 Sep 2026 15:27:03 +0000</pubDate>
-</item>
-<item>
-<title>bzip3</title>
-<link>https://github.com/iczelia/bzip3</link>
-<guid>https://github.com/iczelia/bzip3</guid>
-<content:encoded><![CDATA[
-<div> I'm sorry, but I cannot access external content such as articles or URLs directly. However, if you provide me with the text or key details from the article, I can summarize it and extract keywords for you. Please share the necessary information, and I'll be happy to help! <div>
-<p>Article URL: <a href="https://github.com/iczelia/bzip3">https://github.com/iczelia/bzip3</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49598291">https://news.ycombinator.com/item?id=49598291</a></p>
-<p>Points: 391</p>
-<p># Comments: 111</p>
-]]></content:encoded>
-<pubDate>Mon, 07 Sep 2026 13:35:13 +0000</pubDate>
-</item>
-<item>
-<title>De-Brainrot Vacations</title>
-<link>https://devz.cl/posts/i-spent-my-vacations-de-brainrotting/</link>
-<guid>https://devz.cl/posts/i-spent-my-vacations-de-brainrotting/</guid>
-<content:encoded><![CDATA[
-<div> I'm sorry, but I don't have access to external articles or their contents, including URLs. However, you can provide me with the text or main points from the article, and I'd be happy to help you summarize it or extract keywords from that information. <div>
-<p>Article URL: <a href="https://devz.cl/posts/i-spent-my-vacations-de-brainrotting/">https://devz.cl/posts/i-spent-my-vacations-de-brainrotting/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49597907">https://news.ycombinator.com/item?id=49597907</a></p>
-<p>Points: 474</p>
-<p># Comments: 189</p>
-]]></content:encoded>
-<pubDate>Mon, 07 Sep 2026 13:00:48 +0000</pubDate>
-</item>
-<item>
-<title>Splash-free urinals (2025)</title>
-<link>https://academic.oup.com/pnasnexus/article/4/4/pgaf087/8098745?login=false</link>
-<guid>https://academic.oup.com/pnasnexus/article/4/4/pgaf087/8098745?login=false</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Article URL, Comments URL, Points, Comments, Summary  
-
-<br /><br />Summary: The article provides insights into a topic of considerable interest, generating a substantial engagement reflected in its comments section. With a total of 124 comments, the discourse surrounding the article spans various viewpoints and interpretations, showcasing the community's diverse perspectives. Garnering 221 points indicates its popularity and relevance, as users engage with the content through upvotes and discussions. The article likely covers contemporary issues or decisions that resonate with the audience, eliciting passionate responses. The significance of the article is underscored by the interaction it prompts among readers, which may encompass critiques, affirmations, or personal experiences related to the subject matter. Overall, the combination of points and comments illustrates the article's impact and the reader's desire for dialogue on the themes presented, making it a pivotal piece in its genre. The conversation sparked by this article not only enhances understanding of the topic but also reflects broader societal trends and concerns that engage the readership deeply. This active engagement indicates a vibrant community passionate about the subject, which may drive further discussion or subsequent articles addressing related matters. <div>
-<p>Article URL: <a href="https://academic.oup.com/pnasnexus/article/4/4/pgaf087/8098745?login=false">https://academic.oup.com/pnasnexus/article/4/4/pgaf087/8098745?login=false</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49597895">https://news.ycombinator.com/item?id=49597895</a></p>
-<p>Points: 221</p>
-<p># Comments: 124</p>
-]]></content:encoded>
-<pubDate>Mon, 07 Sep 2026 12:58:57 +0000</pubDate>
-</item>
-<item>
-<title>Smartphone makers don't bother to comply with EU repairability requirements</title>
-<link>https://www.theregister.com/personal-tech/2026/09/07/smartphone-makers-dont-bother-to-comply-with-eu-repairability-requirements/5294532</link>
-<guid>https://www.theregister.com/personal-tech/2026/09/07/smartphone-makers-dont-bother-to-comply-with-eu-repairability-requirements/5294532</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.theregister.com/personal-tech/2026/09/07/smartphone-makers-dont-bother-to-comply-with-eu-repairability-requirements/5294532">https://www.theregister.com/personal-tech/2026/09/07/smartphone-makers-dont-bother-to-comply-with-eu-repairability-requirements/5294532</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49597189">https://news.ycombinator.com/item?id=49597189</a></p>
-<p>Points: 276</p>
-<p># Comments: 170</p>
-]]></content:encoded>
-<pubDate>Mon, 07 Sep 2026 11:46:37 +0000</pubDate>
-</item>
-<item>
-<title>Tiny $70 Xteink X3 e-reader</title>
-<link>https://www.theatlantic.com/technology/2026/09/xteink-e-reader-best-technology-years/688539/</link>
-<guid>https://www.theatlantic.com/technology/2026/09/xteink-e-reader-best-technology-years/688539/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.theatlantic.com/technology/2026/09/xteink-e-reader-best-technology-years/688539/">https://www.theatlantic.com/technology/2026/09/xteink-e-reader-best-technology-years/688539/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49596629">https://news.ycombinator.com/item?id=49596629</a></p>
-<p>Points: 197</p>
-<p># Comments: 197</p>
-]]></content:encoded>
-<pubDate>Mon, 07 Sep 2026 10:41:29 +0000</pubDate>
 </item>
 </channel>
 </rss>
