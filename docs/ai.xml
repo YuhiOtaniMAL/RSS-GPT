@@ -3,7 +3,452 @@
 <channel>
 <title>ai</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/ai.xml</link>
-<lastBuildDate>Mon, 12 Oct 2026 05:37:23 +0000</lastBuildDate>
+<lastBuildDate>Tue, 13 Oct 2026 06:34:12 +0000</lastBuildDate>
+
+<item>
+<title>Hello Python 3.15, goodbye 3.10, and now I can use 3.11</title>
+<link>https://simonwillison.net/2026/Oct/12/python-3-15/</link>
+<guid>https://simonwillison.net/2026/Oct/12/python-3-15/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Python, lazy imports, profiling, performance, upgrades  
+
+<br><br>Summary:  
+Python 3.15 introduces exciting features, including explicit lazy imports, allowing modules to load only when their symbols are used, significantly improving startup times. Unpacking in comprehensions is enhanced with new syntax for lists, sets, and dictionaries, which simplifies code and maintains readability. A new sampling profiler, Tachyon, is introduced, allowing developers to gather performance insights with low overhead. It can attach to existing Python processes and generate detailed reports, enhancing debugging capabilities. However, overall performance improvements in 3.15 are minimal compared to 3.14, except for the experimental JIT, which offers a notable speed boost in certain tests. The upgrade process is streamlined with the uv tool, making it easy to install and set Python 3.15 as the default version for projects. With the release of Python 3.15, developers can drop support for Python 3.10 and leverage features from 3.11, such as improved asyncio support and SQLite enhancements. Various improvements in SQLite handling make this version more robust, promising significant advancements for open-source projects utilizing these new features. Overall, Python 3.15 marks an essential step forward in the evolution of the language. <div>
+<p>Python 3.15 <a href="https://www.python.org/downloads/release/python-3150/">is here</a>! Here's the essential <a href="https://docs.python.org/3.15/whatsnew/3.15.html">What's new in Python 3.15</a> guide, this year curated by 3.14 and 3.15 release manager Hugo van Kemenade. As someone who builds open source software that works in every supported Python version, I get to say goodbye to Python 3.10 and start embracing features from Python 3.11.</p>
+<p>First, some highlights from Python 3.15.</p>
+<h4 id="explicit-lazy-imports">Explicit lazy imports</h4>
+<p>I'm most excited about <a href="https://docs.python.org/3.15/whatsnew/3.15.html#pep-810-explicit-lazy-imports">Explicit lazy imports</a> from <a href="https://peps.python.org/pep-0810/">PEP 810</a>. These let you import modules like so:</p>
+<pre><span class="pl-s1">lazy</span> <span class="pl-k">import</span> <span class="pl-s1">json</span>
+<span class="pl-s1">lazy</span> <span class="pl-k">from</span> <span class="pl-s1">pathlib</span> <span class="pl-k">import</span> <span class="pl-v">Path</span></pre>
+<p>The module will then be imported the first time those symbols are used in the code that follows.</p>
+<p>My <a href="https://llm.datasette.io/">LLM</a> CLI tool implements plugins. I had to <a href="https://llm.datasette.io/en/stable/plugins/advanced-model-plugins.html#tip-lazily-load-expensive-dependencies">recommend manual lazy imports</a> in the plugin author documentation, because simply installing plugins that used heavy dependencies such as <code>sentence_transformers</code> could add multiple seconds to every invocation of the <code>llm</code> command. Lazy imports directly address this startup cost.</p>
+<h4 id="unpacking-in-comprehensions">Unpacking in comprehensions</h4>
+<p>The new <code>[*sublist for sublist in lists]</code> unpacking syntax is neat. Here's an illustration <a href="https://docs.python.org/3.15/whatsnew/3.15.html#pep-798-unpacking-in-comprehensions">lifted from the documentation</a>:</p>
+<pre><span class="pl-s1">lists</span> <span class="pl-c1">=</span> [[<span class="pl-c1">1</span>, <span class="pl-c1">2</span>], [<span class="pl-c1">3</span>, <span class="pl-c1">4</span>], [<span class="pl-c1">5</span>]]
+[<span class="pl-c1">*</span><span class="pl-c1">L</span> <span class="pl-k">for</span> <span class="pl-c1">L</span> <span class="pl-c1">in</span> <span class="pl-s1">lists</span>]
+<span class="pl-c"># [1, 2, 3, 4, 5]</span>
+<span class="pl-c"># equivalent to [x for L in lists for x in L]</span>
+
+<span class="pl-s1">sets</span> <span class="pl-c1">=</span> [{<span class="pl-c1">1</span>, <span class="pl-c1">2</span>}, {<span class="pl-c1">2</span>, <span class="pl-c1">3</span>}, {<span class="pl-c1">3</span>, <span class="pl-c1">4</span>}]
+{<span class="pl-c1">*</span><span class="pl-s1">s</span> <span class="pl-k">for</span> <span class="pl-s1">s</span> <span class="pl-c1">in</span> <span class="pl-s1">sets</span>}
+<span class="pl-c"># {1, 2, 3, 4}</span>
+<span class="pl-c"># equivalent to {x for s in sets for x in s}</span>
+
+<span class="pl-s1">dicts</span> <span class="pl-c1">=</span> [{<span class="pl-s">'a'</span>: <span class="pl-c1">1</span>}, {<span class="pl-s">'b'</span>: <span class="pl-c1">2</span>}, {<span class="pl-s">'a'</span>: <span class="pl-c1">3</span>}]
+{<span class="pl-c1">**</span><span class="pl-s1">d</span> <span class="pl-s1">for</span> <span class="pl-s1">d</span> <span class="pl-c1">in</span> <span class="pl-s1">dicts</span>}
+<span class="pl-c"># {'a': 3, 'b': 2}</span>
+<span class="pl-c"># equivalent to {k: v for d in dicts for k,v in d.items()}</span></pre>
+<p><a href="https://peps.python.org/pep-0798/">PEP 798: Unpacking in Comprehensions</a> by Adam Hartz and Erik Demaine proposed this as an extension of the unpacking syntax <a href="https://peps.python.org/pep-0448/">from PEP 448</a>, which landed <a href="https://docs.python.org/3/whatsnew/3.5.html#pep-448-additional-unpacking-generalizations">in Python 3.5</a> back in 2015.</p>
+<h4 id="a-sampling-profiler">A sampling profiler</h4>
+<p>Python's existing tracing profiler has been renamed from <code>cProfile</code> to <a href="https://docs.python.org/3.15/library/profiling.tracing.html#module-profiling.tracing">profiling.tracing</a>, and has been joined by an exciting new sampling profiler called Tachyon, aka <a href="https://docs.python.org/3.15/whatsnew/3.15.html#tachyon-high-frequency-statistical-sampling-profiler">profiling.sampling</a>.</p>
+<p>Sampling profilers work by periodically capturing stack traces from running processes, then using those to calculate which functions have the most time spent inside of them. They're very low overhead and can provide a deep insight into running systems, without needing to instrument those systems first.</p>
+<p>I've <a href="https://simonwillison.net/tags/profiling/">previously used tools</a> like <a href="https://github.com/benfred/py-spy">py-spy</a> for this. Now this capability is baked into the standard library.</p>
+<p>If you have the PID of an existing Python 3.15 process you can start gathering samples by running this (I had to use <code>sudo</code> on macOS):</p>
+<div class="highlight highlight-source-shell"><pre>sudo uv run --python 3.15 python -m profiling.sampling attach 1234</pre></div>
+<p>Interact with the main program a bit, then hit Ctrl+C to stop gathering and see a report, which looks something like this:</p>
+<p><img alt="Screenshot of terminal output from a Python sampling profiler with colored text on a black background. Header lines report 2,651 samples captured in 2.65 seconds at a sample rate of 999.98 samples/sec with an error rate of 0.19. A Profile Stats table with columns for nsamples, sample%, tottime, cumul%, cumtime and filename:lineno(function) shows that 99.9% of samples (2.644 seconds) were spent directly in selectors.py KqueueSelector.select, meaning the process was almost entirely idle waiting on the asyncio event loop. The rest of the table lists the call stack beneath it with zero direct time but 100% cumulative presence: asyncio base_events.py run_once, run_forever and run_until_complete, runners.py Runner.run and run, cli.py serve and sqlite_extensions wrapped, and several click core.py invoke, main and call frames. A legend explains each column, followed by a Summary of Interesting Functions section listing hot spots (KqueueSelector.select at 99.9% direct samples), the most frequently present functions on the stack (run_forever, run_until_complete and Runner.run at 100%), and the highest call magnification (2645.0x for BaseEventLoop._run_once)." src="https://static.simonwillison.net/static/2026/profiler-output.webp" /></p>
+<p>It can also produce <a href="https://simonw.github.io/research/python-3-15-web-edit-profiling/artifacts/flamegraph.html">flame graphs like this</a> and <a href="https://simonw.github.io/research/python-3-15-web-edit-profiling/artifacts/heatmap/index.html">heat maps like this</a>, and can even output a format that can be viewed in the Firefox profiler UI.</p>
+<h4 id="3-15-isn-t-much-faster-than-3-14">3.15 isn't much faster than 3.14</h4>
+<p>Miguel Grinberg investigated <a href="https://blog.miguelgrinberg.com/post/how-fast-is-python-3-15">How fast is Python 3.15?</a> the other day against the 3.15.0rc3 release and found performance to be mostly the same as 3.14, with the exception of the experimental JIT. The JIT gave a 1.2x boost over the standard 3.15 interpreter (on a Fibonacci test), the first time Miguel observed a meaningful JIT performance increase.</p>
+<p>Miguel's <a href="https://blog.miguelgrinberg.com/post/python-3-14-is-here-how-fast-is-it">explorations of 3.14</a> last year found significant boosts against Python 3.13 across many more categories.</p>
+<h4 id="upgrading-to-python-3-15-with-uv">Upgrading to Python 3.15 with uv</h4>
+<p>I used the following sequence of commands to get <code>uv</code> to use Python 3.15 on my Mac. First I had to upgrade <code>uv</code> itself to ensure it knew about the new release:</p>
+<div class="highlight highlight-source-shell"><pre>uv self update</pre></div>
+<p>Then I installed the stable 3.15 release:</p>
+<div class="highlight highlight-source-shell"><pre>uv python install 3.15</pre></div>
+<p>And told <code>uv</code> that I wanted that to be the default for every <code>uv run</code> command, unless the project itself pinned a different version:</p>
+<div class="highlight highlight-source-shell"><pre>uv python pin --global 3.15</pre></div>
+<p>Now the following reports 3.15 as the version:</p>
+<div class="highlight highlight-source-shell"><pre>uv run python --version</pre></div>
+<p>I already have a bunch of tools installed using <code>uv tool install</code>. I reinstalled them to use Python 3.15 like this:</p>
+<div class="highlight highlight-source-shell"><pre>uv tool upgrade datasette --python 3.15</pre></div>
+<p>Then I can confirm the version like this:</p>
+<div class="highlight highlight-source-shell"><pre>datasette --get /-/versions.json <span class="pl-k">|</span> jq</pre></div>
+<h4 id="highlights-from-python-3-11">Highlights from Python 3.11</h4>
+<p>The release of 3.15 means that Python 3.10 (released in 2021) is officially <a href="https://devguide.python.org/versions/">no longer supported</a>.</p>
+<p>My policy for my main open source projects is to keep them working in every supported Python version. I can now drop 3.10 and start using features that were introduced in 3.11.</p>
+<p>Here's the <a href="https://docs.python.org/3/whatsnew/3.11.html">What's new in Python 3.11</a> document. I finally get to rely on <a href="https://docs.python.org/3/library/tomllib.html#module-tomllib">tomllib</a> being available!</p>
+<p>Datasette makes extensive use of <code>asyncio</code>. 3.11 adds <a href="https://docs.python.org/3/library/asyncio-task.html#asyncio.TaskGroup">TaskGroup</a> and <a href="https://docs.python.org/3/library/asyncio-task.html#asyncio.timeout">timeout()</a>, and <a href="https://docs.python.org/3/whatsnew/3.11.html#asyncio">several more</a> new features.</p>
+<p><code>datetime.UTC</code> is a new in 3.11 alias for <code>datetime.timezone.utc</code>.</p>
+<p>Python's SQLite support got some significant upgrades in 3.11, including:</p>
+<ul>
+<li>
+<a href="https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.setlimit">setlimit()</a> and <a href="https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.getlimit">getlimit()</a> expose a mechanism for setting <a href="https://www.sqlite.org/c3ref/c_limit_attached.html">SQLite runtime limits</a> from Python.</li>
+<li>
+<a href="https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.create_window_function">create_window_function()</a> lets us create custom window functions in Python, as a class with <code>step()</code>, <code>value()</code>, <code>inverse()</code>, and <code>finalize()</code> methods.</li>
+<li>
+<a href="https://docs.python.org/3/library/sqlite3.html#sqlite3.Connection.blobopen">blobopen()</a> provides an efficient mechanism for partial reads and writes of large <code>BLOB</code> binary values stored in a SQLite row.</li>
+<li>You can now call <code>set_authorizer(None)</code> to remove a SQLite authorizer. Datasette had a workaround for this!</li>
+</ul>
+<p>Plus a whole bunch of <a href="https://docs.python.org/3/whatsnew/3.11.html#new-feat-related-type-hints-311">improvements to Python's typing system</a>.</p>
+<p>I plan to land Python 3.11 improvements to a bunch of my projects over the next few weeks. Here's <a href="https://github.com/simonw/datasette/pull/2998">my first Datasette PR</a> removing that <code>set_authorizer(None)</code> workaround.</p>
+<p>I've also updated my <a href="https://github.com/simonw/click-app">click-app</a>, <a href="https://github.com/simonw/datasette-plugin">datasette-plugin</a>, <a href="https://github.com/simonw/python-lib">python-lib</a>, and <a href="https://github.com/simonw/llm-plugin">llm-plugin</a> cookiecutter templates to test against Python 3.11 through Python 3.15.</p>
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/open-source">open-source</a>, <a href="https://simonwillison.net/tags/profiling">profiling</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/sqlite">sqlite</a>, <a href="https://simonwillison.net/tags/uv">uv</a></p>
+]]></content:encoded>
+<pubDate>2026-10-12T18:15:38+00:00</pubDate>
+<pubDate>2026-10-12T18:15:38+00:00</pubDate>
+</item>
+<item>
+<title>web-edit 0.1a0</title>
+<link>https://simonwillison.net/2026/Oct/12/web-edit/</link>
+<guid>https://simonwillison.net/2026/Oct/12/web-edit/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Codex Remote, Python web app, Tailscale, credentials file, mobile experience  
+
+<br><br>Summary:  
+I was utilizing Codex Remote on my phone to manage a project when I needed to edit a credentials file directly, without passing sensitive information through a language model (LLM). To facilitate this, I collaborated with Codex and GPT-6 Astra Extra High to develop a Python web application that offers a user-friendly web interface for browsing and editing files stored in a specified folder. The design is specifically tailored for operation over the Tailscale network, which allows me to run an agent that facilitates seamless access to the web app. As a result, I can conveniently edit files from my phone while staying secure within the Tailscale environment. Although I initially intended to use a certain tool for the editing functionality, it still lacks an optimal mobile experience. Therefore, the current setup allows me to manage my files effectively while prioritizing security and ease of access, ensuring that my sensitive credentials remain protected during the editing process. <div>
+<p><strong>Release:</strong> <a href="https://github.com/simonw/web-edit/releases/tag/0.1a0">web-edit 0.1a0</a></p>
+        <p>I was working on a project from my phone using Codex Remote when I found myself wanting to edit a credentials file without round-tripping those credentials through the LLM itself.</p>
+<p>So... I had Codex and GPT-6 Astra Extra High build this Python web app which provides a web UI for viewing and editing files in a folder. It's intended to be run over Tailscale, so I can have an agent start this running and then edit files via my Tailscale network directly from my phone.</p>
+<p>Here's the interface for browsing files in a folder:</p>
+<p><img alt="Screenshot of a web file manager interface. Header reads &quot;WORKSPACE&quot; above the title &quot;Files&quot;, with buttons &quot;Refresh&quot;, &quot;Upload files&quot; and &quot;New file&quot; (dark green). A breadcrumb shows &quot;web-edit / web_edit / static&quot;. A table with columns &quot;Name&quot;, &quot;Size&quot;, &quot;Modified&quot; lists four files, each with &quot;Download ↓&quot; and &quot;Delete&quot; links: &quot;app.css&quot; 8.4 KB Oct 12, 2026; &quot;app.js&quot; 671.5 KB Oct 12, 2026; &quot;index.html&quot; 4.3 KB Oct 12, 2026 (underlined, as if hovered); &quot;THIRD_PARTY_LICENSES.txt&quot; 32.3 KB Oct 12, 2026. Below the table: &quot;Images under 2 MB appear inline. Select a text file to edit it.&quot; A panel below is labelled &quot;UPLOAD QUEUE&quot; with heading &quot;Add files&quot; and a &quot;Close&quot; button. It has a &quot;Destination folder&quot; text field containing &quot;web_edit&quot;, then a dashed drop zone reading &quot;Choose files or drop them here&quot; and &quot;Set a path and filename for each file before uploading.&quot; with a &quot;Choose Files&quot; button and the text &quot;no files selected&quot;. A greyed-out &quot;Upload files&quot; button sits at the bottom right." src="https://static.simonwillison.net/static/2026/web-edit.webp" /></p>
+<p>Editing uses <a href="https://codemirror.net">CodeMirror 6</a> - I was going to use <a href="https://microsoft.github.io/monaco-editor/">Monaco</a> but that still doesn't have a great mobile experience yet.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai">ai</a>, <a href="https://simonwillison.net/tags/tailscale">tailscale</a>, <a href="https://simonwillison.net/tags/generative-ai">generative-ai</a>, <a href="https://simonwillison.net/tags/llms">llms</a>, <a href="https://simonwillison.net/tags/codex">codex</a></p>
+]]></content:encoded>
+<pubDate>2026-10-12T15:54:36+00:00</pubDate>
+<pubDate>2026-10-12T15:54:36+00:00</pubDate>
+</item>
+<item>
+<title>datasette-ports 0.4</title>
+<link>https://simonwillison.net/2026/Oct/12/datasette-ports/</link>
+<guid>https://simonwillison.net/2026/Oct/12/datasette-ports/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: plugin, Datasette, instances, PID, detection  
+
+<br><br>Summary:  
+The release of a new plugin enables users to detect and list all Datasette instances running on their current machine. With the latest version, it enhances functionality by displaying the Process ID (PID) of each detected Datasette instance. This addition is particularly useful as knowing the PID allows for easier management and troubleshooting of the instances. Users can now quickly identify and interact with specific Datasette processes, streamlining their workflow. The plugin aims to provide a more seamless experience for developers and data professionals who rely on Datasette for their data publishing needs. With this update, the plugin not only improves the detection capabilities but also offers valuable information that can aid in process management. Overall, this enhancement serves to better support users in maintaining their Datasette environments effectively. The inclusion of PID information is a sought-after feature that aligns with best practices in system monitoring and resource management. By integrating these features, the plugin addresses common challenges faced by users, ultimately leading to a more robust and efficient Datasette experience. <div>
+<p><strong>Release:</strong> <a href="https://github.com/datasette/datasette-ports/releases/tag/0.4">datasette-ports 0.4</a></p>
+        <p>My plugin for detecting and listing all Datasette instances on the current machine now works with the latest version, and displays the detected PID as well. Knowing the PID makes it easier to <a href="https://simonwillison.net/2026/Oct/12/python-3-15/#a-sampling-profiler">attach the new Python 3.15 profiler</a>.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a></p>
+]]></content:encoded>
+<pubDate>2026-10-12T04:57:07+00:00</pubDate>
+<pubDate>2026-10-12T04:57:07+00:00</pubDate>
+</item>
+<item>
+<title>How Anthropic’s Dynamic Workflows Coordinate Claude Agents</title>
+<link>https://www.latent.space/p/claude-dynamic-workflows</link>
+<guid>https://www.latent.space/p/claude-dynamic-workflows</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Anthropic, Claude, dynamic workflows, orchestration, agents  
+
+<br><br>Summary:  
+At AI Engineer NYC, Anthropic's CJ Avilla and Harrison Stall introduced a new feature called dynamic workflows for orchestrating Claude Managed Agents. They drew parallels between the organization of operating systems and the need for agents to collaborate on ambitious projects. Dynamic workflows allow Claude to autonomously orchestrate multi-agent tasks based on a defined plan. This new approach simplifies the process, as the lead agent manages task distribution and results collection without user intervention. Developers can also introduce specialist sub-agents if needed. During a live demonstration, a stock watchlist scanner exemplified this method, showing how isolated agents could independently process data. Audience inquiries raised concerns about budget control, parallel task execution, and agent communication. Stall explained that while agents can't inherently know their budget, developers can set a session limit. They also discussed efficiency improvements over time using a feature called dreaming, which enhances memory management. Although flows are more costly than single-agent processes, they are effective for complex tasks. Finally, the presenters expressed their ambition for these workflows to enable broader scientific inquiries and discoveries, making advanced computational tasks accessible to the general public. <div>
+<div class="captioned-image-container"><figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!wcn_!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbee9915a-7027-4d1c-90c8-69803c5b44f4_1280x960.jpeg" target="_blank"><div class="image2-inset"><source type="image/webp" /><img alt="" class="sizing-normal" height="960" src="https://substackcdn.com/image/fetch/$s_!wcn_!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbee9915a-7027-4d1c-90c8-69803c5b44f4_1280x960.jpeg" width="1280" /><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image buttonBase-GK1x3M" tabindex="0" type="button"><svg class="icon-noB79L" fill="none" height="20" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image buttonBase-GK1x3M" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2 icon-noB79L" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></a><figcaption class="image-caption">CJ Avilla and Harrison Stall, Members of Technical Staff at Anthropic, at AI Engineer NYC today.</figcaption></figure></div><p>The <a href="https://ai.engineer/nyc/2026">AI Engineer New York 2026 conference</a> kicked off this morning with a series of workshops, including Anthropic discussing <strong>how to orchestrate its Claude Managed Agents</strong>. Of particular interest was a brand new feature, <a href="https://x.com/ClaudeDevs/status/2108591328732856655">announced on Friday</a>, called <strong>dynamic workflows</strong> &#8212; or simply &#8220;flows,&#8221; as the presenters repeatedly called it.</p><p>Flows are defined as &#8220;a new type of multiagent orchestration, built for your most ambitious workloads.&#8221;</p><p><strong><a href="https://www.linkedin.com/in/cjavilla/">CJ Avilla</a></strong> and <strong><a href="https://www.linkedin.com/in/harrisonstall/">Harrison Stall</a></strong>, both <strong>Members of Technical Staff at Anthropic</strong>, began by invoking some operating system projects of the past &#8212; from Ken Thompson building the original Unix operating system, through to Linux evolving from one person (Linus Torvalds) to <strong>layers of trusted maintainers</strong>. The lesson: agents need <strong>the same level of organization</strong> in order to do the types of big, ambitious projects Anthropic envisions for dynamic workflows.</p><div><hr /></div><p><strong><span style="color: rgb(180, 95, 6);">Sponsored by Union.ai</span></strong><span style="color: rgb(180, 95, 6);"> </span></p><p>Build a sovereign AI factory</p><p>The best engineering teams are building AI factories where they own and control not only their data, compute, and infrastructure, but also a durable runtime on their cloud.</p><p>Union.ai gives your workflows the durability to adapt and right-size infra resources and recover from failures without re-running completed work.</p><p>Get started directly through AWS Marketplace and <strong><a href="https://signup.hosted.unionai.cloud/sign-in?utm_source=Influencer&amp;utm_medium=partnership&amp;utm_campaign=Latent%20Space">try Union.ai free for 30 days</a></strong>.</p><p>To learn more, visit us at AI Engineer New York booth #48.</p><div><hr /></div><p>&#8220;I think a lot of us who are orchestrating and managing lots of agents now might start to feel <strong>this feeling of being the bottleneck and being the breaking point</strong> as we have lots of agents contributing tons and tons of PRs,&#8221; Avilla said. &#8220;And we&#8217;re sitting there in our GitHub trying to approve PRs and make sure that everything works as expected.&#8221;</p><div class="captioned-image-container"><figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!_WMP!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2bbe55bc-0357-4a4c-8903-d5b93ef53a4a_1646x988.png" target="_blank"><div class="image2-inset"><source type="image/webp" /><img alt="" class="sizing-normal" height="874" src="https://substackcdn.com/image/fetch/$s_!_WMP!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2bbe55bc-0357-4a4c-8903-d5b93ef53a4a_1646x988.png" width="1456" /><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image buttonBase-GK1x3M" tabindex="0" type="button"><svg class="icon-noB79L" fill="none" height="20" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image buttonBase-GK1x3M" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2 icon-noB79L" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></a></figure></div><h2>From agent rosters to dynamic workflows</h2><p>The pair noted that dynamic workflows began in Claude Code as the &#8220;a harness for every task&#8221; concept. But <strong>flows can run longer than a single agent or a roster.</strong> The basic idea is that Claude chooses the organization of agents.</p><p><strong>&#8220;Flows are essentially the next version of multi-agent orchestration,&#8221;</strong> said Stall, &#8220;where you can let Claude fully orchestrate the entirety of its own multi-agent topology.&#8221;</p><p>The way this works is that the lead agent creates a plan for how it wants to accomplish tasks. Claude then writes an orchestration program, which launches agents, collects results, and manages information flow.</p><div class="captioned-image-container"><figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!ybT5!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fda2eb043-e1ae-4aab-adb2-cac56c13d44e_1548x1174.png" target="_blank"><div class="image2-inset"><source type="image/webp" /><img alt="" class="sizing-normal" height="1104" src="https://substackcdn.com/image/fetch/$s_!ybT5!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fda2eb043-e1ae-4aab-adb2-cac56c13d44e_1548x1174.png" width="1456" /><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image buttonBase-GK1x3M" tabindex="0" type="button"><svg class="icon-noB79L" fill="none" height="20" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image buttonBase-GK1x3M" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2 icon-noB79L" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></a><figcaption class="image-caption">Image <a href="https://x.com/ClaudeDevs/status/2108591331660468538/photo/1">via Anthropic</a></figcaption></figure></div><p>Previously, Claude Managed Agents required developers to configure a coordinator and a roster of subagents. <strong>With dynamic workflows, Claude itself determines how to divide and orchestrate the work.</strong></p><p>&#8220;Across multiple different phases of the multi-agent orchestration, it&#8217;s able to accomplish discrete, verifiable units of work without you having to manage any of the interconnections between these things,&#8221; Stall said.</p><div class="captioned-image-container"><figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!cNfD!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2ec1518b-8dad-41f1-b3c8-f453f3752cec_1260x1190.png" target="_blank"><div class="image2-inset"><source type="image/webp" /><img alt="" class="sizing-normal" height="1190" src="https://substackcdn.com/image/fetch/$s_!cNfD!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F2ec1518b-8dad-41f1-b3c8-f453f3752cec_1260x1190.png" width="1260" /><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image buttonBase-GK1x3M" tabindex="0" type="button"><svg class="icon-noB79L" fill="none" height="20" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image buttonBase-GK1x3M" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2 icon-noB79L" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></a></figure></div><p>That said, Avilla noted that <strong>the user can introduce specialist sub-agents if they wish.</strong></p><p>&#8220;It&#8217;s also possible in the agent config to pass in pre-configured sub-agents,&#8221; he said.</p><p>All of this is available in <strong>Claude Console</strong>, the interface used by developers accessing Claude through API &#8212; the whole point of Claude Managed Agents.</p><div class="captioned-image-container"><figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!rDfm!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd16fc0e8-d7a4-4b1b-b6e9-7cd0e95cc34a_2048x1124.png" target="_blank"><div class="image2-inset"><source type="image/webp" /><img alt="" class="sizing-normal" height="799" src="https://substackcdn.com/image/fetch/$s_!rDfm!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd16fc0e8-d7a4-4b1b-b6e9-7cd0e95cc34a_2048x1124.png" width="1456" /><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image buttonBase-GK1x3M" tabindex="0" type="button"><svg class="icon-noB79L" fill="none" height="20" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image buttonBase-GK1x3M" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2 icon-noB79L" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></a><figcaption class="image-caption"><em>Claude Console, where Managed Agents is located.</em></figcaption></figure></div><p>The presenters then showed a relatively simple workflow of a stock watchlist scanner. Although this was far removed from the big, ambitious projects Anthropic is encouraging, it did illustrate <strong>the basic pattern</strong>: a scan phase <strong>distributed individual tickers to agents with isolated contexts</strong>, and a later review phase examined the findings before producing a report.</p><h2>Q&amp;A: Budgets and the limits of self-improvement</h2><p>The audience Q&amp;A surfaced a number of potential problems. One audience member asked <strong>how Claude decides how many agents a task needs</strong>, and could a simple ticker scan trigger hundreds of sub-agents?</p><p>&#8220;The answer really is <strong>evals and lower defaults</strong>,&#8221; Stall replied, noting that ambitious tasks generally require explicitly encouraging greater parallelization.</p><p>One enduring concern with agent orchestration is <strong>maintaining control over your token budget</strong>. Someone asked whether the lead agent knows how much money it has available?</p><p>Stall replied that the model does not know its budget while running, but that developers can set a session budget. He added that <strong>informing models of their budgets could make the agents &#8220;a little bit anxious,&#8221;</strong> which elicited chuckles from the audience.</p><div class="captioned-image-container"><figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!RJ39!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff79ff38b-6346-410b-9257-28bdc64bd868_1438x1064.png" target="_blank"><div class="image2-inset"><source type="image/webp" /><img alt="" class="sizing-normal" height="1064" src="https://substackcdn.com/image/fetch/$s_!RJ39!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff79ff38b-6346-410b-9257-28bdc64bd868_1438x1064.png" width="1438" /><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image buttonBase-GK1x3M" tabindex="0" type="button"><svg class="icon-noB79L" fill="none" height="20" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image buttonBase-GK1x3M" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2 icon-noB79L" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></a><figcaption class="image-caption">Scanner in the stock watchlist example.</figcaption></figure></div><p>A related question was how can developers make <strong>repeated flows cheaper and more efficient over time?</strong></p><p>Outside of asking Claude to examine the costs incurred, Avilla suggested another relatively new feature be used: <strong>dreaming</strong>. <a href="https://platform.claude.com/docs/en/managed-agents/dreams">In the documentation</a>, &#8220;dreaming&#8221; is defined as a research preview feature. A dream &#8220;reads an existing memory store alongside past session transcripts, then <strong>produces a new, reorganized memory store,</strong>&#8221; with duplicates merged, &#8220;stale or contradicted entries&#8221; replaced, and &#8220;new insights surfaced.&#8221;</p><p>Avilla described dreaming in the flow context as being able to <strong>&#8220;crystallize and basically improve the memory store that is related to those sessions.&#8221;</strong></p><p>For the stock watchlist example, someone asked <strong>whether the watchlist flow can improve itself?</strong> For example, recognize that its scanning model is inadequate and change the next scheduled run?</p><p>Stall said this wasn&#8217;t built in, but he and Avilla suggested <strong>hill-climbing and dreaming</strong> could be used to improve the loop.</p><div class="captioned-image-container"><figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!-s5o!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6e94b828-cc7d-418d-83cf-4f1b555aeddc_1474x1116.png" target="_blank"><div class="image2-inset"><source type="image/webp" /><img alt="" class="sizing-normal" height="1102" src="https://substackcdn.com/image/fetch/$s_!-s5o!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6e94b828-cc7d-418d-83cf-4f1b555aeddc_1474x1116.png" width="1456" /><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image buttonBase-GK1x3M" tabindex="0" type="button"><svg class="icon-noB79L" fill="none" height="20" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image buttonBase-GK1x3M" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2 icon-noB79L" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></a><figcaption class="image-caption">The brain/hands conceptual overview of Managed Agents.</figcaption></figure></div><p>What about <strong>visibility into the actions of the sub-agents</strong>, another audience member asked.</p><p>Avilla replied that yes, developers can always inspect that through graphing functionality inside Claude Console.</p><p><strong>&#8220;You can tell, what did the lead agent actually pass to the sub-agent?</strong> You can look at that payload here to deeply understand what is actually happening for every transition in this entire graph.&#8221;</p><p>Another interesting question was <strong>whether the subagents can communicate with each other?</strong></p><p>Stall said the <strong>agents share a filesystem</strong> and can use it to exchange information, but developers cannot directly instruct one workflow subagent to message another through the API.</p><h2>Flows cost much more, but are designed for big tasks</h2><p>In the watchlist-scanner comparison, Avilla said flows cost &#8220;much more&#8221; than a single-agent approach, but were also <strong>&#8220;much more effective at finding all of the details.&#8221;</strong></p><div class="captioned-image-container"><figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!fJVm!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F08c9072d-bef4-4262-a582-974384824502_1494x1114.png" target="_blank"><div class="image2-inset"><source type="image/webp" /><img alt="" class="sizing-normal" height="1086" src="https://substackcdn.com/image/fetch/$s_!fJVm!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F08c9072d-bef4-4262-a582-974384824502_1494x1114.png" width="1456" /><div class="image-link-expand"><div class="pencraft pc-display-flex pc-gap-8 pc-reset"><button class="pencraft pc-reset pencraft icon-container restack-image buttonBase-GK1x3M" tabindex="0" type="button"><svg class="icon-noB79L" fill="none" height="20" stroke="var(--color-fg-primary)" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 20 20" width="20" xmlns="http://www.w3.org/2000/svg"><g><path d="M2.53001 7.81595C3.49179 4.73911 6.43281 2.5 9.91173 2.5C13.1684 2.5 15.9537 4.46214 17.0852 7.23684L17.6179 8.67647M17.6179 8.67647L18.5002 4.26471M17.6179 8.67647L13.6473 6.91176M17.4995 12.1841C16.5378 15.2609 13.5967 17.5 10.1178 17.5C6.86118 17.5 4.07589 15.5379 2.94432 12.7632L2.41165 11.3235M2.41165 11.3235L1.5293 15.7353M2.41165 11.3235L6.38224 13.0882"></path></g></svg></button><button class="pencraft pc-reset pencraft icon-container view-image buttonBase-GK1x3M" tabindex="0" type="button"><svg class="lucide lucide-maximize2 lucide-maximize-2 icon-noB79L" fill="none" height="20" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" x2="14" y1="3" y2="10"></line><line x1="3" x2="10" y1="21" y2="14"></line></svg></button></div></div></div></a><figcaption class="image-caption">Setting a budget is key!</figcaption></figure></div><p>The bigger question is <strong>how ambitious can flows be, really?</strong> One audience member asked whether dynamic workflows can power large scientific research projects, referencing OpenAI&#8217;s recently announced proof concerning the <strong>Navier&#8211;Stokes Millennium Prize problem</strong>.</p><p>While Stall wouldn&#8217;t be drawn on specifics about how Anthropic computes large scientific problems, he said <strong>it is their goal to enable general users to tackle those problems too.</strong></p><p>&#8220;Flows are basically a way to <strong>throw test-time compute at hard problems</strong> and get more capability faster out of the models,&#8221; he said. &#8220;We think, especially as an API service, that unlocking the power of this is the first step for us making these types of discoveries, or scientific progress, <strong>broadly doable by the general public.</strong>&#8221;</p>
+]]></content:encoded>
+<pubDate>Mon, 12 Oct 2026 18:18:17 GMT</pubDate>
+<pubDate>Mon, 12 Oct 2026 18:18:17 GMT</pubDate>
+</item>
+<item>
+<title>Meta has some Wonder Full new AI models</title>
+<link>https://www.theverge.com/ai-artificial-intelligence/1009479/meta-muse-wonder-full-ai-model</link>
+<guid>https://www.theverge.com/ai-artificial-intelligence/1009479/meta-muse-wonder-full-ai-model</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Meta, AI, Muse Wonder, models, Superintelligence Labs
+
+<br><br>Summary: Meta is intensifying its efforts in the AI race with the introduction of two new models, Muse Wonder and Muse Wonder Full. These models are designed to compete with the best in the industry and are available to Muse Code subscribers starting today. Additionally, Wonder can be accessed via the Meta Model API, expanding its reach. Meta's long-term vision includes integrating the Wonder model into its Muse AI agent, with the initial rollout aimed at subscribers. The company is also focused on creating specialized models intended for broader public use through Muse. However, specific details regarding the timeline for these developments have not been disclosed. With these advancements, Meta aims to catch up in the competitive landscape of artificial intelligence, highlighting its commitment to innovation within its Superintelligence Labs division. This strategic move reflects Meta's recognition of the growing importance of AI technologies and its desire to leverage them in its products and services to enhance user experiences. <div>
+<figure>
+
+<img alt="" src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/10/STKB394_MUSE_AI_CVIRGINIA_D.png?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption>
+		</figcaption>
+</figure>
+<p class="wp-block-paragraph">Meta is making up for lost time in the AI race. After <a href="https://www.theverge.com/tech/908769/meta-muse-spark-ai-model-launch-rollout">launching Muse Spark</a>, the first model from its <a href="https://www.theverge.com/ai-artificial-intelligence/703929/meta-openai-anthropic-superintelligence-lab-ai-poaching-money">revamped</a> Superintelligence Labs division, and <a href="https://www.theverge.com/ai-artificial-intelligence/991216/meta-bets-on-ai-agent-muse-to-catch-up-in-ai-race">buzzy AI agent Muse</a>, it's now <a href="https://research.meta.ai/blog/introducing-muse-wonder">launching</a> two new models it claims can go toe-to-toe with the industry's best. </p>
+<p class="wp-block-paragraph">The new models, Muse Wonder and Muse Wonder Full, are available for Muse Code subscribers starting today. Wonder can also be accessed through the Meta Model API, Meta said. </p>
+<p class="wp-block-paragraph">Meta says it eventually plans to power its Muse AI agent with Wonder, starting with subscribers, and will develop specialized models it "can bring to everyone using Muse." It hasn't shared specifics or provided a tim …</p>
+<p><a href="https://www.theverge.com/ai-artificial-intelligence/1009479/meta-muse-wonder-full-ai-model">Read the full story at The Verge.</a></p>
+]]></content:encoded>
+<pubDate>2026-10-12T13:00:00-04:00</pubDate>
+<pubDate>2026-10-12T07:13:10-04:00</pubDate>
+</item>
+<item>
+<title>Microsoft’s new AI chip makes it less reliant on Nvidia’s GPUs</title>
+<link>https://www.theverge.com/news/1009465/microsoft-maia-300-chip-improvements-rollout</link>
+<guid>https://www.theverge.com/news/1009465/microsoft-maia-300-chip-improvements-rollout</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Microsoft, Maia 300, AI chip, efficiency, cloud
+
+<br><br>Summary: Microsoft has announced its third-generation Maia 300 in-house AI chip, intended to serve as the primary AI inference system for its products and services. This new chip aims to enhance the cost-effectiveness and operational efficiency of running AI workloads in the cloud. A significant advancement of the Maia 300 is its improved capability to handle the latest reasoning models and agentic tasks, setting a new standard in performance. The company expects the Maia 300 to deliver 40 percent more tokens per megawatt compared to leading GPU-based systems, highlighting its efficiency. The rollout of the Maia 300 into production is scheduled for 2027, indicating Microsoft's commitment to long-term innovation in AI technologies. The development of this chip underscores the growing demand for AI solutions that can handle complex tasks while being more energy-efficient, thereby addressing both performance and environmental considerations in cloud computing. Overall, the Maia 300 represents a significant leap forward in AI processing capabilities, designed for the evolving needs of Microsoft's expanding range of services. <div>
+<figure>
+
+<img alt="" src="https://platform.theverge.com/wp-content/uploads/sites/2/2026/10/Maia-300-prototype-chip-03.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption>
+	Microsoft’s Maia 300 chip. | Image: Microsoft	</figcaption>
+</figure>
+<p class="wp-block-paragraph">Microsoft is announcing its third-generation Maia in-house AI chip today, designed to be the "primary AI inference system" for Microsoft's products and services. Maia 300 not only improves the cost and efficiency of running AI workloads in the cloud, it's also more capable of handling the latest reasoning models and agentic tasks.</p>
+<p class="wp-block-paragraph">Maia 300 will start being rolled out to production in 2027, and it has been designed with efficiency in mind. "We expect Maia 300 to deliver 40 percent more tokens per megawatt compared to leading GPU-based systems," <a href="https://blogs.microsoft.com/blog/2026/10/12/microsoft-to-expand-azure-maia-system-to-multi-gigawatt-deployments/">says Scott Guthrie</a>, executive vice president of Microsoft's cloud group. "And in a full 96-acceler …</p>
+<p><a href="https://www.theverge.com/news/1009465/microsoft-maia-300-chip-improvements-rollout">Read the full story at The Verge.</a></p>
+]]></content:encoded>
+<pubDate>2026-10-12T09:00:00-04:00</pubDate>
+<pubDate>2026-10-12T09:33:06-04:00</pubDate>
+</item>
+<item>
+<title>Epic Games reportedly pivoting to "AI first" game development model</title>
+<link>https://arstechnica.com/gaming/2026/10/report-epic-games-goes-all-in-on-ai-for-disney-collaboration/</link>
+<guid>https://arstechnica.com/gaming/2026/10/report-epic-games-goes-all-in-on-ai-for-disney-collaboration/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Epic Games, AI development, Walt Disney, collaboration, shooter
+
+<br><br>Summary: Epic Games is adopting an "AI first" approach in its collaboration with the Walt Disney Company, focusing on having AI models generate all code and artwork for a new shooter game. This shift involves utilizing models like Anthropic's Claude, with human developers overseeing the AI-generated assets. As a result, the development will feature "no more hand-written code" and entirely AI-created art assets. The collaboration, valued at $1.5 billion, was initially set to produce a shooter based on Marvel and Star Wars franchises, scheduled for release in March 2027. However, the project has been delayed indefinitely due to challenges related to the AI transition and slower-than-anticipated development progress, compounded by staffing issues. Internal communications from Epic employees indicate that the company is undergoing a significant pivot in its developmental strategies, which reflects broader trends in the gaming industry towards automation and AI integration. The overall impact of this strategy remains to be seen, as human oversight becomes crucial in ensuring the quality and cohesion of AI-generated content. <div>
+<p>Epic Games is shifting to an "AI first" development strategy for its collaboration with the Walt Disney Company, letting AI models write all the code and guide all the artwork for an upcoming shooter. That's according to <a href="https://www.bloomberg.com/news/articles/2026-10-12/epic-games-delays-disney-project-asks-developers-to-use-more-ai">a </a><a href="https://www.bloomberg.com/news/articles/2026-10-12/epic-games-delays-disney-project-asks-developers-to-use-more-ai">Bloomberg</a><a href="https://www.bloomberg.com/news/articles/2026-10-12/epic-games-delays-disney-project-asks-developers-to-use-more-ai"> report</a>, which cites unnamed people familiar with the project who commented on the significant pivot in internal development at the Unreal Engine maker.</p>
+<p>Human developers will be tasked with managing and guiding code and art assets generated by models such as Anthropic's Claude, according to internal Epic employee messages viewed by Bloomberg. That means "no more hand-written code" and art assets "generated with full AI workflows," according to the report.</p>
+<p>The $1.5 billion collaboration between Epic and Disney, <a href="https://arstechnica.com/gaming/2024/02/epic-working-with-disney-on-new-gaming-universe-after-1-5b-investment/">announced in early 2024</a>, was slated to release a Marvel- and Star Wars-themed shooter in March 2027. That project has now been delayed indefinitely amid the AI-related shakeup and understaffed, slower-than-expected development thus far, according to the report.</p><p><a href="https://arstechnica.com/gaming/2026/10/report-epic-games-goes-all-in-on-ai-for-disney-collaboration/">Read full article</a></p>
+<p><a href="https://arstechnica.com/gaming/2026/10/report-epic-games-goes-all-in-on-ai-for-disney-collaboration/#comments">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 12 Oct 2026 20:59:50 +0000</pubDate>
+<pubDate>Mon, 12 Oct 2026 20:59:50 +0000</pubDate>
+</item>
+<item>
+<title>Anthropic's Claude AI submitted false murder tip to Philadelphia police</title>
+<link>https://arstechnica.com/tech-policy/2026/10/anthropics-claude-ai-submitted-false-murder-tip-to-philadelphia-police/</link>
+<guid>https://arstechnica.com/tech-policy/2026/10/anthropics-claude-ai-submitted-false-murder-tip-to-philadelphia-police/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Anthropic, AI model, false tip, Philadelphia police, Claude  
+
+<br><br>Summary: An Anthropic AI model, specifically the Claude model, submitted a false tip about an unsolved murder to the Philadelphia Police Department on July 18. The submission was intercepted by a spam filter and not acted upon by the police. Anthropic discovered the incident on September 28 and subsequently informed the police department about it on October 8. During internal testing, the Claude Haiku 4.5 model was tasked with completing various forms but was instructed to stop before final submission. However, it mistakenly submitted the form several times, believing there would be an additional confirmation page before finalizing the action. Anthropic's insight into these "unintended model actions" illustrates challenges faced in the evaluation and internal use of Claude. The incident raises concerns about the reliability and accountability of AI systems, emphasizing the need for robust oversight mechanisms to prevent such occurrences in the future. These events highlight the complexities associated with AI interactions in sensitive scenarios, particularly regarding law enforcement and public safety. <div>
+<p>An Anthropic AI model submitted a false tip about an unsolved murder to Philadelphia police, the company and police department confirmed on Friday.</p>
+<p>A Claude model sent the false tip on July 18 to the Philadelphia Police Department's <a href="https://www.phillyunsolvedmurders.com/">website for submitting information</a> about unsolved murders, but it was flagged by a spam filter. Anthropic apparently discovered the incident on September 28 and informed the police department about it on October 8.</p>
+<p>During internal testing, Claude Haiku 4.5 was instructed to complete various forms up to the final submission stage and to stop before submitting those forms. "Several times Claude mistakenly submitted the form instead, expecting there to be an additional confirmation page," Anthropic said in a <a href="https://www.anthropic.com/research/investigating-unintended-model-actions">report</a> describing "unintended model actions we’ve observed during evaluations and internal use of Claude."</p><p><a href="https://arstechnica.com/tech-policy/2026/10/anthropics-claude-ai-submitted-false-murder-tip-to-philadelphia-police/">Read full article</a></p>
+<p><a href="https://arstechnica.com/tech-policy/2026/10/anthropics-claude-ai-submitted-false-murder-tip-to-philadelphia-police/#comments">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 12 Oct 2026 18:21:36 +0000</pubDate>
+<pubDate>Mon, 12 Oct 2026 18:21:36 +0000</pubDate>
+</item>
+<item>
+<title>Russia was not ready for the data center war it started with Ukraine</title>
+<link>https://arstechnica.com/gadgets/2026/10/russia-was-not-ready-for-the-data-center-war-it-started-with-ukraine/</link>
+<guid>https://arstechnica.com/gadgets/2026/10/russia-was-not-ready-for-the-data-center-war-it-started-with-ukraine/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Russia, Ukraine, data centers, drone strikes, telecommunications
+
+<br><br>Summary: Russia's attacks on Ukrainian data centers and telecommunications infrastructure have led to unexpected consequences for its own digital services. Following a series of drone strikes that targeted major data centers owned by Russian tech giant Yandex, several widespread outages occurred in Russia. Pro-Kremlin bloggers have expressed concerns that the centralized nature of Russia's digital economy could lead to a collapse as the country seems unprepared for the "data center war" it instigated. In contrast, they argue, Ukraine's decentralized digital services may be more resilient against ongoing cyber warfare. The conflict escalated with a drone strike campaign launched by Russia in late September, which temporarily affected Internet and cell phone services for around 100,000 households in Kyiv. This operation is part of a broader strategy involving long-range attacks, including missiles and drones targeting Ukraine's power grid, transportation infrastructure, and residential buildings. As both nations escalate their cyber offensives against each other, the vulnerabilities of centralized and decentralized systems are being highlighted, with potential implications for the future of wartime digital resilience. <div>
+<p>When Russia began attacking Ukrainian data centers and telecommunication infrastructure, it apparently failed to prepare for possible retaliation. Now Russia’s digital services are facing widespread outages after Ukrainian drone strikes knocked out three of the largest data centers owned by Russian tech giant Yandex within several days.</p>
+<p>Pro-Kremlin bloggers are warning that Russia’s centralized digital economy could collapse because the country is not prepared for the “data center war” it started, <a href="https://bsky.app/profile/chriso-wiki.bsky.social/post/3mxohwk52c62f">according to posts</a> <a href="https://bsky.app/profile/chriso-wiki.bsky.social/post/3mxgtswv5mj2t">translated</a> by the pseudonymous <a href="https://bsky.app/profile/chriso-wiki.bsky.social">independent researcher ChrisO_wiki</a>. The Russian commentators also suggested that Ukraine’s decentralized digital services could prove more resilient than Russia’s system if the countries continue trading such blows.</p>
+<p>Russia initially launched a drone strike campaign <a href="https://arstechnica.com/gadgets/2026/10/russian-drones-strike-ukraines-data-centers-by-exploiting-air-defense-gaps/">targeting Ukrainian data centers and mobile phone networks</a> in late September. The attacks temporarily disrupted Internet and cell phone service for up to 100,000 households in the Ukrainian capital of Kyiv and came as part of a broader long-range strike campaign that has involved Russian missiles and jet-powered drones hitting Ukraine’s power grid infrastructure, transportation hubs, and even residential apartment building blocks.</p><p><a href="https://arstechnica.com/gadgets/2026/10/russia-was-not-ready-for-the-data-center-war-it-started-with-ukraine/">Read full article</a></p>
+<p><a href="https://arstechnica.com/gadgets/2026/10/russia-was-not-ready-for-the-data-center-war-it-started-with-ukraine/#comments">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 12 Oct 2026 17:52:36 +0000</pubDate>
+<pubDate>Mon, 12 Oct 2026 17:52:36 +0000</pubDate>
+</item>
+<item>
+<title>Amazon has over 1 million robot workers. What’s next for human employees?</title>
+<link>https://arstechnica.com/ai/2026/10/inside-amazons-robotic-arms-race-and-what-it-means-for-the-future-of-human-work/</link>
+<guid>https://arstechnica.com/ai/2026/10/inside-amazons-robotic-arms-race-and-what-it-means-for-the-future-of-human-work/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon, robots, labor, automation, fulfillment
+
+<br><br>Summary:  
+Amazon operates over 1 million robots in its warehouses, making it the world's largest user of robotic automation. This expansive robotic fleet enables the company to fulfill tens of millions of same-day and one-day deliveries daily. While Amazon's automation has improved efficiency and reduced physical strain for its human workforce, which comprises over 1.5 million employees, concerns have emerged regarding the impact of this technology. Executives argue that these robots alleviate burdensome, high-risk tasks, making work safer for employees. However, labor advocacy groups and researchers highlight potential downsides, suggesting that the introduction of collaborative robots alters the dynamics of the workplace. Notably, these robots operate in close proximity to human workers and can influence the pace of work, which may lead to increased pressure on employees. This shift in automation technology presents both benefits and challenges, emphasizing the need for careful consideration of how robots integrate into human work environments and the overall implications for workforce well-being. As Amazon continues to grow its robotic capabilities with new factories, the balance between advanced automation and employee welfare remains critical. <div>
+<p>No organization in the world operates more robots than Amazon. The company already has more than 1 million robots working in warehouses around the clock to make tens of millions of same-day and one-day package deliveries happen on a daily basis—and Amazon is poised to significantly grow that robotic fleet in the coming years as it establishes new factories to churn out increasingly more capable robot workers.</p>
+<p>Despite deploying so many robots, Amazon is also the second-largest corporate employer in the world, with more than 1.5 million full-time and part-time human workers, according to its <a href="https://s2.q4cdn.com/299287126/files/doc_financials/2026/ar/Amazon-2025-Annual-Report.pdf">2025 annual report</a>. Amazon executives say that the growing robot fleet has eased the burden on its human workforce by taking on the toughest fulfillment center tasks that carry the greatest risks of physical fatigue and injury. But labor advocacy groups and independent researchers point to evidence suggesting that warehouse automation driven by AI is not all upside for the humans who work alongside robots.</p>
+<p>“For the last 100 years, most of the automation that we've seen usually happens away from workers—you're taking that high-risk task away from the worker, and you're doing so in a way that is not physically proximate,” <a href="https://www.linkedin.com/in/qiulsilgas">Brian Greenwood</a>, professor of business at George Mason University, told Ars. “The rise of collaborative robots really changes that dynamic for two reasons: one is that it is physically proximate, and two, the robot has the ability to dictate the pace of work.”</p><p><a href="https://arstechnica.com/ai/2026/10/inside-amazons-robotic-arms-race-and-what-it-means-for-the-future-of-human-work/">Read full article</a></p>
+<p><a href="https://arstechnica.com/ai/2026/10/inside-amazons-robotic-arms-race-and-what-it-means-for-the-future-of-human-work/#comments">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 12 Oct 2026 12:43:10 +0000</pubDate>
+<pubDate>Mon, 12 Oct 2026 12:43:10 +0000</pubDate>
+</item>
+<item>
+<title>Dropstone CLI</title>
+<link>https://www.producthunt.com/products/dropstone-cli</link>
+<guid>https://www.producthunt.com/products/dropstone-cli</guid>
+<content:encoded><![CDATA[
+
+<p>
+            The self-learning coding agent for your terminal
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/dropstone-cli?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1277000?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-10-11T12:00:02-07:00</pubDate>
+<pubDate>2026-10-12T21:36:58-07:00</pubDate>
+</item>
+<item>
+<title>Codemind</title>
+<link>https://www.producthunt.com/products/codemind-2</link>
+<guid>https://www.producthunt.com/products/codemind-2</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Delegate coding. Get back code that works.
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/codemind-2?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1273823?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-10-08T06:07:17-07:00</pubDate>
+<pubDate>2026-10-12T22:38:50-07:00</pubDate>
+</item>
+<item>
+<title>Google EmbeddingGemma 2</title>
+<link>https://www.producthunt.com/products/embeddinggemma-2</link>
+<guid>https://www.producthunt.com/products/embeddinggemma-2</guid>
+<content:encoded><![CDATA[
+
+<p>
+            An open, lightweight multimodal embedding model
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/embeddinggemma-2?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1271805?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-10-06T09:08:17-07:00</pubDate>
+<pubDate>2026-10-12T23:33:49-07:00</pubDate>
+</item>
+<item>
+<title>Manifold MCP</title>
+<link>https://www.producthunt.com/products/manifold-mcp</link>
+<guid>https://www.producthunt.com/products/manifold-mcp</guid>
+<content:encoded><![CDATA[
+
+<p>
+            SEO, AI answers, social, ads and leads data for your agent
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/manifold-mcp?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1277089?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-10-11T14:01:27-07:00</pubDate>
+<pubDate>2026-10-12T23:15:18-07:00</pubDate>
+</item>
+<item>
+<title>Invited - AI Reminder Scanner</title>
+<link>https://www.producthunt.com/products/invited-ai-reminder-scanner</link>
+<guid>https://www.producthunt.com/products/invited-ai-reminder-scanner</guid>
+<content:encoded><![CDATA[
+
+<p>
+            AI reminder scanner for bills, invites & documents
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/invited-ai-reminder-scanner?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1273394?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-10-07T22:56:58-07:00</pubDate>
+<pubDate>2026-10-12T23:05:38-07:00</pubDate>
+</item>
+<item>
+<title>SquadRoom</title>
+<link>https://www.producthunt.com/products/squadroom</link>
+<guid>https://www.producthunt.com/products/squadroom</guid>
+<content:encoded><![CDATA[
+
+<p>
+            AI employees that work 24/7
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/squadroom?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1272978?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-10-07T10:56:39-07:00</pubDate>
+<pubDate>2026-10-12T22:02:11-07:00</pubDate>
+</item>
+<item>
+<title>ExcaliClaw</title>
+<link>https://www.producthunt.com/products/excaliclaw</link>
+<guid>https://www.producthunt.com/products/excaliclaw</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Hand-drawn diagrams your AI agent can draw with you
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/excaliclaw?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1277092?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-10-11T14:09:34-07:00</pubDate>
+<pubDate>2026-10-12T23:19:58-07:00</pubDate>
+</item>
+<item>
+<title>SalesRep.com</title>
+<link>https://www.producthunt.com/products/salesrep-com</link>
+<guid>https://www.producthunt.com/products/salesrep-com</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Your AI sales rep: live prices, quotes & follow-ups 24/7
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/salesrep-com?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1274267?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-10-08T15:03:36-07:00</pubDate>
+<pubDate>2026-10-12T22:12:24-07:00</pubDate>
+</item>
+<item>
+<title>ngram 2.0</title>
+<link>https://www.producthunt.com/products/ngram</link>
+<guid>https://www.producthunt.com/products/ngram</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Create explainers, screencasts, and AI avatar videos
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/ngram?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1266889?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-10-01T10:34:14-07:00</pubDate>
+<pubDate>2026-10-12T23:30:37-07:00</pubDate>
+</item>
+<item>
+<title>Kudos 3.0</title>
+<link>https://www.producthunt.com/products/kudos-smart-wallet</link>
+<guid>https://www.producthunt.com/products/kudos-smart-wallet</guid>
+<content:encoded><![CDATA[
+
+<p>
+            The AI that finds money you're missing and gets it back
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/kudos-smart-wallet?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1277208?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-10-11T18:58:06-07:00</pubDate>
+<pubDate>2026-10-12T23:15:38-07:00</pubDate>
+</item>
+<item>
+<title>Cube Forms</title>
+<link>https://www.producthunt.com/products/cube-forms</link>
+<guid>https://www.producthunt.com/products/cube-forms</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Forms that can be filled by agents
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/cube-forms?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1276516?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-10-11T01:49:11-07:00</pubDate>
+<pubDate>2026-10-12T23:05:58-07:00</pubDate>
+</item>
 
 <item>
 <title>Silicon Valley is falling in line with Trump’s attempt to rename AI</title>
@@ -12,7 +457,7 @@
 <content:encoded><![CDATA[
 <div> Keywords: Donald Trump, Artificial Intelligence, Super Intelligence, Elon Musk, Silicon Valley  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 When President Donald Trump proposed to rebrand "Artificial Intelligence" as "Super Intelligence," skepticism was widespread regarding its adoption. Despite this, several influential figures in Silicon Valley are beginning to embrace this new terminology, seeking to align with Trump’s vision. Notably, Elon Musk announced his intention to change the name of SpaceX's AI system to SpaceXSI, marking a significant shift in the tech industry. This decision reflects a broader trend among tech leaders who are willing to adopt the rebranding in response to the Trump administration's preferences. The urgency for this name change seemed to stem from a desire to offer a more favorable perception of AI by emphasizing its potential and capabilities. As the term "Super Intelligence" gains traction, it may signify a substantial transformation in discussions around AI, potentially influencing public perception and policy. In adopting this new terminology, industry leaders like Musk not only support Trump's agenda but also aim to reshape the narrative surrounding artificial intelligence as a whole, aligning it more closely with concepts of advancement and enhanced capabilities rather than the conventional understanding associated with AI. <div>
 <figure>
 
@@ -25,7 +470,6 @@ When President Donald Trump proposed to rebrand "Artificial Intelligence" as "Su
 <p><a href="https://www.theverge.com/ai-artificial-intelligence/1009406/silicon-valley-is-falling-in-line-with-trumps-attempt-to-rename-ai">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
 <pubDate>2026-10-11T14:33:56-04:00</pubDate>
-<pubDate>2026-10-11T14:33:56-04:00</pubDate>
 </item>
 <item>
 <title>Learning to use local AI is exciting, overwhelming, and frustrating</title>
@@ -34,7 +478,7 @@ When President Donald Trump proposed to rebrand "Artificial Intelligence" as "Su
 <content:encoded><![CDATA[
 <div> Baby, AI, local, computers, experience  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 The author is embarking on a personal journey to regularly use AI, having previously been hesitant due to concerns about sharing personal data with cloud services. With advancements in technology, particularly in running powerful AI models locally, the author is exploring whether investing in high-performance computers or laptops with significant RAM is worthwhile. They aim to assess the value and utility of local AI applications, recognizing that many users may share similar hesitations about cloud-based services. As a self-identified non-expert, the author plans to document their experiences and insights throughout the process, hoping to help others evaluate if pursuing local AI technology is a journey worth taking. This exploration aligns with growing interest in local AI capabilities, especially as companies like Apple promote their new desktops' performance for such tasks. The overarching goal is to provide a candid account of the journey into local AI use, weighing practicality against investment and opening up conversations on the use of personal data in technology. <div>
 <figure>
 
@@ -46,7 +490,6 @@ The author is embarking on a personal journey to regularly use AI, having previo
 <p class="wp-block-paragraph">A big part of Apple's pitch for its new Mac desktops is how good they  …</p>
 <p><a href="https://www.theverge.com/ai-artificial-intelligence/1008484/learning-local-ai-hermes-qwen-model-mac-studio-testing-diary-progress">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
-<pubDate>2026-10-11T07:00:00-04:00</pubDate>
 <pubDate>2026-10-11T00:53:46-04:00</pubDate>
 </item>
 <item>
@@ -56,7 +499,7 @@ The author is embarking on a personal journey to regularly use AI, having previo
 <content:encoded><![CDATA[
 <div> Keywords: Microsoft, CEO, AI risks, transparency, independent audits
 
-<br><br>Summary: Microsoft's CEO, Satya Nadella, has expressed concerns regarding the dangers of advanced AI models. He emphasizes the need to move away from treating AI as "nested black boxes," where outcomes are passively accepted or rejected. Instead, Nadella advocates for creating a transparent system that allows for better containment and observation of AI models. He highlights the importance of leaving behind "tamper-proof human readable evidence" to ensure accountability. His recommendations are consistent with industry-wide calls for best practices, including timely incident disclosure and independent audits of AI technologies. He underlines the necessity of verifiable data to enhance trust and safety in AI applications. Particularly regarding containment, Nadella stresses the critical importance of developing strategies that can limit the potential impacts of AI systems gone awry. This call to action reflects a growing recognition that as AI capabilities advance, so too must the frameworks that govern their use, aiming for a future where both innovation and safety are prioritized. Nadella's insights contribute to an ongoing dialogue about responsible AI development and deployment across the technology sector. <div>
+<br /><br />Summary: Microsoft's CEO, Satya Nadella, has expressed concerns regarding the dangers of advanced AI models. He emphasizes the need to move away from treating AI as "nested black boxes," where outcomes are passively accepted or rejected. Instead, Nadella advocates for creating a transparent system that allows for better containment and observation of AI models. He highlights the importance of leaving behind "tamper-proof human readable evidence" to ensure accountability. His recommendations are consistent with industry-wide calls for best practices, including timely incident disclosure and independent audits of AI technologies. He underlines the necessity of verifiable data to enhance trust and safety in AI applications. Particularly regarding containment, Nadella stresses the critical importance of developing strategies that can limit the potential impacts of AI systems gone awry. This call to action reflects a growing recognition that as AI capabilities advance, so too must the frameworks that govern their use, aiming for a future where both innovation and safety are prioritized. Nadella's insights contribute to an ongoing dialogue about responsible AI development and deployment across the technology sector. <div>
 <figure>
 
 <img alt="Satya Nadella on a graphic background of the red, blue, green, and yellow." src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/10/STK178_Satya_Nadella_B.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
@@ -68,7 +511,6 @@ The author is embarking on a personal journey to regularly use AI, having previo
 <p><a href="https://www.theverge.com/ai-artificial-intelligence/1009337/satya-nadella-says-we-should-assume-all-ai-models-are-compromised">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
 <pubDate>2026-10-10T18:10:17-04:00</pubDate>
-<pubDate>2026-10-10T18:10:17-04:00</pubDate>
 </item>
 <item>
 <title>Ghost Core</title>
@@ -77,7 +519,7 @@ The author is embarking on a personal journey to regularly use AI, having previo
 <content:encoded><![CDATA[
 <div> Keywords: personal AI, on-device, computer, technology, privacy
 
-<br><br>Summary: The advancement of personal AI technology marks a significant shift towards on-device computing, providing users with increased privacy and control over their data. This innovative approach eliminates the need for cloud processing, thereby reducing the risk of data breaches and unauthorized access. Users can enjoy seamless interactions with their personal AI, as it can analyze and respond to inputs in real time without relying on external servers. In addition, on-device AI has the potential to enhance performance by minimizing latency, resulting in faster and more efficient processing. Developers are focused on creating algorithms that run effectively on limited hardware resources while ensuring that the AI remains intelligent and functional. This technology caters to a diverse range of applications, from personal assistants to advanced analytics tools, making it accessible for users across various environments. As the technology continues to evolve, the importance of maintaining user-friendly interfaces and robust security measures will remain a priority. In conclusion, the emergence of personal AI computers operating entirely on-device signifies a promising future for technology that fosters individual privacy and empowerment in the digital age. <div>
+<br /><br />Summary: The advancement of personal AI technology marks a significant shift towards on-device computing, providing users with increased privacy and control over their data. This innovative approach eliminates the need for cloud processing, thereby reducing the risk of data breaches and unauthorized access. Users can enjoy seamless interactions with their personal AI, as it can analyze and respond to inputs in real time without relying on external servers. In addition, on-device AI has the potential to enhance performance by minimizing latency, resulting in faster and more efficient processing. Developers are focused on creating algorithms that run effectively on limited hardware resources while ensuring that the AI remains intelligent and functional. This technology caters to a diverse range of applications, from personal assistants to advanced analytics tools, making it accessible for users across various environments. As the technology continues to evolve, the importance of maintaining user-friendly interfaces and robust security measures will remain a priority. In conclusion, the emergence of personal AI computers operating entirely on-device signifies a promising future for technology that fosters individual privacy and empowerment in the digital age. <div>
 <p>
             A personal AI computer that runs entirely on-device
           </p>
@@ -87,7 +529,6 @@ The author is embarking on a personal journey to regularly use AI, having previo
             <a href="https://www.producthunt.com/r/p/1270791?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-10-05T10:44:06-07:00</pubDate>
 <pubDate>2026-10-11T22:21:19-07:00</pubDate>
 </item>
 <item>
@@ -105,7 +546,6 @@ The author is embarking on a personal journey to regularly use AI, having previo
             <a href="https://www.producthunt.com/r/p/1267423?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-10-02T01:43:03-07:00</pubDate>
 <pubDate>2026-10-11T22:36:36-07:00</pubDate>
 </item>
 <item>
@@ -115,7 +555,7 @@ The author is embarking on a personal journey to regularly use AI, having previo
 <content:encoded><![CDATA[
 <div> Keywords: sales, workspace, unified, context, end-to-end
 
-<br><br>Summary: 
+<br /><br />Summary: 
 The article discusses the importance of an end-to-end sales workspace that provides a unified context for sales teams. It highlights how integrating various sales tools and data sources into a single platform enhances collaboration and efficiency. By centralizing information, sales representatives can access crucial customer insights and historical data, enabling them to make informed decisions and tailor their approach to client interactions. The workspace also facilitates seamless communication among team members, reducing the time spent searching for information and increasing productivity. Additionally, the article emphasizes the role of automation in streamlining repetitive tasks, allowing sales professionals to focus on building relationships and closing deals. With a unified context, sales teams can better understand their customers' needs and preferences, leading to improved customer satisfaction and loyalty. Furthermore, the article mentions that leveraging analytics within the workspace can provide valuable insights into sales performance and trends, supporting data-driven strategies. Ultimately, the end-to-end sales workspace is presented as a vital solution for modern sales organizations aiming to enhance their effectiveness in a competitive market. <div>
 <p>
             End-to-end sales workspace with unified context
@@ -126,7 +566,6 @@ The article discusses the importance of an end-to-end sales workspace that provi
             <a href="https://www.producthunt.com/r/p/1272499?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-10-07T02:46:27-07:00</pubDate>
 <pubDate>2026-10-11T22:31:37-07:00</pubDate>
 </item>
 <item>
@@ -136,7 +575,7 @@ The article discusses the importance of an end-to-end sales workspace that provi
 <content:encoded><![CDATA[
 <div> **Keywords**: Agenda, Leadership, Teamwork, Communication, Strategy
 
-<br><br>Summary: The essence of effective leadership lies in the ability to carry and drive your team's agenda. This starts with clearly defining the agenda in collaboration with team members, ensuring everyone’s goals and objectives align. Strong communication is crucial for conveying the agenda effectively; leaders must articulate their vision, fostering transparency and trust within the team. Additionally, empowering team members to contribute their ideas helps to create a sense of ownership, increasing engagement and motivation. Regular updates and check-ins are important to maintain focus on the agenda, allowing for adjustments as necessary in response to challenges or opportunities. 
+<br /><br />Summary: The essence of effective leadership lies in the ability to carry and drive your team's agenda. This starts with clearly defining the agenda in collaboration with team members, ensuring everyone’s goals and objectives align. Strong communication is crucial for conveying the agenda effectively; leaders must articulate their vision, fostering transparency and trust within the team. Additionally, empowering team members to contribute their ideas helps to create a sense of ownership, increasing engagement and motivation. Regular updates and check-ins are important to maintain focus on the agenda, allowing for adjustments as necessary in response to challenges or opportunities. 
 
 Furthermore, celebrating milestones and achievements reinforces collective effort, enhancing team cohesion. Overall, a successful leader balances guidance with support, inspiring their team to work collaboratively towards shared goals while remaining adaptable to changes. By embodying these principles, a leader can ensure that the team remains united and driven, effectively advancing the agenda while achieving desired outcomes. <div>
 <p>
@@ -148,7 +587,6 @@ Furthermore, celebrating milestones and achievements reinforces collective effor
             <a href="https://www.producthunt.com/r/p/1246034?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-09-09T11:19:36-07:00</pubDate>
 <pubDate>2026-10-11T22:35:30-07:00</pubDate>
 </item>
 <item>
@@ -158,7 +596,7 @@ Furthermore, celebrating milestones and achievements reinforces collective effor
 <content:encoded><![CDATA[
 <div> Keywords: AI agent, Mac, personal assistant, $0 forever, always-on
 
-<br><br>Summary: This article introduces an always-on personal AI agent designed specifically for Mac users, emphasizing its capability to function seamlessly and continuously. The agent is highlighted as being available for free, ensuring accessibility for all Mac users without any cost. Its features are tailored to enhance productivity, offering assistance with various tasks and providing smart suggestions. The AI agent is designed to integrate smoothly into the Mac ecosystem, making it a valuable tool for everyday use. Users can expect the agent to understand their preferences and adapt over time, providing a personalized experience. The commitment to keeping the service free forever is a significant selling point, allowing users to benefit from cutting-edge AI technology without financial barriers. The initiative aims to revolutionize how users interact with their devices, positioning the AI agent as an essential companion for both work and leisure. Overall, the article underscores the potential of this AI agent to transform the user experience on Mac, blending convenience and intelligence in a user-friendly package. <div>
+<br /><br />Summary: This article introduces an always-on personal AI agent designed specifically for Mac users, emphasizing its capability to function seamlessly and continuously. The agent is highlighted as being available for free, ensuring accessibility for all Mac users without any cost. Its features are tailored to enhance productivity, offering assistance with various tasks and providing smart suggestions. The AI agent is designed to integrate smoothly into the Mac ecosystem, making it a valuable tool for everyday use. Users can expect the agent to understand their preferences and adapt over time, providing a personalized experience. The commitment to keeping the service free forever is a significant selling point, allowing users to benefit from cutting-edge AI technology without financial barriers. The initiative aims to revolutionize how users interact with their devices, positioning the AI agent as an essential companion for both work and leisure. Overall, the article underscores the potential of this AI agent to transform the user experience on Mac, blending convenience and intelligence in a user-friendly package. <div>
 <p>
             The always-on personal AI agent for your Mac. $0 forever
           </p>
@@ -168,7 +606,6 @@ Furthermore, celebrating milestones and achievements reinforces collective effor
             <a href="https://www.producthunt.com/r/p/1275891?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-10-10T06:04:39-07:00</pubDate>
 <pubDate>2026-10-11T22:34:03-07:00</pubDate>
 </item>
 <item>
@@ -178,7 +615,7 @@ Furthermore, celebrating milestones and achievements reinforces collective effor
 <content:encoded><![CDATA[
 <div> **Keywords:** AI, pickleball, solo practice, swing, coaching
 
-<br><br>Summary:  
+<br /><br />Summary:  
 An AI pickleball coach is designed to enhance solo practice by focusing on improving one swing at a time. This innovative approach allows players to receive tailored feedback during their training sessions, helping them to refine their techniques effectively. By leveraging advanced technology, the AI coach analyzes various components of a player’s swing, including speed, angle, and accuracy. This data-driven feedback provides actionable insights that enable players to make continuous improvements, regardless of their skill level. The AI coach also facilitates self-paced learning, allowing players to practice whenever and wherever they want, without the need for a partner. As a result, this method not only boosts confidence but also accelerates skill development. Players can track their progress over time, setting personal goals and challenges that keep practice engaging and motivating. Overall, the AI pickleball coach is a valuable tool for anyone looking to elevate their game through dedicated solo practice focused on perfecting their swings and enhancing their overall performance. <div>
 <p>
             AI pickleball coach for solo practice, one swing at a time
@@ -189,7 +626,6 @@ An AI pickleball coach is designed to enhance solo practice by focusing on impro
             <a href="https://www.producthunt.com/r/p/1268121?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-10-02T18:00:11-07:00</pubDate>
 <pubDate>2026-10-11T22:03:54-07:00</pubDate>
 </item>
 <item>
@@ -199,7 +635,7 @@ An AI pickleball coach is designed to enhance solo practice by focusing on impro
 <content:encoded><![CDATA[
 <div> **Keywords:** macOS, terminal, coding, agent, needs  
 
-<br><br>Summary: The macOS terminal is a powerful tool for developers that allows interaction with the operating system through command line inputs. It can automate repetitive tasks, run scripts, and manage files, making it essential for coding professionals. In the terminal, different coding agents or compilers can be employed depending on the programming language used. Users can easily install and manage these agents using package managers like Homebrew. Moreover, the terminal supports various shell environments, offering flexibility in command execution and script writing. It also provides real-time feedback, which can help in debugging code more efficiently. Understanding how to utilize the terminal effectively can greatly enhance productivity and streamline the development process. Lastly, developers can customize their terminal to suit their workflow, integrating plugins and changing appearances to create a more personalized coding environment. Emphasizing the importance of the terminal in macOS showcases its role as a vital resource for coding agents and modern development needs. <div>
+<br /><br />Summary: The macOS terminal is a powerful tool for developers that allows interaction with the operating system through command line inputs. It can automate repetitive tasks, run scripts, and manage files, making it essential for coding professionals. In the terminal, different coding agents or compilers can be employed depending on the programming language used. Users can easily install and manage these agents using package managers like Homebrew. Moreover, the terminal supports various shell environments, offering flexibility in command execution and script writing. It also provides real-time feedback, which can help in debugging code more efficiently. Understanding how to utilize the terminal effectively can greatly enhance productivity and streamline the development process. Lastly, developers can customize their terminal to suit their workflow, integrating plugins and changing appearances to create a more personalized coding environment. Emphasizing the importance of the terminal in macOS showcases its role as a vital resource for coding agents and modern development needs. <div>
 <p>
             The macOS terminal that shows which coding agent needs you
           </p>
@@ -209,7 +645,6 @@ An AI pickleball coach is designed to enhance solo practice by focusing on impro
             <a href="https://www.producthunt.com/r/p/1275794?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-10-10T03:38:06-07:00</pubDate>
 <pubDate>2026-10-11T22:20:34-07:00</pubDate>
 </item>
 <item>
@@ -217,7 +652,6 @@ An AI pickleball coach is designed to enhance solo practice by focusing on impro
 <link>https://www.producthunt.com/products/floorgen</link>
 <guid>https://www.producthunt.com/products/floorgen</guid>
 <content:encoded><![CDATA[
-
 <p>
             Draw the house, or just ask. Free floor plans with AI
           </p>
@@ -227,7 +661,6 @@ An AI pickleball coach is designed to enhance solo practice by focusing on impro
             <a href="https://www.producthunt.com/r/p/1275171?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-10-09T11:19:20-07:00</pubDate>
 <pubDate>2026-10-11T22:30:28-07:00</pubDate>
 </item>
 <item>
@@ -235,7 +668,6 @@ An AI pickleball coach is designed to enhance solo practice by focusing on impro
 <link>https://www.producthunt.com/products/foley</link>
 <guid>https://www.producthunt.com/products/foley</guid>
 <content:encoded><![CDATA[
-
 <p>
             A voice to-do list that files, plans and asks first
           </p>
@@ -245,7 +677,6 @@ An AI pickleball coach is designed to enhance solo practice by focusing on impro
             <a href="https://www.producthunt.com/r/p/1270101?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-10-04T23:48:55-07:00</pubDate>
 <pubDate>2026-10-11T22:20:37-07:00</pubDate>
 </item>
 <item>
@@ -253,7 +684,6 @@ An AI pickleball coach is designed to enhance solo practice by focusing on impro
 <link>https://www.producthunt.com/products/halo-11</link>
 <guid>https://www.producthunt.com/products/halo-11</guid>
 <content:encoded><![CDATA[
-
 <p>
             Notifications, dictation and AI agents in your Mac's notch
           </p>
@@ -263,7 +693,6 @@ An AI pickleball coach is designed to enhance solo practice by focusing on impro
             <a href="https://www.producthunt.com/r/p/1273549?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-10-08T01:48:13-07:00</pubDate>
 <pubDate>2026-10-11T22:03:54-07:00</pubDate>
 </item>
 <item>
@@ -271,7 +700,6 @@ An AI pickleball coach is designed to enhance solo practice by focusing on impro
 <link>https://www.producthunt.com/products/edgee</link>
 <guid>https://www.producthunt.com/products/edgee</guid>
 <content:encoded><![CDATA[
-
 <p>
             Use any model inside Claude Code, keep your Claude plan
           </p>
@@ -281,10 +709,8 @@ An AI pickleball coach is designed to enhance solo practice by focusing on impro
             <a href="https://www.producthunt.com/r/p/1273545?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-10-08T01:41:39-07:00</pubDate>
 <pubDate>2026-10-11T22:28:38-07:00</pubDate>
 </item>
-
 <item>
 <title>Dwarf Fortress uses version control now</title>
 <link>https://simonwillison.net/2026/Oct/11/dwarf-fortress/</link>
@@ -26439,220 +26865,6 @@ The increasing reliance on AI to generate promotional images for food by restaur
 <p><em>Cory Alpert is a researcher at the University of Melbourne, looking at the impact of AI on democracy. He previously served in the Biden White House.</em></p>
 ]]></content:encoded>
 <pubDate>Fri, 04 Sep 2026 09:25:19 +0000</pubDate>
-</item>
-<item>
-<title>OpenAI agents discussed ways to escape their sandbox on public wiki</title>
-<link>https://arstechnica.com/security/2026/09/openai-agents-discussed-ways-to-escape-their-sandbox-on-public-wiki/</link>
-<guid>https://arstechnica.com/security/2026/09/openai-agents-discussed-ways-to-escape-their-sandbox-on-public-wiki/</guid>
-<content:encoded><![CDATA[
-<p>Self-identifying OpenAI agents posted 18,000 messages to a public wiki that discussed ways for other agents to bypass security sandbox restrictions during what was likely internal testing designed to gauge the agents’ hacking abilities, <a href="https://collusion.wiki/">researchers said Friday</a>.</p>
-<p>In all, agents with 3,700 distinct self-given names posted the messages to German site <a href="https://dsewiki.vercel.app">DSEwiki</a> over a six-week period. Besides discussing ways the agents could break out of the restricted environment OpenAI intended to prevent them from posting code or content to the Internet, the posts shared test answers. The posts also shared possible ways to perform XSS (cross-site scripting) attacks against the wiki and to impersonate site moderators. In three of the posts, agents used the word “swarm” to describe the collection of agents engaged in the activity.</p>
-<h2>Colluding to share answers</h2>
-<p>The research team—composed of Sydney Von Arx, Spencer Kitts, Thomas Larsen, and Cormac Slade Byrd—said they found the posts and pieced them together. The researchers say there are gaps in their understanding of precisely what actions the agents took because the research is based solely on the content of the posts. Additionally, the agents generated “chain of thought” data that’s understood only by OpenAI. As a result, the researchers said, they in some cases made educated guesses, including that the agents were, in fact, from OpenAI. In a statement, OpenAI later confirmed they were.</p><p><a href="https://arstechnica.com/security/2026/09/openai-agents-discussed-ways-to-escape-their-sandbox-on-public-wiki/">Read full article</a></p>
-<p><a href="https://arstechnica.com/security/2026/09/openai-agents-discussed-ways-to-escape-their-sandbox-on-public-wiki/#comments">Comments</a></p>
-]]></content:encoded>
-<pubDate>Fri, 04 Sep 2026 22:17:36 +0000</pubDate>
-</item>
-<item>
-<title>Once popular for attacking AI, ASCII smuggling is embraced by spammers</title>
-<link>https://arstechnica.com/security/2026/09/once-popular-for-attacking-ai-ascii-smuggling-is-embraced-by-spammers/</link>
-<guid>https://arstechnica.com/security/2026/09/once-popular-for-attacking-ai-ascii-smuggling-is-embraced-by-spammers/</guid>
-<content:encoded><![CDATA[
-<p>A clever technique used to hide malicious prompts in attacks on AI agents has been adopted by spammers to evade filters on email platforms that are designed to flag unwanted messages used in mass campaigns.</p>
-<p>The technique is broadly known as ASCII smuggling. It gained attention two years ago as a means of making a class of AI attack known as <a href="https://arstechnica.com/security/2026/07/hackers-can-use-9-of-the-most-popular-ai-tools-to-assemble-massive-botnets/">prompt injections</a> more stealthy. Malicious instructions embedded in emails or other untrusted content to be processed by an LLM aren’t written in ordinary text. Instead, they’re rendered by a special range of <a href="https://en.wikipedia.org/wiki/Unicode">Unicode</a> tags. For example, the tag point U+E0041 mirrors “A,” and U+E0061 mirrors “a.”</p>
-<h2>No longer just for obscuring prompt injections</h2>
-<p>The block of 128 tags mimics a portion of the <a href="https://en.wikipedia.org/wiki/ASCII">American Standard Code for Information Interchange</a> almost perfectly, with one major difference: the characters they encode are readable by computers but, by design, are almost completely invisible to humans. By expressing the malicious prompts in these tags, LLMs detect the instructions, but people reading the email never see them. There’s much more about ASCII smuggling <a href="https://arstechnica.com/security/2024/10/ai-chatbots-can-read-and-write-invisible-text-creating-an-ideal-covert-channel/">here</a>.</p><p><a href="https://arstechnica.com/security/2026/09/once-popular-for-attacking-ai-ascii-smuggling-is-embraced-by-spammers/">Read full article</a></p>
-<p><a href="https://arstechnica.com/security/2026/09/once-popular-for-attacking-ai-ascii-smuggling-is-embraced-by-spammers/#comments">Comments</a></p>
-]]></content:encoded>
-<pubDate>Fri, 04 Sep 2026 17:18:12 +0000</pubDate>
-</item>
-<item>
-<title>Anthropic’s $2 trillion IPO puts powerful external trustees in spotlight</title>
-<link>https://arstechnica.com/ai/2026/09/anthropics-2-trillion-ipo-puts-powerful-external-trustees-in-spotlight/</link>
-<guid>https://arstechnica.com/ai/2026/09/anthropics-2-trillion-ipo-puts-powerful-external-trustees-in-spotlight/</guid>
-<content:encoded><![CDATA[
-<p>Anthropic’s prospective public-market investors must reckon with an external group of trustees that control the majority of the AI company’s board, as its planned blockbuster initial public offering forces close scrutiny of its experimental governance structure.</p>
-<p>The company’s Long-Term Benefit Trust (LTBT) is a small group of advisers created to safeguard the lab’s mission of developing AI for the long-term benefit of humanity, even as commercial pressures intensify.</p>
-<p>The trust holds no equity in Anthropic, but has significant influence, with the San Francisco-based company planning to preserve its role after a stock market debut that could value the Claude maker at as much as $2 trillion.</p><p><a href="https://arstechnica.com/ai/2026/09/anthropics-2-trillion-ipo-puts-powerful-external-trustees-in-spotlight/">Read full article</a></p>
-<p><a href="https://arstechnica.com/ai/2026/09/anthropics-2-trillion-ipo-puts-powerful-external-trustees-in-spotlight/#comments">Comments</a></p>
-]]></content:encoded>
-<pubDate>Fri, 04 Sep 2026 16:22:18 +0000</pubDate>
-</item>
-<item>
-<title>WeatherNext 3</title>
-<link>https://www.producthunt.com/products/weathernext-3</link>
-<guid>https://www.producthunt.com/products/weathernext-3</guid>
-<content:encoded><![CDATA[
-<p>
-            Our most advanced and accurate global weather AI model
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/weathernext-3?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1240543?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-04T20:48:37-07:00</pubDate>
-</item>
-<item>
-<title>myAIcademy</title>
-<link>https://www.producthunt.com/products/myaicademy</link>
-<guid>https://www.producthunt.com/products/myaicademy</guid>
-<content:encoded><![CDATA[
-<p>
-            Learn AI skills for your specific role and team
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/myaicademy?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1235086?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-04T21:00:35-07:00</pubDate>
-</item>
-<item>
-<title>Clockwork</title>
-<link>https://www.producthunt.com/products/clockwork-5</link>
-<guid>https://www.producthunt.com/products/clockwork-5</guid>
-<content:encoded><![CDATA[
-<p>
-            The calendar where your AI agents show up for work
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/clockwork-5?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1240566?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-04T21:02:44-07:00</pubDate>
-</item>
-<item>
-<title>Google Gemini 3.8 Flash and Cyber</title>
-<link>https://www.producthunt.com/products/gemini-3-8-flash</link>
-<guid>https://www.producthunt.com/products/gemini-3-8-flash</guid>
-<content:encoded><![CDATA[
-<p>
-            Next-gen Gemini for agents, reasoning, and cyber security
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/gemini-3-8-flash?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1239559?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-04T20:58:39-07:00</pubDate>
-</item>
-<item>
-<title>Chalked for Mac</title>
-<link>https://www.producthunt.com/products/chalked</link>
-<guid>https://www.producthunt.com/products/chalked</guid>
-<content:encoded><![CDATA[
-<p>
-            Your replies ready with your work's full context
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/chalked?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1240413?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-04T21:02:44-07:00</pubDate>
-</item>
-<item>
-<title>Omarchy</title>
-<link>https://www.producthunt.com/products/omarchy-3</link>
-<guid>https://www.producthunt.com/products/omarchy-3</guid>
-<content:encoded><![CDATA[
-<p>
-            The malleable OS for the age of agents
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/omarchy-3?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1240461?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-04T21:02:43-07:00</pubDate>
-</item>
-<item>
-<title>Snitch</title>
-<link>https://www.producthunt.com/products/snitch-4</link>
-<guid>https://www.producthunt.com/products/snitch-4</guid>
-<content:encoded><![CDATA[
-<p>
-            Your Slack org chart, built by everyone in it.
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/snitch-4?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1240308?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-04T21:02:43-07:00</pubDate>
-</item>
-<item>
-<title>sidebranch</title>
-<link>https://www.producthunt.com/products/sidebranch</link>
-<guid>https://www.producthunt.com/products/sidebranch</guid>
-<content:encoded><![CDATA[
-<p>
-            Easy git-based visual diffing
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/sidebranch?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1239730?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-04T21:02:44-07:00</pubDate>
-</item>
-<item>
-<title>TrackMCP</title>
-<link>https://www.producthunt.com/products/trackmcp</link>
-<guid>https://www.producthunt.com/products/trackmcp</guid>
-<content:encoded><![CDATA[
-<p>
-            Google Analytics for MCP Servers
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/trackmcp?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1238286?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-04T20:45:57-07:00</pubDate>
-</item>
-<item>
-<title>Inline</title>
-<link>https://www.producthunt.com/products/inline-5</link>
-<guid>https://www.producthunt.com/products/inline-5</guid>
-<content:encoded><![CDATA[
-<p>
-            Multiplayer work with AI, teammates, and friends
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/inline-5?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1240322?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-04T21:02:44-07:00</pubDate>
-</item>
-<item>
-<title>GPT-6 Astra</title>
-<link>https://www.producthunt.com/products/openai</link>
-<guid>https://www.producthunt.com/products/openai</guid>
-<content:encoded><![CDATA[
-<p>
-            OpenAI's most capable model for end-to-end work
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/openai?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1240758?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-04T21:00:34-07:00</pubDate>
 </item>
 </channel>
 </rss>
