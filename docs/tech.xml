@@ -3,7 +3,423 @@
 <channel>
 <title>tech</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/tech.xml</link>
-<lastBuildDate>Sun, 18 Oct 2026 04:10:08 +0000</lastBuildDate>
+<lastBuildDate>Mon, 19 Oct 2026 04:18:41 +0000</lastBuildDate>
+
+<item>
+<title>v12.1.1</title>
+<link>https://github.com/nestjs/nest/releases/tag/v12.1.1</link>
+<guid>https://github.com/nestjs/nest/releases/tag/v12.1.1</guid>
+<content:encoded><![CDATA[
+<div> Keywords: bug fixes, enhancements, microservices, core, common  
+
+<br><br>Summary:  
+The release of version 12.1.1 on September 28, 2026, focuses on bug fixes across several components including common, core, microservices, and testing. Key fixes in the common module address logger bugs in JSON output and the handling of string enum values. In microservices, multiple issues are resolved, such as allowing the MQTT client to retry upon failed connections, preserving TCP event listeners during reconnects, and ensuring newer NATS and Kafka connections are maintained when stale ones fail. Additionally, the RMQ client is allowed to retry, and improvements are made for handling Redis wildcard events. The core module sees enhancement in detecting circular dependencies involving more than two providers, while testing features are improved by honoring class and factory overrides of value providers. Enhancements in the common module include rejecting non-numeric items in ParseArrayPipe. The microservices module also introduces a new feature that exports deserializers from the package root. Overall, these changes enhance reliability and functionality across the platform, benefiting developers and users alike. <div>
+<h2>v12.1.1 (2026-09-28)</h2>
+<h4>Bug fixes</h4>
+<ul>
+<li><code>common</code>, <code>core</code>, <code>microservices</code>, <code>testing</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17893">#17893</a> fix(common): logger bugs in json output, level changes, fatal and buffered logs (<a href="https://github.com/kamilmysliwiec">@kamilmysliwiec</a>)</li>
+</ul>
+</li>
+<li><code>microservices</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17891">#17891</a> fix(microservices): let the mqtt client retry after a failed connect (<a href="https://github.com/hktitof">@hktitof</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17888">#17888</a> fix(microservices): keep tcp event listeners across reconnects (<a href="https://github.com/KAPUIST">@KAPUIST</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17887">#17887</a> fix(microservices): ignore events from a replaced tcp client socket (<a href="https://github.com/KAPUIST">@KAPUIST</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17878">#17878</a> fix(microservices): keep a newer nats connection when a stale one fails (<a href="https://github.com/hktitof">@hktitof</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17869">#17869</a> fix(microservices): keep a newer kafka connection when a stale one fails (<a href="https://github.com/kamilmysliwiec">@kamilmysliwiec</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17865">#17865</a> fix(microservices): let the rmq client retry after a failed connect (<a href="https://github.com/hktitof">@hktitof</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17866">#17866</a> fix(microservices): reply on the request channel when redis wildcards are enabled (<a href="https://github.com/fadiroot">@fadiroot</a>)</li>
+<li><a href="https://github.com/nestjs/nest/pull/17861">#17861</a> fix(microservices): recover the nats client after it gives up reconnecting (<a href="https://github.com/xia-chao">@xia-chao</a>)</li>
+</ul>
+</li>
+<li><code>common</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17884">#17884</a> fix(common): preserve string enum values matching numeric member names (<a href="https://github.com/KAPUIST">@KAPUIST</a>)</li>
+</ul>
+</li>
+<li><code>core</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17871">#17871</a> fix(core): detect circular dependencies across more than two providers (<a href="https://github.com/erezcor">@erezcor</a>)</li>
+</ul>
+</li>
+<li><code>platform-fastify</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17867">#17867</a> fix(fastify): treat a JSON content type with parameters as JSON in reply() (<a href="https://github.com/fadiroot">@fadiroot</a>)</li>
+</ul>
+</li>
+<li><code>core</code>, <code>testing</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17860">#17860</a> fix(core): honor class and factory overrides of value providers (<a href="https://github.com/lehafari">@lehafari</a>)</li>
+</ul>
+</li>
+</ul>
+<h4>Enhancements</h4>
+<ul>
+<li><code>common</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17876">#17876</a> fix(common): reject non-numeric items in ParseArrayPipe with items Number (<a href="https://github.com/SulimanAbdulrazzaq">@SulimanAbdulrazzaq</a>)</li>
+</ul>
+</li>
+<li><code>microservices</code>
+<ul>
+<li><a href="https://github.com/nestjs/nest/pull/17863">#17863</a> feat(microservices): export deserializers from the package root (<a href="https://github.com/lazerg">@lazerg</a>)</li>
+</ul>
+</li>
+</ul>
+<h4>Committers: 13</h4>
+<ul>
+<li>Abdellatif Anaflous (<a href="https://github.com/hktitof">@hktitof</a>)</li>
+<li>Alejandro (<a href="https://github.com/lehafari">@lehafari</a>)</li>
+<li>Daniel Pinto (<a href="https://github.com/Cayan">@Cayan</a>)</li>
+<li>Dharmik Sondagar (<a href="https://github.com/DharmikSondagar">@DharmikSondagar</a>)</li>
+<li>Kamil Mysliwiec (<a href="https://github.com/kamilmysliwiec">@kamilmysliwiec</a>)</li>
+<li>Lazizbek Ergashev (<a href="https://github.com/lazerg">@lazerg</a>)</li>
+<li>Luke Son (<a href="https://github.com/KAPUIST">@KAPUIST</a>)</li>
+<li>Micael Levi L. Cavalcante (<a href="https://github.com/micalevisk">@micalevisk</a>)</li>
+<li>Roman Khegay (<a href="https://github.com/thekhegay">@thekhegay</a>)</li>
+<li>Suliman Abdulrazzaq (<a href="https://github.com/SulimanAbdulrazzaq">@SulimanAbdulrazzaq</a>)</li>
+<li>Xia Chao (<a href="https://github.com/xia-chao">@xia-chao</a>)</li>
+<li><a href="https://github.com/erezcor">@erezcor</a></li>
+<li>fadi romdhan (<a href="https://github.com/fadiroot">@fadiroot</a>)</li>
+</ul>
+]]></content:encoded>
+
+<pubDate>2026-09-28T09:06:52Z</pubDate>
+</item>
+<item>
+<title>Updates to site guidelines and AI/LLM tags</title>
+<link>https://lobste.rs/s/h0eate/updates_site_guidelines_ai_llm_tags</link>
+<guid>https://lobste.rs/s/h0eate/updates_site_guidelines_ai_llm_tags</guid>
+<content:encoded><![CDATA[
+<div> vibecoding, AI, self-promotion, community, guidelines  
+
+<br><br>Summary: The Lobsters community, focused on computing discussions, is making updates to enhance user engagement and encourage thoughtful content. The about page will clarify what constitutes topical content, specifically narrowing down on computing-related material and encouraging submissions that deepen understanding or spark discussions. Code repositories will no longer be accepted to reduce low-effort self-promotions that don’t foster conversation. Off-topic subjects like entrepreneurship and careers are explicitly listed to maintain focus. Self-promotion guidelines will limit personal promotions to under 25% of contributions from established users and prohibit new users from self-promotional posts. Additionally, the vibecoding tag has been made inactive due to its overloaded nature, which included various AI-related discussions and criticisms. A new tag, ai-tooling, has been introduced to focus on the design and development of AI tools specifically. The administrator emphasizes the importance of respectful discourse, asserting that frustrations towards technology should not be directed at individuals within the community. These changes aim to foster a more constructive environment as the community navigates the evolving landscape of AI and computing. <div>
+<p>Hey folks,</p>
+<p>I've been having to perform an increasing number of <a href="https://lobste.rs/moderations?moderator=355E3B" rel="ugc">moderation actions</a> surrounding the <code>vibecoding</code> tag and AI/LLM related content. I started reading Lobsters because it had the most interesting viewpoints related to computing. During that time, I've found that this community is at it's best when it's trying to, in good faith, help others grow. In lieu of a larger and more rambling discussion on this point, we would like to try two changes encourage that behavior again and re-focus topicality around ensuring that content submitted to the site should, at a minimum, be respectful of a reader's time and intelligence. </p>
+<p>The first adjustment is two updates to the about page, which try to provide a bit more clarity in what we consider topical and what constitutes self promotion:</p>
+<p>Intro:</p>
+<blockquote>
+<p>Lobsters is a computing-focused community centered around discussing links. Our goal is to learn, craft, collaborate, and share interesting viewpoints.</p>
+<p>The administrator is <a href="https://lobste.rs/~pushcx" rel="ugc">Peter Bhat Harkins</a> ("pushcx"), contact him or <a href="https://lobste.rs/moderators" rel="ugc">another moderator</a> with any support issues. Lobsters was launched on July 3rd, 2012 by <a href="https://lobste.rs/~jcs" rel="ugc">joshua stein</a> (who is no longer running it, so please quit bugging him with site stuff) with careful design touches to encourage a healthy community:</p>
+</blockquote>
+<p>At this risk of writing a mission statement, it seemed worth explaining what the site is and hopes to be to visitors from the first sentence of /about. (This original text came from <a href="https://lobste.rs/s/bkeYe9/about_lobsters" rel="ugc">an intro post</a>.)</p>
+<p>Then the Guidelines:</p>
+<blockquote>
+<p><em>Topicality:</em> Lobsters is focused pretty narrowly on computing; tags like art don't imply every piece of art is on-topic.  Some rules of thumb for great stories to submit: Will this improve the reader's next program? Will it deepen their understanding of their last program? Will it be more interesting in five or ten years? Is this compelling material that will seed a discussion, or is it just an artifact?</p>
+</blockquote>
+<p>Pending an upcoming deploy, we no longer allow submissions which are code repositories. While, at first blush, this may seem odd for a community which is primarily centered around programming but it does eliminate the bulk of the "low effort, self promotional" submissions we've been seeing on the site. We've also found that being dropped into a new codebase doesn't start discussions because the reader has to have enough subject matter experience to immediately recognize what's novel or otherwise worth talking about. Instead, we are more interested in content around code bases which cover why it was created, the purpose it serves, the challenges overcome, and the reasons why it's a useful artifact in the ecosystem.</p>
+<blockquote>
+<p>Some things that are off-topic here but popular on larger, similar sites: entrepreneurship; management; careers; news about companies that employ a lot of programmers; investing; world events; anthropology; self-help; personal productivity systems; last-resort customer service requests via public shaming; "I wanted to see what this site's amazing users think about this off-topic thing"; and defining the single morally correct economic and political system for the entire world when we can't even settle tabs vs. spaces.</p>
+</blockquote>
+<p>We're listing "careers" as off-topic to try to head off posts about interviewing, promotions, burnout, and <a href="https://www.theatlantic.com/magazine/archive/1981/07/flying-upside-down/306467/#:~:text=Back%20at,season%2E%22" rel="ugc">farming</a>. We have the <a href="https://lobste.rs/t/job" rel="ugc">job</a> tag because it's nice to help people connect to jobs, but the topic of getting a good job, weaving jobs into a career over your lifetime, and work is a different thing than the actual programming itself.</p>
+<blockquote>
+<p><em>Self-promotion:</em> It's great to have authors participate in the community, but we do not want the community to be exploited as a write-only tool for product announcements or driving traffic to their work. As a rule of thumb, self-promotional activity should be less than a quarter of one's stories and comments in the last year. New users (<a href="https://lobste.rs/about#:~:text=%22new%22%20for%20their%20first%2070%20days" rel="ugc">first 70 days</a>) are not allowed to submit self-promo.</p>
+</blockquote>
+<p>This is how we've been enforcing the rule for a while, better to be explicit. It's unfortunately common that authors see their work posted, join the site, but then only use us for traffic. Hopefully this time helps them understand the difference between a symbiotic and parasitic relationship.</p>
+<p>The second adjustment is that the <code>vibecoding</code> tag is now marked as inactive. It still appears on old stories but can't be applied to new ones. From my perspective, the tag was overloaded with six differing responsibilities:</p>
+<ul>
+<li>
+<p>First, it was the tag which was trying to capture the discussions related to the use and implementation of AI/LLM tools.</p>
+</li>
+<li>
+<p>Second, it was a marker for content which is partially related to AI/LLM tools, tooling or companies.</p>
+</li>
+<li>
+<p>Third, it was a marker for content which includes a discussion on or output from AI/LLM tools in a part of a larger work.</p>
+</li>
+<li>
+<p>Fourth, it was a marker for content which was generated using AI/LLM tools.</p>
+</li>
+<li>
+<p>Fifth, it was being used in competition to the <code>spam</code> flag, for really low-quality content which was generated via AI/LLM tools but without apparent significant human authorship.</p>
+</li>
+<li>
+<p>Sixth, it was being used as a <a href="https://lobste.rs/c/tz2qdt" rel="ugc">tag of shame</a> by people who really dislike AI/LLM tools and used it to insult people at every passing mention.</p>
+</li>
+</ul>
+<p>The last couple years have been the biggest upheaval in the field for decades. While it's acceptable, within limits, to express frustration towards circumstance or technology, it's not acceptable to direct that behavior towards individuals whether they be members of the community or not. Other people can't be your punching bags and Lobsters can't be your boxing ring. <a href="https://lobste.rs/s/ktew3s/who_does_anubis_actually_stop#c_81gsc5" rel="ugc">That's not acceptable</a>.</p>
+<p>While `vibecoding` is no longer an active tag, we still feel that a subset of the tooling related discussions are relevant to the site. While this is reaching far back into the annals of computing history, tools like <a href="https://lobste.rs/t/compilers" rel="ugc">compilers</a>, <a href="https://lobste.rs/t/databases" rel="ugc">databases</a>, <a href="https://lobste.rs/t/testing" rel="ugc">testing</a>, and <a href="https://lobste.rs/t/vcs" rel="ugc">vcs</a> had similar points of consternation and concern when they were introduced. I'm not going to claim that I'm able to guess how the industry is going to shape up, but my gut feeling is that but my gut feeling is that it's going to be closer to something like we've seen with <a href="https://lobste.rs/s/a2ccah/can_we_have_systemd_tag" rel="ugc">systemd</a> than compilers. This new tag `ai-tooling` covers "The design, ux, development of AI/LLM-powered tools themselves".</p>
+<p>As a fun addendum, there's a variant of Maslow’s Hierarchy of Needs which exist for websites, we kinda fell on the wrong side of that trying to migrate the site and get this out on a Saturday. Whoops!</p>
+<p>Thanks,
+355E3B</p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 20:28:53 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 20:28:53 -0500</pubDate>
+</item>
+<item>
+<title>It's enough - vibecoding tag crossed from useless to harmful</title>
+<link>https://lobste.rs/s/ggpwfi/it_s_enough_vibecoding_tag_crossed_from</link>
+<guid>https://lobste.rs/s/ggpwfi/it_s_enough_vibecoding_tag_crossed_from</guid>
+<content:encoded><![CDATA[
+<div> Keywords: vibecoding, LLMs, software engineering, community, original content
+
+<br><br>Summary: The vibecoding tag has lost its original purpose as the landscape of software engineering and LLMs has evolved. Initially meant to signal relevant content, it now encompasses a wide array of posts, including those that only mention LLMs in passing. This broad usage has diluted its significance and is driving valuable community members away. Over time, the excessive tagging of posts related to LLMs has made it challenging for individuals to find original technical content, which many users prefer. Despite the support for filtering out LLM-centric posts, the current state is detrimental for everyone involved. Original articles relevant to software engineering are getting filtered out simply because they touch on LLMs, while community members are becoming frustrated with the persistent tagging issues and leaving the platform. The situation calls for a reevaluation or separation of the vibecoding tag to restore its effectiveness. In conclusion, maintaining the current tagging system is counterproductive, and improving the categorization could lead to a more vibrant and focused community that encourages original contributions. <div>
+<p>The vibecoding tag has been getting more and more useless for a while now. It lost the original meaning as the culture of software engineering with LLMs matured a bit. It got silly when posts talking about LLMs in general got tagged. It got useless when posts even mentioning some project created with LLMs in passing got tagged. Now it actually got harmful to the community when tagging posts turns away very valuable members <a href="https://lobste.rs/c/vecuxj" rel="ugc">https://lobste.rs/c/vecuxj</a></p>
+<p>I sighed and moved on for a while now as almost everything gets tagged - you can skip a word. But now it not only carries no signal whatsoever, it turns away people creating original technical content - which is what I assume anti-vibecoding people would actually like to see more of.</p>
+<p>Please split it or kill it. But we'd be better off without what exists today.</p>
+<p>Added: To be clear, I totally support people filtering out llm-generated or llm-centric posts. But right now everyone loses. And every day we lose a little bit more. Whether it's an original, interesting article that turns out to be nth-degree related to llms and filtered out, or a community member annoyed by this recurring problem and leaving us with even fewer actual non-llm-centric entries.</p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 05:35:11 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 05:35:11 -0500</pubDate>
+</item>
+<item>
+<title>ARP! Tell your network to explain itself</title>
+<link>https://benjcal.space/blog/arp-tell-your-network-to-explain-itself/</link>
+<guid>https://benjcal.space/blog/arp-tell-your-network-to-explain-itself/</guid>
+<content:encoded><![CDATA[
+<div> Sure! Please provide the article you would like me to summarize, and I'll be happy to assist you. <div>
+<p><a href="https://lobste.rs/s/mmvhup/arp_tell_your_network_explain_itself">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 07:48:02 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 07:48:02 -0500</pubDate>
+</item>
+<item>
+<title>A New Way to Think About Borrow Checking (In Reverse)</title>
+<link>https://verdagon.dev/blog/reverse-borrow-checking</link>
+<guid>https://verdagon.dev/blog/reverse-borrow-checking</guid>
+<content:encoded><![CDATA[
+<div> Please provide the article you would like summarized, and I will assist you accordingly! <div>
+<p><a href="https://lobste.rs/s/vwgrix/new_way_think_about_borrow_checking">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 09:29:16 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 09:29:16 -0500</pubDate>
+</item>
+<item>
+<title>Men in tech #YesAllMen</title>
+<link>https://media.ccc.de/v/emf2026-240-1-men-in-tech-yesallmen</link>
+<guid>https://media.ccc.de/v/emf2026-240-1-men-in-tech-yesallmen</guid>
+<content:encoded><![CDATA[
+<div> Sure, please provide the article you would like summarized. <div>
+<p><a href="https://lobste.rs/s/mp8qye/men_tech_yesallmen">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 13:35:01 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 13:35:01 -0500</pubDate>
+</item>
+<item>
+<title>Outside the Scope of Our Support</title>
+<link>https://fireborn.mataroa.blog/blog/outside-the-scope-of-our-support/</link>
+<guid>https://fireborn.mataroa.blog/blog/outside-the-scope-of-our-support/</guid>
+<content:encoded><![CDATA[
+<div> Sure, please provide the article you would like summarized. <div>
+<p><a href="https://lobste.rs/s/brrnpm/outside_scope_our_support">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 13:52:01 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 13:52:01 -0500</pubDate>
+</item>
+<item>
+<title>QML for C &amp; Zig</title>
+<link>https://gist.github.com/rcalixte/d2de5c816fc1de3970cc501b5ae9706e</link>
+<guid>https://gist.github.com/rcalixte/d2de5c816fc1de3970cc501b5ae9706e</guid>
+<content:encoded><![CDATA[
+<div> Sure! Please provide the article you'd like me to summarize. <div>
+<p><a href="https://lobste.rs/s/izjf9o/qml_for_c_zig">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 14:10:04 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 14:10:04 -0500</pubDate>
+</item>
+<item>
+<title>My obituary for programming</title>
+<link>https://dumbmatter.com/2026/10/programming-obituary/</link>
+<guid>https://dumbmatter.com/2026/10/programming-obituary/</guid>
+<content:encoded><![CDATA[
+<div> Of course! Please provide the article you would like me to summarize, and I will follow your instructions accordingly. <div>
+<p><a href="https://lobste.rs/s/wtobpt/my_obituary_for_programming">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 11:44:36 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 11:44:36 -0500</pubDate>
+</item>
+<item>
+<title>High performance policy routed IPsec mesh SD-WAN</title>
+<link>https://ranet3.com/</link>
+<guid>https://ranet3.com/</guid>
+<content:encoded><![CDATA[
+<div> Sure! Please provide the article that you would like me to summarize. <div>
+<p><a href="https://lobste.rs/s/np6czp/high_performance_policy_routed_ipsec">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 09:36:52 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 09:36:52 -0500</pubDate>
+</item>
+<item>
+<title>Superoptimizing an FPU emulator</title>
+<link>https://purplesyringa.moe/blog/superoptimizing-an-fpu-emulator/</link>
+<guid>https://purplesyringa.moe/blog/superoptimizing-an-fpu-emulator/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/1s3dve/superoptimizing_fpu_emulator">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 18:51:14 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 18:51:14 -0500</pubDate>
+</item>
+<item>
+<title>How Discover-Tech turned targeted ads into a pipeline for zero-click spywares</title>
+<link>https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/</link>
+<guid>https://citizenlab.ca/research/how-discover-tech-turned-targeted-ads-into-a-pipeline-for-spyware/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/zytoux/how_discover_tech_turned_targeted_ads">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 15:55:02 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 15:55:02 -0500</pubDate>
+</item>
+<item>
+<title>The Brain Sandwich</title>
+<link>https://terriblesoftware.org/2026/10/02/the-brain-sandwich/</link>
+<guid>https://terriblesoftware.org/2026/10/02/the-brain-sandwich/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/k5omum/brain_sandwich">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sat, 17 Oct 2026 22:03:36 -0500</pubDate>
+<pubDate>Sat, 17 Oct 2026 22:03:36 -0500</pubDate>
+</item>
+<item>
+<title>Inside the Intel 8087 chip: floating-point addition and subtraction</title>
+<link>https://www.righto.com/2026/10/8087-addition-subtraction-microcode.html</link>
+<guid>https://www.righto.com/2026/10/8087-addition-subtraction-microcode.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/nbxnh7/inside_intel_8087_chip_floating_point">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 12:59:21 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 12:59:21 -0500</pubDate>
+</item>
+<item>
+<title>Inline rendering with document.currentScript</title>
+<link>https://leanrada.com/notes/inline-rendering-currentscript/</link>
+<guid>https://leanrada.com/notes/inline-rendering-currentscript/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/ogp1wf/inline_rendering_with_document">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 20:02:55 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 20:02:55 -0500</pubDate>
+</item>
+<item>
+<title>August in Servo: CSS Grid, text selection, and more</title>
+<link>https://servo.org/blog/2026/10/09/august-in-servo/</link>
+<guid>https://servo.org/blog/2026/10/09/august-in-servo/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/ilul4v/august_servo_css_grid_text_selection_more">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 18:05:13 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 18:05:13 -0500</pubDate>
+</item>
+<item>
+<title>The Problem with C++ Safety: Why “It Works” Isn’t Good Enough</title>
+<link>https://www.modernescpp.com/index.php/cpp-and-memory-safety-part-1/</link>
+<guid>https://www.modernescpp.com/index.php/cpp-and-memory-safety-part-1/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/koipdp/problem_with_c_safety_why_it_works_isn_t">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 11:10:47 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 11:10:47 -0500</pubDate>
+</item>
+<item>
+<title>Ghidra + CBMC = Assembly Model Checker</title>
+<link>https://www.philipzucker.com/asmc_cpp/</link>
+<guid>https://www.philipzucker.com/asmc_cpp/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/br0hd7/ghidra_cbmc_assembly_model_checker">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 11:58:24 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 11:58:24 -0500</pubDate>
+</item>
+<item>
+<title>What the heck is /pkg?</title>
+<link>https://anderegg.ca/2026/10/18/what-the-heck-is-pkg</link>
+<guid>https://anderegg.ca/2026/10/18/what-the-heck-is-pkg</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/w6xosj/what_heck_is_pkg">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 22:26:51 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 22:26:51 -0500</pubDate>
+</item>
+<item>
+<title>Real-time Software On Linux: How Hard Can It Be?</title>
+<link>https://www.youtube.com/watch?v=-0D0rFdU6HY</link>
+<guid>https://www.youtube.com/watch?v=-0D0rFdU6HY</guid>
+<content:encoded><![CDATA[
+
+<p>Presentation by Jeff Pele at Software You Can Love Vancouver 2026</p>
+<p><a href="https://lobste.rs/s/jp6tfb/real_time_software_on_linux_how_hard_can_it">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 14:45:33 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 14:45:33 -0500</pubDate>
+</item>
+<item>
+<title>Dynamic Packages</title>
+<link>https://www.getlazarus.org/dynamic/</link>
+<guid>https://www.getlazarus.org/dynamic/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/dc2efo/dynamic_packages">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 19:36:22 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 19:36:22 -0500</pubDate>
+</item>
+<item>
+<title>Algorithmic Sound Design with L-Systems and Granular Synthesis</title>
+<link>https://nathanho.me/posts/evograin/</link>
+<guid>https://nathanho.me/posts/evograin/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/kiq0si/algorithmic_sound_design_with_l_systems">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 07:06:05 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 07:06:05 -0500</pubDate>
+</item>
+<item>
+<title>Efficient Extraction for Effectful E-graphs</title>
+<link>https://ztatlock.net/pubs/2026-oopsla-eggcc/</link>
+<guid>https://ztatlock.net/pubs/2026-oopsla-eggcc/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/mhy9id/efficient_extraction_for_effectful_e">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 23:15:33 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 23:15:33 -0500</pubDate>
+</item>
+<item>
+<title>A response to claims about flatpak being insecure</title>
+<link>https://oro.gay/posts/flatpak-an-insecurity-nightmare/</link>
+<guid>https://oro.gay/posts/flatpak-an-insecurity-nightmare/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/jdjtqt/response_claims_about_flatpak_being">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 23:02:34 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 23:02:34 -0500</pubDate>
+</item>
+<item>
+<title>What requirements don't you have?</title>
+<link>https://www.seangoedecke.com/what-requirements-dont-you-have/</link>
+<guid>https://www.seangoedecke.com/what-requirements-dont-you-have/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/nuepys/what_requirements_don_t_you_have">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 21:59:07 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 21:59:07 -0500</pubDate>
+</item>
+<item>
+<title>BBC Master Pi 1MHz Domesday</title>
+<link>https://youtu.be/UAWSOCOTjIU</link>
+<guid>https://youtu.be/UAWSOCOTjIU</guid>
+<content:encoded><![CDATA[
+
+<p>Dominic Plunkett has updated the BBC Micro PiMHz software to emulate most of the hardware for a BBC AIV system, including the LV player! Just add a trackball/mouse and a PiTubeDirect and you'll be able to run the Domesday disc!</p>
+<p>This video covers how the PiMHz implementation works (basically!), how to set it up and gives a demo of the Domesday Community and National Discs.</p>
+<p><a href="https://lobste.rs/s/82vulz/bbc_master_pi_1mhz_domesday">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 20:20:14 -0500</pubDate>
+<pubDate>Sun, 18 Oct 2026 20:20:14 -0500</pubDate>
+</item>
 
 <item>
 <title>Amazon Braket now in scope for FedRAMP Class C</title>
@@ -12,14 +428,13 @@
 <content:encoded><![CDATA[
 <div> Keywords: Amazon Braket, FedRAMP, quantum computing, AWS, US Regions  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 Amazon Braket has received FedRAMP Class C authorization for AWS US Regions where it is offered, allowing government customers and associated organizations to explore quantum computing securely. The Federal Risk and Authorization Management Program (FedRAMP) standardizes security assessments and continuous monitoring for cloud products and services used by U.S. government entities. With Class C authorization, Amazon Braket enables users to operate within an authorized security boundary. The AWS components of Braket, including the API, SDK, job orchestration, compilation, and result storage in Amazon S3, are all within the FedRAMP-certified environment. However, quantum workloads are processed on third-party Quantum Hardware Providers (QHPs), which are outside of this secured boundary. All data transmitted to QHPs complies with AWS's stringent privacy and security measures, including the removal of personally identifiable information, and the encryption of data both in transit and at rest. Additionally, AWS maintains its standard policies regarding data retention and deletion. For further details, users can explore the AWS FedRAMP services, the FedRAMP Marketplace, and the Amazon Braket product page. Regional availability includes US East (N. Virginia), US West (N. California), and US West (Oregon). <div>
 <p>Amazon Braket is now in scope for FedRAMP Class C in AWS US Regions where Braket is available. The Federal Risk and Authorization Management Program (FedRAMP) is a US government-wide program that delivers a standard approach to the security assessment, authorization, and continuous monitoring of cloud products and services.</p>
 <p>With FedRAMP Class C authorization, government customers and the organizations that serve them can use Amazon Braket to explore quantum computing within an authorized boundary. The AWS-operated components of Braket, including the API and SDK, job orchestration and management, compilation, and result storage in Amazon S3, are within the FedRAMP-certified boundary, while quantum workloads execute on third-party Quantum Hardware Providers (QHPs) outside that boundary. All data sent to QHPs meets AWS' privacy and security requirements including removal of all personally identifiable information, data encryption in transit and at rest, and adherence to AWS' standard data retention and deletion policies.</p>
 <p>To learn more about FedRAMP, visit AWS FedRAMP services and the FedRAMP Marketplace. To learn more about Amazon Braket, visit the Braket product page and Getting Started on Braket resources.</p>
 <p>Regional Availability: US East (N. Virginia), US West (N. California), US West (Oregon)</p>
 ]]></content:encoded>
-<pubDate>Fri, 16 Oct 2026 08:00:00 GMT</pubDate>
 <pubDate>Fri, 16 Oct 2026 08:00:00 GMT</pubDate>
 </item>
 <item>
@@ -29,7 +444,7 @@ Amazon Braket has received FedRAMP Class C authorization for AWS US Regions wher
 <content:encoded><![CDATA[
 <div> Keywords: turbo-persistence, prefetching, SST blocks, MADV_WILLNEED, optimization
 
-<br><br>Summary:  
+<br /><br />Summary:  
 The article discusses enhancements related to turbo-persistence, particularly focusing on prefetching strategies for multi-page SST (Sorted String Table) blocks. It highlights the use of the MADV_WILLNEED flag, which is designed to optimize memory management and improve performance by indicating to the operating system that certain data will be accessed soon. This proactive approach can significantly reduce latency when retrieving data, as it prompts preloading of necessary pages into memory. The implementation of this feature is aimed at increasing efficiency in data access patterns, which is crucial for applications that handle large datasets. The article also acknowledges the contributions of individuals or teams who supported the initiative, showing appreciation for their collaborative effort in bringing about these advancements. By leveraging these techniques, systems can enhance their overall responsiveness and performance, particularly in scenarios that involve frequent data retrieval and processing. The combined efforts towards refining these functionalities illustrate the ongoing commitment to optimizing software performance and memory management practices. <div>
 <h3>Misc Changes</h3>
 <ul>
@@ -38,7 +453,6 @@ The article discusses enhancements related to turbo-persistence, particularly fo
 <h3>Credits</h3>
 <p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/lukesandberg">@lukesandberg</a> for helping!</p>
 ]]></content:encoded>
-
 <pubDate>2026-10-17T23:46:40Z</pubDate>
 </item>
 <item>
@@ -53,7 +467,6 @@ The article discusses enhancements related to turbo-persistence, particularly fo
 <p># Comments: 245</p>
 ]]></content:encoded>
 <pubDate>Sun, 18 Oct 2026 01:18:50 +0000</pubDate>
-<pubDate>Sun, 18 Oct 2026 01:18:50 +0000</pubDate>
 </item>
 <item>
 <title>OpenCode Hacked: User credentials leaked</title>
@@ -66,7 +479,6 @@ The article discusses enhancements related to turbo-persistence, particularly fo
 <p>Points: 809</p>
 <p># Comments: 152</p>
 ]]></content:encoded>
-<pubDate>Sat, 17 Oct 2026 18:01:41 +0000</pubDate>
 <pubDate>Sat, 17 Oct 2026 18:01:41 +0000</pubDate>
 </item>
 <item>
@@ -81,7 +493,6 @@ The article discusses enhancements related to turbo-persistence, particularly fo
 <p># Comments: 81</p>
 ]]></content:encoded>
 <pubDate>Sat, 17 Oct 2026 17:36:17 +0000</pubDate>
-<pubDate>Sat, 17 Oct 2026 17:36:17 +0000</pubDate>
 </item>
 <item>
 <title>Gold is now the top U.S. export</title>
@@ -94,7 +505,6 @@ The article discusses enhancements related to turbo-persistence, particularly fo
 <p>Points: 274</p>
 <p># Comments: 140</p>
 ]]></content:encoded>
-<pubDate>Sat, 17 Oct 2026 17:06:07 +0000</pubDate>
 <pubDate>Sat, 17 Oct 2026 17:06:07 +0000</pubDate>
 </item>
 <item>
@@ -109,7 +519,6 @@ The article discusses enhancements related to turbo-persistence, particularly fo
 <p># Comments: 163</p>
 ]]></content:encoded>
 <pubDate>Sat, 17 Oct 2026 16:10:21 +0000</pubDate>
-<pubDate>Sat, 17 Oct 2026 16:10:21 +0000</pubDate>
 </item>
 <item>
 <title>Amazon uses AI to monitor union risk in UK warehouses</title>
@@ -122,7 +531,6 @@ The article discusses enhancements related to turbo-persistence, particularly fo
 <p>Points: 153</p>
 <p># Comments: 58</p>
 ]]></content:encoded>
-<pubDate>Sat, 17 Oct 2026 16:04:23 +0000</pubDate>
 <pubDate>Sat, 17 Oct 2026 16:04:23 +0000</pubDate>
 </item>
 <item>
@@ -137,7 +545,6 @@ The article discusses enhancements related to turbo-persistence, particularly fo
 <p># Comments: 27</p>
 ]]></content:encoded>
 <pubDate>Sat, 17 Oct 2026 15:55:09 +0000</pubDate>
-<pubDate>Sat, 17 Oct 2026 15:55:09 +0000</pubDate>
 </item>
 <item>
 <title>US federal budget deficit jumps 12% in one year to nearly $2 Trillion</title>
@@ -151,20 +558,17 @@ The article discusses enhancements related to turbo-persistence, particularly fo
 <p># Comments: 181</p>
 ]]></content:encoded>
 <pubDate>Sat, 17 Oct 2026 14:22:05 +0000</pubDate>
-<pubDate>Sat, 17 Oct 2026 14:22:05 +0000</pubDate>
 </item>
 <item>
 <title>Solar surpasses nuclear power globally for first time</title>
 <link>https://www.pv-magazine.com/2026/09/29/solar-surpasses-nuclear-power-globally-for-first-time/</link>
 <guid>https://www.pv-magazine.com/2026/09/29/solar-surpasses-nuclear-power-globally-for-first-time/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.pv-magazine.com/2026/09/29/solar-surpasses-nuclear-power-globally-for-first-time/">https://www.pv-magazine.com/2026/09/29/solar-surpasses-nuclear-power-globally-for-first-time/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50131256">https://news.ycombinator.com/item?id=50131256</a></p>
 <p>Points: 516</p>
 <p># Comments: 322</p>
 ]]></content:encoded>
-<pubDate>Sat, 17 Oct 2026 14:01:01 +0000</pubDate>
 <pubDate>Sat, 17 Oct 2026 14:01:01 +0000</pubDate>
 </item>
 <item>
@@ -172,13 +576,11 @@ The article discusses enhancements related to turbo-persistence, particularly fo
 <link>https://chillphysicsenjoyer.substack.com/p/making-chicken-transparent-using</link>
 <guid>https://chillphysicsenjoyer.substack.com/p/making-chicken-transparent-using</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://chillphysicsenjoyer.substack.com/p/making-chicken-transparent-using">https://chillphysicsenjoyer.substack.com/p/making-chicken-transparent-using</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50131213">https://news.ycombinator.com/item?id=50131213</a></p>
 <p>Points: 276</p>
 <p># Comments: 68</p>
 ]]></content:encoded>
-<pubDate>Sat, 17 Oct 2026 13:55:28 +0000</pubDate>
 <pubDate>Sat, 17 Oct 2026 13:55:28 +0000</pubDate>
 </item>
 <item>
@@ -186,13 +588,11 @@ The article discusses enhancements related to turbo-persistence, particularly fo
 <link>https://www.engadget.com/2288729/mapquest-will-now-show-you-where-flock-cameras-are-in-your-neighborhood/</link>
 <guid>https://www.engadget.com/2288729/mapquest-will-now-show-you-where-flock-cameras-are-in-your-neighborhood/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.engadget.com/2288729/mapquest-will-now-show-you-where-flock-cameras-are-in-your-neighborhood/">https://www.engadget.com/2288729/mapquest-will-now-show-you-where-flock-cameras-are-in-your-neighborhood/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50129947">https://news.ycombinator.com/item?id=50129947</a></p>
 <p>Points: 284</p>
 <p># Comments: 51</p>
 ]]></content:encoded>
-<pubDate>Sat, 17 Oct 2026 10:59:31 +0000</pubDate>
 <pubDate>Sat, 17 Oct 2026 10:59:31 +0000</pubDate>
 </item>
 <item>
@@ -200,13 +600,11 @@ The article discusses enhancements related to turbo-persistence, particularly fo
 <link>https://openrouter.ai/deepseek/deepseek-v4.1-flash-1017</link>
 <guid>https://openrouter.ai/deepseek/deepseek-v4.1-flash-1017</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://openrouter.ai/deepseek/deepseek-v4.1-flash-1017">https://openrouter.ai/deepseek/deepseek-v4.1-flash-1017</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50129121">https://news.ycombinator.com/item?id=50129121</a></p>
 <p>Points: 513</p>
 <p># Comments: 5</p>
 ]]></content:encoded>
-<pubDate>Sat, 17 Oct 2026 08:37:46 +0000</pubDate>
 <pubDate>Sat, 17 Oct 2026 08:37:46 +0000</pubDate>
 </item>
 <item>
@@ -214,7 +612,6 @@ The article discusses enhancements related to turbo-persistence, particularly fo
 <link>https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017</link>
 <guid>https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://api-docs.deepseek.com/news/news261017/" rel="nofollow">https://api-docs.deepseek.com/news/news261017/</a><p><a href="https://openrouter.ai/deepseek/deepseek-v4.1-flash-1017" rel="nofollow">https://openrouter.ai/deepseek/deepseek-v4.1-flash-1017</a></p>
 <hr />
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50129045">https://news.ycombinator.com/item?id=50129045</a></p>
@@ -222,20 +619,17 @@ The article discusses enhancements related to turbo-persistence, particularly fo
 <p># Comments: 608</p>
 ]]></content:encoded>
 <pubDate>Sat, 17 Oct 2026 08:21:25 +0000</pubDate>
-<pubDate>Sat, 17 Oct 2026 08:21:25 +0000</pubDate>
 </item>
 <item>
 <title>Show HN: Llmspeed – feel how fast a local LLM runs before you buy the hardware</title>
 <link>https://llmspeed.dev/</link>
 <guid>https://llmspeed.dev/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://llmspeed.dev/">https://llmspeed.dev/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50127979">https://news.ycombinator.com/item?id=50127979</a></p>
 <p>Points: 264</p>
 <p># Comments: 77</p>
 ]]></content:encoded>
-<pubDate>Sat, 17 Oct 2026 04:36:53 +0000</pubDate>
 <pubDate>Sat, 17 Oct 2026 04:36:53 +0000</pubDate>
 </item>
 <item>
@@ -243,13 +637,11 @@ The article discusses enhancements related to turbo-persistence, particularly fo
 <link>https://github.com/valimised/ivxv</link>
 <guid>https://github.com/valimised/ivxv</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://github.com/valimised/ivxv">https://github.com/valimised/ivxv</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50127586">https://news.ycombinator.com/item?id=50127586</a></p>
 <p>Points: 183</p>
 <p># Comments: 151</p>
 ]]></content:encoded>
-<pubDate>Sat, 17 Oct 2026 03:18:39 +0000</pubDate>
 <pubDate>Sat, 17 Oct 2026 03:18:39 +0000</pubDate>
 </item>
 <item>
@@ -257,13 +649,11 @@ The article discusses enhancements related to turbo-persistence, particularly fo
 <link>https://dune.fandom.com/wiki/Butlerian_Jihad</link>
 <guid>https://dune.fandom.com/wiki/Butlerian_Jihad</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://dune.fandom.com/wiki/Butlerian_Jihad">https://dune.fandom.com/wiki/Butlerian_Jihad</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50127274">https://news.ycombinator.com/item?id=50127274</a></p>
 <p>Points: 359</p>
 <p># Comments: 249</p>
 ]]></content:encoded>
-<pubDate>Sat, 17 Oct 2026 02:21:08 +0000</pubDate>
 <pubDate>Sat, 17 Oct 2026 02:21:08 +0000</pubDate>
 </item>
 <item>
@@ -271,13 +661,11 @@ The article discusses enhancements related to turbo-persistence, particularly fo
 <link>https://www.smithsonianmag.com/science-nature/dam-removals-are-bringing-fish-back-across-the-northeastern-united-states-striking-down-one-tiny-barrier-at-a-time-180989679/</link>
 <guid>https://www.smithsonianmag.com/science-nature/dam-removals-are-bringing-fish-back-across-the-northeastern-united-states-striking-down-one-tiny-barrier-at-a-time-180989679/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.smithsonianmag.com/science-nature/dam-removals-are-bringing-fish-back-across-the-northeastern-united-states-striking-down-one-tiny-barrier-at-a-time-180989679/">https://www.smithsonianmag.com/science-nature/dam-removals-are-bringing-fish-back-across-the-northeastern-united-states-striking-down-one-tiny-barrier-at-a-time-180989679/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50126312">https://news.ycombinator.com/item?id=50126312</a></p>
 <p>Points: 232</p>
 <p># Comments: 59</p>
 ]]></content:encoded>
-<pubDate>Fri, 16 Oct 2026 23:47:31 +0000</pubDate>
 <pubDate>Fri, 16 Oct 2026 23:47:31 +0000</pubDate>
 </item>
 <item>
@@ -285,7 +673,6 @@ The article discusses enhancements related to turbo-persistence, particularly fo
 <link>https://www.nature.com/articles/d41586-026-03266-x</link>
 <guid>https://www.nature.com/articles/d41586-026-03266-x</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://archive.ph/zIPG4" rel="nofollow">https://archive.ph/zIPG4</a></p>
 <hr />
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50126253">https://news.ycombinator.com/item?id=50126253</a></p>
@@ -293,23 +680,19 @@ The article discusses enhancements related to turbo-persistence, particularly fo
 <p># Comments: 79</p>
 ]]></content:encoded>
 <pubDate>Fri, 16 Oct 2026 23:38:27 +0000</pubDate>
-<pubDate>Fri, 16 Oct 2026 23:38:27 +0000</pubDate>
 </item>
 <item>
 <title>FLUX 3 Image Klein</title>
 <link>https://bfl.ai/blog/flux-3-image-klein</link>
 <guid>https://bfl.ai/blog/flux-3-image-klein</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://bfl.ai/blog/flux-3-image-klein">https://bfl.ai/blog/flux-3-image-klein</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50123580">https://news.ycombinator.com/item?id=50123580</a></p>
 <p>Points: 208</p>
 <p># Comments: 57</p>
 ]]></content:encoded>
 <pubDate>Fri, 16 Oct 2026 19:47:13 +0000</pubDate>
-<pubDate>Fri, 16 Oct 2026 19:47:13 +0000</pubDate>
 </item>
-
 <item>
 <title>Amazon CloudWatch log centralization now available in AWS GovCloud and additional commercial Regions</title>
 <link>https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-cloudwatch-centralization-region-expansion</link>
@@ -19502,670 +19885,6 @@ Agentic migration assessments now enable the evaluation of on-premises Apache Ka
 <p><a href="https://lobste.rs/s/qhszda/ai_didn_t_make_programming_easier_it_just">Comments</a></p>
 ]]></content:encoded>
 <pubDate>Tue, 29 Sep 2026 04:40:33 -0500</pubDate>
-</item>
-<item>
-<title>ESPARGOS - ESP-SDR: Raw IQ Capture with Espressif's ESP32 Chips</title>
-<link>https://espargos.net/espsdr/</link>
-<guid>https://espargos.net/espsdr/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/werm2e/espargos_esp_sdr_raw_iq_capture_with">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 29 Sep 2026 17:13:56 -0500</pubDate>
-</item>
-<item>
-<title>MotifCentral - All Things Motif/Xt/Xlib</title>
-<link>https://motif-central.org/</link>
-<guid>https://motif-central.org/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/otexs4/motifcentral_all_things_motif_xt_xlib">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 29 Sep 2026 04:01:47 -0500</pubDate>
-</item>
-<item>
-<title>Getting root on OnePlus 15 from an untrusted app</title>
-<link>https://blog.nns.ee/2026/09/24/oneplus-root/</link>
-<guid>https://blog.nns.ee/2026/09/24/oneplus-root/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/a5rcxy/getting_root_on_oneplus_15_from_untrusted">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 29 Sep 2026 12:25:55 -0500</pubDate>
-</item>
-<item>
-<title>The Only Intuitive Interface Is The Nipple</title>
-<link>https://www.greenend.org.uk/rjk/misc/nipple.html</link>
-<guid>https://www.greenend.org.uk/rjk/misc/nipple.html</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/wkhrba/only_intuitive_interface_is_nipple">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 29 Sep 2026 22:45:19 -0500</pubDate>
-</item>
-<item>
-<title>Dirty Optimization Secrets (C for Playdate)</title>
-<link>https://devforum.play.date/t/dirty-optimization-secrets-c-for-playdate/23011</link>
-<guid>https://devforum.play.date/t/dirty-optimization-secrets-c-for-playdate/23011</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/zyzrlh/dirty_optimization_secrets_c_for">Comments</a></p>
-]]></content:encoded>
-<pubDate>Wed, 30 Sep 2026 00:05:56 -0500</pubDate>
-</item>
-<item>
-<title>Fake Express Packages on npm Spread a Linux Worm</title>
-<link>https://safedep.io/dirtyblanket-express-impersonation-npm</link>
-<guid>https://safedep.io/dirtyblanket-express-impersonation-npm</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/e2gxro/fake_express_packages_on_npm_spread_linux">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 29 Sep 2026 23:05:15 -0500</pubDate>
-</item>
-<item>
-<title>Deterministic Concurrency</title>
-<link>https://www.youtube.com/watch?v=25x0UuSCKuU</link>
-<guid>https://www.youtube.com/watch?v=25x0UuSCKuU</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/wuiaba/deterministic_concurrency">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 29 Sep 2026 04:42:58 -0500</pubDate>
-</item>
-<item>
-<title>Amazon EC2 Future-dated Capacity Reservations Now Supports Postponing Start Dates</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/09/ec2-fcr-postpone-start-date/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/ec2-fcr-postpone-start-date/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Amazon EC2, Future-dated Capacity Reservations, postpone, commitment duration, regional availability
-
-<br /><br />Summary: Amazon EC2 offers Future-dated Capacity Reservations that enable users to secure capacity up to 120 days in advance. Customers can specify the required capacity, a chosen start date, and a commitment duration for their reservation. If plans change before the scheduled delivery, users now have the option to postpone the start date to better align with their revised timeline. When customers decide to postpone, EC2 generates a quote which includes the new start date and may also highlight adjustments to the required commitment duration, which can increase depending on how far the start date is postponed. After reviewing the quote, customers have the opportunity to accept it, leading to an update of their reservation with the new start date. This feature is available to all users of Future-dated Capacity Reservations and is subject to regional availability, which can be checked on the official website. For additional details regarding this feature, users are encouraged to refer to the official Amazon documentation. <div>
-<p>Amazon EC2 Future-dated Capacity Reservations let you secure capacity up to 120 days in advance by specifying the capacity you need, the start date, and a commitment duration. If your plans change before delivery, you can now postpone your start date to match your new timeline.</p>
-<p>When you postpone your start date, EC2 presents a quote that shows the new start date and the required commitment duration. The commitment duration can increase, depending on when you postpone the start date. After you review and accept the quote, EC2 updates your reservation with the new start date.</p>
-<p>This feature is available to all Future-dated Capacity Reservation customers. Refer to the <a href="https://builder.aws.com/build/capabilities/explore">AWS Capabilities by Region</a> website for the feature's regional availability. For more details, refer to the <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/capacity-reservations-modify.html">Capacity Reservation user guide</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 28 Sep 2026 21:17:00 GMT</pubDate>
-</item>
-<item>
-<title>Amazon Rekognition Face Liveness now returns Feedback Codes</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/09/rekognition-liveness-feedback-codes/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/rekognition-liveness-feedback-codes/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Amazon Rekognition, Face Liveness, Feedback Codes, identity verification, confidence score
-
-<br /><br />Summary: 
-Amazon Rekognition Face Liveness feature now provides Feedback Codes, which offer insights into why a liveness check may receive a low score. These codes, returned in the GetFaceLivenessSessionResults API response, identify specific issues such as poor lighting, face obstruction, closed eyes, or low video quality that led to the low score. This allows users to make targeted corrections, retrying the liveness check with greater confidence. A single session can yield multiple Feedback Codes, enabling users to address all contributing factors in one attempt. This feature is particularly beneficial for identity verification during onboarding processes, re-authentication flows, and accessibility scenarios. The Face Liveness service verifies the individual in front of the camera as a real, live human being instead of a photograph, video replay, mask, or deepfake through a brief guided selfie-video session. It provides a confidence score, a reference image for face matching, and session audit images. Amazon Rekognition Face Liveness is available in several regions, including US East and West, Europe, Asia Pacific, and South America. For more information, interested users can visit the Amazon Rekognition website. <div>
-<p>Amazon Rekognition Face Liveness now returns Feedback Codes that help customers understand why a liveness check&nbsp;received a low score and how users could retry successfully. The codes are returned in the GetFaceLivenessSessionResults API response, and they identify the specific conditions that contributed to the low score, such as poor lighting, face obstruction, closed eyes, or low video quality. Customers can surface these codes to their end users who can then make targeted corrections and retry with confidence. A single session can return multiple Feedback Codes at once, allowing users to resolve all contributing issues in one retry.&nbsp;This feature is especially useful in identity verification onboarding, re-authentication flows, and accessibility scenarios.</p>
-<p>Amazon Rekognition Face Liveness verifies that the person in front of the camera is a real, live human (instead of a photo, video replay, mask, or deepfake) through a short, guided selfie-video check. It returns a confidence score, a reference image for face matching, and session audit images.&nbsp;
- <br />
- <br />
- Rekognition Face Liveness is available in US East (N. Virginia), US West (Oregon), Europe (Ireland), Asia Pacific (Tokyo, Mumbai, Malaysia, Thailand), and South America (São Paulo). To learn more, visit the <a href="https://docs.aws.amazon.com/rekognition/latest/dg/face-liveness-programming-api.html">Amazon Rekognition Face Liveness API documentation</a> and <a href="https://docs.aws.amazon.com/rekognition/latest/dg/face-liveness-faq.html">Face Liveness FAQ</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 28 Sep 2026 20:41:00 GMT</pubDate>
-</item>
-<item>
-<title>Grok 4.7 is now available on Amazon Bedrock</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-bedrock-grok-4-7/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-bedrock-grok-4-7/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Amazon Bedrock, SpaceXAI, Grok 4.7, coding, inference
-
-<br /><br />Summary: Amazon Bedrock has introduced support for SpaceXAI Grok 4.7, an advanced model designed for coding, agentic tasks, and knowledge work. This model showcases US Geo and Global cross-Region inference capabilities. Grok 4.7 builds upon its predecessor, Grok 4.6, with significant improvements in mixed-document handling, making it more adept at processing diverse types of content. It also enhances repository-scale coding processes by incorporating better planning and error recovery features, contributing to greater reliability in coding tasks. Additionally, Grok 4.7 includes enhanced browser-use agents, which are designed to facilitate form filling and portal navigation, thus streamlining user interactions with various online platforms. Users can get started with Grok 4.7 either via the Amazon Bedrock interface or programmatically through supported APIs. For those interested in exploring the model further, detailed information is available regarding supported endpoints, APIs, features, inference profiles, and pricing. To learn more about the new launch and its capabilities, users can refer to the specific documentation provided. <div>
-<p>Amazon Bedrock now supports SpaceXAI Grok 4.7, a frontier model built for coding, agentic tasks, and knowledge work, with US Geo and Global cross-Region inference. &nbsp;</p>
-<p>Grok 4.7 builds on Grok 4.6 with better mixed-document handling, more dependable repo-scale coding with planning and error recovery, and enhanced browser-use agents for form fills and portal navigation. &nbsp;</p>
-<p>Get started with Grok 4.7 in the<a href="https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/"> Amazon Bedrock console</a> or programmatically through supported Amazon Bedrock APIs. For information about supported<a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html"> AWS Regions</a>, endpoints, APIs, features, inference profiles and pricing, see the&nbsp;<a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-xai-grok-4-7.html">Amazon Bedrock documentation</a>. To learn more, read the launch <a href="https://aws.amazon.com/blogs/machine-learning/grok-4-7-is-now-available-on-amazon-bedrock/">blog post</a>.</p>
-<p>&nbsp;</p>
-]]></content:encoded>
-<pubDate>Mon, 28 Sep 2026 18:29:00 GMT</pubDate>
-</item>
-<item>
-<title>Claude Sonnet 5.5 now available on AWS</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/09/claude-sonnet-5-5-aws/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/claude-sonnet-5-5-aws/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: AWS, Claude Sonnet 5.5, coding, Amazon Bedrock, automation  
-
-<br /><br />Summary:  
-AWS has launched Claude Sonnet 5.5, an advanced version that enhances coding and knowledge work efficiencies at a lower cost and faster speed. This upgrade is ideal for teams already using Sonnet 5, as it offers improved capabilities for coding tasks, enabling users to complete well-defined tasks and verify outputs against requirements seamlessly. It also excels in producing quality knowledge work, such as one-pagers, diagrams, summary slides, document edits, and spreadsheet cleanup. Customers can access Claude Sonnet 5.5 through two main options: Amazon Bedrock and the Claude Platform on AWS. Amazon Bedrock provides Sonnet's functionalities while ensuring data resides within AWS infrastructure, complemented by AWS-managed features like Guardrails and Knowledge Bases for better data security and management. On the other hand, the Claude Platform on AWS offers direct access to Anthropic's native capabilities via the AWS Console, allowing users to build, test, and deploy applications utilizing the same APIs and console experience available directly from Anthropic, alongside unified AWS billing and authentication. This integration enhances workflow and productivity for developers and teams leveraging these advanced AI tools. <div>
-<p>AWS now offers Claude Sonnet 5.5, a smarter and more efficient Sonnet that delivers a clear leap forward on coding and knowledge work with at a lower cost per task for most work at faster speed.</p>
-<p>Claude Sonnet 5.5 is a smarter, more efficient Sonnet and a step up from Sonnet 5, making it a natural upgrade for teams already building on Sonnet. It's stronger for coding, completing well-scoped tasks as part of a larger coding strategy such as building and fixing features with Claude in the same session or verifying output against requirements. And it produces ready-to-share knowledge work, from 1-pagers, diagrams, and summary slides to document edits and spreadsheet cleanup.</p>
-<p>Customers have two ways to access Claude Sonnet 5.5: Amazon Bedrock and Claude Platform on AWS.</p>
-<p>Amazon Bedrock gives you Sonnet's capabilities while keeping your data within AWS infrastructure with regional data residency and provides access through a unified service with AWS-managed features like Guardrails and Knowledge Bases. To learn more, see the Amazon Bedrock <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-sonnet-5-5.html" rel="noopener noreferrer" target="_blank">documentation</a> and <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html?refid=7ecf60df-6136-414c-a7c3-6aa4d2d6019f#model-regions-anthropic" rel="noopener noreferrer" target="_blank">regional availability</a>.&nbsp;</p>
-<p>Claude Platform on AWS gives you direct access to Anthropic's native platform experience and capabilities via the AWS Console. Build, test, and deploy with the same APIs, features, and console experience you'd get working with Anthropic directly, unified with AWS billing and authentication. To get started, see the Claude Platform on AWS <a href="https://docs.aws.amazon.com/claude-platform/latest/userguide/setup.html?refid=7ecf60df-6136-414c-a7c3-6aa4d2d6019f" rel="noopener noreferrer" target="_blank">documentation</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 28 Sep 2026 15:00:00 GMT</pubDate>
-</item>
-<item>
-<title>Claude Sonnet 5.5 now available on AWS GovCloud (US)</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/09/claude-sonnet-5-5-aws-govcloud-us/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/claude-sonnet-5-5-aws-govcloud-us/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: AWS GovCloud, Claude Sonnet 5.5, coding, knowledge work, Amazon Bedrock
-
-<br /><br />Summary: AWS GovCloud (US) has introduced Claude Sonnet 5.5, an upgraded version of Sonnet 5 that enhances efficiency and performance in coding and knowledge work while reducing costs per task for users. It is designed as a natural upgrade for teams that have already adopted Sonnet, offering improved strength in coding tasks, including feature building and fixing, and ensuring output aligns with requirements. The new version excels in producing various forms of knowledge work, such as 1-pagers, diagrams, summary slides, document edits, and spreadsheet cleanup, making it a versatile tool for many applications. Additionally, Amazon Bedrock enables users to leverage Sonnet's capabilities while ensuring data remains within the secure AWS infrastructure and maintaining regional data residency. Users can access these features through a unified service that includes AWS-managed capabilities, such as Guardrails and Knowledge Bases, facilitating a comprehensive and secure coding and knowledge work environment. For more information, users are encouraged to explore Amazon Bedrock further to discover the full array of features and capabilities available within this platform. <div>
-<p>AWS GovCloud (US) now offers Claude Sonnet 5.5, a smarter and more efficient Sonnet that delivers a clear leap forward on coding and knowledge work with at a lower cost per task for most work ag faster speed.</p>
-<p>Claude Sonnet 5.5 is a smarter, more efficient Sonnet and a step up from Sonnet 5, making it a natural upgrade for teams already building on Sonnet. It's stronger for coding, completing well-scoped tasks as part of a larger coding strategy such as building and fixing features with Claude in the same session or verifying output against requirements. And it produces ready-to-share knowledge work, from 1-pagers, diagrams, and summary slides to document edits and spreadsheet cleanup.</p>
-<p>Amazon Bedrock gives you Sonnet's capabilities while keeping your data within AWS infrastructure with regional data residency and provides access through a unified service with AWS-managed features like Guardrails and Knowledge Bases. To learn more, see the Amazon Bedrock <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-sonnet-5-5.html">documentation</a> and <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/models-region-compatibility.html?refid=7ecf60df-6136-414c-a7c3-6aa4d2d6019f#model-regions-anthropic">regional availability</a>.&nbsp;</p>
-]]></content:encoded>
-<pubDate>Mon, 28 Sep 2026 15:00:00 GMT</pubDate>
-</item>
-<item>
-<title>Amazon Corretto September 2026 Patch Updates</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-corretto-sept-2026-updates/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-corretto-sept-2026-updates/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Amazon Corretto, patch update, OpenJDK, tzdata, Long-Term Support
-
-<br /><br />Summary: On September 25, 2026, Amazon announced a patch update for several versions of Amazon Corretto, which is a no-cost, multi-platform distribution of OpenJDK. The versions updated include Corretto 25.0.4.10.1, 21.0.12.11.1, 17.0.20.12.1, and 11.0.32.12.1. This patch integrates the latest tzdata 2026d updates to ensure improved functionality and time zone accuracy across applications. Users can visit the official Corretto website to download various versions of Corretto, specifically Corretto 27, Corretto 25, Corretto 21, Corretto 17, Corretto 11, and Corretto 8. Additionally, users running Linux systems can acquire these updates by configuring their systems accordingly. The announcement emphasizes Amazon's commitment to providing ongoing support for its Java distributions and highlights the importance of keeping software up to date for optimal performance and security. Feedback mechanisms are available for users wishing to share their thoughts regarding the update and its impact on their deployments. Overall, this update reflects Amazon's dedication to maintaining a robust and secure Java environment for its users. <div>
-<p>On September 25, 2026, Amazon announced a patch update for the following Amazon Corretto Long-Term Support (LTS) and Feature Release (FR) versions of OpenJDK: Corretto 25.0.4.10.1, 21.0.12.11.1, 17.0.20.12.1, and 11.0.32.12.1 are now available for <a href="https://aws.amazon.com/corretto/">download</a>. Amazon Corretto is a no-cost, multi-platform, production-ready distribution of OpenJDK. This patch includes the latest&nbsp;tzdata 2026d updates.</p>
-<p>Visit Corretto <a href="https://aws.amazon.com/corretto">home page</a> to download Corretto 27, Corretto 25, Corretto 21, Corretto 17, Corretto 11, or Corretto 8. You can also get the updates on your Linux system by configuring a <a href="https://docs.aws.amazon.com/corretto/latest/corretto-26-ug/generic-linux-install.html">Corretto Apt, Yum, or Apk repo</a>.</p>
-<p>Feedback is <a href="https://github.com/corretto">welcomed</a>!</p>
-]]></content:encoded>
-<pubDate>Mon, 28 Sep 2026 14:00:00 GMT</pubDate>
-</item>
-<item>
-<title>Amazon DocumentDB (with MongoDB compatibility) adds support for 5 MongoDB aggregation stages and change stream capabilities in version 8.0.2</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-documentdb-8-0-2/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-documentdb-8-0-2/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Amazon DocumentDB, MongoDB compatibility, retryable writes, aggregation stages, change stream enhancements.
-
-<br /><br />Summary: Amazon DocumentDB (with MongoDB compatibility) has introduced version 8.0.2, enhancing its features to better support MongoDB workloads. Notable additions include retryable writes, which ensure that insert, update, and delete operations are automatically retried during transient network errors, thereby improving application resilience during failovers. The update also adds five new aggregation stages: $setWindowFields, $bucketAuto, $facet, $graphLookup, and correlated $lookup, which facilitate advanced analytics and hierarchical querying. Furthermore, change streams have been enhanced to include the $changeStreamSplitLargeEvent stage, allowing for the fragmentation of change events exceeding the 16 MB limit and the emission of events for collection and index creation. Query performance has seen significant improvements, including index-only scans for find and aggregation queries, index scans on $expr predicates, incremental sorting, and faster count operations. Additionally, index management is improved with support for the reIndex command on partial indexes. These new capabilities aim to expand API compatibility and optimize query performance, making migration to Amazon DocumentDB smoother without any necessary changes to application code. <div>
-<p>Amazon DocumentDB (with MongoDB compatibility) now supports&nbsp;retryable writes, 5 new aggregation stages, and change stream enhancements starting from minor version 8.0.2. This release expands MongoDB API compatibility and improves query performance, making it easier to migrate MongoDB workloads to Amazon DocumentDB without application code changes.</p>
-<p>Key new capabilities in version 8.0.2 include:</p>
-<p>- Retryable Writes — insert, update, and delete operations automatically retry on transient network errors, improving application resilience during failovers.
- <br />
- - New aggregation stages — $setWindowFields (with its full set of window operators), $bucketAuto, $facet, $graphLookup, and correlated $lookup, enabling advanced analytics, faceted search, and hierarchical queries.
- <br />
- - Change stream enhancements — the $changeStreamSplitLargeEvent stage splits change events larger than the 16 MB limit into fragments, and change streams now emit events for createCollection and createIndex operations.
- <br />
- - Query performance improvements — enhancements to the query planner add index-only scans for find and aggregation queries, index scans on $expr predicates, incremental sort, and faster count and countDocuments() operations.
- <br />
- - Index management — support for the reIndex command on partial indexes.</p>
-<p>These capabilities are available starting from Amazon DocumentDB 8.0.2 in all regions where Amazon DocumentDB is available. To learn more, see <a href="https://docs.aws.amazon.com/documentdb/latest/developerguide/mongo-apis.html">Supported MongoDB APIs, operations, and data types</a> and <a href="https://docs.aws.amazon.com/documentdb/latest/developerguide/release-notes.html">Amazon DocumentDB release notes</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 28 Sep 2026 08:00:00 GMT</pubDate>
-</item>
-<item>
-<title>Amazon DocumentDB (with MongoDB compatibility) now supports retryable writes</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-documentdb-retryable-writes/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/amazon-documentdb-retryable-writes/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Amazon DocumentDB, retryable writes, MongoDB compatibility, transient errors, engine version 8.0.2
-
-<br /><br />Summary: Amazon DocumentDB has introduced support for retryable writes starting with engine version 8.0.2, which enhances the resilience of applications against transient errors like network interruptions or primary failovers. This feature allows the MongoDB driver to automatically retry specific write operations once in the event of errors, reducing the need for additional coding adjustments when enabling retryable writes. Most existing MongoDB-compatible drivers have this feature enabled by default, simplifying user experience. With this update, applications connecting to Amazon DocumentDB 8.0.2 do not need to specify retryWrites=false in their connection strings to prevent errors. However, it’s important to note that retryable writes apply to all write commands except for updateMany, deleteMany, and transaction commit or abort commands. For versions earlier than 8.0.2, support for retryable writes is not available and must be disabled in the connection settings. This feature works across both instance-based and serverless clusters in all regions where Amazon DocumentDB version 8.0 is offered, providing developers with a reliable option for handling transient errors smoothly. To learn more about implementing retryable writes, further documentation is available.
- <div>
-<p>For developers building MongoDB-compatible applications, retryable writes improve application resilience during transient errors such as network interruptions or primary failovers. Amazon DocumentDB (with MongoDB compatibility) now supports retryable writes starting with engine version 8.0.2, eliminating the need for additional code changes when enabling this capability.</p>
-<p>With retryable writes, the MongoDB driver automatically retries certain write operations one time if a transient error occurs. Most current MongoDB-compatible drivers enable retryable writes by default. With this release, applications connecting to Amazon DocumentDB 8.0.2 no longer need to set retryWrites=false in the connection string to avoid errors. Retryable writes are supported for all write commands except updateMany and deleteMany, as well as transaction commit and abort commands. On engine versions earlier than 8.0.2, retryable writes remain unsupported and must be disabled.</p>
-<p>Retryable writes are available on Amazon DocumentDB 8.0.2 instance-based and serverless clusters in all regions where Amazon DocumentDB 8.0 is available. To get started with retryable writes, see the <a href="https://docs.aws.amazon.com/documentdb/latest/developerguide/retryable-writes.html">Amazon DocumentDB developer guide</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 28 Sep 2026 08:00:00 GMT</pubDate>
-</item>
-<item>
-<title>AWS Backup adds logically air-gapped vault support for Amazon FSx for NetApp ONTAP</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/09/aws-backup-air-gapped-vault-fsx-ontap/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/aws-backup-air-gapped-vault-fsx-ontap/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: AWS Backup, logically air-gapped vault, Amazon FSx, immutable backups, disaster recovery
-
-<br /><br />Summary: AWS Backup has introduced support for Amazon FSx for NetApp ONTAP volumes in logically air-gapped vaults. These vaults provide a secure way to share backups across AWS accounts and organizations while enabling direct restore capabilities to minimize recovery time from data loss. Logically air-gapped vaults store immutable backups, which are locked by default and secured with encryption using AWS-owned or customer-managed keys. Users can store backups in these vaults within the same account or across different accounts and regions, enhancing business continuity and meeting compliance and disaster recovery needs. To get started, users can utilize the AWS Backup console, AWS CLI, or AWS SDKs. In backup plans, specify the logically air-gapped vault as the primary target or copy destination for FSx for NetApp ONTAP backups. Additionally, leverage AWS Resource Access Manager (RAM) to share the vault with other accounts for recovery or testing purposes. Safeguard access to the vault during potential account compromises and initiate direct restore jobs from connected accounts, bypassing the need to copy backups first. This feature is available in all AWS Regions where both services are supported. <div>
-<p>AWS Backup logically air-gapped vault now supports Amazon FSx for NetApp ONTAP. Logically air-gapped vaults are a type of AWS Backup vault that allows secure sharing of backups across accounts and AWS Organizations, supporting direct restore to reduce recovery time from a data loss event.</p>
-<p>You can now protect your Amazon FSx for NetApp ONTAP volumes in logically air-gapped vaults. A logically air-gapped vault stores immutable backups that are locked by default, and isolated with encryption using AWS owned keys or customer-managed keys. You can store your FSx for NetApp ONTAP backups in a logically air-gapped vault in the same account or across other accounts and Regions. This helps reduce the risk of downtime, ensure business continuity, and meet compliance and disaster recovery requirements.</p>
-<p>You can get started using the AWS Backup console, AWS Command Line Interface (CLI), or AWS SDKs. Target FSx for NetApp ONTAP backups to a logically air-gapped vault by specifying it as the primary target or copy destination in your backup plan. Share the vault for recovery or restore testing with other accounts using AWS Resource Access Manager (RAM), or safeguard vault access during account compromise using <a href="https://docs.aws.amazon.com/aws-backup/latest/devguide/multipartyapproval.html" rel="noopener noreferrer" target="_blank">Multi-party approval</a>. Once available, you can initiate direct restore jobs from that account, eliminating the overhead of copying backups first.</p>
-<p>This support is available in all AWS Regions where both logically air-gapped vault and Amazon FSx for NetApp ONTAP are available. For more information and detailed regional availability, visit the <a href="https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-feature-availability.html#features-by-region" rel="noopener noreferrer" target="_blank">AWS Backup documentation</a>. To learn more about logically air-gapped vaults, visit the <a href="https://docs.aws.amazon.com/aws-backup/latest/devguide/logicallyairgappedvault.html">feature documentation</a> and <a href="https://aws.amazon.com/backup/pricing/" rel="noopener noreferrer" target="_blank">pricing page</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 28 Sep 2026 08:00:00 GMT</pubDate>
-</item>
-<item>
-<title>v16.4.0-canary.52</title>
-<link>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.52</link>
-<guid>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.52</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Turbopack, middleware, cache, tests, documentation
-
-<br /><br />Summary:  
-The recent changes include stabilizing middleware revalidation tests and responsive development overlay header layout tests. There has been an update to the scope loader build dependency in Turbopack. The symlinks for CLAUDE.md have been removed in favor of AGENTS.md, and task accessor names in ExecuteContext have been aligned. Turbopack advancements include skipping trimmed side-effect imports in SideEffectsModule, preserving imports with clauses during direct-binding, and correcting split_module functionality for the app-router. Additionally, issues with empty tree-shake chunks leading to desyncing part IDs have been fixed. Custom cache handlers will now be present on initial requests, and Draft Mode can be allowed on unlisted closed routes in adapter deployments. Improvements to the bundle analyzer include corrected source table delta sorting and virtualization. The unstable_ prefix has been removed from functions like navigation() and prefetch(), and lazy dynamic imports for server-side rendering (SSR) have been implemented. Documentation has been updated to include typo fixes and specifics on using prefetch={true} for links to ISR pages with Cache Components. Lastly, there are enhancements to the AI upgrade process, prompting user interactions for permissions, model selection, and upgrade initiation. <div>
-<h3>Misc Changes</h3>
-<ul>
-<li>[test] Stabilize middleware revalidation test: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99378">#99378</a></li>
-<li>test: scope loader build dependency update to Turbopack: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99380">#99380</a></li>
-<li>Remove CLAUDE.md symlinks in favor of AGENTS.md: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98910">#98910</a></li>
-<li>Align ExecuteContext task accessor names: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99258">#99258</a></li>
-<li>[test] Stabilize responsive dev overlay header layout test: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99376">#99376</a></li>
-<li>Turbopack: skip trimmed side-effect imports in SideEffectsModule: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95781">#95781</a></li>
-<li>Turbopack: preserve import <code>with</code> clauses when direct-binding: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95529">#95529</a></li>
-<li>Turbopack: fix split_module correctness for app-router: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95522">#95522</a></li>
-<li>Turbopack: fix empty tree-shake chunks desyncing part ids (<a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/issues/93424">#93424</a>): <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/95516">#95516</a></li>
-<li>Fix custom cache handlers missing on initial requests: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99372">#99372</a></li>
-<li>Allow Draft Mode on unlisted closed routes in adapter deployments: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99370">#99370</a></li>
-<li>Fix bundle analyzer source table delta sorting: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99369">#99369</a></li>
-<li>test: fix stale snapshots after <code>unstable_{prefetch,navigation}</code> rename: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99371">#99371</a></li>
-<li>Virtualize bundle analyzer source table: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98539">#98539</a></li>
-<li>[PPF] Remove leftover debug log in router: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99365">#99365</a></li>
-<li>Remove unstable_ prefix from navigation() and prefetch(): <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99241">#99241</a></li>
-<li>Lazy dynamic imports for ssr: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98836">#98836</a></li>
-<li>Refine the Security Insight upgrade prompt: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99354">#99354</a></li>
-<li>[PPF] <code>ensureStatic = "navigation"</code>: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99171">#99171</a></li>
-<li>docs: use prefetch={true} for links to ISR pages with Cache Components: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99261">#99261</a></li>
-<li>Add agent feedback to create-next-app defaults: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99119">#99119</a></li>
-<li>Make next-dev-loop browser headless by default: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/98318">#98318</a></li>
-<li>[test] Extend timeout for tests barely below it: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99305">#99305</a></li>
-<li>docs: typo fixes: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99350">#99350</a></li>
-<li>[ai-upgrade] ESC to move back during prompt: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99319">#99319</a></li>
-<li>[ai-upgrade] Ask user to choose permission: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99291">#99291</a></li>
-<li>[ai-upgrade] Ask user to choose model and effort: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99235">#99235</a></li>
-<li>[ai-upgrade] Ask user whether to start upgrade in worktree: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99232">#99232</a></li>
-</ul>
-<h3>Credits</h3>
-<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/unstubbable">@unstubbable</a>, <a class="user-mention notranslate" href="https://github.com/jimmyhmiller">@jimmyhmiller</a>, <a class="user-mention notranslate" href="https://github.com/jarrensj">@jarrensj</a>, <a class="user-mention notranslate" href="https://github.com/lukesandberg">@lukesandberg</a>, <a class="user-mention notranslate" href="https://github.com/wbinnssmith">@wbinnssmith</a>, <a class="user-mention notranslate" href="https://github.com/lubieowoce">@lubieowoce</a>, <a class="user-mention notranslate" href="https://github.com/icyJoseph">@icyJoseph</a>, <a class="user-mention notranslate" href="https://github.com/aurorascharff">@aurorascharff</a>, <a class="user-mention notranslate" href="https://github.com/eps1lon">@eps1lon</a>, and <a class="user-mention notranslate" href="https://github.com/devjiwonchoi">@devjiwonchoi</a> for helping!</p>
-]]></content:encoded>
-<pubDate>2026-09-28T23:47:18Z</pubDate>
-</item>
-<item>
-<title>v12.1.1</title>
-<link>https://github.com/nestjs/nest/releases/tag/v12.1.1</link>
-<guid>https://github.com/nestjs/nest/releases/tag/v12.1.1</guid>
-<content:encoded><![CDATA[
-<h2>v12.1.1 (2026-09-28)</h2>
-<h4>Bug fixes</h4>
-<ul>
-<li><code>common</code>, <code>core</code>, <code>microservices</code>, <code>testing</code>
-<ul>
-<li><a href="https://github.com/nestjs/nest/pull/17893">#17893</a> fix(common): logger bugs in json output, level changes, fatal and buffered logs (<a href="https://github.com/kamilmysliwiec">@kamilmysliwiec</a>)</li>
-</ul>
-</li>
-<li><code>microservices</code>
-<ul>
-<li><a href="https://github.com/nestjs/nest/pull/17891">#17891</a> fix(microservices): let the mqtt client retry after a failed connect (<a href="https://github.com/hktitof">@hktitof</a>)</li>
-<li><a href="https://github.com/nestjs/nest/pull/17888">#17888</a> fix(microservices): keep tcp event listeners across reconnects (<a href="https://github.com/KAPUIST">@KAPUIST</a>)</li>
-<li><a href="https://github.com/nestjs/nest/pull/17887">#17887</a> fix(microservices): ignore events from a replaced tcp client socket (<a href="https://github.com/KAPUIST">@KAPUIST</a>)</li>
-<li><a href="https://github.com/nestjs/nest/pull/17878">#17878</a> fix(microservices): keep a newer nats connection when a stale one fails (<a href="https://github.com/hktitof">@hktitof</a>)</li>
-<li><a href="https://github.com/nestjs/nest/pull/17869">#17869</a> fix(microservices): keep a newer kafka connection when a stale one fails (<a href="https://github.com/kamilmysliwiec">@kamilmysliwiec</a>)</li>
-<li><a href="https://github.com/nestjs/nest/pull/17865">#17865</a> fix(microservices): let the rmq client retry after a failed connect (<a href="https://github.com/hktitof">@hktitof</a>)</li>
-<li><a href="https://github.com/nestjs/nest/pull/17866">#17866</a> fix(microservices): reply on the request channel when redis wildcards are enabled (<a href="https://github.com/fadiroot">@fadiroot</a>)</li>
-<li><a href="https://github.com/nestjs/nest/pull/17861">#17861</a> fix(microservices): recover the nats client after it gives up reconnecting (<a href="https://github.com/xia-chao">@xia-chao</a>)</li>
-</ul>
-</li>
-<li><code>common</code>
-<ul>
-<li><a href="https://github.com/nestjs/nest/pull/17884">#17884</a> fix(common): preserve string enum values matching numeric member names (<a href="https://github.com/KAPUIST">@KAPUIST</a>)</li>
-</ul>
-</li>
-<li><code>core</code>
-<ul>
-<li><a href="https://github.com/nestjs/nest/pull/17871">#17871</a> fix(core): detect circular dependencies across more than two providers (<a href="https://github.com/erezcor">@erezcor</a>)</li>
-</ul>
-</li>
-<li><code>platform-fastify</code>
-<ul>
-<li><a href="https://github.com/nestjs/nest/pull/17867">#17867</a> fix(fastify): treat a JSON content type with parameters as JSON in reply() (<a href="https://github.com/fadiroot">@fadiroot</a>)</li>
-</ul>
-</li>
-<li><code>core</code>, <code>testing</code>
-<ul>
-<li><a href="https://github.com/nestjs/nest/pull/17860">#17860</a> fix(core): honor class and factory overrides of value providers (<a href="https://github.com/lehafari">@lehafari</a>)</li>
-</ul>
-</li>
-</ul>
-<h4>Enhancements</h4>
-<ul>
-<li><code>common</code>
-<ul>
-<li><a href="https://github.com/nestjs/nest/pull/17876">#17876</a> fix(common): reject non-numeric items in ParseArrayPipe with items Number (<a href="https://github.com/SulimanAbdulrazzaq">@SulimanAbdulrazzaq</a>)</li>
-</ul>
-</li>
-<li><code>microservices</code>
-<ul>
-<li><a href="https://github.com/nestjs/nest/pull/17863">#17863</a> feat(microservices): export deserializers from the package root (<a href="https://github.com/lazerg">@lazerg</a>)</li>
-</ul>
-</li>
-</ul>
-<h4>Committers: 13</h4>
-<ul>
-<li>Abdellatif Anaflous (<a href="https://github.com/hktitof">@hktitof</a>)</li>
-<li>Alejandro (<a href="https://github.com/lehafari">@lehafari</a>)</li>
-<li>Daniel Pinto (<a href="https://github.com/Cayan">@Cayan</a>)</li>
-<li>Dharmik Sondagar (<a href="https://github.com/DharmikSondagar">@DharmikSondagar</a>)</li>
-<li>Kamil Mysliwiec (<a href="https://github.com/kamilmysliwiec">@kamilmysliwiec</a>)</li>
-<li>Lazizbek Ergashev (<a href="https://github.com/lazerg">@lazerg</a>)</li>
-<li>Luke Son (<a href="https://github.com/KAPUIST">@KAPUIST</a>)</li>
-<li>Micael Levi L. Cavalcante (<a href="https://github.com/micalevisk">@micalevisk</a>)</li>
-<li>Roman Khegay (<a href="https://github.com/thekhegay">@thekhegay</a>)</li>
-<li>Suliman Abdulrazzaq (<a href="https://github.com/SulimanAbdulrazzaq">@SulimanAbdulrazzaq</a>)</li>
-<li>Xia Chao (<a href="https://github.com/xia-chao">@xia-chao</a>)</li>
-<li><a href="https://github.com/erezcor">@erezcor</a></li>
-<li>fadi romdhan (<a href="https://github.com/fadiroot">@fadiroot</a>)</li>
-</ul>
-]]></content:encoded>
-<pubDate>2026-09-28T09:06:52Z</pubDate>
-</item>
-<item>
-<title>v8.0.0-rc.13</title>
-<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.13</link>
-<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.13</guid>
-<content:encoded><![CDATA[
-<h1>v8.0.0-rc.13</h1>
-<p>This release brings MongoDB closer to Postgres: a Mongo schema can declare <code>Int64</code>, <code>Decimal128</code>, <code>Binary</code>, <code>Json</code> and <code>Bson</code> fields and automatic timestamps, and a Prisma 6 MongoDB project can use its existing <code>schema.prisma</code> as the contract source. The ORM client can order by a related row's column, by a relation count, and with explicit null placement. The new <code>prisma contract print</code> command writes any configured contract as Prisma 8 PSL. A TypeScript contract now encodes every literal default through the column's codec, and the generated defaults in <code>contract.json</code> name their target with new keys, so re-emit your contract after upgrading.</p>
-<p>The upgrade recipes for this hop: the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">app recipe</a> and the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/extension/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">extension recipe</a>. Each breaking change below names the change id to look for in them.</p>
-<h2>Breaking changes</h2>
-<ul>
-<li>
-<p><strong>Generated defaults in the contract name an <code>entry</code> and a <code>field</code>.</strong> Each entry under <code>execution.mutations.defaults</code> in <code>contract.json</code> used to name its target as <code>ref: { namespace, table, column }</code>. It now uses <code>ref: { namespace, entry, field }</code> with the same values. Run <code>prisma contract emit</code> after upgrading; the runtime refuses a contract that still has the old keys. Contract snapshots under <code>migrations/snapshots/</code> need the same rename by hand. The <code>executionHash</code> changes, but no migration or <code>db sign</code> is needed. See <code>execution-ref-entry-field</code> in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">app recipe</a>. (<a href="https://github.com/prisma/orm/pull/30399">#30399</a>)</p>
-<p>Before:</p>
-<div class="highlight highlight-source-json notranslate position-relative overflow-auto"><pre>{ <span class="pl-ent">"ref"</span>: { <span class="pl-ent">"namespace"</span>: <span class="pl-s"><span class="pl-pds">"</span>public<span class="pl-pds">"</span></span>, <span class="pl-ent">"table"</span>: <span class="pl-s"><span class="pl-pds">"</span>user<span class="pl-pds">"</span></span>, <span class="pl-ent">"column"</span>: <span class="pl-s"><span class="pl-pds">"</span>updated_at<span class="pl-pds">"</span></span> }, <span class="pl-ent">"onUpdate"</span>: { <span class="pl-ent">"kind"</span>: <span class="pl-s"><span class="pl-pds">"</span>generator<span class="pl-pds">"</span></span>, <span class="pl-ent">"id"</span>: <span class="pl-s"><span class="pl-pds">"</span>timestampNow<span class="pl-pds">"</span></span> } }</pre></div>
-<p>After:</p>
-<div class="highlight highlight-source-json notranslate position-relative overflow-auto"><pre>{ <span class="pl-ent">"ref"</span>: { <span class="pl-ent">"entry"</span>: <span class="pl-s"><span class="pl-pds">"</span>user<span class="pl-pds">"</span></span>, <span class="pl-ent">"field"</span>: <span class="pl-s"><span class="pl-pds">"</span>updated_at<span class="pl-pds">"</span></span>, <span class="pl-ent">"namespace"</span>: <span class="pl-s"><span class="pl-pds">"</span>public<span class="pl-pds">"</span></span> }, <span class="pl-ent">"onUpdate"</span>: { <span class="pl-ent">"kind"</span>: <span class="pl-s"><span class="pl-pds">"</span>generator<span class="pl-pds">"</span></span>, <span class="pl-ent">"id"</span>: <span class="pl-s"><span class="pl-pds">"</span>timestampNow<span class="pl-pds">"</span></span> } }</pre></div>
-</li>
-<li>
-<p><strong>A literal <code>.default(value)</code> in a TypeScript contract must be the codec's input type.</strong> <code>defineContract</code> from the Postgres and SQLite packages now encodes every literal default through the column's codec. A value of the wrong type is a type error for fields built inside the <code>defineContract</code> factory, and a value the codec refuses fails the build with <code>CONTRACT.DEFAULT_INVALID</code>. Pass a value of the codec's input type, or choose the field preset whose codec takes the value you have. <code>bigint</code> and bytes defaults are stored in a different form, which changes the storage hash of a contract that has one. PSL contracts, <code>now()</code>, <code>autoincrement()</code> and <code>sql</code> tagged defaults are not affected. See <code>ts-defaults-encoded-by-codec</code> in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">app recipe</a>. (<a href="https://github.com/prisma/orm/pull/30433">#30433</a>)</p>
-<p>Before:</p>
-<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-s1">createdAt</span>: <span class="pl-s1">field</span><span class="pl-kos">.</span><span class="pl-en">dateTime</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">default</span><span class="pl-kos">(</span><span class="pl-s">'2024-01-01T00:00:00Z'</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
-<span class="pl-s1">views</span>: <span class="pl-s1">field</span><span class="pl-kos">.</span><span class="pl-en">bigint</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">default</span><span class="pl-kos">(</span><span class="pl-c1">1</span><span class="pl-kos">)</span><span class="pl-kos">,</span></pre></div>
-<p>After:</p>
-<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-s1">createdAt</span>: <span class="pl-s1">field</span><span class="pl-kos">.</span><span class="pl-c1">temporal</span><span class="pl-kos">.</span><span class="pl-en">timestamptzString</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">default</span><span class="pl-kos">(</span><span class="pl-s">'2024-01-01T00:00:00Z'</span><span class="pl-kos">)</span><span class="pl-kos">,</span>
-<span class="pl-s1">views</span>: <span class="pl-s1">field</span><span class="pl-kos">.</span><span class="pl-en">bigint</span><span class="pl-kos">(</span><span class="pl-kos">)</span><span class="pl-kos">.</span><span class="pl-en">default</span><span class="pl-kos">(</span><span class="pl-c1">1n</span><span class="pl-kos">)</span><span class="pl-kos">,</span></pre></div>
-</li>
-<li>
-<p><strong><code>cursor()</code> refuses an order that is not a plain column.</strong> <code>cursor()</code> throws <code>ORM.ARGUMENT_INVALID</code> when an active <code>orderBy</code> item is an extension-operation result (such as a vector distance), a relation field, a relation count, or an order with null placement. Before, an extension-operation order was left out of the keyset without an error, which returned wrong pages. Paginate such queries with <code>limit()</code> and <code>offset()</code>, or order by plain columns only. <code>distinctOn()</code> throws the same error when one of its leading orders is not a plain column. See <code>cursor-rejects-expression-orders</code> in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">app recipe</a>. (<a href="https://github.com/prisma/orm/pull/30402">#30402</a>)</p>
-</li>
-<li>
-<p><strong>A hand-written contract source in <code>prisma.config.ts</code> must declare its <code>format</code>.</strong> A config that builds <code>contract.source</code> itself, as an object with a <code>load</code> function, must give it <code>format: 'psl'</code> or <code>format: 'typescript'</code>. Without it, every command that reads the config fails with <code>CONFIG.VALIDATION_FAILED</code>. Sources made by <code>defineConfig</code>, <code>prisma7Schema()</code>, <code>prismaContract()</code> and the TypeScript contract helpers already declare one. See <code>config-contract-source-requires-format</code> in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">app recipe</a>. (<a href="https://github.com/prisma/orm/pull/30315">#30315</a>)</p>
-</li>
-<li>
-<p><strong><code>prisma contract format</code> formats a Prisma 7 schema, and policy expressions decode every JSON escape.</strong> A project whose contract is <code>prisma7Schema(...)</code> used to be skipped by <code>prisma contract format</code>; the command now formats that file with the Prisma 8 formatter. Do not run it on a schema that must keep Prisma 7's formatting. A <code>using</code> or <code>withCheck</code> expression in a PSL <code>policy_*</code> block now also decodes <code>\t</code>, <code>\b</code>, <code>\f</code>, <code>\/</code> and <code>\uXXXX</code>; write the backslash twice if you mean the backslash and the letter. See <code>contract-format-formats-prisma7-schema</code> and <code>policy-expression-json-escapes</code> in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">app recipe</a>. (<a href="https://github.com/prisma/orm/pull/30315">#30315</a>)</p>
-</li>
-<li>
-<p><strong>The Mongo codec subpaths moved from the adapter to the target.</strong> The <code>adapter/codec-types</code>, <code>adapter/codecs</code>, <code>adapter/codec-ids</code> and <code>adapter/data-types</code> subpaths of <code>@prisma/orm-mongo</code> and <code>@prisma/orm-target-mongo</code> are now <code>target/...</code>. An emitted Mongo <code>contract.d.ts</code> imports <code>adapter/codec-types</code>, so re-emit the contract and rewrite the import in each <code>contract.d.ts</code> under <code>migrations/snapshots/</code>. <code>createMongoRunnerDeps(...)</code> is removed, <code>MongoRunnerDependencies</code> and <code>MarkerOperations</code> moved to <code>@prisma/orm-mongo/family/control-adapter</code>, and a Mongo family instance must be created from a control stack that includes the adapter. The contract JSON and every hash stay the same. See the <code>mongo-*</code> entries in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">app recipe</a> and the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/extension/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">extension recipe</a>. (<a href="https://github.com/prisma/orm/pull/30396">#30396</a>)</p>
-<p>Before:</p>
-<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-k">import</span> <span class="pl-k">type</span> <span class="pl-kos">{</span> <span class="pl-v">CodecTypes</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'@prisma/orm-mongo/adapter/codec-types'</span><span class="pl-kos">;</span></pre></div>
-<p>After:</p>
-<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-k">import</span> <span class="pl-k">type</span> <span class="pl-kos">{</span> <span class="pl-v">CodecTypes</span> <span class="pl-kos">}</span> <span class="pl-k">from</span> <span class="pl-s">'@prisma/orm-mongo/target/codec-types'</span><span class="pl-kos">;</span></pre></div>
-</li>
-<li>
-<p><strong>A Mongo <code>Json</code> field holds only JSON values, and fields of a variant model go through their codecs.</strong> A <code>Json</code> field now refuses a <code>Date</code>, an <code>ObjectId</code>, a <code>Decimal128</code>, a <code>Binary</code> or any other value that is not JSON, at any depth: a read fails with <code>RUNTIME.DECODE_FAILED</code> and a write fails with <code>RUNTIME.ENCODE_FAILED</code>. Change the type of a field that holds such values to <code>Bson</code>. A Mongo contract written in PSL with a <code>Json</code> field gets a new collection validator and a new storage hash, so run <code>prisma contract emit</code> and then <code>prisma db update</code>, or plan a migration. Through <code>.variant(...)</code>, a field declared only on the variant model is now written and read through its codec, so remove any code that converted such values by hand. See <code>mongo-json-field-semantics</code> and <code>mongo-variant-field-codecs</code> in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">app recipe</a>, and <code>mongo-bson-codec-added</code> in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/extension/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">extension recipe</a>. (<a href="https://github.com/prisma/orm/pull/30439">#30439</a>)</p>
-<p>Before:</p>
-<div class="highlight highlight-source-prisma notranslate position-relative overflow-auto"><pre><span class="pl-s1"><span class="pl-k">model</span> <span class="pl-en">Event</span> {</span>
-<span class="pl-s1">  <span class="pl-smi">id</span>      <span class="pl-c1">ObjectId</span> <span class="pl-s1"><span class="pl-en">@id</span></span> <span class="pl-s1"><span class="pl-en">@map</span>(<span class="pl-s">"</span><span class="pl-s">_id</span><span class="pl-s">"</span>)</span></span>
-<span class="pl-s1">  <span class="pl-smi">payload</span> <span class="pl-c1">Json</span></span>
-<span class="pl-s1">}</span></pre></div>
-<p>After, when <code>payload</code> holds values that are not JSON:</p>
-<div class="highlight highlight-source-prisma notranslate position-relative overflow-auto"><pre><span class="pl-s1"><span class="pl-k">model</span> <span class="pl-en">Event</span> {</span>
-<span class="pl-s1">  <span class="pl-smi">id</span>      <span class="pl-c1">ObjectId</span> <span class="pl-s1"><span class="pl-en">@id</span></span> <span class="pl-s1"><span class="pl-en">@map</span>(<span class="pl-s">"</span><span class="pl-s">_id</span><span class="pl-s">"</span>)</span></span>
-<span class="pl-s1">  <span class="pl-smi">payload</span> <span class="pl-c1">Bson</span></span>
-<span class="pl-s1">}</span></pre></div>
-</li>
-<li>
-<p><strong>Four Mongo PSL scalar names are deprecated.</strong> A Mongo schema now names each scalar after the BSON type it stores: <code>Int</code> becomes <code>Int32</code>, <code>Float</code> becomes <code>Double</code>, <code>Boolean</code> becomes <code>Bool</code> and <code>DateTime</code> becomes <code>Date</code>. The old names still work and produce the same contract, but each use reports a <code>PSL_DEPRECATED_SCALAR_NAME</code> warning, and a later release removes them. Postgres and SQLite schemas do not change. See <code>mongo-psl-scalar-names</code> in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">app recipe</a>. (<a href="https://github.com/prisma/orm/pull/30396">#30396</a>)</p>
-<p>Before:</p>
-<div class="highlight highlight-source-prisma notranslate position-relative overflow-auto"><pre><span class="pl-s1"><span class="pl-k">model</span> <span class="pl-en">Post</span> {</span>
-<span class="pl-s1">  <span class="pl-smi">id</span>        <span class="pl-c1">ObjectId</span> <span class="pl-s1"><span class="pl-en">@id</span></span> <span class="pl-s1"><span class="pl-en">@map</span>(<span class="pl-s">"</span><span class="pl-s">_id</span><span class="pl-s">"</span>)</span></span>
-<span class="pl-s1">  <span class="pl-smi">views</span>     <span class="pl-c1">Int</span></span>
-<span class="pl-s1">  <span class="pl-smi">rating</span>    <span class="pl-c1">Float</span><span class="pl-k">?</span></span>
-<span class="pl-s1">  <span class="pl-smi">published</span> <span class="pl-c1">Boolean</span></span>
-<span class="pl-s1">  <span class="pl-smi">createdAt</span> <span class="pl-c1">DateTime</span></span>
-<span class="pl-s1">}</span></pre></div>
-<p>After:</p>
-<div class="highlight highlight-source-prisma notranslate position-relative overflow-auto"><pre><span class="pl-s1"><span class="pl-k">model</span> <span class="pl-en">Post</span> {</span>
-<span class="pl-s1">  <span class="pl-smi">id</span>        <span class="pl-c1">ObjectId</span> <span class="pl-s1"><span class="pl-en">@id</span></span> <span class="pl-s1"><span class="pl-en">@map</span>(<span class="pl-s">"</span><span class="pl-s">_id</span><span class="pl-s">"</span>)</span></span>
-<span class="pl-s1">  <span class="pl-smi">views</span>     <span class="pl-c1">Int32</span></span>
-<span class="pl-s1">  <span class="pl-smi">rating</span>    <span class="pl-c1">Double</span><span class="pl-k">?</span></span>
-<span class="pl-s1">  <span class="pl-smi">published</span> <span class="pl-c1">Bool</span></span>
-<span class="pl-s1">  <span class="pl-smi">createdAt</span> <span class="pl-c1">Date</span></span>
-<span class="pl-s1">}</span></pre></div>
-</li>
-<li>
-<p><strong>Extension authors: mutation defaults and temporal presets moved to the framework.</strong> <code>GeneratorStability</code>, <code>RuntimeMutationDefaultGenerator</code>, <code>MutationDefaultsOptions</code>, <code>AppliedMutationDefault</code> and <code>MutationDefaultsOp</code> are now exported from <code>@prisma/orm-framework/components/runtime</code>. <code>applyMutationDefaults</code> takes <code>entry</code> instead of <code>table</code>, and each applied default names its <code>field</code> instead of its <code>column</code>. <code>TIMESTAMP_NOW_GENERATOR_ID</code>, <code>temporalAuthoringPresets</code> and <code>temporalCodecPreset</code> moved to <code>@prisma/orm-framework/components/authoring</code>, and <code>timestampNowControlDescriptor</code> moved to <code>@prisma/orm-framework/components/control</code>. <code>MongoExecutionContext</code> has a new required <code>applyMutationDefaults</code> method. See the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/extension/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">extension recipe</a>. (<a href="https://github.com/prisma/orm/pull/30406">#30406</a>, <a href="https://github.com/prisma/orm/pull/30403">#30403</a>)</p>
-<p>Before:</p>
-<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-k">const</span> <span class="pl-s1">applied</span> <span class="pl-c1">=</span> <span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-en">applyMutationDefaults</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">op</span>: <span class="pl-s">'create'</span><span class="pl-kos">,</span> <span class="pl-c1">table</span>: <span class="pl-s1">tableName</span><span class="pl-kos">,</span> namespace<span class="pl-kos">,</span> values <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">const</span> <span class="pl-s1">def</span> <span class="pl-k">of</span> <span class="pl-s1">applied</span><span class="pl-kos">)</span> <span class="pl-s1">row</span><span class="pl-kos">[</span><span class="pl-s1">def</span><span class="pl-kos">.</span><span class="pl-c1">column</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s1">def</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">;</span></pre></div>
-<p>After:</p>
-<div class="highlight highlight-source-ts notranslate position-relative overflow-auto"><pre><span class="pl-k">const</span> <span class="pl-s1">applied</span> <span class="pl-c1">=</span> <span class="pl-s1">context</span><span class="pl-kos">.</span><span class="pl-en">applyMutationDefaults</span><span class="pl-kos">(</span><span class="pl-kos">{</span> <span class="pl-c1">op</span>: <span class="pl-s">'create'</span><span class="pl-kos">,</span> <span class="pl-c1">entry</span>: <span class="pl-s1">tableName</span><span class="pl-kos">,</span> namespace<span class="pl-kos">,</span> values <span class="pl-kos">}</span><span class="pl-kos">)</span><span class="pl-kos">;</span>
-<span class="pl-k">for</span> <span class="pl-kos">(</span><span class="pl-k">const</span> <span class="pl-s1">def</span> <span class="pl-k">of</span> <span class="pl-s1">applied</span><span class="pl-kos">)</span> <span class="pl-s1">row</span><span class="pl-kos">[</span><span class="pl-s1">def</span><span class="pl-kos">.</span><span class="pl-c1">field</span><span class="pl-kos">]</span> <span class="pl-c1">=</span> <span class="pl-s1">def</span><span class="pl-kos">.</span><span class="pl-c1">value</span><span class="pl-kos">;</span></pre></div>
-</li>
-<li>
-<p><strong>Extension authors: <code>OrderByItem</code> carries a null placement, and <code>IncludeExpr</code> carries key column lists.</strong> The <code>OrderByItem</code> constructor takes a required third argument, <code>nulls</code>, and a renderer that writes <code>ORDER BY</code> itself must write <code>NULLS FIRST</code> or <code>NULLS LAST</code> after the direction. <code>IncludeExpr.localColumn</code> and <code>IncludeExpr.targetColumn</code> are now the arrays <code>localColumns</code> and <code>targetColumns</code>, paired by index. See <code>order-by-item-nulls</code> and <code>include-expr-join-column-lists</code> in the <a href="https://github.com/prisma/orm/blob/v8.0.0-rc.13/skills/prisma-8/upgrading/extension/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/">extension recipe</a>. (<a href="https://github.com/prisma/orm/pull/30402">#30402</a>, <a href="https://github.com/prisma/orm/pull/30107">#30107</a>)</p>
-</li>
-</ul>
-<h2>Features</h2>
-<ul>
-<li><strong>Order by a related row's column, a relation count, and null placement.</strong> Inside <code>orderBy</code>, a to-one relation offers the related model's columns (<code>post.author.name.asc()</code>), a to-many relation offers <code>count()</code> with an optional filter (<code>user.posts.count().desc()</code>), and every <code>asc()</code> and <code>desc()</code> accepts <code>{ nulls: 'first' | 'last' }</code>. (<a href="https://github.com/prisma/orm/pull/30402">#30402</a>)</li>
-<li><strong><code>prisma contract print</code> writes the configured contract as Prisma 8 PSL.</strong> The command loads whatever <code>contract</code> names in the config (a Prisma 7 schema, a TypeScript contract or a PSL contract) and prints it as a Prisma 8 PSL file that emits the same contract, including its hashes. It refuses, by name, any part of the contract that PSL cannot express. Use <code>--output &lt;path&gt;</code> to write a file. (<a href="https://github.com/prisma/orm/pull/30315">#30315</a>)</li>
-<li><strong>A Prisma 6 MongoDB project can use its existing <code>schema.prisma</code> as the contract source.</strong> Set <code>contract: prisma6Schema('prisma/schema.prisma')</code> with <code>prisma6Schema</code> from <code>@prisma/orm-mongo/config</code>. Anything the reader cannot express is reported as an error with a <code>PSL.PRISMA6_MONGO_*</code> code. (<a href="https://github.com/prisma/orm/pull/30405">#30405</a>)</li>
-<li><strong>Mongo schemas can declare <code>Int64</code>, <code>Decimal128</code>, <code>Binary</code>, <code>Json</code> and <code>Bson</code> fields.</strong> The ORM reads the first four as <code>bigint</code>, decimal text, <code>Uint8Array</code> and a JSON value. A <code>Bson</code> field holds any BSON value. The TypeScript helpers are <code>field.int64()</code>, <code>field.decimal128()</code>, <code>field.binary()</code>, <code>field.json()</code> and <code>field.bson()</code>. (<a href="https://github.com/prisma/orm/pull/30396">#30396</a>, <a href="https://github.com/prisma/orm/pull/30439">#30439</a>)</li>
-<li><strong>Mongo schemas can declare automatic timestamps.</strong> <code>temporal.createdAt()</code> and <code>temporal.updatedAt()</code> fill the field on create, and <code>temporal.updatedAt()</code> advances it on every update that writes something. (<a href="https://github.com/prisma/orm/pull/30403">#30403</a>)</li>
-<li><strong><code>prisma contract infer</code> prints Postgres array defaults as literal lists.</strong> A default such as <code>'{a,b}'::text[]</code> on a text, varchar, enum, date or boolean array column now prints as <code>@default(["a", "b"])</code> instead of a raw <code>sql</code> expression. (<a href="https://github.com/prisma/orm/pull/30436">#30436</a>)</li>
-</ul>
-<h2>Fixes</h2>
-<ul>
-<li>An ORM <code>include()</code> across a composite foreign key matches on every key column. It used to match on the first column only, which returned related rows that belonged to other parents. Nested writes and multi-table variants use the whole key too. (<a href="https://github.com/prisma/orm/pull/30107">#30107</a>)</li>
-<li>A Mongo ORM query that combines <code>select()</code> with <code>include()</code> returns the included relations. (<a href="https://github.com/prisma/orm/pull/30170">#30170</a>)</li>
-<li><code>mongo()</code> accepts a connection string that lists several hosts, and the CLI masks the credentials of such a string in its output. (<a href="https://github.com/prisma/orm/pull/30354">#30354</a>)</li>
-<li>A Postgres migration that removes a column and a row-level security policy that references it drops the policy first, so the migration applies. (<a href="https://github.com/prisma/orm/pull/30232">#30232</a>)</li>
-<li><code>limit()</code> and <code>offset()</code> refuse a value that is not a non-negative integer, such as <code>NaN</code>, with <code>RUNTIME.AST_INVALID</code>, instead of writing it into the SQL. (<a href="https://github.com/prisma/orm/pull/30133">#30133</a>)</li>
-<li>The Postgres warning for an identifier that is too long measures the name in bytes, as Postgres does, so it now fires for a long name written in non-ASCII characters. (<a href="https://github.com/prisma/orm/pull/30127">#30127</a>)</li>
-<li>A number inside a <code>json[]</code> or <code>jsonb[]</code> array default, such as <code>'{1,true}'::jsonb[]</code>, is read as a JSON number, not as text. (<a href="https://github.com/prisma/orm/pull/30455">#30455</a>)</li>
-<li><code>createAll(rows, { onConflict: 'skip' })</code> on a variant stored in its own table reports an error that names the unsupported option, and the help for <code>prisma migration new --from</code> names the correct default, the <code>db</code> ref. (<a href="https://github.com/prisma/orm/pull/30427">#30427</a>)</li>
-</ul>
-<h2>New contributors</h2>
-<ul>
-<li><a href="https://github.com/rajat12826">@rajat12826</a> made their first contribution in <a href="https://github.com/prisma/orm/pull/30170">#30170</a></li>
-<li><a href="https://github.com/xia-chao">@xia-chao</a> made their first contribution in <a href="https://github.com/prisma/orm/pull/30133">#30133</a></li>
-<li><a href="https://github.com/MahathirMohammadShuvo">@MahathirMohammadShuvo</a> made their first contribution in <a href="https://github.com/prisma/orm/pull/30127">#30127</a></li>
-<li><a href="https://github.com/Punisheroot">@Punisheroot</a> made their first contribution in <a href="https://github.com/prisma/orm/pull/30232">#30232</a></li>
-</ul>
-]]></content:encoded>
-<pubDate>2026-09-28T10:58:56Z</pubDate>
-</item>
-<item>
-<title>v8.0.0-rc.13-dev.2: Generic block values bind the shared typed expression grammar (#30381)</title>
-<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.13-dev.2</link>
-<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.13-dev.2</guid>
-<content:encoded><![CDATA[
-<h2>What this PR does</h2>
-<p>Generic-block values now bind the same typed expression grammar<br />
-attributes use, and the legacy <code>PslBlockParam</code> DSL is retired in the<br />
-same change that migrates every consumer. Block authors declare values<br />
-with <code>fixedBlock({ parameters })</code> or <code>entriesBlock({ value, allowBare })</code>, get inferred outputs through <code>InferBlock</code>, and lowering receives a<br />
-typed envelope (<code>ParsedPslExtensionBlock&lt;Values&gt;</code>) — never raw parameter<br />
-text.</p>
-<h2>The design in five decisions</h2>
-<ul>
-<li><strong>Source and semantics are separate products.</strong> The print block keeps<br />
-ordered source entries <code>{ expression?, span }</code> strictly for rendering;<br />
-validated values live only in the typed envelope. The printer renders<br />
-provenance verbatim and never executes spec or reference factories;<br />
-lowering never reads print text.</li>
-<li><strong>Collect everything, then interpret.</strong> <code>buildSymbolTable</code> collects<br />
-all declarations first, then binds each registered block's spec factory<br />
-against the complete table and publishes only successful envelopes in a<br />
-symbol-keyed <code>parsedBlocks</code> map. Forward references work, invalid blocks<br />
-keep their syntax for recovery/tooling but never lower, and every<br />
-value/attribute failure is reported exactly once at its original span.</li>
-<li><strong>Core stays parser-blind.</strong> <code>AuthoringPslBlockDescriptor</code> carries one<br />
-erased callable <code>spec</code> field; a single parser-owned boundary<br />
-(<code>blockSpecFactoryOf</code>) restores the type, mirroring the existing<br />
-attribute-factory erasure.</li>
-<li><strong>Policies file at their selected target.</strong> SQL core gains an optional<br />
-<code>pslPlacement</code> hook (<code>SqlPslEntityPlacementOutput</code>); PostgreSQL<br />
-registers it on policies so a policy whose target resolves through<br />
-top-level fallback lands in the target's physical namespace, with<br />
-destination-keyed collision checks. Other entities keep lexical<br />
-placement.</li>
-<li><strong>Family and native enums keep their distinct contracts.</strong> Family<br />
-enums accept bare members and native JSON through the new shared<br />
-<code>jsonValue()</code> rule with codecs deciding meaning (decode, post-decode<br />
-uniqueness, empty/unknown-codec checks unchanged); native enums remain<br />
-explicit strings. Prisma 7 constructs trusted envelopes directly and<br />
-owns duplicate-key reporting for its dialect.</li>
-</ul>
-<p>Supported policy predicates are <code>optional(str())</code> — previously accepted<br />
-omissions and inferred documents stay valid; unsupported predicate keys<br />
-are rejected as unknown fixed keys at parse time.</p>
-<h2>What was removed</h2>
-<p><code>PslBlockParam*</code>, the five-way <code>PslExtensionBlockParam*</code> union,<br />
-<code>variadicParameters</code>, both legacy validators<br />
-(<code>psl-extension-block-validator.ts</code>,<br />
-<code>validateExtensionBlockFromSymbol</code>), the printer's descriptor-kind<br />
-rendering and codec reparse, and Postgres's raw-reading helpers<br />
-(<code>readValueParam</code>, <code>readListRefParams</code>, <code>unwrapQuotedString</code>,<br />
-native-enum <code>JSON.parse</code>). A tests-inclusive inventory (grep evidence in<br />
-the branch history) shows zero survivals and no compatibility exports.</p>
-<h2>Editor behavior</h2>
-<p>Block-key completion and attribute signatures read the same bound specs<br />
-validation uses, via metadata only (spies pin that inspection never<br />
-parses or resolves). Registered block value/reference errors now surface<br />
-in the parse-plus-symbol pipeline; family semantics (codecs, <code>@@rls</code>,<br />
-placement, collection uniqueness) keep their owners. One deliberate<br />
-regression: declaration snippets no longer pre-fill key lines (no symbol<br />
-exists to bind a spec before the block is authored); keys complete<br />
-inside the block immediately after insertion.</p>
-<h2>Docs</h2>
-<p>ADR 255 records the shipped design; ADR 126's block-parameter sections<br />
-carry supersession notes; ADRs 231/249/246 got minimal factual<br />
-corrections; extension upgrade instructions live under<br />
-<code>upgrade-instructions/pending/typed-block-value-specs/</code>.</p>
-<h2>Verification</h2>
-<p>Full workspace build, root typecheck 169/169, <code>lint:deps</code>,<br />
-<code>test:packages</code> (1334 files / 18001 tests), <code>test:integration</code> (4254<br />
-tests), <code>test:e2e</code> (123 tests), and <code>pnpm fixtures:check</code> with zero<br />
-churn — emitted contracts and generated types are byte-equivalent.<br />
-Inference round-trips parse their own output through the real pipeline<br />
-to equal IR. Manual QA covered extension-author ergonomics,<br />
-schema-author diagnostics, and the new-block editor flow.</p>
-<p>Two pre-existing issues surfaced during the aggregate gates and are<br />
-reported separately, not addressed here: a missing turbo edge between<br />
-<code>integration-tests#typecheck</code> and <code>@prisma/orm-postgres:build</code><br />
-(nested-manifest dependency invisible to the graph), and a parallel-run<br />
-flake in the CLI migration-snapshot suite.</p>
-<p>🤖 Generated with <a href="https://claude.com/claude-code" rel="nofollow">Claude Code</a></p>
-
-<h2>Summary by CodeRabbit</h2>
-<ul>
-<li>
-<p><strong>New Features</strong></p>
-</li>
-<li>
-<p>Added typed specifications for top-level PSL blocks, supporting fixed<br />
-keys and arbitrary entries.</p>
-</li>
-<li>
-<p>Added support for native JSON literals, including nested arrays and<br />
-objects.</p>
-<ul>
-<li>Added namespace-aware placement for generated extension entities.</li>
-</ul>
-</li>
-<li>
-<p>Improved block-key completion based on each block’s specification;<br />
-arbitrary-entry blocks do not offer fixed-key suggestions.</p>
-<ul>
-<li>Enum members can now use bare names or JSON values.</li>
-</ul>
-</li>
-<li>
-<p><strong>Bug Fixes</strong></p>
-</li>
-<li>
-<p>Improved diagnostics for invalid, duplicate, missing, and unknown<br />
-block entries and attributes.</p>
-</li>
-<li>
-<p>Preserved authored entry order and expressions when printing PSL<br />
-blocks.</p>
-</li>
-<li>
-<p><strong>Documentation</strong></p>
-</li>
-<li>
-<p>Added architecture and upgrade guidance for typed block<br />
-specifications.</p>
-</li>
-</ul>
-
-<hr />
-<p>Signed-off-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a><br />
-Co-authored-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a><br />
-Co-authored-by: Claude Fable 5 <a href="mailto:noreply@anthropic.com">noreply@anthropic.com</a></p>
-]]></content:encoded>
-<pubDate>2026-09-28T17:06:44Z</pubDate>
-</item>
-<item>
-<title>v8.0.0-rc.13-dev.1: chore(release): bump to 8.0.0-rc.13 (#30457)</title>
-<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.13-dev.1</link>
-<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.13-dev.1</guid>
-<content:encoded><![CDATA[
-<h2>Release</h2>
-<p><code>8.0.0-rc.12</code> → <code>8.0.0-rc.13</code></p>
-<p>See<br />
-<a href="https://github.com/prisma/orm/blob/main/docs/oss/versioning.md"><code>docs/oss/versioning.md</code></a><br />
-for the versioning policy and the release procedure.</p>
-<h2>What to review</h2>
-<ul>
-<li><strong>Release notes:</strong><br />
-<a href="https://github.com/prisma/orm/blob/release/8.0.0-rc.13/docs/releases/v8.0.0-rc.13.md"><code>docs/releases/v8.0.0-rc.13.md</code></a>.<br />
-This file becomes the body of the GitHub Release. <code>CHANGELOG.md</code> carries<br />
-the same text.</li>
-<li><strong>Upgrade guides:</strong> the <a href="https://github.com/prisma/orm/blob/release/8.0.0-rc.13/skills/prisma-8/upgrading/app/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/instructions.md">app<br />
-guide</a><br />
-and the <a href="https://github.com/prisma/orm/blob/release/8.0.0-rc.13/skills/prisma-8/upgrading/extension/upgrades/8.0.0-rc.12-to-8.0.0-rc.13/instructions.md">extension<br />
-guide</a>.<br />
-They are assembled from the 13 pending fragments, which moved unchanged<br />
-to <code>upgrade-instructions/releases/8.0.0-rc.12-to-8.0.0-rc.13/sources/</code>.</li>
-</ul>
-<h2>What changed</h2>
-<ul>
-<li>The <code>version</code> of every workspace <code>package.json</code>, and the <code>workspace:</code><br />
-specifiers that name it, in the package files and in <code>pnpm-lock.yaml</code>.</li>
-<li>The <code>library_version</code> stamp in <code>skills/prisma-8/SKILL.md</code>.</li>
-<li>The extension version stamp in the Supabase <code>contract.json</code> and<br />
-<code>contract.d.ts</code> artefacts.</li>
-<li>The upgrade guides, the archived fragments, the release notes and the<br />
-changelog.</li>
-</ul>
-<h2>How the guides were assembled</h2>
-<ul>
-<li>The fragments had no scripts or assets, so the guides have none.</li>
-<li>The <code>contract-print</code> fragments used plain headings. The guides give<br />
-each of their changes a heading that names its change id, as every other<br />
-entry has.</li>
-<li>The app guide ends with the <code>contract-artifacts-restamp</code> entry, as the<br />
-two previous app guides do.</li>
-<li>Fragments that declared <code>changes: []</code> add nothing to the guides.</li>
-</ul>
-<h2>Checks run locally</h2>
-<ul>
-<li><code>pnpm check:upgrade-coverage --mode publish --prev v8.0.0-rc.12 --head HEAD</code> passes.</li>
-<li><code>pnpm check:release-notes --mode pr</code> passes.</li>
-<li><code>pnpm fixtures:check</code> did not complete on my machine: the<br />
-<code>apps/telemetry-backend</code> emit step failed with <code>prisma: command not found</code>. It changed no tracked file. CI decides this one.</li>
-</ul>
-<h2>Merging this pull request ships the release</h2>
-<p>The push to <code>main</code> carries the new root <code>version</code>. The <code>Publish to npm</code><br />
-workflow detects the change, publishes <code>8.0.0-rc.13</code> under the dist-tag<br />
-<code>latest</code>, and creates a matching GitHub Release, marked as a<br />
-pre-release.</p>
-<h2>Docs site</h2>
-<p>The matching docs-site pull request is <a class="issue-link js-issue-link" href="https://github.com/prisma/web/pull/8336">prisma/web#8336</a>. It merges after<br />
-this release is published.</p>
-<p>🤖 Generated with <a href="https://claude.com/claude-code" rel="nofollow">Claude Code</a></p>
-
-<h2>Summary by CodeRabbit</h2>
-<ul>
-<li><strong>New Features</strong></li>
-<li>Added relation-based ordering, configurable null placement, contract<br />
-printing, Prisma 6 MongoDB schema support, MongoDB scalar types and<br />
-timestamps, and PostgreSQL array-default inference.</li>
-<li><strong>Bug Fixes</strong></li>
-<li>Improved handling of composite-key includes, MongoDB queries and<br />
-connections, migrations, argument validation, identifier-length<br />
-warnings, JSON-array defaults, variant conflicts, and CLI help.</li>
-<li><strong>Breaking Changes</strong></li>
-<li>Updated contract defaults, TypeScript default encoding, ordering and<br />
-cursor restrictions, configuration and formatting requirements, MongoDB<br />
-APIs and codecs, and extension APIs. Migration guidance is available for<br />
-upgrading to v8.0.0-rc.13.</li>
-</ul>
-
-<hr />
-<p>Signed-off-by: willbot <a href="mailto:w.a.madden+machine@gmail.com">w.a.madden+machine@gmail.com</a><br />
-Signed-off-by: Will Madden <a href="mailto:madden@prisma.io">madden@prisma.io</a><br />
-Co-authored-by: Claude Fable 5.1 <a href="mailto:noreply@anthropic.com">noreply@anthropic.com</a></p>
-]]></content:encoded>
-<pubDate>2026-09-28T10:40:09Z</pubDate>
 </item>
 </channel>
 </rss>

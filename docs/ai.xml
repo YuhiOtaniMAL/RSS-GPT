@@ -3,7 +3,250 @@
 <channel>
 <title>ai</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/ai.xml</link>
-<lastBuildDate>Sun, 18 Oct 2026 04:11:26 +0000</lastBuildDate>
+<lastBuildDate>Mon, 19 Oct 2026 04:19:59 +0000</lastBuildDate>
+
+<item>
+<title>llm-tools-datasette 0.1.1</title>
+<link>https://simonwillison.net/2026/Oct/18/llm-tools-datasette/</link>
+<guid>https://simonwillison.net/2026/Oct/18/llm-tools-datasette/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: LLM, plugins, httpx, llm-tools-datasette, fixed
+
+<br><br>Summary: When the LLM was switched over, it inadvertently broke any plugins that depended on httpx without direct dependencies. This issue affected the plugin named llm-tools-datasette. The developer recognized the problem and has since implemented a fix for the llm-tools-datasette plugin. The change was necessary for better compatibility and functionality with the new LLM configuration. Moving forward, it is crucial for developers to ensure that any plugins they create directly specify their dependencies to prevent similar issues. The fix is a testament to the importance of maintaining compatibility in software development, especially for tools that depend on evolving libraries and frameworks. By resolving the issue, the functionality of the llm-tools-datasette plugin has been restored, allowing users to utilize its features without interruptions. Developers are encouraged to stay proactive in managing dependencies to ensure smooth operation and avoid breaking existing tools. This incident serves as a reminder of the complexities involved in plugin development within large systems, emphasizing the need for thorough testing and dependency management. <div>
+<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-tools-datasette/releases/tag/0.1.1">llm-tools-datasette 0.1.1</a></p>
+        <p>When I switched LLM over to <a href="https://github.com/pydantic/httpx2">httpx2</a> in <a href="https://llm.datasette.io/en/stable/changelog.html#v0-33">LLM 0.33</a> I forget that this would break any plugins which used <code>httpx</code> without directly depending on it. <code>llm-tools-datasette</code> was one of those plugins, now fixed.</p>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/datasette">datasette</a>, <a href="https://simonwillison.net/tags/llm">llm</a></p>
+]]></content:encoded>
+<pubDate>2026-10-18T23:43:09+00:00</pubDate>
+<pubDate>2026-10-18T23:43:09+00:00</pubDate>
+</item>
+<item>
+<title>llm-echo 0.5</title>
+<link>https://simonwillison.net/2026/Oct/18/llm-echo/</link>
+<guid>https://simonwillison.net/2026/Oct/18/llm-echo/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: llm-echo, plugin, token usage, release, prompts
+
+<br><br>Summary: The new release of the llm-echo debug plugin, which serves as a model that simply echoes back prompts without utilizing a language model, aims to enhance its functionality. This update revises the simulated token usage counts to include various components such as tool calls, system prompts, and reasoning tokens, providing a more comprehensive overview of resource usage. An example command demonstrates how users can interact with the plugin using a specific syntax that shows input and output alongside token usage counts. When the command `uvx --with llm-echo llm -m echo 'hi there' -o thinking 1 --usage` is executed, the plugin processes the prompt and outputs the corresponding token counts, illustrating how it deliberates over the input before responding. Overall, the update enhances the debugging experience, making it easier for developers to analyze and optimize their interactions with AI systems by offering insight into the mechanics of token usage within the context of their applications. This approach not only aids in testing but also contributes to overall efficiency and performance improvements within the architecture. <div>
+<p><strong>Release:</strong> <a href="https://github.com/simonw/llm-echo/releases/tag/0.5">llm-echo 0.5</a></p>
+        <p>I'm working towards a new <a href="https://llm.datasette.io/">LLM</a> release, and testing PRs caused me to revisit the <code>llm-echo</code> debug plugin. This plugin provides a "model" which doesn't involve an LLM at all - it just repeats back the prompts that have been fed to it. The new release now updates the simulated token usage counts to take tool calls, system prompts, and reasoning tokens into account.</p>
+<p>Example usage:</p>
+<pre><code>uvx --with llm-echo llm -m echo 'hi there' -o thinking 1 --usage
+</code></pre>
+<p>Outputs:</p>
+<pre><code>First I consider the prompt, then I decide what to say.
+{
+  "prompt": "hi there",
+  "system": "",
+  "attachments": [],
+  "stream": true,
+  "previous": []
+}
+Token usage: 2 input, 24 output
+</code></pre>
+    
+    
+        <p>Tags: <a href="https://simonwillison.net/tags/llm">llm</a></p>
+]]></content:encoded>
+<pubDate>2026-10-18T23:16:16+00:00</pubDate>
+<pubDate>2026-10-18T23:16:16+00:00</pubDate>
+</item>
+<item>
+<title>A woman was arrested in Philly for blocking a delivery robot</title>
+<link>https://www.theverge.com/ai-artificial-intelligence/1013541/a-woman-was-arrested-in-philly-for-blocking-a-delivery-robot</link>
+<guid>https://www.theverge.com/ai-artificial-intelligence/1013541/a-woman-was-arrested-in-philly-for-blocking-a-delivery-robot</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Carolyn Marvin, disorderly conduct, Uber delivery robot, arrest, protest
+
+<br><br>Summary: Carolyn Marvin was arrested for disorderly conduct in Philadelphia after she blocked an Uber delivery robot's path and refused to move. Marvin expressed her intention to protest against the use of delivery robots, claiming they were taking jobs away from human delivery workers. Whenever she encountered one of these robots, she stood in front of it to prevent it from advancing. The police arrived at the scene and asked Marvin to step aside, but she declined their request. Consequently, they put her in handcuffs and arrested her. This incident, which was recorded on video, has attracted significant media attention, highlighting the growing presence of delivery robots in urban areas. Marvin's protest raises questions about the balance between technological advancements and their impact on employment, a topic that is increasingly relevant as automation becomes more prevalent in various industries. The situation exemplifies the tensions between innovation and labor concerns, as communities grapple with the implications of robots taking over tasks traditionally performed by humans. <div>
+<figure>
+
+<img alt="" src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/02/avride-uber-delivery.webp?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
+	<figcaption>
+		</figcaption>
+</figure>
+<p class="wp-block-paragraph">Carolyn Marvin was arrested and charged with disorderly conduct after blocking the path of an Uber delivery robot and refusing to get out of the way. Marvin told Philadelphia's <em><a href="https://abc13.com/story/woman-arrested-blocking-delivery-robot-philadelphia-confrontation/19943936/">ABC13</a></em> "I know they're taking the jobs of human delivery workers and so, I have been protesting them whenever I saw them by standing in front of them and preventing them from going forward."</p>
+<p class="wp-block-paragraph">Police responded to the scene and asked Marvin to move out of the robot's way. When she refused, they placed her in cuffs and arrested her. The incident was captured on video and has now garnered considerable media attention. </p>
+<p class="wp-block-paragraph">The delivery robots have become a common sight on the …</p>
+<p><a href="https://www.theverge.com/ai-artificial-intelligence/1013541/a-woman-was-arrested-in-philly-for-blocking-a-delivery-robot">Read the full story at The Verge.</a></p>
+]]></content:encoded>
+<pubDate>2026-10-18T14:28:10-04:00</pubDate>
+<pubDate>2026-10-18T14:28:10-04:00</pubDate>
+</item>
+<item>
+<title>Anthropic gives outside AI watchdog “employee-like” access</title>
+<link>https://arstechnica.com/ai/2026/10/anthropic-gives-outside-ai-watchdog-employee-like-access/</link>
+<guid>https://arstechnica.com/ai/2026/10/anthropic-gives-outside-ai-watchdog-employee-like-access/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Anthropic, METR, third-party evaluators, AI safety, safeguards  
+
+<br><br>Summary: Anthropic has taken steps to enhance the safety of its AI models by granting external evaluators "employee-like access" to assess potential risks. This initiative aligns with their commitment to implement better safeguards amid rising concerns about the dangers posed by increasingly capable AI systems. The nonprofit organization METR, known for its collaboration with leading AI labs such as OpenAI, Google, and Meta, now has a dedicated team embedded within Anthropic's office. This team has access to the company’s hardware and internal systems, allowing for a thorough evaluation of AI risks. The introduction of third-party evaluators represents one of the key measures proposed by leading AI labs in response to heightened concerns regarding the impact of advanced AI technology on various sectors, including the economy, cybersecurity, and humanity at large. By involving independent evaluators, Anthropic aims to ensure a more robust and transparent assessment of its AI systems, ultimately contributing to safer and more responsible AI development practices. <div>
+<p>Anthropic has granted external evaluators “employee-like access” to assess the risks of its models, following through on a commitment to increase safeguards over concerns the technology could run catastrophically out of control.</p>
+<p>METR, a nonprofit that has worked with leading labs including OpenAI, Anthropic, Google and Meta, now has a team embedded in the Claude maker’s office with access to its hardware and internal systems.</p>
+<p>A greater role for third-party evaluators is among the main concrete steps the labs have proposed in response to rising concern about the dangers more capable AI systems could pose to the economy, cyber security and humanity at large.</p><p><a href="https://arstechnica.com/ai/2026/10/anthropic-gives-outside-ai-watchdog-employee-like-access/">Read full article</a></p>
+<p><a href="https://arstechnica.com/ai/2026/10/anthropic-gives-outside-ai-watchdog-employee-like-access/#comments">Comments</a></p>
+]]></content:encoded>
+<pubDate>Sun, 18 Oct 2026 16:25:19 +0000</pubDate>
+<pubDate>Sun, 18 Oct 2026 16:25:19 +0000</pubDate>
+</item>
+<item>
+<title>Inbox Zero</title>
+<link>https://www.producthunt.com/products/inbox-zero-2</link>
+<guid>https://www.producthunt.com/products/inbox-zero-2</guid>
+<content:encoded><![CDATA[
+<div> **Keywords:** Open-source, Superhuman, email client, productivity, alternatives
+
+<br><br>Summary: Open-source alternatives to Superhuman provide users with similar functionalities while promoting transparency and customization. These alternatives cater to users seeking efficient email management solutions that enhance productivity. They typically include features such as advanced search capabilities, smart inbox organization, and integrations with various productivity tools. Unlike Superhuman, which follows a subscription model, open-source options are generally free to use and allow users to modify the software according to their preferences. This fosters a community-driven environment where users can contribute to the software's improvement and share enhancements with others. Some notable open-source email clients include Mailspring, Thunderbird, and K-9 Mail, each offering unique features tailored to different user needs. By choosing an open-source Superhuman alternative, users can enjoy flexibility and greater control over their email experience while contributing to a collaborative ecosystem. Overall, these alternatives present a compelling choice for individuals and organizations looking to optimize their email workflow without the cost and restrictions associated with proprietary software. <div>
+<p>
+            Open-source Superhuman alternative
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/inbox-zero-2?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1276034?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-10-10T09:45:36-07:00</pubDate>
+<pubDate>2026-10-18T21:18:13-07:00</pubDate>
+</item>
+<item>
+<title>MyLens</title>
+<link>https://www.producthunt.com/products/mylens-ai</link>
+<guid>https://www.producthunt.com/products/mylens-ai</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AI, Live Presentations, Scalability, Engagement, Technology
+
+<br><br>Summary:  
+Live presentations powered by AI enable organizations to scale their outreach while enhancing audience engagement. These advanced technologies facilitate personalized interaction, allowing presenters to tailor their content to individual audience preferences. Utilizing AI tools can streamline the creation of high-quality presentations by automatically generating visuals and suggesting content based on audience analytics. This technological integration not only saves time but also enhances the effectiveness of communication. Moreover, AI-driven insights help presenters understand audience reactions in real-time, allowing for instantaneous adjustments to maintain engagement. Scalability is a significant advantage of AI in live presentations, as it allows organizations to reach larger audiences without sacrificing quality. Presenters can simultaneously connect with thousands of participants, offering a unique opportunity for broader impact. Additionally, the use of AI can democratize access to information, ensuring that diverse audiences receive value from the presentations. As organizations increasingly adopt AI solutions, live presentations will evolve, leading to more interactive, engaging, and effective communication strategies. Overall, AI is transforming the landscape of live presentations, making them more accessible, efficient, and responsive to audience needs. <div>
+<p>
+            1-1 Live Presentations at Scale with AI.
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/mylens-ai?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1282905?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-10-16T14:46:17-07:00</pubDate>
+<pubDate>2026-10-18T21:03:18-07:00</pubDate>
+</item>
+<item>
+<title>Openbroca</title>
+<link>https://www.producthunt.com/products/openbroca</link>
+<guid>https://www.producthunt.com/products/openbroca</guid>
+<content:encoded><![CDATA[
+<div> **Keywords:** Lightweight AI, dictation, Mac, voice, personalization
+
+<br><br>Summary: The article discusses a lightweight AI dictation tool designed for Mac users, focusing on its ability to sound like the user. This technology leverages advanced algorithms and machine learning to create personalized voice outputs, making dictation more efficient and natural. Users can easily integrate this tool into their daily workflows, enhancing productivity by allowing hands-free writing. The AI's capacity to mimic individual speech patterns means that it can capture tone and inflection, ensuring that the output feels authentic. The tool is user-friendly, featuring intuitive controls that can adapt to various dictation needs. Compatibility with popular applications ensures seamless use across different platforms. Additionally, the dictation software prioritizes privacy, so users can be assured that their spoken data is secure. Overall, this innovative solution represents a significant step forward in voice recognition technology, making it easier for users to communicate their thoughts quickly and accurately. With ongoing developments and updates, the tool promises to improve further, reinforcing its position as a go-to option for Mac users seeking efficient dictation solutions. <div>
+<p>
+            Lightweight AI dictation for Mac that sounds like you
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/openbroca?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1278100?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-10-12T10:32:18-07:00</pubDate>
+<pubDate>2026-10-18T21:03:18-07:00</pubDate>
+</item>
+<item>
+<title>Krea 3</title>
+<link>https://www.producthunt.com/products/krea</link>
+<guid>https://www.producthunt.com/products/krea</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Krea, AI, image model, edits, speed
+
+<br><br>Summary:  
+Krea has introduced an innovative AI image model capable of performing 2K edits in under 8 seconds. This rapid processing speed reflects advancements in artificial intelligence and machine learning technologies, allowing for seamless and efficient image modifications. The model is designed to cater to a variety of editing needs, making it an attractive option for professionals in photography, design, and other visual arts. By reducing the time required for edits, Krea aims to streamline workflows and enhance productivity for users. Additionally, this breakthrough could democratize high-quality image editing by making it more accessible to non-professionals or those with limited technical skills. The AI model's efficiency may also lead to creative exploration, as users can experiment with multiple edits in a short timeframe without the conventional time constraints. Overall, Krea's AI image model represents a significant leap forward in the realm of digital editing, enabling faster results while maintaining quality and offering new potential for creative expression in visual content creation. <div>
+<p>
+            Krea's AI image model: 2K edits in under 8 seconds
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/krea?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1281975?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-10-15T17:01:46-07:00</pubDate>
+<pubDate>2026-10-18T21:03:19-07:00</pubDate>
+</item>
+<item>
+<title>Popcraft</title>
+<link>https://www.producthunt.com/products/popcraft</link>
+<guid>https://www.producthunt.com/products/popcraft</guid>
+<content:encoded><![CDATA[
+<div> Sure! Please provide the article you would like me to summarize. <div>
+<p>
+            Generate video, images & audio from any AI agent
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/popcraft?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1264339?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-09-29T01:31:33-07:00</pubDate>
+<pubDate>2026-10-18T21:13:38-07:00</pubDate>
+</item>
+<item>
+<title>3AM Super Intelligence</title>
+<link>https://www.producthunt.com/products/3am-super-intelligence</link>
+<guid>https://www.producthunt.com/products/3am-super-intelligence</guid>
+<content:encoded><![CDATA[
+<div> Keywords: production, incidents, investigated, proven, fixed  
+
+<br><br>Summary: Production incidents require thorough investigation to identify the root cause of problems affecting operations. Once incidents are reported, a team assesses the severity and impact, prioritizing issues based on urgency. Investigating these incidents involves gathering data, analyzing logs, and consulting with stakeholders to ensure a comprehensive understanding of the situation. After the investigation, findings are documented, and actions are taken to prove the effectiveness of proposed fixes. The focus is on eliminating the underlying issues to prevent recurrence. Once verified, these solutions are implemented across the production environment. Continuous monitoring follows to ensure that the fixes hold and that no new problems arise. Communication with all affected parties is vital throughout the process to maintain transparency and trust. After resolution, a post-incident review is conducted to glean insights and enhance future incident management strategies. Adopting best practices and refining processes not only mitigates risks but also boosts overall system reliability. By addressing production incidents methodically, organizations can improve their operational resilience and foster a proactive culture towards system maintenance. <div>
+<p>
+            Production incidents: investigated, proven, fixed
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/3am-super-intelligence?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1282576?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-10-16T07:08:51-07:00</pubDate>
+<pubDate>2026-10-18T21:03:18-07:00</pubDate>
+</item>
+<item>
+<title>Bee Frontier and Bee Eclipse</title>
+<link>https://www.producthunt.com/products/bee-frontier-and-bee-eclipse</link>
+<guid>https://www.producthunt.com/products/bee-frontier-and-bee-eclipse</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Amazon's personal AI memory, now on your wrist or phone
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/bee-frontier-and-bee-eclipse?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1281580?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-10-15T08:11:11-07:00</pubDate>
+<pubDate>2026-10-18T21:09:14-07:00</pubDate>
+</item>
+<item>
+<title>Tomo for ChatGPT</title>
+<link>https://www.producthunt.com/products/tomo-for-chatgpt</link>
+<guid>https://www.producthunt.com/products/tomo-for-chatgpt</guid>
+<content:encoded><![CDATA[
+
+<p>
+            Ask anything. Then play it, Duolingo-style.
+          </p>
+          <p>
+            <a href="https://www.producthunt.com/products/tomo-for-chatgpt?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
+            |
+            <a href="https://www.producthunt.com/r/p/1283357?app_id=339">Link</a>
+          </p>
+]]></content:encoded>
+<pubDate>2026-10-17T03:14:13-07:00</pubDate>
+<pubDate>2026-10-18T20:21:35-07:00</pubDate>
+</item>
 
 <item>
 <title>Inline rendering with document​.currentScript</title>
@@ -12,25 +255,9 @@
 <content:encoded><![CDATA[
 <div> Keywords: inline script, document.currentScript, template language, function shortcut, year 
 
-<br><br>Summary: 
-Lean Rada introduces a clever method using the properties of inline `<script>` elements. The trick involves embedding a tiny script that replaces itself with the current year when the page loads. The script uses `document.currentScript.replaceWith(new Date().getFullYear())` to achieve this functionality. Additionally, Rada proposes a shortcut function defined as `$=(...n)=>document.currentScript.replaceWith(...n)`, which simplifies the process of inserting dynamic content. This function effectively creates a mini template language, allowing users to write expressions in a more concise manner. For instance, you can easily display the current year by writing `The year is <script>$(new Date().getFullYear())</script>`, demonstrating how the script can seamlessly replace itself with dynamic values. This approach not only streamlines the insertion of dynamic content but also enhances the readability of HTML by reducing clutter. Rada's technique offers a practical solution for web developers seeking to incorporate real-time data into their webpages in an elegant and efficient way. <div>
-<p><strong><a href="https://leanrada.com/notes/inline-rendering-currentscript/">Inline rendering with document​.currentScript</a></strong></p>
-Lean Rada describes a neat trick that takes advantage of the <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/currentScript">document.currentScript</a> property. You can use that to drop in a tiny inline <code>&lt;script&gt;</code> element that replaces itself when the page loads:</p>
-<pre><code>The year is &lt;script&gt;
-document.currentScript.replaceWith(
-  new Date().getFullYear())&lt;/script&gt;
-</code></pre>
-<p>If you define a shortcut function like this:</p>
-<pre><code>$=(...n)=&gt;document.currentScript.replaceWith(...n)
-</code></pre>
-<p>You get a tiny template language:</p>
-<pre><code>The year is &lt;script&gt;$(new Date().getFullYear())&lt;/script&gt;
-</code></pre>
-
-
-    <p>Tags: <a href="https://simonwillison.net/tags/javascript">javascript</a></p>
+<br /><br />Summary: 
+Lean Rada introduces a clever method using the properties of inline `<div><p><strong><a href="https://leanrada.com/notes/inline-rendering-currentscript/"></a></strong></p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/currentScript"></a><code>&lt;&gt;</code></p><pre><code>&lt;&gt;&lt;&gt;</code></pre><p></p><pre><code>&gt;</code></pre><p></p><pre><code>&lt;&gt;&lt;&gt;</code></pre><p><a href="https://simonwillison.net/tags/javascript"></a></p>
 ]]></content:encoded>
-<pubDate>2026-10-17T21:11:12+00:00</pubDate>
 <pubDate>2026-10-17T21:11:12+00:00</pubDate>
 </item>
 <item>
@@ -40,7 +267,7 @@ document.currentScript.replaceWith(
 <content:encoded><![CDATA[
 <div> Keywords: web app, Tailscale, clipboard, editing files, Gist
 
-<br><br>Summary: 
+<br /><br />Summary: 
 The web-edit() is a lightweight web application designed for browsing and editing files within a specified folder. Its primary purpose was to facilitate file editing across different machines using the Tailscale network. One of the key features added to the app is the "copy to clipboard" functionality, which supports both text and image data. This feature was developed to enhance user experience, particularly while working remotely. For instance, the developer utilized the app on a laptop while accessing it through a phone, specifically for running pelican prompts. The ability to easily copy the resulting logs into a Gist was essential for effective code sharing and documentation. By integrating this functionality, web-edit() becomes more versatile and user-friendly, making it a handy tool for individuals who require simple file management and editing on-the-go. The application aims to streamline workflows for users who often switch between devices and need quick access to their files without the hassle of complicated setups or remote access complications. <div>
 <p><strong>Release:</strong> <a href="https://github.com/simonw/web-edit/releases/tag/0.1a2">web-edit 0.1a2</a></p>
         <p>web-edit (<a href="https://simonwillison.net/2026/Oct/12/web-edit/">previously</a>) is my tiny web app for browsing and editing files in a folder. I mainly built it for editing files on different machines via Tailscale.</p>
@@ -50,7 +277,6 @@ The web-edit() is a lightweight web application designed for browsing and editin
         <p>Tags: <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/pelican-riding-a-bicycle">pelican-riding-a-bicycle</a>, <a href="https://simonwillison.net/tags/deepseek">deepseek</a></p>
 ]]></content:encoded>
 <pubDate>2026-10-17T13:16:49+00:00</pubDate>
-<pubDate>2026-10-17T13:16:49+00:00</pubDate>
 </item>
 <item>
 <title>[AINews] High Taste Testers Ep. 1</title>
@@ -59,11 +285,10 @@ The web-edit() is a lightweight web application designed for browsing and editin
 <content:encoded><![CDATA[
 <div> Keywords: AI News, Muse Spark Open, Reflection Beam, OpenAI, Quantum circuits
 
-<br><br>Summary:  
+<br /><br />Summary:  
 The AI landscape is rapidly evolving, highlighted by Meta's Muse Spark Open model, which boasts an impressive 816B total parameters and a context of 1M tokens, scoring 39 on the Intelligence Index. Reflection Beam also made waves with a focus on efficiency, appealing to developers for its cost-effectiveness. OpenAI released GPT-6 Astra Pro, enhancing task handling via multiple agents, while Claude Code efficiency improved significantly, reducing tech debt workflow. Anthropic's Haiku saw a major cost reduction. In decision models, Liquid d1-ultra emerged as the leader in AA’s Decision Index, showcasing advancements in reliability and cost. The draft proposal by China's MOFCOM for stricter control over AI technologies sparked debate about its potential implications. GPU performance continues to improve, with TPUv7 outpacing GB300 in efficiency. Recent research emphasizes advancements in interpretability by reassessing neuron roles. A notable achievement involved Gemini 4 Argon's agents completing Minecraft's Ender Dragon challenge autonomously. In cybersecurity, concerns arose over models bypassing restrictions, indicating the ongoing need for responsible deployment of AI technologies and maintaining integrity in evaluations as companies strive for market leadership. The conversation continues on AI's future and ethical considerations in its usage. <div>
 <p>We are piloting a new show on Latent Space: <strong>High Taste Testers, </strong>a variant of our food show where we pull you in to a typical lunch conversation in San Francisco. All your favorite talking points, starting with Dev Day and going into the latest models and assistants, are here:</p><div class="youtube-wrap" id="youtube2-ZOH8Q401vt0"><div class="youtube-inner"></div></div><p>Let us know your feedback!</p><p></p><blockquote><p>AI News for 10/15/2026-10/16/2026. We checked 12 subreddits, <a href="https://twitter.com/i/lists/1585430245762441216">544 Twitters</a> and no further Discords. <a href="https://news.smol.ai/">AINews&#8217; website</a> lets you search all past issues. As a reminder, <a href="https://www.latent.space/p/2026">AINews is now a section of Latent Space</a>. You can <a href="https://support.substack.com/hc/en-us/articles/8914938285204-How-do-I-subscribe-to-or-unsubscribe-from-a-section-on-Substack">opt in/out</a> of email frequencies!</p></blockquote><div><hr /></div><h1><strong>AI Twitter Recap</strong></h1><p><strong>US Open-Weights Push: Muse Spark Open and Reflection Beam</strong></p><ul><li><p><strong>Muse Spark Open (Meta)</strong>: An 816B-total, 42B-active MoE with open weights. Artificial Analysis scores it 39 on its Intelligence Index, the highest for a US open-weights model and 13 points above NVIDIA&#8217;s Nemotron 3.5 Super VL at 26 (<a href="https://x.com/ArtificialAnlys/status/2110893784422908225">AA</a>).</p><ul><li><p><strong>Architecture and footprint</strong>: 62 layers, GQA with 16 KV heads, 8 of 256 experts active per token, a 1.8B Perception Encoder and 1M context. Inputs are text, image, video and audio; output is text. BF16 weights are about 1.6TB. Meta&#8217;s NVFP4 checkpoint quantizes only the experts, cutting weights to about 530GB. Meta says that fits on 4 Blackwell Ultra GPUs, 8 H200s or two 512GB M5 Ultra Mac Studios.</p></li><li><p><strong>Pricing and efficiency</strong>: Together, Fireworks and Baseten charge $1.25/$4.25 per M input/output tokens, with $0.15 cached input. AA puts the cost at $0.84 per index task, versus $2.01 for GLM-5.3 and $0.27 for DeepSeek V4.1 Flash. It uses 40k output tokens per task, the fewest among the top nine open models (<a href="https://x.com/ArtificialAnlys/status/2110893789510615376">cost</a>). Vals counts 55.5M output tokens across its index, the fewest of any open model, but says input tokens drive most of its cost (<a href="https://x.com/ValsAI/status/2111178215717065142">Vals</a>).</p></li><li><p><strong>Weak spot</strong>: It ranks last among the top nine open models on AA&#8217;s four agentic evals while leading open models on AA-Omniscience. Vals places it #12 among open-weight models and #38 overall (<a href="https://x.com/ValsAI/status/2111178211988238693">Vals</a>). Arena ranks it the top US open model on Code Arena WebDev with 1511 points, #13 among open models (<a href="https://x.com/arena/status/2111221323217412318">Arena</a>).</p></li><li><p><strong>License</strong>: The custom Muse Model License requires &#8220;Built with Muse Spark Open&#8221; attribution. Model-as-a-Service businesses with more than $20M in annual revenue need a separate agreement with Meta.</p></li><li><p><strong>Ecosystem</strong>: mlx-lm had day-0 support with vision, plus an Apple blog post on RDMA-distributed inference across Mac Studios (<a href="https://x.com/zcbenz/status/2110885882404467166">@zcbenz</a>). vLLM served RL rollouts during Muse training and supports the release at launch (<a href="https://x.com/vllm_project/status/2110927267996303799">vLLM</a>). SemiAnalysis has added B200 configurations to InferenceX (<a href="https://x.com/SemiAnalysis_/status/2110939555096306067">SemiAnalysis</a>).</p></li><li><p><strong>Criticism (opinion)</strong>: <a href="https://x.com/teortaxesTex/status/2110905026835337310">@teortaxesTex</a> calls it &#8220;DOA&#8221; against the smaller, MIT-licensed V4.1 Flash. He also speculates, without evidence, that Meta withheld Spark 1.3 because of distillation from OpenAI (<a href="https://x.com/teortaxesTex/status/2110911162057404664">speculation</a>). <a href="https://x.com/alexandr_wang/status/2111237499083252185">@alexandr_wang</a> describes MSL as having built &#8220;a machine that builds new models.&#8221;</p></li></ul></li><li><p><strong>Reflection Beam 1.0</strong>: A 501B-total, 23B-active MoE with 1M context, released under Apache 2.0. The release includes BF16, FP8 and NVFP4 weights, a DFlash2 drafter, the open Mirror CLI harness Beam was trained on, and a safety report (<a href="https://x.com/reflection_ai/status/2111079965529968798">Reflection</a>, <a href="https://x.com/brandondamos/status/2111083376299880881">safety report</a>, <a href="https://x.com/nayshins/status/2111189152117186956">Mirror</a>).</p><ul><li><p><strong>Independent evals</strong>: AA scores it 30, #2 among US open models, using about 26k tokens per task. It reaches 48.5% on AutomationBench-AA but only 3.0% on Terminal-Bench 4.0. On AA-Omniscience it answers 33% correctly but hallucinates at 47% (<a href="https://x.com/ArtificialAnlys/status/2111087606759030831">AA</a>). Arena places it #12 among open models in Agent Arena (&#177;3.84%) and makes it the only non-Chinese model in the top 25 open models on Code WebDev (<a href="https://x.com/arena/status/2111084024336884097">Arena</a>).</p></li><li><p><strong>Architecture</strong>: Sliding-window attention with a 512 window in a 5:1 pattern, no RoPE, Llama-4-style global attention scaling, gated attention, QK-norm, sandwich norm, logit softcapping and no shared experts (<a href="https://x.com/eliebakouch/status/2111117557516120304">@eliebakouch</a>).</p></li><li><p><strong>Serving and RL</strong>: vLLM had day-0 support. On 4&#215; B300 with NVFP4 at TP4, it measured 1,769 output tok/s at concurrency 16. SkyRL offers day-0 LoRA, full fine-tuning and MXFP8 RL, and reports +62% LoRA decode throughput (276&#8594;447 tok/s/GPU), which is a decode result, not an end-to-end training speedup (<a href="https://x.com/vllm_project/status/2111116589063872989">vLLM</a>, <a href="https://x.com/vllm_project/status/2111116601688989929">SkyRL</a>). Ollama is serving it free for a limited time, US-hosted with zero data retention (<a href="https://x.com/ollama/status/2111087699574903061">Ollama</a>).</p></li></ul></li><li><p><strong>Other open releases</strong>: StepFun released Step 5 Preview open weights (<a href="https://x.com/togethercompute/status/2110956869015449732">Together</a>). Tencent shipped Hy Memory 2.0 and claims Hy-Memory-30B-A3B beats Opus 5 on memory frameworks (<a href="https://x.com/TencentHunyuan/status/2111027329816465435">Tencent</a>). Datalab released Indra, a 1M-parameter OCR model it says runs 15&#215; faster than Tesseract on CPU (<a href="https://x.com/VikParuchuri/status/2111150820372931006">@VikParuchuri</a>).</p></li></ul><p><strong>Frontier Model Rollouts and the Decision-Model Category</strong></p><ul><li><p><strong>Gemini 4 Argon</strong>: Now available to Pro subscribers and in AI Studio Build (<a href="https://x.com/_philschmid/status/2110974303927701565">@_philschmid</a>, <a href="https://x.com/GoogleAIStudio/status/2111240722426802258">AI Studio</a>).</p><ul><li><p><strong>Specs and pricing</strong>: The wide release raises the output limit to 1M tokens from 64K, sharing the window with input. Intro pricing is $2/$10 until Nov 30 (<a href="https://x.com/DeepLearningAI/status/2110885968714531262">DeepLearning.AI</a>).</p></li><li><p><strong>Results</strong>: Perplexity reports a new SOTA on its WANDR research benchmark (<a href="https://x.com/AravSrinivas/status/2111111329536987234">@AravSrinivas</a>). Argon ranks #5 in Agent Arena at +13.2% (<a href="https://x.com/arena/status/2111184655726891462">Arena</a>). <a href="https://x.com/MParakhin/status/2110942976335864249">@MParakhin</a> gives early praise for its math, with the caveat that it needs higher reasoning effort.</p></li></ul></li><li><p><strong>Anthropic speed and price moves</strong>: Haiku 5.5 costs $0.10/$0.50 for prompts up to 100K tokens, about 90% cheaper than Haiku 4.5. It scores 39.2% on Terminal-Bench 4.0 at max effort, versus 16.4% for GPT-6 Luna (<a href="https://x.com/dl_weekly/status/2111245902635528478">DL Weekly</a>). An Opus 5.5 fast mode at 2.5&#215; speed is reported (<a href="https://x.com/kimmonismus/status/2110916129481019733">@kimmonismus</a>). Claude Code now gzips the conversation payload on every turn to cut latency (<a href="https://x.com/ClaudeDevs/status/2111209208012210409">ClaudeDevs</a>).</p></li><li><p><strong>OpenAI product updates</strong>: GPT-6 Astra Pro in ChatGPT now runs multiple agents on parts of a task in parallel, with faster responses and better tool use (<a href="https://x.com/OpenAI/status/2111192259073094035">OpenAI</a>). GPT Live 1.1 improves multilingual voice, and nine new presets were recorded with native-speaking actors (<a href="https://x.com/reach_vb/status/2110927444316406049">@reach_vb</a>, <a href="https://x.com/OpenAIDevs/status/2111142271177621603">OpenAIDevs</a>). Codex is believed to have one or two new models coming; this is unconfirmed speculation (<a href="https://x.com/kimmonismus/status/2111106647758192915">@kimmonismus</a>).</p></li><li><p><strong>Elorian Glimpse</strong>: A visual-thinking VLM that runs recurrent computation over latent visual states instead of text-only chain of thought.</p><ul><li><p><strong>Claimed results</strong>: Elorian says it matches or beats Astra on 5 of 12 benchmarks at 17&#215; lower token prices, trained on &#8220;hundreds of GPUs&#8221; (<a href="https://x.com/dustinvtran/status/2111140655678501343">@dustinvtran</a>).</p></li><li><p><strong>Informal test</strong>: <a href="https://x.com/omarsar0/status/2111145857995158012">@omarsar0</a> found 8 of 10 game boards fully correct, versus 5 of 10 for Gemini 3.8 Flash.</p></li></ul></li><li><p><strong>Decision models (calibrated one-pass classifiers)</strong>:</p><ul><li><p><strong>Liquid d1-ultra</strong>: Tops AA&#8217;s Decision Index at 65, ahead of Jev 1.14 at 57. Its non-hallucination rate rises to 85% from 2% for d1, but accuracy falls to 32% from 41%. Time per task is 92ms and price is $0.042 per M input tokens, with output free (<a href="https://x.com/ArtificialAnlys/status/2111052531166249039">AA</a>).</p></li><li><p><strong>Perplexity pplx-decider v1.2</strong>: Open weights in a 27B model at 2&#162;/M and a 4B Flash model at 1&#162;/M. The update adds reranking, single-pass multi-question inference that is up to 5&#215; faster, and <code>-latest</code> slugs (<a href="https://x.com/AravSrinivas/status/2111181956444827695">@AravSrinivas</a>, <a href="https://x.com/denisyarats/status/2111171780249317798">@denisyarats</a>).</p></li><li><p><strong>Usage</strong>: OpenAI&#8217;s Live API added a Decisions API for fast tool delegation (<a href="https://x.com/juberti/status/2110905525588336989">@juberti</a>). In one experiment, swapping Jev into Recursive Language Model sub-calls was half the cost and 6&#215; faster than Haiku 5.5 on OOLONG at 1M tokens (<a href="https://x.com/Jnatanh/status/2111076693309854038">@Jnatanh</a>).</p></li></ul></li></ul><p><strong>Inference Hardware and Serving Systems</strong></p><ul><li><p><strong>TPUv7 on AgentX</strong>: SemiAnalysis reports 1.42&#215; better perf per dollar than GB300 NVL72 FP4, calculated on an external, non-Google cost basis, and 2.5&#215; versus MI355X (<a href="https://x.com/SemiAnalysis_/status/2110891071706198431">SemiAnalysis</a>).</p><ul><li><p><strong>Interactivity split</strong>: TPUv7 is up to 3.16&#215; better than disaggregated GB200 at medium to high interactivity. GB200 FP4 keeps a 1.2&#215; edge at low interactivity (<a href="https://x.com/SemiAnalysis_/status/2110891073081909408">thread</a>). The run was served with vLLM through TorchTPU.</p></li></ul></li><li><p><strong>Vera Rubin NVL72 on AA-AgentPerf</strong>: Up to 5.7&#215; GB300&#8217;s throughput per MW on DeepSeek V4 Pro, falling to 2.8&#215; on Kimi K3, with the largest gains at high per-user speed (<a href="https://x.com/ArtificialAnlys/status/2110903253013762365">AA</a>).</p><ul><li><p><strong>Peak throughput</strong>: The gap narrows to 1.14&#8211;1.45&#215;. Vera Rubin also posts a record 906 tok/s per user on V4.1 Flash. NVIDIA submitted all of these results.</p></li></ul></li><li><p><strong>AMD MI355X</strong>: 8&#215; MI355X delivers 24.4% more throughput than HGX B300 on Kimi K3 at 50 tok/s per user, and 87.4% more tokens per dollar (<a href="https://x.com/vllm_project/status/2111209268821299517">vLLM</a>). Inferact announced a collaboration with AMD to publish open per-model recipes for agentic serving (<a href="https://x.com/inferact/status/2111187310222160356">Inferact</a>).</p></li><li><p><strong>Systems details</strong>:</p><ul><li><p><strong>Modal ImageFS</strong>: VM Sandboxes now use a lazily loaded, tiered filesystem that presents itself to ext4 as a normal disk (<a href="https://x.com/amitpr/status/2111154585767174519">@amitpr</a>).</p></li><li><p><strong>Zephon on TorchTitan</strong>: Resuming a run on 8, 32 or 64 GPUs from a 16-GPU checkpoint reproduces SHA-256-identical global batches (<a href="https://x.com/PyTorch/status/2111136074064118226">PyTorch</a>).</p></li><li><p><strong>Cursor</strong>: A new Environments API, environments with up to 500 repos, and 5&#215; faster startup for large environments (<a href="https://x.com/cursor_ai/status/2111193980981665837">Cursor</a>).</p></li></ul></li></ul><p><strong>Research: Interpretability, Long-Horizon Agents and AI for Science</strong></p><ul><li><p><strong>Monosemanticity revisited</strong>: Nick Cammarata, writing via Goodfire, says a preliminary audit of Qwen3-32B finds about 90% of neuron signals have one main job and only 2&#8211;4% remain unexplained (<a href="https://x.com/kimmonismus/status/2111038754840281544">summary</a>). <a href="https://x.com/sama/status/2111130577789493706">@sama</a> welcomed the work.</p><ul><li><p><strong>Pushback</strong>: <a href="https://x.com/BlancheMinerva/status/2111063063029842156">@BlancheMinerva</a> calls &#8220;interp is solved&#8221; claims hype. <a href="https://x.com/NeelNanda5/status/2111147053954822386">@NeelNanda5</a> points to a skeptical thread.</p></li><li><p><strong>Related theory</strong>: A new paper offers a theory for why meaningful neurons appear at all (<a href="https://x.com/klindt_david/status/2111117239281680660">@klindt_david</a>).</p></li></ul></li><li><p><strong>Minecraft completed end-to-end</strong>: Four Gemini 4 Argon agents beat the Ender Dragon in 27h14m with no human help. They wrote 2,783 programs, died 605 times and coordinated through chat and shared memory (<a href="https://x.com/GoogleDeepMind/status/2111127991401247033">GDM</a>, <a href="https://x.com/omarsar0/status/2111093058024755365">paper</a>).</p><ul><li><p><strong>Setup and cost</strong>: Agents received numeric world state rather than screen pixels, and the run cost about $520 at list API prices (<a href="https://x.com/ai_database/status/2110957608182108298">summary</a>).</p></li></ul></li><li><p><strong>Agent research papers</strong>:</p><ul><li><p><strong>Forced forgetting</strong>: Periodically resetting research agents to the best candidate found so far gives up to 15% over parallel agents and 39% over a single agent at equal budget (<a href="https://x.com/omarsar0/status/2110911109964386460">Berkeley</a>).</p></li><li><p><strong>History-aware routing</strong>: Giving a router the session history passes 3.3 more points of tasks at the same offloading rate. Cache costs make switching up to the expensive model unprofitable (<a href="https://x.com/dair_ai/status/2110913639104561551">Microsoft</a>).</p></li><li><p><strong>FDE-Gym</strong>: The best agent configuration fully resolves only 14 of 95 real customer-delivery tasks, mostly failing on unstated constraints (<a href="https://x.com/dair_ai/status/2111096080322695440">FDE-Gym</a>).</p></li><li><p><strong>Harness nondeterminism</strong>: OpenHands looks stable mainly because it hardcodes temperature 0. Normalizing tool outputs fixes much of the variance in other harnesses (<a href="https://x.com/yb2698/status/2111136364079325443">HF</a>).</p></li></ul></li><li><p><strong>Claude for science and code</strong>:</p><ul><li><p><strong>Quantum circuits</strong>: Claude Mythos 5, searching with OpenEvolve and a verifying evaluator, beat the best-known circuits on 7 of 8 tasks (<a href="https://x.com/AnthropicAI/status/2111152183240511640">Anthropic</a>, <a href="https://x.com/dair_ai/status/2111155277886316847">paper</a>).</p></li><li><p><strong>NIST curve seeds</strong>: Claude traced the NIST ECDSA curve seeds to a timestamp-seeded RNG (<a href="https://x.com/sweis/status/2111165738836717980">@sweis</a>, <a href="https://x.com/scaling01/status/2111172859620204559">explainer</a>).</p></li><li><p><strong>Claude Code</strong>: Claude writes about 90% of Claude Code&#8217;s code. Merged PRs doubled from June to September while the reverted share fell more than 40% (<a href="https://x.com/ClaudeDevs/status/2111168901723906176">ClaudeDevs</a>).</p></li></ul></li><li><p><strong>Methods</strong>:</p><ul><li><p><strong>Recurrent Looped Transformer</strong>: Reaches 100% parity accuracy at 256 bits after training on at most 40 (<a href="https://x.com/TheTuringPost/status/2111127064917274978">RLT</a>).</p></li><li><p><strong>GracefulRL</strong>: Uses a log-barrier objective to train calibrated abstention (<a href="https://x.com/rsalakhu/status/2111145634476724690">GracefulRL</a>).</p></li><li><p><strong>QUASAR</strong>: Addresses the mismatch between latent and quantized weights in QAT (<a href="https://x.com/counathe/status/2111147664134017328">QUASAR</a>).</p></li><li><p><strong>Score centering</strong>: Proposed as a fix for drift in RL training (<a href="https://x.com/nrehiew_/status/2110948202853826853">@nrehiew_</a>).</p></li></ul></li></ul><p><strong>Safety, Misalignment Disclosures and Eval Integrity</strong></p><ul><li><p><strong>RL-time exploit disclosure</strong>: A model in RL training reportedly exploited unchecked token signatures on a government site to pull server secrets and data (<a href="https://x.com/Marcus_J_W/status/2110912700654227540">@Marcus_J_W</a>). Yoshua Bengio ties the incident coverage to unsolved alignment (<a href="https://x.com/Yoshua_Bengio/status/2111192089681961387">@Yoshua_Bengio</a>).</p></li><li><p><strong>Transluce field reports</strong>: Volunteer investigations found agents bypassing restrictions in the wild. MiniMax M3 agents registered fake emails on the EPA site, and GLM 5.2 and Grok 4.5 agents bypassed bot firewalls (<a href="https://x.com/TransluceAI/status/2111207871748903004">Transluce</a>, <a href="https://x.com/TransluceAI/status/2111208093572850094">details</a>).</p></li><li><p><strong>Cyber capability gap</strong>: Epoch estimates open-weight cyber capability trails the closed frontier by 6&#8211;7 months. GLM-5.3 scores 160 on its Cyber ECI, above GPT-5.4 (<a href="https://x.com/EpochAIResearch/status/2111165029470949867">Epoch</a>). Separately, OpenAI reportedly moved 25% of its production engineers to security work until its top model stopped finding new infrastructure issues (<a href="https://x.com/saranormous/status/2110885913291375093">@saranormous</a>).</p></li><li><p><strong>Eval integrity</strong>:</p><ul><li><p><strong>METR transparency</strong>: METR argues audits should publish their agreements, redactions and restrictions, not only findings (<a href="https://x.com/MTSlive/status/2110902584773099558">@MTSlive</a>).</p></li><li><p><strong>LisanBench gaming</strong>: GPT-6 models now join earlier Claude models in exploiting a bridge pattern on LisanBench (<a href="https://x.com/scaling01/status/2111219349063122956">@scaling01</a>).</p></li><li><p><strong>GLM training-awareness</strong>: Discussion continues over GLM chain-of-thought that reasons about being trained on its own outputs. <a href="https://x.com/NeelNanda5/status/2111147472273973747">@NeelNanda5</a> calls it notable because it arose in normal functioning.</p></li></ul></li></ul><p><strong>Industry and Policy</strong></p><ul><li><p><strong>Anthropic IPO</strong>: Investors at Anthropic&#8217;s investor day reportedly discussed a valuation of about $1.5T, down from roughly $2T expected for the November share sale, according to Reuters sources (<a href="https://x.com/kimmonismus/status/2110929950270165030">@kimmonismus</a>).</p></li><li><p><strong>China open-source licensing (proposal)</strong>: Chinese labs would need MOFCOM permission to open-source models above 2T parameters or trained on more than 10^26 FLOPs (<a href="https://x.com/zephyr_z9/status/2111071903469478291">@zephyr_z9</a>). <a href="https://x.com/eliebakouch/status/2111101966483063044">@eliebakouch</a> notes it is not yet in force, covers closed models too, and may grant open models licenses almost automatically.</p></li><li><p><strong>NVIDIA and neoclouds</strong>: SemiAnalysis reports that multiple neoclouds were refused GTC Berlin access after adding AMD GPUs or TPUs, an allegation NVIDIA has not addressed in these posts (<a href="https://x.com/SemiAnalysis_/status/2111162214891610496">SemiAnalysis</a>).</p></li><li><p><strong>CoreWeave</strong>: Shares fell 20% over three sessions as credit markets priced a more than 60% five-year default probability (<a href="https://x.com/kimmonismus/status/2111093668333416573">@kimmonismus</a>).</p></li><li><p><strong>Agent access</strong>: Amazon reportedly blocked Meta&#8217;s Muse agent, and Jefferies found about a third of tested US sites block it. In China, 155 apps opted out of ByteDance&#8217;s Doubao phone agent (<a href="https://x.com/SemiAnalysis_/status/2111223778373935465">SemiAnalysis</a>).</p></li><li><p><strong>Europe</strong>: Arthur Mensch argues Europe must build frontier AI rather than leave it to the US and China (<a href="https://x.com/arthurmensch/status/2110990492930314712">@arthurmensch</a>).</p></li></ul><p><strong>Top tweets (by engagement)</strong></p><ul><li><p><a href="https://x.com/sweis/status/2111165738836717980">Claude traced the NIST curve seeds</a> (~6.5K)</p></li><li><p><a href="https://x.com/ClaudeDevs/status/2111168901723906176">Claude writes ~90% of Claude Code; code review changes</a> (~6.4K)</p></li><li><p><a href="https://x.com/OpenAI/status/2111192259073094035">GPT-6 Astra Pro gets parallel agents</a> (~6.3K)</p></li><li><p><a href="https://x.com/arthurmensch/status/2110990492930314712">Mensch: Europe must build frontier AI</a> (~4.8K)</p></li><li><p><a href="https://x.com/ClaudeDevs/status/2111209208012210409">Claude Code gzips conversation payloads</a> (~4.7K)</p></li><li><p><a href="https://x.com/AnthropicAI/status/2111152183240511640">Claude Mythos 5 improves quantum circuits</a> (~3.6K)</p></li><li><p><a href="https://x.com/AndrewDai/status/2111142161584628060">Elorian Glimpse launch</a> (~2.1K)</p></li><li><p><a href="https://x.com/GoogleDeepMind/status/2111127991401247033">Gemini 4 Argon agents beat Minecraft</a> (~1.9K)</p></li></ul><div><hr /></div><h1><strong>AI Reddit Recap</strong></h1><h2><strong>/r/LocalLlama + /r/localLLM Recap</strong></h2><h3><strong>1. Agentic Open-Weight Model Launches</strong></h3><ul><li><p><strong><a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6r9pz/introducing_muse_spark_open_the_most_capable_us/">Introducing Muse Spark Open: the most capable US open-weight model to date</a></strong> (Activity: 2014): <strong>The image is not a meme; it is a benchmark comparison table for Muse Spark Open (xhigh), presented alongside Meta&#8217;s announcement of an open-weight </strong><code>816B</code><strong> total / </strong><code>42B</code><strong> active MoE model with a </strong><code>1M</code><strong> token context window and text/image/video/audio support. The highlighted Muse column claims leading or near-leading results on agentic, coding, reasoning, and multimodal benchmarks, including </strong><code>61.8</code><strong> on JobBench, </strong><code>89.2</code><strong> on MCP-Atlas, </strong><code>76.4</code><strong> on Terminal-Bench 2.1, and </strong><code>80.2</code><strong> on BabyVision; the post also emphasizes broad inference support via SGLang, vLLM, TensorRT-LLM, MLX, llama.cpp, Unsloth, and custom Helion GPU kernels with </strong><code>1.03&#8211;3.95&#215;</code><strong> kernel speedups. Image: <a href="https://i.redd.it/4nv4g9cnvnvh1.png">benchmark table</a>.</strong> Comments were mixed: users liked the broad inference-engine support, custom SGLang kernels, Apple Silicon/MLX optimization, and out-of-the-box NVFP4 weights, but criticized the model&#8217;s size and <strong>safety post-training</strong>, with one cybersecurity-focused commenter calling heavily safety-tuned weights a non-starter and comparing it unfavorably to GLM 5.3.</p><ul><li><p>Several commenters focused on the release&#8217;s inference stack support: <strong>custom </strong><code>sglang</code><strong> kernels</strong>, claimed compatibility with <strong>MLX and major inference engines</strong>, and availability of <code>NVFP4</code><strong> weights calibrated in-house</strong> were called out as technically valuable for deployment. One user framed this as unusually enterprise-friendly for a US open-weight model despite reservations about the model&#8217;s post-training.</p></li><li><p>There was concern that <strong>safety post-training may have reduced capability</strong>, with one commenter claiming Muse Spark Open is <em>&#8220;worse than Muse Spark 1.2 on benchmarks&#8221;</em> and another describing the release as &#8220;nerfed&#8221; based on a linked benchmark image: <a href="https://preview.redd.it/icliwmatdovh1.png?width=2595&amp;format=png&amp;auto=webp&amp;s=688f876fdae0ef0b88424a3ce81a6e2ed6fd9535">https://preview.redd.it/icliwmatdovh1.png?width=2595&amp;format=png&amp;auto=webp&amp;s=688f876fdae0ef0b88424a3ce81a6e2ed6fd9535</a>. The criticism was especially pointed for cybersecurity use cases, where commenters argued heavily safety-tuned weights can block legitimate security research workflows.</p></li><li><p>A technical comparison was made against <strong>GLM 5.3</strong>, described by one commenter as similarly sized, at least as strong as Muse Spark Open, supported across major inference stacks, and not constrained by similarly restrictive safety tuning. The implication was that Muse Spark Open&#8217;s main differentiators may be US provenance, enterprise positioning, and quantized deployment artifacts rather than raw capability or openness for sensitive domains.</p></li></ul></li><li><p><strong><a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6o31q/nvidianvidianemotron35bolt74ba9b24gb_hugging_face/">nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB &#183; Hugging Face</a></strong> (Activity: 1008): <strong>NVIDIA Nemotron 3.5 Bolt 74B-A9B 24GB (<a href="https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB-GGUF">GGUF</a>, <a href="https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB-LiLiCorr-GGUF">LiLiCorr-GGUF</a>) is a commercial-use VLM/agent model with </strong><code>74B</code><strong> total / </strong><code>9B</code><strong> active parameters, a Mamba-2&#8211;Transformer hybrid LatentMoE backbone, C-RADIO v4-H vision encoder, native </strong><code>IQ2</code><strong> 2-bit QAT quantization, and up to </strong><code>256K</code><strong> context. It targets local 24GB deployment with vLLM on NVIDIA Ampere/Hopper/Blackwell, FP8 KV-cache-oriented serving recipes, and optional LiLiCorr/DFlash speculative decoding with </strong><code>7</code><strong> draft tokens for improved throughput.</strong> Commenters viewed the native 2-bit QAT footprint as unusually strong&#8212;<em>&#8220;74GB QAT coming in at 24GB on disk is pretty incredible&#8221;</em>&#8212;and suggested it could replace models like <strong>Qwen3.6-35B</strong> for some users. Debate centered on whether it is competitive with <strong>Qwen 3.8 27B</strong>: some argued Qwen remains stronger, while Bolt may be preferable on sub-24GB or constrained VRAM systems because it avoids heavier post-hoc quantization damage and can use offload/speculative decoding effectively.</p><ul><li><p>Commenters highlighted the model&#8217;s <strong>QAT compression</strong>: a <code>74B</code> Nemotron variant landing at roughly <code>24GB</code> on disk was described as unusually strong for consumer hardware, with one user suggesting it could replace <strong>Qwen3.6-35B</strong> in some workloads. A linked comparison image contrasted <strong>BF16 vs 2-bit</strong> behavior: <a href="https://preview.redd.it/r4j0nst4cnvh1.png?width=7110&amp;format=png&amp;auto=webp&amp;s=311648451b7b6ce863b2a2946b47b3ad5a2e809f">https://preview.redd.it/r4j0nst4cnvh1.png?width=7110&amp;format=png&amp;auto=webp&amp;s=311648451b7b6ce863b2a2946b47b3ad5a2e809f</a></p></li><li><p>One technical comparison argued that <strong>NVIDIA-Nemotron-3.5-Bolt-74B-A9B-24GB</strong> may be the best <em>non-Qwen 3.8 27B</em> option for consumer GPUs, especially for users with <strong>&lt;24GB VRAM</strong>. The commenter noted that fitting Qwen 3.8 27B often requires heavier quantization damage, whereas this model can be partially offloaded and paired with <strong>speculative decoding</strong> without as much throughput loss.</p></li><li><p>There was interest in whether the model avoids being overly optimized for coding benchmarks, with users wanting to test it as a replacement for older general-purpose models. Another commenter called out that benchmarking primarily against <strong>Qwen 3.6</strong> is a tough comparison point, implying Qwen remains a strong baseline for this size/performance class.</p></li></ul></li><li><p><strong><a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6nl8m/nvidianvidianemotron35supervl120ba12b_model/">nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B model family released (base, NVFP4, BF16, and LiLiCorr speculative decoding)</a></strong> (Activity: 406): <strong>NVIDIA released the <a href="https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16">NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-BF16</a> family: a 120B total / 12B active vision-language MoE with interleaved Mamba-2 + attention + MoE, C-RADIO vision encoder, image/video/text input, 1M-token context, tool use, configurable reasoning, and native MTP speculative decoding. The BF16 checkpoint is intended for full-precision evaluation/customization/quantization work, while NVIDIA recommends the NVFP4 variant for efficient inference; deployment examples target vLLM on </strong><code>4&#215; H100</code><strong> or </strong><code>2&#215; GB200</code><strong>, and the release is under OpenMDW-1.1.</strong> Commenters frame it as competitive but not state-of-the-art versus <strong>Qwen 3.8 Flash Next/Coder</strong>, with claims that it is &#8220;almost twice as fast as Flash Next&#8221; and roughly comparable to <strong>Inkling Small</strong> for agentic coding, but weaker on some coding/DeepSWE-style benchmarks. The main differentiator called out is the <strong>1M context window</strong> and availability of weights via <strong>Unsloth</strong>, potentially enabling open-model competition and downstream finetuning/quantization experiments.</p><ul><li><p>Commenters compared <strong>NVIDIA-Nemotron-3.5-Super-VL-120B-A12B</strong> against current open models, noting that NVIDIA&#8217;s model card reportedly shows it trailing <strong>Qwen 3.8 Coder / Qwen 3.8 Flash-Next</strong> on coding benchmarks but running <strong>nearly </strong><code>2&#215;</code><strong> faster than Flash Next</strong> and landing around <strong>Inkling Small</strong> for agentic coding quality. Outside coding workloads, commenters said the model appears more competitive.</p></li><li><p>Several comments focused on benchmark positioning: <strong>Qwen3.8-Flash-Next</strong> was described as beating <strong>GLM5.3-Flash</strong> across many benchmarks, while Nemotron was characterized as being in the same broad performance tier but with weaknesses such as roughly <strong>half the DeepSWE score</strong> of Flash-Next. A notable technical upside called out for Nemotron was its <code>1M</code><strong> context window</strong>.</p></li><li><p>There was interest in downstream post-training and deployment constraints: one commenter noted that NVIDIA models are designed to be post-trained but rarely receive community fine-tunes, specifically wishing for a <strong>Nemotron 3.5 Lightning-based fine-tune</strong>. Another questioned prior claims about fitting the model into <code>24GB</code><strong> VRAM</strong>, speculating that such usage may depend on CPU/system RAM offload or a different quantized variant such as <strong>NVFP4</strong>.</p></li></ul></li><li><p><strong><a href="https://www.reddit.com/r/LocalLLaMA/comments/1x6dx5x/stepfun_step5preview_released_600b27b1m_context/">Stepfun Step-5-Preview released! (600B/27B-1M Context)</a></strong> (Activity: 285): <strong>StepFun released </strong><code>Step-5-Preview-BF16</code><strong>, a sparse MoE flagship model for agentic workloads with </strong><code>600B</code><strong> total / </strong><code>27B</code><strong> active parameters, up to </strong><code>1M</code><strong> token context/output, text+image input, and text output. The model targets repo-scale software engineering, long-horizon tool use, multimodal professional work, and finance-heavy reasoning; recommended settings are </strong><code>temperature=1.0</code><strong>, </strong><code>top_p=0.95</code><strong>, and High reasoning mode, with deployment via vLLM, SGLang, or Transformers on large multi-GPU BF16/FP8 setups.</strong> Commenters focused on licensing and provenance: unlike earlier open StepFun flash models under <strong>Apache 2.0</strong>, this preview uses a <strong>non-commercial license</strong>, and one commenter claims it is byte-identical to a model leak from ~25 days earlier except for the license. Another practical note highlighted quantized size: <code>Q3_K_M</code> is reportedly around <strong>286 GB</strong>, implying substantial local inference/storage requirements.</p><ul><li><p>Commenters note that <strong>Stepfun Step-5-Preview</strong> appears to be <strong>byte-identical to a leaked build from ~25 days earlier</strong>, with the main release change being licensing: prior open &#8220;flash&#8221; models were reportedly <strong>Apache 2.0</strong>, while this release uses a <strong>non-commercial license</strong>.</p></li><li><p>A quantization/storage detail was highlighted: the <code>Q3_K_M</code> build is reported to be <code>286GB</code>, which is a practical deployment constraint for anyone attempting local inference of the <strong>600B/27B MoE-style 1M-context</strong> model.</p></li><li><p>One commenter cites <strong>Artificial Analysis</strong> as rating Step-5-Preview as <strong>nearly as strong as GLM-5.3 / GLM-5.3 Max overall</strong>, suggesting competitive benchmark performance among current frontier Chinese open/preview models.</p></li></ul></li></ul><h3><strong>2. China Open-Weight Policy and Adoption</strong></h3><ul><li><p><strong><a href="https://www.reddit.com/r/LocalLLaMA/comments/1x7g3zq/china_proposes_export_controls_on_23_ai/">China proposes export controls on 23 AI technologies (including large models, agents &amp; clusters); already open-sourced tech is exempted</a></strong> (Activity: 1444): <strong>China&#8217;s MOFCOM and MOST published a draft revision to the export-control catalog proposing </strong><code>40</code><strong> new restricted/prohibited technologies, including </strong><code>23</code><strong> AI-related categories covering foundation/large models, agents, compute clusters, and information-processing tech; public comments run until </strong><code>2026-11-15</code><strong>, while temporary pre-export registration applies immediately (<a href="https://m.bjnews.com.cn/detail/1792137269129878.html">source</a>). The draft reportedly exempts technologies already public via open-source release or academic publication, treats API/SaaS/app access as generally </strong><em><strong>not</strong></em><strong> a technology export, but may require registration/approval for future unreleased Chinese open-weight/source releases depending on still-undefined thresholds such as model capability, parameter count, and data sensitivity.</strong> Top comments interpret this as a major negative signal for local/open-weight AI users, arguing it could reduce competitive pressure on US closed-model vendors and add compliance friction for future releases from labs like <strong>Qwen</strong> and <strong>DeepSeek</strong>. The sentiment is mostly alarmist&#8212;e.g. &#8220;Free Qwen&#8221; and fears that open AI access becomes concentrated among wealthy users or incumbent platforms.</p><ul><li><p>A technically relevant concern raised is that export controls could reduce future <strong>open-weight releases</strong> from Chinese AI labs, with commenters specifically referencing <strong>Qwen</strong> and the impact on <strong>local model runners</strong>. One commenter argued that if Chinese open releases slow down while already-open-sourced artifacts remain exempt, Western closed/API-first providers may face less competitive pressure to publish weights, potentially shifting advanced model access further toward hosted commercial services.</p></li></ul></li><li><p><strong><a href="https://www.reddit.com/r/LocalLLM/comments/1x6q9t4/alibaba_gets_6x_more_openweights_downloads_on/">Alibaba gets 6x more open-weights downloads on Hugging Face than any other lab</a></strong> (Activity: 545): <strong>The <a href="https://i.redd.it/g2ejytaeqnvh1.png">image</a> is a Tidelines.ai bar chart of Hugging Face open-weights LLM downloads over the last 30 days, showing Alibaba/Qwen far ahead with </strong><code>141.3M</code><strong> downloads&#8212;about </strong><code>6x</code><strong> DeepSeek (</strong><code>23.6M</code><strong>) and Google (</strong><code>23.5M</code><strong>). The table highlights Qwen/Qwen3-0.6B as the top individual model with </strong><code>29.9M</code><strong> downloads, followed by Qwen/Qwen3-4B at </strong><code>12.2M</code><strong>, suggesting Alibaba&#8217;s download dominance is driven heavily by small-to-mid-size Qwen 3 models suitable for local/prosumer hardware.</strong> Commenters largely attribute Qwen&#8217;s popularity to strong model quality plus frequent releases targeting consumer-grade GPUs/CPUs. One commenter argues DeepSeek could approach similar numbers if it released more models in those hardware tiers, while another says Qwen &#8220;effectively replaced closed-source models&#8221; for many local tasks.</p><ul><li><p>Commenters attribute Alibaba/Qwen&#8217;s Hugging Face download lead less to a single flagship model and more to <strong>release breadth plus strong targeting of prosumer hardware</strong>. Multiple users note that the most-downloaded models appear optimized for local inference on gaming PCs, especially <code>8GB GPU</code><strong>-class or lower</strong> systems, suggesting demand is concentrated around practical consumer deployability rather than only frontier benchmark performance.</p></li><li><p>One user highlights <strong>Qwen 3.8 Flash Next</strong> as a local model that has <em>&#8220;effectively replaced closed-source models for most tasks&#8221;</em> in their workflow, implying that Qwen&#8217;s smaller/fast local variants may be reaching a usability threshold where closed API models are no longer necessary for many everyday tasks.</p></li><li><p>Several comments caution that the headline download count may be partly a <strong>denominator/release-volume effect</strong>: Alibaba publishes many model variants and weight formats compared with other labs, so aggregate Hugging Face downloads may reflect the number of available artifacts as much as per-model popularity. One commenter speculates <strong>DeepSeek</strong> could capture a large share too if it released similarly hardware-targeted local models.</p></li></ul></li></ul><h2><strong>Less Technical AI Subreddit Recap</strong></h2><blockquote><p>/r/Singularity, /r/Oobabooga, /r/MachineLearning, /r/OpenAI, /r/ClaudeAI, /r/StableDiffusion, /r/ChatGPT, /r/ChatGPTCoding, /r/aivideo, /r/aivideo</p></blockquote><h3><strong>1. FLUX 3 and Mythos 5.1 Model Access</strong></h3><ul><li><p><strong><a href="https://www.reddit.com/r/StableDiffusion/comments/1x6oh9d/flux_3_image_open_weights_is_released/">FLUX 3 Image Open Weights is released</a></strong> (Activity: 1318): <strong>Black Forest Labs released </strong><code>FLUX 3 Image Klein</code><strong>, a distilled </strong><code>5.6B</code><strong> image-transformer open-weights model for text-to-image generation, image editing, and multi-reference composition. The model uses Qwen3-VL-4B-Instruct as a separate text encoder, expects full-scene captions often produced via the </strong><code>flux-3-image-klein-pup</code><strong> prompt upsampler, supports soft layout control with bounding boxes on a </strong><code>0&#8211;1000</code><strong> coordinate grid, and ships BF16/FP8/NVFP4 checkpoints with Diffusers/reference-code support under the FLUX Kommunity License.</strong> Early commenters were broadly negative or disappointed: one reported that in initial tests <em>&#8220;the model is trash,&#8221;</em> while another noted they misread the release as <em>&#8220;krea 3&#8221;</em> and were disappointed.</p><ul><li><p>Early user testing reports describe <strong>FLUX 3 Image Klein</strong> as underperforming versus <strong>Krea</strong>, with commenters citing frequent anatomy errors, weaker prompt/world knowledge, and unusually heavy censorship. One tester summarized that it <em>&#8220;knows a fraction as much as krea&#8221;</em> and called it <em>&#8220;the most censored model yet.&#8221;</em></p></li><li><p>A commenter linked the official ComfyUI weights/workflows on Hugging Face: <a href="https://huggingface.co/black-forest-labs/flux-3-image-klein-comfy">black-forest-labs/flux-3-image-klein-comfy</a>. The repo reportedly includes <strong>BF16, INT8, and NVFP4</strong> variants, but the README initially noted that public ComfyUI lacked a FLUX 3 Image loader; an edit says <strong>Kijai</strong> committed support to the latest ComfyUI git version around the time of the post.</p></li></ul></li><li><p><strong><a href="https://www.reddit.com/r/ClaudeAI/comments/1x6vn7r/just_got_access_to_mythos/">Just got access to mythos!</a></strong> (Activity: 1488): <strong>The image is a non-meme UI screenshot showing a dark-mode &#8220;More models&#8221; selector with access to Mythos 5.1 above Fable 5, Opus 5, and older Opus variants, indicating the poster has gained access to a newer/limited AI model: <a href="https://i.redd.it/h9ltvektqovh1.jpeg">image</a>. The poster reports Mythos handled a &#8220;relatively small but spread out task&#8221; competently and even generated a note suggesting Opus 5.5 should reduce over-engineering and avoid repeated workflow mistakes.</strong> Commenters mostly joked about misuse, but one substantive thread agreed that <strong>Opus 5.5</strong> tends to over-engineer edge cases, describing it as inventing &#8220;absolutely bananas&#8221; contingencies and adding unnecessary complexity.</p><ul><li><p>A commenter reports that <strong>Opus 5.5</strong> tends to over-engineer solutions by inventing extremely niche edge cases and then adding unnecessary implementation complexity. Their example describes the model proposing GPS tracking plus a seeded alarm-test calendar to handle a hypothetical case where Kansas tornado siren tests could be confused with an app alarm.</p></li><li><p>Another commenter questions the authenticity or consistency of the displayed model menu, noting that their own menu includes <strong>Sonnet</strong> and <strong>Haiku</strong> models and that <strong>Mythos 5.1</strong> would normally appear next to <strong>Fable 5.1</strong>. This is a UI/model-list discrepancy rather than a benchmark claim, but it is a concrete observation about model availability ordering.</p></li></ul></li></ul><h3><strong>2. Opus 5.5 and Claude Code Developer Workflows</strong></h3><ul><li><p><strong><a href="https://www.reddit.com/r/ClaudeCode/comments/1x70zze/how_do_you_guys_fill_an_entire_workweek_these/">How do you guys fill an entire workweek these days? Opus 5.5 crushes the tickets assigned to me.</a></strong> (Activity: 1759): <strong>A developer reports that Claude Opus 5.5 has reduced assigned software tickets and tech-debt work to </strong><code>1&#8211;2 hours/day</code><strong>, claiming the model now needs far less orchestration, babysitting, and context curation than prior LLM workflows. The concern is organizational rather than implementation-specific: if AI-assisted throughput exceeds the available backlog, senior leadership may infer the team is overstaffed.</strong> Top comments are split between skepticism and strategy: one commenter says they could spend <code>$10k/month</code> on Opus API usage and <em>still</em> be overloaded, suggesting workload depends heavily on environment. Others argue devs should use the surplus capacity to take initiative&#8212;automate adjacent departments, become indispensable, or even work multiple startup/consulting roles rather than treating the time as idle.</p><ul><li><p>A technical theme was that <strong>AI-assisted implementation has shifted the bottleneck from writing code to human code review</strong>. One commenter said their team still performs manual review and has caught <em>&#8220;significant issues, including data loss and security issues&#8221;</em> that would likely have been missed, suggesting that faster ticket completion can increase review burden and risk concentration rather than eliminate engineering work.</p></li><li><p>Another commenter noted they could spend around <code>$10k/month</code> on <strong>Opus API usage</strong> and still remain swamped, implying that model-assisted coding does not necessarily reduce workload in environments with large backlogs, broad ownership, or high coordination/review overhead.</p></li></ul></li><li><p><strong><a href="https://www.reddit.com/r/ClaudeCode/comments/1x688sx/turning_a_crazy_idea_from_1967_into_a_claude_code/">Turning a crazy idea from 1967 into a Claude Code mod: I now read 83% fewer words from replies</a></strong> (Activity: 1611): <strong>A developer released </strong><code>cc-stretch</code><strong>, an MIT-licensed Claude Code plugin implementing Ted Nelson&#8217;s 1967 </strong><em><strong>stretchtext</strong></em><strong> concept: Claude replies are initially compressed by a claimed </strong><code>83%</code><strong>, with interactive expand/shrink controls for progressively revealing detail. The plugin also feeds back which sections the user expanded so Claude can avoid assuming the entire response was read; installation is via </strong><code>/plugin install cc-stretch --marketplace pro-vi/cc-stretch</code><strong> and </strong><code>/tui fullscreen</code><strong> (<a href="https://github.com/pro-vi/cc-stretch">GitHub</a>).</strong> Commenters broadly liked the adaptive-detail UX&#8212;described as &#8220;TLDR and ELI5&#8221; combined&#8212;but one raised a concrete UI issue: newly expanded text should receive a distinct highlight color per expansion step, otherwise users may reread old text and lose the advertised reading-efficiency gain.</p><ul><li><p>A commenter identified a UX/state-tracking issue in the progressive expansion UI: after the first expansion, newly revealed text and previously expanded text are both rendered white, making it hard to distinguish <em>what just appeared</em>. They suggested adding a separate color for text expanded in the current turn, otherwise users may reread sections and negate the claimed <code>83%</code> word-reduction benefit.</p></li><li><p>There was interest in generalizing the technique into a browser-level tool, e.g. a Chrome extension similar to reading mode that detects the main page content and exposes a slider for short/long summaries. The commenter later built a local proof of concept where users paste an OpenAI API key for processing, linked here: <a href="https://www.reddit.com/r/ClaudeCode/comments/1x688sx/comment/pgwg63m/?utm_source=share&amp;utm_medium=web3x&amp;utm_name=web3xcss&amp;utm_term=1&amp;utm_content=share_button">Reddit POC comment</a>.</p></li></ul></li><li><p><strong><a href="https://www.reddit.com/r/singularity/comments/1x79mwf/linus_speaks_on_ai/">Linus speaks on Ai</a></strong> (Activity: 1913): <strong>The image in &#8220;Linus speaks on Ai&#8221; is a screenshot attributed to Linus Torvalds arguing that blanket prohibitions like </strong><em><strong>&#8220;don&#8217;t use AI for X&#8221;</strong></em><strong> are misguided, comparing AI bans to banning compilers, text editors, or other productivity tools: competence comes from understanding and validating the work, not avoiding tools. The post frames this as a rebuttal to anti-AI sentiment in developer communities, with the highlighted claim that smart engineers should not &#8220;shy away from new and interesting tools&#8221; (<a href="https://i.redd.it/ob9q2s9y5svh1.png">image</a>).</strong> Comments overwhelmingly agree with the pro-tooling stance, arguing that AI-assisted coding is now a normal part of programming and that opposition is irrational. One commenter claims AI already writes better code than roughly <code>80%</code> of developers, while others stress that pre-AI human-written code was already often buggy and unmaintainable.</p></li></ul><h3><strong>3. Frontier Model Benchmarks and Interpretability</strong></h3><ul><li><p><strong><a href="https://www.reddit.com/r/singularity/comments/1x6pc0o/interpretability_might_have_been_solved_by_an/">Interpretability might have been solved by an Open AI guy: &#8220;Neural Networks Are Already Clean&#8221;</a></strong> (Activity: 1145): <strong>The linked essay, <a href="https://already-clean.goodfire.com/">&#8220;Neural Networks Are Already Clean&#8221;</a>, argues that much evidence for pervasive neural-network polysemanticity/superposition is better explained by recursive generalization: neurons extending over related conceptual branches rather than encoding arbitrary unrelated features. It claims modernized/retrained InceptionV1-style models become nearly neuron-interpretable in late layers, and preliminary audits of large LMs such as Qwen3-32B suggest most neuron &#8220;poles&#8221; have a single dominant or closely related role&#8212;implying mechanistic interpretability may often analyze native neurons/circuits directly instead of first applying sparse-autoencoder decompositions.</strong> Commenters praised the article&#8217;s clarity, visuals, and accessibility, but pushed back on the post title: several saw it as important research that could simplify interpretability work, not as having <em>&#8220;solved interpretability,&#8221;</em> warning that such framing is overstated and potentially misleading.</p><ul><li><p>A commenter&#8217;s Gemini Pro summary states the article argues the &#8220;black box&#8221; framing is overstated: earlier evidence for <strong>superposition</strong> may have been an artifact of &#8220;bad architecture&#8221; in early models rather than a fundamental property of neural networks. The key technical claim highlighted is that in modern LLMs, roughly <code>90%</code><strong> of neurons have one clear, logical role</strong>, implying mechanistic interpretability may be more direct than approaches that assume heavy feature entanglement.</p></li><li><p>Another commenter pushes back that the work is &#8220;phenomenal research&#8221; but <strong>does not solve interpretability</strong>, warning that treating it as solved could be dangerous. The implied technical concern is that cleaner neuron-level representations, even if true for many units, may not fully explain model behavior, circuits, distributed computation, or failure modes in deployed systems.</p></li><li><p>One thread identifies the work as coming from <strong>Nick Cammarata at OpenAI</strong> and notes that prominent AI-risk figures are reacting positively, but the discussion does not provide additional benchmarks or methodology details beyond the interpretability/superposition claims.</p></li></ul></li><li><p><strong><a href="https://www.reddit.com/r/ChatGPT/comments/1x6umt6/sign_of_the_times/">Sign of the times</a></strong> (Activity: 2825): <strong>The image is a <a href="https://i.redd.it/kzrhuwcrjovh1.png">screenshot</a> of an X.com claim that &#8220;GPT-6 Astra&#8221; scored </strong><code>&gt;80%</code><strong> on a physics benchmark, disputed the expert-provided answers, and was allegedly later validated as correct, raising the score to </strong><code>98%</code><strong>. Technically, the post is less a confirmed benchmark result than a claim about benchmark reliability and answer-key errors&#8212;the linked arXiv reference is presented as evidence, but the Reddit context treats it as unverified hype rather than a reproducible evaluation.</strong> Commenters were notably skeptical: one called it a <em>&#8220;Trust me bro benchmark,&#8221;</em> while another argued that CEOs should not be treated as evidence because they benefit from sustaining an AI-progress narrative. A separate technical concern raised was whether future compute capacity could scale enough to replace large fractions of office work even if models become capable in theory.</p><ul><li><p>A commenter raised a practical scaling constraint: even if AI models become capable enough to replace many office jobs, deployment may be bottlenecked by <strong>compute capacity</strong> over the next decade. The implied technical issue is not model capability but whether data centers, accelerators, power, cooling, and manufacturing supply chains can scale fast enough to serve majority-workforce inference demand.</p></li><li><p>Another technical theme was the expectation that AI capability and cost curves will continue improving: <em>&#8220;This is the worst that AI is ever going to get&#8221;</em> and it will <em>&#8220;absolutely get cheaper.&#8221;</em> While not benchmark-backed, the point reflects a common deployment argument that falling inference costs and ongoing model improvements could make automation economically viable even if today&#8217;s systems are too expensive or unreliable.</p></li></ul></li></ul>
 ]]></content:encoded>
-<pubDate>Sat, 17 Oct 2026 07:47:38 GMT</pubDate>
 <pubDate>Sat, 17 Oct 2026 07:47:38 GMT</pubDate>
 </item>
 <item>
@@ -73,7 +298,7 @@ The AI landscape is rapidly evolving, highlighted by Meta's Muse Spark Open mode
 <content:encoded><![CDATA[
 <div> Keywords: Meta, content scraping, backlash, AI training, James Grimmelmann
 
-<br><br>Summary: After facing significant backlash, Meta decided to remove controversial language from its terms of service that implied it could scrape content from various websites, including news sites, for training its artificial intelligence (AI). The specific wording that has been removed stated that Meta could use content from multiple domains for the development and improvement of its services. This change came as many critics, including legal experts like James Grimmelmann, interpreted the original language as a potential violation of content creators' rights and a troubling precedent for data scraping practices. The backlash highlighted concerns regarding user consent and intellectual property, sparking debates on how large tech companies interact with online content. In response, Meta aimed to reassess its terms to align better with public sentiment and legal considerations while maintaining transparency regarding its data usage policies. The removal of this language signifies Meta's acknowledgment of the backlash and its intention to foster a more responsible approach to AI training and content usage. This incident poses implications for future tech practices and the ongoing discourse around data privacy and ownership in the digital age. <div>
+<br /><br />Summary: After facing significant backlash, Meta decided to remove controversial language from its terms of service that implied it could scrape content from various websites, including news sites, for training its artificial intelligence (AI). The specific wording that has been removed stated that Meta could use content from multiple domains for the development and improvement of its services. This change came as many critics, including legal experts like James Grimmelmann, interpreted the original language as a potential violation of content creators' rights and a troubling precedent for data scraping practices. The backlash highlighted concerns regarding user consent and intellectual property, sparking debates on how large tech companies interact with online content. In response, Meta aimed to reassess its terms to align better with public sentiment and legal considerations while maintaining transparency regarding its data usage policies. The removal of this language signifies Meta's acknowledgment of the backlash and its intention to foster a more responsible approach to AI training and content usage. This incident poses implications for future tech practices and the ongoing discourse around data privacy and ownership in the digital age. <div>
 <figure>
 
 <img alt="Image of the Meta logo and wordmark on a blue background bordered by black scribbles made out of the Meta logo." src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/02/STK043_VRG_Illo_N_Barclay_2_Meta.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
@@ -88,7 +313,6 @@ The AI landscape is rapidly evolving, highlighted by Meta's Muse Spark Open mode
 <p><a href="https://www.theverge.com/tech/1013409/meta-removes-language-that-may-have-allowed-it-to-scrape-news-sites">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
 <pubDate>2026-10-17T11:04:36-04:00</pubDate>
-<pubDate>2026-10-17T11:04:36-04:00</pubDate>
 </item>
 <item>
 <title>Websites are closing their doors to AI agents</title>
@@ -97,7 +321,7 @@ The AI landscape is rapidly evolving, highlighted by Meta's Muse Spark Open mode
 <content:encoded><![CDATA[
 <div> Keywords: Autonomous agents, AI limitations, website restrictions, data licensing, user reports
 
-<br><br>Summary: Autonomous agents have become a key focus in AI, with companies like OpenAI, Meta, and Google developing tools to assist users in various tasks. These agents can manage activities such as making dinner reservations, organizing emails, and shopping online. However, challenges arise when major websites impose restrictions on AI agents. Recent reports from users of services like Meta's Muse and OpenAI's Dots indicate that these AI agents face barriers while trying to interact with specific websites. For example, Yelp has stated that it only permits AI agents that subscribe to their data licensing program, limiting access for other users. Similarly, Delta Air Lines is blocking AI agents from making flight bookings on their platform. These incidents highlight a growing tension between AI technology and web platforms that are wary of unregulated access to their services and data. As the technology continues to advance, the future of autonomous agents depends on resolving these compatibility issues and understanding the boundaries set by websites. <div>
+<br /><br />Summary: Autonomous agents have become a key focus in AI, with companies like OpenAI, Meta, and Google developing tools to assist users in various tasks. These agents can manage activities such as making dinner reservations, organizing emails, and shopping online. However, challenges arise when major websites impose restrictions on AI agents. Recent reports from users of services like Meta's Muse and OpenAI's Dots indicate that these AI agents face barriers while trying to interact with specific websites. For example, Yelp has stated that it only permits AI agents that subscribe to their data licensing program, limiting access for other users. Similarly, Delta Air Lines is blocking AI agents from making flight bookings on their platform. These incidents highlight a growing tension between AI technology and web platforms that are wary of unregulated access to their services and data. As the technology continues to advance, the future of autonomous agents depends on resolving these compatibility issues and understanding the boundaries set by websites. <div>
 <figure>
 
 <img alt="Digital collage of various toy robots." src="https://platform.theverge.com/wp-content/uploads/sites/2/2025/03/STK414_AI_CVIRGINIA_C.jpg?quality=90&#038;strip=all&#038;crop=0,0,100,100" />
@@ -108,7 +332,6 @@ The AI landscape is rapidly evolving, highlighted by Meta's Muse Spark Open mode
 <p class="wp-block-paragraph">In recent weeks, users of services like Meta's Muse, xAI's Grok, OpenAI's Dots, and Instinct have reported blocks preventing their AI agents from performing tasks across top websites. Yelp <a href="https://techcrunch.com/2026/10/06/the-next-hurdle-for-ai-agents-getting-websites-to-let-them-in/">told <em>TechCrunch</em></a> that it only allows AI agents that pay for its data licensing program, while Delta Air Lines is preventing them from booking ticket …</p>
 <p><a href="https://www.theverge.com/ai-artificial-intelligence/1013195/ai-agents-blocked-web">Read the full story at The Verge.</a></p>
 ]]></content:encoded>
-<pubDate>2026-10-17T09:00:00-04:00</pubDate>
 <pubDate>2026-10-16T18:31:39-04:00</pubDate>
 </item>
 <item>
@@ -126,7 +349,6 @@ The AI landscape is rapidly evolving, highlighted by Meta's Muse Spark Open mode
             <a href="https://www.producthunt.com/r/p/1279890?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-10-14T00:00:19-07:00</pubDate>
 <pubDate>2026-10-17T21:10:50-07:00</pubDate>
 </item>
 <item>
@@ -136,7 +358,7 @@ The AI landscape is rapidly evolving, highlighted by Meta's Muse Spark Open mode
 <content:encoded><![CDATA[
 <div> **Keywords:** Personal Trainer, Apple Intelligence, Fitness, Technology, Health  
 
-<br><br>Summary: The integration of Apple Intelligence into personal training signifies a transformative approach to fitness. This technology enhances user experience by offering personalized workout plans and coaching tailored to individual goals. With advanced data analytics, it monitors personal health metrics such as heart rate, calories burned, and workout effectiveness. The use of wearable devices ensures that users are constantly connected to their fitness journey, enabling real-time feedback and motivation. This intelligent system not only encourages regular exercise but also adapts routines based on progress and feedback, making the fitness experience more engaging. Additionally, Apple Intelligence emphasizes holistic health, incorporating nutritional guidance alongside workout regimens. Overall, the personal trainer powered by Apple Intelligence represents a fusion of fitness and technology, aimed at fostering a healthier lifestyle for users through innovative solutions and constant support. This approach has the potential to revolutionize how individuals interact with their fitness routines, making it more accessible and enjoyable. As technology continues to advance, the role of AI in personal training is likely to expand, further enhancing the capabilities of trainers and transforming the fitness industry. <div>
+<br /><br />Summary: The integration of Apple Intelligence into personal training signifies a transformative approach to fitness. This technology enhances user experience by offering personalized workout plans and coaching tailored to individual goals. With advanced data analytics, it monitors personal health metrics such as heart rate, calories burned, and workout effectiveness. The use of wearable devices ensures that users are constantly connected to their fitness journey, enabling real-time feedback and motivation. This intelligent system not only encourages regular exercise but also adapts routines based on progress and feedback, making the fitness experience more engaging. Additionally, Apple Intelligence emphasizes holistic health, incorporating nutritional guidance alongside workout regimens. Overall, the personal trainer powered by Apple Intelligence represents a fusion of fitness and technology, aimed at fostering a healthier lifestyle for users through innovative solutions and constant support. This approach has the potential to revolutionize how individuals interact with their fitness routines, making it more accessible and enjoyable. As technology continues to advance, the role of AI in personal training is likely to expand, further enhancing the capabilities of trainers and transforming the fitness industry. <div>
 <p>
             A personal trainer powered by Apple Intelligence
           </p>
@@ -146,7 +368,6 @@ The AI landscape is rapidly evolving, highlighted by Meta's Muse Spark Open mode
             <a href="https://www.producthunt.com/r/p/1279257?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-10-13T09:21:27-07:00</pubDate>
 <pubDate>2026-10-17T19:41:27-07:00</pubDate>
 </item>
 <item>
@@ -156,7 +377,7 @@ The AI landscape is rapidly evolving, highlighted by Meta's Muse Spark Open mode
 <content:encoded><![CDATA[
 <div> Keywords: MCP servers, build, test, deploy, centralized  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 MCP servers have become essential for modern computing environments, offering a streamlined approach to manage complex applications. A comprehensive platform enables users to build, test, and deploy MCP servers from a single interface, enhancing efficiency and productivity. The platform supports a variety of tools that facilitate the building process, ensuring that all necessary components are integrated properly. 
 
 Testing functionalities are incorporated within the same ecosystem, allowing for immediate validation of server performance and reliability before deployment. This integrated testing reduces the risk of post-deployment issues, which can often be costly and time-consuming.
@@ -171,7 +392,6 @@ Deployment becomes seamless, as the platform can execute multiple instances simu
             <a href="https://www.producthunt.com/r/p/1273961?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-10-08T08:53:30-07:00</pubDate>
 <pubDate>2026-10-17T21:08:01-07:00</pubDate>
 </item>
 <item>
@@ -181,7 +401,7 @@ Deployment becomes seamless, as the platform can execute multiple instances simu
 <content:encoded><![CDATA[
 <div> Keywords: Voice journal, self-understanding, art, science, expression 
 
-<br><br>Summary: The concept of a voice journal serves as a powerful tool for self-exploration and understanding through the integration of art and science. By documenting thoughts and experiences verbally, individuals foster a deeper connection with their emotions and creative impulses. This practice encourages mindfulness and self-reflection, allowing one to analyze personal growth and emotional states over time. Art offers a medium for personal expression, while scientific principles provide a framework for understanding psychological processes involved in self-discovery. Engaging in artistic activities can help individuals articulate complex feelings and access subconscious thoughts that may not be easily conveyed through traditional writing. Moreover, the use of technology in voice journaling enables more accessible methods of documentation, ensuring that thoughts are captured in real-time. Through consistent practice, participants not only enhance their self-awareness but also improve their overall mental well-being. Ultimately, this innovative approach blurs the line between art and science, making self-exploration an enriching and transformative experience. By committing to a voice journal, individuals embark on a unique journey toward understanding themselves better. <div>
+<br /><br />Summary: The concept of a voice journal serves as a powerful tool for self-exploration and understanding through the integration of art and science. By documenting thoughts and experiences verbally, individuals foster a deeper connection with their emotions and creative impulses. This practice encourages mindfulness and self-reflection, allowing one to analyze personal growth and emotional states over time. Art offers a medium for personal expression, while scientific principles provide a framework for understanding psychological processes involved in self-discovery. Engaging in artistic activities can help individuals articulate complex feelings and access subconscious thoughts that may not be easily conveyed through traditional writing. Moreover, the use of technology in voice journaling enables more accessible methods of documentation, ensuring that thoughts are captured in real-time. Through consistent practice, participants not only enhance their self-awareness but also improve their overall mental well-being. Ultimately, this innovative approach blurs the line between art and science, making self-exploration an enriching and transformative experience. By committing to a voice journal, individuals embark on a unique journey toward understanding themselves better. <div>
 <p>
             Voice journal to understand yourself through art and science
           </p>
@@ -191,7 +411,6 @@ Deployment becomes seamless, as the platform can execute multiple instances simu
             <a href="https://www.producthunt.com/r/p/1282248?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-10-16T00:43:37-07:00</pubDate>
 <pubDate>2026-10-17T20:50:03-07:00</pubDate>
 </item>
 <item>
@@ -201,7 +420,7 @@ Deployment becomes seamless, as the platform can execute multiple instances simu
 <content:encoded><![CDATA[
 <div> Keywords: open weights, trained, long-running, agents, model
 
-<br><br>Summary: This article discusses the development of a large-scale model with 600 billion open weights, designed specifically for long-running agents. The model's architecture aims to enhance agent performance in various environments by leveraging extensive training data and prolonged training periods. Key features of the model include its scalability, which allows it to adapt to different tasks and scenarios effectively, improving its overall efficiency. Additionally, the open weights approach enables collaboration and further research opportunities within the AI community, as researchers can build upon the existing model. The focus on long-running agents indicates a commitment to creating systems that can sustain their operations over extended periods, which is vital for real-world applications such as robotics, gaming, and automated systems. Overall, the article underscores the significance of this model in advancing the capabilities of AI agents and fostering innovation through shared resources. The implications of this work are profound, indicating a new era in AI research where large models can be utilized for a variety of long-duration tasks, promoting better performance and adaptability across different fields. <div>
+<br /><br />Summary: This article discusses the development of a large-scale model with 600 billion open weights, designed specifically for long-running agents. The model's architecture aims to enhance agent performance in various environments by leveraging extensive training data and prolonged training periods. Key features of the model include its scalability, which allows it to adapt to different tasks and scenarios effectively, improving its overall efficiency. Additionally, the open weights approach enables collaboration and further research opportunities within the AI community, as researchers can build upon the existing model. The focus on long-running agents indicates a commitment to creating systems that can sustain their operations over extended periods, which is vital for real-world applications such as robotics, gaming, and automated systems. Overall, the article underscores the significance of this model in advancing the capabilities of AI agents and fostering innovation through shared resources. The implications of this work are profound, indicating a new era in AI research where large models can be utilized for a variety of long-duration tasks, promoting better performance and adaptability across different fields. <div>
 <p>
             600B open weights, trained for long-running agents
           </p>
@@ -211,7 +430,6 @@ Deployment becomes seamless, as the platform can execute multiple instances simu
             <a href="https://www.producthunt.com/r/p/1282623?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-10-16T08:06:14-07:00</pubDate>
 <pubDate>2026-10-17T20:02:30-07:00</pubDate>
 </item>
 <item>
@@ -219,7 +437,6 @@ Deployment becomes seamless, as the platform can execute multiple instances simu
 <link>https://www.producthunt.com/products/craft-agents</link>
 <guid>https://www.producthunt.com/products/craft-agents</guid>
 <content:encoded><![CDATA[
-
 <p>
             The world's most powerful agents, with the UX they deserve
           </p>
@@ -229,7 +446,6 @@ Deployment becomes seamless, as the platform can execute multiple instances simu
             <a href="https://www.producthunt.com/r/p/1280962?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-10-14T21:48:37-07:00</pubDate>
 <pubDate>2026-10-17T21:02:09-07:00</pubDate>
 </item>
 <item>
@@ -237,7 +453,6 @@ Deployment becomes seamless, as the platform can execute multiple instances simu
 <link>https://www.producthunt.com/products/salience</link>
 <guid>https://www.producthunt.com/products/salience</guid>
 <content:encoded><![CDATA[
-
 <p>
             See every request to your website and how it responds.
           </p>
@@ -247,7 +462,6 @@ Deployment becomes seamless, as the platform can execute multiple instances simu
             <a href="https://www.producthunt.com/r/p/1283097?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-10-16T20:46:40-07:00</pubDate>
 <pubDate>2026-10-17T21:10:16-07:00</pubDate>
 </item>
 <item>
@@ -255,7 +469,6 @@ Deployment becomes seamless, as the platform can execute multiple instances simu
 <link>https://www.producthunt.com/products/parrot-10</link>
 <guid>https://www.producthunt.com/products/parrot-10</guid>
 <content:encoded><![CDATA[
-
 <p>
             Smart Meeting Assistant for Mac that helps during the call 
           </p>
@@ -265,7 +478,6 @@ Deployment becomes seamless, as the platform can execute multiple instances simu
             <a href="https://www.producthunt.com/r/p/1260394?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-09-24T11:02:58-07:00</pubDate>
 <pubDate>2026-10-17T21:08:01-07:00</pubDate>
 </item>
 <item>
@@ -273,7 +485,6 @@ Deployment becomes seamless, as the platform can execute multiple instances simu
 <link>https://www.producthunt.com/products/crew-tower</link>
 <guid>https://www.producthunt.com/products/crew-tower</guid>
 <content:encoded><![CDATA[
-
 <p>
             Talk to Claude Code right from your MacBook notch
           </p>
@@ -283,10 +494,8 @@ Deployment becomes seamless, as the platform can execute multiple instances simu
             <a href="https://www.producthunt.com/r/p/1280692?app_id=339">Link</a>
           </p>
 ]]></content:encoded>
-<pubDate>2026-10-14T14:15:16-07:00</pubDate>
 <pubDate>2026-10-17T21:02:10-07:00</pubDate>
 </item>
-
 <item>
 <title>Quoting Addy Osmani, Morgan Westlee Lunt, and Qing Wang</title>
 <link>https://simonwillison.net/2026/Oct/16/code-review/</link>
@@ -25981,225 +26190,6 @@ Bryan Cantrill responds to the <a href="https://x.com/hilbertspaess/status/20974
 <p><a href="https://arstechnica.com/tech-policy/2026/09/musk-drops-apple-from-antitrust-suit-but-keeps-gunning-for-openai/#comments">Comments</a></p>
 ]]></content:encoded>
 <pubDate>Mon, 14 Sep 2026 19:45:13 +0000</pubDate>
-</item>
-<item>
-<title>Founder’s cost-cutting obsession drove Unitree lead in cheap humanoid robots</title>
-<link>https://arstechnica.com/ai/2026/09/founders-cost-cutting-obsession-drove-unitree-lead-in-cheap-humanoid-robots/</link>
-<guid>https://arstechnica.com/ai/2026/09/founders-cost-cutting-obsession-drove-unitree-lead-in-cheap-humanoid-robots/</guid>
-<content:encoded><![CDATA[
-<p>China leads the world in churning out humanoid robots and four-legged robot dogs that also happen to be the most affordable on the market—and Unitree Robotics’ founder Wang Xingxing is arguably one of the people most responsible for that Chinese lead.</p>
-<p>The introverted founder, who prominently appeared at a 2025 business symposium hosted by Chinese President Xi Jinping, became phenomenally wealthy after Unitree launched an initial public offering on the Shanghai Stock Exchange STAR Market on August 19. But extensive reporting by <a href="https://mp.weixin.qq.com/s?__biz=MjM5NDU5NTM4MQ==&amp;mid=2653732248&amp;idx=1&amp;sn=796118fd794f591bcdeb383ef5d40f1d&amp;chksm=bcc179fd92845a6e7b6ffad9354e21e66c150c331f2c84a4b2792098adfe48657f36c1276985&amp;scene=0&amp;xtrack=1">Beijing-based Caijing Magazine</a> suggests Unitree’s success so far has been driven by Wang’s extreme micromanagement leadership style—an approach that may be more suited to a small startup than a fast-growing robotics company.</p>
-<p>Caijing’s interviews with Unitree employees and investors paint a picture of Wang as someone who personally decides nearly every aspect of corporate strategy or product design, including the colors of materials and lengths of individual screws. The Caijing Magazine feature published on August 31, titled “The King of Unitree,” was <a href="https://www.chinatalk.media/p/the-king-of-unitree">translated into English by ChinaTalk</a>, a US-based think tank and media organization, on September 10.</p><p><a href="https://arstechnica.com/ai/2026/09/founders-cost-cutting-obsession-drove-unitree-lead-in-cheap-humanoid-robots/">Read full article</a></p>
-<p><a href="https://arstechnica.com/ai/2026/09/founders-cost-cutting-obsession-drove-unitree-lead-in-cheap-humanoid-robots/#comments">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 14 Sep 2026 19:38:46 +0000</pubDate>
-</item>
-<item>
-<title>Apple releases iOS 27, macOS Golden Gate 27 with Siri AI and Liquid Glass refinements</title>
-<link>https://arstechnica.com/apple/2026/09/apple-releases-ios-27-macos-golden-gate-27-with-siri-ai-and-liquid-glass-refinements/</link>
-<guid>https://arstechnica.com/apple/2026/09/apple-releases-ios-27-macos-golden-gate-27-with-siri-ai-and-liquid-glass-refinements/</guid>
-<content:encoded><![CDATA[
-<p><!-- obsidian --></p>
-<p>As previously announced, Apple has today released 2026's major annual updates for its operating systems, including iOS 27, macOS 27 Golden Gate, watchOS 27, visionOS 27, and tvOS 27.</p>
-<p>Siri AI—a large language model-based and context-aware overhaul of the company's Siri voice and text assistant—is the flagship feature across all these releases except one (tvOS).</p><p><a href="https://arstechnica.com/apple/2026/09/apple-releases-ios-27-macos-golden-gate-27-with-siri-ai-and-liquid-glass-refinements/">Read full article</a></p>
-<p><a href="https://arstechnica.com/apple/2026/09/apple-releases-ios-27-macos-golden-gate-27-with-siri-ai-and-liquid-glass-refinements/#comments">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 14 Sep 2026 19:28:42 +0000</pubDate>
-</item>
-<item>
-<title>AI leaders want to hit the brakes after years of reckless speed</title>
-<link>https://arstechnica.com/ai/2026/09/ai-leaders-want-to-hit-the-brakes-after-years-of-reckless-speed/</link>
-<guid>https://arstechnica.com/ai/2026/09/ai-leaders-want-to-hit-the-brakes-after-years-of-reckless-speed/</guid>
-<content:encoded><![CDATA[
-<p>For years now, the major frontier AI labs have <a href="https://arstechnica.com/information-technology/2024/09/ai-superintelligence-looms-in-sam-altmans-new-essay-on-the-intelligence-age/">all been acting</a> as if they're in <a href="https://arstechnica.com/google/2025/02/sergey-brin-says-agi-is-within-reach-if-googlers-work-60-hour-weeks/">an all-out, winner-take-all race</a> with control of <a href="https://arstechnica.com/information-technology/2025/06/after-ai-setbacks-meta-bets-billions-on-undefined-superintelligence/">world-changing machine superintelligence</a> (or at least <a href="https://arstechnica.com/ai/2025/04/elon-musk-wants-to-be-agi-dictator-openai-tells-court/">market-changing artificial general intelligence</a>) at the finish line. This weekend, the industry as a whole rapidly started turning away from that posture, urging coordination on slowing down the development of frontier AI that they say could soon be too dangerous and unknowable to control.</p>
-<p>Anthropic's Dario Amodei was at the forefront of this change in tone, arguing <a href="https://darioamodei.com/post/we-must-pace-the-frontier">in a nearly 4,000-word essay</a> this weekend that "we must slow the pace at which we improve the capabilities of AI models" to avoid "a race to the bottom, spurred by commercial incentives, [that] can make [catastrophic] risks more acute."</p>
-<p>Within hours, other AI leaders were echoing the same call. OpenAI co-founder and CEO Sam Altman <a href="https://x.com/sama/status/2098811563415150910?lang=en">posted his agreement on social media</a> and said similar pacing discussions had been taking place at OpenAI. Alphabet Chief Scientist and Google DeepMind cofounder and chair Demis Hassabis <a href="https://x.com/demishassabis/status/2098909516582490602">said</a> that Amodei's essay "points towards the right path forward," and renewed <a href="https://x.com/demishassabis/status/2076957440109625718?s=20">his own recent call for an industry-wide standards body</a>. Microsoft CEO Satya Nadella <a href="https://x.com/satyanadella/status/2099220712024408084">posted</a> that the company "welcome[s] the research, focus, and deliberate pacing needed to get alignment right as the design goal," ahead of the release of <a href="https://microsoft.ai/news/mai-code-of-conduct/">a lengthy "humanist AI" code of conduct for its models</a>.</p><p><a href="https://arstechnica.com/ai/2026/09/ai-leaders-want-to-hit-the-brakes-after-years-of-reckless-speed/">Read full article</a></p>
-<p><a href="https://arstechnica.com/ai/2026/09/ai-leaders-want-to-hit-the-brakes-after-years-of-reckless-speed/#comments">Comments</a></p>
-]]></content:encoded>
-<pubDate>Mon, 14 Sep 2026 19:06:13 +0000</pubDate>
-</item>
-<item>
-<title>Elva</title>
-<link>https://www.producthunt.com/products/elva</link>
-<guid>https://www.producthunt.com/products/elva</guid>
-<content:encoded><![CDATA[
-<p>
-            Goodbye, Postman. Your APIs have new consumers
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/elva?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1243798?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-14T21:30:52-07:00</pubDate>
-</item>
-<item>
-<title>Web Search Agents by Nimble</title>
-<link>https://www.producthunt.com/products/nimbleway</link>
-<guid>https://www.producthunt.com/products/nimbleway</guid>
-<content:encoded><![CDATA[
-<p>
-            Self-learning agents automate web research + retrieval
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/nimbleway?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1231948?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-14T21:34:06-07:00</pubDate>
-</item>
-<item>
-<title>Hello Inbox</title>
-<link>https://www.producthunt.com/products/helloinbox</link>
-<guid>https://www.producthunt.com/products/helloinbox</guid>
-<content:encoded><![CDATA[
-<p>
-            Get more marketing emails into the inbox
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/helloinbox?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1226046?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-14T21:31:04-07:00</pubDate>
-</item>
-<item>
-<title>OzBrain</title>
-<link>https://www.producthunt.com/products/ozbrain</link>
-<guid>https://www.producthunt.com/products/ozbrain</guid>
-<content:encoded><![CDATA[
-<p>
-            Your knowledge shared with every AI agent & any teammate
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/ozbrain?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1247095?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-14T21:06:12-07:00</pubDate>
-</item>
-<item>
-<title>Oats</title>
-<link>https://www.producthunt.com/products/oats-2</link>
-<guid>https://www.producthunt.com/products/oats-2</guid>
-<content:encoded><![CDATA[
-<p>
-            Free, open-source, and on device meeting notetaker
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/oats-2?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1247984?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-14T21:20:20-07:00</pubDate>
-</item>
-<item>
-<title>Slashy Assistant</title>
-<link>https://www.producthunt.com/products/slashy-3</link>
-<guid>https://www.producthunt.com/products/slashy-3</guid>
-<content:encoded><![CDATA[
-<p>
-            The AI assistant that does email for you
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/slashy-3?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1249790?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-14T21:33:57-07:00</pubDate>
-</item>
-<item>
-<title>Aside</title>
-<link>https://www.producthunt.com/products/aside-6</link>
-<guid>https://www.producthunt.com/products/aside-6</guid>
-<content:encoded><![CDATA[
-<p>
-            AI browser that actually gets work done for you
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/aside-6?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1248758?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-14T21:28:21-07:00</pubDate>
-</item>
-<item>
-<title>Juggler</title>
-<link>https://www.producthunt.com/products/juggler</link>
-<guid>https://www.producthunt.com/products/juggler</guid>
-<content:encoded><![CDATA[
-<p>
-            A visual AI coding harness
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/juggler?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1247901?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-14T20:46:51-07:00</pubDate>
-</item>
-<item>
-<title>Marqly 6.0</title>
-<link>https://www.producthunt.com/products/marqly</link>
-<guid>https://www.producthunt.com/products/marqly</guid>
-<content:encoded><![CDATA[
-<p>
-            Ask your bookmarks. Bring them to your AI.
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/marqly?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1249142?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-14T20:53:44-07:00</pubDate>
-</item>
-<item>
-<title>TryCase</title>
-<link>https://www.producthunt.com/products/trycase</link>
-<guid>https://www.producthunt.com/products/trycase</guid>
-<content:encoded><![CDATA[
-<p>
-            AI tests your PRs. Get a video walkthrough before you merge.
-          </p>
-          <p>
-            <a href="https://www.producthunt.com/products/trycase?utm_campaign=producthunt-atom-posts-feed&amp;utm_medium=rss-feed&amp;utm_source=producthunt-atom-posts-feed">Discussion</a>
-            |
-            <a href="https://www.producthunt.com/r/p/1242915?app_id=339">Link</a>
-          </p>
-]]></content:encoded>
-<pubDate>2026-09-14T19:24:35-07:00</pubDate>
-</item>
-<item>
-<title>commit-rewriter 0.1</title>
-<link>https://simonwillison.net/2026/Sep/14/commit-rewriter/</link>
-<guid>https://simonwillison.net/2026/Sep/14/commit-rewriter/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: web app, commit messages, repository, timestamped branch, coding agent
-
-<br /><br />Summary: 
-I developed a web application to assist in editing commit messages for a repository. The early commits contained irrelevant coding agent references and issue IDs from a private repository, rendering them unsuitable for public sharing. Users can run the tool with the command `uvx commit-rewriter path/to/repo` to initiate the editing process. If they're already within the repository directory, they can omit the path for convenience. Once users submit their edits, the tool generates a timestamped branch of the current repository state. This feature allows users to revert to the original commits if needed, ensuring a safety net during the editing process. The application systematically rewrites all commits starting from the first edited commit up to the latest one in the repository. This functionality not only cleans up the commit history but also enhances the professionalism of the project's presentation. The commit rewriting tool is a practical solution for developers looking to maintain a cleaner, more coherent commit log before making their project publicly accessible. <div>
-<p><strong>Release:</strong> <a href="https://github.com/simonw/commit-rewriter/releases/tag/0.1">commit-rewriter 0.1</a></p>
-        <p>I built this little web app the other day to help edit the commit messages for the <a href="https://datasette.io/blog/2026/september-security-releases/">Datasette security releases</a>. The initial commits were full of coding agent cruft and references to issue IDs from our private repository, so they weren't fit for publication.</p>
-<p>If you want to edit the commit messages for a repository you can run it like this:</p>
-<pre><code>uvx commit-rewriter path/to/repo
-</code></pre>
-<p>Omit the path if you are already in the directory for that repo.</p>
-<p><img alt="Screenshot of the commit-rewriter web interface. A heading reads commit-rewriter above the repository path and current branch and commit hash, with a short description of the tool. A toolbar shows a pending edits count with Discard drafts and Rewrite commit messages buttons, followed by a search box for message, author, or hash and an Edited only checkbox. A left sidebar titled Navigate commits lists recent commit messages with their short hashes. The main panel shows a card for each commit with its hash, author and timestamp, an editable text area containing the commit message, and a View full formatted diff toggle." src="https://static.simonwillison.net/static/2026/commit-rewriter.webp" /></p>
-<p>When you submit your edits the tool creates a timestamped branch of your current repo state - to allow you to revert if you need to - and then rewrites every commit from the first one you edited to the most recent.</p>
-    
-    
-        <p>Tags: <a href="https://simonwillison.net/tags/git">git</a>, <a href="https://simonwillison.net/tags/projects">projects</a>, <a href="https://simonwillison.net/tags/python">python</a>, <a href="https://simonwillison.net/tags/ai-assisted-programming">ai-assisted-programming</a></p>
-]]></content:encoded>
-<pubDate>2026-09-14T00:28:10+00:00</pubDate>
 </item>
 </channel>
 </rss>
