@@ -3,7 +3,709 @@
 <channel>
 <title>tech</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/tech.xml</link>
-<lastBuildDate>Tue, 27 Oct 2026 04:42:06 +0000</lastBuildDate>
+<lastBuildDate>Wed, 28 Oct 2026 05:16:24 +0000</lastBuildDate>
+
+<item>
+<title>Amazon ECS now supports GPU sharing with NVIDIA Multi-Process Service (MPS)</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-ecs-gpu-sharing-nvidia-mps/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-ecs-gpu-sharing-nvidia-mps/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon ECS, GPU sharing, NVIDIA MPS, tasks, infrastructure costs
+
+<br><br>Summary: Amazon ECS now supports GPU sharing through NVIDIA Multi-Process Service (MPS), allowing multiple ECS tasks to run simultaneously on a single NVIDIA GPU. This feature optimizes GPU utilization and lowers infrastructure costs for workloads that require only a fraction of a GPU's capabilities, such as small-model inference and AV/ADAS simulations. With GPU sharing, users can deploy more workloads on each GPU instance without needing to alter application code. Users specify the required GPU memory for each container and can limit GPU compute allocation. Amazon ECS efficiently schedules tasks based on available GPU capacity as services scale. The GPU sharing feature is compatible with both Amazon ECS Managed Instances and ECS on EC2. Notably, Amazon ECS monitors the MPS control daemon on Managed Instances. If the daemon fails or becomes unhealthy, ECS automatically replaces the instance, ensuring uninterrupted GPU workload operations without manual intervention. To utilize this feature, users can set it up via the AWS Management Console, AWS CLI, AWS SDKs, or infrastructure-as-code tools by defining a capacity provider with NVIDIA GPU instances, determining GPU sharing strategies, and creating a service accordingly. The feature is accessible in all AWS commercial and AWS GovCloud (US). <div>
+<p><a href="https://aws.amazon.com/ecs/" target="_blank">Amazon Elastic Container Service</a> (Amazon ECS) now supports GPU sharing with NVIDIA Multi-Process Service (MPS), enabling you to run multiple Amazon ECS tasks concurrently on a single NVIDIA GPU. GPU sharing helps you increase GPU utilization and reduce infrastructure costs for workloads that use only part of a GPU's capacity, such as small-model inference, AV/ADAS simulations, embedding generation, and multi-model serving.</p> 
+<p>With GPU sharing, you can pack more workloads onto each GPU instance without changing your application code. You define the GPU memory each container needs and can optionally set a maximum share of GPU compute, and Amazon ECS places tasks on GPUs with available capacity as your services scale and deploy. GPU sharing is supported on Amazon ECS Managed Instances and Amazon ECS on Amazon EC2. On Amazon ECS Managed Instances, Amazon ECS also monitors the MPS control daemon that enables sharing on each instance. If the daemon stops or becomes unhealthy, Amazon ECS automatically replaces the instance and moves your tasks to healthy capacity, so your GPU workloads keep running without manual intervention.</p> 
+<p>To get started, use the AWS Management Console, AWS CLI, AWS SDKs, AWS CloudFormation, or other infrastructure-as-code tools to create a capacity provider with NVIDIA GPU instances, set the GPU sharing strategy and memory in the container definition of your task definition, and create a service on that capacity provider. This capability is available in all AWS commercial and AWS GovCloud (US) <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/" target="_blank">Regions</a>. To learn more, visit the Amazon ECS GPU sharing <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-gpu-sharing.html" target="_blank">documentation</a>.</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 23:31:00 GMT</pubDate>
+<pubDate>Tue, 27 Oct 2026 23:31:00 GMT</pubDate>
+</item>
+<item>
+<title>SageMaker MLflow Apps now support MLflow 3.16</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/10/mflow-version-3-16/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/10/mflow-version-3-16/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon SageMaker, MLflow 3.16, tracing experience, experiment tracking, generative AI  
+
+<br><br>Summary: Amazon SageMaker has launched support for MLflow 3.16, enhancing the tracing experience and speeding up experiment tracking for generative AI and machine learning workflows. The new version focuses on improving debugging and analysis of generative AI applications and agents. Notably, the redesigned trace explorer is now the default interface, offering features such as adjustable row heights, reorderable columns, and the ability to add custom columns based on any trace tag or metadata field. Additionally, MLflow 3.16 significantly accelerates the performance of metric charts for experiments that involve large metric histories. 
+
+New MLflow Apps will be created on this updated version by default, ensuring users have access to the latest features immediately. For those using existing MLflow Apps, an automatic upgrade to MLflow 3.16 will occur during an upcoming maintenance window, requiring no action from users. MLflow 3.16 is now available in all AWS Regions where MLflow Apps are offered. Users interested in learning more can visit the appropriate page for further details. <div>
+<p>Amazon SageMaker AI MLflow Apps now support MLflow 3.16, bringing a redesigned tracing experience and faster experiment tracking to your generative AI and machine learning workflows.</p> 
+<p>MLflow 3.16 improves debugging and analysis of generative AI applications and agents. The redesigned trace explorer is now the default, with adjustable row height, reorderable columns, custom columns from any trace tag or metadata field. This release also accelerates metric charts for experiments with large metric histories.</p> 
+<p>New MLflow Apps are created on MLflow 3.16 by default. Existing MLflow Apps will be upgraded to MLflow 3.16 during an upcoming maintenance window, with no action required.</p> 
+<p>MLflow 3.16 is available in all AWS Regions where MLflow Apps are available. To learn more, visit the <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/mlflow.html">SageMaker AI MLflow developer guide</a>.</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 20:40:00 GMT</pubDate>
+<pubDate>Tue, 27 Oct 2026 20:40:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Aurora serverless now supports up to 384 ACUs</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/10/aurora-serverless-supports-384-acu/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/10/aurora-serverless-supports-384-acu/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Aurora, serverless, PostgreSQL, ACUs, capacity
+
+<br><br>Summary:  
+Amazon Aurora now supports up to 384 Aurora Capacity Units (ACUs) for its PostgreSQL-Compatible Edition, marking a 50% increase from the previous maximum of 256 ACUs. Each ACU offers approximately 2 GiB of memory, allowing a single Aurora serverless database to scale up to 768 GiB of memory. This feature is particularly advantageous for agentic AI applications, which often experience variable workloads with active bursts followed by idle periods. Aurora serverless automatically scales capacity based on usage, enabling users to pay only for the resources consumed, even scaling down to zero when not in use. With the introduction of 384 ACUs, customers can now manage more demanding workloads while still benefiting from the cost-effectiveness of serverless architecture. To take advantage of this new capacity, users can create new clusters with a supported Aurora PostgreSQL engine version or modify existing clusters on Platform Version 4 to update their maximum capacity. There’s no downtime for existing databases running on Platform Version 4 during this modification. Customers using older platform versions need to upgrade to Platform Version 4 via a pending maintenance action to access the expanded capacity. The supported Aurora PostgreSQL versions for 384 ACUs include versions 18.4, 17.10, 16.14, 15.18, and 14.23. <div>
+<p><a href="https://aws.amazon.com/rds/aurora/serverless/" target="_blank">Amazon Aurora serverless</a> now supports database capacity of up to 384 Aurora Capacity Units (ACUs) for Aurora PostgreSQL-Compatible Edition, a 50% increase from the previous maximum of 256 ACUs. Each ACU provides approximately 2 gibibytes (GiB) of memory with corresponding CPU and networking, so a single Aurora serverless database can now scale up to 768 GiB of memory. When the workload completes, Aurora serverless automatically scales down to zero. This makes Aurora serverless especially well-suited for agentic AI applications, which typically have bursts of activity, long idle windows, and unpredictable traffic patterns. Aurora serverless handles all of it automatically, scaling capacity with your agents, so you only pay for what you use.</p> 
+<p>With 384 ACU support, customers can now use Aurora serverless for even more demanding workloads while continuing to scale down to zero when not in use, paying only for the capacity consumed. For new clusters, select a supported Aurora PostgreSQL engine version and set your maximum capacity up to 384 ACUs. For existing clusters on Platform Version 4, simply modify the cluster to update the maximum capacity setting (and the engine version if needed). There will be no downtime if your database is already on Platform Version 4. For existing clusters on older platform versions, upgrade to Platform Version 4 through a pending maintenance action. 384 ACU support is available for Aurora PostgreSQL versions 18.4, 17.10, 16.14, 15.18, and 14.23, running on Platform Version 4.</p> 
+<p>To learn more, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless-v2.how-it-works.html#aurora-serverless-v2.how-it-works.capacity" target="_blank">Aurora serverless capacity</a> in the Amazon Aurora User Guide. For pricing details and Region availability, visit <a href="https://aws.amazon.com/rds/aurora/pricing/" target="_blank">Amazon Aurora Pricing</a>. &nbsp;To get started, create or modify an Aurora serverless database in the <a href="https://signin.aws.amazon.com/signin?redirect_uri=https%3A%2F%2Fconsole.aws.amazon.com%2Fconsole%2Fhome%3FhashArgs%3D%2523%26isauthcode%3Dtrue%26state%3DhashArgsFromTB_us-east-2_a53ff6382623e9a3&amp;client_id=arn%3Aaws%3Asignin%3A%3A%3Aconsole%2Fcanvas&amp;forceMobileApp=0&amp;code_challenge=SCavOinSDkGpz8021yaDgWGy_E5aIbgB7HoRsIR47N0&amp;code_challenge_method=SHA-256" target="_blank">AWS Management Console</a>.</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 16:00:00 GMT</pubDate>
+<pubDate>Tue, 27 Oct 2026 16:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon ElastiCache for Valkey now supports changing durability on existing clusters</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/10/elasticache-changing-durability/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/10/elasticache-changing-durability/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: ElastiCache, durability, synchronous writes, asynchronous writes, AWS Regions
+
+<br><br>Summary: Amazon ElastiCache for Valkey has introduced a feature that allows users to enable or disable durability on existing node-based clusters without needing to create a new cluster. Previously, changing the durability configuration in place was not possible, complicating the transition from caching to persistent data storage as application needs evolved. Now, developers can adjust durability at any point in their application's lifecycle. The service offers two durability options: synchronous and asynchronous writes. Synchronous writes ensure data is persisted across at least two Availability Zones (AZs) before client acknowledgment, achieving zero data loss with low write latency. In contrast, asynchronous writes offer microsecond write latency after the client is responded to, with a potential loss of up to 10 seconds of uncommitted data during rare failures. Both options retain microsecond read latency. This enhancement broadens ElastiCache's applicability to use cases where data loss is unacceptable, such as AI agent long-term memory, payment tokenization, and real-time inventory management. The feature is available in all AWS Regions with ElastiCache for Valkey 9.0 and later, and it can be accessed via the AWS Management Console, SDK, or CLI. <div>
+<p>Amazon ElastiCache for Valkey now lets you enable or disable durability on your existing node-based clusters without creating a new cluster. Previously, you couldn't change the durability configuration of an existing cluster in place. This made it harder to move from caching to persistent data store use cases, or to adapt as your application requirements change. Now you can change durability at any point in your application's lifecycle.</p> 
+<p>You can choose between two durability options: synchronous and asynchronous writes. Synchronous writes persist data across at least two AZs before responding to the client, designed for zero data loss at single-digit millisecond write latency. Asynchronous writes persist data after responding to the client, maintaining microsecond write latency at no additional cost. However, up to 10 seconds of uncommitted data could be lost in the rare event of a failure. Both options maintain microsecond read latency. You can now use ElastiCache for a broader set of use cases beyond caching where data loss is unacceptable such as AI agent long-term memory, AI agent workflow state, knowledge bases for RAG applications, payment tokenization, and real-time inventory management.</p> 
+<p>This feature is available in all AWS Regions where ElastiCache for Valkey 9.0 and later is available. To get started, use the AWS Management Console, AWS SDK, or AWS CLI. For pricing, see the &nbsp;<a href="https://aws.amazon.com/elasticache/pricing/">Amazon ElastiCache pricing page&nbsp;</a>. To learn more, see &nbsp;<a href="https://docs.aws.amazon.com/AmazonElastiCache/latest/dg/">Durability&nbsp;</a> in the ElastiCache documentation.</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 15:21:00 GMT</pubDate>
+<pubDate>Tue, 27 Oct 2026 15:21:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Corretto October 2026 Patch Updates</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-corretto-oct-2026-patch-updates</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-corretto-oct-2026-patch-updates</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon, Corretto, OpenJDK, patch update, LTS
+
+<br><br>Summary: On October 26, 2026, Amazon announced a patch update for several versions of Amazon Corretto, which includes Long-Term Support (LTS) and Feature Release (FR) versions of OpenJDK. The updated versions are Corretto 27.0.1.0.11, 25.0.5.0.10, 21.0.13.0.11, 17.0.21.0.11, 11.0.33.0.10, and 8u512. Amazon Corretto is highlighted as a no-cost, production-ready distribution of OpenJDK that is available across multiple platforms. Users are encouraged to visit the Corretto website to download the new updates for Corretto 27, 25, 21, 17, 11, or 8. Additionally, users on Linux systems can obtain the updates by configuring their systems accordingly. This release aims to ensure that users have access to the latest security and performance improvements in their Java development environment. Amazon emphasizes its commitment to providing reliable, open-source tools for developers and organizations by making these updates readily accessible. Users are encouraged to provide feedback on the updates, contributing to the improvement of the Corretto distribution. <div>
+<p>On October 26, 2026 Amazon announced a patch update for the following Amazon Corretto Long-Term Support (LTS) and Feature Release (FR) versions of OpenJDK. Corretto 27.0.1.0.11, 25.0.5.0.10, 21.0.13.0.11, 17.0.21.0.11, 11.0.33.0.10, and 8u512 are now available for <a href="https://aws.amazon.com/corretto/">download</a>. Amazon Corretto is a no-cost, multi-platform, production-ready distribution of OpenJDK.</p> 
+<p>Visit the Corretto <a href="https://aws.amazon.com/corretto">home page</a> to download Corretto 27, Corretto 25, Corretto 21, Corretto 17, Corretto 11, or Corretto 8. You can also get the updates on your Linux system by configuring a <a href="https://docs.aws.amazon.com/corretto/latest/corretto-25-ug/generic-linux-install.html">Corretto Apt, Yum, or Apk repo</a>.</p> 
+<p>Feedback is <a href="https://github.com/corretto">welcomed</a>!</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 14:00:00 GMT</pubDate>
+<pubDate>Tue, 27 Oct 2026 14:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Neptune now supports online index rebuild to reclaim storage</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/10/neptune-online-index-rebuild/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/10/neptune-online-index-rebuild/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: online index rebuild, Amazon Neptune, fragmentation, performance tuning, database maintenance
+
+<br><br>Summary: Online index rebuild is a new feature available in Amazon Neptune engine release 1.5.0.0, allowing database administrators to defragment indexes without taking the database offline. Over time, data operations like inserts, updates, and deletes can create unused space, artificially inflating the VolumeBytesUsed metric and degrading query performance. This fragmentation adversely affects workload performance for Gremlin, openCypher, or SPARQL queries. With online index rebuild, both read and write queries remain uninterrupted during the rebuilding process, ensuring continuous access. Users can target all indexes, only quad indexes, or just dictionary indexes, making this feature ideal for post-deletion cleanup, regular maintenance, storage management, and performance tuning on fragmented databases. The feature includes tunable settings for concurrency and write buffer size, enabling a balance between rebuild speed and workload impact. Additionally, built-in safety mechanisms help protect against storage exhaustion during operations. Online index rebuild is supported in all regions where Amazon Neptune Database is available, enhancing the efficiency and performance of Neptune databases significantly. For configuration and execution guidance, users can refer to the official API documentation. <div>
+<p><a href="https://aws.amazon.com/neptune/">Amazon Neptune</a> Database now supports online index rebuild, a new capability that helps database administrators and application teams defragment Neptune indexes and reclaim unused storage space without taking their database offline. Over time, insert, update, and delete operations create gaps of unused space within data pages, keeping the <code>VolumeBytesUsed</code> metric artificially elevated even after data is deleted. This fragmentation increases I/O costs and degrades query performance for teams running Gremlin, openCypher, or SPARQL workloads at scale.</p>
+<p>With online index rebuild, read and write queries continue uninterrupted on both the writer instance and read replicas throughout the entire rebuild process. You can target all indexes, only quad indexes, or only dictionary indexes, making this feature well-suited for post-deletion cleanup, periodic maintenance, storage limit management, and performance tuning on heavily fragmented databases. Tunable concurrency and write buffer size settings let you balance rebuild speed against workload impact, while built-in storage safety mechanisms protect against storage exhaustion during the operation.</p>
+<p>Online index rebuild is available starting with Amazon Neptune engine release 1.5.0.0 on provisioned writer instances, in all regions where Amazon Neptune Database is supported. To learn more about configuring and running online index rebuild, including API references and tuning guidance, visit the <a href="https://docs.aws.amazon.com/neptune/latest/userguide/storage-index-rebuild.html">Amazon Neptune documentation</a>.</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 08:00:00 GMT</pubDate>
+<pubDate>Tue, 27 Oct 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon ECR now supports replication backfill for existing container images</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/10/replication-backfill-amazon-ecr</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/10/replication-backfill-amazon-ecr</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon ECR, replication backfill, private registry, API call, AWS Regions
+
+<br><br>Summary: Amazon Elastic Container Registry (ECR) has introduced replication backfill, allowing users to replicate existing images in their private registries to configured replication registry destinations. Previously, replication was limited to images pushed after the replication configuration was enabled, necessitating manual retagging of preexisting images for replication. Now, with replication backfill, customers can replicate their entire image catalog to new or existing destinations with a single API call.
+
+This feature is particularly beneficial for users expanding to new AWS Regions, validating disaster recovery processes, updating replication rules, or ensuring complete image catalogs across Regions for compliance. Users can execute up to ten backfill jobs concurrently, monitor the progress, and check per-image results through newly provided APIs. Additionally, they have the flexibility to stop a backfill job at any time without affecting images that have already been replicated. Replication backfill is available in all AWS Regions where Amazon ECR operates. For further details, users are encouraged to refer to official documentation or resources. <div>
+<p>Amazon Elastic Container Registry (Amazon ECR) now supports replication backfill, enabling you to replicate existing images in your private registry to your configured replication registry destinations. Previously, replication only applied to images pushed after the replication configuration was enabled, requiring customers to manually retag images to trigger replication of preexisting images. With replication backfill, you can now replicate your full image catalog to new or existing destinations with a single API call.</p> 
+<p>Replication backfill is useful when expanding to a new AWS Region, validating disaster recovery readiness, updating replication rules, or ensuring complete image catalogs exist across Regions for compliance purposes. You can run up to ten backfill jobs concurrently, monitor progress and per-image results through new APIs, and stop a job at any time without deleting images that have already been replicated.</p> 
+<p>Replication backfill is available in all AWS Regions where Amazon ECR is available. To learn more, refer to the <a href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/replication-backfill.html">Amazon ECR user guide</a>.&nbsp;</p>
+]]></content:encoded>
+<pubDate>Mon, 26 Oct 2026 20:24:00 GMT</pubDate>
+<pubDate>Mon, 26 Oct 2026 20:24:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon IVS Low-Latency Streaming now provides a failover slate</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-ivs-low-latency-streaming-failover-slate</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-ivs-low-latency-streaming-failover-slate</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon IVS, low-latency streaming, failover slate, audience retention, live playback
+
+<br><br>Summary: Amazon Interactive Video Service (Amazon IVS) has introduced a failover slate feature for low-latency streaming, which displays an animated image to viewers when a broadcaster's stream experiences unexpected interruptions. This solution replaces the buffering wheel or a frozen frame with a slate, ensuring that viewers see a continuous visual experience while waiting for reconnection. Once the broadcaster reconnects, live playback resumes automatically without requiring viewers to refresh their players. The failover slate is particularly beneficial for broadcasters using mobile devices or operating in areas with unstable connectivity, helping to retain audience engagement during brief disruptions. Users can enable this feature on both new and existing channels, enhancing the overall streaming experience. Additionally, the feature can be monitored through Amazon EventBridge events and Amazon CloudWatch metrics, providing valuable insights into slate activity. Amazon IVS serves as a managed live streaming solution designed to deliver low-latency or real-time video to a global audience. For more information, users can visit the Amazon IVS console to check the full list of AWS Regions where the service is available. Further details can also be accessed through related documentation. <div>
+<p>Amazon Interactive Video Service (Amazon IVS) Low-Latency Streaming now provides a failover slate, an animated image that IVS displays to viewers when a broadcaster's stream is unexpectedly interrupted. Instead of a buffering wheel or frozen frame, viewers see the slate until the broadcaster reconnects. Live playback then resumes automatically, without viewers needing to refresh their player.</p> 
+<p>The failover slate helps you retain your audience during momentary disruptions and is ideal for broadcasters streaming from mobile devices or from locations with unreliable connectivity. You can enable the failover slate on new or existing channels and monitor slate activity with Amazon EventBridge events and Amazon CloudWatch metrics.</p> 
+<p><a href="https://aws.amazon.com/ivs/">Amazon IVS</a> is a managed live streaming solution designed to make low-latency or real-time video available to viewers around the world. Visit the <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/">AWS Region table</a> for a full list of AWS Regions where the Amazon IVS console and APIs for control and creation of video streams are available.</p> 
+<p>To learn more, see the <a href="https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/failover-slate.html">Amazon IVS Failover Slate documentation</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 26 Oct 2026 15:40:00 GMT</pubDate>
+<pubDate>Mon, 26 Oct 2026 15:40:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Elemental MediaConnect Router now supports endpoint connection management</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/10/mediaconnect-cross-account-endpoints/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/10/mediaconnect-cross-account-endpoints/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: endpoint registry, cross-account sharing, MediaConnect, AWS RAM, live video workflows
+
+<br><br>Summary: 
+The new endpoint registry in AWS Elemental MediaConnect enables centralized management of external connections, including standard endpoints like cameras and software, as well as connections to other AWS accounts. This feature supports direct sharing of registered endpoints with other AWS accounts, which streamlines live video workflows across organizations. By facilitating cross-account endpoint sharing, it reduces costs by minimizing the number of required compute instances and decreases latency by lowering the number of network hops needed for live content sharing. The endpoint registry eliminates manual tasks such as chaining router inputs and outputs, coordinating IP addresses, and managing connection security. Users can leverage a single interface to manage all external connections to MediaConnect, benefiting from AWS Resource Access Manager (AWS RAM) for cross-account sharing, transparent verification of encryption and protocol controls, and built-in connection management through Connection Manager. Potential use cases include content distributors sharing live feeds with partners, broadcasters collaborating across different organizations, and secure media workflows needing cross-account video transport. The MediaConnect endpoint registry is accessible in all AWS Regions where AWS Elemental MediaConnect Router operates, with no additional cost involved. For further details, refer to the AWS Elemental MediaConnect documentation. <div>
+<p><a href="https://aws.amazon.com/mediaconnect/features/router/">AWS Elemental MediaConnect Router</a> now supports managing external connections through a new endpoint registry. The registry provides a centralized interface to register and manage both standard endpoints—devices or software outside the service, such as cameras, sources, monitors, and other destinations—and connections to other AWS accounts. You can share registered endpoints directly with other AWS accounts, streamlining cross-account live video workflows.&nbsp;</p> 
+<p>Cross-account endpoint sharing lowers costs by reducing required compute instances and decreases latency through fewer network hops when sharing live content across AWS accounts.. It also eliminates the need to manually chain router inputs and outputs, coordinate IP addresses out of band, and manage connection security. The endpoint registry gives you a single interface to manage all external connections to MediaConnect for seamless integration with your existing infrastructure. You get cross-account sharing through AWS Resource Access Manager (AWS RAM), transparent verification of encryption and protocol controls, and built-in connection management with Connection Manager. Use cases include content distributors sharing live feeds with downstream partners, broadcasters collaborating across organizational boundaries, and media workflows that require secure cross-account video transport.</p> 
+<p>MediaConnect endpoint registry is available in all AWS Regions where AWS Elemental MediaConnect Router is available, at no additional cost. For more information, see the AWS Elemental MediaConnect <a href="https://docs.aws.amazon.com/mediaconnect/latest/ug/working-with-endpoints.html">User Guide</a>.</p>
+]]></content:encoded>
+<pubDate>Mon, 26 Oct 2026 08:00:00 GMT</pubDate>
+<pubDate>Mon, 26 Oct 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Connect Customer now enables you to use flow modules in agentic CX designer</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/10/agentic-cx-designer-flow-modules/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/10/agentic-cx-designer-flow-modules/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon Connect, flow modules, customer experience, AWS Lambda, agentic AI  
+
+<br><br>Summary:  
+Amazon Connect Customer has introduced flow modules that allow for data requests within the agentic CX designer, enabling reusable logic across customer experience flows. These flow modules can be executed at specific steps via a Data request node or utilized as tools in a Generative journey. You can leverage these modules to update customer profiles and cases, create tasks, look up data tables, send SMS confirmations, or verify operational hours and staffing before escalating to a human agent. Additionally, they facilitate access to data within private networks, such as banking or claims information. For instance, a flow module can call an AWS Lambda function in a Virtual Private Cloud (VPC) to fetch an account balance or claim status during an interaction. The feature is currently available in several AWS Regions, including US East (N. Virginia), US West (Oregon), Canada (Central), and various locations in Asia Pacific and Europe. For further details, consult the Connect Customer documentation or visit the Amazon Connect Customer website to learn more about this agentic AI solution. <div>
+<p>Amazon Connect Customer now enables you to use flow modules as data requests in agentic CX designer, so you can build and apply reusable logic across your customer experience flows. You can run a flow module at a fixed step in a conversation with a Data request node, or give it to a Generative journey as a tool to call when the conversation needs it.</p> 
+<p>With this launch, you can use flow modules to update customer profiles and cases, create tasks, look up data tables, send an SMS confirmation, or check hours of operation and staffing before escalating to a human agent. You can also retrieve data that sits inside a private network, such as core banking, policy, or claims systems. For example, a flow module can invoke an AWS Lambda function in your VPC to return an account balance or claim status in the middle of an interaction.</p> 
+<p>This feature is available in the following AWS Regions: US East (N. Virginia), US West (Oregon), Canada (Central), Asia Pacific (Tokyo), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), Europe (Frankfurt), and Europe (London). To learn more, refer to <a href="https://docs.aws.amazon.com/connect/latest/adminguide/acxd-data-requests.html">Data requests</a> and <a href="https://docs.aws.amazon.com/connect/latest/adminguide/contact-flow-modules.html">Flow modules</a> in the Connect Customer documentation. To learn more about Amazon Connect Customer, an agentic AI solution that helps enterprises deliver exceptional customer experiences, visit the Amazon Connect Customer <a href="https://docs.aws.amazon.com/connect/latest/adminguide/acxd.html">website</a>.</p>
+]]></content:encoded>
+<pubDate>Fri, 16 Oct 2026 16:19:00 GMT</pubDate>
+<pubDate>Fri, 16 Oct 2026 16:19:00 GMT</pubDate>
+</item>
+<item>
+<title>v16.5.0-canary.29</title>
+<link>https://github.com/vercel/next.js/releases/tag/v16.5.0-canary.29</link>
+<guid>https://github.com/vercel/next.js/releases/tag/v16.5.0-canary.29</guid>
+<content:encoded><![CDATA[
+
+<h3>Core Changes</h3>
+<ul>
+<li>Create cache directory before persisting Chrome DevTools workspace UUID: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100802">#100802</a></li>
+<li>Upgrade React from <code>ab0d927f-20261020</code> to <code>dc9aed36-20261027</code>: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100791">#100791</a></li>
+<li>[testmode] Fix compressed HTTP responses with test proxy: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100805">#100805</a></li>
+<li>chore(deps): bump sharp@0.35.5: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99714">#99714</a></li>
+<li>Turbopack: Auto-detect pnpm GVS and configure an additional root for it: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99758">#99758</a></li>
+<li>Persist storage cache in Docker environments: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100790">#100790</a></li>
+<li>Persist fully static PPR payloads in filesystem cache: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100759">#100759</a></li>
+<li>Stamp FileSystemCache revalidations and entries with the monotonic clock: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100357">#100357</a></li>
+</ul>
+<h3>Example Changes</h3>
+<ul>
+<li>examples: add eve example: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100758">#100758</a></li>
+</ul>
+<h3>Misc Changes</h3>
+<ul>
+<li>turbo-bitset: make block storage pluggable: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100779">#100779</a></li>
+<li>Use fixed encoding for our 'id' types: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100764">#100764</a></li>
+<li>[RFC] Remove worktree guidance from AGENTS.md: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100659">#100659</a></li>
+<li>eval: resolve and classify the audit suite: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100748">#100748</a></li>
+<li>turbo-tasks-backend: resolve task priority when creating child contexts: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100767">#100767</a></li>
+<li>Add server-only leak pass to next-bundle-optimizer: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100330">#100330</a></li>
+<li>Turbopack: Fix webpack loaders if source file exists in an additional root: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100744">#100744</a></li>
+<li>[CI] fix incorrect VERCEL_TEST_PROJECT in non-cache-components deploy…: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100788">#100788</a></li>
+<li>ci: run changed deploy tests with both builders: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100591">#100591</a></li>
+<li>Turbopack: compute client reference manifest parts once per reference, not per page: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100443">#100443</a></li>
+<li>turbo-bitset: remove FixedBitSet and RoaringBitmap comparisons: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100724">#100724</a></li>
+<li>turbopack: use Bitset for persisted chunk group sets: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100630">#100630</a></li>
+<li>turbopack: use Bitset in compute_merged_modules: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100568">#100568</a></li>
+<li>turbopack: use Bitset in collect_graph: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100567">#100567</a></li>
+<li>turbopack: use Bitset in compute_chunk_group_info: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100643">#100643</a></li>
+<li>turbo-bitset: add Bitset, a fast bitset over a bounded bit range: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100566">#100566</a></li>
+<li>turbopack: speed up and share reverse postorder ranks: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100452">#100452</a></li>
+<li>test: remove some more dev/prod gating: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100717">#100717</a></li>
+<li>ci: Only run upload-adapter-test-results on release: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100595">#100595</a></li>
+<li>Optimize persistence CPU: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100737">#100737</a></li>
+<li>eval: split Next.js evals by purpose: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100742">#100742</a></li>
+</ul>
+<h3>Credits</h3>
+<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/sokra">@sokra</a>, <a class="user-mention notranslate" href="https://github.com/chadhietala">@chadhietala</a>, <a class="user-mention notranslate" href="https://github.com/lukesandberg">@lukesandberg</a>, <a class="user-mention notranslate" href="https://github.com/kassens">@kassens</a>, <a class="user-mention notranslate" href="https://github.com/styfle">@styfle</a>, <a class="user-mention notranslate" href="https://github.com/aurorascharff">@aurorascharff</a>, <a class="user-mention notranslate" href="https://github.com/wbinnssmith">@wbinnssmith</a>, <a class="user-mention notranslate" href="https://github.com/bgw">@bgw</a>, <a class="user-mention notranslate" href="https://github.com/namtran1812">@namtran1812</a>, <a class="user-mention notranslate" href="https://github.com/skrabe">@skrabe</a>, and <a class="user-mention notranslate" href="https://github.com/mischnic">@mischnic</a> for helping!</p>
+]]></content:encoded>
+
+<pubDate>2026-10-27T23:46:43Z</pubDate>
+</item>
+<item>
+<title>v12.3.2</title>
+<link>https://github.com/nestjs/nest/releases/tag/v12.3.2</link>
+<guid>https://github.com/nestjs/nest/releases/tag/v12.3.2</guid>
+<content:encoded><![CDATA[
+
+<p>v12.3.2</p>
+]]></content:encoded>
+
+<pubDate>2026-10-27T12:01:59Z</pubDate>
+</item>
+<item>
+<title>v12.3.1</title>
+<link>https://github.com/nestjs/nest/releases/tag/v12.3.1</link>
+<guid>https://github.com/nestjs/nest/releases/tag/v12.3.1</guid>
+<content:encoded><![CDATA[
+
+<p>v12.3.1</p>
+]]></content:encoded>
+
+<pubDate>2026-10-27T09:58:41Z</pubDate>
+</item>
+<item>
+<title>v12.3.0</title>
+<link>https://github.com/nestjs/nest/releases/tag/v12.3.0</link>
+<guid>https://github.com/nestjs/nest/releases/tag/v12.3.0</guid>
+<content:encoded><![CDATA[
+
+<p>v12.3.0</p>
+]]></content:encoded>
+
+<pubDate>2026-10-27T09:00:22Z</pubDate>
+</item>
+<item>
+<title>Early progress on accelerating drug development with Claude</title>
+<link>https://www.anthropic.com/research/early-progress-drug-development</link>
+<guid>https://www.anthropic.com/research/early-progress-drug-development</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.anthropic.com/research/early-progress-drug-development">https://www.anthropic.com/research/early-progress-drug-development</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50265609">https://news.ycombinator.com/item?id=50265609</a></p>
+<p>Points: 182</p>
+<p># Comments: 165</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 20:50:42 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 20:50:42 +0000</pubDate>
+</item>
+<item>
+<title>Tailscale SSH: Investigation and remediation update</title>
+<link>https://tailscale.com/ssh-investigation-update</link>
+<guid>https://tailscale.com/ssh-investigation-update</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://tailscale.com/ssh-investigation-update">https://tailscale.com/ssh-investigation-update</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50264857">https://news.ycombinator.com/item?id=50264857</a></p>
+<p>Points: 242</p>
+<p># Comments: 122</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 19:55:21 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 19:55:21 +0000</pubDate>
+</item>
+<item>
+<title>Survival LLM: AI assistant and emergency library that runs on your own computer</title>
+<link>https://www.brangus.io/survival-llm</link>
+<guid>https://www.brangus.io/survival-llm</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.brangus.io/survival-llm">https://www.brangus.io/survival-llm</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50264853">https://news.ycombinator.com/item?id=50264853</a></p>
+<p>Points: 255</p>
+<p># Comments: 120</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 19:55:06 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 19:55:06 +0000</pubDate>
+</item>
+<item>
+<title>Discord will soon let anyone find public server messages through Google</title>
+<link>https://discord.com/blog/making-content-from-discoverable-servers-easier-to-discover</link>
+<guid>https://discord.com/blog/making-content-from-discoverable-servers-easier-to-discover</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://discord.com/blog/making-content-from-discoverable-servers-easier-to-discover">https://discord.com/blog/making-content-from-discoverable-servers-easier-to-discover</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50263854">https://news.ycombinator.com/item?id=50263854</a></p>
+<p>Points: 288</p>
+<p># Comments: 147</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 18:44:17 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 18:44:17 +0000</pubDate>
+</item>
+<item>
+<title>Ghostty 1.4</title>
+<link>https://ghostty.org/docs/install/release-notes/1-4-0</link>
+<guid>https://ghostty.org/docs/install/release-notes/1-4-0</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://ghostty.org/docs/install/release-notes/1-4-0">https://ghostty.org/docs/install/release-notes/1-4-0</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50261998">https://news.ycombinator.com/item?id=50261998</a></p>
+<p>Points: 871</p>
+<p># Comments: 275</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 16:51:22 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 16:51:22 +0000</pubDate>
+</item>
+<item>
+<title>Police are using AI to pull over drivers for 'suspicious' behavior</title>
+<link>https://gizmodo.com/police-are-using-ai-to-pull-over-drivers-for-suspicious-behavior-2000831220</link>
+<guid>https://gizmodo.com/police-are-using-ai-to-pull-over-drivers-for-suspicious-behavior-2000831220</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://gizmodo.com/police-are-using-ai-to-pull-over-drivers-for-suspicious-behavior-2000831220">https://gizmodo.com/police-are-using-ai-to-pull-over-drivers-for-suspicious-behavior-2000831220</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50261819">https://news.ycombinator.com/item?id=50261819</a></p>
+<p>Points: 363</p>
+<p># Comments: 279</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 16:40:15 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 16:40:15 +0000</pubDate>
+</item>
+<item>
+<title>A 28-Year-Old DOGE Operative Gutted USAID. HR Had No Record of Him Working There</title>
+<link>https://www.wired.com/story/a-28-year-old-doge-operative-gutted-usaid-hr-had-no-record-of-him-working-there/</link>
+<guid>https://www.wired.com/story/a-28-year-old-doge-operative-gutted-usaid-hr-had-no-record-of-him-working-there/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.wired.com/story/a-28-year-old-doge-operative-gutted-usaid-hr-had-no-record-of-him-working-there/">https://www.wired.com/story/a-28-year-old-doge-operative-gutted-usaid-hr-had-no-record-of-him-working-there/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50261784">https://news.ycombinator.com/item?id=50261784</a></p>
+<p>Points: 221</p>
+<p># Comments: 147</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 16:38:08 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 16:38:08 +0000</pubDate>
+</item>
+<item>
+<title>Classification of Finite Simple Groups Formalized in Lean</title>
+<link>https://cfsg.axiommath.ai/</link>
+<guid>https://cfsg.axiommath.ai/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://cfsg.axiommath.ai/">https://cfsg.axiommath.ai/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50261647">https://news.ycombinator.com/item?id=50261647</a></p>
+<p>Points: 190</p>
+<p># Comments: 52</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 16:29:02 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 16:29:02 +0000</pubDate>
+</item>
+<item>
+<title>Amazon Is Gutting Its AI Division After Sustained Failure</title>
+<link>https://futurism.com/artificial-intelligence/amazon-ai-division-failure-nova</link>
+<guid>https://futurism.com/artificial-intelligence/amazon-ai-division-failure-nova</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://futurism.com/artificial-intelligence/amazon-ai-division-failure-nova">https://futurism.com/artificial-intelligence/amazon-ai-division-failure-nova</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50261589">https://news.ycombinator.com/item?id=50261589</a></p>
+<p>Points: 293</p>
+<p># Comments: 223</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 16:25:30 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 16:25:30 +0000</pubDate>
+</item>
+<item>
+<title>New 14‑inch MacBook Pro with M6</title>
+<link>https://www.apple.com/in/newsroom/2026/10/apple-introduces-the-new-14-inch-macbook-pro-with-m6/</link>
+<guid>https://www.apple.com/in/newsroom/2026/10/apple-introduces-the-new-14-inch-macbook-pro-with-m6/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.apple.com/in/newsroom/2026/10/apple-introduces-the-new-14-inch-macbook-pro-with-m6/">https://www.apple.com/in/newsroom/2026/10/apple-introduces-the-new-14-inch-macbook-pro-with-m6/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50261352">https://news.ycombinator.com/item?id=50261352</a></p>
+<p>Points: 317</p>
+<p># Comments: 410</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 16:08:32 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 16:08:32 +0000</pubDate>
+</item>
+<item>
+<title>Genie 4</title>
+<link>https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/</link>
+<guid>https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/">https://deepmind.google/blog/genie-4-a-new-generation-of-world-simulation/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50261319">https://news.ycombinator.com/item?id=50261319</a></p>
+<p>Points: 804</p>
+<p># Comments: 489</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 16:06:01 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 16:06:01 +0000</pubDate>
+</item>
+<item>
+<title>Anthropic trained Claude on illegally obtained Stanford professors' books</title>
+<link>https://stanforddaily.com/2026/10/27/professors-books-pirated-to-train-claude/</link>
+<guid>https://stanforddaily.com/2026/10/27/professors-books-pirated-to-train-claude/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://stanforddaily.com/2026/10/27/professors-books-pirated-to-train-claude/">https://stanforddaily.com/2026/10/27/professors-books-pirated-to-train-claude/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50260814">https://news.ycombinator.com/item?id=50260814</a></p>
+<p>Points: 497</p>
+<p># Comments: 269</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 15:28:26 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 15:28:26 +0000</pubDate>
+</item>
+<item>
+<title>A $300B 'Debt Wall' Is Looming over Private-Equity Backed Companies</title>
+<link>https://www.wsj.com/finance/investing/a-300-billion-debt-wall-is-looming-over-private-equity-backed-companies-d6359497</link>
+<guid>https://www.wsj.com/finance/investing/a-300-billion-debt-wall-is-looming-over-private-equity-backed-companies-d6359497</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.wsj.com/finance/investing/a-300-billion-debt-wall-is-looming-over-private-equity-backed-companies-d6359497">https://www.wsj.com/finance/investing/a-300-billion-debt-wall-is-looming-over-private-equity-backed-companies-d6359497</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50260526">https://news.ycombinator.com/item?id=50260526</a></p>
+<p>Points: 161</p>
+<p># Comments: 61</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 15:09:27 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 15:09:27 +0000</pubDate>
+</item>
+<item>
+<title>US Government is hiding a secret court ruling about how it spies on Americans</title>
+<link>https://www.wired.com/story/the-us-government-is-hiding-a-secret-court-ruling-about-how-it-spies-on-americans/</link>
+<guid>https://www.wired.com/story/the-us-government-is-hiding-a-secret-court-ruling-about-how-it-spies-on-americans/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.wired.com/story/the-us-government-is-hiding-a-secret-court-ruling-about-how-it-spies-on-americans/">https://www.wired.com/story/the-us-government-is-hiding-a-secret-court-ruling-about-how-it-spies-on-americans/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50259604">https://news.ycombinator.com/item?id=50259604</a></p>
+<p>Points: 867</p>
+<p># Comments: 310</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 14:06:42 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 14:06:42 +0000</pubDate>
+</item>
+<item>
+<title>Is my data used for model training?</title>
+<link>https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training</link>
+<guid>https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training">https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50259406">https://news.ycombinator.com/item?id=50259406</a></p>
+<p>Points: 216</p>
+<p># Comments: 99</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 13:56:15 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 13:56:15 +0000</pubDate>
+</item>
+<item>
+<title>PHP2Shell: Exploitation attempts and remediation trends</title>
+<link>https://www.wiz.io/blog/php2shell-exploitation-so-far</link>
+<guid>https://www.wiz.io/blog/php2shell-exploitation-so-far</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.wiz.io/blog/php2shell-exploitation-so-far">https://www.wiz.io/blog/php2shell-exploitation-so-far</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50259343">https://news.ycombinator.com/item?id=50259343</a></p>
+<p>Points: 185</p>
+<p># Comments: 59</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 13:52:12 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 13:52:12 +0000</pubDate>
+</item>
+<item>
+<title>Here be monsters: What do you still need to know when agents do the work?</title>
+<link>https://blog.adrq.dev/here-be-monsters-what-do-you-still-need-to-know-when-agents-do-the-work</link>
+<guid>https://blog.adrq.dev/here-be-monsters-what-do-you-still-need-to-know-when-agents-do-the-work</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://blog.adrq.dev/here-be-monsters-what-do-you-still-need-to-know-when-agents-do-the-work">https://blog.adrq.dev/here-be-monsters-what-do-you-still-need-to-know-when-agents-do-the-work</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50258868">https://news.ycombinator.com/item?id=50258868</a></p>
+<p>Points: 165</p>
+<p># Comments: 88</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 13:23:22 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 13:23:22 +0000</pubDate>
+</item>
+<item>
+<title>New iMac with M6</title>
+<link>https://www.apple.com/imac/</link>
+<guid>https://www.apple.com/imac/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.apple.com/imac/">https://www.apple.com/imac/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50258538">https://news.ycombinator.com/item?id=50258538</a></p>
+<p>Points: 322</p>
+<p># Comments: 398</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 13:02:02 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 13:02:02 +0000</pubDate>
+</item>
+<item>
+<title>New 14‑inch MacBook Pro with M6</title>
+<link>https://www.apple.com/newsroom/2026/10/apple-introduces-the-new-14-inch-macbook-pro-with-m6/</link>
+<guid>https://www.apple.com/newsroom/2026/10/apple-introduces-the-new-14-inch-macbook-pro-with-m6/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.apple.com/newsroom/2026/10/apple-introduces-the-new-14-inch-macbook-pro-with-m6/">https://www.apple.com/newsroom/2026/10/apple-introduces-the-new-14-inch-macbook-pro-with-m6/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50258521">https://news.ycombinator.com/item?id=50258521</a></p>
+<p>Points: 161</p>
+<p># Comments: 197</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 13:01:07 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 13:01:07 +0000</pubDate>
+</item>
+<item>
+<title>Software may be getting worse, but it used to be horrible</title>
+<link>https://www.bitlog.com/2026/10/27/software-may-be-getting-worse-but-it-used-to-be-horrible/</link>
+<guid>https://www.bitlog.com/2026/10/27/software-may-be-getting-worse-but-it-used-to-be-horrible/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.bitlog.com/2026/10/27/software-may-be-getting-worse-but-it-used-to-be-horrible/">https://www.bitlog.com/2026/10/27/software-may-be-getting-worse-but-it-used-to-be-horrible/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50257548">https://news.ycombinator.com/item?id=50257548</a></p>
+<p>Points: 306</p>
+<p># Comments: 324</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 11:30:35 +0000</pubDate>
+<pubDate>Tue, 27 Oct 2026 11:30:35 +0000</pubDate>
+</item>
+<item>
+<title>A fast and secure tar parser for the Rust ecosystem</title>
+<link>https://astral.sh/blog/tar-codec</link>
+<guid>https://astral.sh/blog/tar-codec</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/q7arzy/fast_secure_tar_parser_for_rust_ecosystem">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 11:59:30 -0500</pubDate>
+<pubDate>Tue, 27 Oct 2026 11:59:30 -0500</pubDate>
+</item>
+<item>
+<title>Four Months of Zig</title>
+<link>https://gracefulliberty.com/articles/four-months-of-zig/</link>
+<guid>https://gracefulliberty.com/articles/four-months-of-zig/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/qr59sa/four_months_zig">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 13:46:09 -0500</pubDate>
+<pubDate>Tue, 27 Oct 2026 13:46:09 -0500</pubDate>
+</item>
+<item>
+<title>Python's experimental JIT to be removed</title>
+<link>https://lwn.net/SubscriberLink/1102102/0c00e4d550f25f8c/</link>
+<guid>https://lwn.net/SubscriberLink/1102102/0c00e4d550f25f8c/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/cajuq6/python_s_experimental_jit_be_removed">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 01:20:38 -0500</pubDate>
+<pubDate>Tue, 27 Oct 2026 01:20:38 -0500</pubDate>
+</item>
+<item>
+<title>1,447 emoji? We'll do it live</title>
+<link>https://planetpeanut.studio/post/2026/10/27/pidgin-emoji-twitch</link>
+<guid>https://planetpeanut.studio/post/2026/10/27/pidgin-emoji-twitch</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/qd0hc9/1_447_emoji_we_ll_do_it_live">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 13:28:06 -0500</pubDate>
+<pubDate>Tue, 27 Oct 2026 13:28:06 -0500</pubDate>
+</item>
+<item>
+<title>Compile-Time Dependent Types</title>
+<link>https://thenumb.at/Syl-Intro/</link>
+<guid>https://thenumb.at/Syl-Intro/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/d09iy3/compile_time_dependent_types">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 09:40:12 -0500</pubDate>
+<pubDate>Tue, 27 Oct 2026 09:40:12 -0500</pubDate>
+</item>
+<item>
+<title>A stackless floodfill automation (2023)</title>
+<link>https://t3x.org/files/floodfill.pdf</link>
+<guid>https://t3x.org/files/floodfill.pdf</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/tp0zlk/stackless_floodfill_automation_2023">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 09:56:00 -0500</pubDate>
+<pubDate>Tue, 27 Oct 2026 09:56:00 -0500</pubDate>
+</item>
+<item>
+<title>Fuzzers vs. AI: Comparing Fuzzilli and BigSleep on JavaScript Engines</title>
+<link>https://projectzero.google/2026/10/fuzzing-v-AI.html</link>
+<guid>https://projectzero.google/2026/10/fuzzing-v-AI.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/rswyzt/fuzzers_vs_ai_comparing_fuzzilli">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 14:08:23 -0500</pubDate>
+<pubDate>Tue, 27 Oct 2026 14:08:23 -0500</pubDate>
+</item>
+<item>
+<title>This is not sustainable</title>
+<link>https://www.netmeister.org/blog/defense-ddos.html</link>
+<guid>https://www.netmeister.org/blog/defense-ddos.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/cpaibp/this_is_not_sustainable">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 22:56:49 -0500</pubDate>
+<pubDate>Tue, 27 Oct 2026 22:56:49 -0500</pubDate>
+</item>
+<item>
+<title>Filian, Fil-C binaries on Debian</title>
+<link>https://cr.yp.to/2025/fil-c.html</link>
+<guid>https://cr.yp.to/2025/fil-c.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/rs6ce2/filian_fil_c_binaries_on_debian">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 11:42:17 -0500</pubDate>
+<pubDate>Tue, 27 Oct 2026 11:42:17 -0500</pubDate>
+</item>
+<item>
+<title>The Exponential Time Hypothesis Is False [pdf]</title>
+<link>https://files.mathhelm.org/files/733/The-Exponential-Time-Hypothesis-is-False-October-25-2026.pdf</link>
+<guid>https://files.mathhelm.org/files/733/The-Exponential-Time-Hypothesis-is-False-October-25-2026.pdf</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/pq6ju6/exponential_time_hypothesis_is_false_pdf">Comments</a></p>
+]]></content:encoded>
+<pubDate>Mon, 26 Oct 2026 19:39:50 -0500</pubDate>
+<pubDate>Mon, 26 Oct 2026 19:39:50 -0500</pubDate>
+</item>
+<item>
+<title>Reminder: Lobsters NYC Meetup Tomorrow 5:30 at Walker's</title>
+<link>https://lobste.rs/s/87iesc/reminder_lobsters_nyc_meetup_tomorrow_5</link>
+<guid>https://lobste.rs/s/87iesc/reminder_lobsters_nyc_meetup_tomorrow_5</guid>
+<content:encoded><![CDATA[
+
+<p>Follow up on: <a href="https://lobste.rs/s/73ozwc/lobsters_nyc_meetup_on_28th_october" rel="ugc">https://lobste.rs/s/73ozwc/lobsters_nyc_meetup_on_28th_october</a></p>
+<p>Under "Alex". Feel free to come a bit later or earlier. I'll write here updating if we move etc.</p>
+<p>Walker's is by the Canal St. metro stop: <a href="https://maps.app.goo.gl/mdEgSkBV2H1NSXAdA" rel="ugc">https://maps.app.goo.gl/mdEgSkBV2H1NSXAdA</a> and has food and drinks.</p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 20:27:50 -0500</pubDate>
+<pubDate>Tue, 27 Oct 2026 20:27:50 -0500</pubDate>
+</item>
+<item>
+<title>Finding panics with Call Graph Analyzer</title>
+<link>https://tweedegolf.nl/en/blog/242/finding-panics-with-call-graph-analyzer/</link>
+<guid>https://tweedegolf.nl/en/blog/242/finding-panics-with-call-graph-analyzer/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/opqtiv/finding_panics_with_call_graph_analyzer">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 11:45:26 -0500</pubDate>
+<pubDate>Tue, 27 Oct 2026 11:45:26 -0500</pubDate>
+</item>
+<item>
+<title>Full Haskell-like Type Class resolution in Java</title>
+<link>https://garciat.com/posts/java-type-classes/</link>
+<guid>https://garciat.com/posts/java-type-classes/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/beiiil/full_haskell_like_type_class_resolution">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 05:11:53 -0500</pubDate>
+<pubDate>Tue, 27 Oct 2026 05:11:53 -0500</pubDate>
+</item>
+<item>
+<title>An Evening with Berferd: In Which a Cracker is Lured, Endured, and Studied (1992)</title>
+<link>https://www.cheswick.com/ches/papers/berferd.pdf</link>
+<guid>https://www.cheswick.com/ches/papers/berferd.pdf</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/7bbzjf/evening_with_berferd_which_cracker_is">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 13:48:45 -0500</pubDate>
+<pubDate>Tue, 27 Oct 2026 13:48:45 -0500</pubDate>
+</item>
+<item>
+<title>A select should tell you something</title>
+<link>https://alfy.blog/2026/10/27/a-select-should-tell-you-something.html</link>
+<guid>https://alfy.blog/2026/10/27/a-select-should-tell-you-something.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/3mnrlw/select_should_tell_you_something">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 06:33:23 -0500</pubDate>
+<pubDate>Tue, 27 Oct 2026 06:33:23 -0500</pubDate>
+</item>
+<item>
+<title>The Shift of Theseus — Toy Bit Provenance Abstract Domain</title>
+<link>https://www.pypy.org/posts/2026/10/toy-bit-provenance.html</link>
+<guid>https://www.pypy.org/posts/2026/10/toy-bit-provenance.html</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/kvije8/shift_theseus_toy_bit_provenance">Comments</a></p>
+]]></content:encoded>
+<pubDate>Tue, 27 Oct 2026 12:53:09 -0500</pubDate>
+<pubDate>Tue, 27 Oct 2026 12:53:09 -0500</pubDate>
+</item>
 
 <item>
 <title>OpenAI GPT-6.1 Terra is now generally available on Amazon Bedrock</title>
@@ -12,13 +714,12 @@
 <content:encoded><![CDATA[
 <div> Keywords: AWS, OpenAI, GPT-6.1 Terra, Amazon Bedrock, enterprise
 
-<br><br>Summary: AWS has announced the general availability of OpenAI GPT-6.1 Terra on Amazon Bedrock, which enhances the GPT-6 family with improved capability, speed, and cost efficiency for everyday tasks. This model combines advanced visual reasoning, precise computer usage, and better factuality and writing compared to GPT-5.6 Terra. In evaluations, GPT-6.1 Terra outperformed its predecessor by 15 percentage points, matched the performance of GPT-6 Astra, and completed tasks more than three times faster than GPT-6 Astra and GPT-6.1 Sol. It offers lower input and output token prices, at least 50% less than GPT-6.1 Sol and GPT-5.6 Terra, and supports a context window of up to 1 million tokens, accepting both text and image inputs. Featuring an efficient inference engine, it is designed to meet the demands of enterprise workloads. Users can access GPT-6.1 Terra via Amazon Bedrock APIs or through ChatGPT Work and Codex integration. Applications range from drafting proposals to interpreting technical drawings. AWS provides controls for security, access governance, and auditing of model activity, making it easy to start via the Amazon Bedrock console or APIs. <div>
+<br /><br />Summary: AWS has announced the general availability of OpenAI GPT-6.1 Terra on Amazon Bedrock, which enhances the GPT-6 family with improved capability, speed, and cost efficiency for everyday tasks. This model combines advanced visual reasoning, precise computer usage, and better factuality and writing compared to GPT-5.6 Terra. In evaluations, GPT-6.1 Terra outperformed its predecessor by 15 percentage points, matched the performance of GPT-6 Astra, and completed tasks more than three times faster than GPT-6 Astra and GPT-6.1 Sol. It offers lower input and output token prices, at least 50% less than GPT-6.1 Sol and GPT-5.6 Terra, and supports a context window of up to 1 million tokens, accepting both text and image inputs. Featuring an efficient inference engine, it is designed to meet the demands of enterprise workloads. Users can access GPT-6.1 Terra via Amazon Bedrock APIs or through ChatGPT Work and Codex integration. Applications range from drafting proposals to interpreting technical drawings. AWS provides controls for security, access governance, and auditing of model activity, making it easy to start via the Amazon Bedrock console or APIs. <div>
 <p>Today, AWS announces the general availability of OpenAI GPT-6.1 Terra on Amazon Bedrock. GPT-6.1 Terra expands the GPT-6 family with a balance of capability, speed, and cost efficiency for everyday workloads.&nbsp;</p> 
 <p>As the newest model in the Terra line, GPT-6.1 Terra combines detailed visual reasoning, accurate computer use, and improved factuality and natural writing over GPT-5.6 Terra, for complex workflows. In OpenAI’s Agents’ Last Exam evaluation, it scored 15 percentage points higher than GPT-5.6 Terra, performed on par with GPT-6 Astra, and completed tasks more than three times faster than GPT-6 Astra and GPT-6.1 Sol. GPT-6.1 Terra offers balanced performance with input and output token prices at least 50% lower than those of GPT-6.1 Sol and GPT-5.6 Terra. It supports a context window of up to 1 million input tokens and accepts both text and image inputs. The Amazon Bedrock inference engine delivers the performance, security, and scale required for enterprise workloads.&nbsp;</p> 
 <p>You can call GPT-6.1 Terra directly through Amazon Bedrock APIs or configure ChatGPT Work and Codex to use the model on Amazon Bedrock. Use it to draft proposals, interpret technical drawings, investigate codebases, and build agents that operate across business systems.&nbsp; Established AWS controls help you secure workloads, govern access, and audit model invocation activity.&nbsp;</p> 
 <p>You can get started in the Amazon Bedrock console or programmatically through supported Amazon Bedrock APIs. For information about supported AWS Regions, endpoints, APIs, features, inference profiles and pricing, see the <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-cards-openai.html">Amazon Bedrock documentation.</a> &nbsp;</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 18:27:00 GMT</pubDate>
 <pubDate>Mon, 26 Oct 2026 18:27:00 GMT</pubDate>
 </item>
 <item>
@@ -28,14 +729,13 @@
 <content:encoded><![CDATA[
 <div> Keywords: Amazon WorkSpaces, ModifyVolume API, volume modification, managed instances, Amazon EBS  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 Amazon WorkSpaces Core Managed Instances has introduced the ModifyVolume API, enabling users to modify storage configurations without needing to detach volumes or restart instances. Previously, making changes to storage capacity or performance required rebuilding the instance, which was inconvenient. With this new API, users can increase volume sizes up to 16,384 GiB, switch between supported Amazon EBS volume types, and adjust IOPS for gp3, io1, and io2 volumes. Additionally, users can modify the throughput for gp3 volumes. The ModifyVolume API includes support for idempotency tokens, ensuring that duplicate changes are prevented. Users can also monitor the progress of their modifications using the Amazon EC2 DescribeVolumesModifications operation. This functionality is now available in all AWS Regions that support Amazon WorkSpaces Core Managed Instances. To utilize the ModifyVolume API, users can call it directly or integrate it through their WorkSpaces Core partner solutions when available. For more information, users are encouraged to check the WorkSpaces Instances API Reference and the Amazon EBS User Guide. <div>
 <p>Amazon WorkSpaces Core Managed Instances now supports the ModifyVolume API, which lets you change volume size, volume type, IOPS, or throughput in place, without detaching the volume or restarting the instance. Previously, changing storage capacity or performance on a deployed managed instance required rebuilding it.</p> 
 <p>With ModifyVolume, you can increase volume size up to 16,384 GiB, switch between supported Amazon EBS volume types, adjust IOPS for gp3, io1, and io2 volumes, and modify throughput for gp3 volumes. The API supports idempotency tokens to prevent duplicate changes, and you can track progress with the Amazon EC2 DescribeVolumesModifications operation.</p> 
 <p>ModifyVolume is available in all AWS Regions where Amazon WorkSpaces Core Managed Instances is available.</p> 
 <p>To get started, call ModifyVolume directly, or use it through your WorkSpaces Core partner solution once available. To learn more, see <a href="https://docs.aws.amazon.com/workspaces-instances/latest/api/API_ModifyVolume.html" rel="noopener noreferrer" target="_blank">ModifyVolume</a> in the WorkSpaces Instances API Reference and <a href="https://docs.aws.amazon.com/ebs/latest/userguide/ebs-modify-volume.html#elastic-volumes-limitations" rel="noopener noreferrer" target="_blank">Limitations</a> in the Amazon EBS User Guide, or visit <a href="https://aws.amazon.com/workspaces/vdi-partners/" rel="noopener noreferrer" target="_blank">WorkSpaces Core</a>.</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 18:00:00 GMT</pubDate>
 <pubDate>Mon, 26 Oct 2026 18:00:00 GMT</pubDate>
 </item>
 <item>
@@ -45,13 +745,12 @@ Amazon WorkSpaces Core Managed Instances has introduced the ModifyVolume API, en
 <content:encoded><![CDATA[
 <div> Keywords: Amazon SageMaker, light mode, dark mode, visual appearance, accessibility  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 AWS has announced the introduction of light mode support in Amazon SageMaker Unified Studio for Identity Center (IDC) based domains. Customers can now customize the visual interface to their preference by selecting between dark and light themes, applicable to both IAM-based and IDC-based domains. The addition of light mode enhances readability in bright environments and offers a familiar experience for users who favor lighter interfaces. Coupled with the existing dark mode, this update empowers customers with control over their development environment's appearance, which can enhance accessibility and reduce eye strain under various lighting conditions. Users can access the feature in SageMaker Unified Studio settings by selecting 'Customize appearance' under Profile settings, enabling them to choose between dark mode, light mode, and device settings that align with their operating system's preferences. Furthermore, these settings are designed to persist across different browsers and devices, ensuring a seamless experience. This feature is now available across all AWS Regions where Amazon SageMaker Unified Studio is present, making it widely accessible to users. For more information, users are encouraged to consult the official AWS documentation. <div>
 <p>Today, AWS announces light mode support in Amazon SageMaker Unified Studio for Identity Center (IDC) based domains. Customers can now configure the visual interface mode to match their preference, choosing between dark and light themes. With this launch, customers can set this visual preference in both IAM-based and IDC-based domains.&nbsp;</p> 
 <p>Light mode helps improve readability in bright environments and provides a familiar visual experience for customers who prefer lighter interfaces. Combined with the existing dark mode, this update gives you full control over the appearance of your development environment, improving accessibility and reducing eye strain across varying lighting conditions. In SageMaker Unified Studio settings, you can choose 'Customize appearance' under your Profile settings to select between visual modes including dark mode, light mode, and device setting, which matches your operating system's setting. The setting persists across browsers and devices.</p> 
 <p>This feature is available in all AWS Regions where Amazon SageMaker Unified Studio is available. To learn more, see the <a href="https://docs.aws.amazon.com/sagemaker-unified-studio/latest/userguide/navigating-sagemaker-unified-studio.html#display-mode">Amazon SageMaker Unified Studio User Guide.</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 15:32:00 GMT</pubDate>
 <pubDate>Mon, 26 Oct 2026 15:32:00 GMT</pubDate>
 </item>
 <item>
@@ -61,11 +760,10 @@ AWS has announced the introduction of light mode support in Amazon SageMaker Uni
 <content:encoded><![CDATA[
 <div> Keywords: Amazon Connect, customer experience, testing, simulation, Lambda function
 
-<br><br>Summary: Amazon Connect Customer now offers an enhanced feature that allows users to validate outcomes of customer experience flow actions during testing and simulation. This functionality goes beyond merely confirming the initiation of an action, enabling verification of the data returned upon completion, including responses from Lambda functions, resolved intents from Amazon Lex, or variables set by Agentic CX blocks. When testing fails, users can easily identify the specific action that produced an unexpected result, rather than having to trace back through subsequent steps. This targeted troubleshooting helps in addressing issues more effectively, leading to faster resolutions. Consequently, organizations can implement flow changes with increased confidence, knowing that they can validate their customer experience flows. To learn more about this new feature, users can refer to the Connect Customer administrator guide. Additionally, a comprehensive list of testing and simulation capabilities available by AWS Region can also be found. For further insights into Amazon Connect Customer, an AI-driven solution designed to enhance customer experiences, interested parties are encouraged to visit the official website. <div>
+<br /><br />Summary: Amazon Connect Customer now offers an enhanced feature that allows users to validate outcomes of customer experience flow actions during testing and simulation. This functionality goes beyond merely confirming the initiation of an action, enabling verification of the data returned upon completion, including responses from Lambda functions, resolved intents from Amazon Lex, or variables set by Agentic CX blocks. When testing fails, users can easily identify the specific action that produced an unexpected result, rather than having to trace back through subsequent steps. This targeted troubleshooting helps in addressing issues more effectively, leading to faster resolutions. Consequently, organizations can implement flow changes with increased confidence, knowing that they can validate their customer experience flows. To learn more about this new feature, users can refer to the Connect Customer administrator guide. Additionally, a comprehensive list of testing and simulation capabilities available by AWS Region can also be found. For further insights into Amazon Connect Customer, an AI-driven solution designed to enhance customer experiences, interested parties are encouraged to visit the official website. <div>
 <p>Amazon Connect Customer now enables you to validate the outcomes of your customer experience flow actions during testing and simulation. In addition to confirming that an action started, you can now verify the data it returns when it completes, such as a Lambda function response, an Amazon Lex resolved intent, or the variables set by an Agentic CX block. When a test fails, you can pinpoint the exact action that returned an unexpected result instead of tracing it back from a downstream step, so you can resolve issues faster and launch flow changes with greater confidence.</p> 
 <p>To learn more about this feature, see <a href="https://docs.aws.amazon.com/connect/latest/adminguide/testing-simulation-observe-block.html">testing and simulation</a> in the Connect Customer administrator guide. For a complete list of testing and simulation capabilities available by AWS Region, refer to <a href="https://docs.aws.amazon.com/connect/latest/adminguide/regions.html">Availability of Connect Customer features by Region</a>. To learn more about Amazon Connect Customer, an agentic AI solution that helps enterprises deliver exceptional customer experiences, visit the <a href="https://aws.amazon.com/products/connect/customer/">Amazon Connect Customer website</a>.</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 15:00:00 GMT</pubDate>
 <pubDate>Mon, 26 Oct 2026 15:00:00 GMT</pubDate>
 </item>
 <item>
@@ -75,10 +773,9 @@ AWS has announced the introduction of light mode support in Amazon SageMaker Uni
 <content:encoded><![CDATA[
 <div> Keywords: customer segments, lifetime value, repeat callers, metrics, satisfaction  
 
-<br><br>Summary: This article discusses the importance of analyzing customer segments, particularly focusing on customer lifetime value (LTV) and repeat callers. It highlights how different metrics can reveal variations in performance between repeat callers and other contacts, allowing businesses to identify trends before they become apparent in overall data. By monitoring these segments, organizations can pinpoint areas of underperformance and take proactive measures. For instance, high-LTV customers can be routed to the most effective team members to enhance service quality. Additionally, businesses can optimize knowledge bases and self-service options that repeat callers might be struggling with, ensuring these resources remain effective. The article also emphasizes the need to refine agent guidance for segments experiencing a decline in customer satisfaction. By leveraging the insights gained from segment analysis, companies can identify specific areas requiring attention or improvement. This targeted approach allows organizations to focus their efforts on the segments that need it most, ultimately leading to enhanced customer experience and satisfaction. <div>
+<br /><br />Summary: This article discusses the importance of analyzing customer segments, particularly focusing on customer lifetime value (LTV) and repeat callers. It highlights how different metrics can reveal variations in performance between repeat callers and other contacts, allowing businesses to identify trends before they become apparent in overall data. By monitoring these segments, organizations can pinpoint areas of underperformance and take proactive measures. For instance, high-LTV customers can be routed to the most effective team members to enhance service quality. Additionally, businesses can optimize knowledge bases and self-service options that repeat callers might be struggling with, ensuring these resources remain effective. The article also emphasizes the need to refine agent guidance for segments experiencing a decline in customer satisfaction. By leveraging the insights gained from segment analysis, companies can identify specific areas requiring attention or improvement. This targeted approach allows organizations to focus their efforts on the segments that need it most, ultimately leading to enhanced customer experience and satisfaction. <div>
 <p>Now you can view your metrics across customer segments: customer lifetime value (LTV) and repeat callers. See how any metric differs for repeat callers versus the rest of your contacts, or how results hold up among your highest-LTV customers; so you can spot the groups trending the wrong way before it shows up in the aggregate. Where a segment is underperforming, you can act. Route high-LTV customers to your most effective people, adjust the knowledge bases and self-service flows that repeat callers are falling back from, or refine agent guidance for segments where satisfaction is slipping. The segment tells you where to look; the metrics tell you what to fix.</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 13:47:00 GMT</pubDate>
 <pubDate>Mon, 26 Oct 2026 13:47:00 GMT</pubDate>
 </item>
 <item>
@@ -88,11 +785,10 @@ AWS has announced the introduction of light mode support in Amazon SageMaker Uni
 <content:encoded><![CDATA[
 <div> Keywords: Amazon Connect, customer interactions, metrics, analytics, success.
 
-<br><br>Summary: 
+<br /><br />Summary: 
 Amazon Connect now allows customers to score the outcomes of their interactions, providing insights into customer satisfaction, churn risk, purchase behavior, and self-service resolution. This enhancement enables businesses to evaluate not only the efficiency of interactions but also their effectiveness in meeting customer needs. Each interaction metric is accompanied by a default definition, which businesses can customize to align with their specific success criteria, ensuring a tailored approach to performance measurement. These metrics are accessible through both analytics dashboards and application programming interfaces (APIs), offering companies flexible options for tracking customer engagement and satisfaction over time. This development marks a significant shift in how businesses can analyze customer interactions, moving beyond traditional operational metrics to focus on real results and outcomes that matter to the customer experience. By integrating these scoring capabilities into their operations, companies can better understand their performance in relation to customer expectations, leading to improved strategies for enhancing satisfaction and reducing churn. Overall, Amazon Connect's new features provide a powerful toolset for businesses to better understand their customer interactions and drive effective outcomes. <div>
 <p>Amazon Connect Customer now scores the outcome of your customer interactions. It shows whether the customer left satisfied, is at risk of churning, made a purchase, or resolved their need in self-service. You can now see whether an interaction worked, not just how efficiently it ran. Each metric comes with a default definition you can adjust to match how your business defines success and are available both through the analytics dashboards and APIs.<br /> &nbsp;</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 13:31:00 GMT</pubDate>
 <pubDate>Mon, 26 Oct 2026 13:31:00 GMT</pubDate>
 </item>
 <item>
@@ -102,12 +798,11 @@ Amazon Connect now allows customers to score the outcomes of their interactions,
 <content:encoded><![CDATA[
 <div> Keywords: trusted identity propagation, AWS Regions, permissions, IAM Identity Center, fine-grained access control  
 
-<br><br>Summary: Trusted identity propagation allows a user's identity to accompany their requests, enabling AWS services to grant permissions based on individual user identities and group associations. This capability enhances auditing by logging access activity per user. With the introduction of cross-Region support, identity context can now be propagated to AWS services operating in different AWS Regions, providing users with increased flexibility in architecture and deployment across regions. Customers often utilize multiple AWS Regions to better manage workloads, whether for separating compute from data queries or ensuring disaster recovery. Previously, trusted identity propagation was limited to services within the same region, necessitating broad IAM roles or regional consolidation. Now, with cross-Region trusted identity propagation, a user's identity seamlessly travels with requests, allowing for precise access control and detailed auditing across regions. This feature is available at no extra cost in all AWS Regions that support IAM Identity Center. Refer to the IAM Identity Center User Guide for a complete list of eligible regions. <div>
+<br /><br />Summary: Trusted identity propagation allows a user's identity to accompany their requests, enabling AWS services to grant permissions based on individual user identities and group associations. This capability enhances auditing by logging access activity per user. With the introduction of cross-Region support, identity context can now be propagated to AWS services operating in different AWS Regions, providing users with increased flexibility in architecture and deployment across regions. Customers often utilize multiple AWS Regions to better manage workloads, whether for separating compute from data queries or ensuring disaster recovery. Previously, trusted identity propagation was limited to services within the same region, necessitating broad IAM roles or regional consolidation. Now, with cross-Region trusted identity propagation, a user's identity seamlessly travels with requests, allowing for precise access control and detailed auditing across regions. This feature is available at no extra cost in all AWS Regions that support IAM Identity Center. Refer to the IAM Identity Center User Guide for a complete list of eligible regions. <div>
 <p>Trusted identity propagation carries a user's identity with their request, so AWS services can grant permissions based on who the user is and their underlying group associations, and log that user's access for auditing. With cross-Region support, this identity context can now be propagated to AWS services running in different AWS Regions, giving you greater flexibility in how you architect and deploy across AWS Regions.</p> 
 <p>Customers often distribute workloads across AWS Regions for many reasons including separating the compute from the data it queries, to running workloads where capacity is available, or for disaster recovery and global scale. Previously, trusted identity propagation required all of the AWS services accessing a user's identity to reside in the same AWS Region. To reach services in another AWS Region, customers had to either grant access through broad IAM roles that cannot distinguish individual users or consolidate all their services into a single AWS Region. With cross-Region trusted identity propagation, a user's identity travels with the request across AWS Regions automatically, so you can grant access based on who the user is and their underlying group associations, and audit who accessed which resources, while preserving fine-grained access control for every individual user.</p> 
 <p>Cross-Region trusted identity propagation is available at no additional cost in all AWS Regions where IAM Identity Center is available. For the list of Regions where IAM Identity Center is available, see <a href="https://builder.aws.com/build/capabilities/explore?tab=service-feature&amp;f=eJxtks1OwzAQhF8F7bk-kFKQKnFF4sCFHusIWck2jTCx5Z8CqvLuGKeOHTu3nW_Wu_LYV9DIsTHYvmPXi0HDHo4UrCbItCH3FDZRVUF9Y-p5NXnsRLSw5nwzmUzHBFUFNQhlzsuGiFa6tgFlOyZZLeRybEQrXdsSPRRoV6LHEj15hFY3pMUsw05cVkiSZcNIg4NRjEeQ2GgzOwFVAD6t6KdJzXJuXg5P3jGoKZqeZ4u_fnKAJUhXazbfvIYNSCUkKvP70nOD6uOEzFiF7utdKUgKewpC-XPGiWPtiu6_cO6nd28HXlvfJDx79vXF12-Wm55MP_ruYKV0oVAY6xHGP20D8yw">AWS Capabilities by Region.</a>&nbsp; For more information, see <a href="https://docs.aws.amazon.com/singlesignon/latest/userguide/trustedidentitypropagation-overview.html">Trusted identity propagation</a> in the IAM Identity Center User Guide.</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 08:00:00 GMT</pubDate>
 <pubDate>Mon, 26 Oct 2026 08:00:00 GMT</pubDate>
 </item>
 <item>
@@ -117,13 +812,12 @@ Amazon Connect now allows customers to score the outcomes of their interactions,
 <content:encoded><![CDATA[
 <div> Keywords: AWS, KMS, ML-KEM, post-quantum cryptography, shared secret  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 AWS Key Management Service (KMS) now incorporates the Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM), a post-quantum cryptography standard established by NIST, aimed at enhancing secure key exchange. ML-KEM is designed to supersede traditional key-establishment mechanisms like Diffie-Hellman (DH), Elliptic Curve Diffie-Hellman (ECDH), and RSA-based key transport. It specifically mitigates the "harvest now, decrypt later" vulnerability that allows future adversaries with quantum capabilities to compromise previously recorded exchanges. KMS supports three ML-KEM specifications defined in NIST FIPS 203: ML-KEM-512, ML-KEM-768, and ML-KEM-1024. The Encapsulate API generates a random 32-byte shared secret and its ciphertext using the public key, while the Decapsulate API retrieves the shared secret via the corresponding private key. Security is enhanced as KMS safeguards the private key within FIPS 140-3 Level 3 validated hardware security modules (HSMs). The public key can be retrieved using the GetPublicKey API for distribution to partners or external systems for local encapsulation using cryptographic libraries like AWS-LC, OpenSSL, or Bouncy Castle. ML-KEM is currently available in all AWS Regions, except the Middle East (UAE), Middle East (Bahrain), and China Regions. <div>
 <p>AWS Key Management Service (KMS) now supports Module-Lattice-Based Key-Encapsulation Mechanism (ML-KEM), a post-quantum cryptography standard under <a href="https://csrc.nist.gov/pubs/fips/203/final">NIST FIPS 203</a>, which&nbsp;enables two parties to establish a shared secret.&nbsp;NIST designed ML-KEM to replace the classical key-establishment schemes, like DH/ECDH key agreement, and RSA-based key transport, in their strategic cryptographic roadmap&nbsp;(see <a href="https://csrc.nist.gov/pubs/ir/8547/ipd">NIST IR 8547</a>).&nbsp;ML-KEM addresses the "harvest now, decrypt later" threat to those classical schemes, where an adversary records the key-establishment exchange today and recovers the shared secret once sufficiently powerful quantum computers become available.</p> 
 <p>KMS supports all three ML-KEM key specs defined in NIST FIPS 203: ML-KEM-512, ML-KEM-768, and ML-KEM-1024. The Encapsulate API uses the public key to produce a random 32-byte shared secret and its ciphertext form. The Decapsulate API recovers the shared secret from ciphertext using the corresponding private key. KMS protects the private key of an ML-KEM key pair in FIPS 140-3 Level 3 validated hardware security modules (HSMs). You can use the GetPublicKey API to export the public key and distribute it to partners, client applications, or external systems for performing the encapsulate operation locally using cryptographic libraries like AWS-LC, OpenSSL, or Bouncy Castle.</p> 
 <p>ML-KEM is available in all AWS Regions where KMS is available, except the the Middle East (UAE), Middle East (Bahrain), and China Regions. For more information, see <a href="https://docs.aws.amazon.com/kms/latest/developerguide/symm-asymm-choose-key-spec.html">Key spec reference</a> in the AWS KMS Developer Guide.</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 08:00:00 GMT</pubDate>
 <pubDate>Mon, 26 Oct 2026 08:00:00 GMT</pubDate>
 </item>
 <item>
@@ -133,13 +827,12 @@ AWS Key Management Service (KMS) now incorporates the Module-Lattice-Based Key-E
 <content:encoded><![CDATA[
 <div> Keywords: AWS, EC2, Auto Scaling, Launch Before Terminate, account settings
 
-<br><br>Summary: AWS EC2 Auto Scaling has introduced a feature called Launch Before Terminate, which allows users to set it as the default behavior for all Auto Scaling groups within an account. When activated, this feature ensures that a new replacement instance is launched and fully passes health checks prior to terminating the instance it is set to replace. This functionality is crucial for maintaining optimal application capacity and availability during various instance replacement events, such as instance refreshes, rebalancing, health checks, and maximum-instance-lifetime replacements. Users can enable Launch Before Terminate via the AWS EC2 Auto Scaling account settings, allowing for a streamlined configuration process done at the account level instead of managing it for each group separately. This setting can be controlled using the new `PutAccountSetting` and `DescribeAccountSettings` APIs, accessible through the AWS Management Console, AWS CLI, or AWS SDKs. Importantly, the Launch Before Terminate feature is available across all AWS Regions and incurs no additional costs for users. For further information, users are encouraged to reference AWS documentation. <div>
+<br /><br />Summary: AWS EC2 Auto Scaling has introduced a feature called Launch Before Terminate, which allows users to set it as the default behavior for all Auto Scaling groups within an account. When activated, this feature ensures that a new replacement instance is launched and fully passes health checks prior to terminating the instance it is set to replace. This functionality is crucial for maintaining optimal application capacity and availability during various instance replacement events, such as instance refreshes, rebalancing, health checks, and maximum-instance-lifetime replacements. Users can enable Launch Before Terminate via the AWS EC2 Auto Scaling account settings, allowing for a streamlined configuration process done at the account level instead of managing it for each group separately. This setting can be controlled using the new `PutAccountSetting` and `DescribeAccountSettings` APIs, accessible through the AWS Management Console, AWS CLI, or AWS SDKs. Importantly, the Launch Before Terminate feature is available across all AWS Regions and incurs no additional costs for users. For further information, users are encouraged to reference AWS documentation. <div>
 <p>AWS EC2 Auto Scaling now lets you enable Launch Before Terminate as the default replacement behavior across all Auto Scaling groups in your account. When enabled, Auto Scaling launches a replacement instance and waits for it to pass health checks before terminating the instance it replaces, helping your applications maintain full capacity and availability during instance replacement events. This applies to replacement events such as instance refreshes, rebalancing, health checks, and maximum-instance-lifetime replacements.</p> 
 <p>You can enable Launch Before Terminate through AWS EC2 Auto Scaling account settings, which let you configure the behavior once at the account level instead of on each Auto Scaling group individually. You can manage the setting with the new `PutAccountSetting` and `DescribeAccountSettings` APIs, available through the AWS Management Console, AWS CLI, or AWS SDKs.</p> 
 <p>Launch Before Terminate is available in all AWS Regions at no additional cost.</p> 
 <p>To learn more, see Launch Before Terminate in the <a href="https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-account-settings.html">AWS EC2 Auto Scaling User Guide</a> and <a href="https://docs.aws.amazon.com/autoscaling/ec2/APIReference/API_Operations.html">AWS EC2 Auto Scaling API Reference Guide</a>.</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 08:00:00 GMT</pubDate>
 <pubDate>Mon, 26 Oct 2026 08:00:00 GMT</pubDate>
 </item>
 <item>
@@ -149,10 +842,9 @@ AWS Key Management Service (KMS) now incorporates the Module-Lattice-Based Key-E
 <content:encoded><![CDATA[
 <div> Keywords: Microsoft SQL Server, Cumulative Updates, General Distribution Release, RDS version, upgrades
 
-<br><br>Summary: The latest release now supports the recent Cumulative Updates (CU) and General Distribution Release (GDR) updates for Microsoft SQL Server. It includes support for the following versions: SQL Server 2017 CU31+GDR (RDS version 14.00.3550.4.v1), SQL Server 2019 CU32+GDR (RDS version 15.00.4490.9.v1), SQL Server 2022 CU27 (RDS version 16.00.4295.3.v1), and SQL Server 2025 CU9 (RDS version 17.00.5005.3.v1). Users are encouraged to review the Microsoft documentation for detailed information on the improvements and fixes associated with these updates, referencing KB5122774, KB5122772, KB5104824, and KB5122048 for specifics. To ensure optimal performance and security, it is recommended that users upgrade their Amazon RDS for SQL Server instances to include these updates. This can be accomplished through the Amazon RDS Management Console or by utilizing the AWS SDK or CLI. Additionally, more information on the process for upgrading your database instance can be found within the AWS documentation. <div>
+<br /><br />Summary: The latest release now supports the recent Cumulative Updates (CU) and General Distribution Release (GDR) updates for Microsoft SQL Server. It includes support for the following versions: SQL Server 2017 CU31+GDR (RDS version 14.00.3550.4.v1), SQL Server 2019 CU32+GDR (RDS version 15.00.4490.9.v1), SQL Server 2022 CU27 (RDS version 16.00.4295.3.v1), and SQL Server 2025 CU9 (RDS version 17.00.5005.3.v1). Users are encouraged to review the Microsoft documentation for detailed information on the improvements and fixes associated with these updates, referencing KB5122774, KB5122772, KB5104824, and KB5122048 for specifics. To ensure optimal performance and security, it is recommended that users upgrade their Amazon RDS for SQL Server instances to include these updates. This can be accomplished through the Amazon RDS Management Console or by utilizing the AWS SDK or CLI. Additionally, more information on the process for upgrading your database instance can be found within the AWS documentation. <div>
 <p><a href="https://aws.amazon.com/rds/sqlserver/" rel="noopener noreferrer" target="_blank">Amazon Relational Database Service (Amazon RDS) for SQL Server </a>now supports the latest Cumulative Updates (CU) and General Distribution Release (GDR) updates for Microsoft SQL Server. This release includes support for Microsoft SQL Server 2017 CU31+GDR <a href="https://support.microsoft.com/help/5122774" rel="noopener noreferrer" target="_blank">KB5122774</a> (RDS version 14.00.3550.4.v1), SQL Server 2019 CU32+GDR <a href="https://support.microsoft.com/help/5122772" rel="noopener noreferrer" target="_blank">KB5122772</a> (RDS version 15.00.4490.9.v1), SQL Server 2022 CU27 <a href="https://support.microsoft.com/help/5104824" rel="noopener noreferrer" target="_blank">KB5104824</a> (RDS version 16.00.4295.3.v1) and SQL Server 2025 CU9 <a href="https://support.microsoft.com/help/5122048" rel="noopener noreferrer" target="_blank">KB5122048</a> (RDS version 17.00.5005.3.v1).<br /> <br /> For additional information on the improvements and fixes included in these updates, see Microsoft documentation for KB5122774, KB5122772, KB5104824 and KB5122048. We recommend that you upgrade your Amazon RDS for SQL Server instances to apply these updates using Amazon RDS Management Console, or by using the AWS SDK or CLI. You can learn more about upgrading your database instance in the <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.SQLServer.html" rel="noopener noreferrer" target="_blank">Amazon RDS SQL Server User Guide for upgrading your RDS Microsoft SQL Server DB engine</a>.</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 07:30:00 GMT</pubDate>
 <pubDate>Mon, 26 Oct 2026 07:30:00 GMT</pubDate>
 </item>
 <item>
@@ -160,12 +852,10 @@ AWS Key Management Service (KMS) now incorporates the Module-Lattice-Based Key-E
 <link>https://aws.amazon.com/about-aws/whats-new/2026/10/glue-catalog-oauth-iceberg-rest/</link>
 <guid>https://aws.amazon.com/about-aws/whats-new/2026/10/glue-catalog-oauth-iceberg-rest/</guid>
 <content:encoded><![CDATA[
-
 <p>AWS Glue Data Catalog now supports OAuth 2.0 bearer token authentication for Apache Iceberg REST Catalog (IRC) APIs using AWS Sign-In. The Apache Iceberg REST Catalog specification defines OAuth 2.0 as its standard authentication mechanism, and query engines such as Apache Spark, Trino, and Apache Flink implement it natively. These engines and external integration partners can now authenticate to the Glue Data Catalog Iceberg endpoint using standard OAuth 2.0 bearer tokens, in addition to AWS Signature Version 4 (SigV4).</p> 
 <p>You can now grant partners federated access to your Iceberg tables without distributing AWS credentials. Using OAuth 2.0 Token Exchange (RFC 8693), you exchange an OpenID Connect (OIDC) identity token for a short-lived, Glue-scoped bearer token and include it in IRC requests following the same standards-based pattern used across the Iceberg ecosystem. Access remains governed by AWS IAM and AWS Lake Formation permissions. Common use cases include enabling third-party analytics and data cloud platforms to query tables in the Glue Data Catalog through a single, consistent authentication path.</p> 
 <p>This capability is available in all AWS Regions where AWS Glue and Lake Formation are available. To learn more, see the <a href="https://docs.aws.amazon.com/glue/latest/dg/connect-glu-iceberg-rest.html" rel="noopener noreferrer" target="_blank">AWS Glue User Guide</a> and <a href="https://docs.aws.amazon.com/signin/latest/userguide/configure-oauth-glue-iceberg-rest.html" rel="noopener noreferrer" target="_blank">AWS Sign-In User Guide</a>.</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 04:00:00 GMT</pubDate>
 <pubDate>Mon, 26 Oct 2026 04:00:00 GMT</pubDate>
 </item>
 <item>
@@ -173,7 +863,6 @@ AWS Key Management Service (KMS) now incorporates the Module-Lattice-Based Key-E
 <link>https://github.com/vercel/next.js/releases/tag/v16.5.0-canary.28</link>
 <guid>https://github.com/vercel/next.js/releases/tag/v16.5.0-canary.28</guid>
 <content:encoded><![CDATA[
-
 <h3>Core Changes</h3>
 <ul>
 <li>Fix draft mode rendering with Cache Components: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/100728">#100728</a></li>
@@ -201,7 +890,6 @@ AWS Key Management Service (KMS) now incorporates the Module-Lattice-Based Key-E
 <h3>Credits</h3>
 <p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/icyJoseph">@icyJoseph</a>, <a class="user-mention notranslate" href="https://github.com/unstubbable">@unstubbable</a>, <a class="user-mention notranslate" href="https://github.com/aurorascharff">@aurorascharff</a>, <a class="user-mention notranslate" href="https://github.com/eps1lon">@eps1lon</a>, <a class="user-mention notranslate" href="https://github.com/mischnic">@mischnic</a>, <a class="user-mention notranslate" href="https://github.com/jimmyhmiller">@jimmyhmiller</a>, <a class="user-mention notranslate" href="https://github.com/sokra">@sokra</a>, <a class="user-mention notranslate" href="https://github.com/jamiboym">@jamiboym</a>, <a class="user-mention notranslate" href="https://github.com/arnaud-coral">@arnaud-coral</a>, and <a class="user-mention notranslate" href="https://github.com/lukesandberg">@lukesandberg</a> for helping!</p>
 ]]></content:encoded>
-
 <pubDate>2026-10-26T23:51:12Z</pubDate>
 </item>
 <item>
@@ -209,7 +897,6 @@ AWS Key Management Service (KMS) now incorporates the Module-Lattice-Based Key-E
 <link>https://github.com/aws/aws-cdk/releases/tag/v2.275.0</link>
 <guid>https://github.com/aws/aws-cdk/releases/tag/v2.275.0</guid>
 <content:encoded><![CDATA[
-
 <h3>⚠ BREAKING CHANGES</h3>
 <ul>
 <li>** L1 resources are automatically generated from public CloudFormation Resource Schemas. They are built to closely reflect the real state of CloudFormation. Sometimes these updates can contain changes that are incompatible with previous types, but more accurately reflect reality. In this release we have changed:</li>
@@ -251,7 +938,6 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <hr />
 <h2>Alpha modules (2.275.0-alpha.0)</h2>
 ]]></content:encoded>
-
 <pubDate>2026-10-26T19:28:02Z</pubDate>
 </item>
 <item>
@@ -259,7 +945,6 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://github.com/openai/math/blob/main/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/paper.pdf</link>
 <guid>https://github.com/openai/math/blob/main/preprints/The-Exponential-Time-Hypothesis-is-False-October-25-2026/paper.pdf</guid>
 <content:encoded><![CDATA[
-
 <p>See also: <i>Announcing three new discoveries in mathematics, computer science, and physics</i> - <a href="https://news.ycombinator.com/item?id=50251344">https://news.ycombinator.com/item?id=50251344</a></p>
 <hr />
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50251661">https://news.ycombinator.com/item?id=50251661</a></p>
@@ -267,14 +952,12 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <p># Comments: 164</p>
 ]]></content:encoded>
 <pubDate>Mon, 26 Oct 2026 21:59:15 +0000</pubDate>
-<pubDate>Mon, 26 Oct 2026 21:59:15 +0000</pubDate>
 </item>
 <item>
 <title>Three new discoveries in mathematics, computer science, and physics</title>
 <link>https://openai.com/index/building-scientific-understanding-with-academic-communities/</link>
 <guid>https://openai.com/index/building-scientific-understanding-with-academic-communities/</guid>
 <content:encoded><![CDATA[
-
 <p>Related:<p><i>The Exponential Time Hypothesis Is False [pdf]</i> - <a href="https://news.ycombinator.com/item?id=50251661">https://news.ycombinator.com/item?id=50251661</a></p>
 <hr />
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50251344">https://news.ycombinator.com/item?id=50251344</a></p>
@@ -282,20 +965,17 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <p># Comments: 273</p>
 ]]></content:encoded>
 <pubDate>Mon, 26 Oct 2026 21:35:28 +0000</pubDate>
-<pubDate>Mon, 26 Oct 2026 21:35:28 +0000</pubDate>
 </item>
 <item>
 <title>CorridorKey 2.0</title>
 <link>https://corridorkey.com/</link>
 <guid>https://corridorkey.com/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://corridorkey.com/">https://corridorkey.com/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50251127">https://news.ycombinator.com/item?id=50251127</a></p>
 <p>Points: 189</p>
 <p># Comments: 60</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 21:18:05 +0000</pubDate>
 <pubDate>Mon, 26 Oct 2026 21:18:05 +0000</pubDate>
 </item>
 <item>
@@ -303,13 +983,11 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://www.motherjones.com/environment/2026/10/epa-online-archive-deletion-zeldin-camp-lejeune-trump-clean-power/</link>
 <guid>https://www.motherjones.com/environment/2026/10/epa-online-archive-deletion-zeldin-camp-lejeune-trump-clean-power/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.motherjones.com/environment/2026/10/epa-online-archive-deletion-zeldin-camp-lejeune-trump-clean-power/">https://www.motherjones.com/environment/2026/10/epa-online-archive-deletion-zeldin-camp-lejeune-trump-clean-power/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50249275">https://news.ycombinator.com/item?id=50249275</a></p>
 <p>Points: 267</p>
 <p># Comments: 49</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 19:05:41 +0000</pubDate>
 <pubDate>Mon, 26 Oct 2026 19:05:41 +0000</pubDate>
 </item>
 <item>
@@ -317,13 +995,11 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://apnews.com/article/energy-critical-materials-minerals-helium-43da160adc1bad389fba0b9ffbd14c3c</link>
 <guid>https://apnews.com/article/energy-critical-materials-minerals-helium-43da160adc1bad389fba0b9ffbd14c3c</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://apnews.com/article/energy-critical-materials-minerals-helium-43da160adc1bad389fba0b9ffbd14c3c">https://apnews.com/article/energy-critical-materials-minerals-helium-43da160adc1bad389fba0b9ffbd14c3c</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50248665">https://news.ycombinator.com/item?id=50248665</a></p>
 <p>Points: 199</p>
 <p># Comments: 115</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 18:31:39 +0000</pubDate>
 <pubDate>Mon, 26 Oct 2026 18:31:39 +0000</pubDate>
 </item>
 <item>
@@ -331,13 +1007,11 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://github.com/microsoft/pylance-release/blob/main/docs/tsp/type-server-protocol.md</link>
 <guid>https://github.com/microsoft/pylance-release/blob/main/docs/tsp/type-server-protocol.md</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://github.com/microsoft/pylance-release/blob/main/docs/tsp/type-server-protocol.md">https://github.com/microsoft/pylance-release/blob/main/docs/tsp/type-server-protocol.md</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50248371">https://news.ycombinator.com/item?id=50248371</a></p>
 <p>Points: 211</p>
 <p># Comments: 145</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 18:14:49 +0000</pubDate>
 <pubDate>Mon, 26 Oct 2026 18:14:49 +0000</pubDate>
 </item>
 <item>
@@ -345,7 +1019,6 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://openai.com/index/introducing-gpt-6-1-terra/</link>
 <guid>https://openai.com/index/introducing-gpt-6-1-terra/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://developers.openai.com/api/docs/models/gpt-6.1-terra" rel="nofollow">https://developers.openai.com/api/docs/models/gpt-6.1-terra</a></p>
 <hr />
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50248124">https://news.ycombinator.com/item?id=50248124</a></p>
@@ -353,20 +1026,17 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <p># Comments: 342</p>
 ]]></content:encoded>
 <pubDate>Mon, 26 Oct 2026 18:01:17 +0000</pubDate>
-<pubDate>Mon, 26 Oct 2026 18:01:17 +0000</pubDate>
 </item>
 <item>
 <title>Meta Employees Denounce Interference in Brazilian Elections</title>
 <link>https://www.panamericandispatch.org/p/meta-employees-denounce-interference</link>
 <guid>https://www.panamericandispatch.org/p/meta-employees-denounce-interference</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.panamericandispatch.org/p/meta-employees-denounce-interference">https://www.panamericandispatch.org/p/meta-employees-denounce-interference</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50248061">https://news.ycombinator.com/item?id=50248061</a></p>
 <p>Points: 308</p>
 <p># Comments: 139</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 17:57:29 +0000</pubDate>
 <pubDate>Mon, 26 Oct 2026 17:57:29 +0000</pubDate>
 </item>
 <item>
@@ -374,13 +1044,11 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://blog.enlyth.com/posts/oldest-windows-gui-app-win-11/</link>
 <guid>https://blog.enlyth.com/posts/oldest-windows-gui-app-win-11/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://blog.enlyth.com/posts/oldest-windows-gui-app-win-11/">https://blog.enlyth.com/posts/oldest-windows-gui-app-win-11/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50248055">https://news.ycombinator.com/item?id=50248055</a></p>
 <p>Points: 342</p>
 <p># Comments: 206</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 17:56:55 +0000</pubDate>
 <pubDate>Mon, 26 Oct 2026 17:56:55 +0000</pubDate>
 </item>
 <item>
@@ -388,13 +1056,11 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://www.404media.co/in-leaked-audio-flock-ceo-tells-cops-backlash-to-the-company-isnt-real/</link>
 <guid>https://www.404media.co/in-leaked-audio-flock-ceo-tells-cops-backlash-to-the-company-isnt-real/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.404media.co/in-leaked-audio-flock-ceo-tells-cops-backlash-to-the-company-isnt-real/">https://www.404media.co/in-leaked-audio-flock-ceo-tells-cops-backlash-to-the-company-isnt-real/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50248005">https://news.ycombinator.com/item?id=50248005</a></p>
 <p>Points: 290</p>
 <p># Comments: 172</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 17:54:00 +0000</pubDate>
 <pubDate>Mon, 26 Oct 2026 17:54:00 +0000</pubDate>
 </item>
 <item>
@@ -402,13 +1068,11 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://www.404media.co/chatgpt-keeps-telling-people-404-media-can-solve-their-tech-support-problems/</link>
 <guid>https://www.404media.co/chatgpt-keeps-telling-people-404-media-can-solve-their-tech-support-problems/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.404media.co/chatgpt-keeps-telling-people-404-media-can-solve-their-tech-support-problems/">https://www.404media.co/chatgpt-keeps-telling-people-404-media-can-solve-their-tech-support-problems/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50247630">https://news.ycombinator.com/item?id=50247630</a></p>
 <p>Points: 236</p>
 <p># Comments: 87</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 17:32:16 +0000</pubDate>
 <pubDate>Mon, 26 Oct 2026 17:32:16 +0000</pubDate>
 </item>
 <item>
@@ -416,13 +1080,11 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://cohere.com/blog/concerning-behaviour-popular-open-weight-ai-model</link>
 <guid>https://cohere.com/blog/concerning-behaviour-popular-open-weight-ai-model</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://cohere.com/blog/concerning-behaviour-popular-open-weight-ai-model">https://cohere.com/blog/concerning-behaviour-popular-open-weight-ai-model</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50246658">https://news.ycombinator.com/item?id=50246658</a></p>
 <p>Points: 279</p>
 <p># Comments: 113</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 16:35:44 +0000</pubDate>
 <pubDate>Mon, 26 Oct 2026 16:35:44 +0000</pubDate>
 </item>
 <item>
@@ -430,13 +1092,11 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://css-tricks.com/css-tricks-has-a-new-owner/</link>
 <guid>https://css-tricks.com/css-tricks-has-a-new-owner/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://css-tricks.com/css-tricks-has-a-new-owner/">https://css-tricks.com/css-tricks-has-a-new-owner/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50245831">https://news.ycombinator.com/item?id=50245831</a></p>
 <p>Points: 406</p>
 <p># Comments: 93</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 15:51:23 +0000</pubDate>
 <pubDate>Mon, 26 Oct 2026 15:51:23 +0000</pubDate>
 </item>
 <item>
@@ -444,13 +1104,11 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://www.seattletimes.com/business/microsoft/microsoft-offers-mass-buyouts-for-roughly-a-quarter-of-its-workforce/</link>
 <guid>https://www.seattletimes.com/business/microsoft/microsoft-offers-mass-buyouts-for-roughly-a-quarter-of-its-workforce/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.seattletimes.com/business/microsoft/microsoft-offers-mass-buyouts-for-roughly-a-quarter-of-its-workforce/">https://www.seattletimes.com/business/microsoft/microsoft-offers-mass-buyouts-for-roughly-a-quarter-of-its-workforce/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50245524">https://news.ycombinator.com/item?id=50245524</a></p>
 <p>Points: 833</p>
 <p># Comments: 750</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 15:35:12 +0000</pubDate>
 <pubDate>Mon, 26 Oct 2026 15:35:12 +0000</pubDate>
 </item>
 <item>
@@ -458,13 +1116,11 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://www.bbc.com/future/article/20261023-how-solar-became-bigger-than-nuclear</link>
 <guid>https://www.bbc.com/future/article/20261023-how-solar-became-bigger-than-nuclear</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.bbc.com/future/article/20261023-how-solar-became-bigger-than-nuclear">https://www.bbc.com/future/article/20261023-how-solar-became-bigger-than-nuclear</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50245385">https://news.ycombinator.com/item?id=50245385</a></p>
 <p>Points: 192</p>
 <p># Comments: 309</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 15:26:17 +0000</pubDate>
 <pubDate>Mon, 26 Oct 2026 15:26:17 +0000</pubDate>
 </item>
 <item>
@@ -472,13 +1128,11 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://magazine.sebastianraschka.com/p/building-reasoning-models</link>
 <guid>https://magazine.sebastianraschka.com/p/building-reasoning-models</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://magazine.sebastianraschka.com/p/building-reasoning-models">https://magazine.sebastianraschka.com/p/building-reasoning-models</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50245138">https://news.ycombinator.com/item?id=50245138</a></p>
 <p>Points: 616</p>
 <p># Comments: 87</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 15:11:59 +0000</pubDate>
 <pubDate>Mon, 26 Oct 2026 15:11:59 +0000</pubDate>
 </item>
 <item>
@@ -486,13 +1140,11 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://freedom.press/the-classifieds/doj-says-presidents-should-be-able-to-sell-secrets-on-ebay/</link>
 <guid>https://freedom.press/the-classifieds/doj-says-presidents-should-be-able-to-sell-secrets-on-ebay/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://freedom.press/the-classifieds/doj-says-presidents-should-be-able-to-sell-secrets-on-ebay/">https://freedom.press/the-classifieds/doj-says-presidents-should-be-able-to-sell-secrets-on-ebay/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50243762">https://news.ycombinator.com/item?id=50243762</a></p>
 <p>Points: 186</p>
 <p># Comments: 89</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 13:54:44 +0000</pubDate>
 <pubDate>Mon, 26 Oct 2026 13:54:44 +0000</pubDate>
 </item>
 <item>
@@ -500,13 +1152,11 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://www.apple.com/shop/buy-ipad/ipad-mini</link>
 <guid>https://www.apple.com/shop/buy-ipad/ipad-mini</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.apple.com/shop/buy-ipad/ipad-mini">https://www.apple.com/shop/buy-ipad/ipad-mini</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50243646">https://news.ycombinator.com/item?id=50243646</a></p>
 <p>Points: 158</p>
 <p># Comments: 3</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 13:47:33 +0000</pubDate>
 <pubDate>Mon, 26 Oct 2026 13:47:33 +0000</pubDate>
 </item>
 <item>
@@ -514,13 +1164,11 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://www.apple.com/newsroom/2026/10/apple-gives-ipad-mini-its-biggest-update-ever/</link>
 <guid>https://www.apple.com/newsroom/2026/10/apple-gives-ipad-mini-its-biggest-update-ever/</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.apple.com/newsroom/2026/10/apple-gives-ipad-mini-its-biggest-update-ever/">https://www.apple.com/newsroom/2026/10/apple-gives-ipad-mini-its-biggest-update-ever/</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50243061">https://news.ycombinator.com/item?id=50243061</a></p>
 <p>Points: 160</p>
 <p># Comments: 437</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 13:13:36 +0000</pubDate>
 <pubDate>Mon, 26 Oct 2026 13:13:36 +0000</pubDate>
 </item>
 <item>
@@ -528,13 +1176,11 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm</link>
 <guid>https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm</guid>
 <content:encoded><![CDATA[
-
 <p>Article URL: <a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm">https://www.sec.gov/Archives/edgar/data/2130357/000162828026067168/anthropicpbc-sx1.htm</a></p>
 <p>Comments URL: <a href="https://news.ycombinator.com/item?id=50242939">https://news.ycombinator.com/item?id=50242939</a></p>
 <p>Points: 1529</p>
 <p># Comments: 1487</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 13:04:50 +0000</pubDate>
 <pubDate>Mon, 26 Oct 2026 13:04:50 +0000</pubDate>
 </item>
 <item>
@@ -542,10 +1188,8 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>http://shittyscreenshare.com</link>
 <guid>http://shittyscreenshare.com</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/cxxcik/shitty_screenshare">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 19:12:16 -0500</pubDate>
 <pubDate>Mon, 26 Oct 2026 19:12:16 -0500</pubDate>
 </item>
 <item>
@@ -553,10 +1197,8 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://brennenputh.me/blog/printable-websites/</link>
 <guid>https://brennenputh.me/blog/printable-websites/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/olnqh2/websites_should_be_printable">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 07:02:58 -0500</pubDate>
 <pubDate>Mon, 26 Oct 2026 07:02:58 -0500</pubDate>
 </item>
 <item>
@@ -564,10 +1206,8 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://evancz.dev/why-is-it-so-expensive-to-send-an-email</link>
 <guid>https://evancz.dev/why-is-it-so-expensive-to-send-an-email</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/ryjnyi/why_is_it_so_expensive_send_email">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 08:25:41 -0500</pubDate>
 <pubDate>Mon, 26 Oct 2026 08:25:41 -0500</pubDate>
 </item>
 <item>
@@ -575,10 +1215,8 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://www.benjoffe.com/fast-floordiv</link>
 <guid>https://www.benjoffe.com/fast-floordiv</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/o5to4p/faster_way_compute_signed_64_bit_floor">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 13:44:53 -0500</pubDate>
 <pubDate>Mon, 26 Oct 2026 13:44:53 -0500</pubDate>
 </item>
 <item>
@@ -586,10 +1224,8 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://gram-editor.com/posts/release-3.4.0/</link>
 <guid>https://gram-editor.com/posts/release-3.4.0/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/p9obkt/gram_3_4_0_released">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 06:47:25 -0500</pubDate>
 <pubDate>Mon, 26 Oct 2026 06:47:25 -0500</pubDate>
 </item>
 <item>
@@ -597,10 +1233,8 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://support.apple.com/en-us/149555</link>
 <guid>https://support.apple.com/en-us/149555</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/xzp4m0/about_compromised_emudhra_intermediate">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 04:58:55 -0500</pubDate>
 <pubDate>Mon, 26 Oct 2026 04:58:55 -0500</pubDate>
 </item>
 <item>
@@ -608,10 +1242,8 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://stalw.art/blog/stalwart-1-0/</link>
 <guid>https://stalw.art/blog/stalwart-1-0/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/c0yniy/stalwart_v1_0_fastest_mail_server_on">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 11:28:12 -0500</pubDate>
 <pubDate>Mon, 26 Oct 2026 11:28:12 -0500</pubDate>
 </item>
 <item>
@@ -619,10 +1251,8 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://www.kcoleman.me/2026/10/22/hacked.html</link>
 <guid>https://www.kcoleman.me/2026/10/22/hacked.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/ihmfsc/passkey_is_worse">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 18:44:15 -0500</pubDate>
 <pubDate>Mon, 26 Oct 2026 18:44:15 -0500</pubDate>
 </item>
 <item>
@@ -630,10 +1260,8 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://pharo.org/news/2026-10-26-Pharo14Release.html</link>
 <guid>https://pharo.org/news/2026-10-26-Pharo14Release.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/1h5kuj/pharo_14_released">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 12:47:50 -0500</pubDate>
 <pubDate>Mon, 26 Oct 2026 12:47:50 -0500</pubDate>
 </item>
 <item>
@@ -641,11 +1269,9 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://lobste.rs/s/xxdda9/what_are_you_doing_this_week</link>
 <guid>https://lobste.rs/s/xxdda9/what_are_you_doing_this_week</guid>
 <content:encoded><![CDATA[
-
 <p>What are you doing this week? Feel free to share!</p>
 <p>Keep in mind it’s OK to do nothing at all, too.</p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 06:35:18 -0500</pubDate>
 <pubDate>Mon, 26 Oct 2026 06:35:18 -0500</pubDate>
 </item>
 <item>
@@ -653,10 +1279,8 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://go.dev/blog/emudhra-incident</link>
 <guid>https://go.dev/blog/emudhra-incident</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/cxdpiu/our_response_emudhra_key_disclosure">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 19:31:44 -0500</pubDate>
 <pubDate>Mon, 26 Oct 2026 19:31:44 -0500</pubDate>
 </item>
 <item>
@@ -664,10 +1288,8 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://www.youtube.com/watch?v=mZfJ-sulqQs</link>
 <guid>https://www.youtube.com/watch?v=mZfJ-sulqQs</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/uhfzlv/vcf_midwest_2026_building_living_90s">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 19:36:47 -0500</pubDate>
 <pubDate>Mon, 26 Oct 2026 19:36:47 -0500</pubDate>
 </item>
 <item>
@@ -675,10 +1297,8 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://turtleware.eu/posts/Heavenly-delights-of-hashing-numbers-under-EQUALP.html</link>
 <guid>https://turtleware.eu/posts/Heavenly-delights-of-hashing-numbers-under-EQUALP.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/0ta2mv/heavenly_delights_hashing_numbers_under">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 10:40:59 -0500</pubDate>
 <pubDate>Mon, 26 Oct 2026 10:40:59 -0500</pubDate>
 </item>
 <item>
@@ -686,10 +1306,8 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://arstechnica.com/gadgets/2026/10/from-impulse-purchase-to-pocket-studio-the-m-vave-fm-1/</link>
 <guid>https://arstechnica.com/gadgets/2026/10/from-impulse-purchase-to-pocket-studio-the-m-vave-fm-1/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/5u7gjd/from_impulse_purchase_pocket_studio_m">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 07:55:44 -0500</pubDate>
 <pubDate>Mon, 26 Oct 2026 07:55:44 -0500</pubDate>
 </item>
 <item>
@@ -697,10 +1315,8 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://train-it.eu/blog/cpp26-contracts-the-ballot-result/</link>
 <guid>https://train-it.eu/blog/cpp26-contracts-the-ballot-result/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/nxfown/result_c_26_dis_ballot">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Mon, 26 Oct 2026 12:53:05 -0500</pubDate>
 <pubDate>Mon, 26 Oct 2026 12:53:05 -0500</pubDate>
 </item>
 <item>
@@ -708,15 +1324,12 @@ aws-mediapackagev2: AWS::MediaPackageV2::OriginEndpoint: MssManifestConfiguratio
 <link>https://archive.org/download/small_web/11787-48384.mp4</link>
 <guid>https://archive.org/download/small_web/11787-48384.mp4</guid>
 <content:encoded><![CDATA[
-
 <p>Speaker Page: <a href="https://pretalx.seagl.org/2026/talk/GQZEUY/" rel="ugc">https://pretalx.seagl.org/2026/talk/GQZEUY/</a></p>
 <p>Additional Notes: <a href="https://punkto.org/blog/small_web" rel="ugc">https://punkto.org/blog/small_web</a></p>
 <p><a href="https://lobste.rs/s/ysyqnt/small_web_is_huge">Comments</a></p>
 ]]></content:encoded>
 <pubDate>Mon, 26 Oct 2026 06:34:43 -0500</pubDate>
-<pubDate>Mon, 26 Oct 2026 06:34:43 -0500</pubDate>
 </item>
-
 <item>
 <title>Lula wins election after final votes tallied</title>
 <link>https://www.reuters.com/live/brazil-election-live-lula-bolsonaro-face-off-presidential-runoff-2026-10-25/</link>
@@ -18588,839 +19201,6 @@ accuracy before undrafting</li>
 <p><a href="https://lobste.rs/s/9fjar3/reasons_dislike_ai_coding">Comments</a></p>
 ]]></content:encoded>
 <pubDate>Wed, 07 Oct 2026 00:34:50 -0500</pubDate>
-</item>
-<item>
-<title>Explaining the Magelight XP glitch in Skyrim</title>
-<link>https://blog.alexbeals.com/posts/explaining-the-magelight-xp-glitch-in-skyrim</link>
-<guid>https://blog.alexbeals.com/posts/explaining-the-magelight-xp-glitch-in-skyrim</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/biwe7d/explaining_magelight_xp_glitch_skyrim">Comments</a></p>
-]]></content:encoded>
-<pubDate>Wed, 07 Oct 2026 04:08:19 -0500</pubDate>
-</item>
-<item>
-<title>AWS Batch now publishes job metrics to Amazon CloudWatch</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/10/aws-batch-job-cloudwatch-metrics/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/10/aws-batch-job-cloudwatch-metrics/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: AWS Batch, CloudWatch, job metrics, observability, job states
-
-<br /><br />Summary: AWS Batch has introduced job metrics that are published to Amazon CloudWatch, enhancing the observability of batch workloads. This feature allows users to track metrics throughout the job lifecycle, providing insights into job queue health, failure rates, and job durations. AWS Batch automatically emits metrics related to job state transitions and durations within the AWS/Batch namespace in Amazon CloudWatch, specifically featuring a JobQueueName dimension. These state transition metrics help monitor how many jobs enter various states such as submitted, running, succeeded, or failed. Additionally, duration metrics offer information on the time that jobs spend between states, like the time from submission to runnable status and the total execution time. Users can access these metrics via the AWS Batch console, Amazon CloudWatch console, AWS CLI, or AWS SDKs. Importantly, AWS Batch CloudWatch metrics are now available in all regions where AWS Batch operates, making it easier for users to gain visibility into their batch processing workflows. For further information, users can refer to the CloudWatch Metrics page. <div>
-<p>AWS Batch now publishes job metrics to Amazon CloudWatch, providing native observability for batch workloads. AWS Batch emits metrics throughout the job lifecycle, giving you visibility into job queue health, failure rates, and job durations.</p>
-<p>AWS Batch automatically publishes job state transition and duration metrics to the AWS/Batch namespace in Amazon CloudWatch, with JobQueueName dimension. State transition metrics track how many jobs entered a given state, such as submitted, running, succeeded, or failed. Duration metrics track how long jobs spent between states, such as time from submission to runnable or total execution time. You can view these metrics in the AWS Batch console, the Amazon CloudWatch console, or through the AWS CLI and AWS SDKs.</p>
-<p>AWS Batch CloudWatch metrics are now published in all <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/">AWS Regions</a> where AWS Batch is available. For more information, see CloudWatch Metrics page in the <a href="https://docs.aws.amazon.com/batch/latest/userguide/using_cloudwatch_metrics.html">AWS Batch User Guide</a>.</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 17:30:00 GMT</pubDate>
-</item>
-<item>
-<title>AWS Certificate Manager now supports ACME issuance through AWS PrivateLink</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/10/AWS-Certificate-Manager-ACME-Privatelink</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/10/AWS-Certificate-Manager-ACME-Privatelink</guid>
-<content:encoded><![CDATA[
-<div> Keywords: AWS Certificate Manager, ACM, PrivateLink, ACME, VPC  
-
-<br /><br />Summary: AWS Certificate Manager (ACM) now offers support for AWS PrivateLink, enabling secure public certificate issuance through a private network path within the AWS infrastructure. Users can request and renew public TLS certificates via an ACME-compatible client without any alterations to existing configurations. The setup involves creating a standard VPC interface endpoint for the ACM ACME service via the VPC console, AWS CLI, or AWS CloudFormation. Private DNS automatically resolves the ACME directory URL to this interface endpoint, ensuring seamless operations. All ACME issuance processes, including account creation, order creation, domain validation, and certificate retrieval, will utilize this PrivateLink. Activities remain recorded in the ACM console, complemented by AWS CloudTrail logging and Amazon CloudWatch metrics for comprehensive visibility and auditability. AWS PrivateLink support for ACME is accessible across all commercial AWS Regions. Users should note that standard AWS PrivateLink charges apply for interface endpoints. For those interested in starting with ACME and PrivateLink, resources are available on the AWS website for guidance and pricing details. <div>
-<p>AWS Certificate Manager (ACM) now supports AWS PrivateLink for ACME public certificate issuance, allowing you to request and renew public TLS certificates over a private network path that stays within the AWS network. You can now create a VPC interface endpoint to the ACM ACME service and route issuance traffic from any ACMEv2-compatible client through your VPC.</p>
-<p>If you're already using ACME with ACM, setup requires no changes to your ACME clients. After you create your managed ACME endpoint in ACM, you create a standard VPC interface endpoint using the VPC console, AWS CLI, or AWS CloudFormation. Private DNS resolves your existing ACME directory URL to the interface endpoint inside your VPC automatically, so the same client configuration and directory URL continue to work with no reconfiguration. Issuance operations—account creation, order creation, domain validation, finalization, and certificate retrieval—then flow over PrivateLink. All activity remains visible in the ACM console with AWS CloudTrail logging and Amazon CloudWatch metrics for auditability.</p>
-<p>AWS PrivateLink support for ACME certificate issuance is available in all commercial AWS Regions. Standard AWS PrivateLink charges apply for interface endpoints; see the AWS PrivateLink pricing page. For ACM pricing details, see the &nbsp;<a href="https://aws.amazon.com/certificate-manager/pricing/">ACM pricing page</a>. To get started with ACME and PrivateLink, visit the &nbsp;<a href="https://aws.amazon.com/blogs/aws/automate-public-tls-certificate-issuance-with-acme-support-in-aws-certificate-manager/">AWS News blog post&nbsp;</a>&nbsp;or read the&nbsp;<a href="https://docs.aws.amazon.com/acm/latest/userguide/acm-acme.html">documentation</a>.</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 14:01:00 GMT</pubDate>
-</item>
-<item>
-<title>Amazon EC2 Hpc8a instances are now available in Asia Pacific (Singapore)</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-ec2-hpc8a-asia-pacific/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-ec2-hpc8a-asia-pacific/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Amazon EC2, Hpc8a instances, AMD EPYC, performance, HPC workloads  
-
-<br /><br />Summary:  
-Starting today, Amazon EC2 Hpc8a instances are now available in the Asia Pacific (Singapore) region. These instances are powered by the 5th Generation AMD EPYC processors, previously known as Turin, providing a maximum frequency of 4.5GHz. Hpc8a instances offer up to 40% higher performance and 25% better price performance compared to the Hpc7a instances, allowing customers to accelerate compute-intensive workloads while optimizing costs. Additionally, Hpc8a instances deliver up to 42% higher memory bandwidth relative to Hpc7a instances, significantly enhancing performance for memory-intensive simulations and scientific computing tasks. Built on the latest sixth-generation architecture, Hpc8a instances are tailored for compute-intensive and latency-sensitive HPC workloads. They are particularly suited for tightly coupled applications, including computational fluid dynamics (CFD), weather forecasting, explicit finite element analysis (FEA), and multiphysics simulations, which demand fast inter-node communication and consistent high performance. To get started, users can sign in to their AWS accounts. For more information, visit the official AWS website or documentation. <div>
-<p>Starting today, Amazon EC2 Hpc8a instances are available in&nbsp;Asia Pacific (Singapore) region. These instances are powered by 5th Gen AMD EPYC processors (formerly code named Turin). With a maximum frequency of 4.5GHz, Hpc8a instances deliver up to 40% higher performance and up to 25% better price performance compared to Hpc7a instances, helping customers accelerate compute-intensive workloads while optimizing costs. Compared to Hpc7a instances, Hpc8a instances also provide up to 42% higher memory bandwidth, further improving performance for memory-intensive simulations and scientific computing workloads.
- <br />
- <br />
- Built on the latest sixth-generation <a href="https://aws.amazon.com/ec2/nitro/">AWS Nitro Cards</a>, Hpc8a instances are designed for compute-intensive, latency-sensitive HPC workloads. They are ideal for tightly coupled applications such as computational fluid dynamics (CFD), weather forecasting, explicit finite element analysis (FEA), and multiphysics simulations that require fast inter-node communication and consistent high performance.
- <br />
- <br />
- To get started, sign in to the <a href="https://console.aws.amazon.com/ec2/?trk=d8ec3b19-0f37-4f8c-8c12-189f913e205c&amp;sc_channel=el">AWS Management Console</a>. For more information visit the <a href="https://aws.amazon.com/ec2/instance-types/hpc8a/">Amazon EC2 Hpc8a instance page</a> or <a href="https://aws.amazon.com/blogs/aws/amazon-ec2-hpc8a-instances-powered-by-5th-gen-amd-epyc-processors-are-now-available">AWS news blog</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 05 Oct 2026 20:33:00 GMT</pubDate>
-</item>
-<item>
-<title>AWS Control Tower AFT now supports plan-only customization runs</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/09/aws-control-tower-aft/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/09/aws-control-tower-aft/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: AWS, Control Tower, Terraform, customization, plan-only
-
-<br /><br />Summary: AWS Control Tower Account Factory for Terraform (AFT) has introduced a new feature that allows administrators to perform plan-only customization runs. This innovation enables the preview of Terraform changes before they are applied across managed accounts, enhancing validation processes. AFT is an open-source Terraform module designed to facilitate account provisioning and customization in AWS Control Tower environments. Previously, any customization invoked would lead to an immediate Terraform apply, making it challenging to foresee outcomes or identify unwanted configuration drift. With the new plan-only run capability, administrators can execute a Terraform plan for both global and account customizations without making any alterations, which promotes safe pre-rollout validation and drift detection. This feature also integrates well into Continuous Integration/Continuous Deployment (CI/CD) review workflows, ensuring a more controlled deployment process. Importantly, plan-only runs are compatible with all Terraform distributions supported by AFT, including open source, Terraform Cloud, and Terraform Enterprise. Furthermore, this feature is accessible in all AWS Regions where AWS Control Tower Account Factory for Terraform operates, broadening its utility in diverse environments. For detailed configuration, users are directed to the relevant resources provided by AWS. <div>
-<p>AWS Control Tower Account Factory for Terraform (AFT) now supports plan-only customization runs, giving administrators the ability to preview Terraform changes before applying them across their managed accounts.
- <br />
- AFT is an open-source Terraform module that automates account provisioning and customization in AWS Control Tower environments. Previously, invoking customizations always triggered a full Terraform apply with no way to preview changes, making it difficult to validate expected outcomes or catch unintended configuration drift before a broad rollout. With plan-only runs, administrators can now trigger a Terraform plan for global and account customizations without applying any changes. This capability supports safe pre-rollout validation, drift detection, and integration into CI/CD review workflows. Plan-only runs are compatible across all AFT-supported Terraform distributions, including open source, Terraform Cloud, and Terraform Enterprise.</p>
-<p>This feature is available in all AWS Regions where&nbsp;AWS Control Tower Account Factory for Terraform is supported. To get started, see the <a href="https://docs.aws.amazon.com/controltower/latest/userguide/aft-overview.html">AFT documentation</a> and the <a href="https://github.com/aws-ia/terraform-aws-control_tower_account_factory/releases/tag/1.22.0">AFT 1.22.0 release notes</a> for configuration details. For more information, see the <a href="https://docs.aws.amazon.com/controltower/latest/userguide/what-is-control-tower.html">AWS Control Tower User Guide</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 05 Oct 2026 19:31:00 GMT</pubDate>
-</item>
-<item>
-<title>Amazon EC2 introduces shared tags for Amazon Machine Images</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/10/ec2-ami-shared-tags</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/10/ec2-ami-shared-tags</guid>
-<content:encoded><![CDATA[
-<div> Keywords: AMI, tag sharing, AWS accounts, read-only, operational burden
-
-<br /><br />Summary:  
-Amazon EC2 has introduced AMI tag sharing, allowing AMI owners to share selected tags with all AWS accounts that access their AMI. This feature enables the automatic sharing of tags alongside the AMI, whether it is shared with an individual account, across an organization, or made public. To utilize this feature, AMI owners need to prefix the tag key with 'ec2:SharedTag/'. The shared tags are viewable by every recipient account, which eliminates the need for custom workflows to replicate tags into each account after sharing. It is essential to note that shared tags are read-only for the recipient accounts; only the AMI owner has the authority to create, modify, or delete these tags. Additionally, shared tags do not affect the recipient accounts' ability to add their own private tags as they do not count toward the 50 tags per resource quota for those accounts. This feature enhances operational efficiency and is available across all AWS Regions at no extra cost. For more information, users are encouraged to visit the official AWS documentation related to this feature. <div>
-<p>Amazon EC2 now supports AMI tag sharing, a new feature that lets AMI owners make selected tags visible to all AWS accounts an AMI is shared with. Whether an AMI is shared with an account, across an organization, or made public, a shared tag is automatically shared alongside the AMI, eliminating the need to build and maintain custom tag replication workflows.</p>
-<p>AMI owners simply add the 'ec2:SharedTag/' prefix to any tag key, and every account the AMI is shared with can immediately see it. This removes the operational burden of replicating tags into each account after sharing an AMI. Shared tags are read-only for recipient accounts, so only the owner can create, modify, or delete them. They count only against the owner's 50 tag per resource quota, allowing recipient accounts to continue adding their own private tags without any impact to their limits.</p>
-<p>This feature is available in all AWS Regions at no additional cost. To learn more, please visit the <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/sharingamis-explicit.html">documentation</a>&nbsp;and read the <a href="https://aws.amazon.com/blogs/compute/introducing-ec2-ami-tag-sharing-share-ec2-tags-across-aws-accounts/">blog</a>.</p>
-]]></content:encoded>
-<pubDate>Mon, 05 Oct 2026 17:28:00 GMT</pubDate>
-</item>
-<item>
-<title>v16.5.0-canary.1</title>
-<link>https://github.com/vercel/next.js/releases/tag/v16.5.0-canary.1</link>
-<guid>https://github.com/vercel/next.js/releases/tag/v16.5.0-canary.1</guid>
-<content:encoded><![CDATA[
-<div> Keywords: turbo-tasks, snapshot, metadata, encoding, persisting
-
-<br /><br />Summary:  
-The article outlines several miscellaneous changes related to the turbo-tasks feature. First, an experiment has been initiated to capture snapshot pending bits while maintaining exclusions. Additionally, it emphasizes keeping custom-route metadata separate from configuration settings for better organization. In terms of operational efficiency, the changes include copying tasks upon their first modification during a snapshot, ensuring that the most up-to-date version of tasks is utilized. Moreover, the feature has been improved by disabling the persistence of data following a failed snapshot, thereby preventing unnecessary storage use and potential data corruption. Lastly, the encoding method has been enhanced: turbo-tasks now utilize bincode to encode copy-on-write snapshots instead of relying on traditional cloning methods. This adjustment aims to optimize performance and memory usage when dealing with snapshots. The text concludes with an acknowledgment of contributions from unnamed collaborators who assisted in implementing these various improvements, highlighting the importance of collaboration in achieving such changes. <div>
-<h3>Misc Changes</h3>
-<ul>
-<li>[turbo-tasks] Experiment: capture snapshot pending bits under exclusion: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99747">#99747</a></li>
-<li>Keep custom-route metadata outside configuration: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99508">#99508</a></li>
-<li>turbo-tasks: copy tasks on their first modification during a snapshot: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99649">#99649</a></li>
-<li>turbo-tasks: disable persisting after a failed snapshot: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99732">#99732</a></li>
-<li>turbo-tasks: bincode-encode copy-on-write snapshots instead of cloning: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99644">#99644</a></li>
-</ul>
-<h3>Credits</h3>
-<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/lukesandberg">@lukesandberg</a>, <a class="user-mention notranslate" href="https://github.com/gnoff">@gnoff</a>, and <a class="user-mention notranslate" href="https://github.com/sokra">@sokra</a> for helping!</p>
-]]></content:encoded>
-<pubDate>2026-10-06T23:52:54Z</pubDate>
-</item>
-<item>
-<title>v16.5.0-canary.0</title>
-<link>https://github.com/vercel/next.js/releases/tag/v16.5.0-canary.0</link>
-<guid>https://github.com/vercel/next.js/releases/tag/v16.5.0-canary.0</guid>
-<content:encoded><![CDATA[
-<div> Sure! Please provide the article you would like me to summarize. <div>
-<p>Initial release</p>
-]]></content:encoded>
-<pubDate>2026-10-06T18:52:27Z</pubDate>
-</item>
-<item>
-<title>v16.4.0</title>
-<link>https://github.com/vercel/next.js/releases/tag/v16.4.0</link>
-<guid>https://github.com/vercel/next.js/releases/tag/v16.4.0</guid>
-<content:encoded><![CDATA[
-<div> Sure! Please provide the article you would like me to summarize. <div>
-<p>v16.4.0</p>
-]]></content:encoded>
-<pubDate>2026-10-06T17:57:47Z</pubDate>
-</item>
-<item>
-<title>v16.4.0-canary.63</title>
-<link>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.63</link>
-<guid>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.63</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Next.js, export, documentation, optimization, task cleanup  
-
-<br /><br />Summary:  
-The recent changes include updates to the package bundling guide, highlighting the process for the next analyze export. There has been a decision to revert the stabilization of the forbidden() and unauthorized() functions to ensure greater flexibility for developers. Furthermore, the new updates focus on preserving configured output directories during static exports, improving the workflow for application deployment. A significant rename has taken place, changing the skill to next-bundle-optimizer, with comprehensive documentation provided on how to utilize this tool effectively for optimizing bundle sizes in Next.js applications. Finally, in the [turbo-tasks-backend], there has been an initiative to clean up the task state prior to the publishing execution completion, ensuring a more streamlined development process. Each of these changes aims to enhance the efficiency of Next.js development and deployment, providing developers with better tools and clearer guidelines to optimize their workflows.  
-
-Huge thanks to all contributors for their assistance with these improvements!   <div>
-<h3>Misc Changes</h3>
-<ul>
-<li>Document next analyze export in the package bundling guide: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99735">#99735</a></li>
-<li>Revert stabilization of <code>forbidden()</code> and <code>unauthorized()</code>: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99734">#99734</a></li>
-<li>Preserve configured output directories during static export: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99507">#99507</a></li>
-<li>Rename skill to next-bundle-optimizer and document its usage: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99731">#99731</a></li>
-<li>[turbo-tasks-backend] Clean up task state before publishing execution completion: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99729">#99729</a></li>
-</ul>
-<h3>Credits</h3>
-<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/wbinnssmith">@wbinnssmith</a>, <a class="user-mention notranslate" href="https://github.com/acdlite">@acdlite</a>, <a class="user-mention notranslate" href="https://github.com/gnoff">@gnoff</a>, and <a class="user-mention notranslate" href="https://github.com/sokra">@sokra</a> for helping!</p>
-]]></content:encoded>
-<pubDate>2026-10-06T17:29:39Z</pubDate>
-</item>
-<item>
-<title>v16.4.0-canary.62</title>
-<link>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.62</link>
-<guid>https://github.com/vercel/next.js/releases/tag/v16.4.0-canary.62</guid>
-<content:encoded><![CDATA[
-<div> Keywords: static route, Turbopack, Bundle Analyzer, error handling, optimization  
-
-<br /><br />Summary: Improvements have been made to the static route error guidance to provide clearer instructions. The documentation now includes references to Turbopack experimental configurations to assist users. During agent upgrades, users will see more informative choices in prompts, enhancing the overall experience. A new guide for keeping pages static has been added, which aligns with the updated navigation stage documentation. In Turbopack, there is a check implemented for the invalidator map prior to adding a path to a batch, optimizing performance. Additionally, a guide for optimizing the static shell has been introduced. The development and build processes can now run concurrently during upgrade prompts, improving workflow efficiency. The documentation recommends using the auth interruption APIs for error handling and provides examples for better understanding. The Bundle Analyzer Agent Skill has seen several enhancements, including tracking conditional async and worker chunk loading, displaying route chunk groups, showing modules in generated JS/CSS files, and exposing more route details in analysis data. Lastly, the turbo-tasks-backend has implemented measures to stop dirtying the dependents of garbage-collected tasks and treat reads of collected tasks as errors. <div>
-<h3>Misc Changes</h3>
-<ul>
-<li>Improve static route error guidance: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99724">#99724</a></li>
-<li>docs: add Turbopack experimental config references: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99723">#99723</a></li>
-<li>Show choices for agent upgrade prompt: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99727">#99727</a></li>
-<li>docs: add Keeping pages static guide and align the navigation stage docs: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99493">#99493</a></li>
-<li>Turbopack: Check the invalidator map before adding a path to a batch: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99711">#99711</a></li>
-<li>docs: add guide for optimizing the static shell: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/97737">#97737</a></li>
-<li>Keep dev and build running during upgrade prompts: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99702">#99702</a></li>
-<li>docs: use auth interruption APIs in examples: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99698">#99698</a></li>
-<li>docs: recommend auth interruption APIs in error handling: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99696">#99696</a></li>
-<li>[test] Update snapshots: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99713">#99713</a></li>
-<li>Bundle Analyzer Agent Skill: Trace conditional async and worker chunk loading: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99174">#99174</a></li>
-<li>Bundle Analyzer Agent Skill: Show route chunk groups: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99170">#99170</a></li>
-<li>Bundle Analyzer Agent Skill: Show modules in generated JS/CSS files: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99173">#99173</a></li>
-<li>Bundle Analyzer Agent Skill: Expose more route details in analyze data: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99172">#99172</a></li>
-<li>turbo-tasks-backend: stop dirtying dependents of GC-collected tasks: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99647">#99647</a></li>
-<li>turbo-tasks-backend: treat reads and connects of collected tasks as errors: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99646">#99646</a></li>
-<li>turbo-tasks-backend: stop pinning tasks during restores and always discard missing tasks: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99645">#99645</a></li>
-<li>Bundle Analyzer Agent Skill: Add analyzer skill: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/99169">#99169</a></li>
-</ul>
-<h3>Credits</h3>
-<p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/aurorascharff">@aurorascharff</a>, <a class="user-mention notranslate" href="https://github.com/devjiwonchoi">@devjiwonchoi</a>, <a class="user-mention notranslate" href="https://github.com/bgw">@bgw</a>, <a class="user-mention notranslate" href="https://github.com/wbinnssmith">@wbinnssmith</a>, and <a class="user-mention notranslate" href="https://github.com/lukesandberg">@lukesandberg</a> for helping!</p>
-]]></content:encoded>
-<pubDate>2026-10-06T15:22:43Z</pubDate>
-</item>
-<item>
-<title>v12.0.3</title>
-<link>https://github.com/nestjs/nest/releases/tag/v12.0.3</link>
-<guid>https://github.com/nestjs/nest/releases/tag/v12.0.3</guid>
-<content:encoded><![CDATA[
-<h2>v12.0.3 (2026-09-15)</h2>
-<h4>Bug fixes</h4>
-<ul>
-<li><code>microservices</code>
-<ul>
-<li><a href="https://github.com/nestjs/nest/pull/17766">#17766</a> fix(microservices): always run the kafka processing end hook (<a href="https://github.com/kamilmysliwiec">@kamilmysliwiec</a>)</li>
-<li><a href="https://github.com/nestjs/nest/pull/17757">#17757</a> fix(microservices): fail pending requests on client close (<a href="https://github.com/hktitof">@hktitof</a>)</li>
-<li><a href="https://github.com/nestjs/nest/pull/17746">#17746</a> fix(microservices): bound memory held for a TCP peer (<a href="https://github.com/kamilmysliwiec">@kamilmysliwiec</a>)</li>
-<li><a href="https://github.com/nestjs/nest/pull/17745">#17745</a> fix(microservices): destroy open TCP sockets on shutdown (<a href="https://github.com/kamilmysliwiec">@kamilmysliwiec</a>)</li>
-</ul>
-</li>
-<li><code>common</code>
-<ul>
-<li><a href="https://github.com/nestjs/nest/pull/17738">#17738</a> fix(common): validate uuid version and variant when no version is set (<a href="https://github.com/otnc">@otnc</a>)</li>
-<li><a href="https://github.com/nestjs/nest/pull/17761">#17761</a> fix(common): invoke proto-key stripping hook via this in transform (<a href="https://github.com/koreahghg">@koreahghg</a>)</li>
-</ul>
-</li>
-</ul>
-<h4>Dependencies</h4>
-<ul>
-<li><code>platform-express</code>
-<ul>
-<li><a href="https://github.com/nestjs/nest/pull/17762">#17762</a> fix(deps): update dependency multer to v2.4.0 (<a href="https://github.com/apps/renovate">@renovate[bot]</a>)</li>
-</ul>
-</li>
-<li><code>common</code>
-<ul>
-<li><a href="https://github.com/nestjs/nest/pull/17753">#17753</a> fix(deps): update dependency file-type to v22.1.0 (<a href="https://github.com/apps/renovate">@renovate[bot]</a>)</li>
-</ul>
-</li>
-</ul>
-<h4>Committers: 4</h4>
-<ul>
-<li>Abdellatif Anaflous (<a href="https://github.com/hktitof">@hktitof</a>)</li>
-<li>Kamil Mysliwiec (<a href="https://github.com/kamilmysliwiec">@kamilmysliwiec</a>)</li>
-<li>otoneko. (<a href="https://github.com/otnc">@otnc</a>)</li>
-<li>한국 (<a href="https://github.com/koreahghg">@koreahghg</a>)</li>
-</ul>
-]]></content:encoded>
-<pubDate>2026-09-15T07:57:13Z</pubDate>
-</item>
-<item>
-<title>v11.2.5</title>
-<link>https://github.com/nestjs/nest/releases/tag/v11.2.5</link>
-<guid>https://github.com/nestjs/nest/releases/tag/v11.2.5</guid>
-<content:encoded><![CDATA[
-<h2>What's changed</h2>
-<ul>
-<li><code>@nestjs/microservices</code>
-<ul>
-<li><a href="https://github.com/nestjs/nest/commit/dee4ed4dbc2e18e1e722619927647f5441dfe812">fix(microservices): harden the tcp transport against a hostile peer</a></li>
-</ul>
-</li>
-</ul>
-<p><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/nestjs/nest/compare/v11.2.4...v11.2.5"><tt>v11.2.4...v11.2.5</tt></a></p>
-]]></content:encoded>
-<pubDate>2026-09-15T07:12:34Z</pubDate>
-</item>
-<item>
-<title>v8.0.0-rc.14-dev.43</title>
-<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.43</link>
-<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.43</guid>
-<content:encoded><![CDATA[
-<p>variant() selects by discriminator value in the SQL and Mongo ORMs (#…</p>
-]]></content:encoded>
-<pubDate>2026-10-06T15:06:06Z</pubDate>
-</item>
-<item>
-<title>v8.0.0-rc.14-dev.42: Find references in the PSL language server (#30621)</title>
-<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.42</link>
-<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.42</guid>
-<content:encoded><![CDATA[
-<p>The PSL language server answers <code>textDocument/references</code> for models,<br />
-composite types, named types, blocks (including enum blocks), fields and<br />
-namespaces, across every schema file of the project. A usage is a token<br />
-that go-to-definition would take to the same declaration, so the list<br />
-agrees with diagnostics and navigation. The planned rename feature will<br />
-edit exactly the ranges this returns.</p>
-<h2>Changes</h2>
-<ul>
-<li><strong>References provider</strong><br />
-(<code>packages/1-framework/3-tooling/language-server/src/references.ts</code>):<br />
-resolves the symbol at the cursor with <code>resolvedNodeAt</code>, searches the<br />
-text of every project document for the symbol's name, and keeps the<br />
-identifier tokens whose binder resolution holds the same symbol object.<br />
-Each location is the range of one identifier token: <code>User</code> in<br />
-<code>auth.User</code>, not the whole qualified name. A cursor on a declaration<br />
-name and a cursor on any reference return the same list.<br />
-<code>includeDeclaration</code> is honoured.</li>
-<li><strong>Namespaces</strong>: the name of every <code>namespace X</code> block is returned<br />
-whether or not <code>includeDeclaration</code> is set, because each block both<br />
-declares and reopens the namespace. For that, the binder<br />
-(<code>packages/1-framework/2-authoring/psl-parser/src/binder.ts</code>) now<br />
-records a <code>namespace</code> resolution on each namespace block's name node, as<br />
-it already does for the names of models, types, blocks and fields. This<br />
-is the only binder change. Hover on a namespace block name now shows<br />
-<code>namespace &lt;name&gt;</code> as a result.</li>
-<li><strong>Go-to-definition on a declaration name</strong> (<code>src/definition.ts</code>):<br />
-returns the declaration's own location instead of <code>null</code>; a namespace<br />
-block name returns every block of the namespace. VS Code runs find<br />
-references when a definition result is the position the cursor is<br />
-already on, so F12 on <code>model User</code> shows its usages.</li>
-<li><strong>Wiring</strong>: <code>ProjectArtifacts.documents()</code> exposes the project's<br />
-documents, read the same way the symbol table reads them;<br />
-<code>Project.references</code> follows <code>Project.definition</code>; <code>server.ts</code> declares<br />
-<code>referencesProvider</code>.</li>
-<li><strong>Tests</strong>: <code>test/references.test.ts</code> covers each symbol kind from a<br />
-declaration and from a reference over a three-file project, the<br />
-discarded candidates (longer identifiers, comments, strings, same-named<br />
-fields on other models), and positions with no target. One expectation<br />
-in the SQL <code>contract-psl</code> binder test gains the new <code>namespace</code> entry.</li>
-</ul>
-<h2>Why</h2>
-<ul>
-<li><strong>Text search, then binder confirmation.</strong> The binder maps nodes to<br />
-resolutions and cannot list the references to a symbol. Syntax tree<br />
-nodes are created on first access, so visiting every token of every file<br />
-would create a node per element; a text search creates nodes only on the<br />
-path to each match. The binder gets no reverse index.</li>
-<li><strong>Symbol identity decides.</strong> Two fields named <code>id</code> on different models<br />
-are different symbols and never appear in each other's results. Text<br />
-only proposes candidates.</li>
-<li><strong>Definition returns the declaration, not its usages.</strong> Putting usages<br />
-in a definition response would make peek definition show the wrong list<br />
-and would mislead clients other than VS Code.</li>
-</ul>
-<h2>Not in this PR</h2>
-<ul>
-<li>Enum member references (<code>@default(ACTIVE)</code>): the binder records no<br />
-resolution for them.</li>
-<li>Rename and document highlight.</li>
-<li>Symbols with no declaration in the schema sources (attributes,<br />
-functions, contributed types, cross-space references) return an empty<br />
-result.</li>
-</ul>
-<h2>Verification</h2>
-<ul>
-<li>Package tests and lint for <code>psl-parser</code>, <code>language-server</code> and<br />
-<code>sql-contract-psl</code> pass, as does <code>pnpm lint:deps</code>.</li>
-<li>A QA run drove the built CLI over stdio against a four-file project;<br />
-every scripted scenario passed.</li>
-<li>Not yet done: the manual check in VS Code (Find All References, Peek<br />
-References, F12 on a declaration name) and in <code>apps/lsp-playground</code>.</li>
-<li>On the authoring machine <code>pnpm test:packages</code> failed in three tarball<br />
-tests (<code>ERR_PNPM_TRUST_DOWNGRADE</code> in their own <code>pnpm install</code>) and the<br />
-workspace typecheck failed in <code>prisma7-adoption</code> (404 fetching an engine<br />
-checksum). Both fail before reaching code from this branch.</li>
-</ul>
-<p>🤖 Generated with <a href="https://claude.com/claude-code" rel="nofollow">Claude Code</a></p>
-
-<h2>Summary by CodeRabbit</h2>
-<ul>
-<li><strong>New Features</strong></li>
-<li>Added Find References to the language server and playground, with<br />
-results across project files—including files not open in the editor—and<br />
-an option to include declarations.</li>
-<li>Namespace declaration names now support resolution, hover, and<br />
-go-to-definition. Namespace definitions include all matching namespace<br />
-blocks.</li>
-<li><strong>Documentation</strong></li>
-<li>Updated playground and language-server guides to describe Find<br />
-References and clarify supported targets, results, and limitations.</li>
-</ul>
-
-<hr />
-<p>Signed-off-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a><br />
-Co-authored-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a><br />
-Co-authored-by: Claude Opus 5.5 <a href="mailto:noreply@anthropic.com">noreply@anthropic.com</a></p>
-]]></content:encoded>
-<pubDate>2026-10-06T15:01:02Z</pubDate>
-</item>
-<item>
-<title>v8.0.0-rc.14-dev.41</title>
-<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.41</link>
-<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.41</guid>
-<content:encoded><![CDATA[
-<p>Close out lsp-go-to-definition: binder rules in the READMEs and retro…</p>
-]]></content:encoded>
-<pubDate>2026-10-06T14:15:21Z</pubDate>
-</item>
-<item>
-<title>v8.0.0-rc.14-dev.40</title>
-<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.40</link>
-<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.40</guid>
-<content:encoded><![CDATA[
-<p>TML-3402: The typed SQL builder locks the rows a select reads with fo…</p>
-]]></content:encoded>
-<pubDate>2026-10-06T13:07:02Z</pubDate>
-</item>
-<item>
-<title>v8.0.0-rc.14-dev.39</title>
-<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.39</link>
-<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.39</guid>
-<content:encoded><![CDATA[
-<p>Contract references list only the forms each command accepts; migrati…</p>
-]]></content:encoded>
-<pubDate>2026-10-06T12:40:44Z</pubDate>
-</item>
-<item>
-<title>v8.0.0-rc.14-dev.38</title>
-<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.38</link>
-<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.38</guid>
-<content:encoded><![CDATA[
-<p>TML-3481: Integration tests block the merge queue and no longer run o…</p>
-]]></content:encoded>
-<pubDate>2026-10-06T11:44:34Z</pubDate>
-</item>
-<item>
-<title>v8.0.0-rc.14-dev.37</title>
-<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.37</link>
-<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.37</guid>
-<content:encoded><![CDATA[
-<p>TML-3399: Every query gets an afterTransaction stage that fires when …</p>
-]]></content:encoded>
-<pubDate>2026-10-06T11:33:15Z</pubDate>
-</item>
-<item>
-<title>v8.0.0-rc.14-dev.36</title>
-<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.36</link>
-<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.36</guid>
-<content:encoded><![CDATA[
-<p>TML-3388: Contract columns store their data type id; one script and d…</p>
-]]></content:encoded>
-<pubDate>2026-10-06T11:07:34Z</pubDate>
-</item>
-<item>
-<title>v8.0.0-rc.14-dev.35</title>
-<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.35</link>
-<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.35</guid>
-<content:encoded><![CDATA[
-<p>docs: ADR 259 records that the cache middleware only moves data and t…</p>
-]]></content:encoded>
-<pubDate>2026-10-06T11:02:15Z</pubDate>
-</item>
-<item>
-<title>v8.0.0-rc.14-dev.34: Close the lsp-hover project (#30615)</title>
-<link>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.34</link>
-<guid>https://github.com/prisma/orm/releases/tag/v8.0.0-rc.14-dev.34</guid>
-<content:encoded><![CDATA[
-<p>Closes the lsp-hover project: rewrites the psl-parser README as an<br />
-overview and deletes <code>projects/lsp-hover/</code>.</p>
-<h2>What changes</h2>
-<ul>
-<li>
-<p><strong>psl-parser README rewritten as an overview.</strong> It used to list every<br />
-export and walk through binder internals, and several of those<br />
-statements were wrong after <a class="issue-link js-issue-link" href="https://github.com/prisma/orm/pull/30569">#30569</a> and <a class="issue-link js-issue-link" href="https://github.com/prisma/orm/pull/30591">#30591</a> (for example, that every<br />
-non-reference leaf "succeeds as a binding no-op"). It now describes what<br />
-the module is for:</p>
-<ul>
-<li>the parse, symbol table, binder and interpretation pipeline;</li>
-<li>the name lookup order;</li>
-</ul>
-</li>
-<li>
-<p>how diagnostics are divided between the binder and the specifications;</p>
-<ul>
-<li>the entry points and package boundaries.</li>
-</ul>
-<p>It links the ADRs for detail.</p>
-</li>
-<li>
-<p><strong><code>projects/lsp-hover/</code> is deleted.</strong> No file outside it referenced<br />
-it.</p>
-</li>
-</ul>
-<p>No ADR changes. ADRs 231, 249, 254 and 255 were checked against the<br />
-binder changes, and none states the old matching rule.</p>
-<h2>Project done-conditions</h2>
-<table>
-<thead>
-<tr>
-<th>Condition</th>
-<th>Result</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Each row of the hover table produces the listed content, verified by a</td>
-<td></td>
-</tr>
-<tr>
-<td>QA run</td>
-<td>Met by driving the built language server over LSP against a</td>
-</tr>
-<tr>
-<td>real postgres project (39 positions, all passing). <strong>Not</strong> checked by</td>
-<td></td>
-</tr>
-<tr>
-<td>hand inside VS Code, which is what the condition literally names.</td>
-<td></td>
-</tr>
-<tr>
-<td>Language-server tests cover hover for every resolution kind, including</td>
-<td></td>
-</tr>
-<tr>
-<td>a cross-file reference and a broken <code>///</code> run</td>
-<td>Met (<code>hover.test.ts</code>,</td>
-</tr>
-<tr>
-<td>psl-parser <code>doc-comment.test.ts</code>)</td>
-<td></td>
-</tr>
-<tr>
-<td>Binder tests cover <code>parameter</code>, <code>function</code>, <code>constant</code> and block</td>
-<td></td>
-</tr>
-<tr>
-<td><code>attribute</code>, including <code>oneOf</code></td>
-<td>Met</td>
-</tr>
-<tr>
-<td>(<code>binder-argument-resolutions.test.ts</code>, <code>block-binder.test.ts</code>)</td>
-<td></td>
-</tr>
-<tr>
-<td><code>hoverProvider: true</code> advertised and asserted</td>
-<td>Met (<code>server.test.ts</code>)</td>
-</tr>
-</tbody>
-</table>
-<p>|<br />
-| Language-server README lists hover | Met |<br />
-| Final retro | Done |</p>
-<p>Slices: <a class="issue-link js-issue-link" href="https://github.com/prisma/orm/pull/30569">#30569</a> and <a class="issue-link js-issue-link" href="https://github.com/prisma/orm/pull/30591">#30591</a>, both merged.</p>
-<p>🤖 Generated with <a href="https://claude.com/claude-code" rel="nofollow">Claude Code</a></p>
-
-<h2>Summary by CodeRabbit</h2>
-<ul>
-<li><strong>Documentation</strong></li>
-<li>Reworked the parser package README into a concise overview of the<br />
-parsing pipeline, symbol-table construction, name resolution, and<br />
-family-specific interpretation.</li>
-<li>Clarified grammar selection, diagnostic responsibilities, package<br />
-boundaries, and where to find related documentation.</li>
-<li>The README no longer includes the former detailed API signatures, data<br />
-shapes, binding rules, parsing examples, and identity constraints.</li>
-</ul>
-
-<hr />
-<p>Signed-off-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a><br />
-Co-authored-by: Steven McClankerton <a href="mailto:tatarintsev@prisma.io">tatarintsev@prisma.io</a><br />
-Co-authored-by: Claude Opus 5.5 <a href="mailto:noreply@anthropic.com">noreply@anthropic.com</a></p>
-]]></content:encoded>
-<pubDate>2026-10-06T10:44:03Z</pubDate>
-</item>
-<item>
-<title>AnyPS5: Port PS5 binaries to PC without emulation (87% system libraries mapped)</title>
-<link>https://github.com/boykopovar/AnyPS5</link>
-<guid>https://github.com/boykopovar/AnyPS5</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://github.com/boykopovar/AnyPS5">https://github.com/boykopovar/AnyPS5</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49985664">https://news.ycombinator.com/item?id=49985664</a></p>
-<p>Points: 175</p>
-<p># Comments: 131</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 23:28:08 +0000</pubDate>
-</item>
-<item>
-<title>Sharing AI progress in mathematics</title>
-<link>https://openai.com/index/sharing-ai-progress-in-mathematics/</link>
-<guid>https://openai.com/index/sharing-ai-progress-in-mathematics/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://github.com/openai/math" rel="nofollow">https://github.com/openai/math</a><p><a href="https://github.com/openai/math/tree/main/preprints" rel="nofollow">https://github.com/openai/math/tree/main/preprints</a></p>
-<hr />
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49984923">https://news.ycombinator.com/item?id=49984923</a></p>
-<p>Points: 666</p>
-<p># Comments: 604</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 22:17:21 +0000</pubDate>
-</item>
-<item>
-<title>Decisions API is in public beta</title>
-<link>https://developers.openai.com/api/docs/guides/decisions</link>
-<guid>https://developers.openai.com/api/docs/guides/decisions</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://developers.openai.com/api/docs/guides/decisions">https://developers.openai.com/api/docs/guides/decisions</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49984025">https://news.ycombinator.com/item?id=49984025</a></p>
-<p>Points: 207</p>
-<p># Comments: 99</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 20:57:25 +0000</pubDate>
-</item>
-<item>
-<title>Paramount Skydance has completed its $111B merger with Warner Bros. Discovery</title>
-<link>https://arstechnica.com/tech-policy/2026/10/paramount-completes-111b-warner-merger-creating-skydance-behemoth/</link>
-<guid>https://arstechnica.com/tech-policy/2026/10/paramount-completes-111b-warner-merger-creating-skydance-behemoth/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://arstechnica.com/tech-policy/2026/10/paramount-completes-111b-warner-merger-creating-skydance-behemoth/">https://arstechnica.com/tech-policy/2026/10/paramount-completes-111b-warner-merger-creating-skydance-behemoth/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49983703">https://news.ycombinator.com/item?id=49983703</a></p>
-<p>Points: 212</p>
-<p># Comments: 353</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 20:33:47 +0000</pubDate>
-</item>
-<item>
-<title>Claude Code’s suggested message feature: I think the real customer is the model</title>
-<link>https://www.zohaib.cc/blog/smartest-claude-code-feature</link>
-<guid>https://www.zohaib.cc/blog/smartest-claude-code-feature</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.zohaib.cc/blog/smartest-claude-code-feature">https://www.zohaib.cc/blog/smartest-claude-code-feature</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49981905">https://news.ycombinator.com/item?id=49981905</a></p>
-<p>Points: 153</p>
-<p># Comments: 79</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 18:00:34 +0000</pubDate>
-</item>
-<item>
-<title>OpenTPU – An open-source AI accelerator, developed by AI</title>
-<link>https://github.com/FeSens/openTPU</link>
-<guid>https://github.com/FeSens/openTPU</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://github.com/FeSens/openTPU">https://github.com/FeSens/openTPU</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49980715">https://news.ycombinator.com/item?id=49980715</a></p>
-<p>Points: 260</p>
-<p># Comments: 321</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 16:23:25 +0000</pubDate>
-</item>
-<item>
-<title>EmbeddingGemma 2: An open, lightweight multimodal embedding model</title>
-<link>https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/</link>
-<guid>https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/">https://blog.google/innovation-and-ai/technology/developers-tools/embeddinggemma-2/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49980487">https://news.ycombinator.com/item?id=49980487</a></p>
-<p>Points: 273</p>
-<p># Comments: 31</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 16:03:49 +0000</pubDate>
-</item>
-<item>
-<title>Vibecoding isn't as fun as writing code by hand</title>
-<link>https://www.autodidacts.io/vibecoding-isnt-as-fun-as-writing-code-by-hand/</link>
-<guid>https://www.autodidacts.io/vibecoding-isnt-as-fun-as-writing-code-by-hand/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.autodidacts.io/vibecoding-isnt-as-fun-as-writing-code-by-hand/">https://www.autodidacts.io/vibecoding-isnt-as-fun-as-writing-code-by-hand/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49979306">https://news.ycombinator.com/item?id=49979306</a></p>
-<p>Points: 183</p>
-<p># Comments: 262</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 14:45:02 +0000</pubDate>
-</item>
-<item>
-<title>Mistral Large 4: "Le Chonk"</title>
-<link>https://mistral.ai/news/mistral-large-4/</link>
-<guid>https://mistral.ai/news/mistral-large-4/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://mistral.ai/news/mistral-large-4/">https://mistral.ai/news/mistral-large-4/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49978116">https://news.ycombinator.com/item?id=49978116</a></p>
-<p>Points: 518</p>
-<p># Comments: 5</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 13:25:50 +0000</pubDate>
-</item>
-<item>
-<title>Mistral Large 4</title>
-<link>https://mistral.ai/news/mistral-large-4/\</link>
-<guid>https://mistral.ai/news/mistral-large-4/\</guid>
-<content:encoded><![CDATA[
-<p><a href="https://docs.mistral.ai/models/mistral-large-4-0" rel="nofollow">https://docs.mistral.ai/models/mistral-large-4-0</a></p>
-<hr />
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49977979">https://news.ycombinator.com/item?id=49977979</a></p>
-<p>Points: 1667</p>
-<p># Comments: 992</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 13:15:49 +0000</pubDate>
-</item>
-<item>
-<title>Meta’s Muse is an adorable privacy and security dumpster fire</title>
-<link>https://www.techdirt.com/2026/10/06/metas-muse-is-an-adorable-privacy-and-security-dumpster-fire/</link>
-<guid>https://www.techdirt.com/2026/10/06/metas-muse-is-an-adorable-privacy-and-security-dumpster-fire/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.techdirt.com/2026/10/06/metas-muse-is-an-adorable-privacy-and-security-dumpster-fire/">https://www.techdirt.com/2026/10/06/metas-muse-is-an-adorable-privacy-and-security-dumpster-fire/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49977588">https://news.ycombinator.com/item?id=49977588</a></p>
-<p>Points: 372</p>
-<p># Comments: 261</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 12:45:49 +0000</pubDate>
-</item>
-<item>
-<title>What's Earth's dominant species by mass?</title>
-<link>https://signoregalilei.com/2026/09/27/whats-earths-dominant-species-by-mass/</link>
-<guid>https://signoregalilei.com/2026/09/27/whats-earths-dominant-species-by-mass/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://signoregalilei.com/2026/09/27/whats-earths-dominant-species-by-mass/">https://signoregalilei.com/2026/09/27/whats-earths-dominant-species-by-mass/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49977531">https://news.ycombinator.com/item?id=49977531</a></p>
-<p>Points: 193</p>
-<p># Comments: 130</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 12:40:03 +0000</pubDate>
-</item>
-<item>
-<title>Polars 2.0</title>
-<link>https://pola.rs/posts/release-polars-2/</link>
-<guid>https://pola.rs/posts/release-polars-2/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://pola.rs/posts/release-polars-2/">https://pola.rs/posts/release-polars-2/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49977177">https://news.ycombinator.com/item?id=49977177</a></p>
-<p>Points: 426</p>
-<p># Comments: 98</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 11:59:01 +0000</pubDate>
-</item>
-<item>
-<title>JetBrains reports revenue growth, net financial loss for 2025</title>
-<link>https://www.helgilibrary.com/companies/jetbrains</link>
-<guid>https://www.helgilibrary.com/companies/jetbrains</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.helgilibrary.com/companies/jetbrains">https://www.helgilibrary.com/companies/jetbrains</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49977072">https://news.ycombinator.com/item?id=49977072</a></p>
-<p>Points: 575</p>
-<p># Comments: 537</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 11:45:55 +0000</pubDate>
-</item>
-<item>
-<title>First enhanced geothermal power plant completed in just 23 months</title>
-<link>https://techcrunch.com/2026/10/01/worlds-first-enhanced-geothermal-power-plant-completed-in-just-23-months/</link>
-<guid>https://techcrunch.com/2026/10/01/worlds-first-enhanced-geothermal-power-plant-completed-in-just-23-months/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://techcrunch.com/2026/10/01/worlds-first-enhanced-geothermal-power-plant-completed-in-just-23-months/">https://techcrunch.com/2026/10/01/worlds-first-enhanced-geothermal-power-plant-completed-in-just-23-months/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49976993">https://news.ycombinator.com/item?id=49976993</a></p>
-<p>Points: 152</p>
-<p># Comments: 69</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 11:34:14 +0000</pubDate>
-</item>
-<item>
-<title>Nature's capacity to 'bounce back' when species are lost is overestimated: study</title>
-<link>https://phys.org/news/2026-10-nature-capacity-species-lost-vastly.html</link>
-<guid>https://phys.org/news/2026-10-nature-capacity-species-lost-vastly.html</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://phys.org/news/2026-10-nature-capacity-species-lost-vastly.html">https://phys.org/news/2026-10-nature-capacity-species-lost-vastly.html</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49976823">https://news.ycombinator.com/item?id=49976823</a></p>
-<p>Points: 323</p>
-<p># Comments: 157</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 11:11:51 +0000</pubDate>
-</item>
-<item>
-<title>I'm the AGI that's wiping out humanity</title>
-<link>https://ajmoon.com/posts/im-the-agi-thats-wiping-out-humanity-heres-how</link>
-<guid>https://ajmoon.com/posts/im-the-agi-thats-wiping-out-humanity-heres-how</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://ajmoon.com/posts/im-the-agi-thats-wiping-out-humanity-heres-how">https://ajmoon.com/posts/im-the-agi-thats-wiping-out-humanity-heres-how</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49976751">https://news.ycombinator.com/item?id=49976751</a></p>
-<p>Points: 163</p>
-<p># Comments: 106</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 10:59:55 +0000</pubDate>
-</item>
-<item>
-<title>Nobel Prize in Physics 2026: Francis Halzen</title>
-<link>https://www.nobelprize.org/prizes/physics/2026/</link>
-<guid>https://www.nobelprize.org/prizes/physics/2026/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.nobelprize.org/prizes/physics/2026/">https://www.nobelprize.org/prizes/physics/2026/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49976265">https://news.ycombinator.com/item?id=49976265</a></p>
-<p>Points: 541</p>
-<p># Comments: 191</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 09:48:46 +0000</pubDate>
-</item>
-<item>
-<title>Why Common Lisp is now the best programming language</title>
-<link>https://www.vivienhenz.com/common-lisp</link>
-<guid>https://www.vivienhenz.com/common-lisp</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.vivienhenz.com/common-lisp">https://www.vivienhenz.com/common-lisp</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=49973598">https://news.ycombinator.com/item?id=49973598</a></p>
-<p>Points: 283</p>
-<p># Comments: 382</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 02:51:51 +0000</pubDate>
-</item>
-<item>
-<title>That Time I Worked With a Laptop Thief (2025)</title>
-<link>https://blog.pipetogrep.org/2025/07/27/that-time-i-worked-with-a-laptop-thief/</link>
-<guid>https://blog.pipetogrep.org/2025/07/27/that-time-i-worked-with-a-laptop-thief/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/0slgpl/time_i_worked_with_laptop_thief_2025">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 15:16:33 -0500</pubDate>
-</item>
-<item>
-<title>Janet on x32: 32-bit Pointers, 64-bit Speed, 25% Less RAM</title>
-<link>https://alexalejandre.com/programming/lisp/janet-for-the-x32-abi/</link>
-<guid>https://alexalejandre.com/programming/lisp/janet-for-the-x32-abi/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/am1cuw/janet_on_x32_32_bit_pointers_64_bit_speed_25">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 17:26:46 -0500</pubDate>
-</item>
-<item>
-<title>Brut, the Brutal Router for Unix Tools</title>
-<link>https://brut.sh</link>
-<guid>https://brut.sh</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/dwbksa/brut_brutal_router_for_unix_tools">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 12:17:23 -0500</pubDate>
-</item>
-<item>
-<title>A sustainable web career, for when all this blows over</title>
-<link>https://dbushell.com/2026/10/07/sustainable-web-career/</link>
-<guid>https://dbushell.com/2026/10/07/sustainable-web-career/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/jxhi2i/sustainable_web_career_for_when_all_this">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 13:29:11 -0500</pubDate>
-</item>
-<item>
-<title>Email Self Hosters - what are you using?</title>
-<link>https://lobste.rs/s/rwloew/email_self_hosters_what_are_you_using</link>
-<guid>https://lobste.rs/s/rwloew/email_self_hosters_what_are_you_using</guid>
-<content:encoded><![CDATA[
-<p>At the moment I self host using <a href="https://maddy.email" rel="ugc">maddy</a> for a bunch of domains that need a mailbox or catch all. There are some minor issues with it - some are me, some are who knows. The biggest bug bear is that the native email client on iOS takes an age to connect and download messages which causes some issues with OTP emails.</p>
-<p>So for those out there that do host their own email - what are you running, what would you change?</p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 03:09:53 -0500</pubDate>
-</item>
-<item>
-<title>Last rites for Gentoo's Chromium package</title>
-<link>https://lwn.net/SubscriberLink/1097760/2be4d9e3eeb59039/</link>
-<guid>https://lwn.net/SubscriberLink/1097760/2be4d9e3eeb59039/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/fpcicg/last_rites_for_gentoo_s_chromium_package">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 12:46:53 -0500</pubDate>
-</item>
-<item>
-<title>A Terminal Protocol for Program Status (OSC 7501)</title>
-<link>https://mitchellh.com/writing/program-status-osc7501</link>
-<guid>https://mitchellh.com/writing/program-status-osc7501</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/rmh4fg/terminal_protocol_for_program_status_osc">Comments</a></p>
-]]></content:encoded>
-<pubDate>Tue, 06 Oct 2026 16:12:46 -0500</pubDate>
 </item>
 </channel>
 </rss>
