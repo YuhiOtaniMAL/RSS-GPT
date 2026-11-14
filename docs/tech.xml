@@ -3,7 +3,786 @@
 <channel>
 <title>tech</title>
 <link>https://YuhiOtaniMAL.github.io/RSS-GPT/tech.xml</link>
-<lastBuildDate>Fri, 13 Nov 2026 06:15:37 +0000</lastBuildDate>
+<lastBuildDate>Sat, 14 Nov 2026 05:58:17 +0000</lastBuildDate>
+
+<item>
+<title>Aurora PostgreSQL with express configuration now supported in CloudFormation</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/11/aurora-postgresql-cloudformation/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/11/aurora-postgresql-cloudformation/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Aurora PostgreSQL, express configuration, AWS CloudFormation, infrastructure as code, DBCluster resource
+
+<br><br>Summary: Aurora PostgreSQL has introduced support for express configuration in AWS CloudFormation, enabling automated infrastructure deployment of Aurora clusters through CloudFormation templates. This enhancement allows users to rapidly create and query an Aurora serverless database within seconds. The newly added `withExpressConfiguration` property on the `AWS::RDS::DBCluster` resource facilitates the creation of both the cluster and its primary database instance in a single property declaration. This removes the need for separate modeling and management of the database instance in the CloudFormation template. Consequently, this simplifies template management and enhances the ease of managing Aurora clusters with express configuration via infrastructure as code. The availability of this CloudFormation support spans across all AWS Regions where the Aurora PostgreSQL express configuration is accessible, providing users with broader applicability. To learn more about these features and to access detailed resources, refer to the AWS documentation and the `AWS::RDS::DBCluster` resource reference. <div>
+<p>Aurora PostgreSQL now supports express configuration in AWS CloudFormation for infrastructure as code deployment. This launch enables you to automate the infrastructure deployment of your Aurora clusters through CloudFormation templates while benefiting from the speed of express configuration.</p> 
+<p>Aurora PostgreSQL clusters created with express configuration allow you to create and query an Aurora serverless database in seconds. The new withExpressConfiguration createOnly property on the AWS::RDS::DBCluster resource creates both the cluster and its primary database instance from one property declaration. You don't need to model or manage the instance separately in your CloudFormation template. This simplifies your templates and makes it easier to manage Aurora clusters with express configuration through infrastructure as code.</p> 
+<p>The CloudFormation support is available in all AWS Regions where Aurora PostgreSQL with express configuration is offered. To learn more, see the <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_GettingStartedAurora.AuroraPostgreSQL.ExpressConfig.html" rel="noopener noreferrer" target="_blank">Aurora User Guide</a> and the AWS::RDS::DBCluster resource reference in the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/TemplateReference/aws-resource-rds-dbcluster.html" rel="noopener noreferrer" target="_blank">AWS CloudFormation documentation</a>.</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 16:00:00 GMT</pubDate>
+<pubDate>Fri, 13 Nov 2026 16:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Grok 4.7 now available on Kiro in AWS GovCloud (US)</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/11/kiro-grok-4-7-aws-govcloud-us/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/11/kiro-grok-4-7-aws-govcloud-us/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Grok 4.7, Kiro IDE, AWS GovCloud, experimental support, context window
+
+<br><br>Summary: Grok 4.7 has been introduced in the Kiro IDE and CLI for the AWS GovCloud (US) Regions, marking it as SpaceXSI's most advanced model for coding and knowledge-related tasks. This model is designed to maintain focus during complex tasks that may run for extended periods and includes a self-checking feature to ensure quality before proceeding. Compared to its predecessor, Grok 4.6, version 4.7 offers improved planning and error recovery, specifically for large-scale coding endeavors. The model supports a significant 500K context window, with a credit multiplier that applies to requests based on token count: a 2.7x multiplier for requests up to 200K tokens and a 5.4x multiplier for those exceeding 200K tokens. Access to this model is contingent on controls set by Kiro administrators, allowing organizations to manage model availability in line with their policies. To utilize Grok 4.7, users should ensure their IDE or CLI is updated to the latest version and restart it to choose the new model from the selector. For further details, users can refer to the Kiro documentation or consult their AWS account team. For more insights about Kiro, visit the relevant resources. <div>
+<p>A new model is now available in the Kiro IDE and CLI for the AWS GovCloud (US) Regions.</p> 
+<p>Grok 4.7 is SpaceXSI's most capable model for coding and knowledge work. It's built to stay focused through hard tasks that run for hours, and it checks its work before moving on. Compared with Grok 4.6, it plans and recovers from errors more reliably in repo-scale coding work. Grok 4.7 is available with experimental support and a 500K context window. Requests up to 200K tokens use a 2.7x credit multiplier, and requests over 200K tokens are billed at 5.4x.</p> 
+<p>Kiro administrators control which models are available to their users, so organizations can align model access with their internal policies.</p> 
+<p>Ensure your IDE or CLI is updated to the latest version, then restart it to access the new model from the model selector. For more details, visit the <a href="https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-kiro.html">GovCloud documentation</a>, the <a href="https://kiro.dev/docs/enterprise/monitor-and-track/">monitoring and tracking guide</a>, or contact your AWS account team. To learn more about Kiro, visit the <a href="https://kiro.dev/">Kiro product page</a>.</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 13:13:00 GMT</pubDate>
+<pubDate>Fri, 13 Nov 2026 13:13:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon RDS for Oracle reduces downtime for automatic minor version upgrades and scheduled maintenance</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/11/rds-oracle-reduces-maintenance-downtime-for-amvu-scheduled-upgrades/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/11/rds-oracle-reduces-maintenance-downtime-for-amvu-scheduled-upgrades/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: RDS, upgrades, downtime, maintenance, Oracle
+
+<br><br>Summary:  
+Amazon RDS for Oracle has introduced a new capability to reduce downtime during automatic minor version upgrades, as well as scheduled minor version and operating system updates. This improvement allows for shorter maintenance periods, enabling users to stay current with the latest Oracle updates with minimal disruption to applications. Previously, resource setup for maintenance started after the maintenance window began, resulting in longer downtime. Now, RDS prepares necessary resources up to 30 minutes before the maintenance window opens while the DB instance continues to operate normally. This results in a shorter offline period when the maintenance starts. Importantly, the resource preparation does not interfere with user operations; if a conflict arises, RDS rolls back staged resources. Should the preparation fail to complete, RDS will still proceed with the maintenance without it. New RDS events inform users about the status of the preparation process. This capability is provided at no extra cost across all commercial AWS Regions and AWS GovCloud (US) Regions that support Amazon RDS for Oracle. Further improvements to maintenance downtime are expected in the future. <div>
+<p><a href="https://aws.amazon.com/rds/oracle/">Amazon Relational Database Service (Amazon RDS) for Oracle</a> now reduces downtime for automatic minor version upgrades, as well as minor version upgrades and operating system updates scheduled for your maintenance window. Shorter maintenance makes it easier to stay current on the latest Oracle minor versions and operating system updates with less disruption to your applications. If you turned on automatic minor version upgrade, your DB instances benefit automatically.</p> 
+<p>To apply these upgrades and updates, RDS has to set up new resources as part of the maintenance. Previously, RDS set up these resources after the maintenance started, which made your downtime longer. Now, RDS prepares them up to 30 minutes before your maintenance window, while your DB instance keeps serving your workload. When the maintenance window opens, your DB instance is offline for less time because resources required for the maintenance are already prepared. This applies to both Enterprise Edition and Standard Edition 2 DB instances.</p> 
+<p>The preparation never blocks or delays your own operations, and your DB instance stays available while RDS prepares. If a change that you make conflicts with the preparation, RDS rolls back the staged resources, and your change goes ahead. If the preparation can't finish, RDS still applies the maintenance in your window, without the preparation. New RDS events tell you when the preparation starts, when it finishes, and when it can't finish.&nbsp;RDS for Oracle will continue to introduce improvements that further reduce maintenance downtime.</p> 
+<p>This capability is available at no additional cost in all commercial AWS Regions and the AWS GovCloud (US) Regions where Amazon RDS for Oracle is available. To learn more, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/maintenance-preparation.html" rel="noopener noreferrer" target="_blank">Maintenance preparation</a>, <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Events.Messages.html" rel="noopener noreferrer" target="_blank">Amazon RDS event categories and event messages</a>, and <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html" rel="noopener noreferrer" target="_blank">Maintaining a DB instance</a> in the Amazon RDS User Guide.</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 08:00:00 GMT</pubDate>
+<pubDate>Fri, 13 Nov 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Security Hub CSPM now supports centralized configuration with AWS Organizations declarative policies</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/11/security-hub-cspm-org-policies/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/11/security-hub-cspm-org-policies/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS Organizations, declarative policies, Security Hub CSPM, configuration drift, account management  
+
+<br><br>Summary: AWS Organizations now supports declarative policies that facilitate enabling Security Hub Cloud Security Posture Management (CSPM) across all accounts and Regions in an organization. These policies can be applied universally or targeted to specific accounts and Regions, ensuring that each account's configuration aligns with its attached policy, thus preventing configuration drift. Furthermore, declarative policies can be applied automatically to new accounts, establishing a baseline configuration immediately upon account creation. The AWS recommendation is to manage Security Hub CSPM through these declarative policies as they align with management practices used in other security services like Amazon GuardDuty and Amazon Inspector. They also offer greater flexibility, including the ability to configure Region-specific settings. Users can still utilize central configurations until they are ready to transition. For migration, there is a process available in the Security Hub CSPM console that converts existing central configurations into declarative policies for the appropriate accounts and Regions. These updates are accessible across all commercial, AWS GovCloud (US), and China Regions. Additional resources can be found in the AWS Security Hub CSPM and Organizations User Guides. To stay updated on new features, users can subscribe to notifications, and they can also explore the AWS Free Tier offering. <div>
+<p><a href="https://aws.amazon.com/security-hub/cspm/">AWS Security Hub CSPM</a> now supports AWS Organizations declarative policies. You can use them to enable Security Hub CSPM across all accounts and Regions in your organization and to define which security standards and controls are enabled.</p>
+<p>Policies can apply broadly to every account and Region, or target specific account and Region combinations. Declarative policies help keep each account's configuration aligned with its attached policy, which helps prevent configuration drift. You can also apply them automatically to new accounts, so each account starts with a baseline configuration as soon as it's created.</p>
+<p>Declarative policies are now the recommended way to manage Security Hub CSPM across an organization. They align with how other security services, such as Amazon GuardDuty, Amazon Inspector, and AWS Security Hub allow customers to manage configuration of the service. They also provide more flexibility, such as configuring Region-specific settings. You can continue to use central configuration until you're ready to migrate. When you are, use the migration process in the Security Hub CSPM console. It converts your existing central configuration policies into declarative policies and applies them to the appropriate accounts and regions.</p>
+<p>Declarative policies for Security Hub CSPM are available in all commercial, AWS GovCloud (US), and China Regions. To get started, see <a href="https://docs.aws.amazon.com/securityhub/latest/userguide/orgs-policies-and-central-config.html#orgs-policies-import-tool" target="_blank">Migrating central configuration policies</a>. To learn more, see <a href="https://docs.aws.amazon.com/securityhub/latest/userguide/accounts-orgs-policies.html" target="_blank">Declarative policies</a> in the AWS Security Hub CSPM User Guide and <a href="https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_security_hub_cspm.html" target="_blank">Security Hub CSPM policies</a> in the AWS Organizations User Guide. To receive notifications about new Security Hub CSPM features and controls, subscribe to the <a href="https://docs.aws.amazon.com/securityhub/latest/userguide/securityhub-announcements.html" target="_blank">Security Hub SNS topic</a>. You can also <a href="https://aws.amazon.com/security-hub/cspm/pricing/">try Security Hub CSPM at no cost for 30 days</a> with the AWS Free Tier offering.</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 08:00:00 GMT</pubDate>
+<pubDate>Fri, 13 Nov 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Bedrock AgentCore Identity now supports OAuth 2.0 discovery URLs</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/11/bedrock-agentcore-oauth2-discovery/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/11/bedrock-agentcore-oauth2-discovery/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon Bedrock, AgentCore, OAuth 2.0, JWT authorization, OIDC  
+
+<br><br>Summary: Amazon Bedrock's AgentCore Identity has introduced support for OAuth 2.0 authorization server discovery URLs, enhancing its functionality for developers. This update accommodates both inbound JWT authorization and outbound OAuth credential providers, allowing users to utilize OAuth 2.0 authorization servers that do not adhere to OpenID Connect (OIDC). Previously, AgentCore restricted its configuration options to only OIDC discovery URLs, which limited compatibility with certain authorization servers that implement OAuth 2.0 without OIDC. The latest enhancement means developers can now configure AgentCore with a variety of authorization servers, whether they employ OIDC or solely OAuth 2.0 discovery URLs. This versatility simplifies the development process for those using JWT authorizers or custom OAuth credential providers in their applications. Importantly, this new feature is available across all AWS Regions where Amazon Bedrock AgentCore operates and carries no additional costs. Developers looking to leverage this update can find more specific guidance in the Amazon Bedrock AgentCore Developer Guide’s relevant sections. <div>
+<p>Amazon Bedrock AgentCore Identity now supports OAuth 2.0 authorization server discovery URLs for both inbound JWT authorization and outbound OAuth credential providers. This update enables developers to configure AgentCore with OAuth 2.0 authorization servers that do not use OpenID Connect (OIDC).</p> 
+<p>Previously, AgentCore Identity accepted only OIDC discovery URLs. Authorization servers that implement OAuth 2.0 without OIDC publish their metadata at a different well-known path and could not be used with AgentCore. With this launch, you can use either OIDC or OAuth 2.0 authorization server discovery URLs when you configure a JWT authorizer or a custom OAuth credential provider on AgentCore.</p> 
+<p>This feature is available in all AWS Regions where Amazon Bedrock AgentCore is available, at no additional cost. To learn more, see <a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/inbound-jwt-authorizer.html" rel="noopener noreferrer" target="_blank">Configure inbound JWT authorizer</a> and <a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/identity-add-oauth-client-custom.html" rel="noopener noreferrer" target="_blank">Add OAuth client using custom provider</a> in the <i>Amazon Bedrock AgentCore Developer Guide</i>.</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 08:00:00 GMT</pubDate>
+<pubDate>Fri, 13 Nov 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Secrets Manager now supports cross-account replication</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/11/secrets-manager-cross-account/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/11/secrets-manager-cross-account/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS Secrets Manager, cross-account replication, backup, disaster recovery, KMS key
+
+<br><br>Summary: AWS Secrets Manager has introduced cross-account replication, allowing synchronized copies of primary secrets in secondary AWS accounts. This feature is beneficial for cross-account access, backup, and disaster recovery while extending existing multi-Region replication capabilities. It enables platform or security teams to manage and rotate secrets centrally, while each consuming account has a local and current version without needing shared KMS keys or complex cross-account secret policies. The replica secrets are full, independent resources encrypted with customer-managed KMS keys specific to the replica account. Any updates to the primary secret, including value changes and rotations, are automatically propagated to the replica. This functionality is particularly useful for maintaining live copies of critical secrets in separate recovery or failover accounts, providing additional isolation from threats like ransomware. In emergencies, the replica can also be promoted to a standalone secret, enhancing operational flexibility. Cross-account replication is available in all AWS Regions where Secrets Manager operates. For detailed information on region availability, pricing, and further insights, users can refer to AWS documentation. <div>
+<p>AWS Secrets Manager now supports cross-account replication, enabling you to maintain a synchronized copy of a primary secret in a secondary AWS account for cross-account access, backup, and disaster recovery. Cross-account replication extends the existing multi-Region replication capability across account boundaries.</p> 
+<p>With cross-account replication, platform or security teams can own and rotate a secret centrally, and each consuming account gets a local, always-current copy without any shared KMS keys or cross-account secret policies. The replica secret is a full, independent resource, encrypted with a customer managed KMS key owned by the replica account. Secrets Manager updates it automatically whenever the primary secret's value changes, including rotations.</p> 
+<p>You can keep a live copy of critical secrets in a dedicated recovery or failover account, isolated from ransomware or a compromised primary account. If needed, the replica can be promoted to a standalone secret.</p> 
+<p>Cross-account replication is available in all AWS Regions where Secrets Manager is available. For a list of regions where Secrets Manager is available, see the <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/" rel="noopener noreferrer" target="_blank">AWS Region table</a>.</p> 
+<p>To learn more, see <a href="https://docs.aws.amazon.com/secretsmanager/latest/userguide/cross-account-replicate-secrets.html" rel="noopener noreferrer" target="_blank">Replicate secrets across AWS accounts in the Secrets Manager User Guide</a> and the <a href="https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_AssociateCrossAccountReplica.html" rel="noopener noreferrer" target="_blank">AssociateCrossAccountReplica API reference</a>. For pricing details, see <a href="https://aws.amazon.com/secrets-manager/pricing/">AWS Secrets Manager pricing</a>.</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 08:00:00 GMT</pubDate>
+<pubDate>Fri, 13 Nov 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon SageMaker Unified Studio now supports layout customization for designations</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/11/sagemaker-studio-layout-customization/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/11/sagemaker-studio-layout-customization/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: Amazon SageMaker, layout customization, domain administrators, project members, designation 
+
+<br><br>Summary: Amazon SageMaker Unified Studio has introduced layout customization, allowing domain administrators to control the visibility of tools and navigation items based on project members' designations. This capability addresses the previous issue wherein all project members had access to the same interface, leading to confusion and governance challenges. Now, administrators can define a specific layout for each designation, which applies uniformly across all projects within the domain, eliminating the need for individual project configurations. When a project member accesses a project, SageMaker Unified Studio identifies their designation and only displays the relevant tools. For example, a SQL analyst may have restricted visibility to the Query Editor, while an ML engineer may see a range of tools including notebooks and training jobs. The navigation items can be tailored across various categories, such as Data Analytics and AI/ML. If a user tries to access a hidden page, they will encounter an access-denied message. For members holding multiple designations, their visible tools will be the combined set from all of their layouts. Newly added navigation items will remain hidden until an administrator configures them accordingly. This feature is accessible in all regions where SageMaker Unified Studio is offered. <div>
+<p>Amazon SageMaker Unified Studio now supports layout customization, a new capability that gives domain administrators control over which tools and left navigation items project members see based on their designation. Organizations with data engineering, analytics, and machine learning teams on a single platform can configure a layout within each designation definition, and that layout applies across every project in the domain without per-project configuration.</p> 
+<p>Previously, all project members saw the same interface regardless of their role, creating confusion and potential governance issues. With layout customization, administrators define a layout as part of a designation that specifies which left navigation items are visible for project members assigned to that designation. When a project member opens a project, SageMaker Unified Studio resolves the member's designation and renders only the tools included in their designation's layout. For example, a SQL analyst designation can be configured to show only the Query Editor, while an ML engineer designation shows notebooks, training jobs, and model endpoints. Navigation items are configurable across categories including Data Analytics, artificial intelligence and machine learning (AI/ML), Generative AI, and IDEs. If a project member navigates directly to a hidden page, they see an access-denied page. For members with multiple designations, visible tools are the union of all their designations' layouts. New navigation items added to SageMaker Unified Studio remain hidden for designations with a configured layout until an administrator adds them.</p> 
+<p>This feature is available in all <a href="https://docs.aws.amazon.com/sagemaker-unified-studio/latest/adminguide/supported-regions.html">AWS Regions</a> where Amazon SageMaker Unified Studio is available. To learn more, visit the <a href="https://docs.aws.amazon.com/sagemaker-unified-studio/latest/adminguide/designations.html">Designations</a> documentation.</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 08:00:00 GMT</pubDate>
+<pubDate>Fri, 13 Nov 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Batch on Amazon EKS adds Linux capabilities, seccomp, and pod-level settings</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/11/aws-batch-eks-security-context/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/11/aws-batch-eks-security-context/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS Batch, Kubernetes, security context, EKS, job definitions  
+
+<br><br>Summary:  
+AWS Batch has expanded its features to support additional Kubernetes security context settings in Amazon EKS job definitions. This includes the ability to configure Linux capabilities, seccomp profiles, and pod-level settings. For EKS clusters that enforce the Kubernetes Pod Security Standards restricted profile, users can now run AWS Batch jobs with only the necessary privileges and required system calls. To implement these features, you can utilize the RegisterJobDefinition API to specify capabilities and seccomp profiles in a container's securityContext. Additionally, podProperties can be used to establish pod-wide settings such as fsGroup, with container-level settings taking precedence over pod-level defaults. These new security context configurations can be managed using various platforms, including the AWS Management Console, AWS CLI, AWS SDKs, or AWS CloudFormation. Importantly, these enhancements for AWS Batch on Amazon EKS are now available across all regions where AWS Batch operates. To understand more about these changes, refer to the Amazon EKS properties section in the documentation. <div>
+<p>AWS Batch now supports additional Kubernetes security context settings in Amazon EKS job definitions, including Linux capabilities, seccomp profiles, and pod-level settings.&nbsp;For EKS clusters that enforce the Kubernetes Pod Security Standards restricted profile, you can now run AWS Batch jobs with only the privileges and system calls they require.</p> 
+<p>To get started, use the <i>RegisterJobDefinition</i> API to set <i>capabilities</i> and <i>seccompProfile</i> in a container's <i>securityContext</i>, or set <i>securityContext</i> in <i>podProperties</i> to define pod-wide settings such as <i>fsGroup</i>. Container-level settings override pod-level defaults. You can configure these settings through the AWS Management Console, AWS CLI, AWS SDKs, or AWS CloudFormation.</p> 
+<p>The additional security context settings for AWS Batch on Amazon EKS are now supported in all <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/" rel="noopener noreferrer" target="_blank">AWS Regions</a> where AWS Batch is available. For more information, see the Amazon EKS properties section in the <a href="https://docs.aws.amazon.com/batch/latest/userguide/job_definition_parameters.html#job-definition-parameters-eks-properties" rel="noopener noreferrer" target="_blank">AWS Batch User Guide</a>.</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 08:00:00 GMT</pubDate>
+<pubDate>Fri, 13 Nov 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Marketplace now supports VAT credit notes for deemed supply refunds</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/11/aws-marketplace-vat-credit-notes/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/11/aws-marketplace-vat-credit-notes/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS Marketplace, VAT, credit notes, refund transactions, sellers
+
+<br><br>Summary: AWS Marketplace sellers can now submit Value Added Tax (VAT) credit notes for refunded deemed supply transactions using a self-service feature in AWS Partner Central. Previously, sellers had to contact AWS for VAT refunds after buyer refunds. This new feature streamlines the process for sellers regarding post-refund VAT documentation. Sellers can view eligible refund line items in the VAT on deemed supply section, choose the corresponding refunds for credit note issuance, and upload required documents like PDFs or electronic invoice formats. Additionally, sellers can consolidate multiple eligible refunds into a single credit note and track the status of their submissions. This functionality applies to eligible AWS Marketplace transactions, including Channel Partner Private Offer (CPPO) transactions, in supported EU member states, Norway, and the UK, while ensuring compliance with country-specific invoicing and electronic invoicing requirements. To begin utilizing this feature, sellers can log in to AWS Partner Central and navigate to Settings → Tax information → VAT on deemed supply. For further details, additional resources are available for review. <div>
+<p>AWS Marketplace sellers can now submit Value Added Tax (VAT) credit notes for refunded deemed supply transactions through a self-service experience in AWS Partner Central. Previously, VAT was disbursed to sellers for eligible transactions, and when a buyer was later refunded, sellers had to contact AWS to submit the corresponding credit note. This launch simplifies post-refund VAT documentation for sellers.</p>
+<p>Sellers can view eligible refund line items in the VAT on deemed supply section, select the refunds covered by a credit note, upload a PDF or the applicable electronic invoice format, and track the submission status. Sellers can consolidate multiple eligible refunds into a single credit note where applicable and review the associated financial adjustment in the Seller Insights reporting.</p>
+<p>These capabilities are available for eligible AWS Marketplace transactions, including Channel Partner Private Offer (CPPO) transactions, in supported EU member states, Norway, and the United Kingdom. Country-specific invoicing and electronic-invoicing requirements continue to apply.</p>
+<p>To get started, sign in to AWS Partner Central and go to Settings → Tax information → VAT on deemed supply. To learn more, visit the <a href="https://docs.aws.amazon.com/marketplace/latest/userguide/vat-on-deemed-supply.html" target="_blank">AWS Marketplace Seller Guide</a> or <a href="https://docs.aws.amazon.com/marketplace/latest/userguide/vat-deemed-supply-faq.html" target="_blank">Deemed Supply FAQs</a>.</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 08:00:00 GMT</pubDate>
+<pubDate>Fri, 13 Nov 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS Systems Manager simplifies onboarding of Google Cloud VMs for centralized management</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/11/systems-manager-google-cloud-support/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/11/systems-manager-google-cloud-support/</guid>
+<content:encoded><![CDATA[
+<div> Keywords: AWS Systems Manager, Cloud Connector, Google Cloud, multicloud, SSM Agent  
+
+<br><br>Summary:  
+AWS Systems Manager Cloud Connector now facilitates simplified multicloud onboarding for Google Cloud, allowing for easy connection of Google Cloud VMs to Systems Manager. This enables centralized management alongside AWS, on-premises, and Azure resources without requiring manual agent installation. Previously, managing virtual machines across different cloud providers demanded separate configurations.  
+With Cloud Connector for Google Cloud, users can automate the deployment of the SSM Agent to Google Cloud VMs at scale. Once connected, these VMs appear alongside EC2 instances and other resources in a unified view. This integration permits the use of essential features like Session Manager, Automation runbooks, Run Command, State Manager, Patch Manager, and Inventory across all supported platforms.  
+The Cloud Connector streamlines operations for teams managing infrastructure in multiple clouds, helping standardize management practices and reduce operational complexity. Currently, Cloud Connector for Google Cloud is available in several regions, including parts of Africa, Asia Pacific, Canada, Europe, Israel, Mexico, South America, and the United States. For more information, users can refer to the AWS Systems Manager documentation. <div>
+<p>AWS Systems Manager Cloud Connector now extends simplified multicloud onboarding support to Google Cloud, making it easy to connect your existing Google Cloud VMs to Systems Manager for centralized management alongside AWS, on-premises, and Azure resources without manual agent installation. Previously, managing virtual machines across multiple cloud providers often required coordinating and setting up configurations separately in each environment.</p> 
+<p>With Cloud Connector for Google Cloud, you can automatically deploy the SSM Agent to Google Cloud VMs at scale. Once connected, Google Cloud VMs appear alongside EC2 instances, on-premises servers, and other multicloud resources in a unified view, enabling you to use Session Manager, Automation runbooks, Run Command, State Manager, Patch Manager, and Inventory across AWS, on-premises, Azure, and Google Cloud from a single workflow. This simplifies operations for teams managing infrastructure across multiple clouds, enabling them to standardize management practices and reduce operational complexity.</p> 
+<p>Cloud Connector for Google Cloud is available in Africa (Cape Town), Asia Pacific (Hong Kong, Hyderabad, Jakarta, Malaysia, Melbourne, Mumbai, New Zealand, Osaka, Seoul, Singapore, Sydney, Taipei, Thailand, Tokyo), Canada (Central, Calgary), Europe (Frankfurt, Ireland, London, Milan, Paris, Spain, Stockholm, Zurich), Israel (Tel Aviv), Mexico (Central), South America (Sao Paulo), US East (N. Virginia, Ohio), and US West (N. California, Oregon).</p> 
+<p>To learn more, visit the AWS Systems Manager documentation.</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 08:00:00 GMT</pubDate>
+<pubDate>Fri, 13 Nov 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Apache Airflow UI available in Amazon MWAA Serverless</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/11/airflow-ui-for-mwaa-serverless/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/11/airflow-ui-for-mwaa-serverless/</guid>
+<content:encoded><![CDATA[
+
+<p>Amazon MWAA Serverless provides the native Apache Airflow UI for your workflows. You can browse workflows, inspect workflow runs and task instances, read task logs, view a workflow's source and versions, and start a workflow run. The UI uses the permissions of the IAM identity that opens it and shows only what that identity can read, so read-only access is possible. AWS CloudTrail records the calls the UI makes under your identity.</p>
+<p>You can open the Airflow UI from the Amazon MWAA console, the AWS CLI, or the API. Teams already familiar with Airflow can use the interface they know to work with their workflows.</p>
+<p>This feature is available in all AWS Regions where Amazon MWAA Serverless is available. For more information, see the <a href="https://docs.aws.amazon.com/mwaa/latest/mwaa-serverless-userguide/what-is-mwaa-serverless.html#regions" target="_blank">AWS Region table</a>.</p>
+<p>To get started, see <a href="https://docs.aws.amazon.com/mwaa/latest/mwaa-serverless-userguide/workflows-airflow-ui.html" target="_blank">Access the Airflow UI</a>. Apache Airflow is a trademark of the <a href="https://www.apache.org/" target="_blank">Apache Software Foundation</a>.</p>
+]]></content:encoded>
+<pubDate>Thu, 12 Nov 2026 18:00:00 GMT</pubDate>
+<pubDate>Thu, 12 Nov 2026 18:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Connect Customer now supports batch actions on up to 100 cases at once</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/11/connect-batch-actions-100-cases/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/11/connect-batch-actions-100-cases/</guid>
+<content:encoded><![CDATA[
+
+<p>Cases in Amazon Connect Customer now lets agents and supervisors assign, comment on, and update the status of up to 100 cases at once, so teams spend less time on repetitive case updates. When one issue affects many customers, such as a shipping delay or a service outage, teams no longer need to update each case one at a time. Agents and supervisors with the appropriate permissions can select the related cases and change the assignee, add a comment, or close them in a single action. Developers can also use batch APIs to make the same updates programmatically.</p>
+<p>Cases is available in the following AWS Regions: US East (N. Virginia), US West (Oregon), Canada (Central), Europe (Frankfurt), Europe (London), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), and Africa (Cape Town). To learn more and get started, visit the Cases <a href="https://aws.amazon.com/products/connect/customer/cases/">webpage</a> and <a href="https://docs.aws.amazon.com/connect/latest/adminguide/batch-actions-cases.html" target="_blank">documentation</a>.</p>
+]]></content:encoded>
+<pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
+<pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon Route 53 now supports record set protection</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-route-53-record-set-protection/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-route-53-record-set-protection/</guid>
+<content:encoded><![CDATA[
+
+<p>Amazon Route 53 now supports record set protection, which helps DNS administrators prevent accidental changes to critical DNS records in their hosted zones. This feature allows you to protect records such as those at the zone apex, MX records, and production endpoints directly in the hosted zone. Any change to a protected record is blocked until the protection is removed by an authorized user.</p>
+<p>Previously, to lock specific records, you had to write record-level conditions into the IAM policies of every user and role that could change your hosted zones. When those policies blocked a change, the caller had no indication of whether the record was protected or why. Now you can protect records by name and type directly in the hosted zone. A single protection covers all records with that name and type, including records with different set identifiers; weighted, latency, and other routing policy records are protected together. You can also create a protection proactively before the record exists, preventing records from being created for that name and type. Each protection can include an optional comment of up to 256 characters, allowing you to indicate the reason for the protection. You can manage protections using the Route 53 console, AWS CLI, or AWS SDKs through the CreateResourceRecordSetProtections, DeleteResourceRecordSetProtections, and ListResourceRecordSetProtections API actions. To control who can remove protections, restrict the DeleteResourceRecordSetProtections permission in IAM policies.</p>
+<p>Record set protection is available in all AWS commercial Regions where public and private hosted zones are available today. To learn more, see <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/rrset-protection.html" target="_blank">Protecting records from changes</a> in the Amazon Route 53 Developer Guide.</p>
+]]></content:encoded>
+<pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
+<pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+<title>Amazon OpenSearch Serverless supports intelligent ingestion for time series collection</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-opensearch-serverless-nextgen-time-series-intelligent-ingestion</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-opensearch-serverless-nextgen-time-series-intelligent-ingestion</guid>
+<content:encoded><![CDATA[
+
+<p>The next generation of Amazon OpenSearch Serverless now supports intelligent ingestion for time series collections. You can bring logs and event data from Amazon S3 into a time series collection without operating an ingestion pipeline. With intelligent ingestion, you can now complete the setup and get data ingested with a few clicks in the AWS Management Console or with a single API call.</p> 
+<p>Intelligent ingestion detects the data type, parses each record, and indexes it into your collection. It works with observability logs in JSON, NDJSON, and JSON arrays. Use an ingestion job for one-time loads, use an ingestion stream to keep the collection up to date as new objects arrive in S3, or backfill and then stream. Source buckets can be in the same AWS account as the collection or in a different one. Capacity scales with your workload up to the collection's configured limit, and you pay only for active processing.</p> 
+<p>Once ingested, your data gets everything time series collections already provide. The collection absorbs ingest spikes automatically and keeps recent data in the hot tier for fast queries. Older data moves to the lower-cost warm tier based on the retention you set. Because tiering and retention are based on time, each document must include a valid timestamp field, and documents with a missing or invalid timestamp are rejected. Alerting and anomaly detection run directly on the ingested logs and events. Together, these make it simpler to put large S3 log archives to work for log analytics, application monitoring, and IoT telemetry.</p> 
+<p>Intelligent ingestion for time series collections is available in seven regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Europe (Ireland), Europe (Frankfurt) and Asia Pacific (Tokyo). To get started, open the Amazon OpenSearch Service console, choose your time series collection, and select the Ingestion tab. To learn more, see the <a target="_blank">intelligent ingestion documentation</a> and the <a target="_blank">OpenSearch Serverless documentation</a>. For pricing, see <a target="_blank">Amazon OpenSearch Service pricing</a>.</p> 
+<p>&nbsp;</p>
+]]></content:encoded>
+<pubDate>Wed, 11 Nov 2026 20:54:00 GMT</pubDate>
+<pubDate>Wed, 11 Nov 2026 20:54:00 GMT</pubDate>
+</item>
+<item>
+<title>Announcing Accelerated Compute Insights for Amazon CloudWatch</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/11/accelerated-compute-insights-cloudwatch/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/11/accelerated-compute-insights-cloudwatch/</guid>
+<content:encoded><![CDATA[
+
+<p>Amazon CloudWatch now offers accelerated compute insights, a capability that provides monitoring and observability for self-hosted AI inference workloads running in Amazon EKS clusters. Previously, platform and AI teams lacked fleet-level visibility into their accelerators, whether workloads were running efficiently, and what was causing performance issues. Accelerated compute insights collects telemetry from across the inference stack to help teams identify idle accelerators, optimize workloads to reduce costs, and troubleshoot common inference issues such as high time to first token.</p> 
+<p>Getting started is as simple as enabling the Amazon CloudWatch Observability add-on for Amazon EKS, which discovers every NVIDIA GPU in the cluster automatically. Curated views in the CloudWatch console let you monitor from the fleet level down to an individual workload or accelerator. Teams can see which workloads are idle, which are underutilized, and the estimated cost per token for each inference workload. The feature is also available on CloudWatch Omni, where it includes an agentic experience that makes answering questions about inference workloads easy.</p> 
+<p>There is no additional charge for accelerated compute insights. Standard &nbsp;<a href="https://aws.amazon.com/cloudwatch/pricing/">CloudWatch pricing&nbsp;</a> applies to the telemetry you collect from your AI workloads.</p> 
+<p>For more information about the AWS Regions where Accelerated Compute Insights is available, see the &nbsp;<a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/">AWS Region table&nbsp;</a>. To get started, see &nbsp;<a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Accelerated-Compute-Insights.html">Accelerated Compute Insights&nbsp;</a>.&nbsp;</p>
+]]></content:encoded>
+<pubDate>Tue, 10 Nov 2026 08:00:00 GMT</pubDate>
+<pubDate>Tue, 10 Nov 2026 08:00:00 GMT</pubDate>
+</item>
+<item>
+<title>AWS DMS Schema Conversion expands offline source conversion to Oracle</title>
+<link>https://aws.amazon.com/about-aws/whats-new/2026/11/aws-dms-schema-conversion-expands-offline-source-conversion-to-oracle/</link>
+<guid>https://aws.amazon.com/about-aws/whats-new/2026/11/aws-dms-schema-conversion-expands-offline-source-conversion-to-oracle/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://aws.amazon.com/dms/">AWS Database Migration Service (DMS) Schema Conversion</a> now supports offline source conversion for Oracle Database. You can convert Oracle schemas and code without direct connectivity to your source databases. You can extract metadata using standard database commands in your own environment, then upload it to DMS Schema Conversion for processing. This removes the need for security reviews, firewall changes, and VPN setup that delay migration projects, and delivers the same conversion results as the connected approach.</p> 
+<p>Offline Source suits organizations whose security policies restrict external tool access to production Oracle databases. Database administrators can generate human-readable metadata files within their existing environment. Security teams can review the commands and output before upload, simplifying approval. By removing the connectivity requirement, Offline Source turns weeks of security reviews into a simple command-and-upload workflow.</p> 
+<p>Offline Source supports all DMS Schema Conversion targets at no additional conversion charge. For regional availability, see the <a href="https://docs.aws.amazon.com/dms/latest/userguide/CHAP_SchemaConversion.html#schema-conversion-supported-regions">Supported AWS Regions</a> page. To get started, see <a href="https://docs.aws.amazon.com/dms/latest/userguide/virtual-data-provider.html">Using Offline Source</a> in the DMS Schema Conversion documentation.&nbsp;To learn how to run offline assessment and conversion with AI agents, read the launch <a href="https://aws.amazon.com/blogs/database/offline-assessment-and-conversion-with-ai-agents-in-aws-dms/">blog post</a>.&nbsp;</p>
+]]></content:encoded>
+<pubDate>Fri, 06 Nov 2026 23:53:00 GMT</pubDate>
+<pubDate>Fri, 06 Nov 2026 23:53:00 GMT</pubDate>
+</item>
+<item>
+<title>8.1.0-dev.12</title>
+<link>https://github.com/prisma/orm/releases/tag/8.1.0-dev.12</link>
+<guid>https://github.com/prisma/orm/releases/tag/8.1.0-dev.12</guid>
+<content:encoded><![CDATA[
+
+<p>8.1.0-dev.12</p>
+]]></content:encoded>
+
+<pubDate>2026-11-13T19:32:47Z</pubDate>
+</item>
+<item>
+<title>v1.16.5</title>
+<link>https://github.com/hashicorp/terraform/releases/tag/v1.16.5</link>
+<guid>https://github.com/hashicorp/terraform/releases/tag/v1.16.5</guid>
+<content:encoded><![CDATA[
+
+<h2>1.16.5 (September 30, 2026)</h2>
+<p>BUG FIXES:</p>
+<ul>
+<li>
+<p>Fixed a crash that happens when a tainted instance state is seen without a valid status (<a href="https://github.com/hashicorp/terraform/issues/39287">#39287</a>)</p>
+</li>
+<li>
+<p>resource-identity: fixed an issue where resource identity could be nil during delete (<a href="https://github.com/hashicorp/terraform/issues/39285">#39285</a>)</p>
+</li>
+</ul>
+]]></content:encoded>
+
+<pubDate>2026-10-02T13:04:00Z</pubDate>
+</item>
+<item>
+<title>v2.277.0</title>
+<link>https://github.com/aws/aws-cdk/releases/tag/v2.277.0</link>
+<guid>https://github.com/aws/aws-cdk/releases/tag/v2.277.0</guid>
+<content:encoded><![CDATA[
+
+<h3>⚠ BREAKING CHANGES</h3>
+<ul>
+<li>** L1 resources are automatically generated from public CloudFormation Resource Schemas. They are built to closely reflect the real state of CloudFormation. Sometimes these updates can contain changes that are incompatible with previous types, but more accurately reflect reality. In this release we have changed:</li>
+</ul>
+<p>aws-lambda: AWS::Lambda::NetworkConnector: ElasticIpConfiguration property removed from VpcEgressConfiguration type.<br />
+aws-paymentcryptography: AWS::PaymentCryptography::Key: KmsKeyArn property removed from ReplicationStatusType type.<br />
+aws-paymentcryptography: AWS::PaymentCryptography::Key: KmsKeyId property removed from ReplicationStatusType type.</p>
+<h3>Features</h3>
+<ul>
+<li><strong>bedrockagentcore:</strong> support runtime build hooks and minimum memory (<a href="https://github.com/aws/aws-cdk/issues/39695">#39695</a>) (<a href="https://github.com/aws/aws-cdk/commit/9170700b57a7d14ce616a5c9b5325313918f9dd2">9170700</a>), closes <a href="https://github.com/aws/aws-cdk/issues/39696">#39696</a> <a href="https://github.com/aws/aws-cdk/issues/39701">#39701</a></li>
+<li>update L1 CloudFormation resource definitions (<a href="https://github.com/aws/aws-cdk/issues/39701">#39701</a>) (<a href="https://github.com/aws/aws-cdk/commit/4327f9100814cd559474632d674fc63ce63c2211">4327f91</a>), closes <a href="https://github.com/aws/aws-cdk/issues/37BFF5">#37BFF5</a> <a href="https://github.com/aws/aws-cdk/issues/37BFF5">#37BFF5</a></li>
+<li><strong>lambda:</strong> add nodejs 26.x runtime (<a href="https://github.com/aws/aws-cdk/issues/39683">#39683</a>) (<a href="https://github.com/aws/aws-cdk/commit/829d43823a5a9d2004588d165ba3fb09c80b76ec">829d438</a>)</li>
+<li><strong>s3:</strong> expose bucket encryption mode (<a href="https://github.com/aws/aws-cdk/issues/38312">#38312</a>) (<a href="https://github.com/aws/aws-cdk/commit/b952c6da256c52a603fc21d884ab8d2b9bcda51d">b952c6d</a>), closes <a href="https://github.com/aws/aws-cdk/issues/38289">#38289</a></li>
+</ul>
+<h3>Bug Fixes</h3>
+<ul>
+<li><strong>core:</strong> bundling 'user' argument is not escaped (<a href="https://github.com/aws/aws-cdk/issues/39685">#39685</a>) (<a href="https://github.com/aws/aws-cdk/commit/9e584ac702b31ba2f76519ae5f1ec25c407de836">9e584ac</a>)</li>
+<li>invalid validation rule ID (<a href="https://github.com/aws/aws-cdk/issues/39684">#39684</a>) (<a href="https://github.com/aws/aws-cdk/commit/8ec077c277a478d6043b4c74a113b46e10fa74b6">8ec077c</a>)</li>
+</ul>
+<hr />
+<h2>Alpha modules (2.277.0-alpha.0)</h2>
+]]></content:encoded>
+
+<pubDate>2026-11-13T11:00:49Z</pubDate>
+</item>
+<item>
+<title>Nvidia Allegedly Engineered Scarcity by Funding AI Startups to Buy Its GPUs</title>
+<link>https://www.techpowerup.com/354814/nvidia-allegedly-engineered-scarcity-by-funding-ai-startups-to-buy-its-gpus</link>
+<guid>https://www.techpowerup.com/354814/nvidia-allegedly-engineered-scarcity-by-funding-ai-startups-to-buy-its-gpus</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.techpowerup.com/354814/nvidia-allegedly-engineered-scarcity-by-funding-ai-startups-to-buy-its-gpus">https://www.techpowerup.com/354814/nvidia-allegedly-engineered-scarcity-by-funding-ai-startups-to-buy-its-gpus</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50493251">https://news.ycombinator.com/item?id=50493251</a></p>
+<p>Points: 232</p>
+<p># Comments: 122</p>
+]]></content:encoded>
+<pubDate>Sat, 14 Nov 2026 02:52:59 +0000</pubDate>
+<pubDate>Sat, 14 Nov 2026 02:52:59 +0000</pubDate>
+</item>
+<item>
+<title>FAA lifted National Ground Stop at 0119Z</title>
+<link>https://www.fly.faa.gov/adv/adv_otherdis?adv_date=11142026&amp;advn=5</link>
+<guid>https://www.fly.faa.gov/adv/adv_otherdis?adv_date=11142026&amp;advn=5</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.fly.faa.gov/adv/adv_otherdis?adv_date=11142026&amp;advn=5">https://www.fly.faa.gov/adv/adv_otherdis?adv_date=11142026&amp;advn=5</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50492601">https://news.ycombinator.com/item?id=50492601</a></p>
+<p>Points: 206</p>
+<p># Comments: 2</p>
+]]></content:encoded>
+<pubDate>Sat, 14 Nov 2026 01:30:01 +0000</pubDate>
+<pubDate>Sat, 14 Nov 2026 01:30:01 +0000</pubDate>
+</item>
+<item>
+<title>Ukraine knocks out 36% of Russia's oil refining capacity in under two weeks</title>
+<link>https://english.nv.ua/nation/thirteen-day-drone-blitz-paralyzes-36-of-moscow-s-oil-50658616.html</link>
+<guid>https://english.nv.ua/nation/thirteen-day-drone-blitz-paralyzes-36-of-moscow-s-oil-50658616.html</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://english.nv.ua/nation/thirteen-day-drone-blitz-paralyzes-36-of-moscow-s-oil-50658616.html">https://english.nv.ua/nation/thirteen-day-drone-blitz-paralyzes-36-of-moscow-s-oil-50658616.html</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50492456">https://news.ycombinator.com/item?id=50492456</a></p>
+<p>Points: 224</p>
+<p># Comments: 128</p>
+]]></content:encoded>
+<pubDate>Sat, 14 Nov 2026 01:10:22 +0000</pubDate>
+<pubDate>Sat, 14 Nov 2026 01:10:22 +0000</pubDate>
+</item>
+<item>
+<title>Terminal borders that don't cost a cell</title>
+<link>https://www.joshka.net/cell-borders/</link>
+<guid>https://www.joshka.net/cell-borders/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.joshka.net/cell-borders/">https://www.joshka.net/cell-borders/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50491423">https://news.ycombinator.com/item?id=50491423</a></p>
+<p>Points: 168</p>
+<p># Comments: 79</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 23:06:40 +0000</pubDate>
+<pubDate>Fri, 13 Nov 2026 23:06:40 +0000</pubDate>
+</item>
+<item>
+<title>Live airband on all frequencies from KORS. Victoria, CA also ground stopped</title>
+<link>https://orcasairband.com/</link>
+<guid>https://orcasairband.com/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://orcasairband.com/">https://orcasairband.com/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50490593">https://news.ycombinator.com/item?id=50490593</a></p>
+<p>Points: 243</p>
+<p># Comments: 56</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 22:04:24 +0000</pubDate>
+<pubDate>Fri, 13 Nov 2026 22:04:24 +0000</pubDate>
+</item>
+<item>
+<title>All US airports are currently ground stopped</title>
+<link>https://twitter.com/flightradar24/status/2121347654714077605</link>
+<guid>https://twitter.com/flightradar24/status/2121347654714077605</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://twitter.com/flightradar24/status/2121347654714077605">https://twitter.com/flightradar24/status/2121347654714077605</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50489652">https://news.ycombinator.com/item?id=50489652</a></p>
+<p>Points: 192</p>
+<p># Comments: 35</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 21:06:52 +0000</pubDate>
+<pubDate>Fri, 13 Nov 2026 21:06:52 +0000</pubDate>
+</item>
+<item>
+<title>FAA issues national ground stop – lifted 4.5 hours later</title>
+<link>https://www.nbcnews.com/news/us-news/faa-orders-nationwide-ground-stop-departing-flights-reasons-safety-rcna609247</link>
+<guid>https://www.nbcnews.com/news/us-news/faa-orders-nationwide-ground-stop-departing-flights-reasons-safety-rcna609247</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://www.fly.faa.gov/adv/adv_otherdis?adv_date=11132026&amp;advn=111" rel="nofollow">https://www.fly.faa.gov/adv/adv_otherdis?adv_date=11132026&amp;a...</a><p><a href="https://www.fly.faa.gov/adv/adv_otherdis?adv_date=11142026&amp;advn=5" rel="nofollow">https://www.fly.faa.gov/adv/adv_otherdis?adv_date=11142026&amp;a...</a><p><a href="https://www.nytimes.com/live/2026/11/13/us/ground-stop-nationwide-flights-faa/d2ae2ce1-ac6b-59ad-ad8d-daef4e181b34" rel="nofollow">https://www.nytimes.com/live/2026/11/13/us/ground-stop-natio...</a></p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50489641">https://news.ycombinator.com/item?id=50489641</a></p>
+<p>Points: 1454</p>
+<p># Comments: 1123</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 21:05:53 +0000</pubDate>
+<pubDate>Fri, 13 Nov 2026 21:05:53 +0000</pubDate>
+</item>
+<item>
+<title>Big tech is here to let us down</title>
+<link>https://blog.jsweeting.me/big-tech-is-here-to-let-us-down</link>
+<guid>https://blog.jsweeting.me/big-tech-is-here-to-let-us-down</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://blog.jsweeting.me/big-tech-is-here-to-let-us-down">https://blog.jsweeting.me/big-tech-is-here-to-let-us-down</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50489083">https://news.ycombinator.com/item?id=50489083</a></p>
+<p>Points: 208</p>
+<p># Comments: 194</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 20:20:30 +0000</pubDate>
+<pubDate>Fri, 13 Nov 2026 20:20:30 +0000</pubDate>
+</item>
+<item>
+<title>No AI Slop: A Manifesto</title>
+<link>https://www.slopmanifesto.com/</link>
+<guid>https://www.slopmanifesto.com/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.slopmanifesto.com/">https://www.slopmanifesto.com/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50488769">https://news.ycombinator.com/item?id=50488769</a></p>
+<p>Points: 189</p>
+<p># Comments: 112</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 19:51:56 +0000</pubDate>
+<pubDate>Fri, 13 Nov 2026 19:51:56 +0000</pubDate>
+</item>
+<item>
+<title>Found: A protein that drives ageing without unleashing inflammation</title>
+<link>https://www.nature.com/articles/d41586-026-03638-3</link>
+<guid>https://www.nature.com/articles/d41586-026-03638-3</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.nature.com/articles/d41586-026-03638-3">https://www.nature.com/articles/d41586-026-03638-3</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50488470">https://news.ycombinator.com/item?id=50488470</a></p>
+<p>Points: 164</p>
+<p># Comments: 25</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 19:25:21 +0000</pubDate>
+<pubDate>Fri, 13 Nov 2026 19:25:21 +0000</pubDate>
+</item>
+<item>
+<title>FM-1 Workbench</title>
+<link>https://open.m-vave.com/fm1-workbench</link>
+<guid>https://open.m-vave.com/fm1-workbench</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://open.m-vave.com/fm1-workbench">https://open.m-vave.com/fm1-workbench</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50488325">https://news.ycombinator.com/item?id=50488325</a></p>
+<p>Points: 209</p>
+<p># Comments: 137</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 19:14:02 +0000</pubDate>
+<pubDate>Fri, 13 Nov 2026 19:14:02 +0000</pubDate>
+</item>
+<item>
+<title>$11.4M in Nvidia hardware vanishes during shipment from CA to TX</title>
+<link>https://www.freightwaves.com/news/11-4-million-in-nvidia-hardware-vanishes-during-shipment-from-california-to-texas</link>
+<guid>https://www.freightwaves.com/news/11-4-million-in-nvidia-hardware-vanishes-during-shipment-from-california-to-texas</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.freightwaves.com/news/11-4-million-in-nvidia-hardware-vanishes-during-shipment-from-california-to-texas">https://www.freightwaves.com/news/11-4-million-in-nvidia-hardware-vanishes-during-shipment-from-california-to-texas</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50487864">https://news.ycombinator.com/item?id=50487864</a></p>
+<p>Points: 327</p>
+<p># Comments: 182</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 18:40:44 +0000</pubDate>
+<pubDate>Fri, 13 Nov 2026 18:40:44 +0000</pubDate>
+</item>
+<item>
+<title>Microsoft outage gives customers a crash course in dependence on Redmond</title>
+<link>https://www.theregister.com/saas/2026/11/13/microsoft-outage-gives-customers-a-crash-course-in-dependence-on-redmond/5309805</link>
+<guid>https://www.theregister.com/saas/2026/11/13/microsoft-outage-gives-customers-a-crash-course-in-dependence-on-redmond/5309805</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.theregister.com/saas/2026/11/13/microsoft-outage-gives-customers-a-crash-course-in-dependence-on-redmond/5309805">https://www.theregister.com/saas/2026/11/13/microsoft-outage-gives-customers-a-crash-course-in-dependence-on-redmond/5309805</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50487688">https://news.ycombinator.com/item?id=50487688</a></p>
+<p>Points: 151</p>
+<p># Comments: 47</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 18:29:16 +0000</pubDate>
+<pubDate>Fri, 13 Nov 2026 18:29:16 +0000</pubDate>
+</item>
+<item>
+<title>It Takes 16 Clicks for a Student to Open a PowerPoint on an iPad</title>
+<link>https://www.reddit.com/r/Teachers/comments/1xuup7a/technology_sucks_it_literally_takes_16_clicks_for/</link>
+<guid>https://www.reddit.com/r/Teachers/comments/1xuup7a/technology_sucks_it_literally_takes_16_clicks_for/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.reddit.com/r/Teachers/comments/1xuup7a/technology_sucks_it_literally_takes_16_clicks_for/">https://www.reddit.com/r/Teachers/comments/1xuup7a/technology_sucks_it_literally_takes_16_clicks_for/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50487522">https://news.ycombinator.com/item?id=50487522</a></p>
+<p>Points: 329</p>
+<p># Comments: 162</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 18:18:37 +0000</pubDate>
+<pubDate>Fri, 13 Nov 2026 18:18:37 +0000</pubDate>
+</item>
+<item>
+<title>Show HN: Isometric SF – A pixel-art map of the SF Bay Area</title>
+<link>https://isometricsf.com/</link>
+<guid>https://isometricsf.com/</guid>
+<content:encoded><![CDATA[
+
+<p>Technical Write-up: <a href="https://www.justinchavez.com/blog/isometric-sf-how/" rel="nofollow">https://www.justinchavez.com/blog/isometric-sf-how/</a><p>Hi HN! Showcasing this fun project. I took 1300 square miles of the SF Bay Area from Google Photorealistic 3D Tiles and transformed them into a cohesive pixel map. It's really fun to explore and stumble upon various famous landmarks like Apple Park, Palace of Fine Arts, or UC Berkeley.<p>The technicals involve using Nano Banana 2 to train a Qwen-Image-Edit 2511 LoRA which is used to prototype the style and generation methods. For final map I used Qwen to train a Klein 4B LoRA which reproduced the style at 1/4 of the cost. More details in the blog post.<p>Let me know what you think! I really enjoyed this process of fine-tuning smaller open source models.<p>If I did the map with Nano Banana 2 it would have cost around 7k USD!<p>Credit for the idea goes to Isometric NYC.</p>
+<hr />
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50487228">https://news.ycombinator.com/item?id=50487228</a></p>
+<p>Points: 181</p>
+<p># Comments: 69</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 17:58:37 +0000</pubDate>
+<pubDate>Fri, 13 Nov 2026 17:58:37 +0000</pubDate>
+</item>
+<item>
+<title>After 600 experiments, here's what I discovered about JEPA world models</title>
+<link>https://haddyalchaer.com/jepa</link>
+<guid>https://haddyalchaer.com/jepa</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://haddyalchaer.com/jepa">https://haddyalchaer.com/jepa</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50487185">https://news.ycombinator.com/item?id=50487185</a></p>
+<p>Points: 237</p>
+<p># Comments: 37</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 17:55:28 +0000</pubDate>
+<pubDate>Fri, 13 Nov 2026 17:55:28 +0000</pubDate>
+</item>
+<item>
+<title>OpenAI disbands its robotics team as its general models start running robots</title>
+<link>https://fortune.com/2026/11/13/openai-disbands-robotics-team-as-its-general-models-start-running-robots/</link>
+<guid>https://fortune.com/2026/11/13/openai-disbands-robotics-team-as-its-general-models-start-running-robots/</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://fortune.com/2026/11/13/openai-disbands-robotics-team-as-its-general-models-start-running-robots/">https://fortune.com/2026/11/13/openai-disbands-robotics-team-as-its-general-models-start-running-robots/</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50487184">https://news.ycombinator.com/item?id=50487184</a></p>
+<p>Points: 155</p>
+<p># Comments: 66</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 17:55:23 +0000</pubDate>
+<pubDate>Fri, 13 Nov 2026 17:55:23 +0000</pubDate>
+</item>
+<item>
+<title>AI unlocks Gödel's notebooks, said to contain hundreds of proved theorems</title>
+<link>https://www.theguardian.com/science/2026/nov/13/kurt-godel-notebooks-ai-helps-unlock-hidden-discoveries-man-who-transformed-maths</link>
+<guid>https://www.theguardian.com/science/2026/nov/13/kurt-godel-notebooks-ai-helps-unlock-hidden-discoveries-man-who-transformed-maths</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://www.theguardian.com/science/2026/nov/13/kurt-godel-notebooks-ai-helps-unlock-hidden-discoveries-man-who-transformed-maths">https://www.theguardian.com/science/2026/nov/13/kurt-godel-notebooks-ai-helps-unlock-hidden-discoveries-man-who-transformed-maths</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50486748">https://news.ycombinator.com/item?id=50486748</a></p>
+<p>Points: 363</p>
+<p># Comments: 96</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 17:30:10 +0000</pubDate>
+<pubDate>Fri, 13 Nov 2026 17:30:10 +0000</pubDate>
+</item>
+<item>
+<title>LibreOffice actually works 365 days a year</title>
+<link>https://twitter.com/LibreOffice/status/2121205272479998268</link>
+<guid>https://twitter.com/LibreOffice/status/2121205272479998268</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://twitter.com/LibreOffice/status/2121205272479998268">https://twitter.com/LibreOffice/status/2121205272479998268</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50486482">https://news.ycombinator.com/item?id=50486482</a></p>
+<p>Points: 860</p>
+<p># Comments: 264</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 17:09:58 +0000</pubDate>
+<pubDate>Fri, 13 Nov 2026 17:09:58 +0000</pubDate>
+</item>
+<item>
+<title>Brazil's Caixa insurer breach exposes names and tax IDs of all 7.6M customers</title>
+<link>https://filemanager-cdn.mziq.com/published/3972906b-e50b-4f74-ab74-4d0d32125d11/9567a559-d20a-486e-a7ae-5c6bbc030c5e</link>
+<guid>https://filemanager-cdn.mziq.com/published/3972906b-e50b-4f74-ab74-4d0d32125d11/9567a559-d20a-486e-a7ae-5c6bbc030c5e</guid>
+<content:encoded><![CDATA[
+
+<p>Article URL: <a href="https://filemanager-cdn.mziq.com/published/3972906b-e50b-4f74-ab74-4d0d32125d11/9567a559-d20a-486e-a7ae-5c6bbc030c5e">https://filemanager-cdn.mziq.com/published/3972906b-e50b-4f74-ab74-4d0d32125d11/9567a559-d20a-486e-a7ae-5c6bbc030c5e</a></p>
+<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50485295">https://news.ycombinator.com/item?id=50485295</a></p>
+<p>Points: 164</p>
+<p># Comments: 74</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 15:52:04 +0000</pubDate>
+<pubDate>Fri, 13 Nov 2026 15:52:04 +0000</pubDate>
+</item>
+<item>
+<title>How Not to Build a Music Player</title>
+<link>https://alichraghi.github.io/blog/how-not-to-build-a-music-player</link>
+<guid>https://alichraghi.github.io/blog/how-not-to-build-a-music-player</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/lh9pwf/how_not_build_music_player">Comments</a></p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 03:16:28 -0600</pubDate>
+<pubDate>Fri, 13 Nov 2026 03:16:28 -0600</pubDate>
+</item>
+<item>
+<title>The need for at least a third option</title>
+<link>https://blog.ovalerio.net/archives/3359</link>
+<guid>https://blog.ovalerio.net/archives/3359</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/9oq6fr/need_for_at_least_third_option">Comments</a></p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 05:36:44 -0600</pubDate>
+<pubDate>Fri, 13 Nov 2026 05:36:44 -0600</pubDate>
+</item>
+<item>
+<title>Probabilistic data structures in Go</title>
+<link>https://antonz.org/probabilistic-data-structures/</link>
+<guid>https://antonz.org/probabilistic-data-structures/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/xca2qj/probabilistic_data_structures_go">Comments</a></p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 10:03:44 -0600</pubDate>
+<pubDate>Fri, 13 Nov 2026 10:03:44 -0600</pubDate>
+</item>
+<item>
+<title>Beating the frontier on NetHack</title>
+<link>https://antithesis.com/blog/2026/nethack/</link>
+<guid>https://antithesis.com/blog/2026/nethack/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/kb3fs1/beating_frontier_on_nethack">Comments</a></p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 08:34:57 -0600</pubDate>
+<pubDate>Fri, 13 Nov 2026 08:34:57 -0600</pubDate>
+</item>
+<item>
+<title>ML Modules for Mere Mortals</title>
+<link>https://thunderseethe.dev/posts/ml-modules-for-mere-mortals/intro/</link>
+<guid>https://thunderseethe.dev/posts/ml-modules-for-mere-mortals/intro/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/mgiv0i/ml_modules_for_mere_mortals">Comments</a></p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 05:33:56 -0600</pubDate>
+<pubDate>Fri, 13 Nov 2026 05:33:56 -0600</pubDate>
+</item>
+<item>
+<title>Someone's impersonating this blog</title>
+<link>https://mattbee.mataroa.blog/p/someones-impersonating-this-blog/</link>
+<guid>https://mattbee.mataroa.blog/p/someones-impersonating-this-blog/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/wqml56/someone_s_impersonating_this_blog">Comments</a></p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 14:39:53 -0600</pubDate>
+<pubDate>Fri, 13 Nov 2026 14:39:53 -0600</pubDate>
+</item>
+<item>
+<title>Link Previews and You</title>
+<link>https://sable.moe/en/blog/link-previews-and-you/</link>
+<guid>https://sable.moe/en/blog/link-previews-and-you/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/0rmq2f/link_previews_you">Comments</a></p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 11:34:47 -0600</pubDate>
+<pubDate>Fri, 13 Nov 2026 11:34:47 -0600</pubDate>
+</item>
+<item>
+<title>Fixing a WebKit bug to see if promises are made of train tracks</title>
+<link>https://alistair.sh/thenables</link>
+<guid>https://alistair.sh/thenables</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/yxvn7j/fixing_webkit_bug_see_if_promises_are_made">Comments</a></p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 10:48:01 -0600</pubDate>
+<pubDate>Fri, 13 Nov 2026 10:48:01 -0600</pubDate>
+</item>
+<item>
+<title>Kildall's algorithm</title>
+<link>https://bike.github.io/posts/kildall.html</link>
+<guid>https://bike.github.io/posts/kildall.html</guid>
+<content:encoded><![CDATA[
+
+<blockquote>
+<p>I work on a new [Common] Lisp compiler called Cleavir. Cleavir is the compiler part of Dr. Robert Strandh’s project, SICL</p>
+</blockquote>
+<p><a href="https://lobste.rs/s/1nmzz6/kildall_s_algorithm">Comments</a></p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 13:34:28 -0600</pubDate>
+<pubDate>Fri, 13 Nov 2026 13:34:28 -0600</pubDate>
+</item>
+<item>
+<title>A technical vision for the Haskell ecosystem</title>
+<link>https://discourse.haskell.org/t/a-technical-vision-for-the-haskell-ecosystem/15078</link>
+<guid>https://discourse.haskell.org/t/a-technical-vision-for-the-haskell-ecosystem/15078</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/xe0prv/technical_vision_for_haskell_ecosystem">Comments</a></p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 08:27:43 -0600</pubDate>
+<pubDate>Fri, 13 Nov 2026 08:27:43 -0600</pubDate>
+</item>
+<item>
+<title>What happened to 3com?</title>
+<link>https://dfarq.homeip.net/what-happened-to-3com/</link>
+<guid>https://dfarq.homeip.net/what-happened-to-3com/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/pgmw6b/what_happened_3com">Comments</a></p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 23:46:40 -0600</pubDate>
+<pubDate>Fri, 13 Nov 2026 23:46:40 -0600</pubDate>
+</item>
+<item>
+<title>Pointer Provenance in Rust vs C++</title>
+<link>https://sofiabelen.github.io/projects/pointer-provenance-in-rust-vs-cpp/</link>
+<guid>https://sofiabelen.github.io/projects/pointer-provenance-in-rust-vs-cpp/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/xmtjzq/pointer_provenance_rust_vs_c">Comments</a></p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 12:37:30 -0600</pubDate>
+<pubDate>Fri, 13 Nov 2026 12:37:30 -0600</pubDate>
+</item>
+<item>
+<title>What are you doing this weekend?</title>
+<link>https://lobste.rs/s/4bvg9z/what_are_you_doing_this_weekend</link>
+<guid>https://lobste.rs/s/4bvg9z/what_are_you_doing_this_weekend</guid>
+<content:encoded><![CDATA[
+
+<p>Feel free to tell what you plan on doing this weekend and even ask for help or feedback.</p>
+<p>Please keep in mind it’s more than OK to do nothing at all too!</p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 04:22:29 -0600</pubDate>
+<pubDate>Fri, 13 Nov 2026 04:22:29 -0600</pubDate>
+</item>
+<item>
+<title>Don't bother patching: multiple remote code execution vulnerabilities in Danfoss AK-SM800A</title>
+<link>https://www.midnightblue.nl/blog/multiple-rce-danfoss-aksm800a</link>
+<guid>https://www.midnightblue.nl/blog/multiple-rce-danfoss-aksm800a</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/rpd05t/don_t_bother_patching_multiple_remote">Comments</a></p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 14:26:34 -0600</pubDate>
+<pubDate>Fri, 13 Nov 2026 14:26:34 -0600</pubDate>
+</item>
+<item>
+<title>You could have invented transformers from memory</title>
+<link>https://alexwang.ai/posts/associative-memory/</link>
+<guid>https://alexwang.ai/posts/associative-memory/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/u2h9as/you_could_have_invented_transformers">Comments</a></p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 22:49:47 -0600</pubDate>
+<pubDate>Fri, 13 Nov 2026 22:49:47 -0600</pubDate>
+</item>
+<item>
+<title>Writing a DSL for high performance parallel programming in OxCaml</title>
+<link>https://blog.janestreet.com/writing-a-dsl-for-high-performance-parallel-programming-in-oxcaml/</link>
+<guid>https://blog.janestreet.com/writing-a-dsl-for-high-performance-parallel-programming-in-oxcaml/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/kh9fri/writing_dsl_for_high_performance">Comments</a></p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 20:57:49 -0600</pubDate>
+<pubDate>Fri, 13 Nov 2026 20:57:49 -0600</pubDate>
+</item>
+<item>
+<title>SSA from bytecode: imperative pearl</title>
+<link>https://bernsteinbear.com/blog/ssa-bytecode/</link>
+<guid>https://bernsteinbear.com/blog/ssa-bytecode/</guid>
+<content:encoded><![CDATA[
+
+<p><a href="https://lobste.rs/s/x5uq91/ssa_from_bytecode_imperative_pearl">Comments</a></p>
+]]></content:encoded>
+<pubDate>Fri, 13 Nov 2026 00:20:05 -0600</pubDate>
+<pubDate>Fri, 13 Nov 2026 00:20:05 -0600</pubDate>
+</item>
 
 <item>
 <title>Amazon Cognito now supports OAuth 2.0 token exchange</title>
@@ -12,13 +791,12 @@
 <content:encoded><![CDATA[
 <div> **Keywords:** OAuth 2.0, token exchange, Amazon Cognito, API, intermediary  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 Amazon Cognito now supports OAuth 2.0 token exchange (RFC 8693), enhancing its functionality for web and mobile applications. This feature allows services or AI agents to exchange a user's token for a new token that is narrowly scoped to specific downstream services. Previously, services had to either forward the original user token or manage their own token minting processes, which could be complex and insecure. With token exchange, a new token can be issued with a more limited scope, specific audience restrictions, and without a refresh token. This improves security and simplifies the interaction between services. The inclusion of an actor token allows Cognito to add an "act" claim, identifying the intermediary service, which enables downstream services to distinguish requests made on behalf of users from those made directly by users. For example, a Model Context Protocol (MCP) server can securely exchange a user's token to access a backend API with a restricted token, ensuring that the intermediary's identity is recorded. Token exchange can be utilized through the token endpoint and is available on the Essentials and Plus feature plans across all areas where Amazon Cognito is offered. For more information, refer to the Amazon Cognito Developer Guide. <div>
 <p><a href="https://aws.amazon.com/cognito/">Amazon Cognito</a> now supports OAuth 2.0 token exchange (RFC 8693). Amazon Cognito helps you add sign-up, sign-in, and access control to your web applications, mobile applications, and AI agents. With token exchange, a service or AI agent acting on a user's behalf can exchange the user's token for a new token scoped to a specific downstream service. Previously, a service that called another service on a user's behalf had to forward the user's original token or build and maintain its own token minting logic.</p> 
 <p>With token exchange, you can issue a new token that has a narrower scope than the original token, is bound to a single audience, and comes without a refresh token. When you include an actor token, Cognito adds an act claim that identifies the intermediary, so downstream services can tell a request that an agent made on a user's behalf from one the user made directly. For example, a Model Context Protocol (MCP) server can exchange a user's token for a narrowly scoped token to call a backend API, with the act&nbsp;claim recording the MCP server as the actor.</p> 
 <p>You can exchange tokens through the token endpoint or with the new <a href="https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_GetDerivedToken.html">GetDerivedToken API</a>. Token exchange is available on the Essentials and Plus feature plans in all <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/">AWS Regions</a> where Amazon Cognito is available. To learn more, see <a href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-token-exchange.html">exchanging tokens for downstream services</a> in the Amazon Cognito Developer Guide.</p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 22:00:00 GMT</pubDate>
 <pubDate>Thu, 12 Nov 2026 22:00:00 GMT</pubDate>
 </item>
 <item>
@@ -28,11 +806,10 @@ Amazon Cognito now supports OAuth 2.0 token exchange (RFC 8693), enhancing its f
 <content:encoded><![CDATA[
 <div> Keywords: AWS, Graviton5, R9g, database instances, performance improvement
 
-<br><br>Summary: AWS has announced the general availability of Graviton5-based R9g database instances for Amazon Aurora (with PostgreSQL and MySQL compatibility) and Amazon RDS (for PostgreSQL, MySQL, and MariaDB). These instances offer a significant performance boost, providing up to 30% better performance and up to 22% improved price-performance over the previous Graviton4-based instances, depending on various factors like database engine and workload. Built on the AWS Nitro System, R9g instances come in nine sizes ranging from large to 48xlarge, featuring up to 192 vCPUs and an 8:1 memory-to-vCPU ratio. Networking capabilities include up to 100 Gbps of bandwidth, along with 72 Gbps bandwidth to Amazon Elastic Block Store (EBS). Users can start utilizing these new R9g instances through the AWS Management Console or the AWS Command Line Interface (CLI). They are currently available in several regions, including US East (N. Virginia, Ohio), US West (Oregon), and Europe (Frankfurt). For more specific details on supported engine versions and pricing, users can refer to the relevant AWS documentation. <div>
+<br /><br />Summary: AWS has announced the general availability of Graviton5-based R9g database instances for Amazon Aurora (with PostgreSQL and MySQL compatibility) and Amazon RDS (for PostgreSQL, MySQL, and MariaDB). These instances offer a significant performance boost, providing up to 30% better performance and up to 22% improved price-performance over the previous Graviton4-based instances, depending on various factors like database engine and workload. Built on the AWS Nitro System, R9g instances come in nine sizes ranging from large to 48xlarge, featuring up to 192 vCPUs and an 8:1 memory-to-vCPU ratio. Networking capabilities include up to 100 Gbps of bandwidth, along with 72 Gbps bandwidth to Amazon Elastic Block Store (EBS). Users can start utilizing these new R9g instances through the AWS Management Console or the AWS Command Line Interface (CLI). They are currently available in several regions, including US East (N. Virginia, Ohio), US West (Oregon), and Europe (Frankfurt). For more specific details on supported engine versions and pricing, users can refer to the relevant AWS documentation. <div>
 <p>AWS Graviton5-based R9g database instances are now generally available for Amazon Aurora with PostgreSQL compatibility and MySQL compatibility, and for Amazon RDS for PostgreSQL, MySQL, and MariaDB.<br /> &nbsp;<br /> Graviton5-based R9g instances provide up to a 30% performance improvement and up to a 22% price-performance improvement for on-demand pricing over Graviton4-based instances of equivalent sizes on Amazon Aurora, depending on database engine, version, and workload. Built on the AWS Nitro System, R9g instances are available in nine sizes, from large to 48xlarge. They deliver up to 192 vCPUs, an 8:1 ratio of memory to vCPU, up to 100 Gbps of networking bandwidth, and up to 72 Gbps of bandwidth to Amazon Elastic Block Store (Amazon EBS).&nbsp;</p> 
 <p>You can get started using the R9g database instances through the <a href="https://console.aws.amazon.com/rds/home?refid=35100cff-4aaa-46ac-bc1d-71576bef47be">Amazon RDS Management Console</a> or by using the <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.CreateInstance.html?refid=35100cff-4aaa-46ac-bc1d-71576bef47be#Aurora.CreateInstance.Creating">AWS Command Line Interface </a>(CLI). The instances are available in US East (N. Virginia, Ohio), US West (Oregon), and Europe (Frankfurt) regions. For the specific engine versions that support these instance classes, see the <a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.DBInstanceClass.SupportAurora.html?refid=35100cff-4aaa-46ac-bc1d-71576bef47be">Aurora</a> and <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.Support.html?refid=35100cff-4aaa-46ac-bc1d-71576bef47be">RDS</a> documentation. For pricing, see <a href="https://aws.amazon.com/rds/aurora/pricing/">Amazon Aurora pricing</a> and <a href="https://aws.amazon.com/rds/pricing/">Amazon RDS pricing</a>.</p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 19:02:00 GMT</pubDate>
 <pubDate>Thu, 12 Nov 2026 19:02:00 GMT</pubDate>
 </item>
 <item>
@@ -42,14 +819,13 @@ Amazon Cognito now supports OAuth 2.0 token exchange (RFC 8693), enhancing its f
 <content:encoded><![CDATA[
 <div> Keywords: Amazon MWAA, fine-grained access control, IAM Identity Center, multi-team environments, Apache Airflow.
 
-<br><br>Summary: Amazon Managed Workflows for Apache Airflow (Amazon MWAA) has introduced fine-grained access control, enabling administrators to manage who can access specific workflows and resources in an Apache Airflow environment with precision. This enhancement comes through two key features: IAM Identity Center integration and multi-team environments. The IAM Identity Center integration allows users to log in to the Apache Airflow UI using their corporate identity provider. Authorization is assessed with IAM policies linked to IAM Identity Center Permission Sets, where condition keys determine access based on resource type (like DAGs, connections, etc.), action, and specific resource ID. Multi-team environments enable multiple teams to operate within a single MWAA instance, each accessing its dedicated DAG folder in Amazon S3. Users will only see their own team's DAGs along with shared DAGs based on their IAM Identity Center group memberships. This setup allows teams to save costs through shared infrastructure and simplifies management as environment settings are configured once. Both features are available in all regions where Amazon MWAA operates. For more information, users can visit the official documentation and announcements related to these updates. <div>
+<br /><br />Summary: Amazon Managed Workflows for Apache Airflow (Amazon MWAA) has introduced fine-grained access control, enabling administrators to manage who can access specific workflows and resources in an Apache Airflow environment with precision. This enhancement comes through two key features: IAM Identity Center integration and multi-team environments. The IAM Identity Center integration allows users to log in to the Apache Airflow UI using their corporate identity provider. Authorization is assessed with IAM policies linked to IAM Identity Center Permission Sets, where condition keys determine access based on resource type (like DAGs, connections, etc.), action, and specific resource ID. Multi-team environments enable multiple teams to operate within a single MWAA instance, each accessing its dedicated DAG folder in Amazon S3. Users will only see their own team's DAGs along with shared DAGs based on their IAM Identity Center group memberships. This setup allows teams to save costs through shared infrastructure and simplifies management as environment settings are configured once. Both features are available in all regions where Amazon MWAA operates. For more information, users can visit the official documentation and announcements related to these updates. <div>
 <p>Amazon Managed Workflows for Apache Airflow (Amazon MWAA) now supports fine-grained access control, giving administrators precise control over who can access which workflows and resources in an Apache Airflow environment. Fine-grained access control is delivered through two new capabilities: IAM Identity Center integration and multi-team environments.</p>
 <p>With IAM Identity Center integration, users sign in to the Apache Airflow UI with their corporate identity provider. Authorization is evaluated per request using IAM policies attached to IAM Identity Center Permission Sets, with condition keys that scope access by resource type (DAGs, connections, variables, pools, and more), action, and specific resource ID.</p>
 <p>With multi-team environments, several teams can share a single MWAA environment. Each team gets its own DAG folder in Amazon S3, and users see only shared DAGs plus their own teams' DAGs based on IAM Identity Center group membership. Teams reduce cost through shared infrastructure and simplify management by configuring environment settings once. Multi-team environments are based on the Apache Airflow multi-team feature, which is currently in preview.</p>
 <p>These features are available in all <a href="https://docs.aws.amazon.com/mwaa/latest/userguide/get-started.html#regions" target="_blank">AWS Regions</a> where Amazon MWAA is available.</p>
 <p>To learn more, visit the <a href="https://docs.aws.amazon.com/mwaa/latest/userguide/identity-center-integration.html" target="_blank">IAM Identity Center integration documentation</a> and the <a href="https://docs.aws.amazon.com/mwaa/latest/userguide/multi-team-environments.html" target="_blank">multi-team environments documentation</a>.</p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 18:00:00 GMT</pubDate>
 <pubDate>Thu, 12 Nov 2026 18:00:00 GMT</pubDate>
 </item>
 <item>
@@ -59,13 +835,12 @@ Amazon Cognito now supports OAuth 2.0 token exchange (RFC 8693), enhancing its f
 <content:encoded><![CDATA[
 <div> Keywords: Amazon Connect, merge cases, link cases, customer issues, AWS regions  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 Amazon Connect now allows agents to merge and link related cases within the agent workspace, enhancing the efficiency of resolving customer issues. This feature is particularly useful when a customer contacts the business multiple times about the same issue across different channels, as it consolidates case histories into a single case. For instance, an agent can merge a customer's chat case with their email case regarding a delayed shipment to provide a more streamlined response. Furthermore, agents can link related cases from different customers experiencing the same issue, ensuring a consistent response for all affected parties. This ability promotes better coordination among agents and improves overall customer service effectiveness. The Cases feature is available across numerous AWS regions, including US East (N. Virginia), US West (Oregon), Canada (Central), Europe (Frankfurt), Europe (London), and several locations in the Asia Pacific region, such as Seoul and Tokyo, as well as Africa (Cape Town). For those interested in leveraging this feature, further information and resources are available on the relevant AWS webpages. <div>
 <p>Amazon Connect Customer now lets agents merge and link related cases in the agent workspace, so they can resolve customer issues faster and respond consistently. When a customer contacts a business about the same issue more than once, or on different channels, the history can end up split across several cases. Agents can merge those cases into one case with a single, consolidated history. For example, an agent can merge the chat and email cases a customer opened about a delayed shipment.</p> 
 <p>Agents can also link related cases, such as cases from different customers affected by the same issue, so they can coordinate one consistent response for every affected customer.</p> 
 <p>Cases is available in the following AWS regions: US East (N. Virginia), US West (Oregon), Canada (Central), Europe (Frankfurt), Europe (London), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), Asia Pacific (Tokyo), and Africa (Cape Town). To learn more and get started, visit the Cases <a href="https://aws.amazon.com/products/connect/customer/cases/" target="_blank">webpage</a> and <a href="https://docs.aws.amazon.com/connect/latest/adminguide/cases.html" target="_blank">documentation</a>.</p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 17:00:00 GMT</pubDate>
 <pubDate>Thu, 12 Nov 2026 17:00:00 GMT</pubDate>
 </item>
 <item>
@@ -75,13 +850,12 @@ Amazon Connect now allows agents to merge and link related cases within the agen
 <content:encoded><![CDATA[
 <div> Keywords: Amazon SNS, push notifications, Asia Pacific, Europe, AWS GovCloud  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 Amazon Simple Notification Service (SNS) has expanded its capabilities to support sending push notifications in four new regions: Asia Pacific (Hyderabad), Asia Pacific (Melbourne), Europe (Zurich), and AWS GovCloud (US-East). Amazon SNS is a fully managed pub/sub messaging service that facilitates message delivery to various endpoints, including AWS Lambda, Amazon SQS, Amazon Kinesis Data Firehose, HTTP, SMS (via AWS End User Messaging), push notifications, and email. With this launch, customers in these new regions can utilize Amazon SNS for push notifications, leveraging supported services such as Amazon Device Messaging (ADM), Apple Push Notification Service (APNs), Baidu Cloud Push (Baidu), Firebase Cloud Messaging (FCM), and Windows Push Notification Services (WNS). For a comprehensive list of Regions that allow sending push notifications, users can refer to the Amazon SNS Developer Guide. This enhancement is part of Amazon's ongoing commitment to improving global messaging services and providing customers with flexible messaging options across various platforms and devices. <div>
 <p><a href="https://aws.amazon.com/sns/">Amazon Simple Notification Service (Amazon SNS)</a> now supports sending push notifications in the Asia Pacific (Hyderabad), Asia Pacific (Melbourne), Europe (Zurich), and AWS GovCloud (US-East) Regions.</p> 
 <p>Amazon SNS is a fully managed pub/sub service that provides message delivery to multiple endpoints, including AWS Lambda, Amazon SQS, Amazon Data Firehose, HTTP, SMS (via AWS End User Messaging), push notifications, and email. With this launch, customers in these four additional Regions can use Amazon SNS to send push notifications to the following supported push notification services: Amazon Device Messaging (ADM), Apple Push Notification Service (APNs), Baidu Cloud Push (Baidu), Firebase Cloud Messaging (FCM), and Windows Push Notification Services (WNS).</p> 
 <p>For the full list of Regions from which you can send push notifications, see <a href="https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-push-supported-regions.html">Supported Regions and Countries</a> in the Amazon SNS Developer Guide. For more information, see the <a href="https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html">Amazon SNS push notifications documentation</a>.</p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 16:00:00 GMT</pubDate>
 <pubDate>Thu, 12 Nov 2026 16:00:00 GMT</pubDate>
 </item>
 <item>
@@ -91,11 +865,10 @@ Amazon Simple Notification Service (SNS) has expanded its capabilities to suppor
 <content:encoded><![CDATA[
 <div> Keywords: AWS Quick, structured data connector, permissions, data governance, self-service analytics  
 
-<br><br>Summary:  
+<br /><br />Summary:  
 AWS Quick is announcing the general availability of structured data connector restrictions through custom permissions. This new capability provides administrators with granular control over the types of data sources users can create, update, or share. It helps organizations enforce data governance requirements while facilitating self-service analytics for users. Administrators can configure these restrictions in the Enterprise edition via the Quick UI, APIs, or AWS Command Line Interface. For instance, users can be permitted to create Amazon Redshift data sources while being restricted from creating file-upload data sources. Additionally, administrators have the ability to prevent users from sharing data sources for specific connectors. Restrictions for creating, updating, and sharing can be independently configured, allowing for more precise control compared to blanket restrictions across all data source types. This feature is now available in all supported AWS Quick Regions. For those interested in learning more, detailed documentation is available. <div>
 <p>Today, AWS Quick is announcing the general availability of structured data connector restrictions through custom permissions. This capability gives administrators granular control over which types of data sources users can create, update, or share, helping organizations enforce data governance requirements while enabling self-service analytics.<br /> <br /> With this feature, administrators can configure <a href="https://docs.aws.amazon.com/quick/latest/userguide/custom-permissions.html">custom permissions profiles</a> in Enterprise edition through the Quick UI, APIs, or AWS Command Line Interface. For example, an organization can allow users to create Amazon Redshift data sources while restricting the creation of file-upload data sources. Administrators can also prevent users from sharing data sources for a particular connector. Create, update, and share restrictions can be configured independently, providing more precise controls than restrictions that apply to all data source types.<br /> <br /> This feature is now available in all supported AWS Quick Regions listed <a href="https://docs.aws.amazon.com/quick/latest/userguide/regions.html">here</a>. To learn more, check our documentation <a href="https://docs.aws.amazon.com/quick/latest/userguide/custom-permissions.html">here</a>.</p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 09:00:00 GMT</pubDate>
 <pubDate>Thu, 12 Nov 2026 09:00:00 GMT</pubDate>
 </item>
 <item>
@@ -105,12 +878,11 @@ AWS Quick is announcing the general availability of structured data connector re
 <content:encoded><![CDATA[
 <div> Keywords: Amazon Route 53, restore domain, AWS Support, TLD registry, restoration price
 
-<br><br>Summary: Amazon Route 53 now allows users to restore expired or recently deleted domains independently through the Route 53 console, AWS CLI, or AWS SDKs. This update eliminates the need for requests to AWS Support for domain restoration. Users can recover domains lost due to missed renewals, expired payment methods, or accidental deletions, ensuring that associated websites, emails, and applications can be reinstated. The restoration process involves entering the domain name, reviewing the associated restoration cost, accepting the charge, and submitting the request. Route 53 collaborates with the top-level domain (TLD) registry to reactivate the domain registration and return it to the user's AWS account. Most TLD registries offer domain restoration, with specific time frames for reactivation varying by registry. It's important to note that restoring a domain typically incurs a higher cost than the standard fees for registering or renewing one. Users interested in more details can consult the Route 53 Developer Guide for further information, check the list of supported TLDs, and review the pricing details available in the Route 53 documentation. <div>
+<br /><br />Summary: Amazon Route 53 now allows users to restore expired or recently deleted domains independently through the Route 53 console, AWS CLI, or AWS SDKs. This update eliminates the need for requests to AWS Support for domain restoration. Users can recover domains lost due to missed renewals, expired payment methods, or accidental deletions, ensuring that associated websites, emails, and applications can be reinstated. The restoration process involves entering the domain name, reviewing the associated restoration cost, accepting the charge, and submitting the request. Route 53 collaborates with the top-level domain (TLD) registry to reactivate the domain registration and return it to the user's AWS account. Most TLD registries offer domain restoration, with specific time frames for reactivation varying by registry. It's important to note that restoring a domain typically incurs a higher cost than the standard fees for registering or renewing one. Users interested in more details can consult the Route 53 Developer Guide for further information, check the list of supported TLDs, and review the pricing details available in the Route 53 documentation. <div>
 <p>Amazon Route 53 Domains now lets you restore an expired or recently deleted domain yourself, using the Amazon Route 53 console, AWS CLI, or AWS SDKs. Previously, restoring a domain required a request to AWS Support. Now you can recover a domain lost to a missed renewal, an expired payment method, or an accidental deletion, and restore the website, email, and applications that depend on it.</p> 
 <p>To restore a domain, you enter the domain name, review the restoration price, accept the charge, and submit the request. Route 53 works with the top-level domain (TLD) registry to reactivate the registration and return the domain to your AWS account. Most TLD registries support restoration, and each registry sets how long after expiration or deletion a domain can still be restored. Restoring a domain typically costs more than registering or renewing one.</p> 
 <p>To learn more, see <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-restore-expired.html" rel="noopener noreferrer" target="_blank">Restoring an expired or deleted domain</a> in the Route 53 Developer Guide, or visit the <a href="https://aws.amazon.com/route53/domains/" target="_blank">Amazon Route 53 Domains page</a>. For a complete list of supported TLDs, see the <a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/registrar-tld-list.html" rel="noopener noreferrer" target="_blank">Route 53 TLD list</a>. For pricing, visit the Route 53 <a href="https://aws.amazon.com/route53/pricing/" target="_blank">pricing page</a>.</p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
 <pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
 </item>
 <item>
@@ -120,13 +892,12 @@ AWS Quick is announcing the general availability of structured data connector re
 <content:encoded><![CDATA[
 <div> Keywords: EC2 Image Builder, AWS DevOps Agent, troubleshooting, resource creation, commercial regions
 
-<br><br>Summary:  
+<br /><br />Summary:  
 EC2 Image Builder has integrated with the AWS DevOps Agent in the Image Builder console, enhancing the troubleshooting experience for failed image pipelines. Users can now diagnose up to 50 failed pipelines simultaneously and engage in follow-up questions within the same conversation. The integration streamlines the resource creation process, allowing users to describe their desired resources, which the agent then populates with validated values. This automation reduces the need for manual inspection of build logs and error codes, significantly conserving time and expertise. The agent proactively analyzes build logs, workflow steps, and network configurations to identify root causes and offer corrective actions. Additionally, for resource creation, the agent ensures configuration validation before presenting it for user review and submission. Those utilizing their own AI agents can also benefit from the EC2 Image Builder skill in the AWS Agent Toolkit, which mirrors these troubleshooting and creation capabilities. This feature is readily available in all commercial AWS regions, and users can begin by accessing the EC2 Image Builder console and leveraging the DevOps Agent from the console panel. More information is provided in the documentation, along with pricing details. <div>
 <p>EC2 Image Builder now integrates with the AWS DevOps Agent directly in the Image Builder console, enabling you to troubleshoot failed image pipelines and create resources directly from the console chat panel. You can diagnose up to 50 failed pipelines at once and ask follow-up questions in the same conversation. You can also choose to create resources by describing what you want, and the agent populates the console with values the service has already validated.</p> 
 <p>With this integration, diagnosing a failed pipeline no longer requires manually inspecting build logs, cross-referencing error codes, or iterating through configuration fixes, saving you significant time and expertise. The agent reads build logs, workflow steps, components, and network configuration, then provides the root cause and the steps to fix it. For resource creation,&nbsp; the agent verifies the configuration before populating the console for you to review and submit. If you troubleshoot or build with your own AI agents, the new EC2 Image Builder skill in the AWS Agent Toolkit provides you the same troubleshooting and creation capabilities.</p> 
 <p>This feature is available in all commercial regions. To get started, open the EC2 Image Builder console and use the DevOps Agent from the console panel. For more information, see the <a href="https://docs.aws.amazon.com/imagebuilder/latest/userguide/ai-image-builder.html">EC2 Image Builder documentation</a> and for pricing refer <a href="https://aws.amazon.com/devops-agent/pricing/">DevOps agent Pricing page</a>.&nbsp;</p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
 <pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
 </item>
 <item>
@@ -136,13 +907,12 @@ EC2 Image Builder has integrated with the AWS DevOps Agent in the Image Builder 
 <content:encoded><![CDATA[
 <div> Keywords: FSx for Lustre, Intelligent-Tiering, throughput capacity, metadata IOPS, high-performance computing
 
-<br><br>Summary:  
+<br /><br />Summary:  
 Amazon FSx for Lustre has introduced a significant enhancement to its Intelligent-Tiering storage class, making it more cost-effective for high-performance computing (HPC) and machine learning applications. The update allows users to reduce the minimum provisioned throughput capacity by 75%, from 4,000 MBps to 1,000 MBps, along with decreasing metadata IOPS from 6,000 to 1,500. This dramatic reduction enables even smaller datasets to leverage Intelligent-Tiering, facilitating easier scaling as data grows over time. The Intelligent-Tiering storage class is particularly optimized for workloads that contain both hot and cold data while not needing continuous SSD performance. This release applies to new FSx for Lustre Intelligent-Tiering file systems in regions where the service is available. Users looking for economical file storage solutions in the cloud can benefit from this lower-cost, fully elastic storage option. To find more detailed information, readers can refer to the Performance characteristics of Intelligent-Tiering storage class documentation available on the official website. <div>
 <p><a href="https://aws.amazon.com/fsx/lustre/">Amazon FSx for Lustre</a> is reducing the minimum provisioned throughput capacity and metadata IOPS on Intelligent-Tiering file systems by 75%, allowing you to use Intelligent-Tiering even more cost-effectively for high-performance computing (HPC) and machine learning workloads that start with small datasets and grow over time.</p> 
 <p>The FSx for Lustre Intelligent-Tiering storage class delivers the lowest-cost and only fully elastic Lustre file storage in the cloud. It is optimized for workloads that mix hot and cold data and do not require consistent SSD-level performance. A file system's throughput capacity determines the read and write speeds supported by its underlying file servers, and its level of metadata IOPS determines how many files and directories you can create, read, and delete per second. Today’s launch reduces the minimum throughput capacity on an Intelligent-Tiering file system from 4,000 to 1,000 MBps and the minimum metadata performance from 6,000 to 1,500 IOPS.&nbsp;</p> 
 <p>The lower throughput capacity and metadata IOPS levels are available on new FSx for Lustre Intelligent-Tiering file systems in all <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/">AWS Regions</a> where the Intelligent-Tiering storage class is available. To learn more, see Performance characteristics of Intelligent-Tiering storage class in the <a href="https://docs.aws.amazon.com/fsx/latest/LustreGuide/intelligent-tiering-file-systems.html">Amazon FSx for Lustre User Guide.</a></p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
 <pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
 </item>
 <item>
@@ -152,7 +922,7 @@ Amazon FSx for Lustre has introduced a significant enhancement to its Intelligen
 <content:encoded><![CDATA[
 <div> **Keywords:** AWS Backup, logically air-gapped vault, Amazon EBS snapshots, archival storage, recovery time.
 
-<br><br>Summary:  
+<br /><br />Summary:  
 AWS Backup now supports archiving Amazon EBS snapshots in logically air-gapped vaults, which are designed to securely share backups across accounts and AWS Organizations while allowing direct restores to enhance recovery times following data loss events. These vaults store immutable backups that are encrypted with AWS owned or customer-managed keys, ensuring compliance and long-term retention at a lower cost. The new feature enables users to transition EBS backups to the Amazon EBS Snapshots Archive, which serves as a low-cost tier for snapshots that are infrequently accessed. To get started, users can utilize the AWS Backup console, AWS CLI, or AWS SDKs. In backup plan rules, users must specify a logically air-gapped vault as either the primary backup or copy destination and can enable the archiving option in the lifecycle settings. This feature is available in all AWS Regions that support both logically air-gapped vaults and Amazon EBS Snapshots Archive. For more comprehensive information and regional availability, users are encouraged to check official AWS resources. <div>
 <p>AWS Backup logically air-gapped vault now supports Amazon EBS Snapshots Archive. Logically air-gapped vaults are a type of AWS Backup vault that allows secure sharing of backups across accounts and AWS Organizations, supporting direct restore to reduce recovery time from a data loss event.</p> 
 <p>You can now archive Amazon EBS backups held in a logically air-gapped vault to Amazon EBS Snapshots Archive, a low-cost tier for snapshots you rarely access. A logically air-gapped vault stores immutable backups that are locked by default, and isolated with encryption using AWS owned keys or customer-managed keys. This helps you meet long-term retention and compliance requirements at lower storage cost.</p> 
@@ -160,20 +930,17 @@ AWS Backup now supports archiving Amazon EBS snapshots in logically air-gapped v
 <p>This support is available in all AWS Regions where both logically air-gapped vault and Amazon EBS Snapshots Archive are available. For more information and detailed regional availability, visit the <a href="https://docs.aws.amazon.com/aws-backup/latest/devguide/backup-feature-availability.html#features-by-region" rel="noopener noreferrer" target="_blank">AWS Backup documentation</a>. To learn more about logically air-gapped vaults, visit the <a href="https://docs.aws.amazon.com/aws-backup/latest/devguide/logicallyairgappedvault.html" rel="noopener noreferrer" target="_blank">product documentation</a> and <a href="https://aws.amazon.com/backup/pricing/">pricing page</a>.</p>
 ]]></content:encoded>
 <pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
-<pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
 </item>
 <item>
 <title>AWS Glue announces automatic version upgrades for Apache Spark jobs</title>
 <link>https://aws.amazon.com/about-aws/whats-new/2026/11/glue-spark-auto-upgrades/</link>
 <guid>https://aws.amazon.com/about-aws/whats-new/2026/11/glue-spark-auto-upgrades/</guid>
 <content:encoded><![CDATA[
-
 <p>AWS Glue introduces automatic version upgrades, a capability that keeps your Apache Spark jobs current on the latest AWS Glue runtime without manual coordination. Staying current on supported runtimes gives your jobs the latest security patches, performance improvements, and support for evolving table formats such as Apache Iceberg. Auto upgrades include multiple levels of validations including assessing jobs for compatibility with the upgraded runtime, obtaining your consent before executing jobs on a newer version, and validating upgraded job runs against each job's established output profile, so your jobs upgrade with the right guardrails in place.</p>
 <p>By setting a job's version to "Auto", upgrades that once required weeks of planning and execution now happen automatically. Platform teams can standardize runtime versions across large fleets without chasing individual job owners, and business units without a central upgrade team can keep their jobs current hands-free. Each job is validated against its established output schema, data volume, latency, and format before it upgrades, so you can advance with confidence. Jobs that need code changes keep running safely on their current version, and AWS Glue provides an upgrade analysis with specific fixes you can apply directly or with the Apache Spark upgrade agent.</p>
 <p>Auto upgrades for AWS Glue are available in all AWS Commercial Regions.</p>
 <p>To get started, select "Auto" as the AWS Glue version when creating or updating an Apache Spark job using the AWS Glue Studio or AWS CLI, API, and SDKs. Alternatively, you can update multiple jobs at once using the AWS Glue <a href="https://github.com/aws-samples/aws-glue-samples/blob/8d52b2c004d48b4d15c20cb1b0bd161da0c98a0d/utilities/skills/managing-glue-jobs/README.md" target="_blank">skill to manage your jobs</a>. To learn more, visit the <a href="https://docs.aws.amazon.com/glue/latest/dg/auto-version-upgrades.html" target="_blank">AWS Glue documentation</a>.</p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
 <pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
 </item>
 <item>
@@ -181,12 +948,10 @@ AWS Backup now supports archiving Amazon EBS snapshots in logically air-gapped v
 <link>https://aws.amazon.com/about-aws/whats-new/2026/11/aws-backup-resource-modifiers-eks/</link>
 <guid>https://aws.amazon.com/about-aws/whats-new/2026/11/aws-backup-resource-modifiers-eks/</guid>
 <content:encoded><![CDATA[
-
 <p>Today, AWS Backup announces support for resource modifiers when restoring Amazon Elastic Kubernetes Service (Amazon EKS) backups. Resource modifiers let you transform Kubernetes resources during a restore, so you can adapt a restored cluster to its target environment.</p> 
 <p>When you restore an EKS backup that has been copied across accounts or across AWS Regions, the restored cluster can carry references tied to the source environment, such as IAM roles, database endpoints, and Amazon ECR registry URIs. Previously, you had to locate and update these references manually after every restore, which was time consuming and error prone. With resource modifiers, you can define transformation rules once via a YAML file, and AWS Backup applies them automatically as part of the restore, improving the reliability of your cross-account and cross-Region disaster recovery workflows.</p> 
 <p>AWS Backup support for resource modifiers for Amazon EKS backups is available in all commercial AWS Regions and AWS GovCloud (US) Regions. To get started, see the <a href="https://docs.aws.amazon.com/aws-backup/latest/devguide/restoring-eks.html" rel="noopener noreferrer" target="_blank">AWS Backup Documentation</a> and read the <a href="https://aws.amazon.com/blogs/storage/remap-amazon-eks-namespaces-on-restore-with-aws-backup-resource-modifiers/" rel="noopener noreferrer" target="_blank">launch blog</a>.</p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
 <pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
 </item>
 <item>
@@ -194,12 +959,10 @@ AWS Backup now supports archiving Amazon EBS snapshots in logically air-gapped v
 <link>https://aws.amazon.com/about-aws/whats-new/2026/11/cloud-wan-bgp-community-directconnect/</link>
 <guid>https://aws.amazon.com/about-aws/whats-new/2026/11/cloud-wan-bgp-community-directconnect/</guid>
 <content:encoded><![CDATA[
-
 <p>AWS Cloud WAN now supports BGP communities on Direct Connect attachments, enabling advanced routing controls for enterprise hybrid networks. Previously, Cloud WAN Routing Policy evaluated BGP communities only on Site-to-Site VPN and Connect attachments. Now, customers can tag routes with routing intent on-premises, apply filtering and path preference rules inside Cloud WAN, and propagate communities back to their on-premises routers over Direct Connect.</p> 
 <p>With this capability, enterprises can simplify hybrid network orchestration by signaling routing policies dynamically from on-premises environments. Customers can match community tags to filter production versus disaster recovery traffic, prioritize preferred paths, or restrict regional propagation. This eliminates the need for VPN overlay workarounds and manual policy replication, reducing operational complexity and misconfiguration risk.</p> 
 <p>BGP community support on AWS Cloud WAN Direct Connect attachments is available in all AWS Regions where both AWS Direct Connect and AWS Cloud WAN are available. For the complete list of available Regions, see the <a href="https://docs.aws.amazon.com/network-manager/latest/cloudwan/cloudwan-routing-policies.html" target="_blank">Cloud WAN Routing Policies documentation</a>.</p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
 <pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
 </item>
 <item>
@@ -207,12 +970,10 @@ AWS Backup now supports archiving Amazon EBS snapshots in logically air-gapped v
 <link>https://aws.amazon.com/about-aws/whats-new/2026/11/managed-flink-enhanced-snapshots/</link>
 <guid>https://aws.amazon.com/about-aws/whats-new/2026/11/managed-flink-enhanced-snapshots/</guid>
 <content:encoded><![CDATA[
-
 <p>Amazon Managed Service for Apache Flink now supports enhanced snapshots, a capability that lets you capture, export, and restore application state across Apache Flink applications and AWS Regions, so you can run blue/green deployments, easily migrate self-managed workloads to Amazon Managed Service for Apache Flink without losing state, and keep backup in a secondary Region for cross-Region recovery.</p>
 <p>To deploy an application update without pausing processing for blue/green deployments, create an enhanced snapshot from an application and use it to start a second application. To migrate a self-managed workload, import its Apache Flink savepoint into Amazon Managed Service for Apache Flink as an enhanced snapshot. For cross-Region recovery, export an enhanced snapshot to an Amazon Simple Storage Service (Amazon S3) bucket, and replicate the exported state to a bucket in a secondary Region.</p>
 <p>Enhanced snapshots are available today for applications on Apache Flink 1.20 and later in all AWS Regions where Amazon Managed Service for Apache Flink is available except European Sovereign Cloud (Germany). You pay for enhanced snapshot storage per GB-month as durable application backups. To learn more and get started, see <a href="https://docs.aws.amazon.com/managed-flink/latest/java/snapshots-how-it-works.html" target="_blank">enhanced snapshots</a> in the Amazon Managed Service for Apache Flink Developer Guide. You can also use <a href="https://docs.aws.amazon.com/agent-toolkit/latest/userguide/what-is-agent-toolkit.html" target="_blank">Agent Toolkit for AWS</a> with Kiro, Claude Code, or Cursor for guidance on building and operating Flink applications with enhanced snapshots.</p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
 <pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
 </item>
 <item>
@@ -220,12 +981,10 @@ AWS Backup now supports archiving Amazon EBS snapshots in logically air-gapped v
 <link>https://aws.amazon.com/about-aws/whats-new/2026/11/rds-sqlserver-supports-m8id-r8id-instances</link>
 <guid>https://aws.amazon.com/about-aws/whats-new/2026/11/rds-sqlserver-supports-m8id-r8id-instances</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://aws.amazon.com/rds/sqlserver/" rel="noopener noreferrer" target="_blank">Amazon Relational Database Service (Amazon RDS) for SQL Server</a> now supports M8id and R8id instances. These instances are powered by custom Intel Xeon 6 processors, available only on AWS, and include local NVMe SSD storage. They scale up to 384 vCPUs, 3 TiB of memory, and 22.8 TB of local NVMe SSD storage. That's 4x the vCPUs and memory and more than 6x the local storage of M5d and R5d instances.</p> 
 <p>When you create or modify a DB instance to use M8id or R8id, RDS for SQL Server automatically places the tempdb data and log files on the local NVMe instance store. This gives tempdb lower read and write latency than Amazon EBS storage. Your database data and log files stay on Amazon EBS. Because snapshots don't include tempdb files on the instance store, your snapshots are smaller and use less of your free backup storage. To learn more, see <a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/SQLServer.InstanceStore.html" rel="noopener noreferrer" target="_blank">Instance store support for the tempdb database on Amazon RDS for SQL Server</a>.</p> 
 <p>To use the new M8id and R8id instances, you can modify your existing RDS database instance or create a new RDS database instance from the RDS Management Console, or using the AWS SDK or CLI. M8id and R8id instances are available in the following AWS Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), Europe (Ireland), Europe (London), Europe (Frankfurt), Europe (Stockholm), Europe (Spain), Asia Pacific (Tokyo), Asia Pacific (Mumbai), Asia Pacific (Sydney), and Asia Pacific (Malaysia). For pricing details, see <a href="https://aws.amazon.com/rds/sqlserver/pricing/" rel="noopener noreferrer" target="_blank">Amazon RDS for SQL Server Pricing</a>.</p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
 <pubDate>Thu, 12 Nov 2026 08:00:00 GMT</pubDate>
 </item>
 <item>
@@ -233,13 +992,11 @@ AWS Backup now supports archiving Amazon EBS snapshots in logically air-gapped v
 <link>https://aws.amazon.com/about-aws/whats-new/2026/11/new-agentcore-runtime-default/</link>
 <guid>https://aws.amazon.com/about-aws/whats-new/2026/11/new-agentcore-runtime-default/</guid>
 <content:encoded><![CDATA[
-
 <p>Starting today, new runtimes in Amazon Bedrock AgentCore use the next generation of AgentCore runtime by default. The new runtime restores each session from a snapshot of your initialized agent, scales compute and memory with the work, and scales idle agents to zero. Every session still runs in its own hardware-isolated Firecracker microVM. Your agents can run heavy work like compiling a large codebase, driving a browser, or loading a local model inside the session.&nbsp;</p> 
 <p>Sessions scale to 8 vCPU and 32 GB of memory and support container images up to 10 GB. On a 2 GB image, sessions start in under 2 seconds at P75, down from 29.7 seconds on the previous generation. Idle agents scale to zero, and memory is reclaimed within minutes of release. For multi-turn agents, that means up to 68% less billed memory per session.</p> 
 <p>Existing runtimes stay on the current version until you move them. To move an existing runtime, or to use the next generation in a Region where it isn't the default yet, set platformVersion to V2 when you create or update a runtime. To keep a new runtime on the current version, set platformVersion to V1.</p> 
 <p>The new AgentCore Runtime is now the default runtime in the following AWS Regions: US East (N. Virginia), US East (Ohio), US West (Oregon), Canada (Central), South America (São Paulo), Europe (Frankfurt), Europe (Ireland), Europe (London), Europe (Milan), Europe (Paris), Europe (Spain), Europe (Stockholm), Asia Pacific (Malaysia), Asia Pacific (Mumbai), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), Asia Pacific (Thailand), and Asia Pacific (Tokyo). &nbsp;To learn more, visit the <a href="https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/agents-tools-runtime.html">AgentCore runtime documentation</a> or the AWS Blog. For pricing details, visit <a href="https://aws.amazon.com/bedrock/agentcore/pricing/">AgentCore pricing</a>.</p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 05:00:00 GMT</pubDate>
 <pubDate>Thu, 12 Nov 2026 05:00:00 GMT</pubDate>
 </item>
 <item>
@@ -247,12 +1004,10 @@ AWS Backup now supports archiving Amazon EBS snapshots in logically air-gapped v
 <link>https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-mwaa-serverless-duckdb-operators/</link>
 <guid>https://aws.amazon.com/about-aws/whats-new/2026/11/amazon-mwaa-serverless-duckdb-operators/</guid>
 <content:encoded><![CDATA[
-
 <p>Amazon MWAA Serverless now supports DuckDB operators, enabling you to analyze and transform data with high-performance in-memory analytics directly in your workflows. You can query data in Amazon S3 or run analytics locally, without manual credential configuration. DuckDB operators are also supported in SageMaker Unified Studio visual workflows.</p>
 <p>To get started in MWAA Serverless, add a DuckDB task to your workflow definition. A pre-created default connection automatically uses your workflow's execution role credentials for S3 access, so you can start analyzing data immediately. In SageMaker Unified Studio, add DuckDB operators from the task panel to your visual workflow canvas.</p>
 <p>DuckDB operators are available in all <a href="https://docs.aws.amazon.com/mwaa/latest/mwaa-serverless-userguide/what-is-mwaa-serverless.html#regions" target="_blank">Regions</a> where Amazon MWAA Serverless is available. To learn more, see <a href="https://docs.aws.amazon.com/mwaa/latest/mwaa-serverless-userguide/code-examples-duckdb.html" target="_blank">Using DuckDB in Amazon MWAA Serverless workflows</a> and <a href="https://docs.aws.amazon.com/sagemaker-unified-studio/latest/userguide/serverless-visual-workflows.html" target="_blank">Using serverless visual workflows</a>.</p>
 ]]></content:encoded>
-<pubDate>Tue, 10 Nov 2026 18:00:00 GMT</pubDate>
 <pubDate>Tue, 10 Nov 2026 18:00:00 GMT</pubDate>
 </item>
 <item>
@@ -260,7 +1015,6 @@ AWS Backup now supports archiving Amazon EBS snapshots in logically air-gapped v
 <link>https://github.com/vercel/next.js/releases/tag/v16.5.0-canary.49</link>
 <guid>https://github.com/vercel/next.js/releases/tag/v16.5.0-canary.49</guid>
 <content:encoded><![CDATA[
-
 <h3>Core Changes</h3>
 <ul>
 <li>Optimize NFT base path mapping: <a class="issue-link js-issue-link" href="https://github.com/vercel/next.js/pull/101151">#101151</a></li>
@@ -301,7 +1055,6 @@ AWS Backup now supports archiving Amazon EBS snapshots in logically air-gapped v
 <h3>Credits</h3>
 <p>Huge thanks to <a class="user-mention notranslate" href="https://github.com/lukesandberg">@lukesandberg</a>, <a class="user-mention notranslate" href="https://github.com/mischnic">@mischnic</a>, <a class="user-mention notranslate" href="https://github.com/aurorascharff">@aurorascharff</a>, <a class="user-mention notranslate" href="https://github.com/sokra">@sokra</a>, <a class="user-mention notranslate" href="https://github.com/unstubbable">@unstubbable</a>, <a class="user-mention notranslate" href="https://github.com/eps1lon">@eps1lon</a>, and <a class="user-mention notranslate" href="https://github.com/icyJoseph">@icyJoseph</a> for helping!</p>
 ]]></content:encoded>
-
 <pubDate>2026-11-12T23:46:11Z</pubDate>
 </item>
 <item>
@@ -309,7 +1062,6 @@ AWS Backup now supports archiving Amazon EBS snapshots in logically air-gapped v
 <link>https://github.com/nestjs/nest/releases/tag/v12.5.0</link>
 <guid>https://github.com/nestjs/nest/releases/tag/v12.5.0</guid>
 <content:encoded><![CDATA[
-
 <h2>v12.5.0 (2026-11-12)</h2>
 <h4>Notable changes</h4>
 <p><strong>New options</strong></p>
@@ -629,7 +1381,6 @@ AWS Backup now supports archiving Amazon EBS snapshots in logically air-gapped v
 <li>WooSeung Kim (<a href="https://github.com/beyondwin">@beyondwin</a>)</li>
 </ul>
 ]]></content:encoded>
-
 <pubDate>2026-11-12T13:19:45Z</pubDate>
 </item>
 <item>
@@ -637,7 +1388,6 @@ AWS Backup now supports archiving Amazon EBS snapshots in logically air-gapped v
 <link>https://github.com/nestjs/nest/releases/tag/v11.2.10</link>
 <guid>https://github.com/nestjs/nest/releases/tag/v11.2.10</guid>
 <content:encoded><![CDATA[
-
 <h2>What's changed</h2>
 <ul>
 <li><code>@nestjs/common</code>
@@ -827,7 +1577,6 @@ AWS Backup now supports archiving Amazon EBS snapshots in logically air-gapped v
 </ul>
 <p><strong>Full Changelog</strong>: <a class="commit-link" href="https://github.com/nestjs/nest/compare/v11.2.9...v11.2.10"><tt>v11.2.9...v11.2.10</tt></a></p>
 ]]></content:encoded>
-
 <pubDate>2026-11-12T18:52:32Z</pubDate>
 </item>
 <item>
@@ -835,14 +1584,12 @@ AWS Backup now supports archiving Amazon EBS snapshots in logically air-gapped v
 <link>https://github.com/react/react/releases/tag/v19.2.7</link>
 <guid>https://github.com/react/react/releases/tag/v19.2.7</guid>
 <content:encoded><![CDATA[
-
 <h2>React Server Components</h2>
 <ul>
 <li>Fixed missing <code>FormData</code> entries in Server Actions which regressed in 19.2.6<br />
 (<a href="https://github.com/facebook/react/pull/36566">#36566</a> by <a class="user-mention notranslate" href="https://github.com/unstubbable">@unstubbable</a>)</li>
 </ul>
 ]]></content:encoded>
-
 <pubDate>2026-06-01T18:04:24Z</pubDate>
 </item>
 <item>
@@ -850,7 +1597,6 @@ AWS Backup now supports archiving Amazon EBS snapshots in logically air-gapped v
 <link>https://github.com/hashicorp/terraform/releases/tag/v1.16.7</link>
 <guid>https://github.com/hashicorp/terraform/releases/tag/v1.16.7</guid>
 <content:encoded><![CDATA[
-
 <h2>1.16.7 (October 22, 2026)</h2>
 <p>BUG FIXES:</p>
 <ul>
@@ -861,7 +1607,6 @@ AWS Backup now supports archiving Amazon EBS snapshots in logically air-gapped v
 <li>Terraform is now built with Go 1.26.10, which no longer trusts certificates issued through a set of compromised eMudhra intermediate CAs (<a href="https://github.com/advisories/GHIS-6cqv-mx9q-x2j9" title="CVE-2026-111943">CVE-2026-111943</a>) (<a href="https://github.com/hashicorp/terraform/issues/39417">#39417</a>)</li>
 </ul>
 ]]></content:encoded>
-
 <pubDate>2026-10-22T09:30:19Z</pubDate>
 </item>
 <item>
@@ -869,7 +1614,6 @@ AWS Backup now supports archiving Amazon EBS snapshots in logically air-gapped v
 <link>https://github.com/aws/aws-cdk/releases/tag/v2.269.0</link>
 <guid>https://github.com/aws/aws-cdk/releases/tag/v2.269.0</guid>
 <content:encoded><![CDATA[
-
 <h3>Features</h3>
 <ul>
 <li><strong>bedrockagentcore:</strong> graduate Policy submodule to stable (<a href="https://github.com/aws/aws-cdk/issues/38687">#38687</a>) (<a href="https://github.com/aws/aws-cdk/commit/2b95e329041ce1f54fd4a075229740af88484bdf">2b95e32</a>), closes <a href="https://github.com/aws/aws-cdk/issues/37219">#37219</a></li>
@@ -941,7 +1685,6 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <li><strong>route53resolver-alpha:</strong> association silently ignored mutationProtection and name (<a href="https://github.com/aws/aws-cdk/issues/38795">#38795</a>) (<a href="https://github.com/aws/aws-cdk/commit/5ab40b27c4c4181d1b44f9e5a1b64666e57c760f">5ab40b2</a>)</li>
 </ul>
 ]]></content:encoded>
-
 <pubDate>2026-09-10T21:11:04Z</pubDate>
 </item>
 <item>
@@ -949,10 +1692,8 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <link>https://blog.rust-lang.org/2026/11/12/Rust-1.100.0/</link>
 <guid>https://blog.rust-lang.org/2026/11/12/Rust-1.100.0/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/81hnjw/announcing_rust_1_100_0">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 12:43:41 -0600</pubDate>
 <pubDate>Thu, 12 Nov 2026 12:43:41 -0600</pubDate>
 </item>
 <item>
@@ -960,10 +1701,8 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <link>https://letoverlambda.com/</link>
 <guid>https://letoverlambda.com/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/ooshl8/entirety_let_over_lambda_is_now_freely">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 06:44:34 -0600</pubDate>
 <pubDate>Thu, 12 Nov 2026 06:44:34 -0600</pubDate>
 </item>
 <item>
@@ -971,10 +1710,8 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <link>https://ploum.net/2026-11-12-anti-marketing-gemini.html</link>
 <guid>https://ploum.net/2026-11-12-anti-marketing-gemini.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/pty8pn/anti_marketing_aspect_gemini_network">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 10:17:25 -0600</pubDate>
 <pubDate>Thu, 12 Nov 2026 10:17:25 -0600</pubDate>
 </item>
 <item>
@@ -982,10 +1719,8 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <link>https://ratfactor.com/cards/hello-baochip</link>
 <guid>https://ratfactor.com/cards/hello-baochip</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/3gw2f4/hello_baochip">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 04:09:16 -0600</pubDate>
 <pubDate>Thu, 12 Nov 2026 04:09:16 -0600</pubDate>
 </item>
 <item>
@@ -993,10 +1728,8 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <link>https://libreagi.com/</link>
 <guid>https://libreagi.com/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/7c4iar/libreagi_save_os_models">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 09:35:46 -0600</pubDate>
 <pubDate>Thu, 12 Nov 2026 09:35:46 -0600</pubDate>
 </item>
 <item>
@@ -1004,10 +1737,8 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <link>https://tratt.net/laurie/blog/2026/adapting_cpython_for_yk.html</link>
 <guid>https://tratt.net/laurie/blog/2026/adapting_cpython_for_yk.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/gejy85/adapting_cpython_for_yk">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 06:29:56 -0600</pubDate>
 <pubDate>Thu, 12 Nov 2026 06:29:56 -0600</pubDate>
 </item>
 <item>
@@ -1015,10 +1746,8 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <link>https://stoppels.ch/2026/11/12/paths-in-pieces.html</link>
 <guid>https://stoppels.ch/2026/11/12/paths-in-pieces.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/yrpo2q/paths_pieces">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 08:49:26 -0600</pubDate>
 <pubDate>Thu, 12 Nov 2026 08:49:26 -0600</pubDate>
 </item>
 <item>
@@ -1026,10 +1755,8 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <link>https://monkeyisland.pages.dev/</link>
 <guid>https://monkeyisland.pages.dev/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/ubbxhd/secret_monkey_island_all_13_versions_side">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 08:37:35 -0600</pubDate>
 <pubDate>Thu, 12 Nov 2026 08:37:35 -0600</pubDate>
 </item>
 <item>
@@ -1037,10 +1764,8 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <link>https://dvratil.cz/2026/11/hijacking-samsung-tv-smart-hub-ads/</link>
 <guid>https://dvratil.cz/2026/11/hijacking-samsung-tv-smart-hub-ads/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/2drgwh/hijacking_samsung_tv_smart_hub_ads">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 05:08:45 -0600</pubDate>
 <pubDate>Thu, 12 Nov 2026 05:08:45 -0600</pubDate>
 </item>
 <item>
@@ -1048,10 +1773,8 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <link>https://sunshowers.io/posts/glue-work/</link>
 <guid>https://sunshowers.io/posts/glue-work/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/f6u0cg/contra_glue_work_considered_harmful">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 20:36:05 -0600</pubDate>
 <pubDate>Thu, 12 Nov 2026 20:36:05 -0600</pubDate>
 </item>
 <item>
@@ -1059,10 +1782,8 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <link>https://www.freebsd.org/status/report-2026-07-2026-09/</link>
 <guid>https://www.freebsd.org/status/report-2026-07-2026-09/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/wbkayq/freebsd_status_report_third_quarter_2026">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 14:45:02 -0600</pubDate>
 <pubDate>Thu, 12 Nov 2026 14:45:02 -0600</pubDate>
 </item>
 <item>
@@ -1070,10 +1791,8 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <link>https://beyondloom.com/blog/postscript.html</link>
 <guid>https://beyondloom.com/blog/postscript.html</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/8kdcdd/let_s_write_postscript_interpreter">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 16:17:32 -0600</pubDate>
 <pubDate>Thu, 12 Nov 2026 16:17:32 -0600</pubDate>
 </item>
 <item>
@@ -1081,10 +1800,8 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <link>https://linebender.org/blog/jit-bitmap-text/</link>
 <guid>https://linebender.org/blog/jit-bitmap-text/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/a3elxr/jit_bitmap_text_rendering_for">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 18:16:10 -0600</pubDate>
 <pubDate>Thu, 12 Nov 2026 18:16:10 -0600</pubDate>
 </item>
 <item>
@@ -1092,10 +1809,8 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <link>https://dyalog.com/dyalog/dyalog-versions/210.htm</link>
 <guid>https://dyalog.com/dyalog/dyalog-versions/210.htm</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/pbc1ke/dyalog_version_21_0">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 13:13:49 -0600</pubDate>
 <pubDate>Thu, 12 Nov 2026 13:13:49 -0600</pubDate>
 </item>
 <item>
@@ -1103,10 +1818,8 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <link>https://chen.cat/j/futhark/</link>
 <guid>https://chen.cat/j/futhark/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/slkmnx/futhark_j_bridge">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 18:20:52 -0600</pubDate>
 <pubDate>Thu, 12 Nov 2026 18:20:52 -0600</pubDate>
 </item>
 <item>
@@ -1114,10 +1827,8 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <link>https://kew.edbn.me/blog/adsb-receiver/</link>
 <guid>https://kew.edbn.me/blog/adsb-receiver/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/49c859/building_my_own_ads_b_receiver">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 18:36:19 -0600</pubDate>
 <pubDate>Thu, 12 Nov 2026 18:36:19 -0600</pubDate>
 </item>
 <item>
@@ -1125,10 +1836,8 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <link>https://security.apple.com/blog/secure-exclaves/</link>
 <guid>https://security.apple.com/blog/secure-exclaves/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/vnugiy/secure_exclaves_ambient_sensing">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 16:55:12 -0600</pubDate>
 <pubDate>Thu, 12 Nov 2026 16:55:12 -0600</pubDate>
 </item>
 <item>
@@ -1136,10 +1845,8 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <link>https://graphql.org/blog/2026-11-12-announcing-the-graphql-over-http-spec/</link>
 <guid>https://graphql.org/blog/2026-11-12-announcing-the-graphql-over-http-spec/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/klmtb1/announcing_graphql_over_http">Comments</a></p>
 ]]></content:encoded>
-<pubDate>Thu, 12 Nov 2026 19:16:15 -0600</pubDate>
 <pubDate>Thu, 12 Nov 2026 19:16:15 -0600</pubDate>
 </item>
 <item>
@@ -1147,13 +1854,10 @@ job class calls to declare (and, when a value is present, emit) a managed argume
 <link>https://blog.master.dev/creating-diagrams-and-graphs-using-modern-css/</link>
 <guid>https://blog.master.dev/creating-diagrams-and-graphs-using-modern-css/</guid>
 <content:encoded><![CDATA[
-
 <p><a href="https://lobste.rs/s/itpaba/creating_diagrams_graphs_using_modern">Comments</a></p>
 ]]></content:encoded>
 <pubDate>Thu, 12 Nov 2026 06:20:27 -0600</pubDate>
-<pubDate>Thu, 12 Nov 2026 06:20:27 -0600</pubDate>
 </item>
-
 <item>
 <title>Ornith-1.0-9B and Ornith-1.0-35B models now available on Amazon SageMaker JumpStart</title>
 <link>https://aws.amazon.com/about-aws/whats-new/2026/01/ornith-1-0-9b-ornith-1-0-35b-on-sagemaker-jumpstart/</link>
@@ -14896,484 +15600,6 @@ A special acknowledgment goes to the contributors for their support in these dev
 <p>TML-3722: The docs site error reference updates again: placeholders s…</p>
 ]]></content:encoded>
 <pubDate>2026-10-23T05:30:27Z</pubDate>
-</item>
-<item>
-<title>v1.16.5</title>
-<link>https://github.com/hashicorp/terraform/releases/tag/v1.16.5</link>
-<guid>https://github.com/hashicorp/terraform/releases/tag/v1.16.5</guid>
-<content:encoded><![CDATA[
-<h2>1.16.5 (September 30, 2026)</h2>
-<p>BUG FIXES:</p>
-<ul>
-<li>
-<p>Fixed a crash that happens when a tainted instance state is seen without a valid status (<a href="https://github.com/hashicorp/terraform/issues/39287">#39287</a>)</p>
-</li>
-<li>
-<p>resource-identity: fixed an issue where resource identity could be nil during delete (<a href="https://github.com/hashicorp/terraform/issues/39285">#39285</a>)</p>
-</li>
-</ul>
-]]></content:encoded>
-<pubDate>2026-10-02T13:04:00Z</pubDate>
-</item>
-<item>
-<title>Now Google says it might use your Gmail and Google Photos data to target ads</title>
-<link>https://www.theverge.com/tech/1017600/google-personal-intelligence-privacy-policy-ads-update</link>
-<guid>https://www.theverge.com/tech/1017600/google-personal-intelligence-privacy-policy-ads-update</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.theverge.com/tech/1017600/google-personal-intelligence-privacy-policy-ads-update">https://www.theverge.com/tech/1017600/google-personal-intelligence-privacy-policy-ads-update</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50214218">https://news.ycombinator.com/item?id=50214218</a></p>
-<p>Points: 320</p>
-<p># Comments: 164</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 19:34:15 +0000</pubDate>
-</item>
-<item>
-<title>Dessa: the most authentic full-duplex speech model ever built</title>
-<link>https://block.xyz/dessa</link>
-<guid>https://block.xyz/dessa</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://block.xyz/dessa">https://block.xyz/dessa</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50213925">https://news.ycombinator.com/item?id=50213925</a></p>
-<p>Points: 288</p>
-<p># Comments: 113</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 19:09:54 +0000</pubDate>
-</item>
-<item>
-<title>Kimi K3.1 Pro and K3.1 Pro Highspeed</title>
-<link>https://www.kimi.ai/blog/kimi-k3-1-pro</link>
-<guid>https://www.kimi.ai/blog/kimi-k3-1-pro</guid>
-<content:encoded><![CDATA[
-<p><a href="https://www.kimi.com/code/docs/en/kimi-code/models.html" rel="nofollow">https://www.kimi.com/code/docs/en/kimi-code/models.html</a><p><a href="https://artificialanalysis.ai/models/kimi-k3-1-pro" rel="nofollow">https://artificialanalysis.ai/models/kimi-k3-1-pro</a><p><a href="https://www.modelcompare.ai/blog/china-open-source-ai" rel="nofollow">https://www.modelcompare.ai/blog/china-open-source-ai</a></p>
-<hr />
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50212065">https://news.ycombinator.com/item?id=50212065</a></p>
-<p>Points: 786</p>
-<p># Comments: 478</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 16:59:08 +0000</pubDate>
-</item>
-<item>
-<title>Today, we hacked what we'd set out to hack: the iPhone</title>
-<link>https://blog.calif.io/p/iphone</link>
-<guid>https://blog.calif.io/p/iphone</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://blog.calif.io/p/iphone">https://blog.calif.io/p/iphone</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50211474">https://news.ycombinator.com/item?id=50211474</a></p>
-<p>Points: 783</p>
-<p># Comments: 527</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 16:21:50 +0000</pubDate>
-</item>
-<item>
-<title>eMudhra ignored Mozilla Root investigation deadline; blames social media</title>
-<link>https://bugzilla.mozilla.org/show_bug.cgi?id=2083449</link>
-<guid>https://bugzilla.mozilla.org/show_bug.cgi?id=2083449</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=2083449">https://bugzilla.mozilla.org/show_bug.cgi?id=2083449</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50210067">https://news.ycombinator.com/item?id=50210067</a></p>
-<p>Points: 195</p>
-<p># Comments: 153</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 14:52:08 +0000</pubDate>
-</item>
-<item>
-<title>Investor-owned utilities charge 23% more for electricity than public providers</title>
-<link>https://www.kadoa.com/energy-prices/insights/investor-owned-utilities</link>
-<guid>https://www.kadoa.com/energy-prices/insights/investor-owned-utilities</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.kadoa.com/energy-prices/insights/investor-owned-utilities">https://www.kadoa.com/energy-prices/insights/investor-owned-utilities</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50208837">https://news.ycombinator.com/item?id=50208837</a></p>
-<p>Points: 527</p>
-<p># Comments: 384</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 13:41:10 +0000</pubDate>
-</item>
-<item>
-<title>Your Phone Is About to Stop Being Yours: 70 Days Until Lockdown</title>
-<link>https://keepandroidopen.org/?</link>
-<guid>https://keepandroidopen.org/?</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://keepandroidopen.org/?">https://keepandroidopen.org/?</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50208558">https://news.ycombinator.com/item?id=50208558</a></p>
-<p>Points: 485</p>
-<p># Comments: 337</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 13:19:42 +0000</pubDate>
-</item>
-<item>
-<title>Hacker leaks 281 GB of data from Germany's far-right AfD party</title>
-<link>https://www.bitdefender.com/en-us/blog/hotforsecurity/hacker-leaks-281-gb-data-germany-afd</link>
-<guid>https://www.bitdefender.com/en-us/blog/hotforsecurity/hacker-leaks-281-gb-data-germany-afd</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.bitdefender.com/en-us/blog/hotforsecurity/hacker-leaks-281-gb-data-germany-afd">https://www.bitdefender.com/en-us/blog/hotforsecurity/hacker-leaks-281-gb-data-germany-afd</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50208258">https://news.ycombinator.com/item?id=50208258</a></p>
-<p>Points: 153</p>
-<p># Comments: 106</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 12:56:38 +0000</pubDate>
-</item>
-<item>
-<title>OpenSSL 4.1.0</title>
-<link>https://github.com/openssl/openssl/releases/tag/openssl-4.1.0</link>
-<guid>https://github.com/openssl/openssl/releases/tag/openssl-4.1.0</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://github.com/openssl/openssl/releases/tag/openssl-4.1.0">https://github.com/openssl/openssl/releases/tag/openssl-4.1.0</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50208099">https://news.ycombinator.com/item?id=50208099</a></p>
-<p>Points: 180</p>
-<p># Comments: 62</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 12:42:44 +0000</pubDate>
-</item>
-<item>
-<title>Apple Music 404 Not Found</title>
-<link>https://music.apple.com/this-url-doesnt-exist</link>
-<guid>https://music.apple.com/this-url-doesnt-exist</guid>
-<content:encoded><![CDATA[
-<p><a href="https://www.macrumors.com/2026/10/23/apple-music-has-a-hidden-ipod-you-can-play-with/" rel="nofollow">https://www.macrumors.com/2026/10/23/apple-music-has-a-hidde...</a></p>
-<hr />
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50207910">https://news.ycombinator.com/item?id=50207910</a></p>
-<p>Points: 651</p>
-<p># Comments: 210</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 12:28:47 +0000</pubDate>
-</item>
-<item>
-<title>Swedish government offices to ban ChatGPT and Claude</title>
-<link>https://www.sverigesradio.se/artikel/chat-gpt-och-claude-forbjuder-regeringskansliet</link>
-<guid>https://www.sverigesradio.se/artikel/chat-gpt-och-claude-forbjuder-regeringskansliet</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.sverigesradio.se/artikel/chat-gpt-och-claude-forbjuder-regeringskansliet">https://www.sverigesradio.se/artikel/chat-gpt-och-claude-forbjuder-regeringskansliet</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50207405">https://news.ycombinator.com/item?id=50207405</a></p>
-<p>Points: 316</p>
-<p># Comments: 118</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 11:39:54 +0000</pubDate>
-</item>
-<item>
-<title>Is this the new cyber normal?</title>
-<link>https://drew.silcock.dev/blog/is-this-the-new-cyber-normal/</link>
-<guid>https://drew.silcock.dev/blog/is-this-the-new-cyber-normal/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://drew.silcock.dev/blog/is-this-the-new-cyber-normal/">https://drew.silcock.dev/blog/is-this-the-new-cyber-normal/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50207115">https://news.ycombinator.com/item?id=50207115</a></p>
-<p>Points: 151</p>
-<p># Comments: 166</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 11:04:53 +0000</pubDate>
-</item>
-<item>
-<title>No Need for Retirement When Utopia Is Around the Corner</title>
-<link>https://blog.jim-nielsen.com/2026/skip-retirement-for-utopia/</link>
-<guid>https://blog.jim-nielsen.com/2026/skip-retirement-for-utopia/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://blog.jim-nielsen.com/2026/skip-retirement-for-utopia/">https://blog.jim-nielsen.com/2026/skip-retirement-for-utopia/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50207050">https://news.ycombinator.com/item?id=50207050</a></p>
-<p>Points: 153</p>
-<p># Comments: 170</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 10:58:52 +0000</pubDate>
-</item>
-<item>
-<title>Dutch government had hacked into Jared Kushner's phone</title>
-<link>https://twitter.com/jaredkushner/status/2113376217415958767</link>
-<guid>https://twitter.com/jaredkushner/status/2113376217415958767</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://twitter.com/jaredkushner/status/2113376217415958767">https://twitter.com/jaredkushner/status/2113376217415958767</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50206914">https://news.ycombinator.com/item?id=50206914</a></p>
-<p>Points: 290</p>
-<p># Comments: 191</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 10:41:32 +0000</pubDate>
-</item>
-<item>
-<title>Job loss and cortisone mania</title>
-<link>https://tilschuenemann.de/job-loss-cortisone-mania</link>
-<guid>https://tilschuenemann.de/job-loss-cortisone-mania</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://tilschuenemann.de/job-loss-cortisone-mania">https://tilschuenemann.de/job-loss-cortisone-mania</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50206840">https://news.ycombinator.com/item?id=50206840</a></p>
-<p>Points: 172</p>
-<p># Comments: 117</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 10:31:24 +0000</pubDate>
-</item>
-<item>
-<title>Disney Raising Prices Days After Confirming Ads Will Now Show Up on Every Tier</title>
-<link>https://www.tvfandomlounge.com/disney-plus-price-hike-ads-premium-tier-nielsen-emmys-2026/</link>
-<guid>https://www.tvfandomlounge.com/disney-plus-price-hike-ads-premium-tier-nielsen-emmys-2026/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.tvfandomlounge.com/disney-plus-price-hike-ads-premium-tier-nielsen-emmys-2026/">https://www.tvfandomlounge.com/disney-plus-price-hike-ads-premium-tier-nielsen-emmys-2026/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50205934">https://news.ycombinator.com/item?id=50205934</a></p>
-<p>Points: 419</p>
-<p># Comments: 439</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 08:21:29 +0000</pubDate>
-</item>
-<item>
-<title>Remove pgrust: the entry is cheating (per-query kernels and result caching)</title>
-<link>https://github.com/ClickHouse/ClickBench/pull/2165</link>
-<guid>https://github.com/ClickHouse/ClickBench/pull/2165</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://github.com/ClickHouse/ClickBench/pull/2165">https://github.com/ClickHouse/ClickBench/pull/2165</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50205816">https://news.ycombinator.com/item?id=50205816</a></p>
-<p>Points: 184</p>
-<p># Comments: 144</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 08:05:33 +0000</pubDate>
-</item>
-<item>
-<title>Move Slow and Fix Things (2024)</title>
-<link>https://endler.dev/2024/move-slow-and-fix-things/</link>
-<guid>https://endler.dev/2024/move-slow-and-fix-things/</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://endler.dev/2024/move-slow-and-fix-things/">https://endler.dev/2024/move-slow-and-fix-things/</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50204754">https://news.ycombinator.com/item?id=50204754</a></p>
-<p>Points: 170</p>
-<p># Comments: 31</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 05:12:39 +0000</pubDate>
-</item>
-<item>
-<title>This I Believe (1952)</title>
-<link>https://www.awakin.org/v2/read/view.php?tid=468</link>
-<guid>https://www.awakin.org/v2/read/view.php?tid=468</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.awakin.org/v2/read/view.php?tid=468">https://www.awakin.org/v2/read/view.php?tid=468</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50203759">https://news.ycombinator.com/item?id=50203759</a></p>
-<p>Points: 150</p>
-<p># Comments: 79</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 02:19:38 +0000</pubDate>
-</item>
-<item>
-<title>The foolishness of "natural language programming" (1978)</title>
-<link>https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html</link>
-<guid>https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html</guid>
-<content:encoded><![CDATA[
-<p>Article URL: <a href="https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html">https://www.cs.utexas.edu/~EWD/transcriptions/EWD06xx/EWD667.html</a></p>
-<p>Comments URL: <a href="https://news.ycombinator.com/item?id=50203161">https://news.ycombinator.com/item?id=50203161</a></p>
-<p>Points: 362</p>
-<p># Comments: 251</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 00:52:01 +0000</pubDate>
-</item>
-<item>
-<title>The glorious @xkcdRandom Zig builtin</title>
-<link>https://ochagavia.nl/blog/the-glorious-@xkcdrandom-zig-builtin/</link>
-<guid>https://ochagavia.nl/blog/the-glorious-@xkcdrandom-zig-builtin/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/5hoqzj/glorious_xkcdrandom_zig_builtin">Comments</a></p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 09:30:57 -0500</pubDate>
-</item>
-<item>
-<title>Attention people who think UB is fine</title>
-<link>https://blog.habets.se/2026/10/Attention-people-who-think-UB-is-fine.html</link>
-<guid>https://blog.habets.se/2026/10/Attention-people-who-think-UB-is-fine.html</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/5xzuff/attention_people_who_think_ub_is_fine">Comments</a></p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 15:47:58 -0500</pubDate>
-</item>
-<item>
-<title>Software is slow because of bad design, not slow languages</title>
-<link>https://www.seangoedecke.com/software-is-slow-because-of-bad-design-not-slow-languages/</link>
-<guid>https://www.seangoedecke.com/software-is-slow-because-of-bad-design-not-slow-languages/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/hd72yt/software_is_slow_because_bad_design_not">Comments</a></p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 07:58:10 -0500</pubDate>
-</item>
-<item>
-<title>How close can pure FP get to C?</title>
-<link>https://rtfeldman.com/fp-vs-c</link>
-<guid>https://rtfeldman.com/fp-vs-c</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/7me8wm/how_close_can_pure_fp_get_c">Comments</a></p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 06:37:22 -0500</pubDate>
-</item>
-<item>
-<title>Debunking "Faster than Rust": Malicious Benchmarks in Tov</title>
-<link>https://blog.fyralabs.com/debunking-faster-than-rust-malicious-benchmarks-in-tov/</link>
-<guid>https://blog.fyralabs.com/debunking-faster-than-rust-malicious-benchmarks-in-tov/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/gajtrm/debunking_faster_than_rust_malicious">Comments</a></p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 02:44:09 -0500</pubDate>
-</item>
-<item>
-<title>Incremental Computation Graphs</title>
-<link>https://dziban.net/posts/incremental-computation-graph/</link>
-<guid>https://dziban.net/posts/incremental-computation-graph/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/6utrvz/incremental_computation_graphs">Comments</a></p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 16:35:45 -0500</pubDate>
-</item>
-<item>
-<title>What are you doing this weekend?</title>
-<link>https://lobste.rs/s/crqz1g/what_are_you_doing_this_weekend</link>
-<guid>https://lobste.rs/s/crqz1g/what_are_you_doing_this_weekend</guid>
-<content:encoded><![CDATA[
-<p>Feel free to tell what you plan on doing this weekend and even ask for help or feedback.</p>
-<p>Please keep in mind it’s more than OK to do nothing at all too!</p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 03:43:10 -0500</pubDate>
-</item>
-<item>
-<title>a neat trick i found for reusing physical memory</title>
-<link>https://sebsite.pw/w/20260728-cow.html</link>
-<guid>https://sebsite.pw/w/20260728-cow.html</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/bhqvxq/neat_trick_i_found_for_reusing_physical">Comments</a></p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 08:40:30 -0500</pubDate>
-</item>
-<item>
-<title>A whirlwind tour of systemd-nspawn containers (2025)</title>
-<link>https://quantum5.ca/2025/03/22/whirlwind-tour-of-systemd-nspawn-containers/</link>
-<guid>https://quantum5.ca/2025/03/22/whirlwind-tour-of-systemd-nspawn-containers/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/yusomz/whirlwind_tour_systemd_nspawn">Comments</a></p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 12:12:35 -0500</pubDate>
-</item>
-<item>
-<title>No Source Code? No Problem! What if you have to port a program, but all you have is a binary? (2003)</title>
-<link>https://queue.acm.org/doi/10.1145/945131.945155</link>
-<guid>https://queue.acm.org/doi/10.1145/945131.945155</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/ctow98/no_source_code_no_problem_what_if_you_have">Comments</a></p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 12:00:36 -0500</pubDate>
-</item>
-<item>
-<title>An Incremental Approach to JIT Construction</title>
-<link>https://dl.acm.org/doi/pdf/10.1145/3830440.3832304</link>
-<guid>https://dl.acm.org/doi/pdf/10.1145/3830440.3832304</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/hmtqfl/incremental_approach_jit_construction">Comments</a></p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 21:10:41 -0500</pubDate>
-</item>
-<item>
-<title>Memory is slow, Disk is fast</title>
-<link>https://www.bitflux.ai/blog/memory-is-slow-part3/</link>
-<guid>https://www.bitflux.ai/blog/memory-is-slow-part3/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/pvfzhq/memory_is_slow_disk_is_fast">Comments</a></p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 15:44:07 -0500</pubDate>
-</item>
-<item>
-<title>Railway Preliminary Report: Oct 21st Security Incident</title>
-<link>https://blog.railway.com/p/preliminary-report-october-security-incident</link>
-<guid>https://blog.railway.com/p/preliminary-report-october-security-incident</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/hq3tu8/railway_preliminary_report_oct_21st">Comments</a></p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 13:35:24 -0500</pubDate>
-</item>
-<item>
-<title>Indian government sites are serving revoked eMudhra certificates</title>
-<link>https://captnemo.in/blog/2026/10/23/emsign-revoked-gov-in/</link>
-<guid>https://captnemo.in/blog/2026/10/23/emsign-revoked-gov-in/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/zug8xv/indian_government_sites_are_serving">Comments</a></p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 23:06:06 -0500</pubDate>
-</item>
-<item>
-<title>The Many Many Missed Opportunities of Sonic 06</title>
-<link>https://isaacmarovitz.com/posts/sonic-06/</link>
-<guid>https://isaacmarovitz.com/posts/sonic-06/</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/nb7wkp/many_many_missed_opportunities_sonic_06">Comments</a></p>
-]]></content:encoded>
-<pubDate>Thu, 22 Oct 2026 23:30:10 -0500</pubDate>
-</item>
-<item>
-<title>Distributed data, centralized fixes</title>
-<link>https://miren.dev/blog/distributed-data-centralized-fixes</link>
-<guid>https://miren.dev/blog/distributed-data-centralized-fixes</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/qc1ahp/distributed_data_centralized_fixes">Comments</a></p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 14:50:52 -0500</pubDate>
-</item>
-<item>
-<title>How to Make Things, and Why</title>
-<link>https://www.youtube.com/watch?v=7yeH1DqK984</link>
-<guid>https://www.youtube.com/watch?v=7yeH1DqK984</guid>
-<content:encoded><![CDATA[
-<p><a href="https://lobste.rs/s/tq5cxv/how_make_things_why">Comments</a></p>
-]]></content:encoded>
-<pubDate>Fri, 23 Oct 2026 10:36:59 -0500</pubDate>
-</item>
-<item>
-<title>Amazon Connect Customer now supports customizing the Customer Profiles app on the agent workspace</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/10/connect-customer-customize-cp</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/10/connect-customer-customize-cp</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Amazon Connect, Customer Profiles, Profile Explorer, agent workspace, layouts  
-
-<br /><br />Summary:  
-Amazon Connect Customer Profiles now enables administrators to customize the customer data visible to agents in the agent workspace through layouts built in Profile Explorer. This feature offers a real-time, unified view of customer interactions, merging contact history with data from various sources. Different agents handling various requests can access tailored data sets; for instance, an airline baggage claims agent receives information on contact history, active flights, and baggage ticket details, while a loyalty agent sees loyalty status, preferences, and upcoming flights. Administrators can create and save distinct layouts of Customer Profiles widgets, which may include elements such as contact information and lifetime value attributes, and assign them to agents to replace the legacy view. Additionally, layouts can feature an AI Profile Summary that highlights essential customer insights, directing the agent's focus on key information. Profile Explorer is available in multiple AWS Regions, including US East (N. Virginia), US West (Oregon), and several locations across Africa, Asia Pacific, Canada, and Europe. For further details, refer to the Amazon Connect Customer administrator guide. <div>
-<p>Amazon Connect Customer Profiles now allows administrators to customize which customer data that agents see in the agent workspace, and how it is displayed, using layouts they build in Profile Explorer. Customer Profiles provides agents with a real-time, unified view of each customer during interactions, combining contact history with customer data from multiple sources. Agents who handle different kinds of requests need different customer data in front of them.<br /> <br /> Within Profile Explorer, administrators can create and save each layout of Customer Profiles widgets, such as contact history, contact information, and lifetime value calculated attributes, and assign it to agents in place of the legacy Customer Profiles view. For example, an airline baggage claims agent sees contact history, active flights, and baggage ticket information, while a loyalty agent sees loyalty status, preferences, and upcoming flights. Layouts can also include an AI Profile Summary that focuses the agent's attention on key customer insights by summarizing the customer profile.<br /> <br /> You can use Profile Explorer in the following AWS Regions: US East (N. Virginia), US West (Oregon), Africa (Cape Town), Asia Pacific (Seoul), Asia Pacific (Singapore), Asia Pacific (Sydney), Canada (Central), Europe (Frankfurt), and Europe (London).<br /> <br /> To learn more about Profile Explorer, see <a href="https://docs.aws.amazon.com/connect/latest/adminguide/customer-profiles-profile-explorer.html">Profile Explorer</a> in the Amazon Connect Customer administrator guide.</p>
-]]></content:encoded>
-<pubDate>Thu, 22 Oct 2026 21:10:00 GMT</pubDate>
-</item>
-<item>
-<title>AWS Continuum for code vulnerabilities is now generally available</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/10/aws-continuum-for-code-vulnerabilities-is-now-generally-available</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/10/aws-continuum-for-code-vulnerabilities-is-now-generally-available</guid>
-<content:encoded><![CDATA[
-<div> Keywords: AWS, Continuum, code vulnerabilities, remediation, AI model
-
-<br /><br />Summary:  
-Today, AWS announced the general availability of AWS Continuum for code vulnerabilities, a tool designed to discover, validate, prioritize, and remediate code vulnerabilities at machine speed. Continuum builds a context graph that encompasses the AWS environment, capturing resource topology, identity relationships, and network reachability. It identifies which resources are part of an application and assesses the real business risk associated with various findings. 
-
-The tool ingests existing vulnerability findings and conducts code scans, confirming exploitability through testing in an isolated sandbox. Findings are then prioritized based on business impact, and remediation patches are provided as pull requests integrated into developer workflows, complete with exploitability proof and blast radius assessments. 
-
-Continuum utilizes various AI models for its tasks, beginning in 'Learn' mode for proposing remediation fixes that require approval. Once a level of trust in its precision is established, users can switch to 'Enforce' mode, allowing the system to act autonomously within set guardrails. AWS Continuum is designed to work in conjunction with other AWS security services, including Amazon GuardDuty and AWS Security Hub. For details about AWS Regions where it’s available, additional information can be found on the AWS site. <div>
-<p>Today, AWS announces the general availability of AWS Continuum for code vulnerabilities. Continuum for code vulnerabilities&nbsp;discovers, validates, prioritizes, and remediates code vulnerabilities at machine speed.</p> 
-<p>Continuum for code vulnerabilities builds a context graph from your AWS environment, including resource topology, identity relationships, and network reachability. It knows which resources are part of your application, and which findings carry real business risk. It ingests your existing vulnerability findings, scans your code, and then confirms which findings are exploitable by testing them in an isolated sandbox. The findings are prioritized by business impact. And finally, it provides remediation patches as pull requests directly to developer workflows with exploitability proof and blast radius assessment attached.</p> 
-<p>Continuum for code vulnerabilities picks the right AI model for each task. Continuum starts in Learn mode where it proposes the remediation fixes that you approve. When it builds sufficient trust in its precision, you switch to the Enforce mode and let it act autonomous within the guardrails you set.&nbsp;</p> 
-<p>AWS Continuum works alongside your existing AWS security services, including Amazon GuardDuty and AWS Security Hub. For more information about the AWS Regions where AWS Continuum is available, see the <a href="https://aws.amazon.com/about-aws/global-infrastructure/regional-product-services/" rel="noopener noreferrer" target="_blank" title="AWS Regional Table">AWS Region table.</a> To learn more, see the AWS Continuum <a href="https://aws.amazon.com/continuum/">product page</a>.</p>
-]]></content:encoded>
-<pubDate>Thu, 22 Oct 2026 21:00:00 GMT</pubDate>
-</item>
-<item>
-<title>Amazon OpenSearch Serverless now supports a 5-second default refresh interval</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-opensearch-serverless-supports-5-second-refresh-interval/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/10/amazon-opensearch-serverless-supports-5-second-refresh-interval/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: Amazon OpenSearch Serverless, refresh interval, search collections, near real-time, data retrieval
-
-<br /><br />Summary: Starting today, Amazon OpenSearch Serverless reduces the default refresh interval to 5 seconds for search and vector collections, previously set at 10 seconds. This change allows newly ingested documents to be searchable more quickly, enhancing applications’ read-after-write visibility without requiring any configuration changes. The update applies to the next generation of Amazon OpenSearch Serverless across all regions where it is available. The faster refresh rate is particularly advantageous for workloads that continuously ingest data and require near real-time access to information, such as full-text search over frequently updated content and vector applications like retrieval-augmented generation (RAG), semantic search, and recommendation systems. Consequently, applications and AI agents can now retrieve and act on the most recent data more rapidly, leading to improvements in the relevance and accuracy of search results and RAG responses. Overall, the default 5-second refresh interval offers significant benefits for users managing dynamic datasets and enhances overall search functionality in diverse applications. <div>
-<p>Starting today, Amazon OpenSearch Serverless reduces the default refresh interval to 5 seconds for both search and vector collections. The refresh interval controls how quickly newly ingested documents become available for search. By lowering the default from 10 seconds to 5 seconds, newly written data becomes searchable faster, giving applications quicker read-after-write visibility automatically, with no configuration changes and no action required on your part.</p> 
-<p>This improvement applies to the next generation of Amazon OpenSearch Serverless and takes effect by default on both search and vector collections. Faster refresh is valuable for workloads that continuously ingest data and need near real-time retrieval, including full-text search over frequently updated content as well as vector use cases such as retrieval-augmented generation (RAG), semantic search, and recommendation and personalization systems. This means applications and AI agents can retrieve and act on the most recently ingested data sooner, improving the relevance and accuracy of search results and RAG responses for datasets that change frequently.</p> 
-<p>The 5-second default refresh interval is available in all&nbsp;<a href="https://docs.aws.amazon.com/general/latest/gr/opensearch-service.html" rel="noopener noreferrer" target="_blank">24 regions</a>&nbsp;where Amazon OpenSearch Serverless is available today. To learn more, see the Amazon OpenSearch Serverless <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless.html" rel="noopener noreferrer" target="_blank">documentation</a>.</p>
-]]></content:encoded>
-<pubDate>Thu, 22 Oct 2026 18:34:00 GMT</pubDate>
-</item>
-<item>
-<title>AWS CloudFormation now simplifies stack update rollback operations</title>
-<link>https://aws.amazon.com/about-aws/whats-new/2026/10/aws-cloudformation-cdk/</link>
-<guid>https://aws.amazon.com/about-aws/whats-new/2026/10/aws-cloudformation-cdk/</guid>
-<content:encoded><![CDATA[
-<div> Keywords: update rollback, force rollback, CloudFormation, deployable state, AWS  
-
-<br /><br />Summary:  
-AWS CloudFormation has simplified the process of performing update rollbacks, allowing users to revert their stack to a known good state more efficiently. Starting today, the introduction of the force rollback feature enables users to complete the rollback process in a single operation, even if some resources cannot roll back automatically. This enhancement works across multiple CloudFormation workflows, including the console, SDKs, and AI agents.  
-With force rollback, CloudFormation promptly finishes the update rollback, bringing the stack back to a deployable state without the need to identify and manually retry affected resources. Any resources that require attention, such as those impacted by changes outside of CloudFormation, will be noted for further review and resolution prior to the next deployment. Users can initiate this by running the continue update rollback command with the force rollback option and creating a configuration difference report before proceeding. This feature is available in all AWS regions without additional costs, and users can refer to the AWS CloudFormation User Guide for more detailed information on using this new capability. <div>
-<p><a href="https://docs.aws.amazon.com/cloudformation/">AWS CloudFormation</a>&nbsp;now makes it simpler to complete an update rollback and get back to deploying. An update rollback returns your stack to a known good state. Starting today, if some resources cannot roll back automatically, force rollback enables you to complete the rollback it in a single operation. It works across every CloudFormation workflow, from the <a href="https://docs.aws.amazon.com/cli/latest/reference/cloudformation/">AWS CLI</a>, and SDKs to <a href="https://docs.aws.amazon.com/cdk/v2/guide/">AWS CDK</a>&nbsp;and AI agents.</p> 
-<p>With force rollback, CloudFormation completes the update rollback and returns your stack to a deployable state in a single operation, instead of requiring you to identify, list, and retry the operation for each affected resource. Any resource that still needs attention, such as one affected a change outside CloudFormation, is recorded for you to review and resolve it before your next deployment.</p> 
-<p>To get started, run continue update rollback with the force rollback option, then create a <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/drift-aware-change-sets.html">drift-aware change set</a> to review any configuration differences before your next deployment. To learn more, see &nbsp;<a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-continueupdaterollback.html">Continue rolling back an update&nbsp;</a> in the AWS CloudFormation User Guide.</p> 
-<p>Force rollback is available in all Regions at no additional cost. Refer to the &nbsp;<a href="https://docs.aws.amazon.com/general/latest/gr/cfn.html#cfn_region">AWS Region table&nbsp;</a> for service availability details.</p>
-]]></content:encoded>
-<pubDate>Thu, 22 Oct 2026 17:30:00 GMT</pubDate>
 </item>
 </channel>
 </rss>
